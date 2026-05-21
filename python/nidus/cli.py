@@ -22,6 +22,7 @@ from collections import Counter
 
 from nidus import __version__
 from nidus.load import _default_dataset_dir, load
+from nidus.models import Citation
 from nidus.validate import ValidationError, validate
 
 
@@ -90,6 +91,100 @@ def cmd_info(args: argparse.Namespace) -> int:
     return 0
 
 
+_BIBTEX_TYPE_MAP = {
+    "journal-article": "article",
+    "book": "book",
+    "book-chapter": "incollection",
+    "conference-paper": "inproceedings",
+    "preprint": "misc",
+    "report": "techreport",
+    "dataset": "misc",
+    "thesis": "phdthesis",
+}
+
+
+def _citation_to_bibtex(c: Citation) -> str:
+    entry_type = _BIBTEX_TYPE_MAP.get(c.type, "misc")
+    fields: list[str] = []
+
+    def add(name: str, value: object) -> None:
+        if value not in (None, "", []):
+            fields.append(f"  {name} = {{{value}}}")
+
+    add("title", c.title)
+    add("author", " and ".join(c.authors))
+    add("year", c.year)
+    if entry_type == "article":
+        add("journal", c.journal)
+    else:
+        add("publisher", c.publisher or c.journal)
+    add("volume", c.volume)
+    add("number", c.issue)
+    add("pages", c.pages)
+    add("doi", c.doi)
+    add("pmid", c.pmid)
+    add("url", c.url)
+    add("isbn", c.isbn)
+    body = ",\n".join(fields)
+    return f"@{entry_type}{{{c.key},\n{body}\n}}"
+
+
+def cmd_export(args: argparse.Namespace) -> int:
+    try:
+        ds = load(path=args.path)
+    except FileNotFoundError as e:
+        print(f"dataset not found: {e}", file=sys.stderr)
+        return 1
+    if args.format == "bibtex":
+        print("\n\n".join(_citation_to_bibtex(c) for c in ds.citations.values()))
+        return 0
+    if args.format == "csv":
+        import csv
+
+        writer = csv.writer(sys.stdout)
+        writer.writerow(
+            [
+                "id",
+                "name",
+                "subsystem",
+                "tier",
+                "central",
+                "low",
+                "high",
+                "units",
+                "distribution",
+                "ci",
+                "primary_citation",
+                "primary_citation_doi",
+                "review_status",
+                "n_citations",
+            ]
+        )
+        for p in ds:
+            writer.writerow(
+                [
+                    p.id,
+                    p.name,
+                    p.subsystem,
+                    p.tier,
+                    p.value.central,
+                    p.value.low,
+                    p.value.high,
+                    p.value.units,
+                    p.value.distribution,
+                    p.value.ci,
+                    p.primary_citation.key if p.primary_citation else "",
+                    p.primary_citation.doi if p.primary_citation else "",
+                    p.extraction.review_status,
+                    len(p.citations),
+                ]
+            )
+        return 0
+    # argparse should prevent this; fall-through for type checker.
+    print(f"unknown format: {args.format}", file=sys.stderr)
+    return 2
+
+
 def make_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="nidus",
@@ -122,6 +217,19 @@ def make_parser() -> argparse.ArgumentParser:
         help="Restrict the summary to a single subsystem",
     )
     sp_info.set_defaults(func=cmd_info)
+
+    sp_export = sub.add_parser(
+        "export",
+        help="Export the dataset as BibTeX or CSV to stdout",
+    )
+    sp_export.add_argument("--path", help="Path to a dataset directory (default: bundled dataset)")
+    sp_export.add_argument(
+        "--format",
+        choices=["bibtex", "csv"],
+        required=True,
+        help="Output format. 'bibtex' = all citations; 'csv' = parameter table.",
+    )
+    sp_export.set_defaults(func=cmd_export)
 
     return p
 

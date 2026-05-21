@@ -12,7 +12,7 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Illsley 2000 Placenta review (the canonical synthesis of human-placenta glucose-transporter kinetics). GLUT1 Km on the syncytial microvillous membrane is in the physiological range (1-5 mmol/L) consistent with the placenta's function as a glucose conduit.",
+    "tier_rationale": "Tier B from Illsley 2000 Placenta review (PMID 10692246): GLUT1 is the primary syncytial transporter for trans-placental glucose; present on both microvillous and basal membranes with the basal acting as rate-limiting step. Km in the 2-5 mmol/L range is characteristic of the facilitated-diffusion family at physiological glucose.",
     "citations": [
       "illsley-2000-glut1"
     ],
@@ -66,7 +66,7 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Baumann 2002 review of placental glucose transfer. GLUT3 Km is lower than GLUT1 Km (1-2 mmol/L vs 2-3 mmol/L), consistent with GLUT3 being the high-affinity isoform that dominates fetal-side uptake in early gestation.",
+    "tier_rationale": "Tier B from Baumann 2002 Endocrine review (PMID 12583599) summarising placental glucose-transporter kinetics. GLUT3 is the high-affinity isoform (Km ~1-2 mmol/L) and is localised to the syncytial microvillous membrane (confirmed by Brown 2011 PMID 22000473). The asymmetric GLUT distribution (microvillous >> basal) makes the basal membrane the rate-limiting step.",
     "citations": [
       "baumann-2002-glut3"
     ],

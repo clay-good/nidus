@@ -10,9 +10,10 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C from Rudolph 1985 Circulation Research: the foundational lamb-model study of fetal blood-flow distribution including DA right-ventricular bypass share. Translation to human fetal circulation is by anatomic analogy; primary source is lamb.",
+    "tier_rationale": "Tier C from Rudolph 1985 lamb model. Sutton 1991 Heart (PMID 8142191) Doppler measurements in human fetuses confirm lung flow at ~22% (SD 7%) of combined ventricular output, leaving the bulk of right-ventricular output routed via ductus arteriosus. Human cohort data closes the gap from Rudolph's lamb extrapolation.",
     "citations": [
-      "rudolph-1985-fetal-circulation"
+      "rudolph-1985-fetal-circulation",
+      "sutton-1991-fetal-cardiac"
     ],
     "primary_citation": "rudolph-1985-fetal-circulation",
     "extraction": {
@@ -36,9 +37,10 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C from Rudolph 1985 Circulation Research: foramen-ovale preferential streaming of inferior-vena-cava blood (Eustachian valve effect) in the lamb model. Human extrapolation; value is indirectly inferred.",
+    "tier_rationale": "Tier C from Rudolph 1985 (lamb model) corroborated by Sutton 1991 Heart (PMID 8142191), which used Doppler echocardiography in n=38 human fetuses 18-37 weeks to measure foramen-ovale flow as 17-31% of combined ventricular output, exponentially rising threefold with gestational age. Human cohort directly informs Rudolph's lamb-extrapolated streamlining values.",
     "citations": [
-      "rudolph-1985-fetal-circulation"
+      "rudolph-1985-fetal-circulation",
+      "sutton-1991-fetal-cardiac"
     ],
     "primary_citation": "rudolph-1985-fetal-circulation",
     "extraction": {
@@ -62,7 +64,7 @@
       "units": "mmHg"
     },
     "tier": "C",
-    "tier_rationale": "Tier C from Kiserud 2001 Seminars in Perinatology: the ductus venosus as the regulator of umbilical-venous oxygen delivery. Specific PO2 value at systemic-venous return is a derived estimate.",
+    "tier_rationale": "Tier C from Kiserud 2001 Seminars in Perinatology (PMID 11254155): the ductus venosus shunts ~30% of umbilical-vein blood (well-oxygenated, ~30 mmHg PO2 in the human fetus) directly to the foramen ovale, bypassing the liver. PO2 of systemic-venous return is the mixed value after liver perfusion + DV bypass + return from lower body.",
     "citations": [
       "kiserud-2000-fetal-circulation"
     ],

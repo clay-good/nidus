@@ -40,7 +40,8 @@
     "tier": "B",
     "tier_rationale": "Tier B from Mayhew & Hannan 2015 Placenta 'Morphomics' review: human-placenta villous surface area at early gestation from stereological studies. Replicated across multiple morphometric papers.",
     "citations": [
-      "mayhew-2014-placental-morphometry"
+      "mayhew-2014-placental-morphometry",
+      "burton-2010-placental-development"
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {
@@ -120,9 +121,10 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Mayhew & Hannan 2015 Placenta 'Morphomics' review: term human-placenta villous surface area from stereological morphometric studies (~11-13 m^2).",
+    "tier_rationale": "Tier B from Mayhew & Hannan 2015 'Morphomics' (PMID 25637410): stereological synthesis of villous surface-area data; term value ~11-13 m^2. Burton 2010 (PMID 26428504) provides the broader placental-anatomy context for villous-tree expansion.",
     "citations": [
-      "mayhew-2014-placental-morphometry"
+      "mayhew-2014-placental-morphometry",
+      "burton-2010-placental-development"
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {

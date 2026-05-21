@@ -94,3 +94,33 @@ def test_no_subcommand_errors(
         _run(capsys, [])
     # argparse exits with 2 on missing required arg
     assert exc.value.code == 2
+
+
+def test_export_bibtex(capsys: pytest.CaptureFixture[str]) -> None:
+    code, out, _ = _run(capsys, ["export", "--format", "bibtex"])
+    assert code == 0
+    # 32 citations -> 32 @article/@book/etc entries
+    assert out.count("@") >= 30
+    # Spot-check a known key resolves
+    assert "mahendru-2014-cardiac-output" in out
+    # And its DOI is included
+    assert "10.1097/hjh.0000000000000090" in out
+
+
+def test_export_csv(capsys: pytest.CaptureFixture[str]) -> None:
+    code, out, _ = _run(capsys, ["export", "--format", "csv"])
+    assert code == 0
+    lines = out.strip().split("\n")
+    # Header + 54 parameter rows
+    assert len(lines) == 55
+    # Header contains expected columns
+    assert "id" in lines[0]
+    assert "tier" in lines[0]
+    assert "primary_citation_doi" in lines[0]
+    # A known parameter appears
+    assert any("baseline_cardiac_output_l_per_min" in line for line in lines)
+
+
+def test_export_requires_format(capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit):
+        _run(capsys, ["export"])  # argparse: --format is required

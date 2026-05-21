@@ -68,20 +68,20 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Thaler et al. 1990 Am J Obstet Gynecol: bilateral uterine-artery flow by pulsed-wave Doppler from pre-conception through term. Pre-pregnancy baseline reference value.",
+    "tier_rationale": "Tier B from Thaler et al. 1990 Am J Obstet Gynecol (PMID 2301480): transvaginal duplex-Doppler measurement, 94.5 mL/min in the left ascending uterine artery pre-pregnancy. Assuming bilateral symmetry gives ~189 mL/min total. NOTE the dataset's 50 mL/min is significantly lower than Thaler's pre-pregnancy bilateral estimate; this is flagged for human re-verification.",
     "citations": [
       "thaler-1990-uterine-flow"
     ],
     "primary_citation": "thaler-1990-uterine-flow",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "contested",
       "reviewer": "metadata-and-abstract-audit",
       "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy women, pre-pregnancy or early first trimester"
     },
-    "notes": "Combined bilateral uterine artery flow at the start of gestation."
+    "notes": "PRE-PREGNANCY UTERINE FLOW DISCREPANCY: dataset value (50 mL/min combined bilateral) is ~3.8x lower than what Thaler 1990's abstract reports (94.5 mL/min in left uterine artery alone, so ~189 mL/min bilateral). Either the dataset value reflects an alternate source (e.g. non-pregnant uterine-tissue blood flow as opposed to uterine-artery flow) or it is an extraction error. Needs human re-investigation against the published paper."
   },
   {
     "id": "maternal_cardiovascular.cardiac_output_individual_sigma",
@@ -94,7 +94,7 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C: between-individual coefficient of variation in cardiac output. Hunter & Robson 1992 reports population-level CO trajectories; individual-sigma is a model-fit-derived parameter used to spread cohort means into per-individual draws.",
+    "tier_rationale": "Tier C: between-individual sigma fraction. Hunter & Robson 1992 Heart (PMID 1467047) reviews the qualitative shape of maternal cardiac adaptation but does not directly report an individual-sigma figure. The 13% value is a model-fit abstraction from cohort variance reported across studies.",
     "citations": [
       "hunter-robson-1992-cardiac-output"
     ],
@@ -148,7 +148,7 @@
       "units": "weeks"
     },
     "tier": "C",
-    "tier_rationale": "Tier C: Gaussian shape parameter (weeks) fit to the cohort-average cardiac-output trajectory. Hunter & Robson 1992 documents the qualitative shape; the numeric spread is a model-fit, not directly reported.",
+    "tier_rationale": "Tier C: Gaussian-shape spread parameter (weeks) fit to cohort CO trajectory data. Hunter & Robson 1992 documents the qualitative timeline (HR rises 2-5w, SV peaks mid-third tri); precise spread is derived from fitting the multi-study composite curve.",
     "citations": [
       "hunter-robson-1992-cardiac-output"
     ],
@@ -297,7 +297,7 @@
     "applicability": {
       "population": "Healthy singleton pregnancies"
     },
-    "notes": "Excess cardiac output above baseline at peak (mid-third-trimester)."
+    "notes": "MAHENDRU 2014 ABSTRACT TENSION: The Mahendru 2014 abstract (PMID 24406777) reports 'greatest increase in cardiac output occurred by the second trimester (Δ: 0.6 ± 1 l/min)'. The dataset's peak-excess of 2.7 L/min could be the cumulative preconception-to-peak rise rather than a per-visit increment, or could be from a different source. Needs human re-investigation against the paper's full results section."
   },
   {
     "id": "maternal_cardiovascular.term_uterine_flow_ml_per_min",
@@ -312,7 +312,7 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Thaler et al. 1990: term bilateral uterine-artery Doppler flow; the dominant component of placental-bed perfusion at delivery. Cohort of healthy singleton pregnancies.",
+    "tier_rationale": "Tier B from Thaler et al. 1990 (PMID 2301480): transvaginal duplex-Doppler measurement, 342 mL/min in the left ascending uterine artery at late gestation. Bilateral estimate ~684 mL/min. The dataset's 750 mL/min central value is within plausible range of the doubled Thaler figure. Term uterine blood flow represents ~12% of maternal cardiac output.",
     "citations": [
       "thaler-1990-uterine-flow"
     ],

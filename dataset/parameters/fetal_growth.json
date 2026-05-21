@@ -43,7 +43,8 @@
     "tier": "A",
     "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies: prospective longitudinal cohort, n=2334 low-risk singletons, racial/ethnic-specific growth curves, multiple ultrasound visits, Voluson E8 standardised measurements. Tier A is supported by the study design; value-level verification pending re-check against Table 2 of the source paper.",
     "citations": [
-      "buck-louis-2015-nichd-growth"
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
@@ -71,7 +72,8 @@
     "tier": "A",
     "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies: prospective longitudinal cohort, n=2334 low-risk singletons, racial/ethnic-specific growth curves, multiple ultrasound visits, Voluson E8 standardised measurements. Tier A is supported by the study design; value-level verification pending re-check against Table 2 of the source paper.",
     "citations": [
-      "buck-louis-2015-nichd-growth"
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
@@ -99,7 +101,8 @@
     "tier": "A",
     "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies: prospective longitudinal cohort, n=2334 low-risk singletons, racial/ethnic-specific growth curves, multiple ultrasound visits, Voluson E8 standardised measurements. Tier A is supported by the study design; value-level verification pending re-check against Table 2 of the source paper.",
     "citations": [
-      "buck-louis-2015-nichd-growth"
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
@@ -127,7 +130,8 @@
     "tier": "A",
     "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies: prospective longitudinal cohort, n=2334 low-risk singletons, racial/ethnic-specific growth curves, multiple ultrasound visits, Voluson E8 standardised measurements. Tier A is supported by the study design; value-level verification pending re-check against Table 2 of the source paper.",
     "citations": [
-      "buck-louis-2015-nichd-growth"
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
@@ -138,7 +142,7 @@
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 3567.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "PROVENANCE NEEDS RESOLUTION: Hadlock 1991 abstract (PMID 1887021) reports term fetal weight 3619 g at 40 weeks with uniform CV ±12.7%. The dataset's 3567 ± 410 g (CV ~11.5%) is much closer to Hadlock's regression than to Buck Louis 2015's race-stratified 50th percentiles (white 3505, hispanic 3336, asian 3270, black 3260 at 39 weeks). The original v0.2 author may have used Hadlock 1991 values but cited Buck Louis 2015. Both citations are now listed; primary needs human re-check."
   },
   {
     "id": "fetal_growth.fl_28w_mm",
