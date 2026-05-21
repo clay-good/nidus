@@ -32,16 +32,16 @@ DATASET = REPO / "dataset"
 
 # Map (dir_name, file_stem) -> canonical subsystem enum value.
 SUBSYSTEM_MAP: dict[tuple[str, str], str] = {
-    ("maternal", "cardio"):            "maternal_cardiovascular",
-    ("maternal", "blood"):             "maternal_blood",
-    ("maternal", "respiratory"):       "maternal_respiratory",
-    ("maternal", "renal"):             "maternal_renal",
-    ("placenta", "structure"):         "placental_structure",
-    ("placenta", "gas_transport"):     "placental_gas_exchange",
+    ("maternal", "cardio"): "maternal_cardiovascular",
+    ("maternal", "blood"): "maternal_blood",
+    ("maternal", "respiratory"): "maternal_respiratory",
+    ("maternal", "renal"): "maternal_renal",
+    ("placenta", "structure"): "placental_structure",
+    ("placenta", "gas_transport"): "placental_gas_exchange",
     ("placenta", "glucose_transport"): "placental_glucose",
-    ("fetal",    "circulation"):       "fetal_circulation",
-    ("fetal",    "growth"):            "fetal_growth",
-    ("fetal",    "metabolism"):        "fetal_metabolism",
+    ("fetal", "circulation"): "fetal_circulation",
+    ("fetal", "growth"): "fetal_growth",
+    ("fetal", "metabolism"): "fetal_metabolism",
 }
 
 
@@ -62,7 +62,7 @@ def make_dotted_id(kebab_id: str, subsystem: str, dir_name: str, file_stem: str)
     # Try stripping "<dir>-<file_stem>-" first, then "<dir>-".
     for prefix in (f"{dir_name}-{file_stem}-", f"{dir_name}-"):
         if rest.startswith(prefix):
-            rest = rest[len(prefix):]
+            rest = rest[len(prefix) :]
             break
     rest = rest.replace("-", "_")
     return f"{subsystem}.{rest}"
@@ -183,7 +183,9 @@ def convert_citation(c: dict[str, Any]) -> dict[str, Any]:
         "type": ctype,
         "title": c["title"],
         # Source 'authors' is a single string; the new schema wants a list.
-        "authors": [a.strip() for a in c["authors"].replace(";", ",").split(",") if a.strip()],
+        "authors": [
+            a.strip() for a in c["authors"].replace(";", ",").split(",") if a.strip()
+        ],
         "year": int(c["year"]),
     }
     if c.get("venue"):
@@ -268,14 +270,14 @@ def main() -> int:
         out_path = DATASET / "parameters" / f"{subsystem}.json"
         # Sort parameters within a file for stable diffs.
         records.sort(key=lambda r: r["id"])
-        out_path.write_text(
-            json.dumps(records, indent=2, ensure_ascii=False) + "\n"
-        )
+        out_path.write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\n")
         print(f"Wrote {len(records):3d} parameters -> {out_path.relative_to(REPO)}")
 
     total = sum(len(v) for v in by_subsystem.values())
-    print(f"\nTotal: {total} parameters across {len(by_subsystem)} subsystems; "
-          f"{len(citations_out)} citations.")
+    print(
+        f"\nTotal: {total} parameters across {len(by_subsystem)} subsystems; "
+        f"{len(citations_out)} citations."
+    )
     return 0
 
 

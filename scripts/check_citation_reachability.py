@@ -26,10 +26,7 @@ REPO = Path(__file__).parent.parent
 CITATIONS = REPO / "dataset" / "citations" / "citations.json"
 
 TIMEOUT_SECONDS = 15
-USER_AGENT = (
-    "nidus-citation-reachability/0.3 "
-    "(+https://github.com/claygood/nidus)"
-)
+USER_AGENT = "nidus-citation-reachability/0.3 (+https://github.com/claygood/nidus)"
 
 
 def resolve_url(c: dict) -> str | None:
@@ -50,7 +47,9 @@ def probe(url: str) -> int:
     """
     headers = {"User-Agent": USER_AGENT}
     try:
-        r = requests.head(url, allow_redirects=True, timeout=TIMEOUT_SECONDS, headers=headers)
+        r = requests.head(
+            url, allow_redirects=True, timeout=TIMEOUT_SECONDS, headers=headers
+        )
         if r.status_code == 405:
             r = requests.get(
                 url,
