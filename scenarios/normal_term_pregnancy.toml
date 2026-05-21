@@ -1,0 +1,6 @@
+name = "Normal term pregnancy"
+description = "Default scaffold scenario: singleton pregnancy from 8 to 40 weeks, all v0.1.0 subscribers active. Constants throughout are scaffolding values pending parameter-database integration (see CONTRIBUTING.md)."
+start_age_weeks = 8
+end_age_weeks = 40
+seed = 0
+subscribers = ["maternal-cardio", "placenta", "fetal"]

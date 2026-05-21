@@ -1,0 +1,28 @@
+# Citation index for Nidus.
+#
+# Each entry corresponds to one published source referenced by a
+# parameter in the database. Contributors are expected to cite sources
+# they have personally consulted; see CONTRIBUTING.md.
+#
+# The entries below are scaffolding to exercise the loader and to give
+# contributors a working template. They reference canonical, widely
+# tabulated sources, but every entry must be verified by a human reviewer
+# against its original before any parameter that depends on it is used
+# in published simulator output.
+
+[[citation]]
+id = "severinghaus-1979-o2-hb-dissociation"
+authors = "Severinghaus JW"
+title = "Simple, accurate equations for human blood O2 dissociation computations"
+venue = "Journal of Applied Physiology"
+year = 1979
+pmid = "35496"
+notes = "Foundational source for the O2-hemoglobin dissociation curve form used in physiological modelling. Needs human verification before use."
+
+[[citation]]
+id = "scaffold-template-source"
+authors = "Nidus Contributors (template)"
+title = "Template citation entry"
+venue = "Nidus repository"
+year = 2026
+notes = "Placeholder for the parameter-authoring half of SPEC.md §13 Prompt 5. Replace with verified citations before relying on dependent parameters."

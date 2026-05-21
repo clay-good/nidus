@@ -1,0 +1,17 @@
+[package]
+name = "nidus-validation"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Validation suite against published reference data."
+
+[lints]
+workspace = true
+
+[dependencies]
+nidus-core.workspace = true
+
+[dev-dependencies]
+nidus-maternal.workspace = true

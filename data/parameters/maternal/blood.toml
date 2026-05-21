@@ -1,0 +1,33 @@
+# Maternal blood parameters.
+#
+# This file demonstrates the parameter schema. Per CONTRIBUTING.md,
+# every entry below must be verified by a human reviewer against its
+# cited source before the value is used in published simulator output.
+# The values are reasonable but the citation alignment has not been
+# personally checked by the original author of this file.
+
+[[parameter]]
+id = "o2-hb-hill-coefficient-maternal"
+name = "Hill coefficient for maternal oxygen-haemoglobin binding"
+description = "Hill exponent characterising cooperativity of adult haemoglobin oxygen binding, used in the O2-Hb dissociation relationship."
+tier = "A"
+unit = "dimensionless"
+value = { kind = "point", value = 2.7, uncertainty = 0.1 }
+citation = "severinghaus-1979-o2-hb-dissociation"
+population = "Adult human blood at standard pH and temperature"
+age_range = { min_weeks = 8, max_weeks = 40 }
+technique = "Polarographic determination of oxygen saturation as a function of partial pressure"
+caveats = "Value is for adult haemoglobin (HbA); does not describe fetal haemoglobin (HbF)."
+
+[[parameter]]
+id = "o2-hb-p50-maternal"
+name = "P50 for maternal oxygen-haemoglobin dissociation"
+description = "Partial pressure of oxygen at which 50% of adult haemoglobin is saturated, at standard pH and temperature."
+tier = "A"
+unit = "mmHg"
+value = { kind = "point", value = 26.6, uncertainty = 1.0 }
+citation = "severinghaus-1979-o2-hb-dissociation"
+population = "Adult human blood at pH 7.4, 37°C"
+age_range = { min_weeks = 8, max_weeks = 40 }
+technique = "Polarographic determination of oxygen saturation as a function of partial pressure"
+caveats = "Shifts with pH (Bohr effect), temperature, and 2,3-BPG concentration; the value here is at standard conditions."

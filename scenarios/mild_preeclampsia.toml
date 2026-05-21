@@ -1,0 +1,13 @@
+name = "Mild preeclampsia"
+description = "Mild preeclampsia modelled as an elevated maternal MAP baseline with attenuated mid-pregnancy nadir, plus a moderate reduction in placental surface area reflecting the inadequate-placental-invasion pathophysiology (scaffold values; pending parameter-database integration)."
+start_age_weeks = 8
+end_age_weeks = 40
+seed = 0
+subscribers = ["maternal-cardio", "placenta", "fetal"]
+
+[overrides.maternal_cardio]
+baseline_map_mmhg = 100.0
+map_nadir_drop_mmhg = 4.0
+
+[overrides.placenta_structure]
+term_area_m2 = 9.0

@@ -1,0 +1,331 @@
+# Implementation Progress
+
+This file tracks which of the implementation prompts in
+[SPEC.md §13](SPEC.md) have been completed. Each prompt becomes a
+checkbox here; when starting a new working session, look for the first
+unchecked item.
+
+## Status
+
+- [x] **Prompt 1 — Workspace initialisation.**
+  Cargo workspace with the full crate layout from SPEC.md §12, strict
+  workspace-level lints (`unsafe_code = forbid`, clippy `all` and
+  `pedantic`), MIT licence, README drawn from SPEC.md §§1–2,
+  CONTRIBUTING explaining the confidence tier system, and CODE_OF_CONDUCT.
+  Build is clean; clippy is clean with `-D warnings`.
+- [x] **Prompt 2 — Confidence tier infrastructure.**
+  Implemented in `nidus-core`:
+  - [`tier::ConfidenceTier`](crates/nidus-core/src/tier.rs) — A/B/C/D
+    enum with `combine` propagation rule.
+  - [`citation::Citation`](crates/nidus-core/src/citation.rs) and
+    `CitationId` — full bibliographic record + stable slug.
+  - [`tiered::Tiered<T>`](crates/nidus-core/src/tiered.rs) — generic
+    wrapper with `Add`/`Sub`/`Mul`/`Div`/`Neg` that propagate the
+    less-confident tier and union the citation lists.
+  Tests cover tier propagation under arithmetic, citation merging, and
+  chained operations.
+- [x] **Prompt 3 — Tick hierarchy and runtime.**
+  Implemented in `nidus-core`:
+  - [`clock`](crates/nidus-core/src/clock.rs) — `GestationalAge`,
+    `TickTier` (Second/Minute/Hour/Day), `TickClock` with integer-second
+    advancement.
+  - [`rng`](crates/nidus-core/src/rng.rs) — `RngService` keyed by
+    `(SubscriberId, tick)` using a two-pass ChaCha20 seed derivation;
+    `ChildRng` exposing `next_u64`/`next_u32`/`fill_bytes`/`next_f64_unit`.
+  - [`subscriber`](crates/nidus-core/src/subscriber.rs) — `Subscriber`
+    trait, `SubscriberId`, and `TickContext`.
+  - [`dispatcher`](crates/nidus-core/src/dispatcher.rs) — `Dispatcher`
+    storing subscribers in a `BTreeMap` for deterministic ordering;
+    fires fine-to-coarse at each shared boundary.
+  - [`snapshot`](crates/nidus-core/src/snapshot.rs) — engine-state
+    snapshot (`start_age`, `tick`, `master_seed`); no RNG state needs
+    serialisation because streams are re-derived per tick.
+  Tests cover bit-identical reproducibility under the same seed,
+  divergence under different seeds, snapshot-and-resume matching a
+  continuous run (with subscribers re-registered in a different order
+  to exercise reordering independence), and fine-to-coarse dispatch
+  ordering at shared boundaries.
+
+- [x] **Prompt 4 — Fixed-point numerics.**
+  Implemented in [`nidus-core::numerics`](crates/nidus-core/src/numerics/):
+  - [`fixed`](crates/nidus-core/src/numerics/fixed.rs) — Q32.32 `Fixed`
+    type with checked add/sub/mul/div, `OverflowError`, and explicit
+    truncation-toward-negative-infinity rounding so arithmetic is
+    bit-identical across architectures.
+  - [`quantities`](crates/nidus-core/src/numerics/quantities.rs) — six
+    typed wrappers (`Mass`, `Pressure`, `Volume`, `Concentration`,
+    `Duration`, `Ratio`) generated via a macro, with same-unit
+    arithmetic and `Ratio`-based scaling. Cross-unit arithmetic is a
+    compile-time error by construction.
+  Tests cover f64 round-tripping, non-finite/out-of-range rejection,
+  overflow detection across +/-/×/÷, and unit-preserving scaling.
+- [x] **Prompt 5 — Parameter database.**
+  Implemented in [`nidus-data`](crates/nidus-data/):
+  - [`schema`](crates/nidus-data/src/schema.rs) — serde-derived
+    `ParameterEntry`, `CitationEntry`, `ValueSpec` (point / uniform /
+    normal / lognormal), `AgeRange`, with `deny_unknown_fields` so
+    typos fail loudly.
+  - [`database`](crates/nidus-data/src/database.rs) — `ParameterDatabase`
+    loader and query API, with typed `DatabaseError` covering I/O,
+    parse, duplicate ids, dangling citation references, and invalid
+    age ranges.
+  - [Repository data tree](data/) with [`README.md`](data/README.md),
+    [`citations/index.toml`](data/citations/index.toml), and
+    [`parameters/maternal/blood.toml`](data/parameters/maternal/blood.toml)
+    as a working scaffold. Per CONTRIBUTING.md, the parameter-authoring
+    half of this prompt — verified Tier A entries covering maternal
+    blood, O₂–Hb dissociation, placental gas diffusion, and GLUT1/GLUT3
+    kinetics — is a human contribution that must verify each citation
+    against its original; the scaffold gives them a working template
+    to extend.
+  Tests cover successful loading, schema rejection of unknown fields,
+  duplicate-id detection, dangling-citation detection, age-range
+  validation, tier-filtered iteration, and a workspace integration
+  test that loads the actual `data/` tree.
+
+- [x] **Prompt 6 — Maternal cardiovascular model.**
+  Implemented in [`nidus-maternal`](crates/nidus-maternal/):
+  - [`cardio`](crates/nidus-maternal/src/cardio.rs) — `MaternalCardio`
+    subscriber producing cardiac output, MAP, and uterine artery flow
+    as functions of gestational age, with per-individual stochastic
+    offsets sampled once from the seeded RNG via Box–Muller.
+    Trajectory coefficients live in `MaternalCardioParams` (default
+    values land in textbook ranges; flagged as scaffolding pending
+    database integration).
+  Tests cover: cardiac-output rise-then-decline through the third
+  trimester, mid-pregnancy MAP nadir, monotonic uterine-flow rise,
+  same-seed reproducibility, seed divergence, and dispatcher wiring.
+- [x] **Prompt 7 — Placental transport model.**
+  Implemented in [`nidus-placenta`](crates/nidus-placenta/):
+  - [`structure`](crates/nidus-placenta/src/structure.rs) — logistic
+    placental surface-area trajectory (initial ≈ 0.5 m², term ≈ 12 m²).
+  - [`transport`](crates/nidus-placenta/src/transport.rs) —
+    `gas_exchange` (venous-equilibrator weighted average with
+    saturation-capped equilibration coefficient) and
+    `glucose_flux_mmol_per_min` (net Michaelis–Menten facilitated
+    diffusion).
+  - [`subscriber`](crates/nidus-placenta/src/subscriber.rs) — `Placenta`
+    subscriber tracking surface area and last-computed UV PO₂.
+  Tests cover: surface-area monotonicity and textbook term value, UV
+  PO₂ inside the published 25–40 mmHg window at term, growth-restriction
+  pattern under reduced surface area, asymptote below maternal arterial
+  PO₂, glucose flux direction and gradient reversal, and Michaelis–
+  Menten saturation.
+- [x] **Prompt 8 — Fetal cardiovascular special circulation.**
+  Implemented in [`nidus-fetal`](crates/nidus-fetal/):
+  - [`special_circulation`](crates/nidus-fetal/src/special_circulation.rs)
+    — `FetalSpecialCirculation::route` maps UV PO₂ to cerebral,
+    descending aortic, and umbilical-artery (return) PO₂ via a
+    streamline-preference weighted average, encoding the foramen-ovale
+    and ductus-arteriosus routing.
+  - [`subscriber`](crates/nidus-fetal/src/subscriber.rs) — `Fetal`
+    subscriber that picks up the placenta's umbilical-vein output
+    between ticks and closes the loop by publishing umbilical-artery
+    PO₂ for the placenta to consume.
+  Tests cover: cerebral PO₂ structurally higher than descending aortic,
+  UA between descending and cerebral, sensitivity to UV PO₂, the
+  collapse case where eliminating streamline preference removes the
+  cerebral advantage, and cerebral PO₂ landing in the textbook range
+  at default term conditions.
+
+- [x] **Prompt 9 — Unknown channels registry.**
+  Implemented in [`nidus-unknown`](crates/nidus-unknown/):
+  - [`registry`](crates/nidus-unknown/src/registry.rs) — `UnknownChannel`
+    metadata (id, name, hypothesised mechanism, supporting/questioning
+    citations, parameter range with units, downstream effects, tier),
+    `ChannelMode` (`Disabled` / `Fixed(v)` / `Sample`), `ChannelRegistry`
+    keyed by `BTreeMap` for deterministic order.
+  - `ChannelRegistry::standard_v0_1` ships the four channels named in
+    SPEC.md §13 prompt 9: maternal exosomal microRNA transfer
+    (Tier D), cellular microchimerism (Tier C), the maternal-cortisol
+    diurnal influence on fetal HPA-axis development (Tier C), and IgG
+    transfer dynamics (Tier C). All ship in `Disabled` mode for a
+    minimal-model baseline.
+  Tests cover: tier-A/B rejection, tier-C/D acceptance, duplicate-id
+  rejection, all three modes resolving to the right values, sample-mode
+  stays within range, the standard registry contains all named
+  channels, deterministic iteration order, unknown-id rejection on
+  `set_mode`, and a baseline-versus-sampled divergence test.
+- [x] **Prompt 10 — Ensemble runner + sensitivity analyser.**
+  Implemented in [`nidus-hypothesis`](crates/nidus-hypothesis/):
+  - [`ensemble`](crates/nidus-hypothesis/src/ensemble.rs) — tier-aware
+    `EnsembleRunner` over `ParameterSpec` entries with three
+    `SamplingStrategy` variants (`Uniform` for Tier C/D ranges,
+    `Normal` for Tier A/B measured uncertainty, `Fixed` for held-out
+    parameters). Per-sample RNG keying via `(seed, sample_index)` makes
+    runs bit-identical and trivially reproducible.
+  - [`sensitivity`](crates/nidus-hypothesis/src/sensitivity.rs) —
+    `SensitivityAnalyser` implementing Saltelli (2010) Sobol first-
+    order and total-order estimators with the `A`/`B`/`A_B(i)` matrix
+    scheme; `N·(k+2)` model evaluations. Results sorted by
+    total-order descending with deterministic name-based tie break.
+  Tests cover: uniform draws bounded, fixed strategy constant,
+  same-seed reproducibility, seed divergence, normal-sampling moments,
+  the linear-additive `y = x₁ + 2x₂` case producing analytical
+  `S₁ ≈ 0.2`, `S₂ ≈ 0.8` with `S_T = S` (additivity), total-order
+  ordering correctness, multiplicative-interaction `y = x₁·x₂`
+  producing `S_T > S_first`, constant-model zero-variance edge case,
+  and same-seed reproducibility of full results.
+
+- [x] **Prompt 11 — Outcome divergence detector.**
+  Implemented in
+  [`nidus-hypothesis::divergence`](crates/nidus-hypothesis/src/divergence.rs):
+  deterministic 1D k-means with `k = 2`, separation score
+  `|μ₁ − μ₂| / pooled within-cluster SD` (≡ Ashman's `D` for
+  equal-variance clusters), default threshold `3.0` (chosen so
+  splitting a single Gaussian — which gives `D ≈ 2.65` — is not
+  false-flagged), and a `min_cluster_fraction` guard so a lone outlier
+  does not count as a second mode. Each detected `Mode` carries a
+  parameter signature: the mean of each input parameter inside that
+  cluster, which is what surfaces "this parameter is the switch."
+  Tests cover: unimodal Gaussian not flagged, step-function bimodality
+  flagged with cluster centroids near the regime values, parameter
+  signatures correctly identifying the switch parameter (and not
+  drifting on irrelevant ones), outlier rejection, and empty/singleton
+  edge cases.
+- [x] **Prompt 12 — Experiment design suggester.**
+  Implemented in
+  [`nidus-hypothesis::experiment_design`](crates/nidus-hypothesis/src/experiment_design.rs):
+  `ExperimentDesignSuggester` takes a `SensitivityResult` plus optional
+  `SuggesterParameterInfo` per parameter (current estimate,
+  uncertainty, affected outcomes, available techniques) and emits a
+  ranked `Vec<ExperimentSuggestion>`. Ranking: descending
+  `expected_information_yield = total_order_index · Var(Y)`, with ties
+  broken so less-confident tiers (D, then C) surface first.
+  Tests cover: descending ordering by yield, tier tie-breaking, info
+  threading through to the suggestion, missing-info parameters still
+  included with NaN sentinels, and the yield-formula contract.
+- [x] **Prompt 13 — Validation suite.**
+  Implemented in [`nidus-validation`](crates/nidus-validation/):
+  - [`suite`](crates/nidus-validation/src/suite.rs) — `ReferencePoint`,
+    `ReferenceDataset` (carries `CitationId`), `ValidationCase`
+    (tier + `ComponentLevel::{Component, Integration, Outcome}`),
+    `ValidationSuite::run` orchestrating a simulator probe across
+    every case.
+  - [`report`](crates/nidus-validation/src/report.rs) — four-bucket
+    `Agreement` classifier (`Excellent` / `Adequate` / `Divergent` /
+    `Unvalidatable`) that recognises Tier C/D cases as unvalidatable
+    by definition, RMS residual, in-range counts, and a Markdown
+    renderer.
+  - Integration test
+    [`tests/maternal_cardio.rs`](crates/nidus-validation/tests/maternal_cardio.rs)
+    exercises the full pipeline against the maternal cardio module
+    with a scaffold reference dataset.
+  As with Prompt 5, the *parameter-authoring* half — wiring in the
+  NICHD Fetal Growth Studies, placental Doppler flow ranges, and
+  fetal cardiovascular developmental data with verified citations —
+  is a human contribution and is flagged in the crate documentation
+  and in this file.
+
+- [x] **Prompt 14 — Scenario orchestrator + CLI.**
+  Implemented in [`nidus-scenarios`](crates/nidus-scenarios/) and
+  [`nidus-cli`](crates/nidus-cli/):
+  - [`spec`](crates/nidus-scenarios/src/spec.rs) — `ScenarioSpec` TOML
+    schema with `deny_unknown_fields`, validator (8 ≤ start < end ≤ 40,
+    known subscribers only), and string/path loaders.
+  - [`orchestrator`](crates/nidus-scenarios/src/orchestrator.rs) —
+    `ScenarioOrchestrator::run` wires maternal/placenta/fetal
+    subscribers together, advances a `TickClock`, and emits a
+    `ScenarioReport` of `ScenarioSample` records at the scenario's
+    recording cadence.
+  - [`builtin::NORMAL_TERM_PREGNANCY`](crates/nidus-scenarios/src/builtin.rs)
+    compiled-in scaffold; same content on disk at
+    [`scenarios/normal_term_pregnancy.toml`](scenarios/normal_term_pregnancy.toml).
+  - [`nidus-cli`](crates/nidus-cli/src/main.rs) — clap-based subcommands:
+    `run` (executes a scenario file or the built-in scaffold; emits
+    pretty JSON), `list parameters`, `list channels`,
+    `validate-config`. All four subcommands smoke-tested end-to-end.
+  Tests cover scenario load/validation (start-age floor, end-before-start,
+  unknown subscriber, unknown field), full-run sample count and
+  endpoint, and subscriber gating.
+- [x] **Prompt 15 — Observability (partial: telemetry + export).**
+  Implemented in
+  [`nidus-observability`](crates/nidus-observability/):
+  - [`telemetry`](crates/nidus-observability/src/telemetry.rs) —
+    `TelemetryEvent` carrying source, tick, age, quantity name,
+    `TelemetryValue` (number or text), unit, tier, and citation list.
+    `TelemetryBus` is the v0.1.0 in-memory append-only collector.
+  - [`export`](crates/nidus-observability/src/export.rs) — NDJSON
+    writer (`write_ndjson`, `write_ndjson_to_path`); one event per
+    line so Python and browser consumers can stream directly.
+  The interactive **web dashboard** described in SPEC.md §13 prompt 15
+  is intentionally **deferred to v0.2** — it is a separate frontend
+  deliverable with its own UX surface. What ships in v0.1.0 is the
+  data pipeline the dashboard will consume.
+- [x] **Prompt 16 — Empirical-result integration workflow.**
+  - [`.github/PULL_REQUEST_TEMPLATE.md`](.github/PULL_REQUEST_TEMPLATE.md)
+    with structured sections for parameter contributions, unknown
+    channel contributions, validation case contributions, and plain
+    code changes; plus a build/test/clippy checklist.
+  - [`CHANGELOG.md`](CHANGELOG.md) with the per-release subheading
+    convention (Engine, Parameters, Unknown channels, Validation
+    cases) so tier promotions and citation updates are visible.
+  - [`docs/contributing/parameter-pull-requests.md`](docs/contributing/parameter-pull-requests.md)
+    documents the review checklist (citation verification, tier
+    assignment, population description, age-range alignment,
+    validation suite still passing) and the tier-promotion record.
+- [x] **Prompt 17 — Documentation and example library.**
+  - [`docs/README.md`](docs/README.md) indexes the doc tree.
+  - [`docs/architecture/overview.md`](docs/architecture/overview.md)
+    summarises subsystem topology, the determinism contract, tier
+    propagation, and the tick hierarchy.
+  - [`docs/tutorials/README.md`](docs/tutorials/README.md) covers the
+    quickstart, custom-scenario authoring, and the sensitivity-analysis
+    walkthrough; outlines the unknown-channel-exploration,
+    hypothesis-generation, and parameter-update tutorials that are
+    planned.
+  - Working example
+    [`crates/nidus-hypothesis/examples/sensitivity_placental_gas_exchange.rs`](crates/nidus-hypothesis/examples/sensitivity_placental_gas_exchange.rs)
+    runs end-to-end (`cargo run -p nidus-hypothesis --example
+    sensitivity_placental_gas_exchange`) — Saltelli Sobol estimation
+    on a placental gas-exchange model, then ranked
+    experiment-design suggestions.
+
+## Post-v0.1.0 follow-up (in repo, beyond the 17 prompts)
+
+- **Scenario parameter overrides.** `ScenarioSpec` now carries an
+  `[overrides]` section with typed override blocks for the maternal
+  cardio, placental structure, placental gas, and fetal circulation
+  parameter structs. The orchestrator overlays them on the model
+  defaults before running. Wired through
+  [`crates/nidus-scenarios/src/spec.rs`](crates/nidus-scenarios/src/spec.rs)
+  and [`crates/nidus-scenarios/src/orchestrator.rs`](crates/nidus-scenarios/src/orchestrator.rs);
+  tests cover the placental-insufficiency and elevated-MAP cases.
+- **Pathology scenarios.** Two new scenarios named in SPEC.md §7,
+  expressed as parameter perturbations of the normal trajectory:
+  [`scenarios/placental_insufficiency.toml`](scenarios/placental_insufficiency.toml)
+  and [`scenarios/mild_preeclampsia.toml`](scenarios/mild_preeclampsia.toml).
+  Same content also available as `nidus_scenarios::builtin`
+  constants `PLACENTAL_INSUFFICIENCY` and `MILD_PREECLAMPSIA`.
+- **Tutorials.** The three planned tutorials in
+  [`docs/tutorials/`](docs/tutorials/) are now written:
+  [`unknown_channels.md`](docs/tutorials/unknown_channels.md),
+  [`hypothesis_workflow.md`](docs/tutorials/hypothesis_workflow.md),
+  [`contributing_parameter.md`](docs/tutorials/contributing_parameter.md).
+
+## Up next
+
+All seventeen SPEC.md §13 prompts have at least their v0.1.0 scope
+landed. The remaining work for v0.2 falls into three streams:
+
+- **Parameter authoring (human-contributor task).** Populate
+  `data/parameters/` and `data/citations/` with verified entries for
+  the Tier A and B parameters named in SPEC.md §13 prompt 5
+  (maternal blood properties, O₂–Hb dissociation, gas diffusion,
+  GLUT1/3 kinetics). See
+  [`docs/contributing/parameter-pull-requests.md`](docs/contributing/parameter-pull-requests.md).
+- **Reference-dataset integration (human-contributor task).** Add
+  validation cases against the NICHD Fetal Growth Studies, published
+  placental Doppler flow ranges, and fetal cardiovascular
+  developmental data, with citation-bearing dataset entries.
+- **Interactive dashboard.** The web frontend deferred from Prompt 15.
+  Consumes the NDJSON exports already produced by
+  `nidus-observability`.
+
+## How to verify what is done
+
+```sh
+cargo build --workspace          # clean build
+cargo test --workspace           # 114 across all v0.1.0 crates
+cargo clippy --workspace --all-targets -- -D warnings   # clean
+```

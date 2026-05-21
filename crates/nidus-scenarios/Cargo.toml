@@ -1,0 +1,20 @@
+[package]
+name = "nidus-scenarios"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Scenario configuration: TOML schema, loader, orchestrator."
+
+[lints]
+workspace = true
+
+[dependencies]
+nidus-core.workspace = true
+nidus-maternal.workspace = true
+nidus-placenta.workspace = true
+nidus-fetal.workspace = true
+serde = { workspace = true }
+toml.workspace = true
+thiserror.workspace = true

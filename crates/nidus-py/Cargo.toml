@@ -1,0 +1,14 @@
+[package]
+name = "nidus-py"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Python bindings for Nidus (placeholder; PyO3 wiring lands in a later prompt)."
+
+[lints]
+workspace = true
+
+[dependencies]
+nidus-core.workspace = true

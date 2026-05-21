@@ -1,0 +1,61 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/nidus-core",
+    "crates/nidus-maternal",
+    "crates/nidus-placenta",
+    "crates/nidus-fetal",
+    "crates/nidus-unknown",
+    "crates/nidus-data",
+    "crates/nidus-validation",
+    "crates/nidus-scenarios",
+    "crates/nidus-hypothesis",
+    "crates/nidus-observability",
+    "crates/nidus-cli",
+    "crates/nidus-py",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT"
+repository = "https://github.com/nidus-sim/nidus"
+homepage = "https://github.com/nidus-sim/nidus"
+authors = ["The Nidus Contributors"]
+
+[workspace.dependencies]
+nidus-core = { path = "crates/nidus-core", version = "0.1.0" }
+nidus-maternal = { path = "crates/nidus-maternal", version = "0.1.0" }
+nidus-placenta = { path = "crates/nidus-placenta", version = "0.1.0" }
+nidus-fetal = { path = "crates/nidus-fetal", version = "0.1.0" }
+nidus-unknown = { path = "crates/nidus-unknown", version = "0.1.0" }
+nidus-data = { path = "crates/nidus-data", version = "0.1.0" }
+nidus-validation = { path = "crates/nidus-validation", version = "0.1.0" }
+nidus-scenarios = { path = "crates/nidus-scenarios", version = "0.1.0" }
+nidus-hypothesis = { path = "crates/nidus-hypothesis", version = "0.1.0" }
+nidus-observability = { path = "crates/nidus-observability", version = "0.1.0" }
+
+rand_chacha = "0.3"
+rand_core = "0.6"
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+thiserror = "1"
+clap = { version = "4", features = ["derive"] }
+serde_json = "1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
