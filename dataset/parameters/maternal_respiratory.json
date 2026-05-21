@@ -140,5 +140,63 @@
       "population": "Healthy singleton pregnancies, term"
     },
     "notes": "Resting tidal volume at term."
+  },
+  {
+    "id": "maternal_respiratory.frc_term_l",
+    "name": "Functional residual capacity at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 2.0,
+      "low": 1.8,
+      "high": 2.2,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from LoMauro & Aliverti 2015 (PMID 27066123) + Crapo 1996 (PMID 8635306): FRC falls ~20% from a non-pregnant baseline of ~2.5 L to ~2.0 L at term, driven by gravid uterus elevating the diaphragm. The fall begins second trimester and is the source of the reduced apnoeic O2 reserve that complicates rapid-sequence induction in pregnancy.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory",
+      "crapo-1996-pregnancy-respiratory"
+    ],
+    "primary_citation": "lomauro-aliverti-2015-respiratory",
+    "extraction": {
+      "review_status": "verified",
+      "method": "LoMauro 2015 + Crapo 1996 + clinical anaesthesia consensus",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "20% drop in FRC reduces maternal apnoeic O2 reserve and shortens safe-apnoea time — clinically important for airway management."
+  },
+  {
+    "id": "maternal_respiratory.vo2_term_ml_per_min",
+    "name": "Resting oxygen consumption at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 300.0,
+      "low": 270.0,
+      "high": 330.0,
+      "units": "mL O2/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from LoMauro & Aliverti 2015: basal O2 consumption rises ~20% above non-pregnant baseline of ~250 mL/min, reflecting the metabolic load of fetus + placenta + maternal cardiovascular and respiratory work. Combined with the ~15% rise in CO2 production, the ventilatory drive shift explains the term hypocapnia (paco2 ~32 mmHg).",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "primary_citation": "lomauro-aliverti-2015-respiratory",
+    "extraction": {
+      "review_status": "verified",
+      "method": "LoMauro 2015 + obstetric respiratory-physiology consensus",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    }
   }
 ]

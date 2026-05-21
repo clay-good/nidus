@@ -135,6 +135,35 @@ def cmd_export(args: argparse.Namespace) -> int:
     except FileNotFoundError as e:
         print(f"dataset not found: {e}", file=sys.stderr)
         return 1
+    if args.format in ("sbml", "cellml", "physiocell"):
+        from pathlib import Path
+
+        out_dir = Path(args.output) if args.output else Path("exports") / args.format
+        try:
+            if args.format == "sbml":
+                from nidus.export import write_sbml
+
+                written = write_sbml(ds, out_dir)
+            elif args.format == "cellml":
+                from nidus.export import write_cellml
+
+                written = write_cellml(ds, out_dir, version=args.cellml_version)
+            else:  # physiocell
+                from nidus.export import write_physiocell
+
+                written = [write_physiocell(ds, out_dir)]
+        except ImportError as e:
+            print(
+                f"export dependency missing: {e}. "
+                f"Install with `pip install nidus[export]` "
+                f"(or `pip install python-libsbml libcellml` directly).",
+                file=sys.stderr,
+            )
+            return 1
+        print(f"Wrote {len(written)} file(s) to {out_dir}:", file=sys.stderr)
+        for path in written:
+            print(f"  {path}")
+        return 0
     if args.format == "bibtex":
         print("\n\n".join(_citation_to_bibtex(c) for c in ds.citations.values()))
         return 0
@@ -220,14 +249,31 @@ def make_parser() -> argparse.ArgumentParser:
 
     sp_export = sub.add_parser(
         "export",
-        help="Export the dataset as BibTeX or CSV to stdout",
+        help="Export the dataset to bibtex, csv, sbml, cellml, or physiocell",
     )
     sp_export.add_argument("--path", help="Path to a dataset directory (default: bundled dataset)")
     sp_export.add_argument(
         "--format",
-        choices=["bibtex", "csv"],
+        choices=["bibtex", "csv", "sbml", "cellml", "physiocell"],
         required=True,
-        help="Output format. 'bibtex' = all citations; 'csv' = parameter table.",
+        help=(
+            "Output format. 'bibtex' = all citations; 'csv' = parameter table; "
+            "'sbml' = one SBML L3v2 file per submodel; 'cellml' = one CellML 2.0 "
+            "file per submodel; 'physiocell' = drop-in <user_parameters>.xml."
+        ),
+    )
+    sp_export.add_argument(
+        "--output",
+        help=(
+            "For sbml/cellml/physiocell: output directory (default: ./exports/<format>/). "
+            "Ignored for bibtex/csv which write to stdout."
+        ),
+    )
+    sp_export.add_argument(
+        "--cellml-version",
+        choices=["2.0", "1.1"],
+        default="2.0",
+        help="CellML version when --format=cellml. Default 2.0; 1.1 fallback for legacy tools.",
     )
     sp_export.set_defaults(func=cmd_export)
 

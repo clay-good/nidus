@@ -78,5 +78,63 @@
       "population": "Healthy late-gestation human fetus"
     },
     "notes": "Effective PO2 of systemic venous return mixing into the right atrium of the fetal heart. Caveats: Estimated from ductus venosus Doppler studies; tier C reflects indirect measurement."
+  },
+  {
+    "id": "fetal_circulation.ductus_venosus_shunt_fraction_mid_pregnancy",
+    "name": "Ductus-venosus shunt fraction in mid-pregnancy",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.3,
+      "low": 0.25,
+      "high": 0.35,
+      "units": "fraction",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B verified directly against Kiserud 2001 Seminars in Perinatology (PMID 11254155) abstract: 'The mean fraction of umbilical blood shunted through the ductus is reduced from 30% to 20% during the second half of the human pregnancy'. The 30% figure corresponds to the mid-pregnancy starting point.",
+    "citations": [
+      "kiserud-2000-fetal-circulation"
+    ],
+    "primary_citation": "kiserud-2000-fetal-circulation",
+    "extraction": {
+      "review_status": "verified",
+      "method": "Kiserud 2001 abstract directly states the 30% figure",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy human fetus, ~20-24 weeks gestation"
+    },
+    "notes": "DV shunt fraction declines through gestation as the liver claims a larger share of umbilical-venous return."
+  },
+  {
+    "id": "fetal_circulation.ductus_venosus_shunt_fraction_late_pregnancy",
+    "name": "Ductus-venosus shunt fraction in late pregnancy",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.2,
+      "low": 0.15,
+      "high": 0.25,
+      "units": "fraction",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B verified directly against Kiserud 2001 (PMID 11254155) abstract: 30% → 20% reduction across the second half of pregnancy. The 20% figure is the late-pregnancy/near-term endpoint. The declining shunt indicates 'the fetal liver has a higher priority' through the third trimester.",
+    "citations": [
+      "kiserud-2000-fetal-circulation"
+    ],
+    "primary_citation": "kiserud-2000-fetal-circulation",
+    "extraction": {
+      "review_status": "verified",
+      "method": "Kiserud 2001 abstract directly states the 20% figure",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy human fetus, near term"
+    },
+    "notes": "The DV can re-dilate under hypoxic stress, shunting more flow back through to bypass the liver — a key autoregulatory response."
   }
 ]

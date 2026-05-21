@@ -12,14 +12,14 @@ def test_load_returns_dataset(ds: nidus.Dataset) -> None:
 
 
 def test_dataset_has_expected_size(ds: nidus.Dataset) -> None:
-    assert len(ds) == 54
-    assert len(ds.citations) == 32
+    assert len(ds) == 70
+    assert len(ds.citations) == 33
 
 
 def test_repr_mentions_counts(ds: nidus.Dataset) -> None:
     s = repr(ds)
-    assert "54" in s
-    assert "32" in s
+    assert "70" in s
+    assert "33" in s
 
 
 def test_subsystems(ds: nidus.Dataset) -> None:
@@ -40,13 +40,13 @@ def test_subsystems(ds: nidus.Dataset) -> None:
 
 def test_iter_yields_parameters(ds: nidus.Dataset) -> None:
     items = list(ds)
-    assert len(items) == 54
+    assert len(items) == 70
     assert all(isinstance(p, nidus.Parameter) for p in items)
 
 
 def test_ids_are_unique(ds: nidus.Dataset) -> None:
     ids = ds.ids()
-    assert len(ids) == len(set(ids)) == 54
+    assert len(ids) == len(set(ids)) == 70
 
 
 def test_indexed_access(ds: nidus.Dataset) -> None:
@@ -80,7 +80,7 @@ def test_load_with_explicit_path() -> None:
 
     src = _default_dataset_dir()
     ds = nidus.load(path=src)
-    assert len(ds) == 54
+    assert len(ds) == 70
 
 
 def test_load_version_not_implemented() -> None:

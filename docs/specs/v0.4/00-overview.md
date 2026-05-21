@@ -2,12 +2,19 @@
 
 ## Status
 
-Spec finalised; implementation not yet started. All five open
-questions from the implementation spec have been resolved by the
-maintainer (top-level pregnancy model included, real PhysioCell
-tissue example, both CellML 2.0 and 1.1, BioPortal/JOSS deferred
-to post-v0.4). Implementation will begin once v0.3 is closer to
-release.
+**Implementation in progress.** First four submodels (logistic
+placental growth, Severinghaus adult O2-Hb, fetal HbF dissociation,
+Michaelis-Menten GLUT1) ship to all three formats — SBML L3v2,
+CellML 2.0 with 1.1 fallback, PhysioCell `parameters.xml`. The
+`nidus export --format {sbml,cellml,physiocell}` CLI is live, covered
+by 26 tests, with libSBML consistency-check pass and round-trip
+numerical validation against pure-NumPy reference kernels.
+
+Remaining for v0.4.0 release: the other ~6 submodels, top-level
+composed pregnancy model (SBML `comp` + CellML imports), COMBINE
+archive bundling, BioModels submission, Physiome workspace creation,
+PhysioCell real tissue-simulation example, PR to
+`MathCancer/PhysiCell-tutorials`, outreach essay update.
 
 ## TL;DR
 

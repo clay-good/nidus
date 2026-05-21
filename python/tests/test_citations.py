@@ -6,7 +6,7 @@ import nidus
 
 
 def test_all_32_citations_loaded(ds: nidus.Dataset) -> None:
-    assert len(ds.citations) == 32
+    assert len(ds.citations) == 33
 
 
 def test_citation_by_key(ds: nidus.Dataset) -> None:

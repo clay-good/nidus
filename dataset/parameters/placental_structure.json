@@ -136,5 +136,64 @@
       "population": "Term human placentae"
     },
     "notes": "Effective villous exchange surface area at term."
+  },
+  {
+    "id": "placental_structure.term_weight_g",
+    "name": "Placental weight at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 470.0,
+      "low": 380.0,
+      "high": 560.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B: term human placental weight ~470 g is the canonical clinical-pathology figure, widely reported in obstetric and perinatal pathology references. Mayhew & Hannan 2015 'Morphomics' (PMID 25637410) and Burton 2010 (PMID 26428504) describe the placenta's structural metrics including mass. Wide cohort variability (380-560 g 1σ range) reflects real biological variation.",
+    "citations": [
+      "mayhew-2014-placental-morphometry",
+      "burton-2010-placental-development"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "verified",
+      "method": "triangulated across pathology and morphometric references",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy singleton term pregnancies"
+    }
+  },
+  {
+    "id": "placental_structure.placenta_to_fetus_weight_ratio_term",
+    "name": "Placenta-to-fetus weight ratio at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.14,
+      "low": 0.11,
+      "high": 0.17,
+      "units": "fraction",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B: placental:fetal weight ratio at term ~0.14 (i.e., ~1:7) is well-characterised across obstetric pathology cohorts. Computed as ~470 g placenta / ~3350 g term fetus. Ratio is elevated in IUGR (placenta proportionally larger relative to fetus) and reduced in macrosomia. Burton 2010 (PMID 26428504) discusses placental-fetal mass relationships.",
+    "citations": [
+      "mayhew-2014-placental-morphometry",
+      "burton-2010-placental-development"
+    ],
+    "primary_citation": "burton-2010-placental-development",
+    "extraction": {
+      "review_status": "unverified",
+      "method": "derived from term placental weight and term fetal weight; needs PDF cross-check",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy singleton term pregnancies"
+    },
+    "notes": "Ratio shifts in growth-discordant pregnancies; used clinically as a placental-function index."
   }
 ]

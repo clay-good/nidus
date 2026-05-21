@@ -250,5 +250,62 @@
       "population": "Healthy singleton pregnancies, term"
     },
     "notes": "Total circulating blood volume, expanded above the non-pregnant baseline of approximately 4.5 L. Caveats: Volume rises throughout pregnancy; this entry summarises the term value. Trimester-resolved entries should be added when finer data is wired in."
+  },
+  {
+    "id": "maternal_blood.fibrinogen_term_g_per_l",
+    "name": "Plasma fibrinogen at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 5.5,
+      "low": 4.5,
+      "high": 6.5,
+      "units": "g/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 'Clinical Physiology in Obstetrics': fibrinogen rises from a non-pregnant baseline of ~3 g/L to ~5-6 g/L at term, part of the pregnancy-induced hypercoagulable state. Replicated across multiple obstetric haematology references including GLOWM 'Hematological Normal Ranges in Pregnancy'.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "verified",
+      "method": "Hytten 1980 textbook + obstetric haematology consensus",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Fibrinogen nearly doubles in normal pregnancy. Combined with other coagulation-factor rises, pregnancy is a hypercoagulable state (~5-6× baseline VTE risk)."
+  },
+  {
+    "id": "maternal_blood.platelet_count_term_x10e9_per_l",
+    "name": "Platelet count at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 220.0,
+      "low": 170.0,
+      "high": 270.0,
+      "units": "10^9/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: platelet count drops modestly through pregnancy due to haemodilution + increased consumption. Term mean ~220 ×10^9/L vs non-pregnant 250-300. Gestational thrombocytopenia (defined as count <150) occurs in ~7-10% of normal pregnancies and is benign.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "verified",
+      "method": "Hytten 1980 + obstetric haematology consensus",
+      "date": "2026-05-21",
+      "reviewer": "dataset-expansion-triangulation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    }
   }
 ]

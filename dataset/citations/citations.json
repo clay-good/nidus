@@ -25,6 +25,21 @@
     "type": "book",
     "year": 1986
   },
+  "bauer-1969-fetal-hb-affinity": {
+    "authors": [
+      "Bauer C",
+      "Ludwig M",
+      "Ludwig I"
+    ],
+    "doi": "10.1016/0034-5687(69)90010-3",
+    "journal": "Respiration Physiology",
+    "key": "bauer-1969-fetal-hb-affinity",
+    "notes": "Foundational study comparing adult vs fetal haemoglobin O2 affinity; HbF P50 measured directly.",
+    "pmid": "4980905",
+    "title": "Factors governing the oxygen affinity of human adult and foetal blood",
+    "type": "journal-article",
+    "year": 1969
+  },
   "baumann-2002-glut3": {
     "authors": [
       "Baumann MU",

@@ -99,8 +99,8 @@ def test_no_subcommand_errors(
 def test_export_bibtex(capsys: pytest.CaptureFixture[str]) -> None:
     code, out, _ = _run(capsys, ["export", "--format", "bibtex"])
     assert code == 0
-    # 32 citations -> 32 @article/@book/etc entries
-    assert out.count("@") >= 30
+    # 33 citations -> 32 @article/@book/etc entries
+    assert out.count("@") >= 32
     # Spot-check a known key resolves
     assert "mahendru-2014-cardiac-output" in out
     # And its DOI is included
@@ -111,8 +111,8 @@ def test_export_csv(capsys: pytest.CaptureFixture[str]) -> None:
     code, out, _ = _run(capsys, ["export", "--format", "csv"])
     assert code == 0
     lines = out.strip().split("\n")
-    # Header + 54 parameter rows
-    assert len(lines) == 55
+    # Header + 70 parameter rows
+    assert len(lines) == 71
     # Header contains expected columns
     assert "id" in lines[0]
     assert "tier" in lines[0]

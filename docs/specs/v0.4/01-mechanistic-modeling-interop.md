@@ -1,6 +1,6 @@
 # Spec 01 — Mechanistic-Modeling Interop: SBML, CellML, PhysioCell
 
-**Status:** Active — primary v0.4 work; spec finalised, implementation not yet started. Open questions all resolved (see §16). Implementation order will be CellML first, then SBML, then the composed top-level model, then PhysioCell.
+**Status:** Active — **implementation in progress.** First four submodels shipped (logistic placental growth, Severinghaus adult O2-Hb, fetal HbF dissociation, Michaelis-Menten GLUT1) in all three formats (SBML L3v2, CellML 2.0 + 1.1 fallback, PhysioCell parameters.xml). `nidus export --format {sbml,cellml,physiocell} --output <dir>` works end-to-end and is covered by 26 tests. Open questions all resolved (see §16). Remaining: the other ~6 submodels (Gaussian CO/MAP, uterine-flow logistic, venous-equilibrator O2 exchange, GLUT3 MM, plasma-volume expansion, Hadlock weight), top-level composed pregnancy model, COMBINE archives, repository submissions, real PhysioCell tissue example.
 **Target release:** `v0.4.0`.
 **Supersedes:** the earlier `v0.3/02-sbml-cellml-export.md` (now deleted; preserved in git history).
 **Depends on:** v0.3.0 shipped (dataset stable, schemas frozen).
