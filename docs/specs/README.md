@@ -2,14 +2,23 @@
 
 ## Current direction (ACTIVE)
 
-The current direction is captured in [`v0.3/00-overview.md`](v0.3/00-overview.md).
+The active design is split across two release-targeted directories: v0.3 (dataset, package, dashboard, essay) and v0.4 (mechanistic-modeling interop).
+
+**v0.3** — Dataset, Python package, dashboard, and outreach essay. Lives in [`v0.3/`](v0.3/).
 
 | Spec | File                                                                | Status                                                                |
 | ---- | ------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| 00   | [`v0.3/00-overview.md`](v0.3/00-overview.md)            | **READ FIRST.** What we are doing and why.                            |
+| 00   | [`v0.3/00-overview.md`](v0.3/00-overview.md)            | **READ FIRST for v0.3.** What we are doing and why.                  |
 | 01   | [`v0.3/01-dataset-and-dashboard.md`](v0.3/01-dataset-and-dashboard.md) | **Active.** Dataset + Python package + Streamlit dashboard. Primary work. |
-| 02   | [`v0.3/02-sbml-cellml-export.md`](v0.3/02-sbml-cellml-export.md)       | **Conditional.** Only if Spec 01 sees adoption signal.                |
-| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)       | **Active.** Essay in the repository + Zenodo deposit.              |
+| 02   | [`v0.3/02-sbml-cellml-export.md`](v0.3/02-sbml-cellml-export.md)       | **Superseded** by `v0.4/01-mechanistic-modeling-interop.md`.          |
+| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)       | **Active.** Essay in the repository + Zenodo deposit.                |
+
+**v0.4** — Mechanistic-modeling interop (SBML, CellML, PhysioCell). Lives in [`v0.4/`](v0.4/).
+
+| Spec | File                                                                       | Status                                                                |
+| ---- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| 00   | [`v0.4/00-overview.md`](v0.4/00-overview.md)                               | **READ FIRST for v0.4.** Why interop is now primary, not conditional. |
+| 01   | [`v0.4/01-mechanistic-modeling-interop.md`](v0.4/01-mechanistic-modeling-interop.md) | **Active.** Full implementation plan for SBML, CellML, PhysioCell exports + repository submissions. |
 
 ## Superseded (deprecation stubs)
 

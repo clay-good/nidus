@@ -58,10 +58,11 @@ layer.
    Zenodo. Ship `v0.3.0`.
 2. **Spec 03** — Essay in the repository. Same week as Spec 01
    release.
-3. **Spec 02** — *Conditional.* SBML/CellML export, executed only if
-   Spec 01 sees adoption (issues, stars, citations, external installs,
-   emails) within ~3 months. Otherwise indefinitely deferred — silence
-   is also a successful outcome.
+3. **v0.4** — Mechanistic-modeling interop (SBML, CellML, PhysioCell).
+   Originally conditional in `v0.3/02-sbml-cellml-export.md`; promoted
+   to primary work in [`v0.4/`](../v0.4/) once the maintainer
+   clarified that community adoption, not maintenance load, is the
+   binding constraint.
 
 ## Audience and ethos
 

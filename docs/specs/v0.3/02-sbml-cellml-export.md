@@ -1,6 +1,18 @@
-# Spec 02 — SBML / CellML Export (CONDITIONAL)
+# Spec 02 — SBML / CellML Export (SUPERSEDED)
 
-> **Status: CONDITIONAL — DO NOT START YET.**
+> **Status: SUPERSEDED** by [`v0.4/01-mechanistic-modeling-interop.md`](../v0.4/01-mechanistic-modeling-interop.md),
+> which expands this spec from SBML+CellML to also cover PhysioCell, and
+> promotes the work from "conditional" to "active primary v0.4 work"
+> under the maintainer's updated constraint that community adoption,
+> not maintenance load, is the binding factor.
+>
+> The original CONDITIONAL framing below is preserved for context. It
+> was written when maintenance was treated as the binding constraint;
+> that constraint has since been relaxed.
+>
+> ---
+>
+> Original status: CONDITIONAL — DO NOT START YET.
 >
 > Only execute this spec if **all three** of the following are true ~3 months after Spec 01 ships:
 > 1. The dataset has been downloaded or installed by ≥1 external party (PyPI stats, GitHub clones, issues).
