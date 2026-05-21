@@ -30,7 +30,7 @@ p.value.low, p.value.high    # (4.2, 5.0)  one-sigma bounds
 p.value.distribution         # 'normal'
 p.tier                       # 'B'
 p.tier_rationale             # multi-line synthesised rationale
-p.primary_citation.doi       # '10.1097/HJH.0000000000000043'
+p.primary_citation.doi       # '10.1097/hjh.0000000000000090'
 p.applicability.population   # 'Healthy nulliparous women, ...'
 ```
 

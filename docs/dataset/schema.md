@@ -74,7 +74,7 @@ Source: [`citation.schema.json`](https://github.com/claygood/nidus/blob/main/dat
   "authors": ["Mahendru AA", "Everett TR", "Wilkinson IB", "Lees CC", "McEniery CM"],
   "year": 2014,
   "journal": "Journal of Hypertension",
-  "doi": "10.1097/HJH.0000000000000043",
+  "doi": "10.1097/hjh.0000000000000090",
   "pmid": "24406777"
 }
 ```

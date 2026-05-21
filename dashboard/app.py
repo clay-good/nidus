@@ -103,7 +103,7 @@ ds = nidus.load()
 co = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
 print(co.value.central, co.value.units)       # 4.6 L/min
 print(co.tier)                                 # B
-print(co.primary_citation.doi)                 # 10.1097/HJH.0000000000000043
+print(co.primary_citation.doi)                 # 10.1097/hjh.0000000000000090
 
 # Filter to maternal cardiovascular Tier-A entries:
 for p in ds.filter(subsystem="maternal_cardiovascular", tier="A"):
