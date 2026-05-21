@@ -1,7 +1,7 @@
-# SPEC.md — Original Simulator Design (NOT DOING)
+# SPEC.md — Original Simulator Design (superseded)
 
-> **Status: NOT DOING.** This document describes the original conception of nidus as a Rust simulator of coupled maternal-placental-fetal physiology. That direction has been abandoned.
+> **Status: Superseded by the v0.3 design.** This document describes the original conception of nidus as a Rust simulator of coupled maternal-placental-fetal physiology. It is superseded by the v0.3 design.
 >
-> See [`v0.3-pivot/00-overview.md`](v0.3-pivot/00-overview.md) for the current direction.
+> See [`v0.3/00-overview.md`](v0.3/00-overview.md) for the v0.3 design.
 >
 > Original content of this file is preserved in git history: `git log -- docs/specs/SPEC.md`.

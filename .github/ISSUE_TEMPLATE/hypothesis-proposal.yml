@@ -1,57 +1,58 @@
-name: Hypothesis proposal
-description: Propose a new mechanism, unknown channel, or experiment-design target for the simulator.
-title: "[hypothesis] "
-labels: ["hypothesis", "discussion"]
+name: Research question (Tier-D candidate)
+description: Propose a hypothesised mechanism or open question for the dataset's Tier-D registry.
+title: "[research-question] "
+labels: ["tier-d", "discussion"]
 body:
   - type: markdown
     attributes:
       value: |
-        Use this template for ideas that are not yet a concrete parameter
-        request — a new mechanism worth modelling, a new unknown channel,
-        or an experiment the suggester should rank highly. The aim is to
-        get the proposal into a form a contributor can act on.
+        Tier-D entries in the nidus dataset are **structured open
+        questions**: hypothesised mechanisms or channels that lack
+        quantitative literature, listed so the field knows what's worth
+        measuring next.
 
-        Background: see [docs/tutorials/hypothesis_workflow.md](../blob/main/docs/tutorials/hypothesis_workflow.md)
-        and the unknown-channels registry in
-        [`crates/nidus-unknown`](../blob/main/crates/nidus-unknown/).
+        Use this template to propose a Tier-D candidate. Once one or two
+        peer-reviewed studies establish a value range, the entry can be
+        promoted to Tier-C via a parameter request.
   - type: textarea
-    id: claim
+    id: question
     attributes:
-      label: Hypothesis
-      description: One or two sentences stating the mechanism, the affected outcome, and the expected direction.
+      label: The question
+      description: One or two sentences naming the hypothesised mechanism or unmeasured quantity and the gestational subsystem it affects.
     validations:
       required: true
   - type: dropdown
-    id: kind
+    id: subsystem
     attributes:
-      label: Kind of contribution
+      label: Likely subsystem
       options:
-        - New unknown channel
-        - Revision of an existing channel
-        - New parameter dependency
-        - New validation case
-        - Experiment-design target
+        - maternal_cardiovascular
+        - maternal_blood
+        - maternal_respiratory
+        - maternal_renal
+        - placental_structure
+        - placental_gas_exchange
+        - placental_glucose
+        - fetal_circulation
+        - fetal_growth
+        - fetal_metabolism
+        - cross-subsystem / not sure
     validations:
       required: true
   - type: textarea
-    id: evidence
+    id: prior_art
     attributes:
-      label: Evidence and citations
-      description: Papers, datasets, or anecdata supporting (and questioning) the proposal.
+      label: Prior art
+      description: Papers, reviews, or anecdotal observations supporting (and questioning) the proposal. If quantitative data already exists, this is probably a parameter request rather than a Tier-D candidate.
     validations:
       required: true
   - type: textarea
-    id: outcomes
+    id: measurement
     attributes:
-      label: Downstream simulator outcomes affected
-      description: Which simulator outputs would change if this hypothesis were enabled?
+      label: What measurement would promote this from Tier D
+      description: What study design or instrument would yield the data needed to give this a quantitative value range?
     validations:
       required: true
-  - type: textarea
-    id: experiment
-    attributes:
-      label: Test or experiment
-      description: How would you distinguish this from the null? Include feasibility notes.
   - type: textarea
     id: notes
     attributes:

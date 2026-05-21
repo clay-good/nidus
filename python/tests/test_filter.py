@@ -35,9 +35,7 @@ def test_filter_by_multiple_tiers(ds: nidus.Dataset) -> None:
 
 def test_filter_combined(ds: nidus.Dataset) -> None:
     f = ds.filter(subsystem="maternal_cardiovascular", tier="B")
-    assert all(
-        p.subsystem == "maternal_cardiovascular" and p.tier == "B" for p in f
-    )
+    assert all(p.subsystem == "maternal_cardiovascular" and p.tier == "B" for p in f)
 
 
 def test_filter_returns_dataset(ds: nidus.Dataset) -> None:

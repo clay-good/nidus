@@ -88,3 +88,7 @@ site/
 .fastembed_cache/
 */.fastembed_cache/
 .venv*
+
+# Built copy of the dataset inside the Python package (created by
+# scripts/sync_dataset_into_package.py before `python -m build`).
+python/nidus/_dataset/

@@ -1,9 +1,8 @@
 <!--
-Thank you for contributing to Nidus. Choose the section below that
-matches your contribution and delete the others. If your PR is a
-parameter or citation update, please follow the structured
-"Parameter contribution" section so the review can verify the citation
-against its original source. See CONTRIBUTING.md for context.
+Thank you for contributing to nidus. Pick the section below that fits
+your change and delete the others. For parameter and citation updates
+the structured section is required so reviewers can verify every value
+against its source.
 -->
 
 ## Summary
@@ -15,61 +14,49 @@ against its original source. See CONTRIBUTING.md for context.
 ## Parameter contribution
 
 <!-- Use this section when the PR adds or modifies an entry in
-`data/parameters/` or `data/citations/`. Otherwise delete it. -->
+`dataset/parameters/` or `dataset/citations/`. Otherwise delete it. -->
 
-- **Parameter id:**
+- **Parameter id:** (dotted, snake_case — e.g. `placental_glucose.glut1_km`)
+- **Subsystem:**
 - **Tier (A / B / C / D):**
-- **Value:** (point estimate with uncertainty, or distribution)
-- **Unit:**
+- **Value:** central + low/high + units, matching the schema's `value` object
 - **Population / cohort:**
 - **Gestational-age range:**
-- **Measurement technique:**
-- **Caveats:**
+- **Extraction method:** (table, figure, digitised, etc.)
 
 **Citation:**
 
 - **Authors / Title / Venue / Year / DOI or PMID:**
-- **I have personally consulted this source:** yes / no
+- [ ] I have personally consulted this source (not just an abstract or downstream review).
+- [ ] Cohort, gestational window, and units in the source match this entry.
 
 **Tier rationale:**
-<!-- One or two sentences explaining why this tier is the correct
-choice. Tier inflation is a more serious error than tier deflation;
-when in doubt, choose the more conservative tier. -->
+
+<!-- One or two sentences explaining why this tier is the correct choice.
+Tier inflation is a worse error than tier deflation; when in doubt,
+choose the more conservative tier. -->
 
 ---
 
-## Unknown channel contribution
+## Tier-D entry (research question)
 
-<!-- Use this section when the PR adds or modifies an entry in
-`nidus-unknown::registry`. Otherwise delete it. -->
+<!-- Use this section when the PR adds a hypothesised mechanism that
+lacks quantitative literature. Otherwise delete it. -->
 
 - **Channel id:**
-- **Tier (C / D):**
 - **Hypothesised mechanism:**
-- **Parameter range and units:**
-- **Downstream effects (in subsystem-affected terms):**
+- **Subsystem affected:**
+- **What measurement would promote this from Tier D:**
 - **Supporting citations:**
 - **Questioning citations:**
 
 ---
 
-## Validation case contribution
+## Code / dashboard / docs change
 
-<!-- Use this section when the PR adds a case to `nidus-validation`.
-Otherwise delete it. -->
-
-- **Component or subsystem under test:**
-- **Reference dataset id:**
-- **Citation for the dataset:**
-- **Level (component / integration / outcome):**
-- **Expected agreement bucket:**
-
----
-
-## Code change
-
-<!-- Use this section for engine, API, or visualisation code changes
-that do not fit the structured sections above. Otherwise delete it. -->
+<!-- Use this section for changes to the Python package, dashboard,
+notebooks, or documentation that don't fit the structured sections
+above. Otherwise delete it. -->
 
 ### What changed
 ### Why
@@ -79,10 +66,10 @@ that do not fit the structured sections above. Otherwise delete it. -->
 
 ## Checklist
 
-- [ ] `cargo build --workspace` succeeds with zero warnings
-- [ ] `cargo test --workspace` passes
-- [ ] `cargo clippy --workspace --all-targets -- -D warnings` passes
-- [ ] New public items carry doc comments
-- [ ] If this changes confidence-tier behaviour, the change is
-      documented in the affected module's top-level docs
-- [ ] PROGRESS.md updated if a SPEC.md §13 prompt status changes
+- [ ] `pytest python/tests/` passes
+- [ ] `ruff check python/` and `ruff format --check python/` pass
+- [ ] `mypy python/nidus` passes
+- [ ] `python -c "import nidus; nidus.validate()"` passes
+- [ ] If this changes the schema, the relevant JSON Schema file is updated
+- [ ] If this is a parameter/citation change, the verification box above is ticked
+- [ ] `CHANGELOG.md` or `dataset/CHANGELOG.md` updated under `## [Unreleased]`

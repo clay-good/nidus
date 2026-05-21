@@ -38,6 +38,8 @@ dev = [
     "mypy>=1.5",
     "ruff>=0.1",
     "nbmake>=1.4",
+    "types-jsonschema",
+    "build>=1.0",
 ]
 
 [project.urls]
@@ -52,8 +54,12 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["nidus"]
 
-[tool.hatch.build.targets.wheel.force-include]
-"../dataset" = "nidus/_dataset"
+# Dataset bundling: the dataset lives at ../dataset/ in the repo, but
+# Python build tooling (hatchling, build --sdist) can't reliably pull
+# files from outside the project root. A small pre-build script
+# (scripts/sync_dataset_into_package.py) copies ../dataset/ into
+# python/nidus/_dataset/ before `python -m build` runs. The copy is
+# gitignored so it isn't tracked. The loader looks for it at runtime.
 
 [tool.ruff]
 line-length = 100

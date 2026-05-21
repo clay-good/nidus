@@ -1,0 +1,75 @@
+name: Release
+
+# Triggered on annotated tag push matching v*.*.*. Builds the wheel and
+# sdist, publishes to PyPI via Trusted Publishing (OIDC), and creates a
+# GitHub release with auto-generated notes. Zenodo deposits via the
+# GitHub-Zenodo integration when the release is published.
+#
+# Prerequisites (one-time, in PyPI project settings):
+#   1. Reserve the "nidus" project on PyPI.
+#   2. Configure a Trusted Publisher for this repository, environment
+#      name "pypi", workflow "release.yml", filename "release.yml".
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build distributions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build
+      - name: Sync dataset into package source tree
+        run: python scripts/sync_dataset_into_package.py
+      - working-directory: python
+        run: python -m build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: python/dist/
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/nidus/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+
+  github-release:
+    name: GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref, '-alpha') || contains(github.ref, '-beta') || contains(github.ref, '-rc') || contains(github.ref, 'dev') }}

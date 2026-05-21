@@ -1,0 +1,60 @@
+name: Citation reachability
+
+# Weekly check that every DOI / PMID / URL in the citation index still
+# resolves. Failures are advisory: they do not block PRs, but they open
+# a tracking issue so reviewers can investigate (a paper retraction, a
+# publisher URL change, etc.).
+
+on:
+  schedule:
+    # Mondays at 09:00 UTC.
+    - cron: "0 9 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Probe each citation
+        id: probe
+        run: |
+          python scripts/check_citation_reachability.py | tee reachability.log
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+        continue-on-error: true
+      - name: Open tracking issue on failure
+        if: steps.probe.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('reachability.log', 'utf8');
+            const today = new Date().toISOString().slice(0, 10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Citation reachability failures — ${today}`,
+              labels: ['citations', 'needs-review'],
+              body: [
+                'The weekly citation-reachability check found one or more unreachable citations.',
+                '',
+                'Possible causes: temporary publisher outage, DOI rot, retracted paper, URL change.',
+                '',
+                '```',
+                log,
+                '```',
+              ].join('\n'),
+            });
+      - name: Upload log artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: reachability-log
+          path: reachability.log

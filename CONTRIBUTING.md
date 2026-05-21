@@ -7,23 +7,24 @@ empirical work**.
 
 ## Project status
 
-The project is currently pivoting from an earlier Rust-simulator
-architecture to a dataset-first form. Until `v0.3.0` ships, contribution
-workflows are in flux. See
-[docs/specs/v0.3-pivot/00-overview.md](docs/specs/v0.3-pivot/00-overview.md)
-for the current direction and
-[docs/specs/v0.3-pivot/01-dataset-and-dashboard.md](docs/specs/v0.3-pivot/01-dataset-and-dashboard.md)
-for the work in progress.
+v0.3 is the dataset-first release. The contribution workflow described
+below is the steady state; small details may evolve as v0.3.0
+approaches release. See
+[docs/specs/v0.3/00-overview.md](docs/specs/v0.3/00-overview.md) for
+the design and
+[docs/specs/v0.3/01-dataset-and-dashboard.md](docs/specs/v0.3/01-dataset-and-dashboard.md)
+for the active work.
 
-If you want to contribute now, the most useful things are:
+The most useful contributions today are:
 
-1. **Verify an existing citation** in `data/citations/` (or, once
-   migrated, `dataset/citations/citations.json`) against the original
-   paper.
-2. **Identify a parameter** in the literature that fits the schema and
-   is well-supported (Tier A or B), and propose it via an issue.
-3. **Surface a Tier D candidate** — a hypothesised mechanism or channel
-   that lacks quantitative literature.
+1. **Verify an existing citation** in
+   [`dataset/citations/citations.json`](dataset/citations/citations.json)
+   against the original paper, and update any parameter that cites it
+   to `extraction.review_status: "verified"`.
+2. **Propose a new Tier-A or Tier-B parameter** from the literature via
+   an issue, using the parameter-request template.
+3. **Surface a Tier-D research question** — a hypothesised mechanism or
+   channel worth measuring next.
 
 ## Confidence tiers
 

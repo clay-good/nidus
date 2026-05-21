@@ -9,24 +9,41 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Changed
-- **Major direction change.** Nidus has pivoted from a Rust simulator
-  of coupled maternal-placental-fetal physiology to a dataset-first
-  form: a curated JSON dataset distributed as a `pip install nidus`
-  Python package with a Streamlit dashboard. See
-  [`docs/specs/v0.3-pivot/00-overview.md`](docs/specs/v0.3-pivot/00-overview.md)
-  for the rationale.
+- **v0.3 reframes nidus around its durable contribution.** Earlier
+  Rust-prototype work (preserved at the `v0.2-archive` git tag)
+  explored a coupled maternal-placental-fetal physiology engine. v0.3
+  distils that exploration into the artefact that is actually
+  transferable: a citation-verified, tier-annotated parameter dataset,
+  distributed as `pip install nidus` with a Streamlit dashboard. The
+  form factor matches the audience (biomedical researchers, almost all
+  Python/R users); the maintenance scope matches what one person can
+  sustain. See
+  [`docs/specs/v0.3/00-overview.md`](docs/specs/v0.3/00-overview.md)
+  for the design rationale.
 
 ### Removed
-- Rust simulator (`crates/`, `Cargo.toml`, `Cargo.lock`, `target/`),
-  simulator-era scenario configurations (`scenarios/`), examples
-  (`examples/`), output artefacts (`out/`), and the
-  implementation-progress tracker (`PROGRESS.md`). All recoverable from
-  the `v0.2-archive` git tag.
+- The Rust prototype: `crates/`, `Cargo.toml`, `Cargo.lock`, `target/`,
+  scenario configurations (`scenarios/`), examples (`examples/`),
+  output artefacts (`out/`), and the implementation-progress tracker
+  (`PROGRESS.md`). All recoverable from the `v0.2-archive` tag.
 
 ### Added
-- Repository scaffold for the dataset-first pivot: `dataset/`,
-  `python/`, `dashboard/`, `notebooks/`.
+- Repository scaffold for the v0.3 design: `dataset/`, `python/`,
+  `dashboard/`, `notebooks/`, `scripts/`.
 - JSON Schema (draft 2020-12) for parameters, citations, and tiers in
-  `dataset/schema/`.
+  `dataset/schema/`. JSON-LD context for FAIR linked-data consumption.
+- Pure-Python `nidus` package: `nidus.load()`, `nidus.validate()`,
+  dataclass models, schema validation, citation resolution, multi-axis
+  filtering. Test suite of 36 cases covering load, filter, citations,
+  and validation.
+- 54 parameters across 10 subsystems, 32 citations migrated from the
+  v0.2 curation into schema-valid JSON.
+- GitHub Actions CI: lint (`ruff`), typecheck (`mypy --strict`), test
+  matrix (Python 3.10/3.11/3.12), dataset validation, wheel + sdist
+  build with smoke test of the installed wheel.
+- Weekly citation-reachability cron with automated issue creation on
+  failures.
+- Release pipeline (PyPI Trusted Publishing + GitHub Releases) wired
+  for tag-driven publishing.
 - `CITATION.cff` and `LICENSE-DATASET` (CC-BY-4.0).
 - `CLAUDE.md` at repo root to orient fresh Claude Code sessions.

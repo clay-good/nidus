@@ -2,18 +2,18 @@
 
 ## Current direction (ACTIVE)
 
-The current direction is captured in [`v0.3-pivot/`](v0.3-pivot/).
+The current direction is captured in [`v0.3/`](v0.3/).
 
 | Spec | File                                                                | Status                                                                |
 | ---- | ------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| 00   | [`v0.3-pivot/00-overview.md`](v0.3-pivot/00-overview.md)            | **READ FIRST.** What we are doing and why.                            |
-| 01   | [`v0.3-pivot/01-dataset-and-dashboard.md`](v0.3-pivot/01-dataset-and-dashboard.md) | **Active.** Dataset + Python package + Streamlit dashboard. Primary work. |
-| 02   | [`v0.3-pivot/02-sbml-cellml-export.md`](v0.3-pivot/02-sbml-cellml-export.md)       | **Conditional.** Only if Spec 01 sees adoption signal.                |
-| 03   | [`v0.3-pivot/03-outreach-and-essay.md`](v0.3-pivot/03-outreach-and-essay.md)       | **Active.** Blog essay on claygood.com + Zenodo deposit.              |
+| 00   | [`v0.3/00-overview.md`](v0.3/00-overview.md)            | **READ FIRST.** What we are doing and why.                            |
+| 01   | [`v0.3/01-dataset-and-dashboard.md`](v0.3/01-dataset-and-dashboard.md) | **Active.** Dataset + Python package + Streamlit dashboard. Primary work. |
+| 02   | [`v0.3/02-sbml-cellml-export.md`](v0.3/02-sbml-cellml-export.md)       | **Conditional.** Only if Spec 01 sees adoption signal.                |
+| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)       | **Active.** Blog essay on claygood.com + Zenodo deposit.              |
 
-## NOT DOING (deprecated)
+## Superseded (deprecation stubs)
 
-The following specs are no longer in scope. Each file in this directory is a one-paragraph deprecation stub. The original content is preserved in git history (`git log -- docs/specs/<filename>`).
+The following specs were written during the earlier Rust-prototype phase and are superseded by the v0.3 design. Each file is a one-paragraph deprecation stub pointing here. Original content lives in git history (`git log -- docs/specs/<filename>`).
 
 | File                                                                  | Original intent                              |
 | --------------------------------------------------------------------- | -------------------------------------------- |
@@ -32,4 +32,4 @@ The following specs are no longer in scope. Each file in this directory is a one
 | [`11-hypothesis-generalization.md`](11-hypothesis-generalization.md)  | Hypothesis pipeline generalisation.          |
 | [`12-code-hygiene.md`](12-code-hygiene.md)                            | Rust code hygiene.                           |
 
-These were written when nidus was conceived as a Rust simulator of coupled maternal-placental-fetal physiology. That direction was determined to be misaligned with both the audience (perinatal researchers, almost all Python/R users) and the impact pathway (existing mechanistic modelling is well-served by CellML, COPASI, PhysioCell). See [`v0.3-pivot/00-overview.md`](v0.3-pivot/00-overview.md) for the full reasoning.
+These were written when nidus was conceived as a Rust simulator of coupled maternal-placental-fetal physiology. That direction was determined to be misaligned with both the audience (perinatal researchers, almost all Python/R users) and the impact pathway (existing mechanistic modelling is well-served by CellML, COPASI, PhysioCell). See [`v0.3/00-overview.md`](v0.3/00-overview.md) for the full reasoning.

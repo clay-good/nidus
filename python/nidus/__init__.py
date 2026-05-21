@@ -4,7 +4,7 @@ Public API:
     nidus.load()       -> Dataset
     nidus.validate()   -> None  (raises ValidationError on any issue)
 
-See README.md and docs/specs/v0.3-pivot/01-dataset-and-dashboard.md for
+See README.md and docs/specs/v0.3/01-dataset-and-dashboard.md for
 the public API design.
 """
 

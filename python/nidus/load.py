@@ -13,8 +13,9 @@ known citation key, and parameter ids are globally unique across files.
 from __future__ import annotations
 
 import json
+from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 from nidus.models import (
     Applicability,
@@ -35,8 +36,8 @@ def _default_dataset_dir() -> Path:
     """
     here = Path(__file__).parent
     candidates = [
-        here / "_dataset",                    # installed wheel
-        here.parent.parent / "dataset",       # dev: python/nidus/.. = python/, then /../dataset
+        here / "_dataset",  # installed wheel
+        here.parent.parent / "dataset",  # dev: python/nidus/.. = python/, then /../dataset
     ]
     for c in candidates:
         if (c / "tiers" / "tiers.json").exists():
@@ -114,15 +115,11 @@ def _build_parameter(p: dict[str, Any], citations: dict[str, Citation]) -> Param
     cited = []
     for key in p["citations"]:
         if key not in citations:
-            raise ValueError(
-                f"Parameter {p['id']!r} references unknown citation {key!r}"
-            )
+            raise ValueError(f"Parameter {p['id']!r} references unknown citation {key!r}")
         cited.append(citations[key])
     primary_key = p.get("primary_citation")
     if primary_key is not None and primary_key not in citations:
-        raise ValueError(
-            f"Parameter {p['id']!r} primary_citation={primary_key!r} unknown"
-        )
+        raise ValueError(f"Parameter {p['id']!r} primary_citation={primary_key!r} unknown")
     return Parameter(
         id=p["id"],
         name=p["name"],
@@ -198,7 +195,7 @@ class Dataset:
         subsystem: str | list[str] | tuple[str, ...] | None = None,
         tier: str | list[str] | tuple[str, ...] | None = None,
         review_status: str | list[str] | tuple[str, ...] | None = None,
-    ) -> "Dataset":
+    ) -> Dataset:
         """Return a new ``Dataset`` containing only matching parameters.
 
         Any ``None`` argument is treated as "no constraint on this axis".
@@ -232,9 +229,7 @@ class Dataset:
     def citations_for(self, citation_key: str) -> tuple[Parameter, ...]:
         """Return all parameters that cite the given citation key."""
         return tuple(
-            p
-            for p in self._parameters.values()
-            if any(c.key == citation_key for c in p.citations)
+            p for p in self._parameters.values() if any(c.key == citation_key for c in p.citations)
         )
 
 
@@ -283,9 +278,7 @@ def load(
     # Citations
     with (root / "citations" / "citations.json").open(encoding="utf-8") as f:
         citations_raw = json.load(f)
-    citations: dict[str, Citation] = {
-        key: _build_citation(c) for key, c in citations_raw.items()
-    }
+    citations: dict[str, Citation] = {key: _build_citation(c) for key, c in citations_raw.items()}
 
     # Parameters
     parameters: dict[str, Parameter] = {}
@@ -296,8 +289,7 @@ def load(
             param = _build_parameter(r, citations)
             if param.id in parameters:
                 raise ValueError(
-                    f"Duplicate parameter id {param.id!r} (found again in "
-                    f"{jsonfile.name})"
+                    f"Duplicate parameter id {param.id!r} (found again in {jsonfile.name})"
                 )
             parameters[param.id] = param
 

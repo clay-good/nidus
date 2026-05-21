@@ -1,6 +1,6 @@
 # Spec 01 — Dataset, Python Package, and Dashboard
 
-**Status:** Active — primary pivot work.
+**Status:** Active — primary v0.3 work.
 **Target release:** `v0.3.0`.
 **Depends on:** [`00-overview.md`](00-overview.md) (read first).
 
@@ -40,7 +40,7 @@ The dataset is the centerpiece. Everything else is a presentation layer.
 | Clinical decision support                          | Out of scope forever.                                                                |
 | Automated parameter extraction by LLMs             | Humans verify.                                                                       |
 
-## 4. Repo layout after the pivot
+## 4. Repo layout
 
 ```
 nidus/
@@ -106,7 +106,7 @@ There is **no** `crates/`, no `Cargo.toml`, no `Cargo.lock`, no `target/`, no `e
 
 ## 5. Pivot execution order
 
-1. Tag the pre-pivot state as `v0.2-archive` (annotated tag, no branch) so git history points to the simulator-era code under a memorable label. Push the tag.
+1. Tag the prior state as `v0.2-archive` (annotated tag, no branch) so git history points to the Rust prototype under a memorable label. Push the tag.
 2. Delete `crates/`, `Cargo.toml`, `Cargo.lock`, `target/`, `scenarios/`, `examples/` (simulator-era), old TOML in `data/`. One commit.
 3. Create `dataset/` skeleton + JSON Schemas. One commit.
 4. Convert curated TOML parameters to JSON, one subsystem per commit. Schema-validate each.

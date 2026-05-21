@@ -53,9 +53,9 @@ print(co.citations[0].doi)  # "10.1097/HJH.0000000000000090"
 
 Cite the dataset by its Zenodo concept DOI (added on first release). See `CITATION.cff` for machine-readable metadata.
 
-## Project status
+## History
 
-Currently pivoting from an earlier Rust-simulator architecture to this dataset-first form. See [`docs/specs/v0.3-pivot/00-overview.md`](docs/specs/v0.3-pivot/00-overview.md) for the current direction and rationale.
+Nidus began as a Rust prototype exploring coupled maternal-placental-fetal physiology simulation (preserved at the `v0.2-archive` tag). That exploration surfaced where the durable, transferable value lived — in the curated parameters and the confidence-tier discipline themselves, not in any particular simulator implementation. v0.3 reframes the project around that contribution and ships it in the form researchers actually use: a Python package and a browsable dashboard. See [`docs/specs/v0.3/00-overview.md`](docs/specs/v0.3/00-overview.md) for the design rationale.
 
 ## Licence
 

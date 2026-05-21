@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible bug in the simulator, CLI, validation suite, or docs.
+description: Report a reproducible bug in the nidus Python package, dashboard, dataset, or documentation.
 title: "[bug] "
 labels: ["bug", "needs-triage"]
 body:
@@ -7,29 +7,43 @@ body:
     attributes:
       value: |
         Thanks for taking the time to file a bug. Please include enough
-        detail that a maintainer can reproduce the issue locally —
-        especially the seed and scenario, since the simulator is
-        deterministic.
+        detail that a maintainer can reproduce it locally.
   - type: input
     id: nidus_version
     attributes:
-      label: Nidus version / commit
-      description: Output of `cargo run -p nidus-cli -- --version`, or the commit SHA.
-      placeholder: "v0.2.0 or commit abcdef1"
+      label: Nidus version
+      description: Output of `python -c "import nidus; print(nidus.__version__)"`, or the commit SHA if you're on a development checkout.
+      placeholder: "0.3.0 or commit abcdef1"
     validations:
       required: true
   - type: input
     id: host
     attributes:
-      label: Host
-      description: OS, architecture, Rust toolchain (e.g. `macos-arm64, rustc 1.78.0`).
+      label: Host environment
+      description: OS, Python version, and how you installed nidus (PyPI, source, editable).
+      placeholder: "macOS 14.4, Python 3.12.3, installed from PyPI"
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      multiple: true
+      options:
+        - Python package (nidus.load / Dataset / Parameter / Citation)
+        - Schema validation (nidus.validate)
+        - Dataset content (a parameter or citation appears wrong)
+        - Streamlit dashboard
+        - Reference notebooks
+        - Documentation
+        - CI / packaging
     validations:
       required: true
   - type: textarea
     id: repro
     attributes:
-      label: Reproduction steps
-      description: Exact commands and inputs. Include the scenario file or RNG seed if relevant.
+      label: Reproduction
+      description: The smallest snippet or sequence of commands that triggers the bug.
       render: shell
     validations:
       required: true
@@ -43,11 +57,11 @@ body:
     id: actual
     attributes:
       label: Actual behaviour
-      description: Include the full error message and any logs.
+      description: Include the full traceback or error message and any relevant logs.
+      render: shell
     validations:
       required: true
   - type: textarea
     id: notes
     attributes:
       label: Additional context
-      description: Anything else — minimal scenario TOML, screenshots, suspected root cause.

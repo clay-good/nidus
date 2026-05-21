@@ -9,7 +9,7 @@ schemas happens separately in :mod:`nidus.validate`; the loader in
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Literal, Optional
+from typing import Literal
 
 Tier = Literal["A", "B", "C", "D"]
 Subsystem = Literal[
@@ -32,10 +32,10 @@ class Value:
 
     central: float
     units: str
-    low: Optional[float] = None
-    high: Optional[float] = None
-    distribution: Optional[str] = None
-    ci: Optional[float] = None
+    low: float | None = None
+    high: float | None = None
+    distribution: str | None = None
+    ci: float | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -44,7 +44,7 @@ class Trajectory:
 
     type: str
     params: dict[str, float]
-    valid_range_weeks: Optional[tuple[float, float]] = None
+    valid_range_weeks: tuple[float, float] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -52,17 +52,17 @@ class Extraction:
     """Provenance metadata: how, by whom, and when the parameter was extracted."""
 
     review_status: str
-    method: Optional[str] = None
-    by: Optional[str] = None
-    date: Optional[str] = None
-    reviewer: Optional[str] = None
+    method: str | None = None
+    by: str | None = None
+    date: str | None = None
+    reviewer: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
 class Applicability:
     """Population the parameter applies to, and known exclusions."""
 
-    population: Optional[str] = None
+    population: str | None = None
     excludes: tuple[str, ...] = field(default_factory=tuple)
 
 
@@ -75,17 +75,17 @@ class Citation:
     title: str
     authors: tuple[str, ...]
     year: int
-    journal: Optional[str] = None
-    volume: Optional[str] = None
-    issue: Optional[str] = None
-    pages: Optional[str] = None
-    publisher: Optional[str] = None
-    doi: Optional[str] = None
-    pmid: Optional[str] = None
-    url: Optional[str] = None
-    open_access: Optional[bool] = None
-    isbn: Optional[str] = None
-    notes: Optional[str] = None
+    journal: str | None = None
+    volume: str | None = None
+    issue: str | None = None
+    pages: str | None = None
+    publisher: str | None = None
+    doi: str | None = None
+    pmid: str | None = None
+    url: str | None = None
+    open_access: bool | None = None
+    isbn: str | None = None
+    notes: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -104,11 +104,11 @@ class Parameter:
     tier_rationale: str
     citations: tuple[Citation, ...]
     extraction: Extraction
-    category: Optional[str] = None
-    trajectory: Optional[Trajectory] = None
-    primary_citation: Optional[Citation] = None
-    applicability: Optional[Applicability] = None
-    notes: Optional[str] = None
+    category: str | None = None
+    trajectory: Trajectory | None = None
+    primary_citation: Citation | None = None
+    applicability: Applicability | None = None
+    notes: str | None = None
 
 
 @dataclass(frozen=True, slots=True)

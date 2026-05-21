@@ -104,14 +104,10 @@ def validate(path: str | Path | None = None) -> None:
             param_ids.add(pid)
             for ck in r.get("citations", []):
                 if ck not in citation_keys:
-                    errors.append(
-                        f"{label}: cites unknown citation {ck!r}"
-                    )
+                    errors.append(f"{label}: cites unknown citation {ck!r}")
             primary = r.get("primary_citation")
             if primary is not None and primary not in citation_keys:
-                errors.append(
-                    f"{label}: primary_citation={primary!r} not in citations.json"
-                )
+                errors.append(f"{label}: primary_citation={primary!r} not in citations.json")
 
     if errors:
         cap = 50
@@ -119,6 +115,4 @@ def validate(path: str | Path | None = None) -> None:
         if len(errors) > cap:
             head += f"\n  ... and {len(errors) - cap} more"
         plural = "" if len(errors) == 1 else "s"
-        raise ValidationError(
-            f"Dataset validation failed ({len(errors)} error{plural}):\n{head}"
-        )
+        raise ValidationError(f"Dataset validation failed ({len(errors)} error{plural}):\n{head}")

@@ -6,47 +6,120 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  CARGO_TERM_COLOR: always
-  RUSTFLAGS: "-Dwarnings"
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  fmt:
-    name: rustfmt
+  lint:
+    name: Lint (ruff)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@v5
         with:
-          components: rustfmt
-      - run: cargo fmt --all -- --check
+          python-version: "3.12"
+      - run: pip install ruff
+      - name: ruff check
+        run: ruff check python/
+      - name: ruff format --check
+        run: ruff format --check python/
 
-  clippy:
-    name: clippy
+  typecheck:
+    name: Type check (mypy)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-python@v5
         with:
-          components: clippy
-      - uses: Swatinem/rust-cache@v2
-      - run: cargo clippy --workspace --all-targets -- -D warnings
+          python-version: "3.12"
+          cache: pip
+      - name: Install package and dev deps
+        working-directory: python
+        run: pip install -e ".[dev]"
+      - name: mypy
+        working-directory: python
+        run: mypy nidus
 
   test:
-    name: test
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install package and dev deps
+        working-directory: python
+        run: pip install -e ".[dev]"
+      - name: pytest
+        working-directory: python
+        run: pytest -v --tb=short
+
+  validate-dataset:
+    name: Validate dataset
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - uses: Swatinem/rust-cache@v2
-      - run: cargo test --workspace --all-targets
-      - run: cargo test --workspace --doc
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install package
+        working-directory: python
+        run: pip install -e .
+      - name: nidus.validate()
+        run: python -c "import nidus; nidus.validate(); print('Dataset OK')"
 
   build:
-    name: build
+    name: Build wheel
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
-      - uses: Swatinem/rust-cache@v2
-      - run: cargo build --workspace --release
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install build
+        run: pip install build
+      - name: Sync dataset into package source tree
+        run: python scripts/sync_dataset_into_package.py
+      - name: Build wheel + sdist
+        working-directory: python
+        run: python -m build
+      - name: Inspect wheel — dataset must be bundled
+        working-directory: python
+        run: |
+          set -euo pipefail
+          mkdir _wheel_check
+          unzip -q -d _wheel_check dist/*.whl
+          echo "--- bundled dataset contents ---"
+          find _wheel_check/nidus/_dataset -type f | sort
+          test -f _wheel_check/nidus/_dataset/tiers/tiers.json
+          test -f _wheel_check/nidus/_dataset/citations/citations.json
+          test -f _wheel_check/nidus/_dataset/schema/parameter.schema.json
+          # At least one subsystem JSON must be present.
+          test -n "$(ls _wheel_check/nidus/_dataset/parameters/*.json)"
+      - name: Smoke-test installed wheel
+        working-directory: python
+        run: |
+          set -euo pipefail
+          python -m venv /tmp/smoke
+          /tmp/smoke/bin/pip install dist/*.whl
+          /tmp/smoke/bin/python -c "
+          import nidus
+          ds = nidus.load()
+          assert len(ds) >= 54, f'expected >=54 parameters, got {len(ds)}'
+          assert len(ds.citations) >= 32
+          nidus.validate()
+          print(f'Installed wheel works: {ds}')
+          "
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nidus-wheel
+          path: python/dist/*
