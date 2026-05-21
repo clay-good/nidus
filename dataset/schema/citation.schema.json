@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/claygood/nidus/dataset/schema/citation.schema.json",
+  "title": "Nidus Citation",
+  "description": "A single bibliographic record. Must resolve via DOI, PMID, or URL.",
+  "type": "object",
+  "required": ["key", "type", "title", "authors", "year"],
+  "anyOf": [
+    {"required": ["doi"]},
+    {"required": ["pmid"]},
+    {"required": ["url"]}
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]+[0-9]{4}[a-z]?$",
+      "description": "Citation key, e.g. 'mahendru2014' or 'sanghavi2014b'."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "journal-article",
+        "book",
+        "book-chapter",
+        "conference-paper",
+        "preprint",
+        "report",
+        "dataset",
+        "thesis"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "authors": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "description": "Each author as 'Family, Given'."
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1800,
+      "maximum": 2100
+    },
+    "journal": {"type": "string"},
+    "volume": {"type": ["integer", "string"]},
+    "issue": {"type": ["integer", "string"]},
+    "pages": {"type": "string"},
+    "publisher": {"type": "string"},
+    "doi": {
+      "type": "string",
+      "description": "Bare DOI, no URL prefix."
+    },
+    "pmid": {"type": ["integer", "string"]},
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "open_access": {"type": "boolean"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

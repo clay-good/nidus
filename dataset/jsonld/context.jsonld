@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "nidus": "https://github.com/claygood/nidus/ontology#",
+    "schema": "https://schema.org/",
+    "bqbiol": "http://biomodels.net/biology-qualifiers/",
+    "identifiers": "https://identifiers.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Parameter": "nidus:Parameter",
+    "Citation": "schema:ScholarlyArticle",
+    "Tier": "nidus:ConfidenceTier",
+
+    "id": "@id",
+    "name": "schema:name",
+    "value": "schema:value",
+    "units": "schema:unitText",
+    "tier": "nidus:confidenceTier",
+    "tier_rationale": "nidus:tierRationale",
+    "citations": {"@id": "nidus:citedBy", "@type": "@id"},
+    "primary_citation": {"@id": "nidus:primaryCitation", "@type": "@id"},
+    "subsystem": "nidus:subsystem",
+    "trajectory": "nidus:trajectory",
+    "applicability": "nidus:applicability",
+
+    "doi": {"@id": "bqbiol:isDescribedBy", "@type": "@id"},
+    "pmid": "nidus:pmid",
+    "title": "schema:headline",
+    "authors": "schema:author",
+    "year": "schema:datePublished",
+    "journal": "schema:publication"
+  }
+}

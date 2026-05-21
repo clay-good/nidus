@@ -1,0 +1,40 @@
+{
+  "$schema": "../schema/tier.schema.json",
+  "A": {
+    "label": "Well-established",
+    "criteria": [
+      "Three or more independent peer-reviewed studies",
+      "Confidence intervals overlap across studies",
+      "Mechanism is biophysically grounded",
+      "Validated in two or more distinct populations"
+    ],
+    "examples": []
+  },
+  "B": {
+    "label": "Supported",
+    "criteria": [
+      "One or two peer-reviewed longitudinal studies (n>=100)",
+      "Plausible mechanism",
+      "No strong contradicting evidence in the literature"
+    ],
+    "examples": []
+  },
+  "C": {
+    "label": "Provisional",
+    "criteria": [
+      "Single study, or cross-sectional only, or small n",
+      "Mechanism speculative or contested",
+      "Used as a model parameter only when no better data exists"
+    ],
+    "examples": []
+  },
+  "D": {
+    "label": "Unknown",
+    "criteria": [
+      "No quantitative data in the published literature",
+      "Channel or quantity hypothesised but unmeasured",
+      "Listed for hypothesis-generation purposes only"
+    ],
+    "examples": []
+  }
+}

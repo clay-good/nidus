@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/claygood/nidus/dataset/schema/tier.schema.json",
+  "title": "Nidus Tier Definitions",
+  "description": "Confidence-tier definitions for parameter provenance.",
+  "type": "object",
+  "patternProperties": {
+    "^[A-D]$": {
+      "type": "object",
+      "required": ["label", "criteria"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 3
+        },
+        "criteria": {
+          "type": "array",
+          "items": {"type": "string"},
+          "minItems": 1
+        },
+        "examples": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  },
+  "properties": {
+    "$schema": {"type": "string"}
+  },
+  "additionalProperties": false
+}

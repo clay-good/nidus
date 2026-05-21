@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/claygood/nidus/dataset/schema/parameter.schema.json",
+  "title": "Nidus Parameter",
+  "description": "A single physiological parameter with provenance, value, optional trajectory, and confidence tier.",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "subsystem",
+    "value",
+    "tier",
+    "tier_rationale",
+    "citations",
+    "extraction"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Dotted identifier: <subsystem_group>.<category>.<variable>.<aspect>",
+      "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Human-readable name."
+    },
+    "subsystem": {
+      "type": "string",
+      "enum": [
+        "maternal_cardiovascular",
+        "maternal_respiratory",
+        "maternal_renal",
+        "placental_structure",
+        "placental_gas_exchange",
+        "placental_glucose",
+        "fetal_circulation",
+        "fetal_growth",
+        "fetal_metabolism"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "description": "Optional finer-grained category within the subsystem."
+    },
+    "value": {
+      "type": "object",
+      "required": ["central", "units"],
+      "additionalProperties": false,
+      "properties": {
+        "central": {
+          "type": "number",
+          "description": "Best central estimate."
+        },
+        "low": {
+          "type": "number",
+          "description": "Lower bound (e.g. CI low)."
+        },
+        "high": {
+          "type": "number",
+          "description": "Upper bound (e.g. CI high)."
+        },
+        "units": {
+          "type": "string",
+          "description": "SI or domain-conventional units, e.g. 'L/min', 'mmHg', 'g'."
+        },
+        "distribution": {
+          "type": "string",
+          "enum": ["normal", "lognormal", "uniform", "empirical"]
+        },
+        "ci": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence interval level for low/high, e.g. 0.95."
+        }
+      }
+    },
+    "trajectory": {
+      "type": "object",
+      "description": "Optional gestational-age-dependent trajectory.",
+      "required": ["type", "params"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "constant",
+            "linear",
+            "polynomial",
+            "gaussian",
+            "logistic",
+            "exponential",
+            "piecewise"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "description": "Form-specific parameters."
+        },
+        "valid_range_weeks": {
+          "type": "array",
+          "items": {"type": "number", "minimum": 0, "maximum": 45},
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["A", "B", "C", "D"]
+    },
+    "tier_rationale": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Why this tier was assigned. Must reference the evidence base."
+    },
+    "citations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1,
+      "description": "Citation keys; must resolve to entries in dataset/citations/citations.json."
+    },
+    "primary_citation": {
+      "type": "string",
+      "description": "Optional. The single most load-bearing citation. Must be present in 'citations'."
+    },
+    "extraction": {
+      "type": "object",
+      "required": ["review_status"],
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string",
+          "description": "How the value was extracted, e.g. 'table_2_column_3', 'figure_4_digitised'."
+        },
+        "by": {
+          "type": "string",
+          "description": "Who extracted the value."
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_status": {
+          "type": "string",
+          "enum": ["unverified", "verified", "contested"]
+        },
+        "reviewer": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "applicability": {
+      "type": "object",
+      "description": "Population the parameter applies to and known exclusions.",
+      "properties": {
+        "population": {"type": "string"},
+        "excludes": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Caveats, modelling notes, extrapolation warnings."
+    }
+  },
+  "additionalProperties": false
+}

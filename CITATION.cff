@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "Nidus: a curated dataset of human gestational physiology parameters"
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - family-names: "Good"
+    given-names: "Clay"
+abstract: >
+  A curated, citation-backed, confidence-tier-annotated dataset of human
+  gestational physiology parameters covering maternal cardiovascular
+  adaptation, placental transport, and fetal development from 8 to 40
+  weeks gestation. Distributed as a pip-installable Python package
+  (`nidus`) with an interactive Streamlit dashboard. Each parameter is
+  annotated with a confidence tier (A/B/C/D), at least one peer-reviewed
+  citation linked by DOI or PMID, and an extraction-and-review record.
+keywords:
+  - pregnancy
+  - gestational physiology
+  - maternal-fetal medicine
+  - placenta
+  - physiological modeling
+  - open dataset
+  - confidence tiers
+  - FAIR data
+license: MIT
+license-url: "https://opensource.org/licenses/MIT"
+repository-code: "https://github.com/claygood/nidus"
+url: "https://github.com/claygood/nidus"
+version: 0.3.0-dev
+# A Zenodo DOI will be added on the first v0.3.0 release.
+# doi: 10.5281/zenodo.XXXXXXX
