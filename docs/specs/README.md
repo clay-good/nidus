@@ -1,44 +1,46 @@
 # Nidus Specifications
 
-## Current direction (ACTIVE)
+The active design is split across two release-targeted directories:
+**v0.3** (dataset, Python package, dashboard, outreach essay) and
+**v0.4** (mechanistic-modeling interop with SBML, CellML, and
+PhysioCell).
 
-The active design is split across two release-targeted directories: v0.3 (dataset, package, dashboard, essay) and v0.4 (mechanistic-modeling interop).
+## v0.3 — Dataset, package, dashboard, essay
 
-**v0.3** — Dataset, Python package, dashboard, and outreach essay. Lives in [`v0.3/`](v0.3/).
+Lives in [`v0.3/`](v0.3/).
 
 | Spec | File                                                                | Status                                                                |
 | ---- | ------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| 00   | [`v0.3/00-overview.md`](v0.3/00-overview.md)            | **READ FIRST for v0.3.** What we are doing and why.                  |
-| 01   | [`v0.3/01-dataset-and-dashboard.md`](v0.3/01-dataset-and-dashboard.md) | **Active.** Dataset + Python package + Streamlit dashboard. Primary work. |
-| 02   | [`v0.3/02-sbml-cellml-export.md`](v0.3/02-sbml-cellml-export.md)       | **Superseded** by `v0.4/01-mechanistic-modeling-interop.md`.          |
-| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)       | **Active.** Essay in the repository + Zenodo deposit.                |
+| 00   | [`v0.3/00-overview.md`](v0.3/00-overview.md)                        | **READ FIRST for v0.3.** What we are doing and why.                  |
+| 01   | [`v0.3/01-dataset-and-dashboard.md`](v0.3/01-dataset-and-dashboard.md) | **Active.** Dataset + Python package + Streamlit dashboard.       |
+| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)    | **Active.** Essay in the repository + Zenodo deposit on release.    |
 
-**v0.4** — Mechanistic-modeling interop (SBML, CellML, PhysioCell). Lives in [`v0.4/`](v0.4/).
+## v0.4 — Mechanistic-modeling interop
 
-| Spec | File                                                                       | Status                                                                |
-| ---- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| 00   | [`v0.4/00-overview.md`](v0.4/00-overview.md)                               | **READ FIRST for v0.4.** Why interop is now primary, not conditional. |
-| 01   | [`v0.4/01-mechanistic-modeling-interop.md`](v0.4/01-mechanistic-modeling-interop.md) | **Active.** Full implementation plan for SBML, CellML, PhysioCell exports + repository submissions. |
+Lives in [`v0.4/`](v0.4/). The earlier conditional SBML/CellML plan
+was promoted to active primary work and expanded to include PhysioCell
+once community adoption became the binding constraint (not maintenance
+load).
 
-## Superseded (deprecation stubs)
+| Spec | File                                                                                  | Status                                                                |
+| ---- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| 00   | [`v0.4/00-overview.md`](v0.4/00-overview.md)                                          | **READ FIRST for v0.4.** Why interop is now primary.                  |
+| 01   | [`v0.4/01-mechanistic-modeling-interop.md`](v0.4/01-mechanistic-modeling-interop.md)  | **Active.** Full implementation plan: SBML, CellML, PhysioCell + repository submissions + composed top-level pregnancy model. |
 
-The following specs were written during the earlier Rust-prototype phase and are superseded by the v0.3 design. Each file is a one-paragraph deprecation stub pointing here. Original content lives in git history (`git log -- docs/specs/<filename>`).
+## Earlier (pre-pivot) specs
 
-| File                                                                  | Original intent                              |
-| --------------------------------------------------------------------- | -------------------------------------------- |
-| [`SPEC.md`](SPEC.md)                                                  | Original Rust simulator design.              |
-| [`SPEC_V0.2.md`](SPEC_V0.2.md)                                        | v0.2 simulator roadmap.                      |
-| [`01-parameter-database.md`](01-parameter-database.md)                | Simulator parameter database work stream.    |
-| [`02-subsystem-completion.md`](02-subsystem-completion.md)            | Simulator subsystem completion.              |
-| [`03-validation-suite.md`](03-validation-suite.md)                    | Simulator validation suite.                  |
-| [`04-python-bindings.md`](04-python-bindings.md)                      | PyO3 bindings to Rust kernel.                |
-| [`05-dashboard.md`](05-dashboard.md)                                  | Simulator-era dashboard.                     |
-| [`06-cli-and-reproducibility.md`](06-cli-and-reproducibility.md)      | `nidus run` Rust CLI.                        |
-| [`07-examples-and-tutorials.md`](07-examples-and-tutorials.md)        | Simulator examples/tutorials.                |
-| [`08-distribution.md`](08-distribution.md)                            | Simulator distribution / release.            |
-| [`09-testing-and-ci.md`](09-testing-and-ci.md)                        | Simulator-era testing/CI.                    |
-| [`10-population-modeling.md`](10-population-modeling.md)              | Cohort sampling in the simulator.            |
-| [`11-hypothesis-generalization.md`](11-hypothesis-generalization.md)  | Hypothesis pipeline generalisation.          |
-| [`12-code-hygiene.md`](12-code-hygiene.md)                            | Rust code hygiene.                           |
+The pre-v0.3 spec files (the original Rust-simulator design and
+twelve numbered work-stream plans) lived alongside this README until
+the dataset-first pivot. They were marked superseded for a while; once
+nothing in the active design references them any more, they were
+deleted. The original content is preserved in git history; recover any
+of them with:
 
-These were written when nidus was conceived as a Rust simulator of coupled maternal-placental-fetal physiology. That direction was determined to be misaligned with both the audience (perinatal researchers, almost all Python/R users) and the impact pathway (existing mechanistic modelling is well-served by CellML, COPASI, PhysioCell). See [`v0.3/00-overview.md`](v0.3/00-overview.md) for the full reasoning.
+```
+git log --all --diff-filter=D -- docs/specs/SPEC.md
+git show <commit>:docs/specs/01-parameter-database.md
+```
+
+The pivot reasoning is captured in [`v0.3/00-overview.md`](v0.3/00-overview.md);
+the prior architectural state is preserved at the `v0.2-archive` git
+tag.

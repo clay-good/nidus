@@ -1,8 +1,8 @@
 # Spec 01 — Mechanistic-Modeling Interop: SBML, CellML, PhysioCell
 
-**Status:** Active — primary v0.4 work.
+**Status:** Active — primary v0.4 work; spec finalised, implementation not yet started. Open questions all resolved (see §16). Implementation order will be CellML first, then SBML, then the composed top-level model, then PhysioCell.
 **Target release:** `v0.4.0`.
-**Supersedes:** [`v0.3/02-sbml-cellml-export.md`](../v0.3/02-sbml-cellml-export.md).
+**Supersedes:** the earlier `v0.3/02-sbml-cellml-export.md` (now deleted; preserved in git history).
 **Depends on:** v0.3.0 shipped (dataset stable, schemas frozen).
 
 ---
@@ -434,13 +434,14 @@ a constraint" guidance. Calendar elapsed time, not hours.
 | Phase | Work | Calendar |
 | ----- | ---- | -------- |
 | 1     | `python/nidus/export/sbml.py` — all 10 SBML submodels, libSBML, MIRIAM + nidus annotations, round-trip validation against NumPy reference. | 1–2 weeks |
-| 2     | `python/nidus/export/cellml.py` — CellML equivalents. | 1 week |
-| 3     | `python/nidus/export/physiocell.py` + example config + tutorial notebook. | 3–5 days |
-| 4     | `nidus export` CLI extensions + CI integration + docs site exports pages. | 3 days |
-| 5     | BioModels Database submission + curator iteration. | 6–10 weeks (mostly waiting) |
-| 6     | Physiome Model Repository workspace + exposure. | 1–3 weeks |
-| 7     | PhysioCell community announcement + tutorial PR. | 1 week |
-| 8     | Outreach essay update + bioRxiv companion (optional). | 1 week |
+| 2     | `python/nidus/export/cellml.py` — CellML 2.0 equivalents + 1.1 fallback. | 1.5 weeks |
+| 3     | Top-level composed pregnancy model (SBML `comp` + CellML import) with coupling annotations. | 1 week |
+| 4     | `python/nidus/export/physiocell.py` — parameters.xml + real multicellular tissue example + tutorial notebook with parameter-modification walkthrough. | 1–2 weeks |
+| 5     | `nidus export` CLI extensions + CI integration + docs site exports pages. | 3 days |
+| 6     | BioModels Database submission + curator iteration. | 6–10 weeks (mostly waiting) |
+| 7     | Physiome Model Repository workspace + exposure. | 1–3 weeks |
+| 8     | PhysioCell community announcement + tutorial PR. | 1 week |
+| 9     | Outreach essay update + bioRxiv companion (optional). | 1 week |
 
 Total local development: ~4 weeks of evenings/weekends.
 Total external (curator review): variable, can run in parallel.
@@ -448,44 +449,124 @@ Total external (curator review): variable, can run in parallel.
 ## 15. Success criteria for `v0.4.0`
 
 - [ ] All 10 SBML files produced; pass `libSBML.checkConsistency()`.
-- [ ] All 10 CellML files produced; pass `libcellml.Validator`.
+- [ ] All 10 CellML 2.0 files produced; pass `libcellml.Validator`.
+- [ ] CellML 1.1 fallback emitted for each model (under `exports/cellml/v1.1/`).
+- [ ] **Top-level composed pregnancy model** shipped for both SBML and CellML, with `nidus:couplingType` annotations on every cross-submodel link.
 - [ ] PhysioCell `nidus-parameters.xml` produced; XSD-validates.
+- [ ] **Real multicellular tissue example** shipped: 2D placental-villous slice with BioFVM diffusion, GLUT1/GLUT3 transport, comparable outputs to the dataset.
+- [ ] PhysioCell tutorial notebook walks through the simulation, including an IUGR parameter-modification example.
 - [ ] COMBINE archives bundled and validated.
 - [ ] Round-trip simulation passes for every algebraic and ODE submodel.
-- [ ] Every exported parameter carries MIRIAM citation + nidus tier
-      annotation.
-- [ ] `nidus export` CLI shipped with `--format sbml|cellml|physiocell|combine`.
+- [ ] Every exported parameter carries MIRIAM citation + nidus tier annotation.
+- [ ] `nidus export` CLI shipped with `--format sbml|cellml|physiocell|combine` and `--cellml-version {2.0,1.1}`.
 - [ ] CI regenerates exports automatically on dataset changes.
-- [ ] BioModels Database submission **submitted** (accession not
-      required at release — curator review is on their timeline).
-- [ ] Physiome Model Repository workspace **created and exposed**.
+- [ ] BioModels Database submission **submitted** (accession not required at release — curator review is on their timeline).
+- [ ] Physiome Model Repository workspace **created and exposed**, including both CellML versions.
 - [ ] PhysioCell tutorial PR **opened** to `MathCancer/PhysiCell-tutorials`.
 - [ ] Docs site has the Exports section live.
 - [ ] Outreach essay updated to mention the three integrations.
-- [ ] First Zenodo deposit at v0.4.0 includes the exports as
-      supplementary files.
+- [ ] First Zenodo deposit at v0.4.0 includes the exports as supplementary files.
+- [ ] BioPortal ontology submission and JOSS paper — deferred to post-v0.4.
 
-## 16. Open questions for the maintainer
+## 16. Open questions — resolved
 
-1. **Top-level "pregnancy model" assembly.** Should the SBML/CellML
-   bundles include a top-level model that *composes* all 10
-   submodels into a maximally-integrated pregnancy simulation? This
-   would be effortful to build correctly (defining coupling between
-   subsystems is exactly the simulator problem we deliberately said
-   "no" to), and could be seen as overreaching. Default
-   recommendation: ship the submodels separately; do not provide a
-   coupled top-level. Curators can be told this is intentional.
-2. **PhysioCell sample tissue model.** Should the worked example be
-   a *real* multicellular tissue simulation, or a minimal placeholder
-   that just demonstrates parameter consumption? Real example is
-   more useful but is much more work. Default: minimal placeholder
-   for v0.4; consider full example in v0.5.
-3. **Ontology submission to BioPortal.** Is the `nidus:` ontology
-   worth submitting as a standalone OWL artefact? Probably yes, but
-   it can land after v0.4 release; not blocking.
-4. **JOSS software paper.** Worth pursuing alongside BioModels
-   submission for an additional citable artefact? Probably yes —
-   JOSS turnaround is fast and reviewer demands are bounded. Defer
-   the decision to v0.4 mid-cycle.
-5. **CellML 2.0 vs. 1.1.** Physiome accepts both. Default to 2.0
-   (current standard); fall back to 1.1 only if curator requests it.
+1. **Top-level "pregnancy model" assembly.** **DECIDED: yes, ship it.**
+   The maintainer's framing: researchers can always update the
+   composition on their end; shipping a complete coupled top-level
+   gives them a much richer starting point than ten disconnected
+   submodels. Implementation note: the coupling has to be honest
+   about what's mechanistic vs. what's just empirical co-evolution
+   (e.g. maternal CO and placental surface area are not directly
+   causally linked — they both rise across gestation). Where the
+   coupling is empirical, document it explicitly in the
+   top-level model's `nidus:couplingNotes` annotation so consumers
+   can override.
+
+2. **PhysioCell sample tissue model.** **DECIDED: real example,
+   not placeholder.** The worked example will be a multicellular
+   placental-villous tissue simulation built on real PhysioCell
+   primitives (BioFVM diffusion solver, real cell types, real
+   parameter values from the nidus dataset). Targets: villous
+   surface, intervillous space, fetal capillary network, with
+   glucose and O2 diffusion through the tissue. Cost: noticeably
+   more work than a placeholder; value: gives a PhysioCell user a
+   real starting point they can fork rather than re-implement.
+
+3. **Ontology submission to BioPortal.** **DECIDED: yes, but later.**
+   Not blocking v0.4 release. Schedule for the post-v0.4 window
+   alongside any cleanup that emerges from BioModels curator review.
+
+4. **JOSS software paper.** **DECIDED: yes, but later.** Same
+   timing as BioPortal — post-v0.4 once the citable artefacts
+   (BioModels accession, Physiome workspace URL, Zenodo DOI) are in
+   hand. JOSS reviewer turnaround is fast enough that we can defer
+   without losing momentum.
+
+5. **CellML 2.0 vs. 1.1.** **DECIDED: ship both, with 2.0 primary.**
+   The generator emits CellML 2.0 as the canonical format and also
+   produces a CellML 1.1 fallback for each model (the libcellml API
+   supports both versions). This makes life easier for researchers
+   whose toolchains haven't moved to 2.0 yet (OpenCOR still supports
+   1.1 in legacy mode; some Physiome catalogue entries are still
+   1.1). The fallback is automated from the same source, so the
+   maintenance cost is bounded.
+
+## 17. Additional scope from the resolved open questions
+
+### 17.1 Top-level composed pregnancy model (added)
+
+Beyond the 10 submodels, v0.4 ships a top-level composition:
+
+- **SBML**: a `comp`-based assembly that imports all 10 submodels
+  and connects them through shared species (gestational age `t`,
+  maternal CO, placental surface area, etc.) at the level the
+  literature actually establishes.
+- **CellML**: a top-level component that imports the per-submodel
+  components and wires them together via algebraic relationships.
+- The composition is annotated with `nidus:couplingType` per edge:
+  `"mechanistic"` (causally established), `"empirical"` (co-varies
+  in the literature but no direct mechanism), or `"sequential"`
+  (downstream consumer of an upstream variable, no feedback).
+- A `nidus:couplingNotes` predicate carries the prose justification
+  for non-trivial couplings.
+
+The top-level model is itself Tier C, by tier-propagation rules: its
+tier is the minimum of its inputs (mostly B) further degraded for
+the empirical coupling step. This is documented openly; users who
+disagree with a coupling can fork the model and adjust.
+
+### 17.2 Real PhysioCell tissue example (added)
+
+The PhysioCell worked example is now a real simulation, not a
+placeholder. Specifically:
+
+- **Geometry**: a 2D placental-villous slice with intervillous
+  space (maternal blood) on one side, fetal capillary network on
+  the other, syncytiotrophoblast barrier in between.
+- **Cell types**: maternal RBCs (BioFVM density for O2/glucose
+  delivery), syncytiotrophoblast cells (with GLUT1/GLUT3
+  transporters), fetal endothelial cells.
+- **Diffusion**: BioFVM solver for O2 and glucose with the nidus
+  dataset's gas exchange parameters and glucose Km/Vmax kinetics.
+- **Outputs**: O2 and glucose flux per unit villous surface area,
+  comparable to the dataset's `placental_gas_exchange` and
+  `placental_glucose` values.
+- **Notebook**: walks through running the simulation, modifying a
+  parameter (e.g. dropping `placental_structure.term_area_m2` by
+  20% to simulate IUGR), and observing the downstream effect on
+  fetal-side glucose delivery.
+
+All parameter values are pulled from `nidus.load()` — the example is
+data-driven, not hand-tuned, so it stays in sync with the dataset.
+
+### 17.3 CellML 1.1 fallback (added)
+
+Each CellML 2.0 export has a companion 1.1 export under
+`exports/cellml/v1.1/`. The generator switches output mode based on
+a `--cellml-version` flag in `nidus export`. Submission to Physiome
+includes both versions in the workspace.
+
+### 17.4 Deferred to post-v0.4
+
+- BioPortal OWL submission (after Section 5.3 ontology hardens).
+- JOSS software paper.

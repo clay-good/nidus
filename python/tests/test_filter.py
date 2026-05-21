@@ -62,8 +62,10 @@ def test_filter_by_review_status(ds: nidus.Dataset) -> None:
     # Most parameters still need human re-verification against original PDFs.
     # This assertion is a guardrail against accidental mass-promotion, not
     # a fixed target — the count evolves as parameters are individually
-    # verified or contested.
-    assert len(unverified) >= 40
+    # verified or contested. The lower bound is loose enough that ongoing
+    # verification work doesn't break it but tight enough to catch a bug
+    # that flips all 54 parameters to verified by accident.
+    assert len(unverified) >= 30
 
 
 def test_filter_no_constraints_returns_all(ds: nidus.Dataset) -> None:

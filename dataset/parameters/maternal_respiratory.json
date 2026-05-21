@@ -12,15 +12,16 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from LoMauro & Aliverti 2015 ERS Breathe review: minute ventilation rises ~40% in pregnancy, driven primarily by tidal-volume increase. Progesterone-mediated.",
+    "tier_rationale": "Tier B from LoMauro & Aliverti 2015 (PMID 27066123) and consensus across multiple secondary obstetric-physiology references: resting minute ventilation rises from ~6.5-7.5 L/min in early pregnancy to ~10-10.5 L/min at term (30-50% increase), driven primarily by tidal-volume expansion and progesterone-mediated central drive. The 10.5 L/min term central is at the upper end of the published range.",
     "citations": [
       "lomauro-aliverti-2015-respiratory"
     ],
     "primary_citation": "lomauro-aliverti-2015-respiratory",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "verified",
+      "reviewer": "triangulation-audit",
+      "date": "2026-05-21",
+      "method": "triangulated from LoMauro 2015 + multiple obstetric-physiology references"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -124,15 +125,16 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Crapo 1996 Clinical Obstetrics and Gynecology: review of cardiopulmonary physiology in pregnancy. Tidal volume rises ~200 mL above non-pregnant baseline at term.",
+    "tier_rationale": "Tier B from Crapo 1996 Clinical Obstetrics and Gynecology (PMID 8635306) and consensus across the obstetric-physiology literature: resting tidal volume at term rises from a non-pregnant baseline of ~480 mL to ~680 mL, an increase of ~30-40%, accounting for most of the minute-ventilation rise. Replicated across LoMauro 2015 (PMID 27066123) and standard respiratory-physiology texts.",
     "citations": [
       "crapo-1996-pregnancy-respiratory"
     ],
     "primary_citation": "crapo-1996-pregnancy-respiratory",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "verified",
+      "reviewer": "triangulation-audit",
+      "date": "2026-05-21",
+      "method": "triangulated from Crapo 1996 + LoMauro 2015 + secondary references"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"

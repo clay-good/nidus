@@ -15,18 +15,17 @@ The dataset is the centerpiece. Everything else (Python package, dashboard, opti
 - **An essay in the repository** is the outreach vehicle. No academic methods paper.
 - **Dataset-only scope.** No new mechanistic biology beyond the curated parameters.
 - **The earlier Rust prototype is archived,** not deleted: see the `v0.2-archive` git tag.
-- **The pre-v0.3 spec files** (`docs/specs/01-*.md` through `12-*.md`, `SPEC.md`, `SPEC_V0.2.md`) are one-paragraph deprecation stubs pointing to the v0.3 design. Their original content lives in git history.
+- **Pre-pivot specs have been deleted.** The original Rust-era specs (`docs/specs/SPEC.md`, `SPEC_V0.2.md`, and twelve numbered work-stream plans) used to live alongside the active v0.3 design as deprecation stubs; once nothing referenced them, they were removed. Recover any from git history.
 
 ## Where the work lives
 
 | Path                                          | Status                                                              |
 | --------------------------------------------- | ------------------------------------------------------------------- |
-| `docs/specs/v0.3/00-overview.md`              | **READ FIRST.** v0.3 design and rationale.                          |
+| `docs/specs/v0.3/00-overview.md`              | **READ FIRST for v0.3.** Dataset-first design and rationale.        |
 | `docs/specs/v0.3/01-dataset-and-dashboard.md` | **Active.** Dataset + Python package + dashboard. Primary work.     |
-| `docs/specs/v0.3/02-sbml-cellml-export.md`    | **Conditional.** SBML/CellML export — execute only on adoption.     |
-| `docs/specs/v0.3/03-outreach-and-essay.md`    | **Active.** Blog essay outreach.                                    |
-| `docs/specs/01-*.md` … `12-*.md`              | **Superseded.** Deprecation stubs pointing to the v0.3 design.      |
-| `docs/specs/SPEC.md`, `SPEC_V0.2.md`          | **Superseded.** Deprecation stubs.                                  |
+| `docs/specs/v0.3/03-outreach-and-essay.md`    | **Active.** Essay outreach (in-repo).                               |
+| `docs/specs/v0.4/00-overview.md`              | **READ FIRST for v0.4.** Why interop is primary.                    |
+| `docs/specs/v0.4/01-mechanistic-modeling-interop.md` | **Active.** SBML + CellML + PhysioCell exports + composed model. |
 | `dataset/`                                    | The curated dataset. JSON, schema-validated, FAIR-compliant.        |
 | `python/`                                     | The `nidus` package source. Pure Python.                            |
 | `dashboard/`                                  | The Streamlit dashboard (scaffolded; pages land incrementally).     |

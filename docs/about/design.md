@@ -30,7 +30,7 @@ The **dataset is the centerpiece**; everything else is a presentation layer.
 | PyO3 bindings                                     | Same — no compute-bound paths in the v0.3 dashboard.                                                                |
 | Custom domain (.org/.com)                         | GitHub + PyPI + Streamlit Cloud are the canonical URLs and don't need renewing.                                     |
 | Methods paper in PLOS Comp Bio / JTB / similar    | 12–18 months for marginal upside over a blog essay. The audience finds tools via Google + GitHub, not journal TOCs. |
-| Mechanistic competition with CellML / COPASI      | The community standard for mechanistic gestational modelling already lives there. SBML/CellML export from this dataset is a deferred interop play (executed only if v0.3 sees adoption). |
+| Mechanistic competition with CellML / COPASI      | The community standard for mechanistic gestational modelling already lives there. v0.4 adds *interop* with these platforms (SBML, CellML, PhysioCell exports), not a competing engine. |
 | Subsystem expansion (immune, respiratory, etc.)   | Out of scope for v0.3. Curate what we already have first.                                                            |
 | Twin / higher-order pregnancies                   | Out of scope.                                                                                                        |
 | Embryonic period (<8 weeks)                       | Out of scope.                                                                                                        |
@@ -50,9 +50,17 @@ The **dataset is the centerpiece**; everything else is a presentation layer.
 
 ## The full design specs
 
-The numbered design documents live at [`docs/specs/v0.3/`](https://github.com/clay-good/nidus/tree/main/docs/specs/v0.3/) in the repository:
+The active design is split across two release-targeted directories:
 
-- [`00-overview.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/00-overview.md) — what we are doing and why.
-- [`01-dataset-and-dashboard.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/01-dataset-and-dashboard.md) — the primary work.
-- [`02-sbml-cellml-export.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/02-sbml-cellml-export.md) — conditional CellML/SBML interop.
-- [`03-outreach-and-essay.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/03-outreach-and-essay.md) — blog essay strategy.
+**v0.3** — Dataset, Python package, dashboard, outreach essay
+(<https://github.com/clay-good/nidus/tree/main/docs/specs/v0.3/>):
+
+- [`00-overview.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/00-overview.md) — what v0.3 ships and why.
+- [`01-dataset-and-dashboard.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/01-dataset-and-dashboard.md) — primary work.
+- [`03-outreach-and-essay.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/03-outreach-and-essay.md) — outreach (this essay).
+
+**v0.4** — Mechanistic-modeling interop
+(<https://github.com/clay-good/nidus/tree/main/docs/specs/v0.4/>):
+
+- [`00-overview.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.4/00-overview.md) — why interop is primary v0.4 work.
+- [`01-mechanistic-modeling-interop.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.4/01-mechanistic-modeling-interop.md) — full implementation plan for SBML, CellML, PhysioCell + composed top-level pregnancy model.

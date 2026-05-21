@@ -1,5 +1,14 @@
 # Spec 00 — v0.4 Direction: Mechanistic-Modeling Interop
 
+## Status
+
+Spec finalised; implementation not yet started. All five open
+questions from the implementation spec have been resolved by the
+maintainer (top-level pregnancy model included, real PhysioCell
+tissue example, both CellML 2.0 and 1.1, BioPortal/JOSS deferred
+to post-v0.4). Implementation will begin once v0.3 is closer to
+release.
+
 ## TL;DR
 
 v0.3 ships nidus as a Python-and-dashboard dataset. v0.4 ships nidus

@@ -1,6 +1,6 @@
 # Spec 03 — Outreach: Essay in the Repository
 
-**Status:** Active — shipped alongside Spec 01 `v0.3.0`.
+**Status:** Active. Essay text + figures shipped to `main` (`docs/about/essay.md`, `docs/assets/essay/`). The outreach channel announcements remain deferred until v0.3.0 is tagged.
 **Depends on:** Spec 01 complete; Zenodo DOI minted; dashboard live.
 
 ---
@@ -90,15 +90,21 @@ output.
 
 ## 6. Outreach checklist (after the essay is in the repo)
 
-- [ ] Push to `main` so GitHub Pages serves the essay.
-- [ ] Post link on Twitter / Mastodon / Bluesky with a short summary.
-- [ ] Post to relevant subreddits if appropriate: r/Bioinformatics, r/datasets.
-- [ ] Email 5–10 perinatal researchers whose work is cited in the dataset. Short, no-strings-attached: "I built this; you might find it useful; it cites your paper at parameter X."
-- [ ] Submit to Hacker News (Show HN).
-- [ ] Submit to relevant newsletters: Data Is Plural, etc.
-- [ ] Update GitHub repository's About / topics / pinned status to point at the essay.
+Status as of the current commit on `main`:
 
-Whole pass: half a day of work.
+- [x] Essay written and pushed to `main` (`docs/about/essay.md`); three figures committed under `docs/assets/essay/`.
+- [x] Mkdocs nav exposes the essay under About → "Essay — confidence tiers".
+- [ ] GitHub Pages serving — *pending the maintainer-side Pages source flip; once enabled, the essay is live without further work.*
+- [ ] Post link on Twitter / Mastodon / Bluesky with a short summary — deferred until v0.3.0 actually ships.
+- [ ] Post to relevant subreddits if appropriate: r/Bioinformatics, r/datasets — deferred until v0.3.0 ships.
+- [ ] Email 5–10 perinatal researchers whose work is cited in the dataset. Short, no-strings-attached: "I built this; you might find it useful; it cites your paper at parameter X." — deferred until v0.3.0 ships and DOI is minted.
+- [ ] Submit to Hacker News (Show HN) — deferred.
+- [ ] Submit to relevant newsletters: Data Is Plural, etc. — deferred.
+- [ ] Update GitHub repository's About / topics / pinned status to point at the essay — deferred until v0.3.0 ships.
+
+The outreach-channel checklist is intentionally on hold until v0.3.0
+is tagged and the dataset has a permanent Zenodo DOI. The essay itself
+is shipped and discoverable to anyone browsing the repo.
 
 ## 7. Optional: parallel preprint
 

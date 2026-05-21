@@ -101,6 +101,7 @@ nav:
     - Schema: dataset/schema.md
     - Tier system: dataset/tiers.md
     - Subsystems: dataset/subsystems.md
+    - Verified examples: dataset/verified-examples.md
   - Tutorials:
     - Overview: tutorials/index.md
     - 01 — Parameter Explorer: notebooks/01_parameter_explorer.ipynb

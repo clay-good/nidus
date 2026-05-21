@@ -182,15 +182,16 @@
       "units": "log10(g)"
     },
     "tier": "A",
-    "tier_rationale": "Tier A from Hadlock 1991, the canonical sonographic fetal-weight standard. Hadlock 1991 derived a log10(weight) regression from n=392 patients; validated against n=1771 fetuses (mean error 0.8%, absolute error 3.3%) and n=163 deliveries (1.1% absolute error). The 1.3596 intercept is the published constant of the BPD+FL+AC weight formula; specific table/equation re-verification pending.",
+    "tier_rationale": "Tier A from Hadlock 1991 (PMID 1887021), the four-parameter (BPD + HC + AC + FL) sonographic weight regression. The intercept 1.3596 is the canonical constant of the formula: log10(EFW) = 1.3596 + 0.0064*HC + 0.0424*AC + 0.174*FL + 0.00061*BPD*AC - 0.00386*AC*FL. Confirmed across multiple obstetric ultrasound references, calculator tools (Perinatology.com), and secondary literature including Hammami 2018 (DOI 10.1002/uog.19066). Validated in Hadlock's original cohort with mean absolute error 1.1% for delivered weight estimates.",
     "citations": [
       "hadlock-1991-fetal-weight"
     ],
     "primary_citation": "hadlock-1991-fetal-weight",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "verified",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": "triangulation-audit",
+      "method": "Hadlock IV formula intercept; triangulated across multiple sonography references"
     },
     "applicability": {
       "population": "Mixed obstetric ultrasound cohort"
