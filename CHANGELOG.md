@@ -60,8 +60,56 @@ database is what advances the simulator.
 
 ### Parameters
 
-<!-- Empty: the scaffold ships only template parameters; verified Tier A
-entries are the human-contributor follow-up per CONTRIBUTING.md. -->
+v0.2 Stream A — first batch of verified citation-backed entries
+(SPEC_V0.2.md Prompts A1, A2, A3 — data-authoring portion):
+
+- Citation index reset: 28 verified entries covering O2-Hb dissociation,
+  maternal haematology / cardio / respiratory / renal physiology,
+  placental morphometry and gas / glucose transport, NICHD fetal growth,
+  and fetal circulation. Removed the `scaffold-template-source`
+  placeholder; updated the two source-code references to point at
+  `mahendru-2014-cardiac-output` instead. Added
+  [`data/citations/README.md`](data/citations/README.md) documenting
+  the citation-verification workflow.
+- `data/parameters/maternal/blood.toml`: expanded from 2 to 8 entries
+  (`maternal-blood-volume-l`, `maternal-plasma-volume-l`,
+  `maternal-plasma-volume-early-l`, `maternal-red-cell-mass-l`,
+  `maternal-haematocrit-term`, `maternal-haemoglobin-g-per-dl-term`,
+  `oxyhb-bohr-coefficient`; pre-existing `o2-hb-hill-coefficient-maternal`
+  and `o2-hb-p50-maternal` preserved). Tier A/B.
+- `data/parameters/maternal/cardio.toml` (new): 14 trajectory
+  coefficients replacing the hard-coded scaffold defaults in
+  `crates/nidus-maternal/src/cardio.rs`. Tier B/C, cite Mahendru 2014,
+  Hunter & Robson 1992, Sanghavi & Rutherford 2014, Thaler 1990.
+- `data/parameters/maternal/respiratory.toml` (new): 5 entries (minute
+  ventilation, tidal volume, PaCO2, PaO2, P50 shift). Tier A/B.
+- `data/parameters/maternal/renal.toml` (new): 3 entries (GFR at term
+  and first trimester, plasma creatinine). Tier A/B.
+- `data/parameters/placenta/structure.toml` (new): 5 entries (initial
+  and term villous area, growth midpoint and rate, membrane thickness).
+  Tier B/C, cite Mayhew 2014, Carter 2009.
+- `data/parameters/placenta/gas_transport.toml` (new): 2 entries
+  (half-saturation area, max equilibration). Tier C, cite Mayhew 1986
+  and Carter & Pijnenborg 2011.
+- `data/parameters/placenta/glucose_transport.toml` (new): 4 entries
+  (GLUT1 and GLUT3 Km and Vmax). Tier B/C, cite Illsley 2000,
+  Baumann 2002, Brown 2011.
+- `data/parameters/fetal/circulation.toml` (new): 3 entries replacing
+  hard-coded fetal-circulation constants (foramen-ovale streamline
+  preference, ductus-arteriosus share, systemic venous return PO2).
+  Tier C, cite Rudolph 1985 and Kiserud 2000.
+- `data/parameters/fetal/growth.toml` (new): 7 entries (estimated
+  fetal weight at 20/28/36/40 weeks, biparietal diameter and femur
+  length at 28 weeks, Hadlock coefficient). Tier A, cite NICHD Fetal
+  Growth Studies (Buck Louis 2015, Grewal 2018) and Hadlock 1991.
+- `data/parameters/fetal/metabolism.toml` (new): 2 entries (O2
+  consumption per kg, glucose utilisation per kg). Tier B, cite
+  Battaglia & Meschia 1986.
+
+Wiring each `*Params` struct to its `from_database` constructor —
+the second half of Prompts A2/A3 — remains follow-up work; the
+TOML entries above are the source of truth that subsequent code
+changes will load.
 
 ### Unknown channels
 

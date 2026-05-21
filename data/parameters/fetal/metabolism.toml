@@ -1,0 +1,25 @@
+# Fetal metabolism parameters.
+
+[[parameter]]
+id = "fetal-metabolism-oxygen-consumption-ml-per-kg-per-min"
+name = "Fetal oxygen consumption per kg"
+description = "Whole-body oxygen consumption of the late-gestation human fetus per kilogram body weight."
+tier = "B"
+unit = "mL O2/kg/min"
+value = { kind = "normal", mean = 6.5, sd = 1.0 }
+citation = "battaglia-meschia-1986-fetal-metabolism"
+population = "Late-gestation human fetus (compiled)"
+age_range = { min_weeks = 28, max_weeks = 40 }
+technique = "Umbilical-vessel arteriovenous-difference Fick estimation"
+
+[[parameter]]
+id = "fetal-metabolism-glucose-utilisation-mg-per-kg-per-min"
+name = "Fetal glucose utilisation per kg"
+description = "Net glucose utilisation by the late-gestation human fetus per kilogram body weight."
+tier = "B"
+unit = "mg/kg/min"
+value = { kind = "normal", mean = 5.0, sd = 1.0 }
+citation = "battaglia-meschia-1986-fetal-metabolism"
+population = "Late-gestation human fetus"
+age_range = { min_weeks = 28, max_weeks = 40 }
+technique = "Umbilical-vein/artery glucose flux"

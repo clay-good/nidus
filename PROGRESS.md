@@ -315,6 +315,94 @@ unchecked item.
     substring on id/name/unit), and `--json` filters.
   The only remaining v0.2 CLI surface is the interactive dashboard.
 
+## v0.2.0 — Researcher-ready
+
+Tracking the prompts from [SPEC_V0.2.md](docs/specs/SPEC_V0.2.md) and the detailed
+specs under [docs/specs/](docs/specs/). Tick boxes as prompts land; partial
+landings record what is done and what remains.
+
+### Stream A — Parameter database
+
+- [x] **Prompt A1 — Citation index population.**
+  [`data/citations/index.toml`](data/citations/index.toml) reset with
+  28 verified entries covering O2-Hb dissociation (Severinghaus 1979,
+  Dash & Bassingthwaighte 2010, Kelman 1966), maternal haematology
+  (Hytten & Chamberlain 1980, Bernstein 2001, de Haas 2017),
+  maternal cardio (Mahendru 2014, Hunter & Robson 1992, Sanghavi &
+  Rutherford 2014, Thaler 1990), respiratory (LoMauro & Aliverti 2015,
+  Crapo 1996), renal (Cheung & Lafayette 2013, Davison & Hytten 1974),
+  placental morphometry and transport (Mayhew 2014, Carter 2009,
+  Burton 2015, Mayhew 1986, Carter & Pijnenborg 2011, Illsley 2000,
+  Baumann 2002, Brown 2011, Cleal & Lewis 2008), fetal growth (Buck
+  Louis 2015 NICHD, Grewal 2018 NICHD, Hadlock 1991), fetal circulation
+  (Rudolph 1985, Kiserud 2000, Sutton 1991), and metabolism / organ
+  maturation (Battaglia & Meschia 1986, Avery & Mead 1959, Burri 2006).
+  Removed the `scaffold-template-source` placeholder; the two source
+  references (validation `builtin.rs` and `tests/maternal_cardio.rs`)
+  now point at `mahendru-2014-cardiac-output`. Added
+  [`data/citations/README.md`](data/citations/README.md) documenting
+  the citation-add and verification workflow.
+
+- [~] **Prompt A2 — Maternal parameter coverage** *(data half complete;
+  `from_database` wiring outstanding).*
+  - `data/parameters/maternal/blood.toml` expanded to 8 entries
+    (O2-Hb, Bohr coefficient, blood volume, plasma volume — term and
+    early, red-cell mass, haematocrit, haemoglobin).
+  - `data/parameters/maternal/cardio.toml` (new): 14 entries mapping
+    one-to-one onto the hard-coded constants in
+    [`crates/nidus-maternal/src/cardio.rs`](crates/nidus-maternal/src/cardio.rs).
+  - `data/parameters/maternal/respiratory.toml` (new): minute
+    ventilation, tidal volume, PaCO2, PaO2, P50 shift.
+  - `data/parameters/maternal/renal.toml` (new): GFR (term and first
+    trimester), plasma creatinine.
+  - Outstanding: `MaternalCardioParams::from_database` (Spec 01,
+    Prompt 01.4) and the equivalent wiring for blood / respiratory /
+    renal parameter consumers — the TOML entries above are the source
+    of truth that the constructor work will load.
+
+- [~] **Prompt A3 — Placental and fetal parameter coverage** *(data
+  half complete; `from_database` wiring outstanding).*
+  - `data/parameters/placenta/structure.toml`: 5 entries (initial /
+    term villous area, growth midpoint and rate, membrane thickness).
+  - `data/parameters/placenta/gas_transport.toml`: 2 entries
+    (half-saturation area, max equilibration).
+  - `data/parameters/placenta/glucose_transport.toml`: 4 entries
+    (GLUT1 / GLUT3 Km and Vmax-per-area).
+  - `data/parameters/fetal/circulation.toml`: 3 entries replacing the
+    hard-coded foramen-ovale, ductus-arteriosus, and systemic-venous
+    PO2 constants in
+    [`crates/nidus-fetal/src/special_circulation.rs`](crates/nidus-fetal/src/special_circulation.rs).
+  - `data/parameters/fetal/growth.toml`: 7 NICHD- and Hadlock-cited
+    entries (EFW at 20/28/36/40 weeks, BPD/FL at 28 weeks, Hadlock
+    coefficient).
+  - `data/parameters/fetal/metabolism.toml`: O2 consumption and
+    glucose utilisation per kg.
+  - Outstanding: structure/transport/circulation `from_database`
+    constructors and the database-driven integration test in
+    `crates/nidus-scenarios/`.
+
+### Streams B–F
+
+- [ ] **Prompt B1** — Reference dataset adapters.
+- [ ] **Prompt B2** — Validation cases (NICHD, placental Doppler,
+  fetal cardiac).
+- [ ] **Prompt B3** — Validation documentation under `docs/validation/`.
+- [ ] **Prompt C1** — PyO3 + maturin bindings for `nidus-py`.
+- [ ] **Prompt C2** — Jupyter quickstart notebook.
+- [ ] **Prompt C3** — Hypothesis / sensitivity in Python.
+- [ ] **Prompt D1** — Interactive dashboard.
+- [ ] **Prompt D2** — End-to-end researcher tutorials.
+- [ ] **Prompt D3** — CLI polish: `nidus run`, `nidus doctor`,
+  `--seed`, `--age-range`.
+- [ ] **Prompt E1** — Release artefacts workflow.
+- [ ] **Prompt E2** — Software citation (`CITATION.cff`, Zenodo).
+- [ ] **Prompt E3** — Reproducibility manifest and `nidus reproduce`.
+- [ ] **Prompt F1** — Examples directory.
+- [ ] **Prompt F2** — Contributor onboarding refresh and issue
+  templates.
+- [ ] **Prompt F3** — CI completeness (maturin, validation gate).
+- [ ] **Prompt F4** — Final PROGRESS / CHANGELOG sweep.
+
 ## Up next
 
 All seventeen SPEC.md §13 prompts have at least their v0.1.0 scope

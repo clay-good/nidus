@@ -1,0 +1,27 @@
+# Placental gas-transport parameters.
+#
+# Trajectory parameters consumed by the PlacentalGasExchange subscriber.
+
+[[parameter]]
+id = "placenta-gas-half-saturation-area-m2"
+name = "Gas exchange half-saturation surface area"
+description = "Villous surface area at which placental gas-equilibration efficiency reaches half of its asymptote."
+tier = "C"
+unit = "m^2"
+value = { kind = "point", value = 6.0, uncertainty = 1.5 }
+citation = "mayhew-1986-gas-diffusion"
+population = "Human placentae across gestation"
+age_range = { min_weeks = 8, max_weeks = 40 }
+caveats = "Phenomenological model parameter mapping morphometric diffusing capacity onto a saturable equilibrator. Validate against UV PO2 endpoint."
+
+[[parameter]]
+id = "placenta-gas-max-equilibration"
+name = "Maximum venous-equilibrator fraction"
+description = "Asymptotic upper bound on placental gas-equilibration efficiency as villous area increases."
+tier = "C"
+unit = "fraction"
+value = { kind = "point", value = 0.78, uncertainty = 0.05 }
+citation = "carter-pijnenborg-2011-gas-exchange"
+population = "Healthy term human placentae"
+age_range = { min_weeks = 8, max_weeks = 40 }
+caveats = "Saturation cap derived to reproduce the textbook 25-40 mmHg UV PO2 window at term."

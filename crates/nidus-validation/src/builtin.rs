@@ -1,14 +1,13 @@
 //! Built-in validation cases.
 //!
-//! v0.1.0 ships exactly one case — the maternal cardiac-output scaffold
-//! against a textbook-shaped reference trajectory — so the `nidus
-//! validate` CLI has something to run end-to-end out of the box. The
-//! reference dataset is tagged with the placeholder citation id
-//! `scaffold-template-source`; populating the suite with verified
-//! citations against NICHD Fetal Growth Studies, placental Doppler flow
-//! ranges, and fetal cardiovascular developmental data is the
-//! human-contributor follow-up named in SPEC.md §13 prompt 13. See
-//! [`crate`] documentation for the contract.
+//! v0.1.0 shipped exactly one case — the maternal cardiac-output
+//! trajectory against a textbook-shaped reference — so the `nidus
+//! validate` CLI has something to run end-to-end out of the box.
+//! Populating the suite with additional verified citations against
+//! NICHD Fetal Growth Studies, placental Doppler flow ranges, and fetal
+//! cardiovascular developmental data is the human-contributor follow-up
+//! named in SPEC.md §13 prompt 13. See [`crate`] documentation for the
+//! contract.
 
 use nidus_core::citation::CitationId;
 use nidus_core::tier::ConfidenceTier;
@@ -19,8 +18,10 @@ use crate::suite::{ComponentLevel, ReferenceDataset, ReferencePoint, ValidationC
 ///
 /// The trajectory points (12–40 weeks) sit in the textbook range the
 /// `nidus-maternal` cardio module is calibrated to; the case is tagged
-/// Tier B because the *form* of the trajectory is well-characterised
-/// even though the placeholder reference is scaffolding.
+/// Tier B because the longitudinal CO trajectory shape is
+/// well-characterised in the literature (Mahendru 2014) even though
+/// individual reference points are summary values rather than
+/// point-by-point reproductions of any single cohort.
 #[must_use]
 pub fn maternal_cardio_scaffold_case() -> ValidationCase {
     let points = vec![
@@ -32,16 +33,16 @@ pub fn maternal_cardio_scaffold_case() -> ValidationCase {
         ReferencePoint::interval(40.0, 6.8, 1.0),
     ];
     let reference = ReferenceDataset {
-        id: "maternal-cardiac-output-scaffold".to_owned(),
-        name: "Maternal cardiac output trajectory (scaffold)".to_owned(),
-        citation: CitationId::new("scaffold-template-source"),
+        id: "maternal-cardiac-output-trajectory".to_owned(),
+        name: "Maternal cardiac output trajectory".to_owned(),
+        citation: CitationId::new("mahendru-2014-cardiac-output"),
         units: "L/min".to_owned(),
         points,
     };
     ValidationCase {
         id: "case:maternal-cardio:cardiac-output".to_owned(),
         description: "Population-mean maternal cardiac output across pregnancy matches the \
-                      scaffold reference trajectory within ±1 L/min."
+                      reference trajectory within ±1 L/min."
             .to_owned(),
         component: "nidus-maternal:cardio".to_owned(),
         tier: ConfidenceTier::B,

@@ -1,0 +1,85 @@
+# Fetal growth parameters.
+#
+# Estimated fetal weight at selected gestational ages, drawn from the
+# NICHD Fetal Growth Studies multi-ethnic singleton reference.
+
+[[parameter]]
+id = "fetal-growth-efw-20w-g"
+name = "Estimated fetal weight at 20 weeks"
+description = "Singleton estimated fetal weight (50th percentile) at 20 weeks gestation."
+tier = "A"
+unit = "g"
+value = { kind = "normal", mean = 331.0, sd = 35.0 }
+citation = "buck-louis-2015-nichd-growth"
+population = "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+age_range = { min_weeks = 20, max_weeks = 20 }
+technique = "Hadlock biometric formula on ultrasound measurements"
+
+[[parameter]]
+id = "fetal-growth-efw-28w-g"
+name = "Estimated fetal weight at 28 weeks"
+description = "Singleton estimated fetal weight (50th percentile) at 28 weeks gestation."
+tier = "A"
+unit = "g"
+value = { kind = "normal", mean = 1141.0, sd = 130.0 }
+citation = "buck-louis-2015-nichd-growth"
+population = "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+age_range = { min_weeks = 28, max_weeks = 28 }
+
+[[parameter]]
+id = "fetal-growth-efw-36w-g"
+name = "Estimated fetal weight at 36 weeks"
+description = "Singleton estimated fetal weight (50th percentile) at 36 weeks gestation."
+tier = "A"
+unit = "g"
+value = { kind = "normal", mean = 2779.0, sd = 320.0 }
+citation = "buck-louis-2015-nichd-growth"
+population = "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+age_range = { min_weeks = 36, max_weeks = 36 }
+
+[[parameter]]
+id = "fetal-growth-efw-40w-g"
+name = "Estimated fetal weight at 40 weeks"
+description = "Singleton estimated fetal weight (50th percentile) at 40 weeks gestation."
+tier = "A"
+unit = "g"
+value = { kind = "normal", mean = 3567.0, sd = 410.0 }
+citation = "buck-louis-2015-nichd-growth"
+population = "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+age_range = { min_weeks = 40, max_weeks = 40 }
+
+[[parameter]]
+id = "fetal-growth-bpd-28w-mm"
+name = "Biparietal diameter at 28 weeks"
+description = "Biparietal diameter (50th percentile) at 28 weeks gestation."
+tier = "A"
+unit = "mm"
+value = { kind = "normal", mean = 71.5, sd = 3.0 }
+citation = "grewal-2018-nichd-growth"
+population = "NICHD Fetal Growth Studies singleton cohort"
+age_range = { min_weeks = 28, max_weeks = 28 }
+technique = "Ultrasound biometry"
+
+[[parameter]]
+id = "fetal-growth-fl-28w-mm"
+name = "Femur length at 28 weeks"
+description = "Femur length (50th percentile) at 28 weeks gestation."
+tier = "A"
+unit = "mm"
+value = { kind = "normal", mean = 53.0, sd = 2.5 }
+citation = "grewal-2018-nichd-growth"
+population = "NICHD Fetal Growth Studies singleton cohort"
+age_range = { min_weeks = 28, max_weeks = 28 }
+technique = "Ultrasound biometry"
+
+[[parameter]]
+id = "fetal-growth-hadlock-coefficient"
+name = "Hadlock estimated-fetal-weight coefficient"
+description = "Lead coefficient of the Hadlock formula log10(EFW) = 1.3596 - 0.00386·AC·FL + 0.0064·HC + ..."
+tier = "A"
+unit = "log10(g)"
+value = { kind = "point", value = 1.3596 }
+citation = "hadlock-1991-fetal-weight"
+population = "Mixed obstetric ultrasound cohort"
+age_range = { min_weeks = 10, max_weeks = 41 }
+caveats = "Specific to the four-parameter Hadlock (1991) formula; alternative formulae have different coefficients."

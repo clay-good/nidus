@@ -81,7 +81,7 @@ fn tier_c_case_is_marked_unvalidatable() {
         reference: ReferenceDataset {
             id: "no-such-reference".to_owned(),
             name: "Tier-C placeholder".to_owned(),
-            citation: CitationId::new("scaffold-template-source"),
+            citation: CitationId::new("mahendru-2014-cardiac-output"),
             units: "dimensionless".to_owned(),
             points: vec![ReferencePoint::interval(20.0, 1.0, 0.1)],
         },

@@ -1,0 +1,41 @@
+# Maternal renal parameters.
+#
+# Glomerular filtration rate rises ~50% in pregnancy, with a
+# corresponding fall in plasma creatinine.
+
+[[parameter]]
+id = "maternal-renal-gfr-ml-per-min"
+name = "Maternal glomerular filtration rate at term"
+description = "GFR at term; elevated approximately 40-50% above non-pregnant baseline."
+tier = "B"
+unit = "mL/min"
+value = { kind = "normal", mean = 150.0, sd = 20.0 }
+citation = "cheung-lafayette-2013-renal"
+population = "Healthy singleton pregnancies, third trimester"
+age_range = { min_weeks = 28, max_weeks = 40 }
+technique = "Inulin or iohexol clearance"
+
+[[parameter]]
+id = "maternal-renal-gfr-first-trimester-ml-per-min"
+name = "Maternal GFR in first trimester"
+description = "GFR in the first trimester; rise begins early in pregnancy."
+tier = "A"
+unit = "mL/min"
+value = { kind = "normal", mean = 135.0, sd = 18.0 }
+citation = "davison-hytten-1974-gfr"
+population = "Healthy singleton pregnancies, weeks 8-12"
+age_range = { min_weeks = 8, max_weeks = 12 }
+technique = "24-hour creatinine clearance"
+
+[[parameter]]
+id = "maternal-renal-plasma-creatinine-mg-per-dl-term"
+name = "Maternal plasma creatinine at term"
+description = "Plasma creatinine at term; reduced below non-pregnant reference."
+tier = "A"
+unit = "mg/dL"
+value = { kind = "normal", mean = 0.6, sd = 0.1 }
+citation = "cheung-lafayette-2013-renal"
+population = "Healthy singleton pregnancies, third trimester"
+age_range = { min_weeks = 28, max_weeks = 40 }
+technique = "Enzymatic colorimetric assay"
+caveats = "A creatinine in the upper non-pregnant reference range (e.g. 0.9 mg/dL) is abnormal in pregnancy."

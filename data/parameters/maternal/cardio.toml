@@ -1,0 +1,172 @@
+# Maternal cardiovascular parameters.
+#
+# Trajectory coefficients consumed by the MaternalCardio subscriber.
+# Cardiac output, mean arterial pressure, and uterine artery flow all
+# follow well-characterised arcs across normal singleton pregnancy.
+
+# -------- Cardiac output trajectory --------
+
+[[parameter]]
+id = "maternal-cardio-baseline-cardiac-output-l-per-min"
+name = "Pre-pregnancy cardiac output baseline"
+description = "Cardiac output at the start of gestation, before pregnancy-induced rise."
+tier = "B"
+unit = "L/min"
+value = { kind = "normal", mean = 4.6, sd = 0.4 }
+citation = "mahendru-2014-cardiac-output"
+population = "Healthy nulliparous women, pre-conception measurement"
+age_range = { min_weeks = 8, max_weeks = 12 }
+technique = "Inert-gas rebreathing"
+
+[[parameter]]
+id = "maternal-cardio-peak-excess-cardiac-output-l-per-min"
+name = "Peak gestational excess cardiac output"
+description = "Excess cardiac output above baseline at peak (mid-third-trimester)."
+tier = "B"
+unit = "L/min"
+value = { kind = "normal", mean = 2.7, sd = 0.5 }
+citation = "mahendru-2014-cardiac-output"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 28, max_weeks = 34 }
+technique = "Inert-gas rebreathing, longitudinal cohort"
+
+[[parameter]]
+id = "maternal-cardio-cardiac-output-peak-week"
+name = "Gestational week of peak cardiac output"
+description = "Gestational age (weeks) at which cardiac output reaches its maximum."
+tier = "B"
+unit = "weeks"
+value = { kind = "normal", mean = 30.0, sd = 2.0 }
+citation = "mahendru-2014-cardiac-output"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+
+[[parameter]]
+id = "maternal-cardio-cardiac-output-spread-weeks"
+name = "Cardiac-output trajectory spread parameter"
+description = "Gaussian-curve spread (weeks) controlling how quickly cardiac output rises and falls around its peak."
+tier = "C"
+unit = "weeks"
+value = { kind = "point", value = 12.0, uncertainty = 2.0 }
+citation = "hunter-robson-1992-cardiac-output"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+caveats = "Derived from a Gaussian-shape fit to the cohort curves; original sources report point estimates rather than a shape parameter."
+
+[[parameter]]
+id = "maternal-cardio-cardiac-output-individual-sigma"
+name = "Between-individual sigma for cardiac output"
+description = "One-sigma between-individual variation around the population trajectory."
+tier = "C"
+unit = "L/min"
+value = { kind = "point", value = 0.6, uncertainty = 0.1 }
+citation = "hunter-robson-1992-cardiac-output"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+
+# -------- Mean arterial pressure trajectory --------
+
+[[parameter]]
+id = "maternal-cardio-baseline-map-mmhg"
+name = "Pre-pregnancy mean arterial pressure"
+description = "Mean arterial pressure at the start of gestation."
+tier = "B"
+unit = "mmHg"
+value = { kind = "normal", mean = 85.0, sd = 6.0 }
+citation = "mahendru-2014-cardiac-output"
+population = "Healthy nulliparous women, pre-conception"
+age_range = { min_weeks = 8, max_weeks = 12 }
+technique = "Brachial-cuff oscillometric MAP"
+
+[[parameter]]
+id = "maternal-cardio-map-nadir-drop-mmhg"
+name = "Mid-pregnancy MAP nadir drop"
+description = "Maximum drop in MAP from baseline during the mid-pregnancy systemic-vasodilation phase."
+tier = "B"
+unit = "mmHg"
+value = { kind = "normal", mean = 8.0, sd = 3.0 }
+citation = "mahendru-2014-cardiac-output"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 20, max_weeks = 28 }
+
+[[parameter]]
+id = "maternal-cardio-map-nadir-week"
+name = "Gestational week of MAP nadir"
+description = "Gestational age (weeks) at which MAP reaches its lowest value."
+tier = "B"
+unit = "weeks"
+value = { kind = "normal", mean = 22.0, sd = 2.0 }
+citation = "mahendru-2014-cardiac-output"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+
+[[parameter]]
+id = "maternal-cardio-map-spread-weeks"
+name = "MAP trajectory spread parameter"
+description = "Gaussian spread (weeks) controlling the width of the MAP nadir dip."
+tier = "C"
+unit = "weeks"
+value = { kind = "point", value = 8.0, uncertainty = 1.5 }
+citation = "sanghavi-rutherford-2014-cardio-review"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+
+[[parameter]]
+id = "maternal-cardio-map-individual-sigma-mmhg"
+name = "Between-individual sigma for MAP"
+description = "One-sigma between-individual variation around the MAP trajectory."
+tier = "C"
+unit = "mmHg"
+value = { kind = "point", value = 5.0, uncertainty = 1.0 }
+citation = "sanghavi-rutherford-2014-cardio-review"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+
+# -------- Uterine artery flow trajectory --------
+
+[[parameter]]
+id = "maternal-cardio-baseline-uterine-flow-ml-per-min"
+name = "Pre-pregnancy uterine artery flow"
+description = "Combined bilateral uterine artery flow at the start of gestation."
+tier = "B"
+unit = "mL/min"
+value = { kind = "normal", mean = 50.0, sd = 15.0 }
+citation = "thaler-1990-uterine-flow"
+population = "Healthy women, pre-pregnancy or early first trimester"
+age_range = { min_weeks = 8, max_weeks = 12 }
+technique = "Pulsed-wave Doppler, bilateral uterine arteries"
+
+[[parameter]]
+id = "maternal-cardio-term-uterine-flow-ml-per-min"
+name = "Term uterine artery flow"
+description = "Combined bilateral uterine artery flow at term."
+tier = "B"
+unit = "mL/min"
+value = { kind = "normal", mean = 750.0, sd = 150.0 }
+citation = "thaler-1990-uterine-flow"
+population = "Healthy singleton pregnancies, term"
+age_range = { min_weeks = 36, max_weeks = 40 }
+technique = "Pulsed-wave Doppler, bilateral uterine arteries"
+
+[[parameter]]
+id = "maternal-cardio-uterine-flow-growth-rate-per-week"
+name = "Uterine artery flow growth rate"
+description = "Logistic growth-rate parameter for uterine artery flow expansion."
+tier = "C"
+unit = "1/week"
+value = { kind = "point", value = 0.22, uncertainty = 0.05 }
+citation = "thaler-1990-uterine-flow"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }
+caveats = "Fit parameter; not directly reported. Derived to match Doppler-cohort means at sampled gestational ages."
+
+[[parameter]]
+id = "maternal-cardio-uterine-flow-individual-sigma"
+name = "Between-individual sigma for uterine flow"
+description = "Fractional one-sigma between-individual variation around the uterine-flow trajectory."
+tier = "C"
+unit = "fraction"
+value = { kind = "point", value = 0.20, uncertainty = 0.05 }
+citation = "thaler-1990-uterine-flow"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 8, max_weeks = 40 }

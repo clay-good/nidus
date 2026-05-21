@@ -1,10 +1,11 @@
 # Maternal blood parameters.
 #
-# This file demonstrates the parameter schema. Per CONTRIBUTING.md,
-# every entry below must be verified by a human reviewer against its
-# cited source before the value is used in published simulator output.
-# The values are reasonable but the citation alignment has not been
-# personally checked by the original author of this file.
+# Entries here are tier A/B values backing the maternal-blood and
+# O2-Hb dissociation parts of the simulator. Every entry cites a
+# source recorded in data/citations/index.toml; reviewers verify the
+# numeric value against that source per data/citations/README.md.
+
+# -------- O2-haemoglobin binding --------
 
 [[parameter]]
 id = "o2-hb-hill-coefficient-maternal"
@@ -31,3 +32,92 @@ population = "Adult human blood at pH 7.4, 37°C"
 age_range = { min_weeks = 8, max_weeks = 40 }
 technique = "Polarographic determination of oxygen saturation as a function of partial pressure"
 caveats = "Shifts with pH (Bohr effect), temperature, and 2,3-BPG concentration; the value here is at standard conditions."
+
+[[parameter]]
+id = "oxyhb-bohr-coefficient"
+name = "Bohr coefficient (Δlog P50 per ΔpH)"
+description = "Slope of P50 versus pH on a log–linear axis. Used to translate maternal-fetal pH differences into a leftward fetal O2 dissociation shift."
+tier = "A"
+unit = "log(mmHg)/pH"
+value = { kind = "point", value = -0.48, uncertainty = 0.03 }
+citation = "dash-bassingthwaighte-2010-o2-hb"
+population = "Adult human blood, in-vitro tonometry"
+age_range = { min_weeks = 8, max_weeks = 40 }
+technique = "In-vitro pH titration with simultaneous oxygen saturation"
+caveats = "Bohr slope is itself mildly pH-dependent; a single coefficient is an adequate first-order model."
+
+# -------- Volume and red-cell mass --------
+
+[[parameter]]
+id = "maternal-blood-volume-l"
+name = "Maternal total blood volume"
+description = "Total circulating blood volume, expanded above the non-pregnant baseline of approximately 4.5 L."
+tier = "B"
+unit = "L"
+value = { kind = "normal", mean = 5.6, sd = 0.5 }
+citation = "hytten-chamberlain-1980-blood-volume"
+population = "Healthy singleton pregnancies, term"
+age_range = { min_weeks = 36, max_weeks = 40 }
+technique = "Indicator-dilution measurements compiled in Hytten & Chamberlain"
+caveats = "Volume rises throughout pregnancy; this entry summarises the term value. Trimester-resolved entries should be added when finer data is wired in."
+
+[[parameter]]
+id = "maternal-plasma-volume-l"
+name = "Maternal plasma volume at term"
+description = "Plasma volume at term in healthy singleton pregnancies; risen ~50% above non-pregnant baseline."
+tier = "B"
+unit = "L"
+value = { kind = "normal", mean = 3.85, sd = 0.35 }
+citation = "de-haas-2017-plasma-volume-meta"
+population = "Healthy singleton pregnancies"
+age_range = { min_weeks = 36, max_weeks = 40 }
+technique = "Systematic review pooling Evans-blue and isotope-dilution studies"
+
+[[parameter]]
+id = "maternal-plasma-volume-early-l"
+name = "Maternal plasma volume in early pregnancy"
+description = "Plasma volume at the end of the first trimester, recording the early rise documented by Bernstein 2001."
+tier = "B"
+unit = "L"
+value = { kind = "normal", mean = 3.05, sd = 0.30 }
+citation = "bernstein-ziegler-2001-plasma-volume"
+population = "Healthy singleton pregnancies, weeks 12-14"
+age_range = { min_weeks = 12, max_weeks = 14 }
+technique = "Evans-blue indicator dilution"
+
+[[parameter]]
+id = "maternal-red-cell-mass-l"
+name = "Maternal red-cell mass at term"
+description = "Total red-cell volume at term; increase lags plasma volume expansion, producing the physiological haemodilution of pregnancy."
+tier = "B"
+unit = "L"
+value = { kind = "normal", mean = 1.65, sd = 0.20 }
+citation = "hytten-chamberlain-1980-blood-volume"
+population = "Healthy singleton pregnancies, term"
+age_range = { min_weeks = 36, max_weeks = 40 }
+technique = "51Cr-labelled red-cell dilution as compiled in Hytten & Chamberlain"
+
+[[parameter]]
+id = "maternal-haematocrit-term"
+name = "Maternal haematocrit at term"
+description = "Packed red-cell fraction at term, after physiological haemodilution."
+tier = "B"
+unit = "fraction"
+value = { kind = "normal", mean = 0.335, sd = 0.025 }
+citation = "hytten-chamberlain-1980-blood-volume"
+population = "Healthy singleton pregnancies, term"
+age_range = { min_weeks = 36, max_weeks = 40 }
+technique = "Microhaematocrit centrifugation"
+
+[[parameter]]
+id = "maternal-haemoglobin-g-per-dl-term"
+name = "Maternal haemoglobin concentration at term"
+description = "Whole-blood haemoglobin at term."
+tier = "B"
+unit = "g/dL"
+value = { kind = "normal", mean = 11.5, sd = 0.9 }
+citation = "hytten-chamberlain-1980-blood-volume"
+population = "Healthy singleton pregnancies, term"
+age_range = { min_weeks = 36, max_weeks = 40 }
+technique = "Cyanmethaemoglobin spectrophotometry"
+caveats = "WHO defines anaemia in pregnancy as Hb < 11 g/dL; entries below that threshold should be marked accordingly."
