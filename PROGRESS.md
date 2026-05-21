@@ -302,6 +302,18 @@ unchecked item.
   [`unknown_channels.md`](docs/tutorials/unknown_channels.md),
   [`hypothesis_workflow.md`](docs/tutorials/hypothesis_workflow.md),
   [`contributing_parameter.md`](docs/tutorials/contributing_parameter.md).
+- **CLI deferred subcommands landed.** The three items flagged as
+  deferred in the v0.1 CLI docstring are now implemented:
+  - `nidus validate` runs the built-in validation suite (wired through
+    a new `nidus_validation::builtin` module so the scaffold maternal
+    cardio case is shared between tests and the CLI) and emits a
+    Markdown or JSON report.
+  - `nidus hypothesis-report` runs ensemble + Sobol sensitivity +
+    experiment-design on the placental gas-exchange model and emits
+    ranked, structured suggestions (Markdown or JSON).
+  - `nidus list parameters` gained `--tier`, `--search` (case-insensitive
+    substring on id/name/unit), and `--json` filters.
+  The only remaining v0.2 CLI surface is the interactive dashboard.
 
 ## Up next
 

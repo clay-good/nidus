@@ -34,9 +34,11 @@
 
 #![cfg_attr(not(test), warn(missing_docs))]
 
+pub mod builtin;
 pub mod report;
 pub mod suite;
 
+pub use builtin::{built_in_cases, maternal_cardio_scaffold_case};
 pub use report::{Agreement, ValidationReport, ValidationResult};
 pub use suite::{
     ComponentLevel, ReferenceDataset, ReferencePoint, ValidationCase, ValidationSuite,

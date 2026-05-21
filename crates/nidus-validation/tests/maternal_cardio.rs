@@ -14,44 +14,12 @@ use nidus_core::tier::ConfidenceTier;
 
 use nidus_maternal::cardio::{MaternalCardio, SUBSCRIBER_ID};
 use nidus_validation::{
-    Agreement, ComponentLevel, ReferenceDataset, ReferencePoint, ValidationCase, ValidationSuite,
+    maternal_cardio_scaffold_case, Agreement, ComponentLevel, ReferenceDataset, ReferencePoint,
+    ValidationCase, ValidationSuite,
 };
 
-fn scaffold_reference() -> ReferenceDataset {
-    // Textbook-style cardiac-output trajectory across pregnancy. Tagged
-    // as scaffolding (`scaffold-template-source`); the
-    // human-contributor task per SPEC.md §13 prompt 13 is to replace
-    // this dataset with an entry citing the NICHD Fetal Growth Studies
-    // or similarly verifiable longitudinal cohort.
-    let points = vec![
-        ReferencePoint::interval(12.0, 5.5, 1.0),
-        ReferencePoint::interval(20.0, 6.5, 1.0),
-        ReferencePoint::interval(28.0, 7.3, 1.0),
-        ReferencePoint::interval(32.0, 7.5, 1.0),
-        ReferencePoint::interval(36.0, 7.2, 1.0),
-        ReferencePoint::interval(40.0, 6.8, 1.0),
-    ];
-    ReferenceDataset {
-        id: "maternal-cardiac-output-scaffold".to_owned(),
-        name: "Maternal cardiac output trajectory (scaffold)".to_owned(),
-        citation: CitationId::new("scaffold-template-source"),
-        units: "L/min".to_owned(),
-        points,
-    }
-}
-
 fn build_case() -> ValidationCase {
-    ValidationCase {
-        id: "case:maternal-cardio:cardiac-output".to_owned(),
-        description: "Population-mean maternal cardiac output across pregnancy matches the \
-             scaffold reference trajectory within ±1 L/min."
-            .to_owned(),
-        component: "nidus-maternal:cardio".to_owned(),
-        tier: ConfidenceTier::B,
-        level: ComponentLevel::Component,
-        reference: scaffold_reference(),
-        default_tolerance: 1.0,
-    }
+    maternal_cardio_scaffold_case()
 }
 
 #[allow(clippy::cast_possible_truncation, clippy::cast_sign_loss)]

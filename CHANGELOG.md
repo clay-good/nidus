@@ -28,6 +28,21 @@ database is what advances the simulator.
   `ScenarioSpec` for maternal-cardio, placenta-structure, placenta-gas,
   and fetal-circulation parameters, applied by the orchestrator on
   top of the model defaults.
+- CLI: implemented the three subcommands previously flagged as
+  deferred in `crates/nidus-cli/src/main.rs`:
+  - `nidus validate` — runs the built-in validation suite and emits
+    either a Markdown report or a JSON document with per-case
+    residuals and the agreement-bucket summary.
+  - `nidus hypothesis-report` — runs ensemble + Sobol sensitivity +
+    experiment-design on the placental gas-exchange model and emits
+    ranked structured suggestions (Markdown or JSON).
+  - `nidus list parameters` — added `--tier`, `--search`, and `--json`
+    filters for case-insensitive substring search and machine-readable
+    output.
+- `nidus-validation` now exposes a `builtin` module
+  (`maternal_cardio_scaffold_case`, `built_in_cases`) so the CLI and
+  downstream consumers share the v0.1 scaffold case rather than
+  duplicating it in tests.
 
 ### Scenarios
 
