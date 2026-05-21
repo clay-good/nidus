@@ -12,6 +12,8 @@ Requires **Python 3.10 or newer**. Pure Python; no compiled extensions, no syste
 
 ## Verify the install
 
+From Python:
+
 ```python
 import nidus
 
@@ -20,6 +22,15 @@ print(ds)
 # <nidus.Dataset: 54 parameters, 32 citations>
 
 nidus.validate()  # raises ValidationError on any schema mismatch
+```
+
+Or from the shell — the package ships a `nidus` console script:
+
+```bash
+nidus version
+nidus validate
+nidus info
+nidus info --subsystem maternal_cardiovascular
 ```
 
 ## Run the dashboard locally

@@ -53,9 +53,7 @@ REPO = Path(__file__).parent.parent
 CITATIONS = REPO / "dataset" / "citations" / "citations.json"
 
 CROSSREF_BASE = "https://api.crossref.org/works"
-PUBMED_BASE = (
-    "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
-)
+PUBMED_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
 USER_AGENT = (
     "nidus-citation-verifier/0.3 "
     "(+https://github.com/claygood/nidus; mailto:hi@claygood.com)"
@@ -154,7 +152,9 @@ def family_name(author_str: str) -> str:
 # ---- Comparison -----------------------------------------------------
 
 
-def compare_crossref(local: dict[str, Any], cr: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
+def compare_crossref(
+    local: dict[str, Any], cr: dict[str, Any]
+) -> tuple[list[str], dict[str, str]]:
     """Compare local record against Crossref. Return (issues, safe_fixes)."""
     issues: list[str] = []
     fixes: dict[str, str] = {}
@@ -195,7 +195,9 @@ def compare_crossref(local: dict[str, Any], cr: dict[str, Any]) -> tuple[list[st
                 )
 
     # Journal / container-title
-    cr_journal = (cr.get("container-title") or [""])[0] if cr.get("container-title") else ""
+    cr_journal = (
+        (cr.get("container-title") or [""])[0] if cr.get("container-title") else ""
+    )
     if local.get("journal") and cr_journal:
         if normalise(local["journal"]) != normalise(cr_journal):
             issues.append(
@@ -208,7 +210,9 @@ def compare_crossref(local: dict[str, Any], cr: dict[str, Any]) -> tuple[list[st
     return issues, fixes
 
 
-def compare_pubmed(local: dict[str, Any], pm: dict[str, Any]) -> tuple[list[str], dict[str, str]]:
+def compare_pubmed(
+    local: dict[str, Any], pm: dict[str, Any]
+) -> tuple[list[str], dict[str, str]]:
     issues: list[str] = []
     fixes: dict[str, str] = {}
 
@@ -330,8 +334,10 @@ def main() -> int:
             encoding="utf-8",
         )
         print()
-        print(f"Applied {sum(len(v) for v in total_fixes.values())} safe fix(es) "
-              f"to {len(total_fixes)} citation(s) in {CITATIONS.relative_to(REPO)}")
+        print(
+            f"Applied {sum(len(v) for v in total_fixes.values())} safe fix(es) "
+            f"to {len(total_fixes)} citation(s) in {CITATIONS.relative_to(REPO)}"
+        )
     elif total_fixes and not args.apply_safe_fixes:
         print()
         print("Re-run with --apply-safe-fixes to write the safe fixes above.")

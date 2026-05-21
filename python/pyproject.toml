@@ -58,6 +58,9 @@ dev = [
     "mkdocstrings[python]>=0.24",
 ]
 
+[project.scripts]
+nidus = "nidus.cli:main"
+
 [project.urls]
 Homepage = "https://github.com/claygood/nidus"
 Repository = "https://github.com/claygood/nidus"
