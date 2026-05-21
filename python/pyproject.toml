@@ -40,6 +40,11 @@ dev = [
     "nbmake>=1.4",
     "types-jsonschema",
     "build>=1.0",
+    # Dashboard deps (kept here so a single `pip install -e .[dev]` gives
+    # the maintainer everything; the dashboard's own runtime requirements
+    # live in dashboard/requirements.txt for Streamlit Community Cloud).
+    "streamlit>=1.28",
+    "pandas>=2.0",
 ]
 
 [project.urls]

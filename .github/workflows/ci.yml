@@ -21,9 +21,9 @@ jobs:
           python-version: "3.12"
       - run: pip install ruff
       - name: ruff check
-        run: ruff check python/
+        run: ruff check python/ dashboard/
       - name: ruff format --check
-        run: ruff format --check python/
+        run: ruff format --check python/ dashboard/
 
   typecheck:
     name: Type check (mypy)
