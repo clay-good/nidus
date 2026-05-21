@@ -63,6 +63,7 @@
     "journal": "Placenta",
     "key": "brown-2011-glut3",
     "notes": "Quantitative GLUT3 expression by gestational age. Dependents: data/parameters/placenta/glucose_transport.toml (glut3-vmax-per-area).",
+    "pmid": "22000473",
     "title": "Glucose transporter 3 (GLUT3) protein expression in human placenta across gestation",
     "type": "journal-article",
     "year": 2011
@@ -78,6 +79,7 @@
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "buck-louis-2015-nichd-growth",
     "notes": "Multi-ethnic fetal growth percentiles. Dependents: data/parameters/fetal/growth.toml (estimated-fetal-weight-g percentile means).",
+    "pmid": "26410205",
     "title": "Racial/ethnic standards for fetal growth: the NICHD Fetal Growth Studies",
     "type": "journal-article",
     "year": 2015
@@ -141,6 +143,7 @@
     "journal": "Advances in Chronic Kidney Disease",
     "key": "cheung-lafayette-2013-renal",
     "notes": "GFR rise and creatinine fall across normal pregnancy. Dependents: data/parameters/maternal/renal.toml (gfr-ml-per-min, plasma-creatinine-mg-per-dl).",
+    "pmid": "23928384",
     "title": "Renal Physiology of Pregnancy",
     "type": "journal-article",
     "year": 2013
@@ -179,6 +182,7 @@
     "journal": "Annals of Biomedical Engineering",
     "key": "dash-bassingthwaighte-2010-o2-hb",
     "notes": "Modern revision of the O2-Hb and CO2-Hb dissociation curves incorporating Bohr/Haldane effects. Dependents: data/parameters/maternal/blood.toml (oxyhb-bohr-coefficient).",
+    "pmid": "20162361",
     "title": "Erratum to: Blood HbO2 and HbCO2 Dissociation Curves at Varied O2, CO2, pH, 2,3-DPG and Temperature Levels",
     "type": "journal-article",
     "year": 2010
@@ -223,6 +227,7 @@
     "journal": "International Journal of Epidemiology",
     "key": "grewal-2018-nichd-growth",
     "notes": "Cohort design and biometric measurements for the NICHD studies. Dependents: data/parameters/fetal/growth.toml (biparietal-diameter-mm, femur-length-mm).",
+    "pmid": "29025016",
     "title": "Cohort Profile: NICHD Fetal Growth Studies–Singletons and Twins",
     "type": "journal-article",
     "year": 2018
@@ -311,6 +316,7 @@
     "journal": "Breathe",
     "key": "lomauro-aliverti-2015-respiratory",
     "notes": "Minute ventilation, tidal volume, PaCO2 changes in pregnancy. Dependents: data/parameters/maternal/respiratory.toml (minute-ventilation-l-per-min, paco2-mmhg, pao2-mmhg).",
+    "pmid": "27066123",
     "title": "Respiratory physiology of pregnancy",
     "type": "journal-article",
     "year": 2015

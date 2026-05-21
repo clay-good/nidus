@@ -10,13 +10,15 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: rudolph-1985-fetal-circulation. Population: Late-gestation fetal lamb (extrapolated to human fetus).",
+    "tier_rationale": "Tier C from Rudolph 1985 Circulation Research: the foundational lamb-model study of fetal blood-flow distribution including DA right-ventricular bypass share. Translation to human fetal circulation is by anatomic analogy; primary source is lamb.",
     "citations": [
       "rudolph-1985-fetal-circulation"
     ],
     "primary_citation": "rudolph-1985-fetal-circulation",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Late-gestation fetal lamb (extrapolated to human fetus)"
@@ -34,13 +36,15 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: rudolph-1985-fetal-circulation. Population: Late-gestation fetal lamb (extrapolated to human fetus). Caveats: Direct human in-vivo measurements are limited; Rudolph's lamb data is the standard reference.",
+    "tier_rationale": "Tier C from Rudolph 1985 Circulation Research: foramen-ovale preferential streaming of inferior-vena-cava blood (Eustachian valve effect) in the lamb model. Human extrapolation; value is indirectly inferred.",
     "citations": [
       "rudolph-1985-fetal-circulation"
     ],
     "primary_citation": "rudolph-1985-fetal-circulation",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Late-gestation fetal lamb (extrapolated to human fetus)"
@@ -58,13 +62,15 @@
       "units": "mmHg"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: kiserud-2000-fetal-circulation. Population: Healthy late-gestation human fetus. Caveats: Estimated from ductus venosus Doppler studies; tier C reflects indirect measurement.",
+    "tier_rationale": "Tier C from Kiserud 2001 Seminars in Perinatology: the ductus venosus as the regulator of umbilical-venous oxygen delivery. Specific PO2 value at systemic-venous return is a derived estimate.",
     "citations": [
       "kiserud-2000-fetal-circulation"
     ],
     "primary_citation": "kiserud-2000-fetal-circulation",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy late-gestation human fetus"

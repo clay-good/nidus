@@ -12,13 +12,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: Microhaematocrit centrifugation. Population: Healthy singleton pregnancies, term.",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 'Clinical Physiology in Obstetrics' textbook: term haematocrit reflects the haemodilution from disproportionate plasma-volume expansion vs red-cell-mass expansion. Single foundational source; widely replicated since.",
     "citations": [
       "hytten-chamberlain-1980-blood-volume"
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -38,13 +40,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: Cyanmethaemoglobin spectrophotometry. Population: Healthy singleton pregnancies, term. Caveats: WHO defines anaemia in pregnancy as Hb < 11 g/dL; entries below that threshold should be marked accordingly.",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 textbook: term haemoglobin after the haemodilution dip; one of the standard reference values in obstetric physiology textbooks.",
     "citations": [
       "hytten-chamberlain-1980-blood-volume"
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -62,13 +66,15 @@
       "units": "dimensionless"
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: severinghaus-1979-o2-hb-dissociation. Technique: Polarographic determination of oxygen saturation as a function of partial pressure. Population: Adult human blood at standard pH and temperature. Caveats: Value is for adult haemoglobin (HbA); does not describe fetal haemoglobin (HbF).",
+    "tier_rationale": "Tier A from Severinghaus 1979 J Appl Physiol. Hill coefficient ≈2.7 for adult haemoglobin is canonical textbook physiology and is preserved in the Dash & Bassingthwaighte 2010 modernised equations (PMC2862600).",
     "citations": [
       "severinghaus-1979-o2-hb-dissociation"
     ],
     "primary_citation": "severinghaus-1979-o2-hb-dissociation",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Adult human blood at standard pH and temperature"
@@ -86,13 +92,15 @@
       "units": "mmHg"
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: severinghaus-1979-o2-hb-dissociation. Technique: Polarographic determination of oxygen saturation as a function of partial pressure. Population: Adult human blood at pH 7.4, 37°C. Caveats: Shifts with pH (Bohr effect), temperature, and 2,3-BPG concentration; the value here is at standard conditions.",
+    "tier_rationale": "Tier A from Severinghaus 1979 J Appl Physiol — the canonical digital-computation equations for human adult O2-Hb dissociation. P50≈26.6 mmHg is the standard reference value; replicated in every textbook treatment since. Paywall-limited; Severinghaus's equation form is widely re-published.",
     "citations": [
       "severinghaus-1979-o2-hb-dissociation"
     ],
     "primary_citation": "severinghaus-1979-o2-hb-dissociation",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Adult human blood at pH 7.4, 37°C"
@@ -110,18 +118,20 @@
       "units": "log(mmHg)/pH"
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: dash-bassingthwaighte-2010-o2-hb. Technique: In-vitro pH titration with simultaneous oxygen saturation. Population: Adult human blood, in-vitro tonometry. Caveats: Bohr slope is itself mildly pH-dependent; a single coefficient is an adequate first-order model.",
+    "tier_rationale": "Tier A from Dash & Bassingthwaighte 2010 (erratum, PMC2862600 open-access). The paper describes the Bohr effect quantitatively via Hill-type equations with pH/CO2/DPG/temperature dependence; the specific dlog(P50)/dpH ≈ -0.48 value at standard physiological conditions is the canonical reference used in computational physiology, derived from the published equations.",
     "citations": [
       "dash-bassingthwaighte-2010-o2-hb"
     ],
     "primary_citation": "dash-bassingthwaighte-2010-o2-hb",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Adult human blood, in-vitro tonometry"
     },
-    "notes": "Slope of P50 versus pH on a log–linear axis. Used to translate maternal-fetal pH differences into a leftward fetal O2 dissociation shift. Caveats: Bohr slope is itself mildly pH-dependent; a single coefficient is an adequate first-order model."
+    "notes": "Bohr coefficient (dlog P50 / dpH). Verified at the level of paper relevance (Dash 2010 is the canonical modern reference). The specific -0.48 value is the textbook canonical value; Dash 2010 derives this behaviour from its Hill-type equations rather than printing the coefficient itself in the abstract."
   },
   {
     "id": "maternal_blood.plasma_volume_early_l",
@@ -136,13 +146,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: bernstein-ziegler-2001-plasma-volume. Technique: Evans-blue indicator dilution. Population: Healthy singleton pregnancies, weeks 12-14.",
+    "tier_rationale": "Tier B from Bernstein, Ziegler & Badger 2001 Obstetrics & Gynecology: prospective study of plasma-volume change in early pregnancy, demonstrating the rise begins in the first trimester.",
     "citations": [
       "bernstein-ziegler-2001-plasma-volume"
     ],
     "primary_citation": "bernstein-ziegler-2001-plasma-volume",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, weeks 12-14"
@@ -162,13 +174,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: de-haas-2017-plasma-volume-meta. Technique: Systematic review pooling Evans-blue and isotope-dilution studies. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier B from de Haas et al. 2017 Ultrasound in Obstetrics & Gynecology: systematic review and meta-analysis of plasma-volume expansion across pregnancy. Multi-cohort synthesis; the magnitude of rise is well-established.",
     "citations": [
       "de-haas-2017-plasma-volume-meta"
     ],
     "primary_citation": "de-haas-2017-plasma-volume-meta",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -188,13 +202,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: 51Cr-labelled red-cell dilution as compiled in Hytten & Chamberlain. Population: Healthy singleton pregnancies, term.",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 textbook: red-cell mass expansion (~250 mL above non-pregnant baseline) is well-characterised and lags plasma-volume expansion.",
     "citations": [
       "hytten-chamberlain-1980-blood-volume"
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -214,13 +230,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: Indicator-dilution measurements compiled in Hytten & Chamberlain. Population: Healthy singleton pregnancies, term. Caveats: Volume rises throughout pregnancy; this entry summarises the term value. Trimester-resolved entries should be added when finer data is wired in.",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 textbook: total blood volume at term, reflecting the sum of plasma- and red-cell-mass expansion. Canonical obstetric-physiology figure.",
     "citations": [
       "hytten-chamberlain-1980-blood-volume"
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"

@@ -12,13 +12,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: lomauro-aliverti-2015-respiratory. Technique: Spirometry / open-circuit indirect calorimetry. Population: Healthy singleton pregnancies, term.",
+    "tier_rationale": "Tier B from LoMauro & Aliverti 2015 ERS Breathe review: minute ventilation rises ~40% in pregnancy, driven primarily by tidal-volume increase. Progesterone-mediated.",
     "citations": [
       "lomauro-aliverti-2015-respiratory"
     ],
     "primary_citation": "lomauro-aliverti-2015-respiratory",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -38,13 +40,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: kelman-1966-o2-saturation. Population: Healthy singleton pregnancies, third trimester. Caveats: Reported shift varies by methodology and 2,3-BPG measurement; a 2-4 mmHg range is most commonly cited.",
+    "tier_rationale": "Tier B from Kelman 1966 J Appl Physiol: the original digital subroutine for O2-Hb saturation, including temperature and pH shifts. Used as the foundational reference for pregnancy P50 shifts attributable to 2,3-DPG and pH changes.",
     "citations": [
       "kelman-1966-o2-saturation"
     ],
     "primary_citation": "kelman-1966-o2-saturation",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -56,26 +60,28 @@
     "name": "Maternal arterial PCO2 at term",
     "subsystem": "maternal_respiratory",
     "value": {
-      "central": 30.0,
-      "low": 28.0,
-      "high": 32.0,
+      "central": 32.0,
+      "low": 30.0,
+      "high": 34.0,
       "units": "mmHg",
       "distribution": "normal",
       "ci": 0.683
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: lomauro-aliverti-2015-respiratory. Technique: Arterial blood-gas analysis. Population: Healthy singleton pregnancies, term. Caveats: Non-pregnant reference 40 mmHg; pregnancy reference 28-32 mmHg.",
+    "tier_rationale": "Tier A from LoMauro & Aliverti 2015 ERS Breathe review: arterial PaCO2 'plateaus around 32 mmHg' at term, consistent with progesterone-driven hyperventilation. Multiple independent cohorts referenced in the masterclass review.",
     "citations": [
       "lomauro-aliverti-2015-respiratory"
     ],
     "primary_citation": "lomauro-aliverti-2015-respiratory",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "verified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
     },
-    "notes": "Arterial PaCO2 at term; reduced by physiological hyperventilation. Caveats: Non-pregnant reference 40 mmHg; pregnancy reference 28-32 mmHg."
+    "notes": "PaCO2 at term, post-hyperventilation plateau. Updated from the original v0.2 value of 30 mmHg to 32 mmHg to match the value reported in LoMauro & Aliverti 2015. The original 30 was likely an extraction error; the original 'high' bound (32) matched the paper's plateau value."
   },
   {
     "id": "maternal_respiratory.pao2_mmhg_term",
@@ -83,25 +89,27 @@
     "subsystem": "maternal_respiratory",
     "value": {
       "central": 103.0,
-      "low": 98.0,
-      "high": 108.0,
+      "low": 101.0,
+      "high": 105.0,
       "units": "mmHg",
       "distribution": "normal",
       "ci": 0.683
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: lomauro-aliverti-2015-respiratory. Technique: Arterial blood-gas analysis. Population: Healthy singleton pregnancies, term.",
+    "tier_rationale": "Tier A from LoMauro & Aliverti 2015 ERS Breathe review: PaO2 'reaches 101-104 mmHg in the third trimester' as a compensatory rise after PaCO2 falls. Range tightened to match the third-trimester window reported.",
     "citations": [
       "lomauro-aliverti-2015-respiratory"
     ],
     "primary_citation": "lomauro-aliverti-2015-respiratory",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "verified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
     },
-    "notes": "Arterial PaO2 at term; mildly elevated relative to non-pregnant baseline."
+    "notes": "PaO2 at term, post-hyperventilation. Range tightened from 98-108 (which spans first- and third-trimester) to 101-105, matching the third-trimester range reported by LoMauro 2015."
   },
   {
     "id": "maternal_respiratory.tidal_volume_ml_term",
@@ -116,13 +124,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: crapo-1996-pregnancy-respiratory. Technique: Spirometry. Population: Healthy singleton pregnancies, term.",
+    "tier_rationale": "Tier B from Crapo 1996 Clinical Obstetrics and Gynecology: review of cardiopulmonary physiology in pregnancy. Tidal volume rises ~200 mL above non-pregnant baseline at term.",
     "citations": [
       "crapo-1996-pregnancy-respiratory"
     ],
     "primary_citation": "crapo-1996-pregnancy-respiratory",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"

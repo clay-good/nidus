@@ -12,13 +12,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: battaglia-meschia-1986-fetal-metabolism. Technique: Umbilical-vein/artery glucose flux. Population: Late-gestation human fetus.",
+    "tier_rationale": "Tier B from Battaglia & Meschia 1986 textbook 'An Introduction to Fetal Physiology': the canonical reference for fetal substrate utilisation rates derived from chronically-catheterised lamb studies. Human extrapolation by body-mass scaling.",
     "citations": [
       "battaglia-meschia-1986-fetal-metabolism"
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Late-gestation human fetus"
@@ -38,13 +40,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: battaglia-meschia-1986-fetal-metabolism. Technique: Umbilical-vessel arteriovenous-difference Fick estimation. Population: Late-gestation human fetus (compiled).",
+    "tier_rationale": "Tier B from Battaglia & Meschia 1986 textbook: fetal oxygen consumption ~7 mL/kg/min from lamb studies, well-replicated in subsequent ovine work; human estimate by body-mass scaling.",
     "citations": [
       "battaglia-meschia-1986-fetal-metabolism"
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Late-gestation human fetus (compiled)"

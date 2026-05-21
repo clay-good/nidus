@@ -52,9 +52,15 @@ def test_filter_empty_when_unknown_tier(ds: nidus.Dataset) -> None:
 
 
 def test_filter_by_review_status(ds: nidus.Dataset) -> None:
-    f = ds.filter(review_status="unverified")
-    # The migration marks everything unverified; expect all 54.
-    assert len(f) == 54
+    """Most parameters are unverified; the citation+abstract audit promoted
+    a small number to verified. The split should sum to the full dataset
+    size, with most remaining unverified."""
+    unverified = ds.filter(review_status="unverified")
+    verified = ds.filter(review_status="verified")
+    contested = ds.filter(review_status="contested")
+    assert len(unverified) + len(verified) + len(contested) == len(ds) == 54
+    # Most parameters still need human re-verification against original PDFs.
+    assert len(unverified) >= 50
 
 
 def test_filter_no_constraints_returns_all(ds: nidus.Dataset) -> None:

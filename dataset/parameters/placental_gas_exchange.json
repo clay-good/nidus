@@ -10,13 +10,15 @@
       "units": "m^2"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: mayhew-1986-gas-diffusion. Population: Human placentae across gestation. Caveats: Phenomenological model parameter mapping morphometric diffusing capacity onto a saturable equilibrator. Validate against UV PO2 endpoint.",
+    "tier_rationale": "Tier C: morphometric model parameter from Mayhew 1986 Placenta (PMC-verified): the term-placenta morphometric diffusing capacity depends most strongly on harmonic-mean membrane thickness and villous surface area. The half-saturation area is a model-fit abstraction, not directly reported.",
     "citations": [
       "mayhew-1986-gas-diffusion"
     ],
     "primary_citation": "mayhew-1986-gas-diffusion",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Human placentae across gestation"
@@ -34,13 +36,15 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: carter-pijnenborg-2011-gas-exchange. Population: Healthy term human placentae. Caveats: Saturation cap derived to reproduce the textbook 25-40 mmHg UV PO2 window at term.",
+    "tier_rationale": "Tier C from Carter & Pijnenborg 2011 BPOBG: review of invasive placentation in primates including human. Maximum equilibration (fraction of P_arterial - P_venous that the placenta can clear) is a model abstraction informed by morphometric and Doppler-flow constraints.",
     "citations": [
       "carter-pijnenborg-2011-gas-exchange"
     ],
     "primary_citation": "carter-pijnenborg-2011-gas-exchange",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy term human placentae"

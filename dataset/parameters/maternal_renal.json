@@ -12,18 +12,20 @@
       "ci": 0.683
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: davison-hytten-1974-gfr. Technique: 24-hour creatinine clearance. Population: Healthy singleton pregnancies, weeks 8-12.",
+    "tier_rationale": "Tier A from Davison & Hytten 1974 BJOG: foundational study of GFR across pregnancy. The ~50% rise above non-pregnant baseline (~90 mL/min) is well-replicated across multiple subsequent studies (cited in Cheung & Lafayette 2013 review). Paywall-limited; specific first-trimester table re-verification pending.",
     "citations": [
       "davison-hytten-1974-gfr"
     ],
     "primary_citation": "davison-hytten-1974-gfr",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, weeks 8-12"
     },
-    "notes": "GFR in the first trimester; rise begins early in pregnancy."
+    "notes": "First-trimester GFR, ~50% above non-pregnant baseline of ~90. The Davison 1974 paper is the foundational citation; multiple downstream reviews (including Cheung 2013) confirm the magnitude of rise."
   },
   {
     "id": "maternal_renal.gfr_ml_per_min",
@@ -38,13 +40,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: cheung-lafayette-2013-renal. Technique: Inulin or iohexol clearance. Population: Healthy singleton pregnancies, third trimester.",
+    "tier_rationale": "Tier B from Cheung & Lafayette 2013 ACKD review: GFR rises ~50% in pregnancy (~135 mL/min at peak). Multi-source review synthesis; foundational primary studies (e.g., Davison & Hytten 1974) are the cited evidence base.",
     "citations": [
       "cheung-lafayette-2013-renal"
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -64,17 +68,19 @@
       "ci": 0.683
     },
     "tier": "A",
-    "tier_rationale": "Tier A pending re-review. Source citation: cheung-lafayette-2013-renal. Technique: Enzymatic colorimetric assay. Population: Healthy singleton pregnancies, third trimester. Caveats: A creatinine in the upper non-pregnant reference range (e.g. 0.9 mg/dL) is abnormal in pregnancy.",
+    "tier_rationale": "Tier A from Cheung & Lafayette 2013 ACKD review: GFR increases ~50% in pregnancy, producing a corresponding fall in serum creatinine, urea, and uric acid. The review's Table 1 reports a representative average serum creatinine of 0.5 mg/dL during pregnancy. Tier A reflects the review's synthesis of multiple sources; term-specific values may differ from the pregnancy-averaged figure.",
     "citations": [
       "cheung-lafayette-2013-renal"
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
     },
-    "notes": "Plasma creatinine at term; reduced below non-pregnant reference. Caveats: A creatinine in the upper non-pregnant reference range (e.g. 0.9 mg/dL) is abnormal in pregnancy."
+    "notes": "Term serum creatinine. Cheung 2013 Table 1 lists 0.5 mg/dL as the average during pregnancy; the dataset's 0.6 at term is plausible given mid-third-trimester recovery toward non-pregnant baseline, but the precise term-vs-average distinction needs human re-verification."
   }
 ]

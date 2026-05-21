@@ -10,13 +10,15 @@
       "units": "1/week"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: carter-2009-placental-development. Population: Reference placental development. Caveats: Logistic-shape fit parameter; not reported directly in source.",
+    "tier_rationale": "Tier C from Carter 2009 Placenta: review of factors affecting placental O2 transfer including the rate of villous surface-area expansion. Logistic-growth rate parameter is a model fit.",
     "citations": [
       "carter-2009-placental-development"
     ],
     "primary_citation": "carter-2009-placental-development",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Reference placental development"
@@ -36,13 +38,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mayhew-2014-placental-morphometry. Technique: Light-microscopic stereology. Population: Stereological measurements of human placentae across gestation.",
+    "tier_rationale": "Tier B from Mayhew & Hannan 2015 Placenta 'Morphomics' review: human-placenta villous surface area at early gestation from stereological studies. Replicated across multiple morphometric papers.",
     "citations": [
       "mayhew-2014-placental-morphometry"
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Stereological measurements of human placentae across gestation"
@@ -62,13 +66,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mayhew-2014-placental-morphometry. Technique: Electron-microscopic stereology. Population: Term human placentae.",
+    "tier_rationale": "Tier B from Mayhew & Hannan 2015 Placenta 'Morphomics' review: harmonic-mean villous-membrane thickness at term, the most important determinant of placental O2 diffusing capacity (Mayhew 1986 morphometric analysis).",
     "citations": [
       "mayhew-2014-placental-morphometry"
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Term human placentae"
@@ -86,13 +92,15 @@
       "units": "weeks"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: carter-2009-placental-development. Population: Reference placental development. Caveats: Logistic-shape fit parameter; not reported directly in source.",
+    "tier_rationale": "Tier C from Carter 2009 Placenta: gestational week at which villous surface area reaches the logistic-curve midpoint. Model-fit parameter.",
     "citations": [
       "carter-2009-placental-development"
     ],
     "primary_citation": "carter-2009-placental-development",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Reference placental development"
@@ -112,13 +120,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mayhew-2014-placental-morphometry. Technique: Light-microscopic stereology. Population: Term human placentae.",
+    "tier_rationale": "Tier B from Mayhew & Hannan 2015 Placenta 'Morphomics' review: term human-placenta villous surface area from stereological morphometric studies (~11-13 m^2).",
     "citations": [
       "mayhew-2014-placental-morphometry"
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Term human placentae"

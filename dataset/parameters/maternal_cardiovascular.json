@@ -12,13 +12,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Technique: Inert-gas rebreathing. Population: Healthy nulliparous women, pre-conception measurement.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 J Hypertension: prospective longitudinal cohort of 53 healthy nulliparous women from pre-conception through postpartum, inert-gas rebreathing for CO. Pre-conception baseline (~4.6 L/min) is the reference against which all pregnancy-induced changes are measured in this study. Single primary cohort; corroborated qualitatively by Sanghavi & Rutherford 2014 Circulation review.",
     "citations": [
       "mahendru-2014-cardiac-output"
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy nulliparous women, pre-conception measurement"
@@ -38,13 +40,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Technique: Brachial-cuff oscillometric MAP. Population: Healthy nulliparous women, pre-conception.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 J Hypertension: pre-conception MAP from brachial-cuff oscillometry in the longitudinal cohort. Consistent with population norms for nulliparous women aged 18-40.",
     "citations": [
       "mahendru-2014-cardiac-output"
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy nulliparous women, pre-conception"
@@ -64,13 +68,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: thaler-1990-uterine-flow. Technique: Pulsed-wave Doppler, bilateral uterine arteries. Population: Healthy women, pre-pregnancy or early first trimester.",
+    "tier_rationale": "Tier B from Thaler et al. 1990 Am J Obstet Gynecol: bilateral uterine-artery flow by pulsed-wave Doppler from pre-conception through term. Pre-pregnancy baseline reference value.",
     "citations": [
       "thaler-1990-uterine-flow"
     ],
     "primary_citation": "thaler-1990-uterine-flow",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy women, pre-pregnancy or early first trimester"
@@ -88,13 +94,15 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: hunter-robson-1992-cardiac-output. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier C: between-individual coefficient of variation in cardiac output. Hunter & Robson 1992 reports population-level CO trajectories; individual-sigma is a model-fit-derived parameter used to spread cohort means into per-individual draws.",
     "citations": [
       "hunter-robson-1992-cardiac-output"
     ],
     "primary_citation": "hunter-robson-1992-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -114,13 +122,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 longitudinal cohort. Peak CO around 28-32 weeks gestation; the precise peak depends on cohort definition and varies modestly across studies. The Mahendru 2014 cohort gives this as a central trend; replicated qualitatively in Sanghavi 2014 Circulation review.",
     "citations": [
       "mahendru-2014-cardiac-output"
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -138,13 +148,15 @@
       "units": "weeks"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: hunter-robson-1992-cardiac-output. Population: Healthy singleton pregnancies. Caveats: Derived from a Gaussian-shape fit to the cohort curves; original sources report point estimates rather than a shape parameter.",
+    "tier_rationale": "Tier C: Gaussian shape parameter (weeks) fit to the cohort-average cardiac-output trajectory. Hunter & Robson 1992 documents the qualitative shape; the numeric spread is a model-fit, not directly reported.",
     "citations": [
       "hunter-robson-1992-cardiac-output"
     ],
     "primary_citation": "hunter-robson-1992-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -162,13 +174,15 @@
       "units": "mmHg"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: sanghavi-rutherford-2014-cardio-review. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier C: between-individual sigma for MAP. Sanghavi & Rutherford 2014 Circulation review documents the population-level MAP trajectory; individual-sigma is model-fit.",
     "citations": [
       "sanghavi-rutherford-2014-cardio-review"
     ],
     "primary_citation": "sanghavi-rutherford-2014-cardio-review",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -188,13 +202,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014: mid-pregnancy MAP nadir represents the maximal systemic-vasodilation phase. Replicated qualitatively in Sanghavi 2014 review.",
     "citations": [
       "mahendru-2014-cardiac-output"
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -214,13 +230,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014: gestational week at which MAP reaches its lowest point in the longitudinal cohort. The 20-24 week range is consistent across reviews.",
     "citations": [
       "mahendru-2014-cardiac-output"
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -238,13 +256,15 @@
       "units": "weeks"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: sanghavi-rutherford-2014-cardio-review. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier C: Gaussian shape parameter (weeks) for the MAP nadir trajectory. Derived from fitting the Sanghavi & Rutherford 2014 review's qualitative curves; not directly reported.",
     "citations": [
       "sanghavi-rutherford-2014-cardio-review"
     ],
     "primary_citation": "sanghavi-rutherford-2014-cardio-review",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -264,13 +284,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Technique: Inert-gas rebreathing, longitudinal cohort. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014: peak gestational excess CO above the pre-conception baseline, measured longitudinally in the same cohort via inert-gas rebreathing. Single primary cohort.",
     "citations": [
       "mahendru-2014-cardiac-output"
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -290,13 +312,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: thaler-1990-uterine-flow. Technique: Pulsed-wave Doppler, bilateral uterine arteries. Population: Healthy singleton pregnancies, term.",
+    "tier_rationale": "Tier B from Thaler et al. 1990: term bilateral uterine-artery Doppler flow; the dominant component of placental-bed perfusion at delivery. Cohort of healthy singleton pregnancies.",
     "citations": [
       "thaler-1990-uterine-flow"
     ],
     "primary_citation": "thaler-1990-uterine-flow",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -314,13 +338,15 @@
       "units": "1/week"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: thaler-1990-uterine-flow. Population: Healthy singleton pregnancies. Caveats: Fit parameter; not directly reported. Derived to match Doppler-cohort means at sampled gestational ages.",
+    "tier_rationale": "Tier C: logistic-growth rate parameter (1/week) for uterine blood-flow expansion. Fit from Thaler 1990 Doppler-cohort means at sampled gestational ages; not directly reported.",
     "citations": [
       "thaler-1990-uterine-flow"
     ],
     "primary_citation": "thaler-1990-uterine-flow",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -338,13 +364,15 @@
       "units": "fraction"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: thaler-1990-uterine-flow. Population: Healthy singleton pregnancies.",
+    "tier_rationale": "Tier C: between-individual sigma for uterine flow. Thaler 1990 reports population means and SDs; the fractional sigma is model-fit.",
     "citations": [
       "thaler-1990-uterine-flow"
     ],
     "primary_citation": "thaler-1990-uterine-flow",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"

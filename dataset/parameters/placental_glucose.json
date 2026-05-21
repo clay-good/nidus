@@ -12,13 +12,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: illsley-2000-glut1. Technique: Vesicle uptake kinetics. Population: Human term syncytiotrophoblast microvillous membrane vesicles.",
+    "tier_rationale": "Tier B from Illsley 2000 Placenta review (the canonical synthesis of human-placenta glucose-transporter kinetics). GLUT1 Km on the syncytial microvillous membrane is in the physiological range (1-5 mmol/L) consistent with the placenta's function as a glucose conduit.",
     "citations": [
       "illsley-2000-glut1"
     ],
     "primary_citation": "illsley-2000-glut1",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Human term syncytiotrophoblast microvillous membrane vesicles"
@@ -36,13 +38,15 @@
       "units": "mmol/min/m^2"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: illsley-2000-glut1. Population: Human term syncytiotrophoblast. Caveats: Vmax extrapolated from vesicle-protein assays scaled to whole-placenta villous surface area; tier C reflects the extrapolation.",
+    "tier_rationale": "Tier C from Illsley 2000 Placenta review: GLUT1 Vmax estimated from vesicle-protein-corrected microvillous-membrane data. Translation to per-area-of-villous-surface introduces extrapolation error.",
     "citations": [
       "illsley-2000-glut1"
     ],
     "primary_citation": "illsley-2000-glut1",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "reviewer": "metadata-and-abstract-audit",
+      "date": "2026-05-21"
     },
     "applicability": {
       "population": "Human term syncytiotrophoblast"
@@ -62,13 +66,15 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B pending re-review. Source citation: baumann-2002-glut3. Population: Human syncytiotrophoblast basal membrane.",
+    "tier_rationale": "Tier B from Baumann 2002 review of placental glucose transfer. GLUT3 Km is lower than GLUT1 Km (1-2 mmol/L vs 2-3 mmol/L), consistent with GLUT3 being the high-affinity isoform that dominates fetal-side uptake in early gestation.",
     "citations": [
       "baumann-2002-glut3"
     ],
     "primary_citation": "baumann-2002-glut3",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Human syncytiotrophoblast basal membrane"
@@ -86,13 +92,15 @@
       "units": "mmol/min/m^2"
     },
     "tier": "C",
-    "tier_rationale": "Tier C pending re-review. Source citation: brown-2011-glut3. Population: Human syncytiotrophoblast across gestation. Caveats: GLUT3 expression rises through gestation; this is a term-equivalent reference value.",
+    "tier_rationale": "Tier C: Vmax extrapolated from microvillous-membrane GLUT3 protein-expression data (Brown 2011 PMC3272879). Brown 2011 confirms GLUT3 is on the syncytiotrophoblast microvillous membrane and that expression declines through gestation (2nd trimester = 48±7% of 1st, 3rd trimester = 34±10% of 1st). Absolute Vmax inference from relative expression is the Tier-C step; the underlying expression data is robustly measured (n=8 per trimester, Western blot, siRNA-validated).",
     "citations": [
       "brown-2011-glut3"
     ],
     "primary_citation": "brown-2011-glut3",
     "extraction": {
-      "review_status": "unverified"
+      "review_status": "unverified",
+      "date": "2026-05-21",
+      "reviewer": "metadata-and-abstract-audit"
     },
     "applicability": {
       "population": "Human syncytiotrophoblast across gestation"
