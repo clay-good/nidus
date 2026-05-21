@@ -4,13 +4,13 @@ Nidus uses **two complementary licences**: one for code and tooling, one for the
 
 ## Code: MIT
 
-Everything in `python/`, `dashboard/`, `scripts/`, the JSON Schemas in `dataset/schema/`, the test suite, and the build infrastructure is licensed under the [MIT License](https://github.com/claygood/nidus/blob/main/LICENSE).
+Everything in `python/`, `dashboard/`, `scripts/`, the JSON Schemas in `dataset/schema/`, the test suite, and the build infrastructure is licensed under the [MIT License](https://github.com/clay-good/nidus/blob/main/LICENSE).
 
 You may use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the code, subject to the conditions in the licence text.
 
 ## Dataset: CC-BY-4.0
 
-The dataset content under `dataset/` — parameter JSON, citation JSON, tier JSON, JSON-LD context — is licensed under the [Creative Commons Attribution 4.0 International License (CC-BY-4.0)](https://github.com/claygood/nidus/blob/main/LICENSE-DATASET).
+The dataset content under `dataset/` — parameter JSON, citation JSON, tier JSON, JSON-LD context — is licensed under the [Creative Commons Attribution 4.0 International License (CC-BY-4.0)](https://github.com/clay-good/nidus/blob/main/LICENSE-DATASET).
 
 You are free to:
 
@@ -35,7 +35,7 @@ Mixing the two would make either citation harder or relicensing harder. The dual
 
 ## How to cite
 
-Cite the dataset by its Zenodo concept DOI (minted on the first release). Machine-readable citation metadata is in [`CITATION.cff`](https://github.com/claygood/nidus/blob/main/CITATION.cff) at the repository root.
+Cite the dataset by its Zenodo concept DOI (minted on the first release). Machine-readable citation metadata is in [`CITATION.cff`](https://github.com/clay-good/nidus/blob/main/CITATION.cff) at the repository root.
 
 A typical academic citation looks like:
 

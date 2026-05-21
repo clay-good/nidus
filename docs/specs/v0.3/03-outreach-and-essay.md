@@ -31,9 +31,9 @@ venue later without invalidating the canonical version.
 1. **Write the essay** as
    [`docs/about/essay.md`](../../about/essay.md), ~2500 words.
 2. **Generate the three figures** via
-   [`notebooks/essay_figures.ipynb`](https://github.com/claygood/nidus/blob/main/notebooks/essay_figures.ipynb)
+   [`notebooks/essay_figures.ipynb`](https://github.com/clay-good/nidus/blob/main/notebooks/essay_figures.ipynb)
    (seeded, deterministic) and commit them to
-   [`docs/assets/essay/`](https://github.com/claygood/nidus/tree/main/docs/assets/essay)
+   [`docs/assets/essay/`](https://github.com/clay-good/nidus/tree/main/docs/assets/essay)
    so they ship as part of the mkdocs site and the repository.
 3. **Deposit the dataset** on Zenodo with a permanent DOI (already
    covered by Spec 01).
@@ -75,9 +75,9 @@ follows the structure below. Final section lengths are approximate.
 ## 5. Figures
 
 Three figures, generated deterministically by
-[`notebooks/essay_figures.ipynb`](https://github.com/claygood/nidus/blob/main/notebooks/essay_figures.ipynb)
+[`notebooks/essay_figures.ipynb`](https://github.com/clay-good/nidus/blob/main/notebooks/essay_figures.ipynb)
 and committed to
-[`docs/assets/essay/`](https://github.com/claygood/nidus/tree/main/docs/assets/essay):
+[`docs/assets/essay/`](https://github.com/clay-good/nidus/tree/main/docs/assets/essay):
 
 1. `fig1_tier_distribution.png` — stacked bar of tier mix across subsystems.
 2. `fig2_worked_example_timeline.png` — Mahendru 2014 → parameter

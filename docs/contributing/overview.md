@@ -6,9 +6,9 @@ The most valuable contributions to nidus are **verified parameters drawn from pu
 
 1. **[Verify an existing citation](verification.md).** Walk an existing parameter, confirm its values match what the cited paper actually reports, and update `extraction.review_status` to `"verified"`. All v0.3 entries are currently marked `unverified`; the tier system only has teeth once verification has happened.
 
-2. **Propose a new Tier-A or Tier-B parameter** from the literature via the [parameter-request issue template](https://github.com/claygood/nidus/issues/new?template=parameter-request.yml). Include the DOI, the extraction method, and the tier you propose; a reviewer cross-checks against the cited paper before the PR lands.
+2. **Propose a new Tier-A or Tier-B parameter** from the literature via the [parameter-request issue template](https://github.com/clay-good/nidus/issues/new?template=parameter-request.yml). Include the DOI, the extraction method, and the tier you propose; a reviewer cross-checks against the cited paper before the PR lands.
 
-3. **Surface a Tier-D research question** — a hypothesised mechanism worth measuring next — via the [research-question issue template](https://github.com/claygood/nidus/issues/new?template=hypothesis-proposal.yml). See the [tier system page](../dataset/tiers.md) for what makes a good Tier-D candidate.
+3. **Surface a Tier-D research question** — a hypothesised mechanism worth measuring next — via the [research-question issue template](https://github.com/clay-good/nidus/issues/new?template=hypothesis-proposal.yml). See the [tier system page](../dataset/tiers.md) for what makes a good Tier-D candidate.
 
 4. **Improve the docs, tutorials, or dashboard.** PRs welcome; the contribution-friction bar is low.
 
@@ -23,7 +23,7 @@ The most valuable contributions to nidus are **verified parameters drawn from pu
    pytest python/tests/
    python -c "import nidus; nidus.validate()"
    ```
-4. Open a PR using the [PR template](https://github.com/claygood/nidus/blob/main/.github/PULL_REQUEST_TEMPLATE.md). The structured "Parameter contribution" section requires you to tick the box confirming you have personally consulted the cited paper.
+4. Open a PR using the [PR template](https://github.com/clay-good/nidus/blob/main/.github/PULL_REQUEST_TEMPLATE.md). The structured "Parameter contribution" section requires you to tick the box confirming you have personally consulted the cited paper.
 
 ## What we look for in a parameter PR
 
@@ -42,8 +42,8 @@ By contributing, you agree that:
 
 ## Code of Conduct
 
-See [CODE_OF_CONDUCT.md](https://github.com/claygood/nidus/blob/main/CODE_OF_CONDUCT.md).
+See [CODE_OF_CONDUCT.md](https://github.com/clay-good/nidus/blob/main/CODE_OF_CONDUCT.md).
 
 ## Getting in touch
 
-File an issue or open a [GitHub Discussion](https://github.com/claygood/nidus/discussions) on the repo.
+File an issue or open a [GitHub Discussion](https://github.com/clay-good/nidus/discussions) on the repo.

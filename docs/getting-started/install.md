@@ -37,13 +37,13 @@ nidus info --subsystem maternal_cardiovascular
 
 ```bash
 pip install streamlit
-streamlit run https://raw.githubusercontent.com/claygood/nidus/main/dashboard/app.py
+streamlit run https://raw.githubusercontent.com/clay-good/nidus/main/dashboard/app.py
 ```
 
 Or clone the repo and run it from source:
 
 ```bash
-git clone https://github.com/claygood/nidus
+git clone https://github.com/clay-good/nidus
 cd nidus
 streamlit run dashboard/app.py
 ```
@@ -51,7 +51,7 @@ streamlit run dashboard/app.py
 ## Development install
 
 ```bash
-git clone https://github.com/claygood/nidus
+git clone https://github.com/clay-good/nidus
 cd nidus
 pip install -e python/[dev]
 ```

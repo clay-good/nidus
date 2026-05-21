@@ -42,4 +42,4 @@ These subsystems are deliberately out of scope for v0.3:
 - **Labour and delivery** — out of scope; a substantial modelling problem in its own right.
 - **Twin / higher-order pregnancies** — out of scope; would require its own dataset partition.
 
-Contributions extending coverage in these areas are welcome via the [parameter-request issue template](https://github.com/claygood/nidus/issues/new?template=parameter-request.yml) once the contributor has done the underlying citation work.
+Contributions extending coverage in these areas are welcome via the [parameter-request issue template](https://github.com/clay-good/nidus/issues/new?template=parameter-request.yml) once the contributor has done the underlying citation work.

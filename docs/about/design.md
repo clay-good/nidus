@@ -50,9 +50,9 @@ The **dataset is the centerpiece**; everything else is a presentation layer.
 
 ## The full design specs
 
-The numbered design documents live at [`docs/specs/v0.3/`](https://github.com/claygood/nidus/tree/main/docs/specs/v0.3/) in the repository:
+The numbered design documents live at [`docs/specs/v0.3/`](https://github.com/clay-good/nidus/tree/main/docs/specs/v0.3/) in the repository:
 
-- [`00-overview.md`](https://github.com/claygood/nidus/blob/main/docs/specs/v0.3/00-overview.md) — what we are doing and why.
-- [`01-dataset-and-dashboard.md`](https://github.com/claygood/nidus/blob/main/docs/specs/v0.3/01-dataset-and-dashboard.md) — the primary work.
-- [`02-sbml-cellml-export.md`](https://github.com/claygood/nidus/blob/main/docs/specs/v0.3/02-sbml-cellml-export.md) — conditional CellML/SBML interop.
-- [`03-outreach-and-essay.md`](https://github.com/claygood/nidus/blob/main/docs/specs/v0.3/03-outreach-and-essay.md) — blog essay strategy.
+- [`00-overview.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/00-overview.md) — what we are doing and why.
+- [`01-dataset-and-dashboard.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/01-dataset-and-dashboard.md) — the primary work.
+- [`02-sbml-cellml-export.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/02-sbml-cellml-export.md) — conditional CellML/SBML interop.
+- [`03-outreach-and-essay.md`](https://github.com/clay-good/nidus/blob/main/docs/specs/v0.3/03-outreach-and-essay.md) — blog essay strategy.

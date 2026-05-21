@@ -11,7 +11,7 @@ Every parameter in nidus carries one of four confidence tiers describing the str
 | **C** | Provisional       | Single study, or cross-sectional only, or small n · Mechanism speculative or contested · Used as a model parameter only when no better data exists.                                            |
 | **D** | Unknown           | No quantitative data in the published literature · Channel or quantity hypothesised but unmeasured · Listed for hypothesis-generation purposes only.                                           |
 
-The machine-readable definitions live in [`dataset/tiers/tiers.json`](https://github.com/claygood/nidus/blob/main/dataset/tiers/tiers.json).
+The machine-readable definitions live in [`dataset/tiers/tiers.json`](https://github.com/clay-good/nidus/blob/main/dataset/tiers/tiers.json).
 
 ## Why four levels
 
@@ -48,7 +48,7 @@ At v0.3.0:
 | C    | 15    |
 | D    | 0     |
 
-Tier D is currently empty. Structured open questions land via the [research-question issue template](https://github.com/claygood/nidus/issues/new?template=hypothesis-proposal.yml) and graduate to Tier D entries in the dataset.
+Tier D is currently empty. Structured open questions land via the [research-question issue template](https://github.com/clay-good/nidus/issues/new?template=hypothesis-proposal.yml) and graduate to Tier D entries in the dataset.
 
 ## How to assign a tier
 

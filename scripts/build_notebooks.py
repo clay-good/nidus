@@ -305,7 +305,7 @@ def build_02() -> None:
 
         See [CONTRIBUTING.md](../CONTRIBUTING.md) for the verification
         standard, and the
-        [parameter-request issue template](https://github.com/claygood/nidus/issues/new?template=parameter-request.yml)
+        [parameter-request issue template](https://github.com/clay-good/nidus/issues/new?template=parameter-request.yml)
         for the full proposal flow.
         """),
     ]

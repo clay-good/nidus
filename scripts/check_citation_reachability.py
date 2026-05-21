@@ -26,7 +26,7 @@ REPO = Path(__file__).parent.parent
 CITATIONS = REPO / "dataset" / "citations" / "citations.json"
 
 TIMEOUT_SECONDS = 15
-USER_AGENT = "nidus-citation-reachability/0.3 (+https://github.com/claygood/nidus)"
+USER_AGENT = "nidus-citation-reachability/0.3 (+https://github.com/clay-good/nidus)"
 
 
 def resolve_url(c: dict) -> str | None:

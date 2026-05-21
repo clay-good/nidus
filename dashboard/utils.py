@@ -79,7 +79,7 @@ def citation_line(c: nidus.Citation) -> str:
 
 # ---- Repo links ----------------------------------------------------
 
-REPO_URL = "https://github.com/claygood/nidus"
+REPO_URL = "https://github.com/clay-good/nidus"
 PYPI_URL = "https://pypi.org/project/nidus/"
 ISSUE_TEMPLATE_RESEARCH_QUESTION = (
     f"{REPO_URL}/issues/new?template=hypothesis-proposal.yml"

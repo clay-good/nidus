@@ -2,7 +2,7 @@
 
 The full public surface of the `nidus` package. Everything below is
 auto-generated from the source docstrings in
-[`python/nidus/`](https://github.com/claygood/nidus/tree/main/python/nidus)
+[`python/nidus/`](https://github.com/clay-good/nidus/tree/main/python/nidus)
 via [mkdocstrings](https://mkdocstrings.github.io/), so this page cannot
 drift out of sync with the code.
 

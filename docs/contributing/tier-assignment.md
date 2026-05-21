@@ -93,4 +93,4 @@ If you can't write the rationale, you don't have enough evidence to assign the t
 - You're promoting an existing Tier B to Tier A.
 - The cited paper has obvious methodological issues.
 
-In any of these cases, open a [GitHub Discussion](https://github.com/claygood/nidus/discussions) before the PR. Tier-A assignments are public-trust claims; a reviewer pair is appropriate.
+In any of these cases, open a [GitHub Discussion](https://github.com/clay-good/nidus/discussions) before the PR. Tier-A assignments are public-trust claims; a reviewer pair is appropriate.

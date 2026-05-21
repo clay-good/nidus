@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/claygood/nidus/dataset/schema/tier.schema.json",
+  "$id": "https://github.com/clay-good/nidus/dataset/schema/tier.schema.json",
   "title": "Nidus Tier Definitions",
   "description": "Confidence-tier definitions for parameter provenance.",
   "type": "object",

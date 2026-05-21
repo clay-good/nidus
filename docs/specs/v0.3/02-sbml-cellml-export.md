@@ -105,7 +105,7 @@ Each generator is a pure function. Outputs are byte-stable for a frozen dataset 
 <parameter id="cardiac_output_peak" value="1.55" units="L_per_min">
   <annotation>
     <rdf:RDF xmlns:bqbiol="http://biomodels.net/biology-qualifiers/"
-             xmlns:nidus="https://github.com/claygood/nidus/ontology#">
+             xmlns:nidus="https://github.com/clay-good/nidus/ontology#">
       <rdf:Description rdf:about="#cardiac_output_peak">
         <bqbiol:isDescribedBy rdf:resource="https://identifiers.org/doi/10.1097/HJH.0000000000000090"/>
         <bqbiol:isDescribedBy rdf:resource="https://identifiers.org/pubmed/24406777"/>

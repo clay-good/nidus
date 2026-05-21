@@ -1,8 +1,8 @@
 site_name: Nidus
 site_description: Curated dataset of human gestational physiology parameters, annotated with explicit confidence tiers.
 site_url: https://claygood.github.io/nidus/
-repo_url: https://github.com/claygood/nidus
-repo_name: claygood/nidus
+repo_url: https://github.com/clay-good/nidus
+repo_name: clay-good/nidus
 edit_uri: edit/main/docs/
 
 docs_dir: docs
@@ -86,7 +86,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/claygood/nidus
+      link: https://github.com/clay-good/nidus
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/nidus/
   generator: false

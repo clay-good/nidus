@@ -1,6 +1,6 @@
 # Confidence tiers for pregnancy physiology
 
-*An essay on the design behind [Nidus](https://github.com/claygood/nidus), an open dataset of
+*An essay on the design behind [Nidus](https://github.com/clay-good/nidus), an open dataset of
 human gestational physiology parameters.*
 
 ---
@@ -25,7 +25,7 @@ second is provisional. The model that consumes both treats them as
 interchangeable.
 
 This essay is about a small attempt to fix that, and the
-[curated dataset](https://github.com/claygood/nidus) that demonstrates
+[curated dataset](https://github.com/clay-good/nidus) that demonstrates
 the fix on human gestational physiology — a domain where the
 confidence question matters, partly because the stakes are high and
 partly because the literature is unusually heterogeneous.
@@ -160,8 +160,8 @@ during a copy-paste step in the original curation.
 
 The cleanup recovered the correct identifiers by Crossref title-and-
 author search, and the cleanup tooling is preserved in the repository
-([`scripts/verify_citation_metadata.py`](https://github.com/claygood/nidus/blob/main/scripts/verify_citation_metadata.py),
-[`scripts/repair_citation_identifiers.py`](https://github.com/claygood/nidus/blob/main/scripts/repair_citation_identifiers.py))
+([`scripts/verify_citation_metadata.py`](https://github.com/clay-good/nidus/blob/main/scripts/verify_citation_metadata.py),
+[`scripts/repair_citation_identifiers.py`](https://github.com/clay-good/nidus/blob/main/scripts/repair_citation_identifiers.py))
 so the next maintainer can detect and fix the same kind of drift
 automatically. Bibliographic accuracy is a precondition for tier
 credibility; if "Tier A" means "three independent papers say so" then
@@ -229,7 +229,7 @@ parameter, not opaque key strings. Chasing the provenance of any
 value is one attribute hop away.
 
 If you'd rather browse without writing code, there is also a
-[Streamlit dashboard](https://github.com/claygood/nidus/tree/main/dashboard)
+[Streamlit dashboard](https://github.com/clay-good/nidus/tree/main/dashboard)
 that loads the same data with a parameter explorer, subsystem
 deep-dive, citation provenance graph, and a download page that ships
 the dataset as ZIP, per-subsystem JSON, and BibTeX.
@@ -251,7 +251,7 @@ forever free. There is no commercial path planned and no premium tier.
 The Tier-D channel is intentionally empty. It is a structured
 invitation: if you know a mechanism that pregnancy modelling needs but
 the literature does not yet quantify, propose it via the
-[research-question issue template](https://github.com/claygood/nidus/issues/new?template=hypothesis-proposal.yml).
+[research-question issue template](https://github.com/clay-good/nidus/issues/new?template=hypothesis-proposal.yml).
 
 Examples of the kind of thing that would land here:
 
@@ -307,7 +307,7 @@ the framework is the contribution.
 The dataset is deposited on Zenodo on every release. The Zenodo
 concept DOI resolves to the latest version; per-version DOIs are
 stable across releases. The machine-readable citation metadata lives
-in [`CITATION.cff`](https://github.com/claygood/nidus/blob/main/CITATION.cff)
+in [`CITATION.cff`](https://github.com/clay-good/nidus/blob/main/CITATION.cff)
 at the repository root.
 
 When citing a specific parameter value in a paper, cite both the
@@ -318,10 +318,10 @@ citation explicitly; chasing it is one attribute hop.
 
 ---
 
-*The code lives at [github.com/claygood/nidus](https://github.com/claygood/nidus).
+*The code lives at [github.com/clay-good/nidus](https://github.com/clay-good/nidus).
 The dataset, the schemas, the verification scripts, the tests, the
 dashboard, this essay, and the figures in this essay are all in the
 repository. MIT on the code, CC-BY-4.0 on the dataset. Open an
-[issue](https://github.com/claygood/nidus/issues) or a
-[discussion](https://github.com/claygood/nidus/discussions) if you'd
+[issue](https://github.com/clay-good/nidus/issues) or a
+[discussion](https://github.com/clay-good/nidus/discussions) if you'd
 like to contribute.*

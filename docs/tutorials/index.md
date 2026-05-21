@@ -1,7 +1,7 @@
 # Tutorials
 
 The reference tutorials are Jupyter notebooks living under
-[`notebooks/`](https://github.com/claygood/nidus/tree/main/notebooks).
+[`notebooks/`](https://github.com/clay-good/nidus/tree/main/notebooks).
 Each one exercises a chunk of the API and runs end-to-end in CI via
 `nbmake`, so they cannot drift out of sync with the package.
 
@@ -31,7 +31,7 @@ listed for completeness.
 ## Maintenance
 
 The notebooks are generated artefacts; their source-of-truth is
-[`scripts/build_notebooks.py`](https://github.com/claygood/nidus/blob/main/scripts/build_notebooks.py).
+[`scripts/build_notebooks.py`](https://github.com/clay-good/nidus/blob/main/scripts/build_notebooks.py).
 Cell ids are deterministic SHA-256 hashes so re-generations produce
 stable diffs.
 

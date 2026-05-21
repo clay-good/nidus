@@ -62,9 +62,9 @@ dev = [
 nidus = "nidus.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/claygood/nidus"
-Repository = "https://github.com/claygood/nidus"
-Issues = "https://github.com/claygood/nidus/issues"
+Homepage = "https://github.com/clay-good/nidus"
+Repository = "https://github.com/clay-good/nidus"
+Issues = "https://github.com/clay-good/nidus/issues"
 
 [build-system]
 requires = ["hatchling"]

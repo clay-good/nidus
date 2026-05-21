@@ -48,7 +48,7 @@ CITATIONS = REPO / "dataset" / "citations" / "citations.json"
 CROSSREF_BASE = "https://api.crossref.org/works"
 USER_AGENT = (
     "nidus-citation-verifier/0.3 "
-    "(+https://github.com/claygood/nidus; mailto:hi@claygood.com)"
+    "(+https://github.com/clay-good/nidus; mailto:hi@claygood.com)"
 )
 TIMEOUT_SECONDS = 25
 SLEEP_BETWEEN_CALLS = 0.3

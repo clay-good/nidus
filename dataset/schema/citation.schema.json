@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/claygood/nidus/dataset/schema/citation.schema.json",
+  "$id": "https://github.com/clay-good/nidus/dataset/schema/citation.schema.json",
   "title": "Nidus Citation",
   "description": "A single bibliographic record. Journal articles, preprints, and conference papers SHOULD have a DOI, PMID, or URL; books and pre-DOI references may resolve by author + title + year only. The README rule that Tier A/B parameters must link to a DOI/PMID is enforced at the parameter level by CI, not by this schema.",
   "type": "object",

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/claygood/nidus/dataset/schema/parameter.schema.json",
+  "$id": "https://github.com/clay-good/nidus/dataset/schema/parameter.schema.json",
   "title": "Nidus Parameter",
   "description": "A single physiological parameter with provenance, value, optional trajectory, and confidence tier.",
   "type": "object",

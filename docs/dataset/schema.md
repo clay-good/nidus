@@ -1,6 +1,6 @@
 # Schema
 
-Every parameter, citation, and tier definition in the nidus dataset validates against a JSON Schema (draft 2020-12). The schemas live in [`dataset/schema/`](https://github.com/claygood/nidus/tree/main/dataset/schema) and are bundled into the package.
+Every parameter, citation, and tier definition in the nidus dataset validates against a JSON Schema (draft 2020-12). The schemas live in [`dataset/schema/`](https://github.com/clay-good/nidus/tree/main/dataset/schema) and are bundled into the package.
 
 Run `nidus.validate()` to validate the whole bundled dataset, or `nidus.validate(path="...")` to validate an external copy.
 
@@ -8,7 +8,7 @@ Run `nidus.validate()` to validate the whole bundled dataset, or `nidus.validate
 
 ## Parameter
 
-Source: [`parameter.schema.json`](https://github.com/claygood/nidus/blob/main/dataset/schema/parameter.schema.json)
+Source: [`parameter.schema.json`](https://github.com/clay-good/nidus/blob/main/dataset/schema/parameter.schema.json)
 
 ```json
 {
@@ -64,7 +64,7 @@ Additional properties are rejected (`additionalProperties: false`).
 
 ## Citation
 
-Source: [`citation.schema.json`](https://github.com/claygood/nidus/blob/main/dataset/schema/citation.schema.json)
+Source: [`citation.schema.json`](https://github.com/clay-good/nidus/blob/main/dataset/schema/citation.schema.json)
 
 ```json
 {
@@ -94,7 +94,7 @@ Source: [`citation.schema.json`](https://github.com/claygood/nidus/blob/main/dat
 
 ## Tier
 
-Source: [`tier.schema.json`](https://github.com/claygood/nidus/blob/main/dataset/schema/tier.schema.json)
+Source: [`tier.schema.json`](https://github.com/clay-good/nidus/blob/main/dataset/schema/tier.schema.json)
 
 The four tier definitions live in `dataset/tiers/tiers.json`. The schema requires `label` + `criteria` (non-empty array of strings) for each of `A`, `B`, `C`, `D`. See the [tier system page](tiers.md) for the actual definitions.
 
