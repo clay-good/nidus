@@ -395,7 +395,24 @@ landings record what is done and what remains.
 
 ### Streams B–F
 
-- [ ] **Prompt B1** — Reference dataset adapters.
+- [~] **Prompt B1 — Reference dataset adapters** *(scaffold landed; per-dataset
+  rollouts continue under B2).*
+  - New [`crates/nidus-validation/src/datasets/`](crates/nidus-validation/src/datasets/)
+    module with shared `Dataset` / `DatasetRow` types and a `deny_unknown_fields`
+    TOML loader (`load_from_str`, `cached`).
+  - First working adapter:
+    [`maternal_hemodynamics`](crates/nidus-validation/src/datasets/maternal_hemodynamics.rs),
+    bundling [`data/validation/maternal_hemodynamics.toml`](data/validation/maternal_hemodynamics.toml)
+    (Mahendru 2014 longitudinal cardiac-output trajectory; 7 rows across
+    8–40 weeks). Loaded via `include_str!` and cached behind a
+    `OnceLock`.
+  - Cross-crate test
+    [`crates/nidus-validation/tests/datasets.rs`](crates/nidus-validation/tests/datasets.rs)
+    confirms the dataset's `citation_id` resolves against the shipping
+    citation index.
+  - The NICHD growth, Doppler flow, and fetal cardiac adapters
+    (Prompts 03.2/03.3/03.4) follow the same shape; they are deferred
+    until the per-dataset TOMLs are authored by a human contributor.
 - [ ] **Prompt B2** — Validation cases (NICHD, placental Doppler,
   fetal cardiac).
 - [ ] **Prompt B3** — Validation documentation under `docs/validation/`.

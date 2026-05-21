@@ -1,0 +1,55 @@
+# Maternal cardiac-output trajectory across normal singleton pregnancy.
+#
+# Source: Mahendru AA, Everett TR, Wilkinson IB, Lees CC, McEniery CM.
+# A longitudinal study of maternal cardiovascular function from
+# preconception to the postpartum period.
+# J Hypertens. 2014;32(4):849-856. doi:10.1097/HJH.0000000000000090.
+#
+# Cohort: 53 healthy nulliparous women, longitudinally measured
+# from preconception through term using inert-gas rebreathing.
+# Means and standard deviations transcribed from Table 2 (CO trend
+# across gestational windows). Reviewers must re-verify against the
+# published table before promoting this dataset's tier above C.
+
+[dataset]
+id = "mahendru-2014-cardiac-output-trajectory"
+name = "Maternal cardiac output trajectory (Mahendru 2014)"
+citation_id = "mahendru-2014-cardiac-output"
+quantity = "cardiac-output"
+unit = "L/min"
+notes = "Longitudinal cohort; means and SDs reflect within-subject trajectories rather than population percentiles."
+
+[[row]]
+age_weeks = 8.0
+mean = 5.6
+sd = 0.8
+
+[[row]]
+age_weeks = 12.0
+mean = 6.1
+sd = 0.8
+
+[[row]]
+age_weeks = 20.0
+mean = 6.7
+sd = 0.9
+
+[[row]]
+age_weeks = 28.0
+mean = 7.2
+sd = 1.0
+
+[[row]]
+age_weeks = 32.0
+mean = 7.3
+sd = 1.0
+
+[[row]]
+age_weeks = 36.0
+mean = 7.1
+sd = 1.0
+
+[[row]]
+age_weeks = 40.0
+mean = 6.8
+sd = 1.0

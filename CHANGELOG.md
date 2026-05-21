@@ -39,6 +39,16 @@ database is what advances the simulator.
   - `nidus list parameters` — added `--tier`, `--search`, and `--json`
     filters for case-insensitive substring search and machine-readable
     output.
+- Reference-dataset adapter scaffold (Spec 03, Prompt 03.1, v0.2 Stream B
+  Prompt B1): new [`crates/nidus-validation/src/datasets/`](crates/nidus-validation/src/datasets/)
+  module exposing shared `Dataset` / `DatasetRow` types, a
+  `deny_unknown_fields` TOML loader, and a `cached` helper for adapter
+  modules that bundle their data via `include_str!`. First working
+  adapter: `maternal_hemodynamics` (Mahendru 2014 cardiac-output
+  trajectory, 7 rows from 8–40 weeks), backed by
+  [`data/validation/maternal_hemodynamics.toml`](data/validation/maternal_hemodynamics.toml).
+  A cross-crate test confirms the citation resolves against the
+  shipping citation index.
 - `Params::from_database` constructors landed for
   `MaternalCardioParams` (Spec 01.4), `StructureParams`,
   `GasExchangeParams`, `GlucoseTransportParams` (Spec 01.6), and
