@@ -1,0 +1,88 @@
+site_name: Nidus
+site_description: Curated dataset of human gestational physiology parameters, annotated with explicit confidence tiers.
+site_url: https://claygood.github.io/nidus/
+repo_url: https://github.com/claygood/nidus
+repo_name: claygood/nidus
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.action.edit
+    - search.highlight
+    - search.suggest
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/claygood/nidus
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/nidus/
+  generator: false
+
+nav:
+  - Home: index.md
+  - Getting started:
+    - Install: getting-started/install.md
+    - Quickstart: getting-started/quickstart.md
+  - Dataset:
+    - Overview: dataset/overview.md
+    - Schema: dataset/schema.md
+    - Tier system: dataset/tiers.md
+    - Subsystems: dataset/subsystems.md
+  - Tutorials: tutorials/index.md
+  - API reference: api.md
+  - Contributing:
+    - Overview: contributing/overview.md
+    - Verification standard: contributing/verification.md
+    - Tier assignment: contributing/tier-assignment.md
+  - About:
+    - v0.3 design: about/design.md
+    - History: about/history.md
+    - Licence: about/license.md
+
+# Strict mode catches broken links and missing files in CI.
+strict: true

@@ -2,7 +2,7 @@
 
 ## Current direction (ACTIVE)
 
-The current direction is captured in [`v0.3/`](v0.3/).
+The current direction is captured in [`v0.3/00-overview.md`](v0.3/00-overview.md).
 
 | Spec | File                                                                | Status                                                                |
 | ---- | ------------------------------------------------------------------- | --------------------------------------------------------------------- |

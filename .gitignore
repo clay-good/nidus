@@ -58,6 +58,7 @@ env/
 # Documentation site builds
 # --------------------
 site/
+.cache/
 
 # --------------------
 # Environment & Secrets

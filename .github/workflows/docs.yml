@@ -1,0 +1,44 @@
+name: Docs
+
+# Build the mkdocs-material site on every PR (strict mode catches broken
+# links). On push to main, also deploy to GitHub Pages via the standard
+# `mkdocs gh-deploy` path.
+#
+# Prerequisite (one-time, in repo settings):
+#   Settings -> Pages -> Source: Deploy from a branch -> Branch: gh-pages
+# `mkdocs gh-deploy` creates/updates the gh-pages branch automatically.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # needed for `mkdocs gh-deploy` to push to gh-pages
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install mkdocs
+        run: pip install mkdocs mkdocs-material
+      - name: Build (strict)
+        run: mkdocs build --strict
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdocs gh-deploy --force --clean --no-history
