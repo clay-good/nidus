@@ -1,91 +1,67 @@
-# NIDUS
+# Nidus
 
-**A Research Simulator for Human Gestational Physiology**
+**A curated, citation-backed dataset of human gestational physiology parameters — annotated with explicit confidence tiers.**
 
-*Version 0.1.0 — under active construction.*
+Nidus is an open dataset of parameter values describing maternal cardiovascular adaptation, placental transport, and fetal development across human pregnancy (8–40 weeks gestation). Every parameter is annotated with:
 
-Nidus is an open-source, MIT-licensed computational tool for surfacing what
-we know, what we do not know, and what would be most valuable to measure
-next about human pregnancy. The full design is captured in [docs/specs/SPEC.md](docs/specs/SPEC.md);
-this README is a short orientation.
+- a **confidence tier** (A/B/C/D) describing the strength of evidence behind it,
+- at least one **peer-reviewed citation** linked by DOI or PMID,
+- a **rationale** for the tier assignment.
 
-## What Nidus is
+It is distributed as a Python package (`pip install nidus`) and browsable via an interactive Streamlit dashboard.
 
-Nidus is a research simulator that models the coupled maternal–fetal
-physiological system across human pregnancy, from approximately eight weeks
-gestational age through forty weeks. It integrates current scientific
-understanding of maternal cardiovascular adaptation, placental transport and
-endocrinology, and fetal development into a single composable computational
-substrate. It is deterministic where the underlying biology is
-mechanistically understood and stochastic where the biology is irreducibly
-variable. It is built to be reproducible, citable, auditable, and extensible.
+## What nidus is
 
-The project's defining commitment is that every modelled quantity carries an
-explicit confidence tier, every parameter is annotated with its scientific
-source, and every output makes the boundary between established knowledge
-and active uncertainty visible to the user. Nidus is designed to be honest
-about its own limits, because dishonesty about uncertainty is what turns a
-useful research tool into a misleading one.
+- A **JSON dataset** under `dataset/`, schema-validated and machine-readable.
+- A **Python package** that loads, filters, and queries the dataset.
+- A **Streamlit dashboard** for non-coders to browse parameters, citations, and trajectories.
+- A **citable artifact** — every release gets a Zenodo DOI.
 
-## What Nidus is not
+## What nidus is NOT
 
-Nidus is **not** a clinical decision support tool. It does not generate
-recommendations for the care of any specific pregnancy and is not validated
-for any decision affecting a real patient.
+- **Not a clinical decision-support tool.** Not validated for any decision affecting a real patient.
+- **Not a mechanistic simulator.** For mechanistic modelling, see [CellML](https://www.cellml.org/), [COPASI](http://copasi.org/), or [PhysioCell](http://physicell.org/).
+- **Not an automated medical researcher.** Humans verify every parameter and every citation.
 
-Nidus is **not** a control system for a medical device, and it is **not** an
-autonomous AI agent or automated medical researcher. It is a
-hypothesis-generation tool with humans in the loop at every empirical step:
-the simulator generates hypotheses; humans evaluate them, design experiments
-to test them, execute those experiments in physical reality, and bring the
-results back to update the simulator's parameter database. The loop closes
-in the laboratory and the clinic, not in software.
+## Quick start
 
-Nidus does not model the embryonic period prior to eight weeks, does not
-model labour and delivery, and does not model twin or higher-order
-pregnancies in version 0.1.0. Each of these is a substantial modelling
-problem in its own right and is intentionally deferred to future work.
-
-## Repository layout
-
-```
-nidus/
-├── crates/
-│   ├── nidus-core/              # deterministic engine: tier infra, tick hierarchy, RNG service
-│   ├── nidus-maternal/          # maternal subsystem (planned)
-│   ├── nidus-placenta/          # placental interface (planned)
-│   ├── nidus-fetal/             # fetal subsystem (planned)
-│   ├── nidus-unknown/           # unknown channels registry (planned)
-│   ├── nidus-data/              # parameter database + citation index (planned)
-│   ├── nidus-validation/        # validation suite (planned)
-│   ├── nidus-scenarios/         # scenario configurations (planned)
-│   ├── nidus-hypothesis/        # hypothesis generation (planned)
-│   ├── nidus-observability/     # dashboards, telemetry, visualisation (planned)
-│   ├── nidus-cli/               # command-line interface
-│   └── nidus-py/                # Python bindings (planned)
-├── docs/specs/SPEC.md           # full design specification (also see SPEC_V0.2.md and 01–12)
-├── PROGRESS.md                  # which implementation prompts are done
-├── CONTRIBUTING.md              # contribution guide, including the tier system
-└── CODE_OF_CONDUCT.md
+```bash
+pip install nidus
 ```
 
-## Building
+```python
+import nidus
 
-```sh
-cargo build --workspace
-cargo test --workspace
+ds = nidus.load()
+
+co = ds["maternal.cardio.cardiac_output.peak_amplitude"]
+print(co.value)         # {"central": 1.55, "low": 1.30, "high": 1.80, "units": "L/min"}
+print(co.tier)          # "B"
+print(co.citations[0].doi)  # "10.1097/HJH.0000000000000090"
 ```
 
-A working Rust toolchain (1.75+) is the only external requirement to build
-and run the test suite.
+## Confidence tiers
 
-## Contributing
+| Tier  | Meaning                                                                                                |
+| ----- | ------------------------------------------------------------------------------------------------------ |
+| A     | Well-established. ≥3 independent studies, overlapping CIs, mechanism understood, multiple populations. |
+| B     | Supported. 1–2 longitudinal studies (n≥100), plausible mechanism, no strong contradicting evidence.    |
+| C     | Provisional. Single study, or cross-sectional only, or small n; mechanism speculative.                 |
+| D     | Unknown. Hypothesised channel; no quantitative literature; listed for research-question purposes.      |
 
-The most valuable contributions are parameter updates derived from
-published empirical work. See [CONTRIBUTING.md](CONTRIBUTING.md) for the
-confidence tier system, how parameters are reviewed, and what other forms
-of contribution look like.
+## How to cite
+
+Cite the dataset by its Zenodo concept DOI (added on first release). See `CITATION.cff` for machine-readable metadata.
+
+## Project status
+
+Currently pivoting from an earlier Rust-simulator architecture to this dataset-first form. See [`docs/specs/v0.3-pivot/00-overview.md`](docs/specs/v0.3-pivot/00-overview.md) for the current direction and rationale.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE).
+- **Code:** MIT. See [LICENSE](LICENSE).
+- **Dataset:** CC-BY-4.0 (each parameter entry is data; attribution required, no other restrictions).
+
+## Contributing
+
+The most valuable contributions are verified parameters drawn from published empirical work. See [CONTRIBUTING.md](CONTRIBUTING.md) for the tier system, the review checklist, and the citation-verification workflow.
