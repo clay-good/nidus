@@ -12,3 +12,4 @@ workspace = true
 
 [dependencies]
 nidus-core.workspace = true
+nidus-data.workspace = true

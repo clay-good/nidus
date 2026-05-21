@@ -70,6 +70,13 @@ pub enum DatabaseError {
         /// Human-readable detail.
         detail: String,
     },
+    /// A code-side consumer asked for a parameter id that the database
+    /// did not load.
+    #[error("parameter `{id}` not found in database")]
+    MissingParameter {
+        /// Requested parameter id.
+        id: String,
+    },
 }
 
 /// Parameter database: parameter entries plus the citations they cite.
@@ -191,6 +198,16 @@ impl ParameterDatabase {
         self.parameters
             .get(parameter_id)
             .and_then(|p| self.citations.get(&p.citation))
+    }
+
+    /// Resolve a parameter id to its scalar point estimate (see
+    /// [`crate::ValueSpec::point_estimate`]). Returns
+    /// [`DatabaseError::MissingParameter`] if the id is not loaded.
+    pub fn point_estimate(&self, id: &str) -> Result<f64, DatabaseError> {
+        self.parameters
+            .get(id)
+            .map(|p| p.value.point_estimate())
+            .ok_or_else(|| DatabaseError::MissingParameter { id: id.to_owned() })
     }
 
     /// Iterate over all parameters, in arbitrary but stable order

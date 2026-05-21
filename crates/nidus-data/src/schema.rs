@@ -85,6 +85,28 @@ pub enum ValueSpec {
     },
 }
 
+impl ValueSpec {
+    /// Best-effort scalar point estimate.
+    ///
+    /// - `Point`     → the point value.
+    /// - `Normal`    → the mean.
+    /// - `Uniform`   → the arithmetic midpoint of `[low, high]`.
+    /// - `Lognormal` → `exp(mu + sigma^2 / 2)`, the lognormal mean.
+    ///
+    /// Used by deterministic database-backed constructors that need a
+    /// single numeric value per parameter, independent of any sampling
+    /// RNG.
+    #[must_use]
+    pub fn point_estimate(&self) -> f64 {
+        match *self {
+            ValueSpec::Point { value, .. } => value,
+            ValueSpec::Normal { mean, .. } => mean,
+            ValueSpec::Uniform { low, high } => 0.5 * (low + high),
+            ValueSpec::Lognormal { mu, sigma } => (mu + 0.5 * sigma * sigma).exp(),
+        }
+    }
+}
+
 /// Gestational-age range, inclusive on both ends, in completed weeks.
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]

@@ -23,6 +23,27 @@
 //! scaffolding values pending citation-bearing entries in the parameter
 //! database (SPEC.md §9).
 
+use nidus_data::{DatabaseError, ParameterDatabase};
+
+/// Database ids consumed by [`GasExchangeParams::from_database`] and
+/// [`GlucoseTransportParams::from_database`].
+pub mod param_ids {
+    /// Half-saturation surface area (m²) of the saturable equilibrator.
+    pub const GAS_HALF_SAT_AREA: &str = "placenta-gas-half-saturation-area-m2";
+    /// Maximum venous-equilibrator fraction (dimensionless).
+    pub const GAS_MAX_EQUILIBRATION: &str = "placenta-gas-max-equilibration";
+    /// GLUT1 Km (mmol/L).
+    pub const GLUT1_KM: &str = "placenta-glucose-glut1-km-mmol-per-l";
+    /// GLUT1 Vmax per unit area (mmol/min/m²).
+    pub const GLUT1_VMAX_PER_AREA: &str =
+        "placenta-glucose-glut1-vmax-per-area-mmol-per-min-per-m2";
+    /// GLUT3 Km (mmol/L).
+    pub const GLUT3_KM: &str = "placenta-glucose-glut3-km-mmol-per-l";
+    /// GLUT3 Vmax per unit area (mmol/min/m²).
+    pub const GLUT3_VMAX_PER_AREA: &str =
+        "placenta-glucose-glut3-vmax-per-area-mmol-per-min-per-m2";
+}
+
 /// Coefficients for the placental gas-exchange model.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct GasExchangeParams {
@@ -44,6 +65,17 @@ impl Default for GasExchangeParams {
             half_saturation_area_m2: 3.0,
             max_equilibration: 0.28,
         }
+    }
+}
+
+impl GasExchangeParams {
+    /// Construct from point-estimate values resolved against a loaded
+    /// [`ParameterDatabase`].
+    pub fn from_database(db: &ParameterDatabase) -> Result<Self, DatabaseError> {
+        Ok(Self {
+            half_saturation_area_m2: db.point_estimate(param_ids::GAS_HALF_SAT_AREA)?,
+            max_equilibration: db.point_estimate(param_ids::GAS_MAX_EQUILIBRATION)?,
+        })
     }
 }
 
@@ -98,6 +130,25 @@ impl Default for GlucoseTransportParams {
             km_mmol_per_l: 5.0,
             vmax_per_area_mmol_per_min_per_m2: 0.5,
         }
+    }
+}
+
+impl GlucoseTransportParams {
+    /// Construct from point-estimate values resolved against a loaded
+    /// [`ParameterDatabase`].
+    ///
+    /// The single-pool model collapses GLUT1 (maternal microvillous,
+    /// dominant) and GLUT3 (basal) into one Michaelis–Menten kinetic.
+    /// `Km` is taken from GLUT1 (the rate-limiting transporter for
+    /// maternal-to-fetal flux); `Vmax` is the sum of the two per-area
+    /// rates, since the transporters act in parallel.
+    pub fn from_database(db: &ParameterDatabase) -> Result<Self, DatabaseError> {
+        let vmax_glut1 = db.point_estimate(param_ids::GLUT1_VMAX_PER_AREA)?;
+        let vmax_glut3 = db.point_estimate(param_ids::GLUT3_VMAX_PER_AREA)?;
+        Ok(Self {
+            km_mmol_per_l: db.point_estimate(param_ids::GLUT1_KM)?,
+            vmax_per_area_mmol_per_min_per_m2: vmax_glut1 + vmax_glut3,
+        })
     }
 }
 

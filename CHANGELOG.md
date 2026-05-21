@@ -39,6 +39,19 @@ database is what advances the simulator.
   - `nidus list parameters` — added `--tier`, `--search`, and `--json`
     filters for case-insensitive substring search and machine-readable
     output.
+- `Params::from_database` constructors landed for
+  `MaternalCardioParams` (Spec 01.4), `StructureParams`,
+  `GasExchangeParams`, `GlucoseTransportParams` (Spec 01.6), and
+  `FetalCirculationParams` (Spec 01.7). Each crate now depends on
+  `nidus-data` and exposes a `param_ids` submodule listing the
+  database ids consumed. A new `ValueSpec::point_estimate` plus
+  `ParameterDatabase::point_estimate(id)` provide deterministic scalar
+  resolution; missing ids surface via the new
+  `DatabaseError::MissingParameter` variant. A cross-crate
+  integration test (`nidus-scenarios/tests/database_constructors.rs`)
+  loads the on-disk `data/` tree and confirms every constructor
+  resolves. Default scaffold values remain available for test-only and
+  override-only paths.
 - `nidus-validation` now exposes a `builtin` module
   (`maternal_cardio_scaffold_case`, `built_in_cases`) so the CLI and
   downstream consumers share the v0.1 scaffold case rather than
@@ -106,10 +119,22 @@ v0.2 Stream A — first batch of verified citation-backed entries
   consumption per kg, glucose utilisation per kg). Tier B, cite
   Battaglia & Meschia 1986.
 
-Wiring each `*Params` struct to its `from_database` constructor —
-the second half of Prompts A2/A3 — remains follow-up work; the
-TOML entries above are the source of truth that subsequent code
-changes will load.
+The `from_database` constructors that consume these entries —
+the second half of Prompts A2/A3 and the code-side of Spec 01
+Prompts 01.4/01.6/01.7 — are now implemented (see "Engine and
+infrastructure" above).
+
+While wiring the constructors, two data/struct unit mismatches were
+corrected:
+- `maternal-cardio-cardiac-output-individual-sigma` is a fractional
+  one-sigma in the model; its TOML entry was retyped from `L/min`
+  (value 0.6) to `fraction` (value 0.13 ≈ 13%, consistent with
+  Mahendru 2014 CV of CO).
+- `fetal-circulation-foramen-ovale-streamline-preference` is a
+  weighted-average weight in the model (0.5 = no preference); its
+  TOML value was retyped from 0.55 to 0.80 with a clarified
+  description, matching Rudolph 1985's reported ~75–80% preferential
+  streaming.
 
 ### Unknown channels
 

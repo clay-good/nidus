@@ -23,6 +23,19 @@
 //! anatomical fractions; it does not attempt to resolve the full
 //! hemodynamics, which is deferred to a later prompt.
 
+use nidus_data::{DatabaseError, ParameterDatabase};
+
+/// Database ids consumed by [`FetalCirculationParams::from_database`].
+pub mod param_ids {
+    /// Foramen-ovale streamline preference (dimensionless fraction).
+    pub const FORAMEN_OVALE_PREFERENCE: &str =
+        "fetal-circulation-foramen-ovale-streamline-preference";
+    /// Ductus arteriosus flow share (dimensionless fraction).
+    pub const DUCTUS_ARTERIOSUS_SHARE: &str = "fetal-circulation-ductus-arteriosus-share";
+    /// Systemic venous return PO₂ (mmHg).
+    pub const SYSTEMIC_VENOUS_PO2: &str = "fetal-circulation-systemic-venous-return-po2-mmhg";
+}
+
 /// Anatomical fractions of the fetal special circulation.
 ///
 /// All values are dimensionless `[0, 1]` ratios. They are not yet
@@ -58,6 +71,19 @@ impl Default for FetalCirculationParams {
             ductus_arteriosus_share: 0.85,
             systemic_venous_return_po2_mmhg: 14.0,
         }
+    }
+}
+
+impl FetalCirculationParams {
+    /// Construct from point-estimate values resolved against a loaded
+    /// [`ParameterDatabase`].
+    pub fn from_database(db: &ParameterDatabase) -> Result<Self, DatabaseError> {
+        Ok(Self {
+            foramen_ovale_streamline_preference: db
+                .point_estimate(param_ids::FORAMEN_OVALE_PREFERENCE)?,
+            ductus_arteriosus_share: db.point_estimate(param_ids::DUCTUS_ARTERIOSUS_SHARE)?,
+            systemic_venous_return_po2_mmhg: db.point_estimate(param_ids::SYSTEMIC_VENOUS_PO2)?,
+        })
     }
 }
 

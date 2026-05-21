@@ -17,6 +17,7 @@
 
 use nidus_core::clock::{GestationalAge, TickTier, DAYS_PER_WEEK, SECONDS_PER_DAY};
 use nidus_core::subscriber::{Subscriber, SubscriberId, TickContext};
+use nidus_data::{DatabaseError, ParameterDatabase};
 
 /// Stable subscriber id for the maternal cardiovascular subsystem.
 pub const SUBSCRIBER_ID: &str = "nidus-maternal:cardio";
@@ -89,6 +90,72 @@ impl Default for MaternalCardioParams {
             uterine_flow_growth_rate_per_week: 0.12,
             uterine_flow_individual_sigma: 0.15,
         }
+    }
+}
+
+/// Database ids consumed by [`MaternalCardioParams::from_database`].
+///
+/// Listed here (rather than only in the function body) so contributors
+/// can audit the wiring against `data/parameters/maternal/cardio.toml`
+/// without reading code.
+pub mod param_ids {
+    /// Pre-pregnancy cardiac output (L/min).
+    pub const BASELINE_CO: &str = "maternal-cardio-baseline-cardiac-output-l-per-min";
+    /// Peak excess cardiac output above baseline (L/min).
+    pub const PEAK_EXCESS_CO: &str = "maternal-cardio-peak-excess-cardiac-output-l-per-min";
+    /// Gestational week of peak cardiac output.
+    pub const CO_PEAK_WEEK: &str = "maternal-cardio-cardiac-output-peak-week";
+    /// Spread of the cardiac-output curve (weeks).
+    pub const CO_SPREAD_WEEKS: &str = "maternal-cardio-cardiac-output-spread-weeks";
+    /// Between-individual sigma for cardiac output (fraction).
+    pub const CO_INDIVIDUAL_SIGMA: &str = "maternal-cardio-cardiac-output-individual-sigma";
+    /// Pre-pregnancy mean arterial pressure (mmHg).
+    pub const BASELINE_MAP: &str = "maternal-cardio-baseline-map-mmhg";
+    /// Mid-pregnancy MAP drop from baseline (mmHg).
+    pub const MAP_NADIR_DROP: &str = "maternal-cardio-map-nadir-drop-mmhg";
+    /// Gestational week of MAP nadir.
+    pub const MAP_NADIR_WEEK: &str = "maternal-cardio-map-nadir-week";
+    /// Spread of the MAP nadir (weeks).
+    pub const MAP_SPREAD_WEEKS: &str = "maternal-cardio-map-spread-weeks";
+    /// Between-individual sigma for MAP (mmHg).
+    pub const MAP_INDIVIDUAL_SIGMA: &str = "maternal-cardio-map-individual-sigma-mmhg";
+    /// Pre-pregnancy uterine artery flow (mL/min).
+    pub const BASELINE_UTERINE_FLOW: &str = "maternal-cardio-baseline-uterine-flow-ml-per-min";
+    /// Term uterine artery flow (mL/min).
+    pub const TERM_UTERINE_FLOW: &str = "maternal-cardio-term-uterine-flow-ml-per-min";
+    /// Uterine-flow growth rate (1/week).
+    pub const UTERINE_FLOW_GROWTH: &str = "maternal-cardio-uterine-flow-growth-rate-per-week";
+    /// Between-individual sigma for uterine flow (fraction).
+    pub const UTERINE_FLOW_INDIVIDUAL_SIGMA: &str = "maternal-cardio-uterine-flow-individual-sigma";
+}
+
+impl MaternalCardioParams {
+    /// Construct from point-estimate values resolved against a loaded
+    /// [`ParameterDatabase`]. Every id in [`param_ids`] must exist or
+    /// [`DatabaseError::MissingParameter`] is returned.
+    ///
+    /// This is the canonical production constructor; the
+    /// [`Default`] implementation is retained as a scaffold for tests
+    /// and override-only scenarios.
+    pub fn from_database(db: &ParameterDatabase) -> Result<Self, DatabaseError> {
+        Ok(Self {
+            baseline_cardiac_output_l_per_min: db.point_estimate(param_ids::BASELINE_CO)?,
+            peak_excess_cardiac_output_l_per_min: db.point_estimate(param_ids::PEAK_EXCESS_CO)?,
+            cardiac_output_peak_week: db.point_estimate(param_ids::CO_PEAK_WEEK)?,
+            cardiac_output_spread_weeks: db.point_estimate(param_ids::CO_SPREAD_WEEKS)?,
+            cardiac_output_individual_sigma: db.point_estimate(param_ids::CO_INDIVIDUAL_SIGMA)?,
+            baseline_map_mmhg: db.point_estimate(param_ids::BASELINE_MAP)?,
+            map_nadir_drop_mmhg: db.point_estimate(param_ids::MAP_NADIR_DROP)?,
+            map_nadir_week: db.point_estimate(param_ids::MAP_NADIR_WEEK)?,
+            map_spread_weeks: db.point_estimate(param_ids::MAP_SPREAD_WEEKS)?,
+            map_individual_sigma_mmhg: db.point_estimate(param_ids::MAP_INDIVIDUAL_SIGMA)?,
+            baseline_uterine_flow_ml_per_min: db
+                .point_estimate(param_ids::BASELINE_UTERINE_FLOW)?,
+            term_uterine_flow_ml_per_min: db.point_estimate(param_ids::TERM_UTERINE_FLOW)?,
+            uterine_flow_growth_rate_per_week: db.point_estimate(param_ids::UTERINE_FLOW_GROWTH)?,
+            uterine_flow_individual_sigma: db
+                .point_estimate(param_ids::UTERINE_FLOW_INDIVIDUAL_SIGMA)?,
+        })
     }
 }
 
@@ -342,6 +409,28 @@ mod tests {
         assert!(direct.cardiac_output_l_per_min.is_finite());
         assert!(direct.mean_arterial_pressure_mmhg.is_finite());
         assert!(direct.uterine_artery_flow_ml_per_min.is_finite());
+    }
+
+    #[test]
+    fn from_database_loads_workspace_parameter_tree() {
+        // Locate `data/parameters/maternal/cardio.toml` and its citation
+        // index relative to the workspace root; the maternal crate sits
+        // two directories below.
+        let manifest = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        let root = manifest.parent().unwrap().parent().unwrap();
+        let citations = root.join("data/citations/index.toml");
+        let parameters = root.join("data/parameters/maternal/cardio.toml");
+        let db = nidus_data::ParameterDatabase::from_paths(&[parameters], &[citations])
+            .expect("workspace data tree loads");
+        let params = MaternalCardioParams::from_database(&db).expect("all ids resolved");
+        // Sanity: same plausibility envelopes as the default-values test.
+        assert!((4.0..6.0).contains(&params.baseline_cardiac_output_l_per_min));
+        assert!((1.5..4.0).contains(&params.peak_excess_cardiac_output_l_per_min));
+        assert!((24.0..36.0).contains(&params.cardiac_output_peak_week));
+        assert!((70.0..95.0).contains(&params.baseline_map_mmhg));
+        assert!((400.0..1200.0).contains(&params.term_uterine_flow_ml_per_min));
+        assert!(params.cardiac_output_individual_sigma > 0.0);
+        assert!(params.cardiac_output_individual_sigma < 1.0);
     }
 
     #[test]

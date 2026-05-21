@@ -6,10 +6,10 @@
 [[parameter]]
 id = "fetal-circulation-foramen-ovale-streamline-preference"
 name = "Foramen ovale streamline preference"
-description = "Fraction of oxygenated umbilical-vein return preferentially streamed through the foramen ovale toward the cerebral circulation."
+description = "Weight on the umbilical-vein pole in the cerebral weighted-average mix. 0.5 corresponds to no preferential streaming; Rudolph reports ~75-80% of the most-oxygenated DV/IVC stream crossing the foramen ovale to the left atrium."
 tier = "C"
 unit = "fraction"
-value = { kind = "point", value = 0.55, uncertainty = 0.10 }
+value = { kind = "point", value = 0.80, uncertainty = 0.07 }
 citation = "rudolph-1985-fetal-circulation"
 population = "Late-gestation fetal lamb (extrapolated to human fetus)"
 age_range = { min_weeks = 16, max_weeks = 40 }

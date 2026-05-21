@@ -56,10 +56,10 @@ caveats = "Derived from a Gaussian-shape fit to the cohort curves; original sour
 [[parameter]]
 id = "maternal-cardio-cardiac-output-individual-sigma"
 name = "Between-individual sigma for cardiac output"
-description = "One-sigma between-individual variation around the population trajectory."
+description = "Fractional one-sigma between-individual variation around the population cardiac-output trajectory (e.g. 0.13 = 13%)."
 tier = "C"
-unit = "L/min"
-value = { kind = "point", value = 0.6, uncertainty = 0.1 }
+unit = "fraction"
+value = { kind = "point", value = 0.13, uncertainty = 0.03 }
 citation = "hunter-robson-1992-cardiac-output"
 population = "Healthy singleton pregnancies"
 age_range = { min_weeks = 8, max_weeks = 40 }

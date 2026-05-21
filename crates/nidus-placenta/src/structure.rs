@@ -10,6 +10,19 @@
 //! range but are not yet citation-resolved.
 
 use nidus_core::clock::{GestationalAge, DAYS_PER_WEEK, SECONDS_PER_DAY};
+use nidus_data::{DatabaseError, ParameterDatabase};
+
+/// Database ids consumed by [`StructureParams::from_database`].
+pub mod param_ids {
+    /// Early-pregnancy villous surface area (m²).
+    pub const INITIAL_AREA: &str = "placenta-structure-initial-area-m2";
+    /// Term villous surface area (m²).
+    pub const TERM_AREA: &str = "placenta-structure-term-area-m2";
+    /// Gestational week of logistic-growth midpoint.
+    pub const MIDPOINT_WEEK: &str = "placenta-structure-midpoint-week";
+    /// Logistic growth-rate coefficient (1/week).
+    pub const GROWTH_RATE: &str = "placenta-structure-growth-rate-per-week";
+}
 
 /// Coefficients describing the logistic surface-area trajectory.
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -38,6 +51,19 @@ impl Default for StructureParams {
             midpoint_week: 22.0,
             growth_rate_per_week: 0.20,
         }
+    }
+}
+
+impl StructureParams {
+    /// Construct from point-estimate values resolved against a loaded
+    /// [`ParameterDatabase`].
+    pub fn from_database(db: &ParameterDatabase) -> Result<Self, DatabaseError> {
+        Ok(Self {
+            initial_area_m2: db.point_estimate(param_ids::INITIAL_AREA)?,
+            term_area_m2: db.point_estimate(param_ids::TERM_AREA)?,
+            midpoint_week: db.point_estimate(param_ids::MIDPOINT_WEEK)?,
+            growth_rate_per_week: db.point_estimate(param_ids::GROWTH_RATE)?,
+        })
     }
 }
 

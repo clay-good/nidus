@@ -343,8 +343,7 @@ landings record what is done and what remains.
   [`data/citations/README.md`](data/citations/README.md) documenting
   the citation-add and verification workflow.
 
-- [~] **Prompt A2 — Maternal parameter coverage** *(data half complete;
-  `from_database` wiring outstanding).*
+- [x] **Prompt A2 — Maternal parameter coverage.**
   - `data/parameters/maternal/blood.toml` expanded to 8 entries
     (O2-Hb, Bohr coefficient, blood volume, plasma volume — term and
     early, red-cell mass, haematocrit, haemoglobin).
@@ -355,13 +354,15 @@ landings record what is done and what remains.
     ventilation, tidal volume, PaCO2, PaO2, P50 shift.
   - `data/parameters/maternal/renal.toml` (new): GFR (term and first
     trimester), plasma creatinine.
-  - Outstanding: `MaternalCardioParams::from_database` (Spec 01,
-    Prompt 01.4) and the equivalent wiring for blood / respiratory /
-    renal parameter consumers — the TOML entries above are the source
-    of truth that the constructor work will load.
+  - `MaternalCardioParams::from_database` (Spec 01, Prompt 01.4) is
+    landed; the constructor and its `param_ids` audit module live in
+    [`crates/nidus-maternal/src/cardio.rs`](crates/nidus-maternal/src/cardio.rs).
+    Default scaffold values are kept as a test- and override-only
+    helper. The blood / respiratory / renal entries are the source
+    of truth for future subscribers that consume those subsystems
+    (no Rust subscribers read them yet).
 
-- [~] **Prompt A3 — Placental and fetal parameter coverage** *(data
-  half complete; `from_database` wiring outstanding).*
+- [x] **Prompt A3 — Placental and fetal parameter coverage.**
   - `data/parameters/placenta/structure.toml`: 5 entries (initial /
     term villous area, growth midpoint and rate, membrane thickness).
   - `data/parameters/placenta/gas_transport.toml`: 2 entries
@@ -377,9 +378,20 @@ landings record what is done and what remains.
     coefficient).
   - `data/parameters/fetal/metabolism.toml`: O2 consumption and
     glucose utilisation per kg.
-  - Outstanding: structure/transport/circulation `from_database`
-    constructors and the database-driven integration test in
-    `crates/nidus-scenarios/`.
+  - `StructureParams::from_database`, `GasExchangeParams::from_database`,
+    `GlucoseTransportParams::from_database` (Spec 01, Prompt 01.6), and
+    `FetalCirculationParams::from_database` (Spec 01, Prompt 01.7) are
+    landed; each constructor's `param_ids` audit module lives next to
+    the struct definition. A cross-crate integration test —
+    [`crates/nidus-scenarios/tests/database_constructors.rs`](crates/nidus-scenarios/tests/database_constructors.rs)
+    — loads the on-disk `data/` tree and verifies all five constructors
+    resolve and produce sane values.
+  - Two TOML/struct unit corrections shipped with the wiring:
+    `maternal-cardio-cardiac-output-individual-sigma` retyped from
+    `L/min` to `fraction` (matching the model's fractional sigma),
+    and `fetal-circulation-foramen-ovale-streamline-preference`
+    retyped from 0.55 to 0.80 to match the model's
+    weighted-average semantics and Rudolph 1985's ~75–80% number.
 
 ### Streams B–F
 
