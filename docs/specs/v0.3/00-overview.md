@@ -29,7 +29,7 @@ right form factor.
 | Interactive dashboard | Streamlit, hosted free on Streamlit Cloud       | Zero-install browse for non-coders.                |
 | Reference notebooks   | 4–5 Jupyter notebooks, executed in CI            | Canonical tutorials that double as documentation. |
 | Citation / DOI        | Zenodo deposit on every release                  | Permanent, citable, machine-findable.              |
-| Outreach              | Blog essay on claygood.com                       | SEO + visibility, no academic gatekeeping.         |
+| Outreach              | Essay in the repository                       | SEO + visibility, no academic gatekeeping.         |
 
 The **dataset is the centerpiece**; everything else is a presentation
 layer.
@@ -56,7 +56,7 @@ layer.
 
 1. **Spec 01** — Dataset + Python package + Streamlit dashboard +
    Zenodo. Ship `v0.3.0`.
-2. **Spec 03** — Blog essay on claygood.com. Same week as Spec 01
+2. **Spec 03** — Essay in the repository. Same week as Spec 01
    release.
 3. **Spec 02** — *Conditional.* SBML/CellML export, executed only if
    Spec 01 sees adoption (issues, stars, citations, external installs,
@@ -85,6 +85,6 @@ layer.
 | ------------------------------------- | ------------------------------------------------------------------------- |
 | `01-dataset-and-dashboard.md`         | The primary work: how to ship the v0.3.0 release.                         |
 | `02-sbml-cellml-export.md`            | Conditional interop with CellML/SBML, executed only on adoption signal.   |
-| `03-outreach-and-essay.md`            | Blog essay strategy on claygood.com + Zenodo deposit.                     |
+| `03-outreach-and-essay.md`            | Blog essay strategy on the repository essay + Zenodo deposit.                     |
 
 Specs superseded by this design are listed in [`../README.md`](../README.md).

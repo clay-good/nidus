@@ -53,9 +53,11 @@ print(co.citations[0].doi)  # "10.1097/HJH.0000000000000090"
 
 Cite the dataset by its Zenodo concept DOI (added on first release). See `CITATION.cff` for machine-readable metadata.
 
-## History
+## Read more
 
-Nidus began as a Rust prototype exploring coupled maternal-placental-fetal physiology simulation (preserved at the `v0.2-archive` tag). That exploration surfaced where the durable, transferable value lived — in the curated parameters and the confidence-tier discipline themselves, not in any particular simulator implementation. v0.3 reframes the project around that contribution and ships it in the form researchers actually use: a Python package and a browsable dashboard. See [`docs/specs/v0.3/00-overview.md`](docs/specs/v0.3/00-overview.md) for the design rationale.
+- **[Essay — Confidence tiers for pregnancy physiology](docs/about/essay.md).** A ~2,500-word walkthrough of the design philosophy with the Mahendru-2014 cardiac-output parameter as a worked example. The clearest single explanation of what the dataset is and why the tier system is the load-bearing piece.
+- **[v0.3 design spec](docs/specs/v0.3/00-overview.md)** — the engineering rationale.
+- **[`docs/about/history.md`](docs/about/history.md)** — how the project got here (the project began as a Rust prototype, preserved at the `v0.2-archive` tag).
 
 ## Licence
 

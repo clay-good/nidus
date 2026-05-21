@@ -116,6 +116,7 @@ nav:
     - v0.3 design: about/design.md
     - History: about/history.md
     - Licence: about/license.md
+    - Essay — confidence tiers: about/essay.md
 
 # Strict mode catches broken links and missing files in CI.
 strict: true

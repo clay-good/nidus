@@ -18,7 +18,7 @@ Both are presentation-layer-agnostic. v0.3 ships them in the form factor that ma
 | Interactive dashboard | Streamlit, hosted free on Streamlit Cloud       |
 | Reference notebooks   | Five Jupyter notebooks, executed in CI          |
 | Citation / DOI        | Zenodo deposit on every release                  |
-| Outreach              | Blog essay on claygood.com                       |
+| Outreach              | Essay in the repository                       |
 
 The **dataset is the centerpiece**; everything else is a presentation layer.
 

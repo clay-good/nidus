@@ -1,104 +1,123 @@
-# Spec 03 — Outreach: Blog Essay on claygood.com
+# Spec 03 — Outreach: Essay in the Repository
 
-**Status:** Active — ships same week as Spec 01 `v0.3.0` release.
+**Status:** Active — shipped alongside Spec 01 `v0.3.0`.
 **Depends on:** Spec 01 complete; Zenodo DOI minted; dashboard live.
 
 ---
 
 ## 1. Goal
 
-Get researchers' eyes on the nidus repo. Drive discovery via Google + GitHub + word of mouth, not via journal gatekeepers.
+Get researchers' eyes on the nidus repository. Drive discovery via
+Google + GitHub + word of mouth, not via journal gatekeepers.
 
-The vehicle is a **blog essay on claygood.com** that:
+The vehicle is a **markdown essay published in the repository itself**
+at [`docs/about/essay.md`](../../about/essay.md), embedded into the
+mkdocs-material site. The essay:
+
 - Explains the confidence-tier framework in plain language.
 - Uses human gestational physiology as the worked example.
-- Points to the dataset (Zenodo DOI), Python package (PyPI), dashboard (Streamlit URL), and GitHub repo.
+- Points to the dataset (Zenodo DOI), Python package (PyPI),
+  dashboard (Streamlit URL), and GitHub repository.
 - Is indexable by Google within days, not 12–18 months.
+
+Earlier iterations of this spec discussed publishing the essay on a
+personal blog. The simpler decision is to publish it in the
+repository: the essay is already adjacent to the artefact it
+describes, GitHub Pages serves it, and it can be moved to any other
+venue later without invalidating the canonical version.
 
 ## 2. What we are doing (clear and plain)
 
-1. **Write one blog essay** of ~1,500–3,000 words on claygood.com.
-2. **Deposit the dataset** on Zenodo with a permanent DOI (already covered by Spec 01).
-3. **Optionally** post a parallel preprint version on bioRxiv or OSF Preprints for academic-search indexability — only if low-friction.
-4. **Announce** on Twitter / Mastodon / Bluesky / relevant Slack channels.
-5. **Add a Google Scholar / ORCID listing** for the essay where possible.
+1. **Write the essay** as
+   [`docs/about/essay.md`](../../about/essay.md), ~2500 words.
+2. **Generate the three figures** via
+   [`notebooks/essay_figures.ipynb`](https://github.com/claygood/nidus/blob/main/notebooks/essay_figures.ipynb)
+   (seeded, deterministic) and commit them to
+   [`docs/assets/essay/`](https://github.com/claygood/nidus/tree/main/docs/assets/essay)
+   so they ship as part of the mkdocs site and the repository.
+3. **Deposit the dataset** on Zenodo with a permanent DOI (already
+   covered by Spec 01).
+4. **Announce** on Twitter / Mastodon / Bluesky / relevant Slack
+   channels.
+5. **Cross-link** from the repository README and the docs index.
 
-That is the entire outreach plan. Keep it small. Ship it.
+That is the entire outreach plan. Ship it.
 
 ## 3. What we are NOT doing
 
 | Rejected approach                                | Why                                                                                                            |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| Methods paper in PLOS Comp Bio / JTB / Bioinformatics | 12–18 months calendar, peer review iteration, ~marginal upside over a blog essay for the stated goal (eyes on the repo). |
+| Personal blog publication                        | The repository is the canonical home; a blog mirror can be added later without breaking the canonical URL.    |
+| Methods paper in PLOS Comp Bio / JTB / Bioinformatics | 12–18 months calendar, peer review iteration, ~marginal upside over a freely-indexable essay. |
 | Recruiting academic co-authors                   | Slow, political, optional. Skip.                                                                               |
 | F1000Research / JOSS submission                  | Still optional in the future, but not the primary plan.                                                        |
 | Conference talks                                 | Out of scope unless invited.                                                                                   |
 | Press / journalism                               | Out of scope.                                                                                                  |
 | Paid promotion                                   | Out of scope.                                                                                                  |
 
-## 4. Essay outline
+## 4. Essay outline (as shipped)
 
-Working title: **"Confidence tiers: a quiet way to be honest about what we don't know in pregnancy physiology"** (or similar; pick one that reads well on claygood.com).
+The essay lives at [`docs/about/essay.md`](../../about/essay.md) and
+follows the structure below. Final section lengths are approximate.
 
 | Section                          | Approx. words | What it covers                                                                                       |
 | -------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------- |
-| Opening / hook                   | 200           | Why uncertainty in physiological modelling is a structural problem, not a personal one.              |
-| The problem                      | 300           | Models report parameters as point estimates with implicit, inconsistent confidence. Examples.        |
-| The tier idea                    | 400           | A/B/C/D tiers, criteria, why four levels, why machine-readable.                                      |
-| Worked example                   | 500           | Two cases from the dataset: (1) Mahendru 2014 maternal CO (Tier B); (2) exosomal miRNA (Tier D).      |
-| What this is and isn't           | 300           | Honest scope. Not clinical. Not a simulator. A dataset.                                              |
-| How to use it                    | 400           | `pip install nidus`. Dashboard URL. Three code examples. Link to notebooks.                          |
-| What's missing / open questions  | 300           | Tier D entries as structured research questions. Invitation to contribute.                           |
-| Citation / how to cite           | 100           | Zenodo DOI, BibTeX snippet, MIT/CC-BY-4.0 licensing.                                                  |
+| Opening / hook                   | 250           | Why uncertainty in physiological modelling is structural.                                            |
+| The tier idea                    | 450           | A/B/C/D tiers, criteria, why four levels, propagation rules.                                         |
+| Worked example                   | 400           | Mahendru 2014 maternal cardiac output as a Tier-B case.                                              |
+| Tier distribution in practice    | 200           | The 14/25/15/0 mix and what it says about the field.                                                 |
+| Citations under the surface      | 400           | The bibliographic-audit finding (22 wrong identifiers) and how it was fixed.                         |
+| What this is and isn't           | 350           | Honest scope. Not clinical. Not a simulator. A dataset.                                              |
+| How to use it                    | 350           | `pip install nidus`. Dashboard. CLI. Three code examples.                                            |
+| What's missing / open questions  | 350           | Tier D entries; non-Tier-D gaps; invitation to contribute.                                           |
+| Citation / how to cite           | 100           | Zenodo DOI, BibTeX, MIT/CC-BY-4.0 licensing.                                                          |
 
-Total: ~2,500 words. Reading time ~10 minutes.
+## 5. Figures
 
-## 5. Figures (3, generated from `notebooks/essay_figures.ipynb`)
+Three figures, generated deterministically by
+[`notebooks/essay_figures.ipynb`](https://github.com/claygood/nidus/blob/main/notebooks/essay_figures.ipynb)
+and committed to
+[`docs/assets/essay/`](https://github.com/claygood/nidus/tree/main/docs/assets/essay):
 
-1. **Tier distribution across subsystems** — stacked bar.
-2. **Worked-example timeline** — Mahendru 2014 paper → parameter extraction → tier B assignment → use in dataset.
-3. **Dashboard screenshot** — Parameter Explorer page.
+1. `fig1_tier_distribution.png` — stacked bar of tier mix across subsystems.
+2. `fig2_worked_example_timeline.png` — Mahendru 2014 → parameter
+   extraction → tier B → dataset.
+3. `fig3_citation_usage_histogram.png` — citation usage distribution,
+   showing the load-bearing top of the curve.
 
-All generated by a seeded, deterministic notebook so they regenerate identically.
+All generated by a seeded notebook so re-runs produce byte-identical
+output.
 
-## 6. Outreach checklist (after the essay is live)
+## 6. Outreach checklist (after the essay is in the repo)
 
+- [ ] Push to `main` so GitHub Pages serves the essay.
 - [ ] Post link on Twitter / Mastodon / Bluesky with a short summary.
-- [ ] Post to relevant subreddits if appropriate: r/Bioinformatics, r/datasets, r/MachineLearning (if any ML angle).
+- [ ] Post to relevant subreddits if appropriate: r/Bioinformatics, r/datasets.
 - [ ] Email 5–10 perinatal researchers whose work is cited in the dataset. Short, no-strings-attached: "I built this; you might find it useful; it cites your paper at parameter X."
-- [ ] Submit to Hacker News (Show HN) — likely modest traffic but high-signal audience.
-- [ ] Submit to relevant newsletters: Data Is Plural, OSPO newsletters, etc.
-- [ ] Add to OpenScience aggregators where appropriate.
-- [ ] Cross-link from claygood.com bio / About page.
-- [ ] Update GitHub repo's About / topics / pinned status to point at the essay.
+- [ ] Submit to Hacker News (Show HN).
+- [ ] Submit to relevant newsletters: Data Is Plural, etc.
+- [ ] Update GitHub repository's About / topics / pinned status to point at the essay.
 
-Whole pass: half a day of work. Don't over-invest.
+Whole pass: half a day of work.
 
 ## 7. Optional: parallel preprint
 
-If trivially low-friction (≤2 hours total), post a reformatted version to **bioRxiv** or **OSF Preprints**:
-- Gets a citable DOI distinct from the Zenodo dataset DOI.
-- Indexed in academic search engines (Google Scholar, etc.).
-- Not necessary; defer if it becomes friction.
+If trivially low-friction (≤2 hours total), post a reformatted
+version to **bioRxiv** or **OSF Preprints**. Gets a citable DOI
+distinct from the Zenodo dataset DOI. Not necessary; defer if it
+becomes friction.
 
 ## 8. Success criteria
 
-- [ ] Essay live at `claygood.com/[slug]`.
-- [ ] Essay links to: repo, dashboard URL, Zenodo DOI, PyPI page.
-- [ ] Repo `About` and pinned status point to the essay.
-- [ ] Outreach checklist completed (Section 6).
-- [ ] At least one of: a GitHub star from someone unknown, an issue, an external installer, an inbound email about the dataset. (Any one of these counts as Spec 03 having served its purpose.)
+- [ ] Essay live at `<docs-site>/about/essay/`.
+- [ ] Essay links to: repository, dashboard URL, Zenodo DOI, PyPI page.
+- [ ] Repository `About` and pinned status point to the essay.
+- [ ] Outreach checklist (Section 6) completed.
+- [ ] At least one of: a GitHub star from someone unknown, an issue, an external installer, an inbound email about the dataset.
 
 ## 9. Realistic expectations
 
 - The essay will get modest traffic. Hundreds of views in the first week is a good outcome; thousands would be unusual.
-- The audience for nidus is small (perinatal researchers, ~hundreds globally). The essay is reaching that audience indirectly — most readers won't be the target audience.
-- Adoption from the essay alone is unlikely to be large. The essay's job is to seed Google's index and create a discoverable artifact that can be linked from other places over time.
-- Realistic ceiling at 12 months: 2–5 GitHub stars from real researchers, 1–2 emails, ~zero downstream citations (citations take years).
-- That is success at this stage. Anything more is a bonus.
-
-## 10. Open questions
-
-1. Essay title — finalize at publish time.
-2. Whether to do the bioRxiv parallel post — decide based on whether it stays a ≤2-hour task.
-3. Whether to write a follow-up essay later (e.g., "What I learned shipping a tiny open dataset") — defer; out of scope here.
+- The audience for nidus is small (perinatal researchers, ~hundreds globally). The essay reaches that audience indirectly — most readers will not be the target audience.
+- Adoption from the essay alone is unlikely to be large. The essay's job is to seed Google's index and create a discoverable artefact that can be linked from other places over time.
+- Realistic ceiling at 12 months: 2–5 GitHub stars from real researchers, 1–2 emails, ~zero downstream citations (citations take years). That is success at this stage.

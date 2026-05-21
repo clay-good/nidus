@@ -9,7 +9,7 @@ The current direction is captured in [`v0.3/00-overview.md`](v0.3/00-overview.md
 | 00   | [`v0.3/00-overview.md`](v0.3/00-overview.md)            | **READ FIRST.** What we are doing and why.                            |
 | 01   | [`v0.3/01-dataset-and-dashboard.md`](v0.3/01-dataset-and-dashboard.md) | **Active.** Dataset + Python package + Streamlit dashboard. Primary work. |
 | 02   | [`v0.3/02-sbml-cellml-export.md`](v0.3/02-sbml-cellml-export.md)       | **Conditional.** Only if Spec 01 sees adoption signal.                |
-| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)       | **Active.** Blog essay on claygood.com + Zenodo deposit.              |
+| 03   | [`v0.3/03-outreach-and-essay.md`](v0.3/03-outreach-and-essay.md)       | **Active.** Essay in the repository + Zenodo deposit.              |
 
 ## Superseded (deprecation stubs)
 

@@ -12,7 +12,7 @@ The dataset is the centerpiece. Everything else (Python package, dashboard, opti
 
 - **Pure Python.** No Rust, no PyO3, no compiled extensions. NumPy/SciPy is sufficient for everything the dashboard needs.
 - **GitHub + PyPI + Streamlit Cloud are the canonical URLs.** No custom domain.
-- **A blog essay on claygood.com** is the outreach vehicle. No academic methods paper.
+- **An essay in the repository** is the outreach vehicle. No academic methods paper.
 - **Dataset-only scope.** No new mechanistic biology beyond the curated parameters.
 - **The earlier Rust prototype is archived,** not deleted: see the `v0.2-archive` git tag.
 - **The pre-v0.3 spec files** (`docs/specs/01-*.md` through `12-*.md`, `SPEC.md`, `SPEC_V0.2.md`) are one-paragraph deprecation stubs pointing to the v0.3 design. Their original content lives in git history.
