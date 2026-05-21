@@ -6,7 +6,7 @@
 
 Nidus is an open-source, MIT-licensed computational tool for surfacing what
 we know, what we do not know, and what would be most valuable to measure
-next about human pregnancy. The full design is captured in [SPEC.md](SPEC.md);
+next about human pregnancy. The full design is captured in [docs/specs/SPEC.md](docs/specs/SPEC.md);
 this README is a short orientation.
 
 ## What Nidus is
@@ -63,7 +63,7 @@ nidus/
 │   ├── nidus-observability/     # dashboards, telemetry, visualisation (planned)
 │   ├── nidus-cli/               # command-line interface
 │   └── nidus-py/                # Python bindings (planned)
-├── SPEC.md                      # full design specification
+├── docs/specs/SPEC.md           # full design specification (also see SPEC_V0.2.md and 01–12)
 ├── PROGRESS.md                  # which implementation prompts are done
 ├── CONTRIBUTING.md              # contribution guide, including the tier system
 └── CODE_OF_CONDUCT.md

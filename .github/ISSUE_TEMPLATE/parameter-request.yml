@@ -1,0 +1,68 @@
+name: Parameter request
+description: Ask for a new physiological parameter to be added or an existing one revised against a published source.
+title: "[parameter] "
+labels: ["parameter", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request a new entry under `data/parameters/`
+        or a revision of an existing one. The reviewer will need to verify
+        every number against the cited source PDF; please link to it.
+
+        See [docs/contributing/parameter-pull-requests.md](../blob/main/docs/contributing/parameter-pull-requests.md)
+        for the review checklist.
+  - type: input
+    id: parameter_id
+    attributes:
+      label: Proposed parameter id
+      description: Kebab-case, scoped — for example `placenta-glucose-glut1-km`.
+      placeholder: subsystem-quantity-modifier
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Confidence tier
+      description: See CONTRIBUTING.md for the tier definitions.
+      options:
+        - A — well-measured, multiple independent confirmations
+        - B — measured, single cohort or technique
+        - C — inferred, indirect evidence
+        - D — speculative
+    validations:
+      required: true
+  - type: input
+    id: subsystem
+    attributes:
+      label: Subsystem
+      description: e.g. maternal/cardio, placenta/transport, fetal/circulation.
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: Proposed value
+      description: Point estimate with uncertainty, or distribution spec. Include units.
+      placeholder: "12.0 m² (SD 2.5) — term villous surface area"
+    validations:
+      required: true
+  - type: textarea
+    id: citation
+    attributes:
+      label: Citation
+      description: Authors, title, venue, year, DOI/PMID. Attach or link the source PDF if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: population
+    attributes:
+      label: Population and gestational-age range
+      description: Whose data is this and which weeks does it cover?
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Caveats, conflicts with existing entries, expected downstream effects.

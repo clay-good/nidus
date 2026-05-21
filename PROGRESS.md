@@ -1,7 +1,7 @@
 # Implementation Progress
 
 This file tracks which of the implementation prompts in
-[SPEC.md §13](SPEC.md) have been completed. Each prompt becomes a
+[SPEC.md §13](docs/specs/SPEC.md) have been completed. Each prompt becomes a
 checkbox here; when starting a new working session, look for the first
 unchecked item.
 
@@ -415,7 +415,20 @@ landings record what is done and what remains.
     until the per-dataset TOMLs are authored by a human contributor.
 - [ ] **Prompt B2** — Validation cases (NICHD, placental Doppler,
   fetal cardiac).
-- [ ] **Prompt B3** — Validation documentation under `docs/validation/`.
+- [x] **Prompt B3 — Validation documentation.**
+  Populated [`docs/validation/`](docs/validation/) with:
+  [`overview.md`](docs/validation/overview.md) (what the suite covers,
+  the tier-aware agreement classifier, and how to run it),
+  [`extending.md`](docs/validation/extending.md) (the four-part workflow
+  for adding a case: dataset TOML → adapter → `ValidationCase` →
+  case doc),
+  [`report-schema.md`](docs/validation/report-schema.md) (stable JSON
+  schema for `nidus validate --format json`), and
+  [`case-maternal-cardiac-output.md`](docs/validation/case-maternal-cardiac-output.md)
+  documenting the single shipped case. Linked from
+  [`docs/README.md`](docs/README.md). Per-case docs for the
+  NICHD/Doppler/fetal-cardiac cases land alongside their respective
+  TOMLs under B2.
 - [ ] **Prompt C1** — PyO3 + maturin bindings for `nidus-py`.
 - [ ] **Prompt C2** — Jupyter quickstart notebook.
 - [ ] **Prompt C3** — Hypothesis / sensitivity in Python.
@@ -427,8 +440,19 @@ landings record what is done and what remains.
 - [ ] **Prompt E2** — Software citation (`CITATION.cff`, Zenodo).
 - [ ] **Prompt E3** — Reproducibility manifest and `nidus reproduce`.
 - [ ] **Prompt F1** — Examples directory.
-- [ ] **Prompt F2** — Contributor onboarding refresh and issue
-  templates.
+- [~] **Prompt F2 — Contributor onboarding refresh and issue templates**
+  *(issue templates landed; contributing-doc end-to-end refresh
+  continues as Streams B/C/D fill in the validation/Python/CLI surfaces
+  they reference).*
+  Added three GitHub Issue templates under
+  [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/):
+  `parameter-request.yml`, `bug-report.yml`, and
+  `hypothesis-proposal.yml`, plus a `config.yml` that disables blank
+  issues and directs open-ended questions to GitHub Discussions.
+  [`CONTRIBUTING.md`](CONTRIBUTING.md) gained a "Filing an issue"
+  section pointing at the templates, and the dead `SPEC.md` pointer at
+  the repo root was retargeted to `docs/specs/SPEC.md` (matching the
+  v0.2 spec relocation).
 - [ ] **Prompt F3** — CI completeness (maturin, validation gate).
 - [ ] **Prompt F4** — Final PROGRESS / CHANGELOG sweep.
 

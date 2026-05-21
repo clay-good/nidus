@@ -1,0 +1,53 @@
+name: Bug report
+description: Report a reproducible bug in the simulator, CLI, validation suite, or docs.
+title: "[bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug. Please include enough
+        detail that a maintainer can reproduce the issue locally —
+        especially the seed and scenario, since the simulator is
+        deterministic.
+  - type: input
+    id: nidus_version
+    attributes:
+      label: Nidus version / commit
+      description: Output of `cargo run -p nidus-cli -- --version`, or the commit SHA.
+      placeholder: "v0.2.0 or commit abcdef1"
+    validations:
+      required: true
+  - type: input
+    id: host
+    attributes:
+      label: Host
+      description: OS, architecture, Rust toolchain (e.g. `macos-arm64, rustc 1.78.0`).
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction steps
+      description: Exact commands and inputs. Include the scenario file or RNG seed if relevant.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+      description: Include the full error message and any logs.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context
+      description: Anything else — minimal scenario TOML, screenshots, suspected root cause.

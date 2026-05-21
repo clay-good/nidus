@@ -1,0 +1,58 @@
+name: Hypothesis proposal
+description: Propose a new mechanism, unknown channel, or experiment-design target for the simulator.
+title: "[hypothesis] "
+labels: ["hypothesis", "discussion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for ideas that are not yet a concrete parameter
+        request — a new mechanism worth modelling, a new unknown channel,
+        or an experiment the suggester should rank highly. The aim is to
+        get the proposal into a form a contributor can act on.
+
+        Background: see [docs/tutorials/hypothesis_workflow.md](../blob/main/docs/tutorials/hypothesis_workflow.md)
+        and the unknown-channels registry in
+        [`crates/nidus-unknown`](../blob/main/crates/nidus-unknown/).
+  - type: textarea
+    id: claim
+    attributes:
+      label: Hypothesis
+      description: One or two sentences stating the mechanism, the affected outcome, and the expected direction.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of contribution
+      options:
+        - New unknown channel
+        - Revision of an existing channel
+        - New parameter dependency
+        - New validation case
+        - Experiment-design target
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and citations
+      description: Papers, datasets, or anecdata supporting (and questioning) the proposal.
+    validations:
+      required: true
+  - type: textarea
+    id: outcomes
+    attributes:
+      label: Downstream simulator outcomes affected
+      description: Which simulator outputs would change if this hypothesis were enabled?
+    validations:
+      required: true
+  - type: textarea
+    id: experiment
+    attributes:
+      label: Test or experiment
+      description: How would you distinguish this from the null? Include feasibility notes.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional context

@@ -67,6 +67,27 @@ database is what advances the simulator.
   downstream consumers share the v0.1 scaffold case rather than
   duplicating it in tests.
 
+### Documentation
+
+- v0.2 Stream B Prompt B3: populated [`docs/validation/`](docs/validation/)
+  with `overview.md` (what the suite covers and the tier-aware
+  agreement classifier), `extending.md` (the four-part new-case
+  workflow), `report-schema.md` (stable JSON output schema for
+  `nidus validate --format json`), and `case-maternal-cardiac-output.md`
+  (the only shipped case). Linked from
+  [`docs/README.md`](docs/README.md); cross-pointer to the citation and
+  parameter-PR review checklists.
+
+### Project hygiene
+
+- v0.2 Stream F Prompt F2: added three GitHub Issue templates under
+  [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/) —
+  `parameter-request.yml`, `bug-report.yml`, and
+  `hypothesis-proposal.yml` — plus a `config.yml` that disables blank
+  issues and points open-ended questions at Discussions.
+  [`CONTRIBUTING.md`](CONTRIBUTING.md) now references the templates and
+  the relocated `docs/specs/SPEC.md`.
+
 ### Scenarios
 
 - `scenarios/normal_term_pregnancy.toml` — scaffold normal pregnancy.

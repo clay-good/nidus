@@ -4,8 +4,23 @@ Thank you for considering a contribution. Nidus is built to invite
 participation from the scientific community, and the contribution model
 is structured around the principle that the most valuable contributions
 are parameter updates derived from published empirical work. The full
-specification is in [SPEC.md](SPEC.md); this guide focuses on the
-practical mechanics of contributing.
+specification is in [docs/specs/SPEC.md](docs/specs/SPEC.md); this guide
+focuses on the practical mechanics of contributing.
+
+## Filing an issue
+
+Three structured issue templates are wired into GitHub
+([`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/)):
+
+- **Parameter request** — a new entry under `data/parameters/`, or a
+  revision of an existing one. Walks you through the citation,
+  population, gestational-age range, and tier rationale.
+- **Bug report** — a reproducible defect in the simulator, CLI,
+  validation suite, or docs.
+- **Hypothesis proposal** — a candidate mechanism, unknown channel, or
+  experiment-design target.
+
+Open-ended discussion belongs in GitHub Discussions, not Issues.
 
 ## The confidence tier system
 
