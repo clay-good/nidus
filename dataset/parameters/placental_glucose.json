@@ -1,0 +1,102 @@
+[
+  {
+    "id": "placental_glucose.glucose_glut1_km_mmol_per_l",
+    "name": "GLUT1 affinity for glucose",
+    "subsystem": "placental_glucose",
+    "value": {
+      "central": 2.5,
+      "low": 2.0,
+      "high": 3.0,
+      "units": "mmol/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: illsley-2000-glut1. Technique: Vesicle uptake kinetics. Population: Human term syncytiotrophoblast microvillous membrane vesicles.",
+    "citations": [
+      "illsley-2000-glut1"
+    ],
+    "primary_citation": "illsley-2000-glut1",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Human term syncytiotrophoblast microvillous membrane vesicles"
+    },
+    "notes": "Michaelis constant for GLUT1-mediated glucose transport on the syncytiotrophoblast microvillous membrane."
+  },
+  {
+    "id": "placental_glucose.glucose_glut1_vmax_per_area_mmol_per_min_per_m2",
+    "name": "GLUT1 maximum transport rate per unit area",
+    "subsystem": "placental_glucose",
+    "value": {
+      "central": 0.075,
+      "low": 0.055,
+      "high": 0.095,
+      "units": "mmol/min/m^2"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: illsley-2000-glut1. Population: Human term syncytiotrophoblast. Caveats: Vmax extrapolated from vesicle-protein assays scaled to whole-placenta villous surface area; tier C reflects the extrapolation.",
+    "citations": [
+      "illsley-2000-glut1"
+    ],
+    "primary_citation": "illsley-2000-glut1",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Human term syncytiotrophoblast"
+    },
+    "notes": "Maximum facilitated-diffusion flux per unit villous surface area via GLUT1. Caveats: Vmax extrapolated from vesicle-protein assays scaled to whole-placenta villous surface area; tier C reflects the extrapolation."
+  },
+  {
+    "id": "placental_glucose.glucose_glut3_km_mmol_per_l",
+    "name": "GLUT3 affinity for glucose",
+    "subsystem": "placental_glucose",
+    "value": {
+      "central": 1.5,
+      "low": 1.2,
+      "high": 1.8,
+      "units": "mmol/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: baumann-2002-glut3. Population: Human syncytiotrophoblast basal membrane.",
+    "citations": [
+      "baumann-2002-glut3"
+    ],
+    "primary_citation": "baumann-2002-glut3",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Human syncytiotrophoblast basal membrane"
+    },
+    "notes": "Michaelis constant for GLUT3-mediated glucose transport on the syncytiotrophoblast basal membrane."
+  },
+  {
+    "id": "placental_glucose.glucose_glut3_vmax_per_area_mmol_per_min_per_m2",
+    "name": "GLUT3 maximum transport rate per unit area",
+    "subsystem": "placental_glucose",
+    "value": {
+      "central": 0.02,
+      "low": 0.015,
+      "high": 0.025,
+      "units": "mmol/min/m^2"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: brown-2011-glut3. Population: Human syncytiotrophoblast across gestation. Caveats: GLUT3 expression rises through gestation; this is a term-equivalent reference value.",
+    "citations": [
+      "brown-2011-glut3"
+    ],
+    "primary_citation": "brown-2011-glut3",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Human syncytiotrophoblast across gestation"
+    },
+    "notes": "Maximum facilitated-diffusion flux per unit villous surface area via GLUT3. Caveats: GLUT3 expression rises through gestation; this is a term-equivalent reference value."
+  }
+]

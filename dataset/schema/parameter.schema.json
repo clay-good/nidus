@@ -29,6 +29,7 @@
       "type": "string",
       "enum": [
         "maternal_cardiovascular",
+        "maternal_blood",
         "maternal_respiratory",
         "maternal_renal",
         "placental_structure",

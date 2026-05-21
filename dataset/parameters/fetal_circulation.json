@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fetal_circulation.ductus_arteriosus_share",
+    "name": "Ductus arteriosus flow share",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.85,
+      "low": 0.8,
+      "high": 0.9,
+      "units": "fraction"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: rudolph-1985-fetal-circulation. Population: Late-gestation fetal lamb (extrapolated to human fetus).",
+    "citations": [
+      "rudolph-1985-fetal-circulation"
+    ],
+    "primary_citation": "rudolph-1985-fetal-circulation",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Late-gestation fetal lamb (extrapolated to human fetus)"
+    },
+    "notes": "Fraction of right-ventricular output that bypasses the lungs via the ductus arteriosus to the descending aorta."
+  },
+  {
+    "id": "fetal_circulation.foramen_ovale_streamline_preference",
+    "name": "Foramen ovale streamline preference",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.8,
+      "low": 0.73,
+      "high": 0.87,
+      "units": "fraction"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: rudolph-1985-fetal-circulation. Population: Late-gestation fetal lamb (extrapolated to human fetus). Caveats: Direct human in-vivo measurements are limited; Rudolph's lamb data is the standard reference.",
+    "citations": [
+      "rudolph-1985-fetal-circulation"
+    ],
+    "primary_citation": "rudolph-1985-fetal-circulation",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Late-gestation fetal lamb (extrapolated to human fetus)"
+    },
+    "notes": "Weight on the umbilical-vein pole in the cerebral weighted-average mix. 0.5 corresponds to no preferential streaming; Rudolph reports ~75-80% of the most-oxygenated DV/IVC stream crossing the foramen ovale to the left atrium. Caveats: Direct human in-vivo measurements are limited; Rudolph's lamb data is the standard reference."
+  },
+  {
+    "id": "fetal_circulation.systemic_venous_return_po2_mmhg",
+    "name": "Systemic venous return PO2",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 15.0,
+      "low": 12.0,
+      "high": 18.0,
+      "units": "mmHg"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: kiserud-2000-fetal-circulation. Population: Healthy late-gestation human fetus. Caveats: Estimated from ductus venosus Doppler studies; tier C reflects indirect measurement.",
+    "citations": [
+      "kiserud-2000-fetal-circulation"
+    ],
+    "primary_citation": "kiserud-2000-fetal-circulation",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy late-gestation human fetus"
+    },
+    "notes": "Effective PO2 of systemic venous return mixing into the right atrium of the fetal heart. Caveats: Estimated from ductus venosus Doppler studies; tier C reflects indirect measurement."
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "maternal_respiratory.minute_ventilation_l_per_min",
+    "name": "Maternal minute ventilation at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 10.5,
+      "low": 8.7,
+      "high": 12.3,
+      "units": "L/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: lomauro-aliverti-2015-respiratory. Technique: Spirometry / open-circuit indirect calorimetry. Population: Healthy singleton pregnancies, term.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "primary_citation": "lomauro-aliverti-2015-respiratory",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Resting minute ventilation at term; increased ~30-50% above non-pregnant baseline."
+  },
+  {
+    "id": "maternal_respiratory.p50_shift_mmhg",
+    "name": "Pregnancy P50 shift",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 3.0,
+      "low": 2.0,
+      "high": 4.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: kelman-1966-o2-saturation. Population: Healthy singleton pregnancies, third trimester. Caveats: Reported shift varies by methodology and 2,3-BPG measurement; a 2-4 mmHg range is most commonly cited.",
+    "citations": [
+      "kelman-1966-o2-saturation"
+    ],
+    "primary_citation": "kelman-1966-o2-saturation",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Rightward shift in maternal oxyhaemoglobin P50 in pregnancy, attributed to elevated 2,3-BPG. Caveats: Reported shift varies by methodology and 2,3-BPG measurement; a 2-4 mmHg range is most commonly cited."
+  },
+  {
+    "id": "maternal_respiratory.paco2_mmhg_term",
+    "name": "Maternal arterial PCO2 at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 30.0,
+      "low": 28.0,
+      "high": 32.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: lomauro-aliverti-2015-respiratory. Technique: Arterial blood-gas analysis. Population: Healthy singleton pregnancies, term. Caveats: Non-pregnant reference 40 mmHg; pregnancy reference 28-32 mmHg.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "primary_citation": "lomauro-aliverti-2015-respiratory",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Arterial PaCO2 at term; reduced by physiological hyperventilation. Caveats: Non-pregnant reference 40 mmHg; pregnancy reference 28-32 mmHg."
+  },
+  {
+    "id": "maternal_respiratory.pao2_mmhg_term",
+    "name": "Maternal arterial PO2 at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 103.0,
+      "low": 98.0,
+      "high": 108.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: lomauro-aliverti-2015-respiratory. Technique: Arterial blood-gas analysis. Population: Healthy singleton pregnancies, term.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "primary_citation": "lomauro-aliverti-2015-respiratory",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Arterial PaO2 at term; mildly elevated relative to non-pregnant baseline."
+  },
+  {
+    "id": "maternal_respiratory.tidal_volume_ml_term",
+    "name": "Maternal tidal volume at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 680.0,
+      "low": 570.0,
+      "high": 790.0,
+      "units": "mL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: crapo-1996-pregnancy-respiratory. Technique: Spirometry. Population: Healthy singleton pregnancies, term.",
+    "citations": [
+      "crapo-1996-pregnancy-respiratory"
+    ],
+    "primary_citation": "crapo-1996-pregnancy-respiratory",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Resting tidal volume at term."
+  }
+]

@@ -1,0 +1,354 @@
+[
+  {
+    "id": "maternal_cardiovascular.baseline_cardiac_output_l_per_min",
+    "name": "Pre-pregnancy cardiac output baseline",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 4.6,
+      "low": 4.2,
+      "high": 5.0,
+      "units": "L/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Technique: Inert-gas rebreathing. Population: Healthy nulliparous women, pre-conception measurement.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy nulliparous women, pre-conception measurement"
+    },
+    "notes": "Cardiac output at the start of gestation, before pregnancy-induced rise."
+  },
+  {
+    "id": "maternal_cardiovascular.baseline_map_mmhg",
+    "name": "Pre-pregnancy mean arterial pressure",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 85.0,
+      "low": 79.0,
+      "high": 91.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Technique: Brachial-cuff oscillometric MAP. Population: Healthy nulliparous women, pre-conception.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy nulliparous women, pre-conception"
+    },
+    "notes": "Mean arterial pressure at the start of gestation."
+  },
+  {
+    "id": "maternal_cardiovascular.baseline_uterine_flow_ml_per_min",
+    "name": "Pre-pregnancy uterine artery flow",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 50.0,
+      "low": 35.0,
+      "high": 65.0,
+      "units": "mL/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: thaler-1990-uterine-flow. Technique: Pulsed-wave Doppler, bilateral uterine arteries. Population: Healthy women, pre-pregnancy or early first trimester.",
+    "citations": [
+      "thaler-1990-uterine-flow"
+    ],
+    "primary_citation": "thaler-1990-uterine-flow",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy women, pre-pregnancy or early first trimester"
+    },
+    "notes": "Combined bilateral uterine artery flow at the start of gestation."
+  },
+  {
+    "id": "maternal_cardiovascular.cardiac_output_individual_sigma",
+    "name": "Between-individual sigma for cardiac output",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 0.13,
+      "low": 0.1,
+      "high": 0.16,
+      "units": "fraction"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: hunter-robson-1992-cardiac-output. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "hunter-robson-1992-cardiac-output"
+    ],
+    "primary_citation": "hunter-robson-1992-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Fractional one-sigma between-individual variation around the population cardiac-output trajectory (e.g. 0.13 = 13%)."
+  },
+  {
+    "id": "maternal_cardiovascular.cardiac_output_peak_week",
+    "name": "Gestational week of peak cardiac output",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 30.0,
+      "low": 28.0,
+      "high": 32.0,
+      "units": "weeks",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Gestational age (weeks) at which cardiac output reaches its maximum."
+  },
+  {
+    "id": "maternal_cardiovascular.cardiac_output_spread_weeks",
+    "name": "Cardiac-output trajectory spread parameter",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 12.0,
+      "low": 10.0,
+      "high": 14.0,
+      "units": "weeks"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: hunter-robson-1992-cardiac-output. Population: Healthy singleton pregnancies. Caveats: Derived from a Gaussian-shape fit to the cohort curves; original sources report point estimates rather than a shape parameter.",
+    "citations": [
+      "hunter-robson-1992-cardiac-output"
+    ],
+    "primary_citation": "hunter-robson-1992-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Gaussian-curve spread (weeks) controlling how quickly cardiac output rises and falls around its peak. Caveats: Derived from a Gaussian-shape fit to the cohort curves; original sources report point estimates rather than a shape parameter."
+  },
+  {
+    "id": "maternal_cardiovascular.map_individual_sigma_mmhg",
+    "name": "Between-individual sigma for MAP",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 5.0,
+      "low": 4.0,
+      "high": 6.0,
+      "units": "mmHg"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: sanghavi-rutherford-2014-cardio-review. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "One-sigma between-individual variation around the MAP trajectory."
+  },
+  {
+    "id": "maternal_cardiovascular.map_nadir_drop_mmhg",
+    "name": "Mid-pregnancy MAP nadir drop",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 8.0,
+      "low": 5.0,
+      "high": 11.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Maximum drop in MAP from baseline during the mid-pregnancy systemic-vasodilation phase."
+  },
+  {
+    "id": "maternal_cardiovascular.map_nadir_week",
+    "name": "Gestational week of MAP nadir",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 22.0,
+      "low": 20.0,
+      "high": 24.0,
+      "units": "weeks",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Gestational age (weeks) at which MAP reaches its lowest value."
+  },
+  {
+    "id": "maternal_cardiovascular.map_spread_weeks",
+    "name": "MAP trajectory spread parameter",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 8.0,
+      "low": 6.5,
+      "high": 9.5,
+      "units": "weeks"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: sanghavi-rutherford-2014-cardio-review. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Gaussian spread (weeks) controlling the width of the MAP nadir dip."
+  },
+  {
+    "id": "maternal_cardiovascular.peak_excess_cardiac_output_l_per_min",
+    "name": "Peak gestational excess cardiac output",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 2.7,
+      "low": 2.2,
+      "high": 3.2,
+      "units": "L/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mahendru-2014-cardiac-output. Technique: Inert-gas rebreathing, longitudinal cohort. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Excess cardiac output above baseline at peak (mid-third-trimester)."
+  },
+  {
+    "id": "maternal_cardiovascular.term_uterine_flow_ml_per_min",
+    "name": "Term uterine artery flow",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 750.0,
+      "low": 600.0,
+      "high": 900.0,
+      "units": "mL/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: thaler-1990-uterine-flow. Technique: Pulsed-wave Doppler, bilateral uterine arteries. Population: Healthy singleton pregnancies, term.",
+    "citations": [
+      "thaler-1990-uterine-flow"
+    ],
+    "primary_citation": "thaler-1990-uterine-flow",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Combined bilateral uterine artery flow at term."
+  },
+  {
+    "id": "maternal_cardiovascular.uterine_flow_growth_rate_per_week",
+    "name": "Uterine artery flow growth rate",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 0.22,
+      "low": 0.17,
+      "high": 0.27,
+      "units": "1/week"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: thaler-1990-uterine-flow. Population: Healthy singleton pregnancies. Caveats: Fit parameter; not directly reported. Derived to match Doppler-cohort means at sampled gestational ages.",
+    "citations": [
+      "thaler-1990-uterine-flow"
+    ],
+    "primary_citation": "thaler-1990-uterine-flow",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Logistic growth-rate parameter for uterine artery flow expansion. Caveats: Fit parameter; not directly reported. Derived to match Doppler-cohort means at sampled gestational ages."
+  },
+  {
+    "id": "maternal_cardiovascular.uterine_flow_individual_sigma",
+    "name": "Between-individual sigma for uterine flow",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 0.2,
+      "low": 0.15,
+      "high": 0.25,
+      "units": "fraction"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: thaler-1990-uterine-flow. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "thaler-1990-uterine-flow"
+    ],
+    "primary_citation": "thaler-1990-uterine-flow",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Fractional one-sigma between-individual variation around the uterine-flow trajectory."
+  }
+]

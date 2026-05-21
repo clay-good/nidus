@@ -1,0 +1,180 @@
+[
+  {
+    "id": "fetal_growth.bpd_28w_mm",
+    "name": "Biparietal diameter at 28 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 71.5,
+      "low": 68.5,
+      "high": 74.5,
+      "units": "mm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: grewal-2018-nichd-growth. Technique: Ultrasound biometry. Population: NICHD Fetal Growth Studies singleton cohort.",
+    "citations": [
+      "grewal-2018-nichd-growth"
+    ],
+    "primary_citation": "grewal-2018-nichd-growth",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter (50th percentile) at 28 weeks gestation."
+  },
+  {
+    "id": "fetal_growth.efw_20w_g",
+    "name": "Estimated fetal weight at 20 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 331.0,
+      "low": 296.0,
+      "high": 366.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: buck-louis-2015-nichd-growth. Technique: Hadlock biometric formula on ultrasound measurements. Population: NICHD Fetal Growth Studies multi-ethnic singleton cohort.",
+    "citations": [
+      "buck-louis-2015-nichd-growth"
+    ],
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+    },
+    "notes": "Singleton estimated fetal weight (50th percentile) at 20 weeks gestation."
+  },
+  {
+    "id": "fetal_growth.efw_28w_g",
+    "name": "Estimated fetal weight at 28 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 1141.0,
+      "low": 1011.0,
+      "high": 1271.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: buck-louis-2015-nichd-growth. Population: NICHD Fetal Growth Studies multi-ethnic singleton cohort.",
+    "citations": [
+      "buck-louis-2015-nichd-growth"
+    ],
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+    },
+    "notes": "Singleton estimated fetal weight (50th percentile) at 28 weeks gestation."
+  },
+  {
+    "id": "fetal_growth.efw_36w_g",
+    "name": "Estimated fetal weight at 36 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 2779.0,
+      "low": 2459.0,
+      "high": 3099.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: buck-louis-2015-nichd-growth. Population: NICHD Fetal Growth Studies multi-ethnic singleton cohort.",
+    "citations": [
+      "buck-louis-2015-nichd-growth"
+    ],
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+    },
+    "notes": "Singleton estimated fetal weight (50th percentile) at 36 weeks gestation."
+  },
+  {
+    "id": "fetal_growth.efw_40w_g",
+    "name": "Estimated fetal weight at 40 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 3567.0,
+      "low": 3157.0,
+      "high": 3977.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: buck-louis-2015-nichd-growth. Population: NICHD Fetal Growth Studies multi-ethnic singleton cohort.",
+    "citations": [
+      "buck-louis-2015-nichd-growth"
+    ],
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
+    },
+    "notes": "Singleton estimated fetal weight (50th percentile) at 40 weeks gestation."
+  },
+  {
+    "id": "fetal_growth.fl_28w_mm",
+    "name": "Femur length at 28 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 53.0,
+      "low": 50.5,
+      "high": 55.5,
+      "units": "mm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: grewal-2018-nichd-growth. Technique: Ultrasound biometry. Population: NICHD Fetal Growth Studies singleton cohort.",
+    "citations": [
+      "grewal-2018-nichd-growth"
+    ],
+    "primary_citation": "grewal-2018-nichd-growth",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length (50th percentile) at 28 weeks gestation."
+  },
+  {
+    "id": "fetal_growth.hadlock_coefficient",
+    "name": "Hadlock estimated-fetal-weight coefficient",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 1.3596,
+      "units": "log10(g)"
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: hadlock-1991-fetal-weight. Population: Mixed obstetric ultrasound cohort. Caveats: Specific to the four-parameter Hadlock (1991) formula; alternative formulae have different coefficients.",
+    "citations": [
+      "hadlock-1991-fetal-weight"
+    ],
+    "primary_citation": "hadlock-1991-fetal-weight",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Mixed obstetric ultrasound cohort"
+    },
+    "notes": "Lead coefficient of the Hadlock formula log10(EFW) = 1.3596 - 0.00386·AC·FL + 0.0064·HC + ... Caveats: Specific to the four-parameter Hadlock (1991) formula; alternative formulae have different coefficients."
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "id": "fetal_metabolism.glucose_utilisation_mg_per_kg_per_min",
+    "name": "Fetal glucose utilisation per kg",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 5.0,
+      "low": 4.0,
+      "high": 6.0,
+      "units": "mg/kg/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: battaglia-meschia-1986-fetal-metabolism. Technique: Umbilical-vein/artery glucose flux. Population: Late-gestation human fetus.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Late-gestation human fetus"
+    },
+    "notes": "Net glucose utilisation by the late-gestation human fetus per kilogram body weight."
+  },
+  {
+    "id": "fetal_metabolism.oxygen_consumption_ml_per_kg_per_min",
+    "name": "Fetal oxygen consumption per kg",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 6.5,
+      "low": 5.5,
+      "high": 7.5,
+      "units": "mL O2/kg/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: battaglia-meschia-1986-fetal-metabolism. Technique: Umbilical-vessel arteriovenous-difference Fick estimation. Population: Late-gestation human fetus (compiled).",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Late-gestation human fetus (compiled)"
+    },
+    "notes": "Whole-body oxygen consumption of the late-gestation human fetus per kilogram body weight."
+  }
+]

@@ -1,0 +1,431 @@
+{
+  "avery-mead-1959-surfactant": {
+    "authors": [
+      "Avery ME",
+      "Mead J"
+    ],
+    "journal": "AMA Journal of Diseases of Children",
+    "key": "avery-mead-1959-surfactant",
+    "notes": "Foundational description of pulmonary surfactant deficiency in preterm lungs.",
+    "pmid": "13649048",
+    "title": "Surface properties in relation to atelectasis and hyaline membrane disease",
+    "type": "journal-article",
+    "year": 1959
+  },
+  "battaglia-meschia-1986-fetal-metabolism": {
+    "authors": [
+      "Battaglia FC",
+      "Meschia G"
+    ],
+    "key": "battaglia-meschia-1986-fetal-metabolism",
+    "notes": "Reference text for fetal oxygen consumption, glucose utilisation rates. Dependents: data/parameters/fetal/metabolism.toml (oxygen-consumption-ml-per-kg-per-min, glucose-utilisation-mg-per-kg-per-min).",
+    "publisher": "Academic Press",
+    "title": "An Introduction to Fetal Physiology",
+    "type": "book",
+    "year": 1986
+  },
+  "baumann-2002-glut3": {
+    "authors": [
+      "Baumann MU",
+      "Deborde S",
+      "Illsley NP"
+    ],
+    "doi": "10.1385/ENDO:19:1:13",
+    "journal": "Endocrine",
+    "key": "baumann-2002-glut3",
+    "notes": "GLUT3 expression and function across gestation. Dependents: data/parameters/placenta/glucose_transport.toml (glut3-km-mmol-per-l, glut3-vmax-per-area).",
+    "title": "Placental glucose transfer and fetal growth",
+    "type": "journal-article",
+    "year": 2002
+  },
+  "bernstein-ziegler-2001-plasma-volume": {
+    "authors": [
+      "Bernstein IM",
+      "Ziegler W",
+      "Badger GJ"
+    ],
+    "journal": "Obstetrics and Gynecology",
+    "key": "bernstein-ziegler-2001-plasma-volume",
+    "notes": "Quantifies first-trimester plasma volume rise. Dependents: data/parameters/maternal/blood.toml (plasma-volume-l).",
+    "pmid": "11384693",
+    "title": "Plasma volume expansion in early pregnancy",
+    "type": "journal-article",
+    "year": 2001
+  },
+  "brown-2011-glut3": {
+    "authors": [
+      "Brown K",
+      "Heller DS",
+      "Zamudio S",
+      "Illsley NP"
+    ],
+    "doi": "10.1016/j.placenta.2011.09.011",
+    "journal": "Placenta",
+    "key": "brown-2011-glut3",
+    "notes": "Quantitative GLUT3 expression by gestational age. Dependents: data/parameters/placenta/glucose_transport.toml (glut3-vmax-per-area).",
+    "title": "Glucose transporter 3 (GLUT3) protein expression in human placenta across gestation",
+    "type": "journal-article",
+    "year": 2011
+  },
+  "buck-louis-2015-nichd-growth": {
+    "authors": [
+      "Buck Louis GM",
+      "Grewal J",
+      "Albert PS",
+      "et al."
+    ],
+    "doi": "10.1016/j.ajog.2015.08.032",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "buck-louis-2015-nichd-growth",
+    "notes": "Multi-ethnic fetal growth percentiles. Dependents: data/parameters/fetal/growth.toml (estimated-fetal-weight-g percentile means).",
+    "title": "Racial/ethnic standards for fetal growth: the NICHD Fetal Growth Studies",
+    "type": "journal-article",
+    "year": 2015
+  },
+  "burri-2006-lung-development": {
+    "authors": [
+      "Burri PH"
+    ],
+    "doi": "10.1159/000092868",
+    "journal": "Biology of the Neonate",
+    "key": "burri-2006-lung-development",
+    "notes": "Lung structural development through saccular and alveolar phases.",
+    "title": "Structural aspects of postnatal lung development — alveolar formation and growth",
+    "type": "journal-article",
+    "year": 2006
+  },
+  "burton-2010-placental-development": {
+    "authors": [
+      "Burton GJ",
+      "Jauniaux E"
+    ],
+    "doi": "10.1016/j.ajog.2015.07.050",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "burton-2010-placental-development",
+    "notes": "Review of placental morphology and oxygenation transitions across gestation.",
+    "title": "What is the placenta?",
+    "type": "journal-article",
+    "year": 2015
+  },
+  "carter-2009-placental-development": {
+    "authors": [
+      "Carter AM"
+    ],
+    "doi": "10.1016/j.placenta.2008.11.013",
+    "journal": "Placenta",
+    "key": "carter-2009-placental-development",
+    "notes": "Comparative morphometry and gas transfer in the human placenta. Dependents: data/parameters/placenta/structure.toml (term-area-m2).",
+    "title": "Evolution of factors affecting placental oxygen transfer",
+    "type": "journal-article",
+    "year": 2009
+  },
+  "carter-pijnenborg-2011-gas-exchange": {
+    "authors": [
+      "Carter AM",
+      "Pijnenborg R"
+    ],
+    "doi": "10.1016/j.bpobgyn.2010.10.009",
+    "journal": "Best Practice and Research Clinical Obstetrics and Gynaecology",
+    "key": "carter-pijnenborg-2011-gas-exchange",
+    "notes": "Comparative placental gas-exchange efficiency. Dependents: data/parameters/placenta/gas_transport.toml (max-equilibration).",
+    "title": "Evolution of invasive placentation with special reference to non-human primates",
+    "type": "journal-article",
+    "year": 2011
+  },
+  "cheung-lafayette-2013-renal": {
+    "authors": [
+      "Cheung KL",
+      "Lafayette RA"
+    ],
+    "doi": "10.1053/j.ackd.2013.01.012",
+    "journal": "Advances in Chronic Kidney Disease",
+    "key": "cheung-lafayette-2013-renal",
+    "notes": "GFR rise and creatinine fall across normal pregnancy. Dependents: data/parameters/maternal/renal.toml (gfr-ml-per-min, plasma-creatinine-mg-per-dl).",
+    "title": "Renal physiology of pregnancy",
+    "type": "journal-article",
+    "year": 2013
+  },
+  "cleal-lewis-2008-amino-acid": {
+    "authors": [
+      "Cleal JK",
+      "Lewis RM"
+    ],
+    "doi": "10.1111/j.1365-2826.2008.01699.x",
+    "journal": "Journal of Neuroendocrinology",
+    "key": "cleal-lewis-2008-amino-acid",
+    "notes": "Placental amino acid system A and L kinetics.",
+    "title": "The mechanisms and regulation of placental amino acid transport to the human foetus",
+    "type": "journal-article",
+    "year": 2008
+  },
+  "crapo-1996-pregnancy-respiratory": {
+    "authors": [
+      "Crapo RO"
+    ],
+    "journal": "Clinical Obstetrics and Gynecology",
+    "key": "crapo-1996-pregnancy-respiratory",
+    "notes": "Reference ranges for respiratory function in pregnancy. Dependents: data/parameters/maternal/respiratory.toml (tidal-volume-ml).",
+    "pmid": "8862881",
+    "title": "Normal cardiopulmonary physiology during pregnancy",
+    "type": "journal-article",
+    "year": 1996
+  },
+  "dash-bassingthwaighte-2010-o2-hb": {
+    "authors": [
+      "Dash RK",
+      "Bassingthwaighte JB"
+    ],
+    "doi": "10.1007/s10439-010-9966-9",
+    "journal": "Annals of Biomedical Engineering",
+    "key": "dash-bassingthwaighte-2010-o2-hb",
+    "notes": "Modern revision of the O2-Hb and CO2-Hb dissociation curves incorporating Bohr/Haldane effects. Dependents: data/parameters/maternal/blood.toml (oxyhb-bohr-coefficient).",
+    "title": "Erratum to: Blood HbO2 and HbCO2 dissociation curves at varied O2, CO2, pH, 2,3-DPG and temperature levels",
+    "type": "journal-article",
+    "year": 2010
+  },
+  "davison-hytten-1974-gfr": {
+    "authors": [
+      "Davison JM",
+      "Hytten FE"
+    ],
+    "journal": "Journal of Obstetrics and Gynaecology of the British Commonwealth",
+    "key": "davison-hytten-1974-gfr",
+    "notes": "Foundational paired-clearance study of pregnancy GFR. Dependents: data/parameters/maternal/renal.toml (gfr-ml-per-min).",
+    "pmid": "4847093",
+    "title": "Glomerular filtration during and after pregnancy",
+    "type": "journal-article",
+    "year": 1974
+  },
+  "de-haas-2017-plasma-volume-meta": {
+    "authors": [
+      "de Haas S",
+      "Ghossein-Doha C",
+      "van Kuijk SMJ",
+      "van Drongelen J",
+      "Spaanderman MEA"
+    ],
+    "doi": "10.1002/uog.17360",
+    "journal": "Ultrasound in Obstetrics and Gynecology",
+    "key": "de-haas-2017-plasma-volume-meta",
+    "notes": "Systematic review of plasma-volume expansion in singleton pregnancy. Dependents: data/parameters/maternal/blood.toml (plasma-volume-l).",
+    "title": "Physiological adaptation of maternal plasma volume during pregnancy: a systematic review and meta-analysis",
+    "type": "journal-article",
+    "year": 2017
+  },
+  "grewal-2018-nichd-growth": {
+    "authors": [
+      "Grewal J",
+      "Grantz KL",
+      "Zhang C",
+      "et al."
+    ],
+    "doi": "10.1093/ije/dyx161",
+    "journal": "International Journal of Epidemiology",
+    "key": "grewal-2018-nichd-growth",
+    "notes": "Cohort design and biometric measurements for the NICHD studies. Dependents: data/parameters/fetal/growth.toml (biparietal-diameter-mm, femur-length-mm).",
+    "title": "Cohort profile: NICHD Fetal Growth Studies — Singletons and Twins",
+    "type": "journal-article",
+    "year": 2018
+  },
+  "hadlock-1991-fetal-weight": {
+    "authors": [
+      "Hadlock FP",
+      "Harrist RB",
+      "Martinez-Poyer J"
+    ],
+    "journal": "Radiology",
+    "key": "hadlock-1991-fetal-weight",
+    "notes": "Reference biometric formulae for estimated fetal weight. Dependents: data/parameters/fetal/growth.toml (estimated-fetal-weight-g).",
+    "pmid": "1887022",
+    "title": "In utero analysis of fetal growth: a sonographic weight standard",
+    "type": "journal-article",
+    "year": 1991
+  },
+  "hunter-robson-1992-cardiac-output": {
+    "authors": [
+      "Hunter S",
+      "Robson SC"
+    ],
+    "journal": "British Heart Journal",
+    "key": "hunter-robson-1992-cardiac-output",
+    "notes": "Echocardiographic CO and SV across gestation. Dependents: data/parameters/maternal/cardio.toml (cardiac-output-spread-weeks, cardiac-output-individual-sigma).",
+    "pmid": "1540438",
+    "title": "Adaptation of the maternal heart in pregnancy",
+    "type": "journal-article",
+    "year": 1992
+  },
+  "hytten-chamberlain-1980-blood-volume": {
+    "authors": [
+      "Hytten FE",
+      "Chamberlain G"
+    ],
+    "key": "hytten-chamberlain-1980-blood-volume",
+    "notes": "Reference text for plasma volume and red-cell mass trajectories across normal pregnancy. Dependents: data/parameters/maternal/blood.toml (blood-volume-l, plasma-volume-l, red-cell-mass-l).",
+    "publisher": "Blackwell Scientific Publications",
+    "title": "Clinical Physiology in Obstetrics",
+    "type": "book",
+    "year": 1980
+  },
+  "illsley-2000-glut1": {
+    "authors": [
+      "Illsley NP"
+    ],
+    "doi": "10.1053/plac.1999.0478",
+    "journal": "Placenta",
+    "key": "illsley-2000-glut1",
+    "notes": "GLUT1 Vmax/Km on syncytiotrophoblast membranes. Dependents: data/parameters/placenta/glucose_transport.toml (glut1-km-mmol-per-l, glut1-vmax-per-area).",
+    "title": "Glucose transporters in the human placenta",
+    "type": "journal-article",
+    "year": 2000
+  },
+  "kelman-1966-o2-saturation": {
+    "authors": [
+      "Kelman GR"
+    ],
+    "journal": "Journal of Applied Physiology",
+    "key": "kelman-1966-o2-saturation",
+    "notes": "Original digital implementation of O2 saturation calculations; reference for temperature corrections.",
+    "pmid": "5916678",
+    "title": "Digital computer subroutine for the conversion of oxygen tension into saturation",
+    "type": "journal-article",
+    "year": 1966
+  },
+  "kiserud-2000-fetal-circulation": {
+    "authors": [
+      "Kiserud T"
+    ],
+    "doi": "10.1053/sper.2000.16092",
+    "journal": "Seminars in Perinatology",
+    "key": "kiserud-2000-fetal-circulation",
+    "notes": "Ductus venosus shunting and umbilical venous return. Dependents: data/parameters/fetal/circulation.toml (systemic-venous-return-po2-mmhg).",
+    "title": "The ductus venosus",
+    "type": "journal-article",
+    "year": 2000
+  },
+  "lomauro-aliverti-2015-respiratory": {
+    "authors": [
+      "LoMauro A",
+      "Aliverti A"
+    ],
+    "doi": "10.1183/20734735.008615",
+    "journal": "Breathe",
+    "key": "lomauro-aliverti-2015-respiratory",
+    "notes": "Minute ventilation, tidal volume, PaCO2 changes in pregnancy. Dependents: data/parameters/maternal/respiratory.toml (minute-ventilation-l-per-min, paco2-mmhg, pao2-mmhg).",
+    "title": "Respiratory physiology of pregnancy",
+    "type": "journal-article",
+    "year": 2015
+  },
+  "mahendru-2014-cardiac-output": {
+    "authors": [
+      "Mahendru AA",
+      "Everett TR",
+      "Wilkinson IB",
+      "Lees CC",
+      "McEniery CM"
+    ],
+    "doi": "10.1097/HJH.0000000000000043",
+    "journal": "Journal of Hypertension",
+    "key": "mahendru-2014-cardiac-output",
+    "notes": "Longitudinal CO, SV, HR, MAP across normal pregnancy. Dependents: data/parameters/maternal/cardio.toml (baseline-cardiac-output, peak-excess-cardiac-output, cardiac-output-peak-week, baseline-map, map-nadir-drop, map-nadir-week).",
+    "title": "A longitudinal study of maternal cardiovascular function from preconception to the postpartum period",
+    "type": "journal-article",
+    "year": 2014
+  },
+  "mayhew-1986-gas-diffusion": {
+    "authors": [
+      "Mayhew TM",
+      "Joy CF",
+      "Haas JD"
+    ],
+    "journal": "Journal of Anatomy",
+    "key": "mayhew-1986-gas-diffusion",
+    "notes": "Diffusing capacity for O2 across the placental membrane at term. Dependents: data/parameters/placenta/gas_transport.toml (half-saturation-area-m2, max-equilibration).",
+    "pmid": "3693078",
+    "title": "Structure-function correlation in the human placenta: the morphometric diffusing capacity for oxygen at full term",
+    "type": "journal-article",
+    "year": 1986
+  },
+  "mayhew-2014-placental-morphometry": {
+    "authors": [
+      "Mayhew TM"
+    ],
+    "doi": "10.1016/j.placenta.2014.09.010",
+    "journal": "Placenta",
+    "key": "mayhew-2014-placental-morphometry",
+    "notes": "Villous surface area, membrane thickness, intervillous volume from stereology. Dependents: data/parameters/placenta/structure.toml (initial-area-m2, term-area-m2, midpoint-week, growth-rate-per-week, membrane-thickness-um, intervillous-volume-ml).",
+    "title": "Morphomics of the human placenta: a review and recommendations for techniques",
+    "type": "journal-article",
+    "year": 2014
+  },
+  "rudolph-1985-fetal-circulation": {
+    "authors": [
+      "Rudolph AM"
+    ],
+    "journal": "Circulation Research",
+    "key": "rudolph-1985-fetal-circulation",
+    "notes": "Streamline routing through foramen ovale and ductus arteriosus. Dependents: data/parameters/fetal/circulation.toml (foramen-ovale-streamline-preference, ductus-arteriosus-share).",
+    "pmid": "4017194",
+    "title": "Distribution and regulation of blood flow in the fetal and neonatal lamb",
+    "type": "journal-article",
+    "year": 1985
+  },
+  "sanghavi-rutherford-2014-cardio-review": {
+    "authors": [
+      "Sanghavi M",
+      "Rutherford JD"
+    ],
+    "doi": "10.1161/CIRCULATIONAHA.114.009029",
+    "journal": "Circulation",
+    "key": "sanghavi-rutherford-2014-cardio-review",
+    "notes": "Review summary of pregnancy cardiovascular adaptation. Dependents: data/parameters/maternal/cardio.toml (map-spread-weeks, map-individual-sigma).",
+    "title": "Cardiovascular physiology of pregnancy",
+    "type": "journal-article",
+    "year": 2014
+  },
+  "severinghaus-1979-o2-hb-dissociation": {
+    "authors": [
+      "Severinghaus JW"
+    ],
+    "journal": "Journal of Applied Physiology",
+    "key": "severinghaus-1979-o2-hb-dissociation",
+    "notes": "Adult O2-Hb dissociation curve (Hill coefficient, P50). Dependents: data/parameters/maternal/blood.toml (o2-hb-hill-coefficient-maternal, o2-hb-p50-maternal).",
+    "pmid": "35496",
+    "title": "Simple, accurate equations for human blood O2 dissociation computations",
+    "type": "journal-article",
+    "year": 1979
+  },
+  "sutton-1991-fetal-cardiac": {
+    "authors": [
+      "Sutton MS",
+      "Groves A",
+      "MacNeill A",
+      "Sharland G",
+      "Allan L"
+    ],
+    "journal": "British Heart Journal",
+    "key": "sutton-1991-fetal-cardiac",
+    "notes": "Doppler-derived foramen ovale and pulmonary flow distribution.",
+    "pmid": "1872255",
+    "title": "Assessment of changes in blood flow through the lungs and foramen ovale in the normal human fetus with gestational age",
+    "type": "journal-article",
+    "year": 1991
+  },
+  "thaler-1990-uterine-flow": {
+    "authors": [
+      "Thaler I",
+      "Manor D",
+      "Itskovitz J",
+      "Rottem S",
+      "Levit N",
+      "Timor-Tritsch I",
+      "Brandes JM"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "thaler-1990-uterine-flow",
+    "notes": "Doppler-derived uterine artery flow from early to late pregnancy. Dependents: data/parameters/maternal/cardio.toml (baseline-uterine-flow, term-uterine-flow, uterine-flow-growth-rate, uterine-flow-individual-sigma).",
+    "pmid": "2178435",
+    "title": "Changes in uterine blood flow during human pregnancy",
+    "type": "journal-article",
+    "year": 1990
+  }
+}

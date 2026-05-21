@@ -1,0 +1,50 @@
+[
+  {
+    "id": "placental_gas_exchange.gas_half_saturation_area_m2",
+    "name": "Gas exchange half-saturation surface area",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 6.0,
+      "low": 4.5,
+      "high": 7.5,
+      "units": "m^2"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: mayhew-1986-gas-diffusion. Population: Human placentae across gestation. Caveats: Phenomenological model parameter mapping morphometric diffusing capacity onto a saturable equilibrator. Validate against UV PO2 endpoint.",
+    "citations": [
+      "mayhew-1986-gas-diffusion"
+    ],
+    "primary_citation": "mayhew-1986-gas-diffusion",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Human placentae across gestation"
+    },
+    "notes": "Villous surface area at which placental gas-equilibration efficiency reaches half of its asymptote. Caveats: Phenomenological model parameter mapping morphometric diffusing capacity onto a saturable equilibrator. Validate against UV PO2 endpoint."
+  },
+  {
+    "id": "placental_gas_exchange.gas_max_equilibration",
+    "name": "Maximum venous-equilibrator fraction",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 0.78,
+      "low": 0.73,
+      "high": 0.83,
+      "units": "fraction"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: carter-pijnenborg-2011-gas-exchange. Population: Healthy term human placentae. Caveats: Saturation cap derived to reproduce the textbook 25-40 mmHg UV PO2 window at term.",
+    "citations": [
+      "carter-pijnenborg-2011-gas-exchange"
+    ],
+    "primary_citation": "carter-pijnenborg-2011-gas-exchange",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy term human placentae"
+    },
+    "notes": "Asymptotic upper bound on placental gas-equilibration efficiency as villous area increases. Caveats: Saturation cap derived to reproduce the textbook 25-40 mmHg UV PO2 window at term."
+  }
+]

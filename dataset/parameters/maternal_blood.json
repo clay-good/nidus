@@ -1,0 +1,230 @@
+[
+  {
+    "id": "maternal_blood.haematocrit_term",
+    "name": "Maternal haematocrit at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 0.335,
+      "low": 0.31,
+      "high": 0.36,
+      "units": "fraction",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: Microhaematocrit centrifugation. Population: Healthy singleton pregnancies, term.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Packed red-cell fraction at term, after physiological haemodilution."
+  },
+  {
+    "id": "maternal_blood.haemoglobin_g_per_dl_term",
+    "name": "Maternal haemoglobin concentration at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 11.5,
+      "low": 10.6,
+      "high": 12.4,
+      "units": "g/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: Cyanmethaemoglobin spectrophotometry. Population: Healthy singleton pregnancies, term. Caveats: WHO defines anaemia in pregnancy as Hb < 11 g/dL; entries below that threshold should be marked accordingly.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Whole-blood haemoglobin at term. Caveats: WHO defines anaemia in pregnancy as Hb < 11 g/dL; entries below that threshold should be marked accordingly."
+  },
+  {
+    "id": "maternal_blood.o2_hb_hill_coefficient_maternal",
+    "name": "Hill coefficient for maternal oxygen-haemoglobin binding",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 2.7,
+      "low": 2.6,
+      "high": 2.8,
+      "units": "dimensionless"
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: severinghaus-1979-o2-hb-dissociation. Technique: Polarographic determination of oxygen saturation as a function of partial pressure. Population: Adult human blood at standard pH and temperature. Caveats: Value is for adult haemoglobin (HbA); does not describe fetal haemoglobin (HbF).",
+    "citations": [
+      "severinghaus-1979-o2-hb-dissociation"
+    ],
+    "primary_citation": "severinghaus-1979-o2-hb-dissociation",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Adult human blood at standard pH and temperature"
+    },
+    "notes": "Hill exponent characterising cooperativity of adult haemoglobin oxygen binding, used in the O2-Hb dissociation relationship. Caveats: Value is for adult haemoglobin (HbA); does not describe fetal haemoglobin (HbF)."
+  },
+  {
+    "id": "maternal_blood.o2_hb_p50_maternal",
+    "name": "P50 for maternal oxygen-haemoglobin dissociation",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 26.6,
+      "low": 25.6,
+      "high": 27.6,
+      "units": "mmHg"
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: severinghaus-1979-o2-hb-dissociation. Technique: Polarographic determination of oxygen saturation as a function of partial pressure. Population: Adult human blood at pH 7.4, 37°C. Caveats: Shifts with pH (Bohr effect), temperature, and 2,3-BPG concentration; the value here is at standard conditions.",
+    "citations": [
+      "severinghaus-1979-o2-hb-dissociation"
+    ],
+    "primary_citation": "severinghaus-1979-o2-hb-dissociation",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Adult human blood at pH 7.4, 37°C"
+    },
+    "notes": "Partial pressure of oxygen at which 50% of adult haemoglobin is saturated, at standard pH and temperature. Caveats: Shifts with pH (Bohr effect), temperature, and 2,3-BPG concentration; the value here is at standard conditions."
+  },
+  {
+    "id": "maternal_blood.oxyhb_bohr_coefficient",
+    "name": "Bohr coefficient (Δlog P50 per ΔpH)",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": -0.48,
+      "low": -0.51,
+      "high": -0.45,
+      "units": "log(mmHg)/pH"
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: dash-bassingthwaighte-2010-o2-hb. Technique: In-vitro pH titration with simultaneous oxygen saturation. Population: Adult human blood, in-vitro tonometry. Caveats: Bohr slope is itself mildly pH-dependent; a single coefficient is an adequate first-order model.",
+    "citations": [
+      "dash-bassingthwaighte-2010-o2-hb"
+    ],
+    "primary_citation": "dash-bassingthwaighte-2010-o2-hb",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Adult human blood, in-vitro tonometry"
+    },
+    "notes": "Slope of P50 versus pH on a log–linear axis. Used to translate maternal-fetal pH differences into a leftward fetal O2 dissociation shift. Caveats: Bohr slope is itself mildly pH-dependent; a single coefficient is an adequate first-order model."
+  },
+  {
+    "id": "maternal_blood.plasma_volume_early_l",
+    "name": "Maternal plasma volume in early pregnancy",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 3.05,
+      "low": 2.75,
+      "high": 3.35,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: bernstein-ziegler-2001-plasma-volume. Technique: Evans-blue indicator dilution. Population: Healthy singleton pregnancies, weeks 12-14.",
+    "citations": [
+      "bernstein-ziegler-2001-plasma-volume"
+    ],
+    "primary_citation": "bernstein-ziegler-2001-plasma-volume",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, weeks 12-14"
+    },
+    "notes": "Plasma volume at the end of the first trimester, recording the early rise documented by Bernstein 2001."
+  },
+  {
+    "id": "maternal_blood.plasma_volume_l",
+    "name": "Maternal plasma volume at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 3.85,
+      "low": 3.5,
+      "high": 4.2,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: de-haas-2017-plasma-volume-meta. Technique: Systematic review pooling Evans-blue and isotope-dilution studies. Population: Healthy singleton pregnancies.",
+    "citations": [
+      "de-haas-2017-plasma-volume-meta"
+    ],
+    "primary_citation": "de-haas-2017-plasma-volume-meta",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Plasma volume at term in healthy singleton pregnancies; risen ~50% above non-pregnant baseline."
+  },
+  {
+    "id": "maternal_blood.red_cell_mass_l",
+    "name": "Maternal red-cell mass at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 1.65,
+      "low": 1.45,
+      "high": 1.85,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: 51Cr-labelled red-cell dilution as compiled in Hytten & Chamberlain. Population: Healthy singleton pregnancies, term.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Total red-cell volume at term; increase lags plasma volume expansion, producing the physiological haemodilution of pregnancy."
+  },
+  {
+    "id": "maternal_blood.volume_l",
+    "name": "Maternal total blood volume",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 5.6,
+      "low": 5.1,
+      "high": 6.1,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: hytten-chamberlain-1980-blood-volume. Technique: Indicator-dilution measurements compiled in Hytten & Chamberlain. Population: Healthy singleton pregnancies, term. Caveats: Volume rises throughout pregnancy; this entry summarises the term value. Trimester-resolved entries should be added when finer data is wired in.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Total circulating blood volume, expanded above the non-pregnant baseline of approximately 4.5 L. Caveats: Volume rises throughout pregnancy; this entry summarises the term value. Trimester-resolved entries should be added when finer data is wired in."
+  }
+]

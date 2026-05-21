@@ -2,19 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/claygood/nidus/dataset/schema/citation.schema.json",
   "title": "Nidus Citation",
-  "description": "A single bibliographic record. Must resolve via DOI, PMID, or URL.",
+  "description": "A single bibliographic record. Journal articles, preprints, and conference papers SHOULD have a DOI, PMID, or URL; books and pre-DOI references may resolve by author + title + year only. The README rule that Tier A/B parameters must link to a DOI/PMID is enforced at the parameter level by CI, not by this schema.",
   "type": "object",
   "required": ["key", "type", "title", "authors", "year"],
-  "anyOf": [
-    {"required": ["doi"]},
-    {"required": ["pmid"]},
-    {"required": ["url"]}
-  ],
   "properties": {
     "key": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9_]+[0-9]{4}[a-z]?$",
-      "description": "Citation key, e.g. 'mahendru2014' or 'sanghavi2014b'."
+      "pattern": "^[a-z][a-z0-9_-]+$",
+      "description": "Citation key, e.g. 'mahendru-2014-cardiac-output' or 'sanghavi2014b'. Kebab-case with descriptive suffix is permitted; snake_case is also accepted."
     },
     "type": {
       "type": "string",
@@ -59,6 +54,7 @@
       "format": "uri"
     },
     "open_access": {"type": "boolean"},
+    "isbn": {"type": "string"},
     "notes": {"type": "string"}
   },
   "additionalProperties": false

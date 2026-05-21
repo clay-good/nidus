@@ -1,0 +1,80 @@
+[
+  {
+    "id": "maternal_renal.gfr_first_trimester_ml_per_min",
+    "name": "Maternal GFR in first trimester",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 135.0,
+      "low": 117.0,
+      "high": 153.0,
+      "units": "mL/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: davison-hytten-1974-gfr. Technique: 24-hour creatinine clearance. Population: Healthy singleton pregnancies, weeks 8-12.",
+    "citations": [
+      "davison-hytten-1974-gfr"
+    ],
+    "primary_citation": "davison-hytten-1974-gfr",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, weeks 8-12"
+    },
+    "notes": "GFR in the first trimester; rise begins early in pregnancy."
+  },
+  {
+    "id": "maternal_renal.gfr_ml_per_min",
+    "name": "Maternal glomerular filtration rate at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 150.0,
+      "low": 130.0,
+      "high": 170.0,
+      "units": "mL/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: cheung-lafayette-2013-renal. Technique: Inulin or iohexol clearance. Population: Healthy singleton pregnancies, third trimester.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "GFR at term; elevated approximately 40-50% above non-pregnant baseline."
+  },
+  {
+    "id": "maternal_renal.plasma_creatinine_mg_per_dl_term",
+    "name": "Maternal plasma creatinine at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 0.6,
+      "low": 0.5,
+      "high": 0.7,
+      "units": "mg/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A pending re-review. Source citation: cheung-lafayette-2013-renal. Technique: Enzymatic colorimetric assay. Population: Healthy singleton pregnancies, third trimester. Caveats: A creatinine in the upper non-pregnant reference range (e.g. 0.9 mg/dL) is abnormal in pregnancy.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Plasma creatinine at term; reduced below non-pregnant reference. Caveats: A creatinine in the upper non-pregnant reference range (e.g. 0.9 mg/dL) is abnormal in pregnancy."
+  }
+]

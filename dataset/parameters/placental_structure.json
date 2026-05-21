@@ -1,0 +1,128 @@
+[
+  {
+    "id": "placental_structure.growth_rate_per_week",
+    "name": "Placental growth-rate parameter",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.18,
+      "low": 0.14,
+      "high": 0.22,
+      "units": "1/week"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: carter-2009-placental-development. Population: Reference placental development. Caveats: Logistic-shape fit parameter; not reported directly in source.",
+    "citations": [
+      "carter-2009-placental-development"
+    ],
+    "primary_citation": "carter-2009-placental-development",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Reference placental development"
+    },
+    "notes": "Logistic growth-rate coefficient for the villous surface-area trajectory. Caveats: Logistic-shape fit parameter; not reported directly in source."
+  },
+  {
+    "id": "placental_structure.initial_area_m2",
+    "name": "Initial villous surface area",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.5,
+      "low": 0.4,
+      "high": 0.6,
+      "units": "m^2",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mayhew-2014-placental-morphometry. Technique: Light-microscopic stereology. Population: Stereological measurements of human placentae across gestation.",
+    "citations": [
+      "mayhew-2014-placental-morphometry"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Stereological measurements of human placentae across gestation"
+    },
+    "notes": "Effective villous exchange surface area at the start of gestation (early-pregnancy reference)."
+  },
+  {
+    "id": "placental_structure.membrane_thickness_um",
+    "name": "Villous membrane thickness at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 4.5,
+      "low": 3.7,
+      "high": 5.3,
+      "units": "micrometres",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mayhew-2014-placental-morphometry. Technique: Electron-microscopic stereology. Population: Term human placentae.",
+    "citations": [
+      "mayhew-2014-placental-morphometry"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Term human placentae"
+    },
+    "notes": "Arithmetic mean villous membrane thickness at term."
+  },
+  {
+    "id": "placental_structure.midpoint_week",
+    "name": "Placental growth midpoint week",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 22.0,
+      "low": 20.0,
+      "high": 24.0,
+      "units": "weeks"
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C pending re-review. Source citation: carter-2009-placental-development. Population: Reference placental development. Caveats: Logistic-shape fit parameter; not reported directly in source.",
+    "citations": [
+      "carter-2009-placental-development"
+    ],
+    "primary_citation": "carter-2009-placental-development",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Reference placental development"
+    },
+    "notes": "Gestational age at which villous-area logistic growth reaches its inflection point. Caveats: Logistic-shape fit parameter; not reported directly in source."
+  },
+  {
+    "id": "placental_structure.term_area_m2",
+    "name": "Term villous surface area",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 11.5,
+      "low": 10.0,
+      "high": 13.0,
+      "units": "m^2",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B pending re-review. Source citation: mayhew-2014-placental-morphometry. Technique: Light-microscopic stereology. Population: Term human placentae.",
+    "citations": [
+      "mayhew-2014-placental-morphometry"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "unverified"
+    },
+    "applicability": {
+      "population": "Term human placentae"
+    },
+    "notes": "Effective villous exchange surface area at term."
+  }
+]

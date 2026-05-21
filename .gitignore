@@ -87,3 +87,4 @@ site/
 # --------------------
 .fastembed_cache/
 */.fastembed_cache/
+.venv*
