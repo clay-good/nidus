@@ -140,8 +140,27 @@ def _build_parameter(p: dict[str, Any], citations: dict[str, Citation]) -> Param
 class Dataset:
     """A loaded nidus dataset.
 
-    Provides dict-like access by parameter id, iteration over parameters,
-    and a :meth:`filter` method for subsetting.
+    Acts as a dict-like collection keyed by parameter id, with iteration
+    over :class:`nidus.Parameter` values and a :meth:`filter` method for
+    subsetting across subsystem, tier, and review-status axes.
+
+    Example:
+
+        >>> import nidus
+        >>> ds = nidus.load()
+        >>> ds
+        <nidus.Dataset: 54 parameters, 32 citations>
+        >>> p = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
+        >>> p.value.central, p.value.units
+        (4.6, 'L/min')
+        >>> p.primary_citation.doi
+        '10.1097/hjh.0000000000000090'
+
+    Attributes:
+        citations: All citations, keyed by citation key
+            (``dict[str, Citation]``).
+        tiers: Tier definitions keyed by ``"A"`` through ``"D"``
+            (``dict[str, TierDef]``).
     """
 
     def __init__(
@@ -198,10 +217,24 @@ class Dataset:
     ) -> Dataset:
         """Return a new ``Dataset`` containing only matching parameters.
 
-        Any ``None`` argument is treated as "no constraint on this axis".
-        String arguments are equivalent to a single-element list. Citations
-        and tier definitions are carried through unchanged so back-references
-        still resolve.
+        Args:
+            subsystem: Subsystem id, or list/tuple of ids, to keep. ``None``
+                applies no constraint on this axis.
+            tier: Tier letter (``"A"`` / ``"B"`` / ``"C"`` / ``"D"``), or
+                list of letters, to keep.
+            review_status: ``"unverified"``, ``"verified"``, or
+                ``"contested"``, or a list thereof.
+
+        Returns:
+            A new ``Dataset`` whose parameters are the intersection of the
+            constraints. Citations and tier definitions are carried through
+            unchanged so back-references still resolve.
+
+        Example:
+
+            >>> tier_b_cardio = ds.filter(
+            ...     subsystem="maternal_cardiovascular", tier="B"
+            ... )
         """
 
         def _norm(v: str | list[str] | tuple[str, ...] | None) -> set[str] | None:
@@ -227,7 +260,17 @@ class Dataset:
         return Dataset(out, self.citations, self.tiers)
 
     def citations_for(self, citation_key: str) -> tuple[Parameter, ...]:
-        """Return all parameters that cite the given citation key."""
+        """Return all parameters that cite a given citation key.
+
+        Inverse of looking up a parameter's :attr:`Parameter.citations`.
+
+        Args:
+            citation_key: The citation key to look up.
+
+        Returns:
+            Tuple of :class:`Parameter` objects citing the key; empty tuple
+            if no parameter cites the key (or the key is unknown).
+        """
         return tuple(
             p for p in self._parameters.values() if any(c.key == citation_key for c in p.citations)
         )
@@ -239,21 +282,30 @@ def load(
 ) -> Dataset:
     """Load the nidus dataset.
 
-    Parameters
-    ----------
-    version:
-        Reserved for future use. Pass-through versions of the dataset
-        will be supported once a version-pinning mechanism is in place.
-        Raises ``NotImplementedError`` if set.
-    path:
-        Optional directory containing a ``parameters/``, ``citations/``,
-        ``tiers/``, and ``schema/`` layout. If unset, the bundled
-        dataset is used.
+    Args:
+        version: Reserved for future use. Pass-through versions of the
+            dataset will be supported once a version-pinning mechanism is
+            in place. Raises :exc:`NotImplementedError` if set.
+        path: Optional directory containing a ``parameters/``,
+            ``citations/``, ``tiers/``, and ``schema/`` layout. If unset,
+            the bundled dataset is used.
 
-    Returns
-    -------
-    Dataset
-        Loaded dataset, ready for indexed access and filtering.
+    Returns:
+        A :class:`Dataset` ready for indexed access and filtering.
+
+    Raises:
+        FileNotFoundError: If neither the bundled dataset nor the path
+            argument resolves to a valid dataset directory.
+        NotImplementedError: If ``version`` is set.
+        ValueError: If a parameter references an unknown citation key
+            or a duplicate id is encountered.
+
+    Example:
+
+        >>> import nidus
+        >>> ds = nidus.load()
+        >>> len(ds)
+        54
     """
     if version is not None:
         raise NotImplementedError(

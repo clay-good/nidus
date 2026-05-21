@@ -1,11 +1,23 @@
 """Nidus — curated dataset of human gestational physiology parameters.
 
-Public API:
-    nidus.load()       -> Dataset
-    nidus.validate()   -> None  (raises ValidationError on any issue)
+A pure-Python package distributing a citation-backed, confidence-tier-
+annotated dataset of maternal-placental-fetal physiology values
+spanning 8-40 weeks gestation. See the
+`documentation <https://claygood.github.io/nidus/>`_ for full
+details.
 
-See README.md and docs/specs/v0.3/01-dataset-and-dashboard.md for
-the public API design.
+The public API is intentionally minimal:
+
+- :func:`load` returns a :class:`Dataset`.
+- :func:`validate` checks a dataset against the bundled JSON Schemas.
+
+Quick start:
+
+    >>> import nidus
+    >>> ds = nidus.load()
+    >>> p = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
+    >>> p.value.central, p.value.units, p.tier
+    (4.6, 'L/min', 'B')
 """
 
 from nidus.load import Dataset, load

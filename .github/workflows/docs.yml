@@ -32,8 +32,16 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - name: Install mkdocs
-        run: pip install mkdocs mkdocs-material
+      - name: Install package (so mkdocstrings can import nidus)
+        working-directory: python
+        run: pip install -e .
+      - name: Install mkdocs and plugins
+        run: |
+          pip install \
+            mkdocs \
+            mkdocs-material \
+            mkdocs-jupyter \
+            "mkdocstrings[python]"
       - name: Build (strict)
         run: mkdocs build --strict
       - name: Deploy to GitHub Pages

@@ -32,16 +32,25 @@ def _load_json(path: Path) -> Any:
 def validate(path: str | Path | None = None) -> None:
     """Validate a nidus dataset against the bundled JSON Schemas.
 
-    Parameters
-    ----------
-    path:
-        Directory containing the dataset layout. Defaults to the bundled
-        dataset (same resolution as :func:`nidus.load`).
+    Runs every parameter, citation, and tier definition against its
+    schema (draft 2020-12). Also enforces cross-file invariants the
+    schema cannot express: parameter ids are globally unique, every
+    citation key referenced by a parameter exists, and the dict key in
+    ``citations.json`` matches the embedded ``"key"`` field.
 
-    Raises
-    ------
-    ValidationError
-        On any schema violation or cross-file inconsistency.
+    Args:
+        path: Directory containing the dataset layout. Defaults to the
+            bundled dataset (same resolution as :func:`nidus.load`).
+
+    Raises:
+        ValidationError: On any schema violation or cross-file
+            inconsistency. The message aggregates all errors found
+            (capped at 50 lines).
+
+    Example:
+
+        >>> import nidus
+        >>> nidus.validate()  # bundled dataset; raises on any issue
     """
     if path is None:
         from nidus.load import _default_dataset_dir

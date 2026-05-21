@@ -51,9 +51,11 @@ dev = [
     "nbmake>=1.4",
     "jupyter-client>=8",
     "ipykernel>=6",
-    # Documentation site (mkdocs-material).
+    # Documentation site (mkdocs-material + plugins).
     "mkdocs>=1.5",
     "mkdocs-material>=9.4",
+    "mkdocs-jupyter>=0.24",
+    "mkdocstrings[python]>=0.24",
 ]
 
 [project.urls]

@@ -55,6 +55,34 @@ markdown_extensions:
   - toc:
       permalink: true
 
+hooks:
+  - scripts/mkdocs_hooks.py
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      include_source: false
+      execute: false
+      ignore_h1_titles: true
+      include_requirejs: true
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          paths: [python]
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            show_signature_annotations: true
+            separate_signature: true
+            line_length: 88
+            merge_init_into_class: true
+            docstring_section_style: table
+            members_order: source
+            show_if_no_docstring: false
+            filters: ["!^_"]
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -73,7 +101,12 @@ nav:
     - Schema: dataset/schema.md
     - Tier system: dataset/tiers.md
     - Subsystems: dataset/subsystems.md
-  - Tutorials: tutorials/index.md
+  - Tutorials:
+    - Overview: tutorials/index.md
+    - 01 — Parameter Explorer: notebooks/01_parameter_explorer.ipynb
+    - 02 — Tier Walkthrough: notebooks/02_tier_walkthrough.ipynb
+    - 03 — Uncertainty Propagation: notebooks/03_uncertainty_propagation.ipynb
+    - 04 — Citation Provenance: notebooks/04_citation_provenance.ipynb
   - API reference: api.md
   - Contributing:
     - Overview: contributing/overview.md

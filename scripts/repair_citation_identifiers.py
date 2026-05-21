@@ -226,7 +226,7 @@ def main() -> int:
             print(f"  NO CANDIDATE found above Jaccard {args.threshold}")
             no_candidate.append(key)
         else:
-            print(f"  PROPOSED:")
+            print("  PROPOSED:")
             print(f"    DOI:     {candidate['doi']}")
             print(f"    title:   {candidate['title']!r}")
             print(f"    year:    {candidate['year']}")

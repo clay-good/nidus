@@ -94,3 +94,4 @@ site/
 # scripts/sync_dataset_into_package.py before `python -m build`).
 python/nidus/_dataset/
 notebooks/figures/
+docs/notebooks/
