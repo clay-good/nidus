@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **15+ mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **16 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -163,10 +163,13 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `hadlock_fetal_weight`                 | Hadlock 1991 four-parameter biometry regression              | fetal_growth               |
 | `gfr_logistic_trajectory`              | Logistic GFR rise to ~150 mL/min plateau (Conrad 2001)       | maternal_renal             |
 | `amniotic_fluid_volume_trajectory`     | Gaussian-bump approximation to Brace & Wolf 1989 curve       | amniotic_fluid             |
+| `svr_trajectory`                       | Derived SVR(t) = MAP(t)·80 / CO(t) (Sanghavi 2014)           | maternal_cardiovascular    |
+| `pao2_trajectory_linear`               | Linear PaO₂ rise (Templeton & Kelman 1976, Hegewald 2011)    | maternal_respiratory       |
+| `tidal_volume_trajectory`              | Sigmoidal VT rise (LoMauro 2015, Hegewald 2011)              | maternal_respiratory       |
 
 Additional Phase A/B submodels are catalogued in
 [`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md)
-(maternal SVR, minute ventilation, fetal heart rate, MCA-PI, etc.).
+(minute ventilation, fetal heart rate, MCA-PI, Hadlock BPD/HC/AC/FL polynomials, etc.).
 SBML/CellML builders for those land in subsequent releases.
 
 Each submodel ships with a pure-NumPy reference kernel in [`python/nidus/export/reference.py`](python/nidus/export/reference.py) that the SBML/CellML exports are round-trip validated against.

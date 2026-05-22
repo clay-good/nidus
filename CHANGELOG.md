@@ -9,6 +9,34 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Three additional Phase A submodels** with full export support
+  (SBML L3v2 + CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the
+  registry to **16 submodels**:
+  - `svr_trajectory` — derived systemic vascular resistance
+    SVR(t) = MAP(t)·80 / CO(t), the conventional CGS form used in
+    obstetric haemodynamics. All inputs are the four MAP and four CO
+    Gaussian-trajectory parameters already in the dataset; no new
+    dataset parameters required. Sanghavi 2014 (PMC4172642) reference.
+  - `pao2_trajectory_linear` — linear PaO₂ rise from non-pregnant
+    baseline to term reflecting hyperventilation-induced respiratory
+    alkalosis. Uses existing
+    `maternal_respiratory.baseline_pao2_mmhg` and `pao2_mmhg_term`.
+    Templeton & Kelman 1976 (PMID 1247088), Hegewald 2011.
+  - `tidal_volume_trajectory` — sigmoidal tidal-volume rise from
+    baseline to term. Uses existing
+    `maternal_respiratory.baseline_tidal_volume_ml` and
+    `tidal_volume_ml_term`. LoMauro 2015 (PMID 25624458),
+    Hegewald 2011.
+- Reference kernels `maternal_svr_trajectory`,
+  `maternal_pao2_linear`, and `maternal_tidal_volume` in
+  `nidus.export.reference`, with endpoint + physiological-shape
+  sanity tests. The SVR test confirms the mid-pregnancy drop and
+  late-pregnancy recovery characteristic of normal haemodynamic
+  adaptation.
+- Parametrised SBML + CellML test coverage extended to the three new
+  submodels; `test_write_sbml_produces_all_files` /
+  `test_write_cellml_both_versions` floor lifted from 13 → 16.
+
 - **Two new Phase A submodels** with full export support (SBML L3v2 +
   CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the registry to
   **13 submodels**:

@@ -47,6 +47,9 @@ def test_registry_lists_submodels() -> None:
         "hadlock_fetal_weight",
         "gfr_logistic_trajectory",
         "amniotic_fluid_volume_trajectory",
+        "svr_trajectory",
+        "pao2_trajectory_linear",
+        "tidal_volume_trajectory",
     } == ids
 
 
@@ -129,20 +132,24 @@ def test_logistic_growth_endpoints() -> None:
 def test_gfr_logistic_endpoints() -> None:
     from nidus.export.reference import maternal_gfr_logistic
 
-    early = float(maternal_gfr_logistic(
-        0.0,
-        baseline_ml_per_min=100.0,
-        peak_ml_per_min=150.0,
-        growth_rate_per_week=0.4,
-        peak_week=16.0,
-    ))
-    late = float(maternal_gfr_logistic(
-        40.0,
-        baseline_ml_per_min=100.0,
-        peak_ml_per_min=150.0,
-        growth_rate_per_week=0.4,
-        peak_week=16.0,
-    ))
+    early = float(
+        maternal_gfr_logistic(
+            0.0,
+            baseline_ml_per_min=100.0,
+            peak_ml_per_min=150.0,
+            growth_rate_per_week=0.4,
+            peak_week=16.0,
+        )
+    )
+    late = float(
+        maternal_gfr_logistic(
+            40.0,
+            baseline_ml_per_min=100.0,
+            peak_ml_per_min=150.0,
+            growth_rate_per_week=0.4,
+            peak_week=16.0,
+        )
+    )
     # Very early: close to baseline; very late: close to plateau.
     assert 100.0 < early < 101.0
     assert late == pytest.approx(150.0, abs=0.5)
@@ -243,6 +250,47 @@ def test_hadlock_fetal_weight_reasonable_term() -> None:
     assert 2500.0 < w < 4500.0
 
 
+def test_svr_trajectory_drops_then_recovers() -> None:
+    from nidus.export.reference import maternal_svr_trajectory
+
+    kwargs = dict(
+        baseline_map_mmhg=85.0,
+        map_nadir_drop_mmhg=8.0,
+        map_nadir_week=20.0,
+        map_spread_weeks=6.0,
+        baseline_co_l_per_min=5.0,
+        peak_excess_co_l_per_min=2.0,
+        co_peak_week=28.0,
+        co_spread_weeks=8.0,
+    )
+    early = float(maternal_svr_trajectory(0.0, **kwargs))  # type: ignore[arg-type]
+    mid = float(maternal_svr_trajectory(24.0, **kwargs))  # type: ignore[arg-type]
+    late = float(maternal_svr_trajectory(40.0, **kwargs))  # type: ignore[arg-type]
+    # Physiological pattern: SVR drops in mid-pregnancy then recovers.
+    assert mid < early
+    assert mid < late
+    # Order of magnitude check (~800-1500 dyn*s/cm^5 in pregnancy).
+    assert 500.0 < mid < 2000.0
+
+
+def test_pao2_linear_endpoints() -> None:
+    from nidus.export.reference import maternal_pao2_linear
+
+    at_zero = float(maternal_pao2_linear(0.0, baseline_mmhg=100.0, term_mmhg=105.0))
+    at_term = float(maternal_pao2_linear(40.0, baseline_mmhg=100.0, term_mmhg=105.0))
+    assert at_zero == pytest.approx(100.0)
+    assert at_term == pytest.approx(105.0)
+
+
+def test_tidal_volume_sigmoid_endpoints() -> None:
+    from nidus.export.reference import maternal_tidal_volume
+
+    early = float(maternal_tidal_volume(0.0, baseline_ml=450.0, term_ml=650.0))
+    late = float(maternal_tidal_volume(40.0, baseline_ml=450.0, term_ml=650.0))
+    assert early == pytest.approx(450.0, abs=5.0)
+    assert late == pytest.approx(650.0, abs=5.0)
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -280,6 +328,9 @@ _ALL_SUBMODEL_IDS = [
     "hadlock_fetal_weight",
     "gfr_logistic_trajectory",
     "amniotic_fluid_volume_trajectory",
+    "svr_trajectory",
+    "pao2_trajectory_linear",
+    "tidal_volume_trajectory",
 ]
 
 
@@ -344,7 +395,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 13
+    assert len(paths) >= 16
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -384,11 +435,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 13
+    assert len(paths_2) >= 16
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 13
+    assert len(paths_1) >= 16
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

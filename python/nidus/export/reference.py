@@ -260,7 +260,91 @@ def amniotic_fluid_volume(
     return early_baseline_ml + amplitude * np.exp(-(z**2) / 2.0)
 
 
-# ---- 11. Hadlock IV fetal weight regression ------------------------
+# ---- 12. SVR trajectory (derived from MAP + CO) --------------------
+
+
+def maternal_svr_trajectory(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_map_mmhg: float,
+    map_nadir_drop_mmhg: float,
+    map_nadir_week: float,
+    map_spread_weeks: float,
+    baseline_co_l_per_min: float,
+    peak_excess_co_l_per_min: float,
+    co_peak_week: float,
+    co_spread_weeks: float,
+) -> NDArray[np.float64]:
+    """Derived SVR across gestation: SVR(t) = MAP(t) * 80 / CO(t).
+
+    Output in dyn*s/cm^5. The 80 multiplier converts mmHg*min/L to the
+    CGS resistance unit. Sanghavi 2014 (PMC4172642) is the canonical
+    reference for the convention in obstetric haemodynamics.
+    """
+    map_t = maternal_map(
+        t_weeks,
+        baseline_mmhg=baseline_map_mmhg,
+        nadir_drop_mmhg=map_nadir_drop_mmhg,
+        nadir_week=map_nadir_week,
+        spread_weeks=map_spread_weeks,
+    )
+    co_t = maternal_cardiac_output(
+        t_weeks,
+        baseline_l_per_min=baseline_co_l_per_min,
+        peak_excess_l_per_min=peak_excess_co_l_per_min,
+        peak_week=co_peak_week,
+        spread_weeks=co_spread_weeks,
+    )
+    return map_t * 80.0 / co_t
+
+
+# ---- 13. Maternal PaO2 linear trajectory ---------------------------
+
+
+def maternal_pao2_linear(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_mmhg: float,
+    term_mmhg: float,
+    term_week: float = 40.0,
+) -> NDArray[np.float64]:
+    """Linear PaO2 trajectory.
+
+    `PaO2(t) = baseline + (term - baseline) * (t / term_week)`
+
+    Templeton & Kelman 1976 (PMID 1247088) and Hegewald 2011 document
+    the modest rise (typically ~100 -> ~105 mmHg) from
+    hyperventilation-induced respiratory alkalosis.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    return baseline_mmhg + (term_mmhg - baseline_mmhg) * (t / term_week)
+
+
+# ---- 14. Maternal tidal volume sigmoidal trajectory ----------------
+
+
+def maternal_tidal_volume(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ml: float,
+    term_ml: float,
+    growth_rate_per_week: float = 0.2,
+    midpoint_week: float = 20.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal tidal-volume trajectory.
+
+    `VT(t) = baseline + (term - baseline) / (1 + exp(-r*(t - t_mid)))`
+
+    LoMauro 2015 (PMID 25624458) reports the ~30-40% rise above
+    non-pregnant baseline by term, driven by progesterone-mediated
+    increase in respiratory drive.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_ml - baseline_ml
+    return baseline_ml + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+# ---- 15. Hadlock IV fetal weight regression ------------------------
 
 
 def hadlock_fetal_weight(

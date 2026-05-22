@@ -248,6 +248,69 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="mL",
     ),
     Submodel(
+        id="svr_trajectory",
+        name="Maternal systemic vascular resistance trajectory (derived)",
+        description=(
+            "Derived SVR across gestation from the maternal MAP and "
+            "cardiac-output trajectories: SVR(t) = MAP(t) * 80 / CO(t), "
+            "where the conventional 80 factor converts mmHg*min/L into "
+            "dyn*s*cm^-5. MAP(t) is the Gaussian-nadir trajectory and "
+            "CO(t) is the Gaussian-bump trajectory; both are already in "
+            "the registry. Sanghavi 2014 (PMC4172642) is the reference "
+            "for the 80 convention in pregnancy."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_cardiovascular.baseline_map_mmhg",
+            "maternal_cardiovascular.map_nadir_drop_mmhg",
+            "maternal_cardiovascular.map_nadir_week",
+            "maternal_cardiovascular.map_spread_weeks",
+            "maternal_cardiovascular.baseline_cardiac_output_l_per_min",
+            "maternal_cardiovascular.peak_excess_cardiac_output_l_per_min",
+            "maternal_cardiovascular.cardiac_output_peak_week",
+            "maternal_cardiovascular.cardiac_output_spread_weeks",
+        ),
+        independent_variable="t_weeks",
+        output_units="dyn*s/cm^5",
+    ),
+    Submodel(
+        id="pao2_trajectory_linear",
+        name="Maternal arterial PaO2 trajectory (linear)",
+        description=(
+            "Linear PaO2 rise across gestation reflecting hyperventilation-"
+            "induced respiratory alkalosis: PaO2(t) = baseline + "
+            "(term - baseline) * (t / 40). Templeton & Kelman 1976 "
+            "(PMID 1247088) and Hegewald 2011 describe the modest "
+            "~5 mmHg rise from non-pregnant baseline to term."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_respiratory.baseline_pao2_mmhg",
+            "maternal_respiratory.pao2_mmhg_term",
+        ),
+        independent_variable="t_weeks",
+        output_units="mmHg",
+    ),
+    Submodel(
+        id="tidal_volume_trajectory",
+        name="Maternal tidal volume trajectory (sigmoidal)",
+        description=(
+            "Sigmoidal tidal-volume rise across gestation: "
+            "VT(t) = baseline + (term - baseline) / "
+            "(1 + exp(-0.2*(t - 20))). LoMauro 2015 (PMID 25624458) "
+            "and Hegewald 2011 describe the ~30-40% rise from non-"
+            "pregnant baseline to term tidal volume; the inflection "
+            "is mid-pregnancy."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_respiratory.baseline_tidal_volume_ml",
+            "maternal_respiratory.tidal_volume_ml_term",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

@@ -546,6 +546,7 @@ def _html_notes(text: str) -> str:
 
 # ---- Public API ----------------------------------------------------
 
+
 def _build_gfr_logistic(ds: Dataset) -> libsbml.SBMLDocument:
     """Logistic GFR trajectory across gestation."""
     sm = next(s for s in SUBMODELS if s.id == "gfr_logistic_trajectory")
@@ -620,6 +621,126 @@ def _build_amniotic_fluid_volume(ds: Dataset) -> libsbml.SBMLDocument:
     return doc
 
 
+def _build_svr_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Derived SVR(t) = MAP(t) * 80 / CO(t)."""
+    sm = next(s for s in SUBMODELS if s.id == "svr_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    map_b = ds["maternal_cardiovascular.baseline_map_mmhg"]
+    map_n = ds["maternal_cardiovascular.map_nadir_drop_mmhg"]
+    map_nw = ds["maternal_cardiovascular.map_nadir_week"]
+    map_sp = ds["maternal_cardiovascular.map_spread_weeks"]
+    co_b = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
+    co_p = ds["maternal_cardiovascular.peak_excess_cardiac_output_l_per_min"]
+    co_pw = ds["maternal_cardiovascular.cardiac_output_peak_week"]
+    co_sp = ds["maternal_cardiovascular.cardiac_output_spread_weeks"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    for p in (map_b, map_n, map_nw, map_sp, co_b, co_p, co_pw, co_sp):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "SVR_t", 0.0, "dimensionless", constant=False)
+
+    map_expr = (
+        f"({parameter_id_to_sbml(map_b.id)} - "
+        f"{parameter_id_to_sbml(map_n.id)} * "
+        f"exp(-((t_weeks - {parameter_id_to_sbml(map_nw.id)}) / "
+        f"{parameter_id_to_sbml(map_sp.id)})^2 / 2))"
+    )
+    co_expr = (
+        f"({parameter_id_to_sbml(co_b.id)} + "
+        f"{parameter_id_to_sbml(co_p.id)} * "
+        f"exp(-((t_weeks - {parameter_id_to_sbml(co_pw.id)}) / "
+        f"{parameter_id_to_sbml(co_sp.id)})^2 / 2))"
+    )
+    rule = model.createAssignmentRule()
+    rule.setVariable("SVR_t")
+    rule.setMath(libsbml.parseL3Formula(f"{map_expr} * 80 / {co_expr}"))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_pao2_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Linear PaO2 trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "pao2_trajectory_linear")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_respiratory.baseline_pao2_mmhg"]
+    term = ds["maternal_respiratory.pao2_mmhg_term"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "term_week", 40.0, "dimensionless")
+    for p in (baseline, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "PaO2_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("PaO2_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(baseline.id)}) * "
+            f"(t_weeks / term_week)"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_tidal_volume(ds: Dataset) -> libsbml.SBMLDocument:
+    """Sigmoidal tidal-volume trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "tidal_volume_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_respiratory.baseline_tidal_volume_ml"]
+    term = ds["maternal_respiratory.tidal_volume_ml_term"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "growth_rate_per_week", 0.2, "dimensionless")
+    _add_parameter(model, "midpoint_week", 20.0, "dimensionless")
+    for p in (baseline, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "VT_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("VT_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(baseline.id)}) / "
+            f"(1 + exp(-growth_rate_per_week * (t_weeks - midpoint_week)))"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 _BUILDERS = {
     "placental_villous_growth": _build_placental_villous_growth,
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
@@ -634,6 +755,9 @@ _BUILDERS = {
     "hadlock_fetal_weight": _build_hadlock_fetal_weight,
     "gfr_logistic_trajectory": _build_gfr_logistic,
     "amniotic_fluid_volume_trajectory": _build_amniotic_fluid_volume,
+    "svr_trajectory": _build_svr_trajectory,
+    "pao2_trajectory_linear": _build_pao2_trajectory,
+    "tidal_volume_trajectory": _build_tidal_volume,
 }
 
 

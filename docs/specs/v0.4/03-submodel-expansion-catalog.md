@@ -1,6 +1,9 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Planning. Companion to `02-parameter-expansion-roadmap.md`.
+**Status:** Phase A in progress — 5 of 12 candidates shipped to the
+registry (GFR logistic, amniotic-fluid volume, SVR derived, PaO₂
+linear, tidal-volume sigmoidal). Companion to
+`02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -58,7 +61,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
   `peak_excess_heart_rate_bpm` + spread/peak weeks.
 - **Implementation cost:** ~60 LOC SBML, ~80 LOC CellML, ~30 LOC NumPy.
 
-### 2.2 Systemic vascular resistance trajectory
+### 2.2 Systemic vascular resistance trajectory — **SHIPPED**
 
 - **Equation:** `SVR(t) = MAP(t) * 80 / CO(t)` (with the conventional
   80-factor converting mmHg·min/L to dyn·s·cm⁻⁵).
@@ -69,7 +72,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs:** All already in the dataset.
 - **Implementation cost:** ~20 LOC; reuses parameters.
 
-### 2.3 Tidal volume + minute ventilation trajectory
+### 2.3 Tidal volume + minute ventilation trajectory — **TIDAL VOLUME SHIPPED**
 
 - **Equation:** `VE(t) = VT(t) * RR(t)`; VT rises ~40% by term, RR
   rises modestly.
@@ -80,7 +83,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
   `term_respiratory_rate_bpm`.
 - **Implementation cost:** ~50 LOC.
 
-### 2.4 Maternal arterial PaO₂ trajectory
+### 2.4 Maternal arterial PaO₂ trajectory — **SHIPPED**
 
 - **Equation:** Modest linear rise (≈100 → 105 mmHg) reflecting
   hyperventilation-induced respiratory alkalosis.
@@ -97,7 +100,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs (new):** baseline pH, term pH.
 - **Implementation cost:** ~25 LOC.
 
-### 2.6 GFR trajectory (logistic)
+### 2.6 GFR trajectory (logistic) — **SHIPPED**
 
 - **Equation:** Logistic rise from baseline (~100 mL/min/1.73 m²) to
   ~150 mL/min/1.73 m² peak at ~T2/T3.
@@ -142,7 +145,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs (new):** HC polynomial coefficients.
 - **Implementation cost:** ~30 LOC.
 
-### 2.12 Amniotic fluid volume trajectory
+### 2.12 Amniotic fluid volume trajectory — **SHIPPED**
 
 - **Equation:** Roughly piecewise: linear rise from 12–22 weeks, plateau
   through ~33 weeks, then decline.

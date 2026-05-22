@@ -749,6 +749,169 @@ def _build_amniotic_fluid_volume(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _build_svr_trajectory(ds: Dataset) -> libcellml.Model:
+    """Derived SVR(t) = MAP(t) * 80 / CO(t)."""
+    sm = next(s for s in SUBMODELS if s.id == "svr_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    map_b = ds["maternal_cardiovascular.baseline_map_mmhg"]
+    map_n = ds["maternal_cardiovascular.map_nadir_drop_mmhg"]
+    map_nw = ds["maternal_cardiovascular.map_nadir_week"]
+    map_sp = ds["maternal_cardiovascular.map_spread_weeks"]
+    co_b = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
+    co_p = ds["maternal_cardiovascular.peak_excess_cardiac_output_l_per_min"]
+    co_pw = ds["maternal_cardiovascular.cardiac_output_peak_week"]
+    co_sp = ds["maternal_cardiovascular.cardiac_output_spread_weeks"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    for p in (map_b, map_n, map_nw, map_sp, co_b, co_p, co_pw, co_sp):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "SVR_t", units="dimensionless", initial_value="0")
+
+    def _gauss(center_id: str, spread_id: str) -> str:
+        z = _apply(
+            "divide",
+            _apply("minus", _ci("t_weeks"), _ci(center_id)),
+            _ci(spread_id),
+        )
+        return _apply(
+            "exp",
+            _apply(
+                "divide",
+                _apply("minus", _apply("power", z, _cn("2"))),
+                _cn("2"),
+            ),
+        )
+
+    map_expr = _apply(
+        "minus",
+        _ci(parameter_id_to_sbml(map_b.id)),
+        _apply(
+            "times",
+            _ci(parameter_id_to_sbml(map_n.id)),
+            _gauss(parameter_id_to_sbml(map_nw.id), parameter_id_to_sbml(map_sp.id)),
+        ),
+    )
+    co_expr = _apply(
+        "plus",
+        _ci(parameter_id_to_sbml(co_b.id)),
+        _apply(
+            "times",
+            _ci(parameter_id_to_sbml(co_p.id)),
+            _gauss(parameter_id_to_sbml(co_pw.id), parameter_id_to_sbml(co_sp.id)),
+        ),
+    )
+    rhs = _apply("divide", _apply("times", map_expr, _cn("80")), co_expr)
+    comp.setMath(_mathml(_apply_assign("SVR_t", rhs)))
+    return model
+
+
+def _build_pao2_trajectory(ds: Dataset) -> libcellml.Model:
+    """Linear PaO2 trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "pao2_trajectory_linear")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["maternal_respiratory.baseline_pao2_mmhg"]
+    term = ds["maternal_respiratory.pao2_mmhg_term"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "term_week", units="dimensionless", initial_value="40")
+    for p in (baseline, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "PaO2_t", units="dimensionless", initial_value="0")
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    t_id = parameter_id_to_sbml(term.id)
+    rhs = _apply(
+        "plus",
+        _ci(b_id),
+        _apply(
+            "times",
+            _apply("minus", _ci(t_id), _ci(b_id)),
+            _apply("divide", _ci("t_weeks"), _ci("term_week")),
+        ),
+    )
+    comp.setMath(_mathml(_apply_assign("PaO2_t", rhs)))
+    return model
+
+
+def _build_tidal_volume(ds: Dataset) -> libcellml.Model:
+    """Sigmoidal tidal-volume trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "tidal_volume_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["maternal_respiratory.baseline_tidal_volume_ml"]
+    term = ds["maternal_respiratory.tidal_volume_ml_term"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "growth_rate_per_week", units="dimensionless", initial_value="0.2")
+    _add_variable(comp, "midpoint_week", units="dimensionless", initial_value="20")
+    for p in (baseline, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "VT_t", units="dimensionless", initial_value="0")
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    t_id = parameter_id_to_sbml(term.id)
+    rhs = _apply(
+        "plus",
+        _ci(b_id),
+        _apply(
+            "divide",
+            _apply("minus", _ci(t_id), _ci(b_id)),
+            _apply(
+                "plus",
+                _cn("1"),
+                _apply(
+                    "exp",
+                    _apply(
+                        "minus",
+                        _apply(
+                            "times",
+                            _ci("growth_rate_per_week"),
+                            _apply("minus", _ci("t_weeks"), _ci("midpoint_week")),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    )
+    comp.setMath(_mathml(_apply_assign("VT_t", rhs)))
+    return model
+
+
 # ---- Public API ----------------------------------------------------
 
 _BUILDERS = {
@@ -765,6 +928,9 @@ _BUILDERS = {
     "hadlock_fetal_weight": _build_hadlock_fetal_weight,
     "gfr_logistic_trajectory": _build_gfr_logistic,
     "amniotic_fluid_volume_trajectory": _build_amniotic_fluid_volume,
+    "svr_trajectory": _build_svr_trajectory,
+    "pao2_trajectory_linear": _build_pao2_trajectory,
+    "tidal_volume_trajectory": _build_tidal_volume,
 }
 
 

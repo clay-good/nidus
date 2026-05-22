@@ -119,7 +119,17 @@ NEW_CITATIONS = {
     "wilson-1980-renin-aldosterone": {
         "key": "wilson-1980-renin-aldosterone",
         "type": "journal-article",
-        "authors": ["Wilson M", "Morganti AA", "Zervoudakis I", "Letcher RL", "Romney BM", "Von Oeyon P", "Papera S", "Sealey JE", "Laragh JH"],
+        "authors": [
+            "Wilson M",
+            "Morganti AA",
+            "Zervoudakis I",
+            "Letcher RL",
+            "Romney BM",
+            "Von Oeyon P",
+            "Papera S",
+            "Sealey JE",
+            "Laragh JH",
+        ],
         "title": "Blood pressure, the renin-aldosterone system and sex steroids throughout normal pregnancy",
         "journal": "American Journal of Medicine",
         "year": 1980,
@@ -200,7 +210,16 @@ NEW_CITATIONS = {
     "von-steinburg-2013-fhr": {
         "key": "von-steinburg-2013-fhr",
         "type": "journal-article",
-        "authors": ["Pildner von Steinburg S", "Boulesteix AL", "Lederer C", "Grunow S", "Schiermeier S", "Hatzmann W", "Schneider KT", "Daumer M"],
+        "authors": [
+            "Pildner von Steinburg S",
+            "Boulesteix AL",
+            "Lederer C",
+            "Grunow S",
+            "Schiermeier S",
+            "Hatzmann W",
+            "Schneider KT",
+            "Daumer M",
+        ],
         "title": "What is the normal fetal heart rate?",
         "journal": "PeerJ",
         "year": 2013,
@@ -336,32 +355,48 @@ def biometry_params() -> list[dict]:
     for metric, weeks in BIOMETRY.items():
         units = "g" if metric == "efw" else "mm"
         for week, (c, lo, hi) in weeks.items():
-            pid = f"fetal_growth.{metric}_{week}w_{units.replace('/', '_per_')}" if metric == "efw" else f"fetal_growth.{metric}_{week}w_mm"
+            pid = (
+                f"fetal_growth.{metric}_{week}w_{units.replace('/', '_per_')}"
+                if metric == "efw"
+                else f"fetal_growth.{metric}_{week}w_mm"
+            )
             # Match existing naming convention
-            pid = f"fetal_growth.{metric}_{week}w_g" if metric == "efw" else f"fetal_growth.{metric}_{week}w_mm"
-            out.append(param(
-                pid=pid,
-                name=f"{METRIC_LONG[metric]} at {week} weeks",
-                subsystem="fetal_growth",
-                central=c, low=lo, high=hi, units=units,
-                tier="A",
-                rationale=(
-                    "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies "
-                    "(n=2334 low-risk singletons; longitudinal ultrasound, "
-                    "Voluson E8). 50th-percentile pooled-cohort value at this "
-                    "gestational age. Hadlock 1991 provides the underlying "
-                    "biometry-to-weight regression. PDF re-verification of "
-                    f"the specific {METRIC_LONG[metric].lower()} percentile pending."
-                ),
-                citation_keys=["buck-louis-2015-nichd-growth", "hadlock-1991-fetal-weight"],
-                primary="buck-louis-2015-nichd-growth",
-                population="NICHD Fetal Growth Studies singleton cohort",
-                notes=(
-                    f"{METRIC_LONG[metric]} 50th-percentile pooled value at "
-                    f"week {week}. Provenance against Buck Louis 2015 source "
-                    "tables needs human re-verification."
-                ),
-            ))
+            pid = (
+                f"fetal_growth.{metric}_{week}w_g"
+                if metric == "efw"
+                else f"fetal_growth.{metric}_{week}w_mm"
+            )
+            out.append(
+                param(
+                    pid=pid,
+                    name=f"{METRIC_LONG[metric]} at {week} weeks",
+                    subsystem="fetal_growth",
+                    central=c,
+                    low=lo,
+                    high=hi,
+                    units=units,
+                    tier="A",
+                    rationale=(
+                        "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies "
+                        "(n=2334 low-risk singletons; longitudinal ultrasound, "
+                        "Voluson E8). 50th-percentile pooled-cohort value at this "
+                        "gestational age. Hadlock 1991 provides the underlying "
+                        "biometry-to-weight regression. PDF re-verification of "
+                        f"the specific {METRIC_LONG[metric].lower()} percentile pending."
+                    ),
+                    citation_keys=[
+                        "buck-louis-2015-nichd-growth",
+                        "hadlock-1991-fetal-weight",
+                    ],
+                    primary="buck-louis-2015-nichd-growth",
+                    population="NICHD Fetal Growth Studies singleton cohort",
+                    notes=(
+                        f"{METRIC_LONG[metric]} 50th-percentile pooled value at "
+                        f"week {week}. Provenance against Buck Louis 2015 source "
+                        "tables needs human re-verification."
+                    ),
+                )
+            )
     return out
 
 
@@ -371,7 +406,10 @@ def mat_cardio_params() -> list[dict]:
             pid="maternal_cardiovascular.baseline_heart_rate_bpm",
             name="Maternal baseline heart rate",
             subsystem="maternal_cardiovascular",
-            central=70.0, low=60.0, high=80.0, units="bpm",
+            central=70.0,
+            low=60.0,
+            high=80.0,
+            units="bpm",
             tier="A",
             rationale=(
                 "Tier A from Mahendru 2014 cohort: pre-pregnancy resting HR "
@@ -384,20 +422,29 @@ def mat_cardio_params() -> list[dict]:
             pid="maternal_cardiovascular.peak_excess_heart_rate_bpm",
             name="Heart rate rise from baseline to term",
             subsystem="maternal_cardiovascular",
-            central=15.0, low=10.0, high=20.0, units="bpm",
+            central=15.0,
+            low=10.0,
+            high=20.0,
+            units="bpm",
             tier="A",
             rationale=(
                 "Tier A from Mahendru 2014: HR rises ~15 bpm over gestation, "
                 "peaks late T3; replicated across Sanghavi 2014 review."
             ),
-            citation_keys=["mahendru-2014-cardiac-output", "sanghavi-rutherford-2014-cardio-review"],
+            citation_keys=[
+                "mahendru-2014-cardiac-output",
+                "sanghavi-rutherford-2014-cardio-review",
+            ],
             primary="mahendru-2014-cardiac-output",
         ),
         param(
             pid="maternal_cardiovascular.baseline_stroke_volume_ml",
             name="Maternal baseline stroke volume",
             subsystem="maternal_cardiovascular",
-            central=70.0, low=60.0, high=80.0, units="mL",
+            central=70.0,
+            low=60.0,
+            high=80.0,
+            units="mL",
             tier="B",
             rationale=(
                 "Tier B from Sanghavi 2014 review synthesis of multiple "
@@ -410,7 +457,10 @@ def mat_cardio_params() -> list[dict]:
             pid="maternal_cardiovascular.peak_excess_stroke_volume_ml",
             name="Stroke volume rise from baseline to peak",
             subsystem="maternal_cardiovascular",
-            central=15.0, low=10.0, high=20.0, units="mL",
+            central=15.0,
+            low=10.0,
+            high=20.0,
+            units="mL",
             tier="B",
             rationale=(
                 "Tier B from Sanghavi 2014: SV rises ~15-20 mL during "
@@ -423,7 +473,10 @@ def mat_cardio_params() -> list[dict]:
             pid="maternal_cardiovascular.baseline_svr_dyn_s_cm5",
             name="Maternal non-pregnant systemic vascular resistance",
             subsystem="maternal_cardiovascular",
-            central=1300.0, low=1100.0, high=1500.0, units="dyn*s/cm^5",
+            central=1300.0,
+            low=1100.0,
+            high=1500.0,
+            units="dyn*s/cm^5",
             tier="B",
             rationale=(
                 "Tier B from Sanghavi 2014 review: non-pregnant SVR ~1200-1400 "
@@ -435,7 +488,10 @@ def mat_cardio_params() -> list[dict]:
             pid="maternal_cardiovascular.term_svr_dyn_s_cm5",
             name="Maternal term systemic vascular resistance",
             subsystem="maternal_cardiovascular",
-            central=980.0, low=850.0, high=1100.0, units="dyn*s/cm^5",
+            central=980.0,
+            low=850.0,
+            high=1100.0,
+            units="dyn*s/cm^5",
             tier="B",
             rationale=(
                 "Tier B from Sanghavi 2014: SVR falls ~25% during pregnancy "
@@ -452,7 +508,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.baseline_gfr_ml_per_min",
             name="Maternal non-pregnant GFR",
             subsystem="maternal_renal",
-            central=100.0, low=90.0, high=110.0, units="mL/min",
+            central=100.0,
+            low=90.0,
+            high=110.0,
+            units="mL/min",
             tier="A",
             rationale=(
                 "Tier A: non-pregnant GFR in healthy adult women is "
@@ -460,14 +519,21 @@ def mat_renal_params() -> list[dict]:
                 "which the ~50% pregnancy rise is measured (Conrad 2001, "
                 "Davison 1974, Cheung 2013 review)."
             ),
-            citation_keys=["conrad-2001-relaxin-gfr", "davison-hytten-1974-gfr", "cheung-lafayette-2013-renal"],
+            citation_keys=[
+                "conrad-2001-relaxin-gfr",
+                "davison-hytten-1974-gfr",
+                "cheung-lafayette-2013-renal",
+            ],
             primary="conrad-2001-relaxin-gfr",
         ),
         param(
             pid="maternal_renal.gfr_peak_week",
             name="Gestational week of peak GFR",
             subsystem="maternal_renal",
-            central=16.0, low=12.0, high=24.0, units="weeks",
+            central=16.0,
+            low=12.0,
+            high=24.0,
+            units="weeks",
             tier="B",
             rationale=(
                 "Tier B from Conrad 2001 mechanistic review and Dunlop 1981 "
@@ -481,7 +547,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.gfr_logistic_rate_per_week",
             name="Logistic GFR rise rate",
             subsystem="maternal_renal",
-            central=0.4, low=0.25, high=0.6, units="1/week",
+            central=0.4,
+            low=0.25,
+            high=0.6,
+            units="1/week",
             tier="C",
             rationale=(
                 "Tier C: empirical logistic-fit rate to Conrad 2001 / "
@@ -494,7 +563,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.renal_plasma_flow_baseline_ml_per_min",
             name="Maternal non-pregnant renal plasma flow",
             subsystem="maternal_renal",
-            central=600.0, low=500.0, high=700.0, units="mL/min",
+            central=600.0,
+            low=500.0,
+            high=700.0,
+            units="mL/min",
             tier="B",
             rationale=(
                 "Tier B from Dunlop 1981 longitudinal cohort: non-pregnant "
@@ -506,7 +578,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.renal_plasma_flow_peak_ml_per_min",
             name="Maternal peak renal plasma flow",
             subsystem="maternal_renal",
-            central=900.0, low=750.0, high=1050.0, units="mL/min",
+            central=900.0,
+            low=750.0,
+            high=1050.0,
+            units="mL/min",
             tier="B",
             rationale=(
                 "Tier B from Dunlop 1981: RPF peaks ~50-70% above baseline "
@@ -518,7 +593,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.rpf_peak_week",
             name="Week of peak renal plasma flow",
             subsystem="maternal_renal",
-            central=24.0, low=20.0, high=28.0, units="weeks",
+            central=24.0,
+            low=20.0,
+            high=28.0,
+            units="weeks",
             tier="B",
             rationale=(
                 "Tier B from Dunlop 1981: RPF peak ~24 weeks; the "
@@ -530,21 +608,30 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.filtration_fraction_term",
             name="Filtration fraction at term",
             subsystem="maternal_renal",
-            central=0.18, low=0.16, high=0.20, units="dimensionless",
+            central=0.18,
+            low=0.16,
+            high=0.20,
+            units="dimensionless",
             tier="B",
             rationale=(
                 "Tier B from Cheung 2013 review: FF drops in mid-pregnancy "
                 "(RPF rises faster than GFR) then partly recovers; ~0.18 "
                 "at term."
             ),
-            citation_keys=["cheung-lafayette-2013-renal", "dunlop-1981-renal-plasma-flow"],
+            citation_keys=[
+                "cheung-lafayette-2013-renal",
+                "dunlop-1981-renal-plasma-flow",
+            ],
             primary="cheung-lafayette-2013-renal",
         ),
         param(
             pid="maternal_renal.plasma_osmolality_drop_mosm_per_kg",
             name="Plasma osmolality drop from baseline",
             subsystem="maternal_renal",
-            central=10.0, low=8.0, high=12.0, units="mOsm/kg",
+            central=10.0,
+            low=8.0,
+            high=12.0,
+            units="mOsm/kg",
             tier="A",
             rationale=(
                 "Tier A from Davison 1981: plasma osmolality falls ~10 "
@@ -558,7 +645,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.plasma_sodium_drop_meq_per_l",
             name="Plasma sodium drop from baseline",
             subsystem="maternal_renal",
-            central=5.0, low=3.0, high=7.0, units="mEq/L",
+            central=5.0,
+            low=3.0,
+            high=7.0,
+            units="mEq/L",
             tier="A",
             rationale=(
                 "Tier A from Davison 1981: plasma sodium falls ~5 mEq/L "
@@ -570,7 +660,10 @@ def mat_renal_params() -> list[dict]:
             pid="maternal_renal.bun_term_mg_per_dl",
             name="Blood urea nitrogen at term",
             subsystem="maternal_renal",
-            central=8.0, low=6.0, high=11.0, units="mg/dL",
+            central=8.0,
+            low=6.0,
+            high=11.0,
+            units="mg/dL",
             tier="A",
             rationale=(
                 "Tier A from Cheung 2013 review: BUN falls from ~13 mg/dL "
@@ -588,7 +681,10 @@ def mat_resp_params() -> list[dict]:
             pid="maternal_respiratory.baseline_tidal_volume_ml",
             name="Maternal non-pregnant tidal volume",
             subsystem="maternal_respiratory",
-            central=450.0, low=400.0, high=500.0, units="mL",
+            central=450.0,
+            low=400.0,
+            high=500.0,
+            units="mL",
             tier="A",
             rationale=(
                 "Tier A from LoMauro 2015 review: non-pregnant VT ~450 mL "
@@ -600,7 +696,10 @@ def mat_resp_params() -> list[dict]:
             pid="maternal_respiratory.baseline_respiratory_rate_bpm",
             name="Maternal non-pregnant respiratory rate",
             subsystem="maternal_respiratory",
-            central=16.0, low=12.0, high=20.0, units="breaths/min",
+            central=16.0,
+            low=12.0,
+            high=20.0,
+            units="breaths/min",
             tier="A",
             rationale=(
                 "Tier A: non-pregnant adult RR ~12-20/min; LoMauro 2015 "
@@ -612,7 +711,10 @@ def mat_resp_params() -> list[dict]:
             pid="maternal_respiratory.term_respiratory_rate_bpm",
             name="Maternal term respiratory rate",
             subsystem="maternal_respiratory",
-            central=16.0, low=12.0, high=20.0, units="breaths/min",
+            central=16.0,
+            low=12.0,
+            high=20.0,
+            units="breaths/min",
             tier="A",
             rationale=(
                 "Tier A from LoMauro 2015: RR is essentially unchanged in "
@@ -625,27 +727,39 @@ def mat_resp_params() -> list[dict]:
             pid="maternal_respiratory.baseline_pao2_mmhg",
             name="Maternal non-pregnant arterial PO2",
             subsystem="maternal_respiratory",
-            central=100.0, low=95.0, high=105.0, units="mmHg",
+            central=100.0,
+            low=95.0,
+            high=105.0,
+            units="mmHg",
             tier="A",
             rationale=(
                 "Tier A: non-pregnant PaO2 at sea level ~100 mmHg; "
                 "Templeton & Kelman 1976 confirms the modest pregnancy rise."
             ),
-            citation_keys=["templeton-1976-blood-gas", "lomauro-aliverti-2015-respiratory"],
+            citation_keys=[
+                "templeton-1976-blood-gas",
+                "lomauro-aliverti-2015-respiratory",
+            ],
             primary="templeton-1976-blood-gas",
         ),
         param(
             pid="maternal_respiratory.baseline_arterial_ph",
             name="Maternal non-pregnant arterial pH",
             subsystem="maternal_respiratory",
-            central=7.40, low=7.38, high=7.42, units="dimensionless",
+            central=7.40,
+            low=7.38,
+            high=7.42,
+            units="dimensionless",
             tier="A",
             rationale=(
                 "Tier A: non-pregnant arterial pH 7.40 ± 0.02; baseline "
                 "against which the mild pregnancy alkalosis (pH ~7.44) is "
                 "measured."
             ),
-            citation_keys=["templeton-1976-blood-gas", "lomauro-aliverti-2015-respiratory"],
+            citation_keys=[
+                "templeton-1976-blood-gas",
+                "lomauro-aliverti-2015-respiratory",
+            ],
             primary="templeton-1976-blood-gas",
         ),
     ]
@@ -657,7 +771,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.cortisol_baseline_ug_per_dl",
             name="Maternal non-pregnant total plasma cortisol",
             subsystem="maternal_endocrine",
-            central=10.0, low=5.0, high=20.0, units="ug/dL",
+            central=10.0,
+            low=5.0,
+            high=20.0,
+            units="ug/dL",
             tier="A",
             rationale=(
                 "Tier A: non-pregnant morning plasma cortisol ~10 ug/dL "
@@ -669,7 +786,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.cortisol_term_ug_per_dl",
             name="Maternal term total plasma cortisol",
             subsystem="maternal_endocrine",
-            central=30.0, low=25.0, high=40.0, units="ug/dL",
+            central=30.0,
+            low=25.0,
+            high=40.0,
+            units="ug/dL",
             tier="B",
             rationale=(
                 "Tier B from Carr 1981: total cortisol rises ~3x by term, "
@@ -682,7 +802,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.free_t4_term_ng_per_dl",
             name="Maternal free T4 at term",
             subsystem="maternal_endocrine",
-            central=0.9, low=0.7, high=1.1, units="ng/dL",
+            central=0.9,
+            low=0.7,
+            high=1.1,
+            units="ng/dL",
             tier="B",
             rationale=(
                 "Tier B from Glinoer 1997: free T4 falls slightly through "
@@ -694,7 +817,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.tsh_t1_miu_per_l",
             name="Maternal TSH in first trimester",
             subsystem="maternal_endocrine",
-            central=0.6, low=0.1, high=2.5, units="mIU/L",
+            central=0.6,
+            low=0.1,
+            high=2.5,
+            units="mIU/L",
             tier="B",
             rationale=(
                 "Tier B from Glinoer 1997: TSH suppressed in T1 by hCG "
@@ -706,7 +832,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.tsh_term_miu_per_l",
             name="Maternal TSH at term",
             subsystem="maternal_endocrine",
-            central=2.0, low=0.4, high=4.0, units="mIU/L",
+            central=2.0,
+            low=0.4,
+            high=4.0,
+            units="mIU/L",
             tier="B",
             rationale=(
                 "Tier B from Glinoer 1997: TSH recovers to within "
@@ -718,7 +847,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.prolactin_term_ng_per_ml",
             name="Maternal term plasma prolactin",
             subsystem="maternal_endocrine",
-            central=200.0, low=150.0, high=300.0, units="ng/mL",
+            central=200.0,
+            low=150.0,
+            high=300.0,
+            units="ng/mL",
             tier="B",
             rationale=(
                 "Tier B from Tyson 1972: prolactin rises ~10x by term to "
@@ -730,7 +862,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.aldosterone_term_ng_per_dl",
             name="Maternal term plasma aldosterone",
             subsystem="maternal_endocrine",
-            central=40.0, low=25.0, high=60.0, units="ng/dL",
+            central=40.0,
+            low=25.0,
+            high=60.0,
+            units="ng/dL",
             tier="B",
             rationale=(
                 "Tier B from Wilson 1980: aldosterone rises ~5-10x by term, "
@@ -742,7 +877,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.homa_ir_baseline",
             name="Maternal non-pregnant HOMA-IR",
             subsystem="maternal_endocrine",
-            central=2.0, low=1.0, high=3.0, units="dimensionless",
+            central=2.0,
+            low=1.0,
+            high=3.0,
+            units="dimensionless",
             tier="B",
             rationale=(
                 "Tier B from Catalano 1991: pre-pregnancy HOMA-IR ~2.0 in "
@@ -755,7 +893,10 @@ def mat_endocrine_params() -> list[dict]:
             pid="maternal_endocrine.homa_ir_term",
             name="Maternal term HOMA-IR",
             subsystem="maternal_endocrine",
-            central=4.0, low=2.5, high=6.0, units="dimensionless",
+            central=4.0,
+            low=2.5,
+            high=6.0,
+            units="dimensionless",
             tier="B",
             rationale=(
                 "Tier B from Catalano 1991: insulin sensitivity falls ~50% "
@@ -773,7 +914,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.hcg_peak_miu_per_ml",
             name="Maternal serum hCG at peak",
             subsystem="placental_endocrine",
-            central=100000.0, low=50000.0, high=200000.0, units="mIU/mL",
+            central=100000.0,
+            low=50000.0,
+            high=200000.0,
+            units="mIU/mL",
             tier="A",
             rationale=(
                 "Tier A from Cole 2010 review and standard reproductive "
@@ -786,7 +930,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.hcg_peak_week",
             name="Gestational week of peak hCG",
             subsystem="placental_endocrine",
-            central=10.0, low=8.0, high=12.0, units="weeks",
+            central=10.0,
+            low=8.0,
+            high=12.0,
+            units="weeks",
             tier="A",
             rationale=(
                 "Tier A from Cole 2010: hCG peak ~10 weeks, before "
@@ -799,7 +946,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.hcg_term_miu_per_ml",
             name="Maternal serum hCG at term",
             subsystem="placental_endocrine",
-            central=10000.0, low=5000.0, high=20000.0, units="mIU/mL",
+            central=10000.0,
+            low=5000.0,
+            high=20000.0,
+            units="mIU/mL",
             tier="B",
             rationale=(
                 "Tier B from Cole 2010: hCG declines from peak to ~10,000 "
@@ -811,7 +961,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.hpl_term_ug_per_ml",
             name="Maternal serum placental lactogen at term",
             subsystem="placental_endocrine",
-            central=7.0, low=5.0, high=10.0, units="ug/mL",
+            central=7.0,
+            low=5.0,
+            high=10.0,
+            units="ug/mL",
             tier="B",
             rationale=(
                 "Tier B from Handwerger 1991 review: hPL rises linearly "
@@ -824,7 +977,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.progesterone_term_ng_per_ml",
             name="Maternal serum progesterone at term",
             subsystem="placental_endocrine",
-            central=150.0, low=100.0, high=200.0, units="ng/mL",
+            central=150.0,
+            low=100.0,
+            high=200.0,
+            units="ng/mL",
             tier="A",
             rationale=(
                 "Tier A from Tulchinsky 1972 longitudinal study: "
@@ -837,7 +993,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.estradiol_term_ng_per_ml",
             name="Maternal serum estradiol at term",
             subsystem="placental_endocrine",
-            central=14.0, low=8.0, high=25.0, units="ng/mL",
+            central=14.0,
+            low=8.0,
+            high=25.0,
+            units="ng/mL",
             tier="A",
             rationale=(
                 "Tier A from Tulchinsky 1972: estradiol rises through "
@@ -850,7 +1009,10 @@ def placental_endocrine_params() -> list[dict]:
             pid="placental_endocrine.estriol_term_ng_per_ml",
             name="Maternal serum estriol at term",
             subsystem="placental_endocrine",
-            central=10.0, low=6.0, high=20.0, units="ng/mL",
+            central=10.0,
+            low=6.0,
+            high=20.0,
+            units="ng/mL",
             tier="A",
             rationale=(
                 "Tier A from Tulchinsky 1972: estriol is uniquely a "
@@ -868,7 +1030,10 @@ def amniotic_fluid_params() -> list[dict]:
             pid="amniotic_fluid.afv_peak_ml",
             name="Amniotic fluid volume at peak",
             subsystem="amniotic_fluid",
-            central=800.0, low=600.0, high=1000.0, units="mL",
+            central=800.0,
+            low=600.0,
+            high=1000.0,
+            units="mL",
             tier="A",
             rationale=(
                 "Tier A from Brace & Wolf 1989: AFV rises through "
@@ -881,7 +1046,10 @@ def amniotic_fluid_params() -> list[dict]:
             pid="amniotic_fluid.afv_peak_week",
             name="Gestational week of peak amniotic fluid volume",
             subsystem="amniotic_fluid",
-            central=33.0, low=32.0, high=34.0, units="weeks",
+            central=33.0,
+            low=32.0,
+            high=34.0,
+            units="weeks",
             tier="A",
             rationale=(
                 "Tier A from Brace & Wolf 1989: AFV peak at 32-34 weeks; "
@@ -894,7 +1062,10 @@ def amniotic_fluid_params() -> list[dict]:
             pid="amniotic_fluid.afv_term_ml",
             name="Amniotic fluid volume at term",
             subsystem="amniotic_fluid",
-            central=600.0, low=400.0, high=800.0, units="mL",
+            central=600.0,
+            low=400.0,
+            high=800.0,
+            units="mL",
             tier="A",
             rationale=(
                 "Tier A from Brace & Wolf 1989: AFV declines from peak to "
@@ -907,7 +1078,10 @@ def amniotic_fluid_params() -> list[dict]:
             pid="amniotic_fluid.afv_20w_ml",
             name="Amniotic fluid volume at 20 weeks",
             subsystem="amniotic_fluid",
-            central=350.0, low=250.0, high=450.0, units="mL",
+            central=350.0,
+            low=250.0,
+            high=450.0,
+            units="mL",
             tier="A",
             rationale=(
                 "Tier A from Brace & Wolf 1989: AFV at 20 weeks ~350 mL; "
