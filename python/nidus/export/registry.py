@@ -93,6 +93,131 @@ SUBMODELS: tuple[Submodel, ...] = (
         independent_variable="substrate_mmol_per_l",
         output_units="mmol/min/m^2",
     ),
+    Submodel(
+        id="placental_glucose_glut3",
+        name="Placental glucose transport, GLUT3 (Michaelis-Menten)",
+        description=(
+            "Michaelis-Menten flux for GLUT3-mediated placental glucose "
+            "transport on the syncytial microvillous membrane: "
+            "V = Vmax*[S]/(Km+[S]). GLUT3 is the higher-affinity (lower "
+            "Km) isoform and dominates uptake early in gestation."
+        ),
+        sbo_term="SBO:0000028",
+        parameter_ids=(
+            "placental_glucose.glucose_glut3_km_mmol_per_l",
+            "placental_glucose.glucose_glut3_vmax_per_area_mmol_per_min_per_m2",
+        ),
+        independent_variable="substrate_mmol_per_l",
+        output_units="mmol/min/m^2",
+    ),
+    Submodel(
+        id="maternal_cardiac_output_trajectory",
+        name="Maternal cardiac output trajectory (Gaussian)",
+        description=(
+            "Gaussian-bump trajectory for cardiac output across "
+            "gestation: CO(t) = baseline + peak_excess * "
+            "exp(-((t - peak_week)/spread)^2 / 2). Fit to Mahendru 2014 "
+            "longitudinal cohort + Sanghavi 2014 review."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_cardiovascular.baseline_cardiac_output_l_per_min",
+            "maternal_cardiovascular.peak_excess_cardiac_output_l_per_min",
+            "maternal_cardiovascular.cardiac_output_peak_week",
+            "maternal_cardiovascular.cardiac_output_spread_weeks",
+        ),
+        independent_variable="t_weeks",
+        output_units="L/min",
+    ),
+    Submodel(
+        id="maternal_map_trajectory",
+        name="Maternal MAP trajectory (Gaussian nadir)",
+        description=(
+            "Gaussian-nadir trajectory for mean arterial pressure: "
+            "MAP(t) = baseline - nadir_drop * exp(-((t - nadir_week)/"
+            "spread)^2 / 2). The mid-pregnancy dip reflects systemic "
+            "vasodilation; pressure recovers toward term."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_cardiovascular.baseline_map_mmhg",
+            "maternal_cardiovascular.map_nadir_drop_mmhg",
+            "maternal_cardiovascular.map_nadir_week",
+            "maternal_cardiovascular.map_spread_weeks",
+        ),
+        independent_variable="t_weeks",
+        output_units="mmHg",
+    ),
+    Submodel(
+        id="uterine_artery_flow_logistic",
+        name="Uterine-artery flow logistic growth",
+        description=(
+            "Logistic growth of bilateral uterine-artery flow across "
+            "gestation: Q(t) = baseline + (term - baseline) / "
+            "(1 + exp(-r*(t - 24))). The mid-pregnancy reference week "
+            "(24) is the inflection point of the curve fit to Thaler "
+            "1990 Doppler-cohort means."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_cardiovascular.baseline_uterine_flow_ml_per_min",
+            "maternal_cardiovascular.term_uterine_flow_ml_per_min",
+            "maternal_cardiovascular.uterine_flow_growth_rate_per_week",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL/min",
+    ),
+    Submodel(
+        id="placental_o2_equilibrator",
+        name="Placental O2 venous-equilibrator (algebraic)",
+        description=(
+            "Algebraic equilibrium between maternal intervillous PO2 "
+            "and umbilical vein PO2 across the syncytiotrophoblast "
+            "barrier. Umbilical vein PO2 = intervillous PO2 * "
+            "max_equilibration (typically ~60-80% of the maternal-side "
+            "PO2 in a healthy term placenta)."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "placental_gas_exchange.maternal_intervillous_po2_mmhg",
+            "placental_gas_exchange.gas_max_equilibration",
+        ),
+        independent_variable="maternal_intervillous_po2_mmhg",
+        output_units="mmHg",
+    ),
+    Submodel(
+        id="plasma_volume_expansion",
+        name="Maternal plasma volume across gestation (algebraic)",
+        description=(
+            "Sigmoidal plasma-volume expansion across gestation: "
+            "PV(t) = early + (term - early) / (1 + exp(-0.2*(t - 22))). "
+            "Fit to de Haas 2017 (PMID 28169502) meta-analysis pooled "
+            "trajectory + Bernstein 2001 (PMID 11339913) early "
+            "first-trimester anchor."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_blood.plasma_volume_early_l",
+            "maternal_blood.plasma_volume_l",
+        ),
+        independent_variable="t_weeks",
+        output_units="L",
+    ),
+    Submodel(
+        id="hadlock_fetal_weight",
+        name="Hadlock IV fetal weight from biometry",
+        description=(
+            "Hadlock 1991 (PMID 1887021) four-parameter sonographic "
+            "fetal-weight regression: log10(EFW) = 1.3596 + 0.0064*HC "
+            "+ 0.0424*AC + 0.174*FL + 0.00061*BPD*AC - 0.00386*AC*FL. "
+            "Validated against n=1771 fetuses with 3.3% mean absolute "
+            "error."
+        ),
+        sbo_term=None,
+        parameter_ids=("fetal_growth.hadlock_coefficient",),
+        independent_variable="biometry_mm",
+        output_units="g",
+    ),
 )
 
 

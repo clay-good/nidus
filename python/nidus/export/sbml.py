@@ -266,6 +266,259 @@ def _build_placental_glucose_glut1(ds: Dataset) -> libsbml.SBMLDocument:
     return doc
 
 
+def _build_placental_glucose_glut3(ds: Dataset) -> libsbml.SBMLDocument:
+    """Michaelis-Menten flux for GLUT3-mediated placental glucose transport."""
+    sm = next(s for s in SUBMODELS if s.id == "placental_glucose_glut3")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    km = ds["placental_glucose.glucose_glut3_km_mmol_per_l"]
+    vmax = ds["placental_glucose.glucose_glut3_vmax_per_area_mmol_per_min_per_m2"]
+
+    _add_parameter(model, "substrate_mmol_per_l", 5.0, "mmol_per_l", constant=False)
+    p_km = _add_parameter(model, km.id, km.value.central, "mmol_per_l")
+    _attach_param_annotation(p_km, km)
+    p_vmax = _add_parameter(model, vmax.id, vmax.value.central, "dimensionless")
+    _attach_param_annotation(p_vmax, vmax)
+    _add_parameter(model, "flux", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("flux")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(vmax.id)} * substrate_mmol_per_l / "
+        f"({parameter_id_to_sbml(km.id)} + substrate_mmol_per_l)"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_maternal_cardiac_output(ds: Dataset) -> libsbml.SBMLDocument:
+    """Gaussian-bump cardiac-output trajectory across gestation."""
+    sm = next(s for s in SUBMODELS if s.id == "maternal_cardiac_output_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
+    peak = ds["maternal_cardiovascular.peak_excess_cardiac_output_l_per_min"]
+    peak_week = ds["maternal_cardiovascular.cardiac_output_peak_week"]
+    spread = ds["maternal_cardiovascular.cardiac_output_spread_weeks"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    for p in (baseline, peak, peak_week, spread):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "CO_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("CO_t")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(baseline.id)} + "
+        f"{parameter_id_to_sbml(peak.id)} * "
+        f"exp(-((t_weeks - {parameter_id_to_sbml(peak_week.id)}) / "
+        f"{parameter_id_to_sbml(spread.id)})^2 / 2)"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_maternal_map(ds: Dataset) -> libsbml.SBMLDocument:
+    """Gaussian-nadir MAP trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "maternal_map_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_cardiovascular.baseline_map_mmhg"]
+    nadir = ds["maternal_cardiovascular.map_nadir_drop_mmhg"]
+    nadir_week = ds["maternal_cardiovascular.map_nadir_week"]
+    spread = ds["maternal_cardiovascular.map_spread_weeks"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    for p in (baseline, nadir, nadir_week, spread):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "MAP_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("MAP_t")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(baseline.id)} - "
+        f"{parameter_id_to_sbml(nadir.id)} * "
+        f"exp(-((t_weeks - {parameter_id_to_sbml(nadir_week.id)}) / "
+        f"{parameter_id_to_sbml(spread.id)})^2 / 2)"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_uterine_artery_flow(ds: Dataset) -> libsbml.SBMLDocument:
+    """Logistic growth of uterine-artery flow (midpoint = 24 weeks)."""
+    sm = next(s for s in SUBMODELS if s.id == "uterine_artery_flow_logistic")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_cardiovascular.baseline_uterine_flow_ml_per_min"]
+    term = ds["maternal_cardiovascular.term_uterine_flow_ml_per_min"]
+    rate = ds["maternal_cardiovascular.uterine_flow_growth_rate_per_week"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "midpoint_week", 24.0, "dimensionless")
+    for p in (baseline, term, rate):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "Q_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("Q_t")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(baseline.id)} + "
+        f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(baseline.id)}) / "
+        f"(1 + exp(-{parameter_id_to_sbml(rate.id)} * (t_weeks - midpoint_week)))"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_placental_o2_equilibrator(ds: Dataset) -> libsbml.SBMLDocument:
+    """Algebraic equilibrium: umbilical vein PO2 = intervillous PO2 * f."""
+    sm = next(s for s in SUBMODELS if s.id == "placental_o2_equilibrator")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    mat_po2 = ds["placental_gas_exchange.maternal_intervillous_po2_mmhg"]
+    f_eq = ds["placental_gas_exchange.gas_max_equilibration"]
+
+    p1 = _add_parameter(model, mat_po2.id, mat_po2.value.central, "mmHg", constant=False)
+    _attach_param_annotation(p1, mat_po2)
+    p2 = _add_parameter(model, f_eq.id, f_eq.value.central, "dimensionless")
+    _attach_param_annotation(p2, f_eq)
+    _add_parameter(model, "umbilical_vein_po2_mmhg", 0.0, "mmHg", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("umbilical_vein_po2_mmhg")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(mat_po2.id)} * {parameter_id_to_sbml(f_eq.id)}"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_plasma_volume_expansion(ds: Dataset) -> libsbml.SBMLDocument:
+    """Sigmoidal plasma-volume expansion across gestation."""
+    sm = next(s for s in SUBMODELS if s.id == "plasma_volume_expansion")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    early = ds["maternal_blood.plasma_volume_early_l"]
+    term = ds["maternal_blood.plasma_volume_l"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "growth_rate_per_week", 0.2, "dimensionless")
+    _add_parameter(model, "midpoint_week", 22.0, "dimensionless")
+    p_early = _add_parameter(model, early.id, early.value.central, "dimensionless")
+    _attach_param_annotation(p_early, early)
+    p_term = _add_parameter(model, term.id, term.value.central, "dimensionless")
+    _attach_param_annotation(p_term, term)
+    _add_parameter(model, "PV_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("PV_t")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(early.id)} + "
+        f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(early.id)}) / "
+        f"(1 + exp(-growth_rate_per_week * (t_weeks - midpoint_week)))"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_hadlock_fetal_weight(ds: Dataset) -> libsbml.SBMLDocument:
+    """Hadlock IV 4-parameter sonographic fetal-weight regression."""
+    sm = next(s for s in SUBMODELS if s.id == "hadlock_fetal_weight")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    coef = ds["fetal_growth.hadlock_coefficient"]
+
+    # Biometry inputs in mm (converted to cm in the formula).
+    _add_parameter(model, "bpd_mm", 80.0, "dimensionless", constant=False)
+    _add_parameter(model, "hc_mm", 300.0, "dimensionless", constant=False)
+    _add_parameter(model, "ac_mm", 300.0, "dimensionless", constant=False)
+    _add_parameter(model, "fl_mm", 60.0, "dimensionless", constant=False)
+    p_coef = _add_parameter(model, coef.id, coef.value.central, "dimensionless")
+    _attach_param_annotation(p_coef, coef)
+    _add_parameter(model, "efw_g", 0.0, "dimensionless", constant=False)
+
+    # log10(EFW) = a + 0.0064*HC + 0.0424*AC + 0.174*FL + 0.00061*BPD*AC - 0.00386*AC*FL
+    rule = model.createAssignmentRule()
+    rule.setVariable("efw_g")
+    math_ast = libsbml.parseL3Formula(
+        f"10^({parameter_id_to_sbml(coef.id)}"
+        " + 0.0064 * (hc_mm / 10)"
+        " + 0.0424 * (ac_mm / 10)"
+        " + 0.174 * (fl_mm / 10)"
+        " + 0.00061 * (bpd_mm / 10) * (ac_mm / 10)"
+        " - 0.00386 * (ac_mm / 10) * (fl_mm / 10))"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 # ---- Shared helpers ------------------------------------------------
 
 
@@ -298,6 +551,13 @@ _BUILDERS = {
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
     "o2hb_dissociation_fetal": _build_o2hb_dissociation_fetal,
     "placental_glucose_glut1": _build_placental_glucose_glut1,
+    "placental_glucose_glut3": _build_placental_glucose_glut3,
+    "maternal_cardiac_output_trajectory": _build_maternal_cardiac_output,
+    "maternal_map_trajectory": _build_maternal_map,
+    "uterine_artery_flow_logistic": _build_uterine_artery_flow,
+    "placental_o2_equilibrator": _build_placental_o2_equilibrator,
+    "plasma_volume_expansion": _build_plasma_volume_expansion,
+    "hadlock_fetal_weight": _build_hadlock_fetal_weight,
 }
 
 

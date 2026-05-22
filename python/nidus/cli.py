@@ -135,7 +135,7 @@ def cmd_export(args: argparse.Namespace) -> int:
     except FileNotFoundError as e:
         print(f"dataset not found: {e}", file=sys.stderr)
         return 1
-    if args.format in ("sbml", "cellml", "physiocell"):
+    if args.format in ("sbml", "cellml", "physiocell", "composed", "omex"):
         from pathlib import Path
 
         out_dir = Path(args.output) if args.output else Path("exports") / args.format
@@ -148,6 +148,15 @@ def cmd_export(args: argparse.Namespace) -> int:
                 from nidus.export import write_cellml
 
                 written = write_cellml(ds, out_dir, version=args.cellml_version)
+            elif args.format == "composed":
+                from nidus.export import write_composed_sbml
+
+                written = [write_composed_sbml(ds, out_dir)]
+            elif args.format == "omex":
+                from nidus.export import write_combine_archive
+
+                out_path = Path(args.output) if args.output else Path("exports/nidus.omex")
+                written = [write_combine_archive(ds, out_path)]
             else:  # physiocell
                 from nidus.export import write_physiocell
 
@@ -254,12 +263,14 @@ def make_parser() -> argparse.ArgumentParser:
     sp_export.add_argument("--path", help="Path to a dataset directory (default: bundled dataset)")
     sp_export.add_argument(
         "--format",
-        choices=["bibtex", "csv", "sbml", "cellml", "physiocell"],
+        choices=["bibtex", "csv", "sbml", "cellml", "physiocell", "composed", "omex"],
         required=True,
         help=(
             "Output format. 'bibtex' = all citations; 'csv' = parameter table; "
             "'sbml' = one SBML L3v2 file per submodel; 'cellml' = one CellML 2.0 "
-            "file per submodel; 'physiocell' = drop-in <user_parameters>.xml."
+            "file per submodel; 'physiocell' = drop-in <user_parameters>.xml; "
+            "'composed' = single SBML L3v2 file wiring all submodels together; "
+            "'omex' = COMBINE archive bundling SBML + CellML + PhysioCell."
         ),
     )
     sp_export.add_argument(

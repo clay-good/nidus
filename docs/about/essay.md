@@ -188,7 +188,16 @@ The dataset is **not**:
   modelling platforms — [CellML](https://www.cellml.org/),
   [COPASI](http://copasi.org/), [PhysioCell](http://physicell.org/) —
   and competing with them is not the point. The dataset is the
-  parameters those simulators would consume.
+  parameters those simulators would consume. As of `v0.4`, the
+  Python package ships first-class exporters into all three
+  ecosystems: `nidus export --format sbml|cellml|physiocell|composed|omex`
+  produces SBML L3v2 submodels, CellML 2.0 (with 1.1 fallback)
+  modules, a drop-in PhysioCell `<user_parameters>.xml`, a single
+  composed pregnancy SBML model, and a COMBINE archive bundling all
+  of the above with citation-tier annotations preserved through every
+  format. The intent is that the nearest mechanistic platform you
+  already use is the right place to run a simulation; the dataset
+  hands it the inputs in the dialect it speaks.
 - A research-validated outcome predictor. It is the inputs, not
   the outputs.
 - Automated. Humans verify every parameter against its source PDF;

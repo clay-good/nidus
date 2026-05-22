@@ -33,10 +33,19 @@ def test_registry_lists_submodels() -> None:
 
     summary = list_submodels()
     ids = {s["id"] for s in summary}
-    assert "placental_villous_growth" in ids
-    assert "o2hb_dissociation_adult" in ids
-    assert "o2hb_dissociation_fetal" in ids
-    assert "placental_glucose_glut1" in ids
+    assert {
+        "placental_villous_growth",
+        "o2hb_dissociation_adult",
+        "o2hb_dissociation_fetal",
+        "placental_glucose_glut1",
+        "placental_glucose_glut3",
+        "maternal_cardiac_output_trajectory",
+        "maternal_map_trajectory",
+        "uterine_artery_flow_logistic",
+        "placental_o2_equilibrator",
+        "plasma_volume_expansion",
+        "hadlock_fetal_weight",
+    } == ids
 
 
 def test_registry_parameters_resolve(ds: nidus.Dataset) -> None:
@@ -127,6 +136,79 @@ def test_glut1_michaelis_menten_saturating() -> None:
     assert v_high == pytest.approx(0.075, abs=0.001)
 
 
+def test_maternal_cardiac_output_peak_at_center() -> None:
+    from nidus.export.reference import maternal_cardiac_output
+
+    co_peak = maternal_cardiac_output(
+        28.0, baseline_l_per_min=5.0, peak_excess_l_per_min=2.0, peak_week=28.0, spread_weeks=8.0
+    )
+    co_early = maternal_cardiac_output(
+        0.0, baseline_l_per_min=5.0, peak_excess_l_per_min=2.0, peak_week=28.0, spread_weeks=8.0
+    )
+    assert co_peak == pytest.approx(7.0)
+    assert co_early < co_peak
+
+
+def test_maternal_map_nadir_at_center() -> None:
+    from nidus.export.reference import maternal_map
+
+    nadir = maternal_map(
+        20.0, baseline_mmhg=85.0, nadir_drop_mmhg=8.0, nadir_week=20.0, spread_weeks=6.0
+    )
+    early = maternal_map(
+        0.0, baseline_mmhg=85.0, nadir_drop_mmhg=8.0, nadir_week=20.0, spread_weeks=6.0
+    )
+    assert nadir == pytest.approx(77.0)
+    assert early > nadir
+
+
+def test_uterine_artery_flow_logistic_endpoints() -> None:
+    from nidus.export.reference import uterine_artery_flow
+
+    early = uterine_artery_flow(
+        4.0, baseline_ml_per_min=100.0, term_ml_per_min=750.0, growth_rate_per_week=0.25
+    )
+    late = uterine_artery_flow(
+        40.0, baseline_ml_per_min=100.0, term_ml_per_min=750.0, growth_rate_per_week=0.25
+    )
+    assert 100.0 < early < 200.0
+    assert late == pytest.approx(750.0, abs=20.0)
+
+
+def test_placental_o2_equilibrator_linear() -> None:
+    from nidus.export.reference import placental_o2_equilibrator
+
+    out = placental_o2_equilibrator(50.0, max_equilibration=0.7)
+    assert out == pytest.approx(35.0)
+
+
+def test_plasma_volume_expansion_endpoints() -> None:
+    from nidus.export.reference import plasma_volume_expansion
+
+    early = plasma_volume_expansion(8.0, early_l=2.6, term_l=4.7)
+    late = plasma_volume_expansion(40.0, early_l=2.6, term_l=4.7)
+    assert early == pytest.approx(2.6, abs=0.5)
+    assert late == pytest.approx(4.7, abs=0.1)
+
+
+def test_hadlock_fetal_weight_reasonable_term() -> None:
+    from nidus.export.reference import hadlock_fetal_weight
+
+    # ~term biometry → ~3000-4000 g
+    w = hadlock_fetal_weight(bpd_mm=95.0, hc_mm=340.0, ac_mm=340.0, fl_mm=72.0)
+    assert 2500.0 < w < 4500.0
+
+
+def test_glut3_higher_affinity_than_glut1() -> None:
+    """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
+    from nidus.export.reference import michaelis_menten_flux
+
+    glut1 = michaelis_menten_flux(0.5, km_mmol_per_l=2.5, vmax_per_area=0.075)
+    glut3 = michaelis_menten_flux(0.5, km_mmol_per_l=1.0, vmax_per_area=0.05)
+    # GLUT3 saturates at lower [S]; at [S] = 0.5, fractional saturation is 0.33 vs 0.17
+    assert (glut3 / 0.05) > (glut1 / 0.075)
+
+
 # ---- SBML generation -----------------------------------------------
 
 
@@ -140,15 +222,22 @@ def libcellml_module():
     return pytest.importorskip("libcellml")
 
 
-@pytest.mark.parametrize(
-    "submodel_id",
-    [
-        "placental_villous_growth",
-        "o2hb_dissociation_adult",
-        "o2hb_dissociation_fetal",
-        "placental_glucose_glut1",
-    ],
-)
+_ALL_SUBMODEL_IDS = [
+    "placental_villous_growth",
+    "o2hb_dissociation_adult",
+    "o2hb_dissociation_fetal",
+    "placental_glucose_glut1",
+    "placental_glucose_glut3",
+    "maternal_cardiac_output_trajectory",
+    "maternal_map_trajectory",
+    "uterine_artery_flow_logistic",
+    "placental_o2_equilibrator",
+    "plasma_volume_expansion",
+    "hadlock_fetal_weight",
+]
+
+
+@pytest.mark.parametrize("submodel_id", _ALL_SUBMODEL_IDS)
 def test_sbml_builds_and_validates(ds: nidus.Dataset, libsbml_module, submodel_id: str) -> None:
     from nidus.export import build_sbml
 
@@ -208,7 +297,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
     from nidus.export import SUBMODELS, write_sbml
 
     paths = write_sbml(ds, tmp_path)
-    assert len(paths) == 4
+    assert len(paths) == len(SUBMODELS) == 11
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -217,15 +306,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 # ---- CellML generation ---------------------------------------------
 
 
-@pytest.mark.parametrize(
-    "submodel_id",
-    [
-        "placental_villous_growth",
-        "o2hb_dissociation_adult",
-        "o2hb_dissociation_fetal",
-        "placental_glucose_glut1",
-    ],
-)
+@pytest.mark.parametrize("submodel_id", _ALL_SUBMODEL_IDS)
 def test_cellml_2_builds(ds: nidus.Dataset, libcellml_module, submodel_id: str) -> None:
     from nidus.export import build_cellml
 
@@ -256,11 +337,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) == 4
+    assert len(paths_2) == 11
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) == 4
+    assert len(paths_1) == 11
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 
@@ -302,3 +383,80 @@ def test_write_physiocell(ds: nidus.Dataset, tmp_path: Path) -> None:
     assert path.name == "nidus-parameters.xml"
     assert path.exists()
     assert path.read_text().startswith("<?xml")
+
+
+# ---- Composed model ------------------------------------------------
+
+
+def test_composed_sbml_builds(ds: nidus.Dataset, libsbml_module) -> None:
+    from nidus.export import build_composed_sbml
+
+    xml = build_composed_sbml(ds)
+    assert "nidus_pregnancy_composed" in xml
+    # Cross-submodel outputs all present
+    for v in [
+        "placental_area_m2",
+        "cardiac_output_l_per_min",
+        "map_mmhg",
+        "uterine_flow_ml_per_min",
+        "plasma_volume_l",
+        "maternal_sat",
+        "umbilical_vein_po2_mmhg",
+        "fetal_sat",
+        "glut1_flux",
+        "glut3_flux",
+        "efw_g",
+    ]:
+        assert v in xml, f"missing composed output {v}"
+    # Re-parses cleanly
+    doc = libsbml_module.SBMLReader().readSBMLFromString(xml)
+    assert doc.getNumErrors() == 0
+
+
+def test_composed_sbml_round_trip_sanity(ds: nidus.Dataset, libsbml_module, tmp_path: Path) -> None:
+    """If tellurium is available, simulate the composed model and sanity-check."""
+    from nidus.export import write_composed_sbml
+
+    path = write_composed_sbml(ds, tmp_path)
+    try:
+        import tellurium as te  # type: ignore[import-untyped]
+    except ImportError:
+        pytest.skip("tellurium not installed")
+
+    r = te.loadSBMLModel(str(path))
+    r.t_weeks = 28.0
+    r.simulate(0, 1, 2)
+    # At ~28 weeks, plausibility checks:
+    assert 5.0 < r.cardiac_output_l_per_min < 9.0
+    assert 60.0 < r.map_mmhg < 100.0
+    assert 0.0 < r.maternal_sat < 1.0
+    assert 0.0 < r.fetal_sat < 1.0
+
+
+# ---- COMBINE archive -----------------------------------------------
+
+
+def test_combine_archive(ds: nidus.Dataset, libsbml_module, tmp_path: Path) -> None:
+    import zipfile
+
+    from nidus.export import write_combine_archive
+
+    out = write_combine_archive(ds, tmp_path / "nidus.omex")
+    assert out.exists() and out.suffix == ".omex"
+    with zipfile.ZipFile(out) as zf:
+        names = zf.namelist()
+        assert "manifest.xml" in names
+        assert "metadata.rdf" in names
+        assert "sbml/nidus_pregnancy_composed.xml" in names
+        assert "physicell/nidus-parameters.xml" in names
+        # Manifest references the composed model as master
+        manifest = zf.read("manifest.xml").decode()
+        assert 'master="true"' in manifest
+        assert "nidus_pregnancy_composed.xml" in manifest
+
+
+def test_combine_archive_default_extension(ds: nidus.Dataset, tmp_path: Path) -> None:
+    from nidus.export import write_combine_archive
+
+    out = write_combine_archive(ds, tmp_path / "no_ext")
+    assert out.suffix == ".omex"

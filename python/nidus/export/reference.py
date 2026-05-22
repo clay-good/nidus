@@ -34,40 +34,19 @@ def placental_area_logistic(
     """Logistic villous-surface-area growth.
 
     `A(t) = A0 + (Aterm - A0) / (1 + exp(-r*(t - t_mid)))`
-
-    Args:
-        t_weeks: gestational age(s) in weeks. Scalar or array.
-        initial_area_m2: surface area at the early-pregnancy floor.
-        term_area_m2: surface area at term plateau.
-        growth_rate_per_week: logistic rate parameter (1/week).
-        midpoint_week: gestational week at the curve midpoint.
-
-    Returns:
-        Surface area at each input week, in m^2.
     """
     t = np.asarray(t_weeks, dtype=np.float64)
     span = term_area_m2 - initial_area_m2
     return initial_area_m2 + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
 
 
-# ---- 2. Severinghaus O2-Hb dissociation ----------------------------
+# ---- 2. Severinghaus O2-Hb dissociation (adult) --------------------
 
 
 def severinghaus_o2_saturation(po2_mmhg: FloatArrayLike) -> NDArray[np.float64]:
     """Severinghaus 1979 (PMID 35496) equation 1.
 
     `S = ((PO2^3 + 150*PO2)^-1 * 23400 + 1)^-1`
-
-    The implicit P50 is 26.6 mmHg (the dataset's
-    `maternal_blood.o2_hb_p50_maternal`) and the implicit Hill
-    coefficient is ~2.7 (the dataset's
-    `maternal_blood.o2_hb_hill_coefficient_maternal`).
-
-    Args:
-        po2_mmhg: oxygen partial pressure(s) in mmHg, > 0.
-
-    Returns:
-        Fractional saturation in [0, 1].
     """
     p = np.asarray(po2_mmhg, dtype=np.float64)
     if np.any(p <= 0):
@@ -75,35 +54,7 @@ def severinghaus_o2_saturation(po2_mmhg: FloatArrayLike) -> NDArray[np.float64]:
     return 1.0 / ((p**3 + 150.0 * p) ** -1 * 23400.0 + 1.0)
 
 
-# ---- 3. Michaelis-Menten glucose transport (GLUT1) -----------------
-
-
-def glut1_michaelis_menten(
-    substrate_mmol_per_l: FloatArrayLike,
-    *,
-    km_mmol_per_l: float,
-    vmax_per_area: float,
-) -> NDArray[np.float64]:
-    """Standard Michaelis-Menten rate law.
-
-    `V = Vmax * [S] / (Km + [S])`
-
-    Args:
-        substrate_mmol_per_l: glucose concentration(s) in mmol/L.
-        km_mmol_per_l: GLUT1 Michaelis constant (nidus
-            `placental_glucose.glucose_glut1_km_mmol_per_l`).
-        vmax_per_area: GLUT1 maximum flux per villous-surface-area
-            (nidus `placental_glucose.glucose_glut1_vmax_per_area_*`).
-
-    Returns:
-        Flux per villous-surface-area at each substrate concentration,
-        in the same units as `vmax_per_area`.
-    """
-    s = np.asarray(substrate_mmol_per_l, dtype=np.float64)
-    return vmax_per_area * s / (km_mmol_per_l + s)
-
-
-# ---- 4. Fetal HbF dissociation (Bauer 1969 left-shift) -------------
+# ---- 3. Fetal HbF dissociation (Bauer 1969 left-shift) -------------
 
 
 def fetal_hbf_o2_saturation(
@@ -115,23 +66,174 @@ def fetal_hbf_o2_saturation(
     """Hill-form dissociation for fetal HbF.
 
     `S = (PO2/P50)^n / (1 + (PO2/P50)^n)`
-
-    HbF P50 ~19.5 mmHg (Bauer 1969, PMID 4980905) — the leftward shift
-    relative to adult HbA enables fetal O2 extraction from the low-PO2
-    intervillous blood.
-
-    Args:
-        po2_mmhg: PO2 in mmHg, > 0.
-        p50_mmhg: HbF P50 (default 19.5; nidus
-            `fetal_metabolism.fetal_p50_mmhg`).
-        hill_coefficient: HbF Hill coefficient (default 2.85 per Bauer
-            1969; subtly higher than HbA's 2.7).
-
-    Returns:
-        Fractional saturation in [0, 1].
     """
     p = np.asarray(po2_mmhg, dtype=np.float64)
     if np.any(p <= 0):
         raise ValueError("PO2 must be strictly positive")
     ratio = (p / p50_mmhg) ** hill_coefficient
     return ratio / (1.0 + ratio)
+
+
+# ---- 4. Michaelis-Menten glucose transport (GLUT1, GLUT3) ----------
+
+
+def michaelis_menten_flux(
+    substrate_mmol_per_l: FloatArrayLike,
+    *,
+    km_mmol_per_l: float,
+    vmax_per_area: float,
+) -> NDArray[np.float64]:
+    """Standard Michaelis-Menten rate law.
+
+    `V = Vmax * [S] / (Km + [S])`
+
+    Same form for GLUT1 (lower-affinity, higher Vmax) and GLUT3
+    (higher-affinity, lower Vmax).
+    """
+    s = np.asarray(substrate_mmol_per_l, dtype=np.float64)
+    return vmax_per_area * s / (km_mmol_per_l + s)
+
+
+# Backward-compatible alias used by earlier tests.
+def glut1_michaelis_menten(
+    substrate_mmol_per_l: FloatArrayLike,
+    *,
+    km_mmol_per_l: float,
+    vmax_per_area: float,
+) -> NDArray[np.float64]:
+    return michaelis_menten_flux(
+        substrate_mmol_per_l,
+        km_mmol_per_l=km_mmol_per_l,
+        vmax_per_area=vmax_per_area,
+    )
+
+
+# ---- 5. Maternal cardiac output Gaussian trajectory ----------------
+
+
+def maternal_cardiac_output(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_l_per_min: float,
+    peak_excess_l_per_min: float,
+    peak_week: float,
+    spread_weeks: float,
+) -> NDArray[np.float64]:
+    """Gaussian-bump cardiac-output trajectory.
+
+    `CO(t) = baseline + peak_excess * exp(-((t - peak_week)/spread)^2 / 2)`
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    z = (t - peak_week) / spread_weeks
+    return baseline_l_per_min + peak_excess_l_per_min * np.exp(-(z**2) / 2.0)
+
+
+# ---- 6. Maternal MAP Gaussian-nadir trajectory ---------------------
+
+
+def maternal_map(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_mmhg: float,
+    nadir_drop_mmhg: float,
+    nadir_week: float,
+    spread_weeks: float,
+) -> NDArray[np.float64]:
+    """Gaussian-nadir MAP trajectory.
+
+    `MAP(t) = baseline - nadir_drop * exp(-((t - nadir_week)/spread)^2 / 2)`
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    z = (t - nadir_week) / spread_weeks
+    return baseline_mmhg - nadir_drop_mmhg * np.exp(-(z**2) / 2.0)
+
+
+# ---- 7. Uterine-artery flow logistic growth ------------------------
+
+
+def uterine_artery_flow(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ml_per_min: float,
+    term_ml_per_min: float,
+    growth_rate_per_week: float,
+    midpoint_week: float = 24.0,
+) -> NDArray[np.float64]:
+    """Logistic growth of uterine-artery flow.
+
+    `Q(t) = baseline + (term - baseline) / (1 + exp(-r*(t - t_mid)))`
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_ml_per_min - baseline_ml_per_min
+    return baseline_ml_per_min + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+# ---- 8. Placental O2 venous equilibrator ---------------------------
+
+
+def placental_o2_equilibrator(
+    maternal_intervillous_po2_mmhg: FloatArrayLike,
+    *,
+    max_equilibration: float,
+) -> NDArray[np.float64]:
+    """Algebraic equilibrium: umbilical vein PO2 = intervillous PO2 * f.
+
+    The `max_equilibration` parameter is the fraction of the maternal-
+    side intervillous PO2 that the umbilical vein blood reaches at
+    equilibrium (typically ~0.6-0.8 in a healthy term placenta).
+    """
+    p = np.asarray(maternal_intervillous_po2_mmhg, dtype=np.float64)
+    if np.any(p < 0):
+        raise ValueError("intervillous PO2 must be non-negative")
+    return p * max_equilibration
+
+
+# ---- 9. Plasma volume sigmoidal expansion --------------------------
+
+
+def plasma_volume_expansion(
+    t_weeks: FloatArrayLike,
+    *,
+    early_l: float,
+    term_l: float,
+    growth_rate_per_week: float = 0.2,
+    midpoint_week: float = 22.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal plasma-volume trajectory.
+
+    `PV(t) = early + (term - early) / (1 + exp(-r*(t - t_mid)))`
+
+    Anchored to Bernstein 2001's 12-week value (early_l) and de Haas
+    2017's term value (term_l).
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_l - early_l
+    return early_l + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+# ---- 10. Hadlock IV fetal weight regression ------------------------
+
+
+def hadlock_fetal_weight(
+    *,
+    bpd_mm: float,
+    hc_mm: float,
+    ac_mm: float,
+    fl_mm: float,
+    intercept: float = 1.3596,
+) -> float:
+    """Hadlock 1991 four-parameter fetal-weight estimator.
+
+    `log10(EFW) = a + 0.0064*HC + 0.0424*AC + 0.174*FL + 0.00061*BPD*AC - 0.00386*AC*FL`
+
+    Returns weight in grams.
+    """
+    # Hadlock's coefficients use cm; convert mm → cm
+    bpd = bpd_mm / 10.0
+    hc = hc_mm / 10.0
+    ac = ac_mm / 10.0
+    fl = fl_mm / 10.0
+    log10_w = (
+        intercept + 0.0064 * hc + 0.0424 * ac + 0.174 * fl + 0.00061 * bpd * ac - 0.00386 * ac * fl
+    )
+    return float(10**log10_w)

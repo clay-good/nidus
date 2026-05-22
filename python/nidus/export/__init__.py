@@ -29,6 +29,8 @@ generators on the same dataset version produces byte-identical output.
 from __future__ import annotations
 
 from nidus.export.cellml import build_cellml, write_cellml
+from nidus.export.combine import write_combine_archive
+from nidus.export.composed import build_composed_sbml, write_composed_sbml
 from nidus.export.physiocell import build_physiocell_params, write_physiocell
 from nidus.export.registry import SUBMODELS, list_submodels
 from nidus.export.sbml import build_sbml, write_sbml
@@ -36,10 +38,13 @@ from nidus.export.sbml import build_sbml, write_sbml
 __all__ = [
     "SUBMODELS",
     "build_cellml",
+    "build_composed_sbml",
     "build_physiocell_params",
     "build_sbml",
     "list_submodels",
     "write_cellml",
+    "write_combine_archive",
+    "write_composed_sbml",
     "write_physiocell",
     "write_sbml",
 ]

@@ -2,19 +2,27 @@
 
 ## Status
 
-**Implementation in progress.** First four submodels (logistic
-placental growth, Severinghaus adult O2-Hb, fetal HbF dissociation,
-Michaelis-Menten GLUT1) ship to all three formats — SBML L3v2,
-CellML 2.0 with 1.1 fallback, PhysioCell `parameters.xml`. The
-`nidus export --format {sbml,cellml,physiocell}` CLI is live, covered
-by 26 tests, with libSBML consistency-check pass and round-trip
-numerical validation against pure-NumPy reference kernels.
+**Code-complete.** All 11 submodels ship to all three formats:
+SBML L3v2 (with libSBML consistency-check pass), CellML 2.0 with
+1.1 fallback, and PhysioCell `<user_parameters>`. The composed
+top-level SBML pregnancy model wires every submodel through a
+shared gestational-time axis. COMBINE archive (`.omex`) bundles
+SBML + CellML + PhysioCell + provenance metadata in a single file.
+A minimal real PhysioCell tissue example (placental villous slice
+with BioFVM diffusion + GLUT1/GLUT3 transport) lives in
+`docs/examples/physicell_placental_villous/`. The CLI is live:
 
-Remaining for v0.4.0 release: the other ~6 submodels, top-level
-composed pregnancy model (SBML `comp` + CellML imports), COMBINE
-archive bundling, BioModels submission, Physiome workspace creation,
-PhysioCell real tissue-simulation example, PR to
-`MathCancer/PhysiCell-tutorials`, outreach essay update.
+    nidus export --format {sbml,cellml,physiocell,composed,omex} [--output PATH]
+
+50+ tests cover registry consistency, reference kernels, SBML
+build + parse, CellML 2.0/1.1, PhysioCell parameter export,
+composed-model wiring, and COMBINE archive structure.
+
+Remaining for the formal v0.4.0 cut (out of scope for the engineering
+work): BioModels Database submission, Physiome Model Repository
+workspace creation, PR to `MathCancer/PhysiCell-tutorials`, Zenodo
+deposit. Those are submission/social steps — the export code paths
+they depend on are in place.
 
 ## TL;DR
 

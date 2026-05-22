@@ -75,6 +75,19 @@ def _ensure_units(model: libcellml.Model) -> None:
         model.addUnits(u)
 
 
+def _ci(name: str) -> str:
+    return f"<ci>{name}</ci>"
+
+
+def _cn(val: str | float, units: str = "dimensionless") -> str:
+    return f'<cn cellml:units="{units}">{val}</cn>'
+
+
+def _apply(op: str, *args: str) -> str:
+    inner = "\n".join(args)
+    return f"<apply>\n<{op}/>\n{inner}\n</apply>"
+
+
 # ---- Submodel constructors -----------------------------------------
 
 
@@ -311,6 +324,362 @@ def _build_placental_glucose_glut1(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _build_mm_glut(ds: Dataset, sm_id: str, km_pid: str, vmax_pid: str) -> libcellml.Model:
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    km = ds[km_pid]
+    vmax = ds[vmax_pid]
+
+    _add_variable(comp, "substrate_mmol_per_l", units="mmol_per_l", initial_value="5")
+    _add_variable(
+        comp, parameter_id_to_sbml(km.id), units="mmol_per_l", initial_value=str(km.value.central)
+    )
+    _add_variable(
+        comp,
+        parameter_id_to_sbml(vmax.id),
+        units="dimensionless",
+        initial_value=str(vmax.value.central),
+    )
+    _add_variable(comp, "flux", units="dimensionless", initial_value="0")
+
+    km_id = parameter_id_to_sbml(km.id)
+    vmax_id = parameter_id_to_sbml(vmax.id)
+    rhs = _apply(
+        "divide",
+        _apply("times", _ci(vmax_id), _ci("substrate_mmol_per_l")),
+        _apply("plus", _ci(km_id), _ci("substrate_mmol_per_l")),
+    )
+    comp.setMath(_mathml(_apply_assign("flux", rhs)))
+    return model
+
+
+def _build_placental_glucose_glut3(ds: Dataset) -> libcellml.Model:
+    return _build_mm_glut(
+        ds,
+        "placental_glucose_glut3",
+        "placental_glucose.glucose_glut3_km_mmol_per_l",
+        "placental_glucose.glucose_glut3_vmax_per_area_mmol_per_min_per_m2",
+    )
+
+
+def _build_gaussian(
+    ds: Dataset,
+    sm_id: str,
+    *,
+    baseline_pid: str,
+    amplitude_pid: str,
+    center_pid: str,
+    spread_pid: str,
+    output_name: str,
+    sign: str,  # "plus" for bump, "minus" for nadir
+) -> libcellml.Model:
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds[baseline_pid]
+    amp = ds[amplitude_pid]
+    center = ds[center_pid]
+    spread = ds[spread_pid]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    for p in (baseline, amp, center, spread):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, output_name, units="dimensionless", initial_value="0")
+
+    bid = parameter_id_to_sbml(baseline.id)
+    aid = parameter_id_to_sbml(amp.id)
+    cid = parameter_id_to_sbml(center.id)
+    sid = parameter_id_to_sbml(spread.id)
+    # z = (t - center) / spread
+    z = _apply("divide", _apply("minus", _ci("t_weeks"), _ci(cid)), _ci(sid))
+    # bump = amp * exp(-z^2 / 2)
+    bump = _apply(
+        "times",
+        _ci(aid),
+        _apply(
+            "exp",
+            _apply(
+                "divide",
+                _apply("minus", _apply("power", z, _cn("2"))),
+                _cn("2"),
+            ),
+        ),
+    )
+    rhs = _apply(sign, _ci(bid), bump)
+    comp.setMath(_mathml(_apply_assign(output_name, rhs)))
+    return model
+
+
+def _build_maternal_cardiac_output(ds: Dataset) -> libcellml.Model:
+    return _build_gaussian(
+        ds,
+        "maternal_cardiac_output_trajectory",
+        baseline_pid="maternal_cardiovascular.baseline_cardiac_output_l_per_min",
+        amplitude_pid="maternal_cardiovascular.peak_excess_cardiac_output_l_per_min",
+        center_pid="maternal_cardiovascular.cardiac_output_peak_week",
+        spread_pid="maternal_cardiovascular.cardiac_output_spread_weeks",
+        output_name="CO_t",
+        sign="plus",
+    )
+
+
+def _build_maternal_map(ds: Dataset) -> libcellml.Model:
+    return _build_gaussian(
+        ds,
+        "maternal_map_trajectory",
+        baseline_pid="maternal_cardiovascular.baseline_map_mmhg",
+        amplitude_pid="maternal_cardiovascular.map_nadir_drop_mmhg",
+        center_pid="maternal_cardiovascular.map_nadir_week",
+        spread_pid="maternal_cardiovascular.map_spread_weeks",
+        output_name="MAP_t",
+        sign="minus",
+    )
+
+
+def _build_logistic(
+    ds: Dataset,
+    sm_id: str,
+    *,
+    a0_pid: str,
+    k_pid: str,
+    r_pid: str,
+    midpoint: str | float,
+    midpoint_pid: str | None,
+    output_name: str,
+) -> libcellml.Model:
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    A0 = ds[a0_pid]
+    K = ds[k_pid]
+    r = ds[r_pid]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    for p in (A0, K, r):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    if midpoint_pid is None:
+        _add_variable(comp, "midpoint_week", units="dimensionless", initial_value=str(midpoint))
+        tmid_ref = "midpoint_week"
+    else:
+        tmid = ds[midpoint_pid]
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(tmid.id),
+            units="dimensionless",
+            initial_value=str(tmid.value.central),
+        )
+        tmid_ref = parameter_id_to_sbml(tmid.id)
+    _add_variable(comp, output_name, units="dimensionless", initial_value="0")
+
+    A0_id = parameter_id_to_sbml(A0.id)
+    K_id = parameter_id_to_sbml(K.id)
+    r_id = parameter_id_to_sbml(r.id)
+
+    # A0 + (K - A0) / (1 + exp(-r * (t - tmid)))
+    rhs = _apply(
+        "plus",
+        _ci(A0_id),
+        _apply(
+            "divide",
+            _apply("minus", _ci(K_id), _ci(A0_id)),
+            _apply(
+                "plus",
+                _cn("1"),
+                _apply(
+                    "exp",
+                    _apply(
+                        "minus",
+                        _apply(
+                            "times",
+                            _ci(r_id),
+                            _apply("minus", _ci("t_weeks"), _ci(tmid_ref)),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    )
+    comp.setMath(_mathml(_apply_assign(output_name, rhs)))
+    return model
+
+
+def _build_uterine_artery_flow(ds: Dataset) -> libcellml.Model:
+    return _build_logistic(
+        ds,
+        "uterine_artery_flow_logistic",
+        a0_pid="maternal_cardiovascular.baseline_uterine_flow_ml_per_min",
+        k_pid="maternal_cardiovascular.term_uterine_flow_ml_per_min",
+        r_pid="maternal_cardiovascular.uterine_flow_growth_rate_per_week",
+        midpoint=24.0,
+        midpoint_pid=None,
+        output_name="Q_t",
+    )
+
+
+def _build_plasma_volume_expansion(ds: Dataset) -> libcellml.Model:
+    sm = next(s for s in SUBMODELS if s.id == "plasma_volume_expansion")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    early = ds["maternal_blood.plasma_volume_early_l"]
+    term = ds["maternal_blood.plasma_volume_l"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "growth_rate_per_week", units="dimensionless", initial_value="0.2")
+    _add_variable(comp, "midpoint_week", units="dimensionless", initial_value="22")
+    _add_variable(
+        comp,
+        parameter_id_to_sbml(early.id),
+        units="dimensionless",
+        initial_value=str(early.value.central),
+    )
+    _add_variable(
+        comp,
+        parameter_id_to_sbml(term.id),
+        units="dimensionless",
+        initial_value=str(term.value.central),
+    )
+    _add_variable(comp, "PV_t", units="dimensionless", initial_value="0")
+
+    e_id = parameter_id_to_sbml(early.id)
+    t_id = parameter_id_to_sbml(term.id)
+    rhs = _apply(
+        "plus",
+        _ci(e_id),
+        _apply(
+            "divide",
+            _apply("minus", _ci(t_id), _ci(e_id)),
+            _apply(
+                "plus",
+                _cn("1"),
+                _apply(
+                    "exp",
+                    _apply(
+                        "minus",
+                        _apply(
+                            "times",
+                            _ci("growth_rate_per_week"),
+                            _apply("minus", _ci("t_weeks"), _ci("midpoint_week")),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    )
+    comp.setMath(_mathml(_apply_assign("PV_t", rhs)))
+    return model
+
+
+def _build_placental_o2_equilibrator(ds: Dataset) -> libcellml.Model:
+    sm = next(s for s in SUBMODELS if s.id == "placental_o2_equilibrator")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    mat = ds["placental_gas_exchange.maternal_intervillous_po2_mmhg"]
+    f_eq = ds["placental_gas_exchange.gas_max_equilibration"]
+    _add_variable(
+        comp, parameter_id_to_sbml(mat.id), units="mmHg", initial_value=str(mat.value.central)
+    )
+    _add_variable(
+        comp,
+        parameter_id_to_sbml(f_eq.id),
+        units="dimensionless",
+        initial_value=str(f_eq.value.central),
+    )
+    _add_variable(comp, "umbilical_vein_po2_mmhg", units="mmHg", initial_value="0")
+
+    rhs = _apply(
+        "times",
+        _ci(parameter_id_to_sbml(mat.id)),
+        _ci(parameter_id_to_sbml(f_eq.id)),
+    )
+    comp.setMath(_mathml(_apply_assign("umbilical_vein_po2_mmhg", rhs)))
+    return model
+
+
+def _build_hadlock_fetal_weight(ds: Dataset) -> libcellml.Model:
+    sm = next(s for s in SUBMODELS if s.id == "hadlock_fetal_weight")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    coef = ds["fetal_growth.hadlock_coefficient"]
+    _add_variable(comp, "bpd_mm", units="dimensionless", initial_value="80")
+    _add_variable(comp, "hc_mm", units="dimensionless", initial_value="300")
+    _add_variable(comp, "ac_mm", units="dimensionless", initial_value="300")
+    _add_variable(comp, "fl_mm", units="dimensionless", initial_value="60")
+    _add_variable(
+        comp,
+        parameter_id_to_sbml(coef.id),
+        units="dimensionless",
+        initial_value=str(coef.value.central),
+    )
+    _add_variable(comp, "efw_g", units="dimensionless", initial_value="0")
+
+    coef_id = parameter_id_to_sbml(coef.id)
+    # cm values
+    hc_cm = _apply("divide", _ci("hc_mm"), _cn("10"))
+    ac_cm = _apply("divide", _ci("ac_mm"), _cn("10"))
+    fl_cm = _apply("divide", _ci("fl_mm"), _cn("10"))
+    bpd_cm = _apply("divide", _ci("bpd_mm"), _cn("10"))
+
+    log_w = _apply(
+        "plus",
+        _ci(coef_id),
+        _apply("times", _cn("0.0064"), hc_cm),
+        _apply("times", _cn("0.0424"), ac_cm),
+        _apply("times", _cn("0.174"), fl_cm),
+        _apply("times", _cn("0.00061"), bpd_cm, ac_cm),
+        _apply("times", _cn("-0.00386"), ac_cm, fl_cm),
+    )
+    rhs = _apply("power", _cn("10"), log_w)
+    comp.setMath(_mathml(_apply_assign("efw_g", rhs)))
+    return model
+
+
 # ---- Public API ----------------------------------------------------
 
 _BUILDERS = {
@@ -318,6 +687,13 @@ _BUILDERS = {
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
     "o2hb_dissociation_fetal": _build_o2hb_dissociation_fetal,
     "placental_glucose_glut1": _build_placental_glucose_glut1,
+    "placental_glucose_glut3": _build_placental_glucose_glut3,
+    "maternal_cardiac_output_trajectory": _build_maternal_cardiac_output,
+    "maternal_map_trajectory": _build_maternal_map,
+    "uterine_artery_flow_logistic": _build_uterine_artery_flow,
+    "placental_o2_equilibrator": _build_placental_o2_equilibrator,
+    "plasma_volume_expansion": _build_plasma_volume_expansion,
+    "hadlock_fetal_weight": _build_hadlock_fetal_weight,
 }
 
 
