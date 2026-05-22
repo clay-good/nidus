@@ -680,6 +680,75 @@ def _build_hadlock_fetal_weight(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _build_gfr_logistic(ds: Dataset) -> libcellml.Model:
+    return _build_logistic(
+        ds,
+        "gfr_logistic_trajectory",
+        a0_pid="maternal_renal.baseline_gfr_ml_per_min",
+        k_pid="maternal_renal.gfr_ml_per_min",
+        r_pid="maternal_renal.gfr_logistic_rate_per_week",
+        midpoint=16.0,
+        midpoint_pid="maternal_renal.gfr_peak_week",
+        output_name="GFR_t",
+    )
+
+
+def _build_amniotic_fluid_volume(ds: Dataset) -> libcellml.Model:
+    """Gaussian-bump AFV trajectory.
+
+    The standard `_build_gaussian` helper expects an amplitude (peak
+    excess over baseline) parameter; the AFV dataset entries supply
+    the absolute peak instead, so the amplitude = peak - baseline
+    subtraction is performed inline.
+    """
+    sm = next(s for s in SUBMODELS if s.id == "amniotic_fluid_volume_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["amniotic_fluid.afv_early_baseline_ml"]
+    peak = ds["amniotic_fluid.afv_peak_ml"]
+    center = ds["amniotic_fluid.afv_peak_week"]
+    spread = ds["amniotic_fluid.afv_spread_weeks"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    for p in (baseline, peak, center, spread):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "AFV_t", units="dimensionless", initial_value="0")
+
+    bid = parameter_id_to_sbml(baseline.id)
+    pid_ = parameter_id_to_sbml(peak.id)
+    cid = parameter_id_to_sbml(center.id)
+    sid = parameter_id_to_sbml(spread.id)
+    # z = (t - center) / spread
+    z = _apply("divide", _apply("minus", _ci("t_weeks"), _ci(cid)), _ci(sid))
+    # bump = (peak - baseline) * exp(-z^2 / 2)
+    bump = _apply(
+        "times",
+        _apply("minus", _ci(pid_), _ci(bid)),
+        _apply(
+            "exp",
+            _apply(
+                "divide",
+                _apply("minus", _apply("power", z, _cn("2"))),
+                _cn("2"),
+            ),
+        ),
+    )
+    rhs = _apply("plus", _ci(bid), bump)
+    comp.setMath(_mathml(_apply_assign("AFV_t", rhs)))
+    return model
+
+
 # ---- Public API ----------------------------------------------------
 
 _BUILDERS = {
@@ -694,6 +763,8 @@ _BUILDERS = {
     "placental_o2_equilibrator": _build_placental_o2_equilibrator,
     "plasma_volume_expansion": _build_plasma_volume_expansion,
     "hadlock_fetal_weight": _build_hadlock_fetal_weight,
+    "gfr_logistic_trajectory": _build_gfr_logistic,
+    "amniotic_fluid_volume_trajectory": _build_amniotic_fluid_volume,
 }
 
 

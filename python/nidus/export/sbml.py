@@ -546,6 +546,80 @@ def _html_notes(text: str) -> str:
 
 # ---- Public API ----------------------------------------------------
 
+def _build_gfr_logistic(ds: Dataset) -> libsbml.SBMLDocument:
+    """Logistic GFR trajectory across gestation."""
+    sm = next(s for s in SUBMODELS if s.id == "gfr_logistic_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_renal.baseline_gfr_ml_per_min"]
+    peak = ds["maternal_renal.gfr_ml_per_min"]
+    rate = ds["maternal_renal.gfr_logistic_rate_per_week"]
+    peak_week = ds["maternal_renal.gfr_peak_week"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    for p in (baseline, peak, rate, peak_week):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "GFR_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("GFR_t")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(baseline.id)} + "
+        f"({parameter_id_to_sbml(peak.id)} - {parameter_id_to_sbml(baseline.id)}) / "
+        f"(1 + exp(-{parameter_id_to_sbml(rate.id)} * "
+        f"(t_weeks - {parameter_id_to_sbml(peak_week.id)})))"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_amniotic_fluid_volume(ds: Dataset) -> libsbml.SBMLDocument:
+    """Gaussian-bump amniotic fluid volume trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "amniotic_fluid_volume_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["amniotic_fluid.afv_early_baseline_ml"]
+    peak = ds["amniotic_fluid.afv_peak_ml"]
+    peak_week = ds["amniotic_fluid.afv_peak_week"]
+    spread = ds["amniotic_fluid.afv_spread_weeks"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    for p in (baseline, peak, peak_week, spread):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "AFV_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("AFV_t")
+    math_ast = libsbml.parseL3Formula(
+        f"{parameter_id_to_sbml(baseline.id)} + "
+        f"({parameter_id_to_sbml(peak.id)} - {parameter_id_to_sbml(baseline.id)}) * "
+        f"exp(-((t_weeks - {parameter_id_to_sbml(peak_week.id)}) / "
+        f"{parameter_id_to_sbml(spread.id)})^2 / 2)"
+    )
+    rule.setMath(math_ast)
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 _BUILDERS = {
     "placental_villous_growth": _build_placental_villous_growth,
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
@@ -558,6 +632,8 @@ _BUILDERS = {
     "placental_o2_equilibrator": _build_placental_o2_equilibrator,
     "plasma_volume_expansion": _build_plasma_volume_expansion,
     "hadlock_fetal_weight": _build_hadlock_fetal_weight,
+    "gfr_logistic_trajectory": _build_gfr_logistic,
+    "amniotic_fluid_volume_trajectory": _build_amniotic_fluid_volume,
 }
 
 

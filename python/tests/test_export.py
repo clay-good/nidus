@@ -45,6 +45,8 @@ def test_registry_lists_submodels() -> None:
         "placental_o2_equilibrator",
         "plasma_volume_expansion",
         "hadlock_fetal_weight",
+        "gfr_logistic_trajectory",
+        "amniotic_fluid_volume_trajectory",
     } == ids
 
 
@@ -122,6 +124,48 @@ def test_logistic_growth_endpoints() -> None:
     assert a0 < very_early < a0 + 0.5
     # Very-late: close to k
     assert very_late == pytest.approx(k, abs=0.5)
+
+
+def test_gfr_logistic_endpoints() -> None:
+    from nidus.export.reference import maternal_gfr_logistic
+
+    early = float(maternal_gfr_logistic(
+        0.0,
+        baseline_ml_per_min=100.0,
+        peak_ml_per_min=150.0,
+        growth_rate_per_week=0.4,
+        peak_week=16.0,
+    ))
+    late = float(maternal_gfr_logistic(
+        40.0,
+        baseline_ml_per_min=100.0,
+        peak_ml_per_min=150.0,
+        growth_rate_per_week=0.4,
+        peak_week=16.0,
+    ))
+    # Very early: close to baseline; very late: close to plateau.
+    assert 100.0 < early < 101.0
+    assert late == pytest.approx(150.0, abs=0.5)
+
+
+def test_amniotic_fluid_volume_shape() -> None:
+    from nidus.export.reference import amniotic_fluid_volume
+
+    kwargs = dict(
+        early_baseline_ml=100.0,
+        peak_ml=800.0,
+        peak_week=33.0,
+        spread_weeks=9.0,
+    )
+    early = float(amniotic_fluid_volume(12.0, **kwargs))  # type: ignore[arg-type]
+    peak = float(amniotic_fluid_volume(33.0, **kwargs))  # type: ignore[arg-type]
+    term = float(amniotic_fluid_volume(40.0, **kwargs))  # type: ignore[arg-type]
+    # At peak week, AFV equals the published peak.
+    assert peak == pytest.approx(800.0)
+    # At 12 weeks (~21w before peak), well below peak.
+    assert early < 400.0
+    # At term (~7w after peak), declining but still well above early.
+    assert 500.0 < term < 800.0
 
 
 def test_glut1_michaelis_menten_saturating() -> None:
@@ -234,6 +278,8 @@ _ALL_SUBMODEL_IDS = [
     "placental_o2_equilibrator",
     "plasma_volume_expansion",
     "hadlock_fetal_weight",
+    "gfr_logistic_trajectory",
+    "amniotic_fluid_volume_trajectory",
 ]
 
 
@@ -297,7 +343,8 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
     from nidus.export import SUBMODELS, write_sbml
 
     paths = write_sbml(ds, tmp_path)
-    assert len(paths) == len(SUBMODELS) == 11
+    assert len(paths) == len(SUBMODELS)
+    assert len(paths) >= 13
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -337,11 +384,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) == 11
+    assert len(paths_2) >= 13
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) == 11
+    assert len(paths_1) >= 13
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

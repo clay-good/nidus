@@ -204,6 +204,50 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="L",
     ),
     Submodel(
+        id="gfr_logistic_trajectory",
+        name="Maternal GFR logistic trajectory",
+        description=(
+            "Logistic-rise trajectory for maternal glomerular "
+            "filtration rate across gestation: GFR(t) = baseline + "
+            "(peak - baseline) / (1 + exp(-r*(t - t_peak))). Anchored "
+            "to Conrad 2001 (PMID 11489744) review of relaxin-mediated "
+            "renal vasodilation and the ~50% rise above non-pregnant "
+            "baseline. Logistic is an approximation; the true curve "
+            "plateaus and declines slightly toward term."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_renal.baseline_gfr_ml_per_min",
+            "maternal_renal.gfr_ml_per_min",
+            "maternal_renal.gfr_logistic_rate_per_week",
+            "maternal_renal.gfr_peak_week",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL/min",
+    ),
+    Submodel(
+        id="amniotic_fluid_volume_trajectory",
+        name="Amniotic fluid volume trajectory (Gaussian-bump approximation)",
+        description=(
+            "Gaussian-bump approximation to the Brace & Wolf 1989 "
+            "(PMID 2782359) amniotic-fluid-volume curve: AFV(t) = "
+            "baseline + amplitude * exp(-((t - t_peak)/sigma)^2 / 2), "
+            "where amplitude = peak - baseline. Peaks at ~33 weeks "
+            "(~800 mL) and declines symmetrically. The published "
+            "reference is piecewise; this Gaussian approximation "
+            "carries the worst-input Tier C from the empirical spread."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "amniotic_fluid.afv_early_baseline_ml",
+            "amniotic_fluid.afv_peak_ml",
+            "amniotic_fluid.afv_peak_week",
+            "amniotic_fluid.afv_spread_weeks",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

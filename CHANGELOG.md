@@ -9,6 +9,28 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Two new Phase A submodels** with full export support (SBML L3v2 +
+  CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the registry to
+  **13 submodels**:
+  - `gfr_logistic_trajectory` — logistic maternal GFR rise from
+    baseline (~100 mL/min) to plateau (~150 mL/min). Inputs from the
+    Phase 1 maternal_renal expansion (baseline_gfr, gfr_ml_per_min,
+    gfr_peak_week, gfr_logistic_rate). Conrad 2001 mechanistic
+    citation.
+  - `amniotic_fluid_volume_trajectory` — Gaussian-bump approximation
+    to the Brace & Wolf 1989 (PMID 2782359) curve. Inputs from the
+    new `amniotic_fluid` subsystem (peak, peak week, plus two added
+    parameters: early baseline and Gaussian spread). Worst-input
+    tier is C (the spread parameter); the submodel inherits Tier C
+    in exported annotations.
+- Reference-kernel functions `maternal_gfr_logistic` and
+  `amniotic_fluid_volume` in `nidus.export.reference`, parametrised
+  unit tests covering endpoint values and the Gaussian peak.
+- Parametrised SBML + CellML test coverage extended to the two new
+  submodels; `test_write_sbml_produces_all_files` and
+  `test_write_cellml_both_versions` updated to assert ≥13 outputs.
+
+
 - **Phase 1 + partial Phase 2 dataset expansion:** 70 → **138 parameters**
   across 13 subsystems (was 10). Three new subsystems land additively
   in the schema enum: `maternal_endocrine`, `placental_endocrine`,

@@ -214,6 +214,55 @@ def plasma_volume_expansion(
 # ---- 10. Hadlock IV fetal weight regression ------------------------
 
 
+def maternal_gfr_logistic(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ml_per_min: float,
+    peak_ml_per_min: float,
+    growth_rate_per_week: float,
+    peak_week: float,
+) -> NDArray[np.float64]:
+    """Logistic GFR trajectory across gestation.
+
+    `GFR(t) = baseline + (peak - baseline) / (1 + exp(-r*(t - t_peak)))`
+
+    Conrad 2001 (PMID 11489744) describes the relaxin-mediated rise to
+    ~50% above the non-pregnant baseline by early-mid pregnancy. The
+    logistic fit is an approximation; the true curve plateaus then
+    declines slightly toward term.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = peak_ml_per_min - baseline_ml_per_min
+    return baseline_ml_per_min + span / (1.0 + np.exp(-growth_rate_per_week * (t - peak_week)))
+
+
+def amniotic_fluid_volume(
+    t_weeks: FloatArrayLike,
+    *,
+    early_baseline_ml: float,
+    peak_ml: float,
+    peak_week: float,
+    spread_weeks: float,
+) -> NDArray[np.float64]:
+    """Gaussian-bump amniotic-fluid-volume trajectory.
+
+    `AFV(t) = early_baseline + (peak - early_baseline) * exp(-((t - t_peak)/sigma)^2 / 2)`
+
+    Approximation to the Brace & Wolf 1989 (PMID 2782359) curve. The
+    published curve is more accurately a piecewise polynomial — see
+    `amniotic_fluid.afv_spread_weeks` tier rationale. The Gaussian
+    bump matches the peak, declines symmetrically, and uses
+    `early_baseline_ml` for the early-pregnancy floor.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    amplitude = peak_ml - early_baseline_ml
+    z = (t - peak_week) / spread_weeks
+    return early_baseline_ml + amplitude * np.exp(-(z**2) / 2.0)
+
+
+# ---- 11. Hadlock IV fetal weight regression ------------------------
+
+
 def hadlock_fetal_weight(
     *,
     bpd_mm: float,

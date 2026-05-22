@@ -161,11 +161,13 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `placental_o2_equilibrator`            | Algebraic intervillous → umbilical-vein PO₂ equilibrium      | placental_gas_exchange     |
 | `plasma_volume_expansion`              | Sigmoidal (Bernstein 2001 + de Haas 2017 anchors)            | maternal_blood             |
 | `hadlock_fetal_weight`                 | Hadlock 1991 four-parameter biometry regression              | fetal_growth               |
-| `maternal_svr_trajectory`              | SVR(t) = MAP(t)·80/CO(t) — derived from CO and MAP fits       | maternal_cardiovascular    |
-| `minute_ventilation_trajectory`        | VE(t) = VT(t)·RR(t) — sigmoidal VT, near-constant RR          | maternal_respiratory       |
-| `gfr_logistic_trajectory`              | Logistic GFR rise to ~150 mL/min peak (Conrad 2001)          | maternal_renal             |
-| `amniotic_fluid_volume_trajectory`     | Piecewise polynomial (Brace & Wolf 1989)                     | amniotic_fluid             |
-| `fetal_heart_rate_trajectory`          | Sigmoidal fall ~170→140 bpm (Pildner von Steinburg 2013)     | fetal_circulation          |
+| `gfr_logistic_trajectory`              | Logistic GFR rise to ~150 mL/min plateau (Conrad 2001)       | maternal_renal             |
+| `amniotic_fluid_volume_trajectory`     | Gaussian-bump approximation to Brace & Wolf 1989 curve       | amniotic_fluid             |
+
+Additional Phase A/B submodels are catalogued in
+[`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md)
+(maternal SVR, minute ventilation, fetal heart rate, MCA-PI, etc.).
+SBML/CellML builders for those land in subsequent releases.
 
 Each submodel ships with a pure-NumPy reference kernel in [`python/nidus/export/reference.py`](python/nidus/export/reference.py) that the SBML/CellML exports are round-trip validated against.
 

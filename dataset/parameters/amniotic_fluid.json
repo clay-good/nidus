@@ -94,5 +94,55 @@
       "reviewer": "v0.4-phase1-expansion-script"
     },
     "primary_citation": "brace-1989-amniotic-fluid"
+  },
+  {
+    "id": "amniotic_fluid.afv_early_baseline_ml",
+    "name": "Amniotic fluid volume early-pregnancy baseline",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 100.0,
+      "units": "mL",
+      "low": 50.0,
+      "high": 200.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Brace & Wolf 1989: early-pregnancy (~12-14 weeks) AFV is ~50-200 mL; serves as the baseline anchor for the Gaussian-bump trajectory model. Wide CI reflects sparser early-pregnancy data.",
+    "citations": [
+      "brace-1989-amniotic-fluid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "brace-1989-amniotic-fluid",
+    "notes": "Used as the baseline offset in the amniotic_fluid_volume_trajectory submodel (Gaussian-bump approximation to the Brace & Wolf 1989 curve)."
+  },
+  {
+    "id": "amniotic_fluid.afv_spread_weeks",
+    "name": "Amniotic fluid volume Gaussian-bump spread (sigma)",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 9.0,
+      "units": "weeks",
+      "low": 7.0,
+      "high": 11.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C: empirical Gaussian-fit spread parameter. Approximates the Brace & Wolf 1989 curve shape; the true curve is closer to a piecewise polynomial. The Gaussian approximation is documented in the submodel's reference kernel.",
+    "citations": [
+      "brace-1989-amniotic-fluid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "brace-1989-amniotic-fluid",
+    "notes": "Single-fit value, not from a meta-analysis. The downstream submodel inherits Tier C from this parameter."
   }
 ]
