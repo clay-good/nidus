@@ -741,6 +741,119 @@ def _build_tidal_volume(ds: Dataset) -> libsbml.SBMLDocument:
     return doc
 
 
+def _build_heart_rate_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Sigmoidal HR trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "heart_rate_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_cardiovascular.baseline_heart_rate_bpm"]
+    term = ds["maternal_cardiovascular.term_heart_rate_bpm"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "growth_rate_per_week", 0.2, "dimensionless")
+    _add_parameter(model, "midpoint_week", 20.0, "dimensionless")
+    for p in (baseline, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "HR_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("HR_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(baseline.id)}) / "
+            f"(1 + exp(-growth_rate_per_week * (t_weeks - midpoint_week)))"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_stroke_volume_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Gaussian-bump stroke-volume trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "stroke_volume_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_cardiovascular.baseline_stroke_volume_ml"]
+    peak = ds["maternal_cardiovascular.peak_excess_stroke_volume_ml"]
+    peak_week = ds["maternal_cardiovascular.cardiac_output_peak_week"]
+    spread = ds["maternal_cardiovascular.cardiac_output_spread_weeks"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    for p in (baseline, peak, peak_week, spread):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "SV_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("SV_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"{parameter_id_to_sbml(peak.id)} * "
+            f"exp(-((t_weeks - {parameter_id_to_sbml(peak_week.id)}) / "
+            f"{parameter_id_to_sbml(spread.id)})^2 / 2)"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_rpf_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Gaussian-bump RPF trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "renal_plasma_flow_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_renal.renal_plasma_flow_baseline_ml_per_min"]
+    peak = ds["maternal_renal.renal_plasma_flow_peak_ml_per_min"]
+    peak_week = ds["maternal_renal.rpf_peak_week"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "spread_weeks", 8.0, "dimensionless")
+    for p in (baseline, peak, peak_week):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "RPF_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("RPF_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"({parameter_id_to_sbml(peak.id)} - {parameter_id_to_sbml(baseline.id)}) * "
+            f"exp(-((t_weeks - {parameter_id_to_sbml(peak_week.id)}) / "
+            f"spread_weeks)^2 / 2)"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 _BUILDERS = {
     "placental_villous_growth": _build_placental_villous_growth,
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
@@ -758,6 +871,9 @@ _BUILDERS = {
     "svr_trajectory": _build_svr_trajectory,
     "pao2_trajectory_linear": _build_pao2_trajectory,
     "tidal_volume_trajectory": _build_tidal_volume,
+    "heart_rate_trajectory": _build_heart_rate_trajectory,
+    "stroke_volume_trajectory": _build_stroke_volume_trajectory,
+    "renal_plasma_flow_trajectory": _build_rpf_trajectory,
 }
 
 

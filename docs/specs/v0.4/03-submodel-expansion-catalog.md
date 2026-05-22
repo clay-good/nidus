@@ -1,9 +1,9 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A in progress — 5 of 12 candidates shipped to the
+**Status:** Phase A in progress — 8 of 12 candidates shipped to the
 registry (GFR logistic, amniotic-fluid volume, SVR derived, PaO₂
-linear, tidal-volume sigmoidal). Companion to
-`02-parameter-expansion-roadmap.md`.
+linear, tidal-volume sigmoidal, HR sigmoidal, SV Gaussian, RPF
+Gaussian). Companion to `02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -48,7 +48,7 @@ These are submodels with strong citations whose inputs are already in
 the v0.3 dataset or are scheduled for Phase 1 of the parameter
 expansion roadmap. Each is ~30–80 lines of generator code.
 
-### 2.1 Maternal CO components (stroke volume × heart rate)
+### 2.1 Maternal CO components (stroke volume × heart rate) — **BOTH SHIPPED**
 
 - **Equation:** `CO(t) = SV(t) * HR(t)`
 - **Form:** Two Gaussian-bump trajectories whose product yields a
@@ -109,7 +109,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
   spread.
 - **Implementation cost:** ~40 LOC.
 
-### 2.7 Renal plasma flow trajectory
+### 2.7 Renal plasma flow trajectory — **SHIPPED**
 
 - **Equation:** Bell-shaped (rises early, drops near term).
 - **Citations:** Dunlop 1981 (PMID 7259294).

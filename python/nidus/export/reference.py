@@ -344,7 +344,71 @@ def maternal_tidal_volume(
     return baseline_ml + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
 
 
-# ---- 15. Hadlock IV fetal weight regression ------------------------
+# ---- 15. Maternal heart rate sigmoidal trajectory ------------------
+
+
+def maternal_heart_rate(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_bpm: float,
+    term_bpm: float,
+    growth_rate_per_week: float = 0.2,
+    midpoint_week: float = 20.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal heart-rate trajectory.
+
+    `HR(t) = baseline + (term - baseline) / (1 + exp(-r*(t - t_mid)))`
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_bpm - baseline_bpm
+    return baseline_bpm + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+# ---- 16. Maternal stroke volume Gaussian trajectory ----------------
+
+
+def maternal_stroke_volume(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ml: float,
+    peak_excess_ml: float,
+    peak_week: float,
+    spread_weeks: float,
+) -> NDArray[np.float64]:
+    """Gaussian-bump stroke-volume trajectory.
+
+    `SV(t) = baseline + peak_excess * exp(-((t - peak_week)/spread)^2 / 2)`
+
+    Peak week and spread are shared with the cardiac-output bump
+    (SV is the larger driver of the CO peak per Mahendru 2014).
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    z = (t - peak_week) / spread_weeks
+    return baseline_ml + peak_excess_ml * np.exp(-(z**2) / 2.0)
+
+
+# ---- 17. Renal plasma flow Gaussian trajectory ---------------------
+
+
+def renal_plasma_flow(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ml_per_min: float,
+    peak_ml_per_min: float,
+    peak_week: float,
+    spread_weeks: float = 8.0,
+) -> NDArray[np.float64]:
+    """Gaussian-bump RPF trajectory (Dunlop 1981).
+
+    `RPF(t) = baseline + (peak - baseline) * exp(-((t - peak_week)/spread)^2 / 2)`
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    amplitude = peak_ml_per_min - baseline_ml_per_min
+    z = (t - peak_week) / spread_weeks
+    return baseline_ml_per_min + amplitude * np.exp(-(z**2) / 2.0)
+
+
+# ---- 18. Hadlock IV fetal weight regression ------------------------
 
 
 def hadlock_fetal_weight(

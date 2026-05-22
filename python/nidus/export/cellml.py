@@ -912,6 +912,121 @@ def _build_tidal_volume(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _build_heart_rate_trajectory(ds: Dataset) -> libcellml.Model:
+    """Sigmoidal HR trajectory: HR = baseline + (term-baseline)/(1+exp(-r*(t-mid)))."""
+    sm = next(s for s in SUBMODELS if s.id == "heart_rate_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["maternal_cardiovascular.baseline_heart_rate_bpm"]
+    term = ds["maternal_cardiovascular.term_heart_rate_bpm"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "growth_rate_per_week", units="dimensionless", initial_value="0.2")
+    _add_variable(comp, "midpoint_week", units="dimensionless", initial_value="20")
+    for p in (baseline, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "HR_t", units="dimensionless", initial_value="0")
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    t_id = parameter_id_to_sbml(term.id)
+    rhs = _apply(
+        "plus",
+        _ci(b_id),
+        _apply(
+            "divide",
+            _apply("minus", _ci(t_id), _ci(b_id)),
+            _apply(
+                "plus",
+                _cn("1"),
+                _apply(
+                    "exp",
+                    _apply(
+                        "minus",
+                        _apply(
+                            "times",
+                            _ci("growth_rate_per_week"),
+                            _apply("minus", _ci("t_weeks"), _ci("midpoint_week")),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    )
+    comp.setMath(_mathml(_apply_assign("HR_t", rhs)))
+    return model
+
+
+def _build_stroke_volume_trajectory(ds: Dataset) -> libcellml.Model:
+    return _build_gaussian(
+        ds,
+        "stroke_volume_trajectory",
+        baseline_pid="maternal_cardiovascular.baseline_stroke_volume_ml",
+        amplitude_pid="maternal_cardiovascular.peak_excess_stroke_volume_ml",
+        center_pid="maternal_cardiovascular.cardiac_output_peak_week",
+        spread_pid="maternal_cardiovascular.cardiac_output_spread_weeks",
+        output_name="SV_t",
+        sign="plus",
+    )
+
+
+def _build_rpf_trajectory(ds: Dataset) -> libcellml.Model:
+    """Gaussian-bump RPF: amplitude = peak - baseline, fixed spread = 8 weeks."""
+    sm = next(s for s in SUBMODELS if s.id == "renal_plasma_flow_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["maternal_renal.renal_plasma_flow_baseline_ml_per_min"]
+    peak = ds["maternal_renal.renal_plasma_flow_peak_ml_per_min"]
+    peak_week = ds["maternal_renal.rpf_peak_week"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "spread_weeks", units="dimensionless", initial_value="8")
+    for p in (baseline, peak, peak_week):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "RPF_t", units="dimensionless", initial_value="0")
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    p_id = parameter_id_to_sbml(peak.id)
+    pw_id = parameter_id_to_sbml(peak_week.id)
+    z = _apply("divide", _apply("minus", _ci("t_weeks"), _ci(pw_id)), _ci("spread_weeks"))
+    bump = _apply(
+        "times",
+        _apply("minus", _ci(p_id), _ci(b_id)),
+        _apply(
+            "exp",
+            _apply(
+                "divide",
+                _apply("minus", _apply("power", z, _cn("2"))),
+                _cn("2"),
+            ),
+        ),
+    )
+    rhs = _apply("plus", _ci(b_id), bump)
+    comp.setMath(_mathml(_apply_assign("RPF_t", rhs)))
+    return model
+
+
 # ---- Public API ----------------------------------------------------
 
 _BUILDERS = {
@@ -931,6 +1046,9 @@ _BUILDERS = {
     "svr_trajectory": _build_svr_trajectory,
     "pao2_trajectory_linear": _build_pao2_trajectory,
     "tidal_volume_trajectory": _build_tidal_volume,
+    "heart_rate_trajectory": _build_heart_rate_trajectory,
+    "stroke_volume_trajectory": _build_stroke_volume_trajectory,
+    "renal_plasma_flow_trajectory": _build_rpf_trajectory,
 }
 
 

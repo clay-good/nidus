@@ -50,6 +50,9 @@ def test_registry_lists_submodels() -> None:
         "svr_trajectory",
         "pao2_trajectory_linear",
         "tidal_volume_trajectory",
+        "heart_rate_trajectory",
+        "stroke_volume_trajectory",
+        "renal_plasma_flow_trajectory",
     } == ids
 
 
@@ -291,6 +294,52 @@ def test_tidal_volume_sigmoid_endpoints() -> None:
     assert late == pytest.approx(650.0, abs=5.0)
 
 
+def test_heart_rate_trajectory_endpoints() -> None:
+    from nidus.export.reference import maternal_heart_rate
+
+    early = float(maternal_heart_rate(0.0, baseline_bpm=72.0, term_bpm=88.0))
+    late = float(maternal_heart_rate(40.0, baseline_bpm=72.0, term_bpm=88.0))
+    assert early == pytest.approx(72.0, abs=1.0)
+    assert late == pytest.approx(88.0, abs=1.0)
+
+
+def test_stroke_volume_gaussian_peak() -> None:
+    from nidus.export.reference import maternal_stroke_volume
+
+    peak = float(
+        maternal_stroke_volume(
+            24.0, baseline_ml=68.0, peak_excess_ml=12.0, peak_week=24.0, spread_weeks=8.0
+        )
+    )
+    early = float(
+        maternal_stroke_volume(
+            4.0, baseline_ml=68.0, peak_excess_ml=12.0, peak_week=24.0, spread_weeks=8.0
+        )
+    )
+    assert peak == pytest.approx(80.0)
+    assert early < peak
+
+
+def test_rpf_gaussian_peak_and_decline() -> None:
+    from nidus.export.reference import renal_plasma_flow
+
+    kwargs = dict(
+        baseline_ml_per_min=600.0,
+        peak_ml_per_min=1100.0,
+        peak_week=20.0,
+        spread_weeks=8.0,
+    )
+    peak = float(renal_plasma_flow(20.0, **kwargs))  # type: ignore[arg-type]
+    early = float(renal_plasma_flow(4.0, **kwargs))  # type: ignore[arg-type]
+    term = float(renal_plasma_flow(40.0, **kwargs))  # type: ignore[arg-type]
+    # At peak week, RPF == peak.
+    assert peak == pytest.approx(1100.0)
+    # RPF rises from baseline and declines toward term (Dunlop bell-shape).
+    assert early < peak
+    assert term < peak
+    assert term > early or term == pytest.approx(early, abs=50.0)
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -331,6 +380,9 @@ _ALL_SUBMODEL_IDS = [
     "svr_trajectory",
     "pao2_trajectory_linear",
     "tidal_volume_trajectory",
+    "heart_rate_trajectory",
+    "stroke_volume_trajectory",
+    "renal_plasma_flow_trajectory",
 ]
 
 
@@ -395,7 +447,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 16
+    assert len(paths) >= 19
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -435,11 +487,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 16
+    assert len(paths_2) >= 19
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 16
+    assert len(paths_1) >= 19
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

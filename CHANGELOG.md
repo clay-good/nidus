@@ -9,6 +9,25 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Three more Phase A submodels** with full export support
+  (SBML L3v2 + CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the
+  registry to **19 submodels**:
+  - `heart_rate_trajectory` — sigmoidal HR rise from non-pregnant
+    baseline to term using existing `baseline_heart_rate_bpm` and
+    `term_heart_rate_bpm` (Mahendru 2014, PMID 25053730).
+  - `stroke_volume_trajectory` — Gaussian-bump SV trajectory sharing
+    peak week and spread with the CO submodel, using existing
+    `baseline_stroke_volume_ml` and `peak_excess_stroke_volume_ml`.
+    SV is the larger driver of the CO peak (Mahendru 2014); the
+    product SV(t) * HR(t) reconstructs the CO bump.
+  - `renal_plasma_flow_trajectory` — Gaussian bell-shape RPF
+    trajectory with fixed 8-week spread, using existing
+    `renal_plasma_flow_baseline_ml_per_min`, `_peak_ml_per_min`, and
+    `rpf_peak_week` (Dunlop 1981, PMID 7259294).
+- Reference kernels `maternal_heart_rate`, `maternal_stroke_volume`,
+  and `renal_plasma_flow` with endpoint + peak sanity tests. No new
+  dataset parameters required for any of the three.
+
 - **Three additional Phase A submodels** with full export support
   (SBML L3v2 + CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the
   registry to **16 submodels**:

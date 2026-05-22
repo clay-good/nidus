@@ -311,6 +311,68 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="mL",
     ),
     Submodel(
+        id="heart_rate_trajectory",
+        name="Maternal heart rate trajectory (sigmoidal)",
+        description=(
+            "Sigmoidal HR rise across gestation: "
+            "HR(t) = baseline + (term - baseline) / "
+            "(1 + exp(-0.2*(t - 20))). Mahendru 2014 (PMID 25053730) "
+            "reports the ~10-20 bpm rise from non-pregnant baseline. "
+            "Multiplied by the stroke-volume trajectory it reproduces "
+            "the cardiac-output bump."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_cardiovascular.baseline_heart_rate_bpm",
+            "maternal_cardiovascular.term_heart_rate_bpm",
+        ),
+        independent_variable="t_weeks",
+        output_units="bpm",
+    ),
+    Submodel(
+        id="stroke_volume_trajectory",
+        name="Maternal stroke volume trajectory (Gaussian)",
+        description=(
+            "Gaussian-bump stroke-volume trajectory mirroring the "
+            "cardiac-output bump's peak week and spread: SV(t) = "
+            "baseline + peak_excess * exp(-((t - peak_week)/spread)^2 "
+            "/ 2). Mahendru 2014 (PMID 25053730) shows SV is the "
+            "larger contributor to the mid-late-pregnancy CO peak; "
+            "peak_week and spread are shared with the CO submodel."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_cardiovascular.baseline_stroke_volume_ml",
+            "maternal_cardiovascular.peak_excess_stroke_volume_ml",
+            "maternal_cardiovascular.cardiac_output_peak_week",
+            "maternal_cardiovascular.cardiac_output_spread_weeks",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL",
+    ),
+    Submodel(
+        id="renal_plasma_flow_trajectory",
+        name="Maternal renal plasma flow trajectory (Gaussian)",
+        description=(
+            "Gaussian-bump renal-plasma-flow trajectory: RPF(t) = "
+            "baseline + (peak - baseline) * exp(-((t - peak_week)/8)^2 "
+            "/ 2). Dunlop 1981 (PMID 7259294) longitudinal cohort: "
+            "RPF rises ~80% above non-pregnant baseline, peaks "
+            "mid-pregnancy, then declines toward term. The spread is "
+            "fixed at 8 weeks (no curated empirical spread parameter); "
+            "the curve matches Dunlop's published trajectory within "
+            "the longitudinal scatter."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_renal.renal_plasma_flow_baseline_ml_per_min",
+            "maternal_renal.renal_plasma_flow_peak_ml_per_min",
+            "maternal_renal.rpf_peak_week",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL/min",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(
