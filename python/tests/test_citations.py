@@ -5,8 +5,10 @@ from __future__ import annotations
 import nidus
 
 
-def test_all_32_citations_loaded(ds: nidus.Dataset) -> None:
-    assert len(ds.citations) == 33
+def test_citations_loaded(ds: nidus.Dataset) -> None:
+    # Lower bound; dataset grows monotonically across releases (see
+    # docs/specs/v0.4/02-parameter-expansion-roadmap.md).
+    assert len(ds.citations) >= 51
 
 
 def test_citation_by_key(ds: nidus.Dataset) -> None:

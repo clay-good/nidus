@@ -11,15 +11,21 @@ def test_load_returns_dataset(ds: nidus.Dataset) -> None:
     assert isinstance(ds, nidus.Dataset)
 
 
+MIN_PARAMETERS = 138
+MIN_CITATIONS = 51
+
+
 def test_dataset_has_expected_size(ds: nidus.Dataset) -> None:
-    assert len(ds) == 70
-    assert len(ds.citations) == 33
+    # Lower bounds; the dataset grows monotonically across releases
+    # (see docs/specs/v0.4/02-parameter-expansion-roadmap.md).
+    assert len(ds) >= MIN_PARAMETERS
+    assert len(ds.citations) >= MIN_CITATIONS
 
 
 def test_repr_mentions_counts(ds: nidus.Dataset) -> None:
     s = repr(ds)
-    assert "70" in s
-    assert "33" in s
+    assert str(len(ds)) in s
+    assert str(len(ds.citations)) in s
 
 
 def test_subsystems(ds: nidus.Dataset) -> None:
@@ -31,22 +37,26 @@ def test_subsystems(ds: nidus.Dataset) -> None:
         "maternal_cardiovascular",
         "maternal_renal",
         "maternal_respiratory",
+        "maternal_endocrine",
         "placental_gas_exchange",
         "placental_glucose",
         "placental_structure",
+        "placental_endocrine",
+        "amniotic_fluid",
     }
-    assert set(ds.subsystems()) == expected
+    assert expected.issubset(set(ds.subsystems()))
 
 
 def test_iter_yields_parameters(ds: nidus.Dataset) -> None:
     items = list(ds)
-    assert len(items) == 70
+    assert len(items) >= MIN_PARAMETERS
     assert all(isinstance(p, nidus.Parameter) for p in items)
 
 
 def test_ids_are_unique(ds: nidus.Dataset) -> None:
     ids = ds.ids()
-    assert len(ids) == len(set(ids)) == 70
+    assert len(ids) == len(set(ids))
+    assert len(ids) >= MIN_PARAMETERS
 
 
 def test_indexed_access(ds: nidus.Dataset) -> None:
@@ -80,7 +90,7 @@ def test_load_with_explicit_path() -> None:
 
     src = _default_dataset_dir()
     ds = nidus.load(path=src)
-    assert len(ds) == 70
+    assert len(ds) >= MIN_PARAMETERS
 
 
 def test_load_version_not_implemented() -> None:

@@ -55,7 +55,7 @@
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 331.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 331.0 g is similar but not identical \u2014 provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
   },
   {
     "id": "fetal_growth.efw_28w_g",
@@ -84,7 +84,7 @@
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 1141.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 1141.0 g is similar but not identical \u2014 provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
   },
   {
     "id": "fetal_growth.efw_36w_g",
@@ -113,7 +113,7 @@
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 2779.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 2779.0 g is similar but not identical \u2014 provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
   },
   {
     "id": "fetal_growth.efw_40w_g",
@@ -142,7 +142,7 @@
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "PROVENANCE NEEDS RESOLUTION: Hadlock 1991 abstract (PMID 1887021) reports term fetal weight 3619 g at 40 weeks with uniform CV ±12.7%. The dataset's 3567 ± 410 g (CV ~11.5%) is much closer to Hadlock's regression than to Buck Louis 2015's race-stratified 50th percentiles (white 3505, hispanic 3336, asian 3270, black 3260 at 39 weeks). The original v0.2 author may have used Hadlock 1991 values but cited Buck Louis 2015. Both citations are now listed; primary needs human re-check."
+    "notes": "PROVENANCE NEEDS RESOLUTION: Hadlock 1991 abstract (PMID 1887021) reports term fetal weight 3619 g at 40 weeks with uniform CV \u00b112.7%. The dataset's 3567 \u00b1 410 g (CV ~11.5%) is much closer to Hadlock's regression than to Buck Louis 2015's race-stratified 50th percentiles (white 3505, hispanic 3336, asian 3270, black 3260 at 39 weeks). The original v0.2 author may have used Hadlock 1991 values but cited Buck Louis 2015. Both citations are now listed; primary needs human re-check."
   },
   {
     "id": "fetal_growth.fl_28w_mm",
@@ -197,5 +197,846 @@
       "population": "Mixed obstetric ultrasound cohort"
     },
     "notes": "Hadlock 1991 weight standard constant in log10(g). Validated against the original sonographic cohort with low residual error. Used widely in clinical sonography software; the value 1.3596 is the commonly-published intercept of the Hadlock III equation."
+  },
+  {
+    "id": "fetal_growth.bpd_16w_mm",
+    "name": "Biparietal diameter at 16 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 35.0,
+      "units": "mm",
+      "low": 32.5,
+      "high": 37.5,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific biparietal diameter percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter 50th-percentile pooled value at week 16. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.bpd_20w_mm",
+    "name": "Biparietal diameter at 20 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 47.0,
+      "units": "mm",
+      "low": 44.0,
+      "high": 50.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific biparietal diameter percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter 50th-percentile pooled value at week 20. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.bpd_24w_mm",
+    "name": "Biparietal diameter at 24 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 61.0,
+      "units": "mm",
+      "low": 58.0,
+      "high": 64.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific biparietal diameter percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter 50th-percentile pooled value at week 24. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.bpd_32w_mm",
+    "name": "Biparietal diameter at 32 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 82.0,
+      "units": "mm",
+      "low": 78.5,
+      "high": 85.5,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific biparietal diameter percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter 50th-percentile pooled value at week 32. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.bpd_36w_mm",
+    "name": "Biparietal diameter at 36 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 89.0,
+      "units": "mm",
+      "low": 85.0,
+      "high": 93.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific biparietal diameter percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter 50th-percentile pooled value at week 36. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.bpd_40w_mm",
+    "name": "Biparietal diameter at 40 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 93.0,
+      "units": "mm",
+      "low": 89.0,
+      "high": 97.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific biparietal diameter percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Biparietal diameter 50th-percentile pooled value at week 40. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_16w_mm",
+    "name": "Head circumference at 16 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 124.0,
+      "units": "mm",
+      "low": 117.0,
+      "high": 131.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 16. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_20w_mm",
+    "name": "Head circumference at 20 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 175.0,
+      "units": "mm",
+      "low": 167.0,
+      "high": 183.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 20. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_24w_mm",
+    "name": "Head circumference at 24 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 225.0,
+      "units": "mm",
+      "low": 215.0,
+      "high": 235.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 24. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_28w_mm",
+    "name": "Head circumference at 28 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 267.0,
+      "units": "mm",
+      "low": 256.0,
+      "high": 278.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 28. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_32w_mm",
+    "name": "Head circumference at 32 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 297.0,
+      "units": "mm",
+      "low": 285.0,
+      "high": 309.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 32. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_36w_mm",
+    "name": "Head circumference at 36 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 322.0,
+      "units": "mm",
+      "low": 309.0,
+      "high": 335.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 36. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.hc_40w_mm",
+    "name": "Head circumference at 40 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 343.0,
+      "units": "mm",
+      "low": 329.0,
+      "high": 357.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific head circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Head circumference 50th-percentile pooled value at week 40. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_16w_mm",
+    "name": "Abdominal circumference at 16 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 105.0,
+      "units": "mm",
+      "low": 98.0,
+      "high": 112.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 16. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_20w_mm",
+    "name": "Abdominal circumference at 20 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 152.0,
+      "units": "mm",
+      "low": 143.0,
+      "high": 161.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 20. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_24w_mm",
+    "name": "Abdominal circumference at 24 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 198.0,
+      "units": "mm",
+      "low": 187.0,
+      "high": 209.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 24. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_28w_mm",
+    "name": "Abdominal circumference at 28 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 240.0,
+      "units": "mm",
+      "low": 227.0,
+      "high": 253.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 28. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_32w_mm",
+    "name": "Abdominal circumference at 32 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 282.0,
+      "units": "mm",
+      "low": 267.0,
+      "high": 297.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 32. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_36w_mm",
+    "name": "Abdominal circumference at 36 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 322.0,
+      "units": "mm",
+      "low": 305.0,
+      "high": 339.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 36. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.ac_40w_mm",
+    "name": "Abdominal circumference at 40 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 354.0,
+      "units": "mm",
+      "low": 335.0,
+      "high": 373.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific abdominal circumference percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Abdominal circumference 50th-percentile pooled value at week 40. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.fl_16w_mm",
+    "name": "Femur length at 16 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 21.0,
+      "units": "mm",
+      "low": 19.0,
+      "high": 23.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific femur length percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length 50th-percentile pooled value at week 16. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.fl_20w_mm",
+    "name": "Femur length at 20 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 33.0,
+      "units": "mm",
+      "low": 31.0,
+      "high": 35.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific femur length percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length 50th-percentile pooled value at week 20. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.fl_24w_mm",
+    "name": "Femur length at 24 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 44.0,
+      "units": "mm",
+      "low": 41.5,
+      "high": 46.5,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific femur length percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length 50th-percentile pooled value at week 24. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.fl_32w_mm",
+    "name": "Femur length at 32 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 62.0,
+      "units": "mm",
+      "low": 59.0,
+      "high": 65.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific femur length percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length 50th-percentile pooled value at week 32. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.fl_36w_mm",
+    "name": "Femur length at 36 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 70.0,
+      "units": "mm",
+      "low": 67.0,
+      "high": 73.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific femur length percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length 50th-percentile pooled value at week 36. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.fl_40w_mm",
+    "name": "Femur length at 40 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 76.0,
+      "units": "mm",
+      "low": 72.5,
+      "high": 79.5,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific femur length percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Femur length 50th-percentile pooled value at week 40. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.efw_16w_g",
+    "name": "Estimated fetal weight at 16 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 145.0,
+      "units": "g",
+      "low": 130.0,
+      "high": 160.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific estimated fetal weight percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Estimated fetal weight 50th-percentile pooled value at week 16. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.efw_24w_g",
+    "name": "Estimated fetal weight at 24 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 650.0,
+      "units": "g",
+      "low": 590.0,
+      "high": 715.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific estimated fetal weight percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Estimated fetal weight 50th-percentile pooled value at week 24. Provenance against Buck Louis 2015 source tables needs human re-verification."
+  },
+  {
+    "id": "fetal_growth.efw_32w_g",
+    "name": "Estimated fetal weight at 32 weeks",
+    "subsystem": "fetal_growth",
+    "value": {
+      "central": 1800.0,
+      "units": "g",
+      "low": 1640.0,
+      "high": 1965.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Buck Louis 2015 NICHD Fetal Growth Studies (n=2334 low-risk singletons; longitudinal ultrasound, Voluson E8). 50th-percentile pooled-cohort value at this gestational age. Hadlock 1991 provides the underlying biometry-to-weight regression. PDF re-verification of the specific estimated fetal weight percentile pending.",
+    "citations": [
+      "buck-louis-2015-nichd-growth",
+      "hadlock-1991-fetal-weight"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "buck-louis-2015-nichd-growth",
+    "applicability": {
+      "population": "NICHD Fetal Growth Studies singleton cohort"
+    },
+    "notes": "Estimated fetal weight 50th-percentile pooled value at week 32. Provenance against Buck Louis 2015 source tables needs human re-verification."
   }
 ]

@@ -1,0 +1,170 @@
+[
+  {
+    "id": "placental_endocrine.hcg_peak_miu_per_ml",
+    "name": "Maternal serum hCG at peak",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 100000.0,
+      "units": "mIU/mL",
+      "low": 50000.0,
+      "high": 200000.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Cole 2010 review and standard reproductive endocrinology: hCG peaks at ~50,000-200,000 mIU/mL around 10 weeks; the peak rescues the corpus luteum.",
+    "citations": [
+      "cole-2010-hcg"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "cole-2010-hcg"
+  },
+  {
+    "id": "placental_endocrine.hcg_peak_week",
+    "name": "Gestational week of peak hCG",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 10.0,
+      "units": "weeks",
+      "low": 8.0,
+      "high": 12.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Cole 2010: hCG peak ~10 weeks, before placental progesterone production assumes corpus luteum's role.",
+    "citations": [
+      "cole-2010-hcg"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "cole-2010-hcg"
+  },
+  {
+    "id": "placental_endocrine.hcg_term_miu_per_ml",
+    "name": "Maternal serum hCG at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 10000.0,
+      "units": "mIU/mL",
+      "low": 5000.0,
+      "high": 20000.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Cole 2010: hCG declines from peak to ~10,000 mIU/mL at term.",
+    "citations": [
+      "cole-2010-hcg"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "cole-2010-hcg"
+  },
+  {
+    "id": "placental_endocrine.hpl_term_ug_per_ml",
+    "name": "Maternal serum placental lactogen at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 7.0,
+      "units": "ug/mL",
+      "low": 5.0,
+      "high": 10.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Handwerger 1991 review: hPL rises linearly through gestation, ~5-10 ug/mL at term. Drives maternal insulin resistance and lipolysis.",
+    "citations": [
+      "handwerger-2010-hpl"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "handwerger-2010-hpl"
+  },
+  {
+    "id": "placental_endocrine.progesterone_term_ng_per_ml",
+    "name": "Maternal serum progesterone at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 150.0,
+      "units": "ng/mL",
+      "low": 100.0,
+      "high": 200.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Tulchinsky 1972 longitudinal study: progesterone rises through gestation, ~150 ng/mL at term, placental-derived after T1.",
+    "citations": [
+      "tulchinsky-1972-steroids"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "tulchinsky-1972-steroids"
+  },
+  {
+    "id": "placental_endocrine.estradiol_term_ng_per_ml",
+    "name": "Maternal serum estradiol at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 14.0,
+      "units": "ng/mL",
+      "low": 8.0,
+      "high": 25.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Tulchinsky 1972: estradiol rises through gestation to ~10-25 ng/mL at term; placental-fetal unit synthesis.",
+    "citations": [
+      "tulchinsky-1972-steroids"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "tulchinsky-1972-steroids"
+  },
+  {
+    "id": "placental_endocrine.estriol_term_ng_per_ml",
+    "name": "Maternal serum estriol at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 10.0,
+      "units": "ng/mL",
+      "low": 6.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Tulchinsky 1972: estriol is uniquely a fetal-placental co-product (placenta lacks 16-alpha-hydroxylase); ~10 ng/mL at term.",
+    "citations": [
+      "tulchinsky-1972-steroids"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "tulchinsky-1972-steroids"
+  }
+]

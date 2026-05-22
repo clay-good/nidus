@@ -70,6 +70,19 @@
     "type": "journal-article",
     "year": 2001
   },
+  "brace-1989-amniotic-fluid": {
+    "authors": [
+      "Brace RA",
+      "Wolf EJ"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "brace-1989-amniotic-fluid",
+    "notes": "Reference AFV trajectory: rises through 32-34 weeks, peaks ~800 mL, declines toward term.",
+    "pmid": "2782359",
+    "title": "Normal amniotic fluid volume changes throughout pregnancy",
+    "type": "journal-article",
+    "year": 1989
+  },
   "brown-2011-glut3": {
     "authors": [
       "Brown K",
@@ -111,7 +124,7 @@
     "key": "burri-2006-lung-development",
     "notes": "Lung structural development through saccular and alveolar phases.",
     "pmid": "16770071",
-    "title": "Structural Aspects of Postnatal Lung Development – Alveolar Formation and Growth",
+    "title": "Structural Aspects of Postnatal Lung Development \u2013 Alveolar Formation and Growth",
     "type": "journal-article",
     "year": 2006
   },
@@ -128,6 +141,22 @@
     "title": "What is the placenta?",
     "type": "journal-article",
     "year": 2015
+  },
+  "carr-1981-cortisol": {
+    "authors": [
+      "Carr BR",
+      "Parker CR",
+      "Madden JD",
+      "MacDonald PC",
+      "Porter JC"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "carr-1981-cortisol",
+    "notes": "Longitudinal ACTH/cortisol/CBG across pregnancy.",
+    "pmid": "6258437",
+    "title": "Maternal plasma adrenocorticotropin and cortisol relationships throughout human pregnancy",
+    "type": "journal-article",
+    "year": 1981
   },
   "carter-2009-placental-development": {
     "authors": [
@@ -155,6 +184,22 @@
     "title": "Evolution of invasive placentation with special reference to non-human primates",
     "type": "journal-article",
     "year": 2011
+  },
+  "catalano-1991-insulin-sensitivity": {
+    "authors": [
+      "Catalano PM",
+      "Tyzbir ED",
+      "Roman NM",
+      "Amini SB",
+      "Sims EA"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "catalano-1991-insulin-sensitivity",
+    "notes": "Insulin sensitivity (HOMA-IR-equivalent) falls ~50% in late pregnancy.",
+    "pmid": "1951519",
+    "title": "Longitudinal changes in insulin release and insulin resistance in nonobese pregnant women",
+    "type": "journal-article",
+    "year": 1991
   },
   "cheung-lafayette-2013-renal": {
     "authors": [
@@ -184,6 +229,31 @@
     "type": "journal-article",
     "year": 2008
   },
+  "cole-2010-hcg": {
+    "authors": [
+      "Cole LA"
+    ],
+    "doi": "10.1186/1477-7827-8-102",
+    "journal": "Reproductive Biology and Endocrinology",
+    "key": "cole-2010-hcg",
+    "notes": "hCG kinetics: peak ~10 weeks, decline to ~10,000 mIU/mL at term.",
+    "pmid": "20735820",
+    "title": "Biological functions of hCG and hCG-related molecules",
+    "type": "journal-article",
+    "year": 2010
+  },
+  "conrad-2001-relaxin-gfr": {
+    "authors": [
+      "Conrad KP"
+    ],
+    "journal": "Journal of the Society for Gynecologic Investigation",
+    "key": "conrad-2001-relaxin-gfr",
+    "notes": "Mechanistic review: relaxin-mediated systemic and renal vasodilation; ~50% GFR rise.",
+    "pmid": "11489744",
+    "title": "Mechanisms of renal vasodilation and hyperfiltration during pregnancy",
+    "type": "journal-article",
+    "year": 2001
+  },
   "crapo-1996-pregnancy-respiratory": {
     "authors": [
       "Crapo RO"
@@ -210,6 +280,20 @@
     "title": "Erratum to: Blood HbO2 and HbCO2 Dissociation Curves at Varied O2, CO2, pH, 2,3-DPG and Temperature Levels",
     "type": "journal-article",
     "year": 2010
+  },
+  "davison-1981-osmoregulation": {
+    "authors": [
+      "Davison JM",
+      "Vallotton MB",
+      "Lindheimer MD"
+    ],
+    "journal": "British Journal of Obstetrics and Gynaecology",
+    "key": "davison-1981-osmoregulation",
+    "notes": "Foundational reference for the ~10 mOsm/kg osmolality drop and the ~5 mEq/L plasma sodium drop.",
+    "pmid": "7195807",
+    "title": "Plasma osmolality and urinary concentration and dilution during and after pregnancy",
+    "type": "journal-article",
+    "year": 1981
   },
   "davison-hytten-1974-gfr": {
     "authors": [
@@ -242,6 +326,30 @@
     "type": "journal-article",
     "year": 2017
   },
+  "dunlop-1981-renal-plasma-flow": {
+    "authors": [
+      "Dunlop W"
+    ],
+    "journal": "British Journal of Obstetrics and Gynaecology",
+    "key": "dunlop-1981-renal-plasma-flow",
+    "notes": "Foundational longitudinal RPF/GFR study; basis for the bell-shaped RPF trajectory.",
+    "pmid": "7259294",
+    "title": "Serial changes in renal haemodynamics during normal human pregnancy",
+    "type": "journal-article",
+    "year": 1981
+  },
+  "glinoer-1997-thyroid": {
+    "authors": [
+      "Glinoer D"
+    ],
+    "journal": "Endocrine Reviews",
+    "key": "glinoer-1997-thyroid",
+    "notes": "Canonical review of thyroid axis adaptation; TSH suppression in T1 by hCG.",
+    "pmid": "9183568",
+    "title": "The regulation of thyroid function in pregnancy: pathways of endocrine adaptation from physiology to pathology",
+    "type": "journal-article",
+    "year": 1997
+  },
   "grewal-2018-nichd-growth": {
     "authors": [
       "Grewal J",
@@ -254,7 +362,7 @@
     "key": "grewal-2018-nichd-growth",
     "notes": "Cohort design and biometric measurements for the NICHD studies. Dependents: data/parameters/fetal/growth.toml (biparietal-diameter-mm, femur-length-mm).",
     "pmid": "29025016",
-    "title": "Cohort Profile: NICHD Fetal Growth Studies–Singletons and Twins",
+    "title": "Cohort Profile: NICHD Fetal Growth Studies\u2013Singletons and Twins",
     "type": "journal-article",
     "year": 2018
   },
@@ -270,6 +378,18 @@
     "notes": "Reference biometric formulae for estimated fetal weight. Dependents: data/parameters/fetal/growth.toml (estimated-fetal-weight-g).",
     "pmid": "1887021",
     "title": "In utero analysis of fetal growth: a sonographic weight standard.",
+    "type": "journal-article",
+    "year": 1991
+  },
+  "handwerger-2010-hpl": {
+    "authors": [
+      "Handwerger S"
+    ],
+    "journal": "Endocrine Reviews",
+    "key": "handwerger-2010-hpl",
+    "notes": "hPL physiology review; rises linearly through gestation, ~5-10 ug/mL at term.",
+    "pmid": "1935823",
+    "title": "The physiology of placental lactogen in human pregnancy",
     "type": "journal-article",
     "year": 1991
   },
@@ -338,6 +458,49 @@
     "type": "journal-article",
     "year": 2001
   },
+  "kiserud-2001-umbilical-vein": {
+    "authors": [
+      "Kiserud T",
+      "Rasmussen S",
+      "Skulstad S"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "kiserud-2001-umbilical-vein",
+    "notes": "Umbilical vein flow Doppler reference; DV shunt fraction ~30% at term.",
+    "pmid": "10739512",
+    "title": "Blood flow and the degree of shunting through the ductus venosus in the human fetus",
+    "type": "journal-article",
+    "year": 2000
+  },
+  "kline-2005-d-dimer": {
+    "authors": [
+      "Kline JA",
+      "Williams GW",
+      "Hernandez-Nino J"
+    ],
+    "journal": "Clinical Chemistry",
+    "key": "kline-2005-d-dimer",
+    "notes": "D-dimer values across trimesters; basis for adjusted thresholds in VTE workup.",
+    "pmid": "15764641",
+    "title": "D-dimer concentrations in normal pregnancy: new diagnostic thresholds are needed",
+    "type": "journal-article",
+    "year": 2005
+  },
+  "larsson-2008-serum-proteins": {
+    "authors": [
+      "Larsson A",
+      "Palm M",
+      "Hansson LO",
+      "Axelsson O"
+    ],
+    "doi": "10.1111/j.1471-0528.2008.01709.x",
+    "journal": "BJOG",
+    "key": "larsson-2008-serum-proteins",
+    "notes": "Reference intervals for serum proteins across pregnancy.",
+    "title": "Reference values for clinical chemistry tests during normal pregnancy",
+    "type": "journal-article",
+    "year": 2008
+  },
   "lomauro-aliverti-2015-respiratory": {
     "authors": [
       "LoMauro A",
@@ -397,6 +560,19 @@
     "type": "journal-article",
     "year": 2015
   },
+  "pitkin-1979-wbc": {
+    "authors": [
+      "Pitkin RM",
+      "Witte DL"
+    ],
+    "journal": "JAMA",
+    "key": "pitkin-1979-wbc",
+    "notes": "Reference values for WBC and platelets in pregnancy.",
+    "pmid": "430872",
+    "title": "Platelet and leukocyte counts in pregnancy",
+    "type": "journal-article",
+    "year": 1979
+  },
   "rudolph-1985-fetal-circulation": {
     "authors": [
       "Rudolph AM"
@@ -454,6 +630,19 @@
     "type": "journal-article",
     "year": 1994
   },
+  "templeton-1976-blood-gas": {
+    "authors": [
+      "Templeton A",
+      "Kelman GR"
+    ],
+    "journal": "British Journal of Anaesthesia",
+    "key": "templeton-1976-blood-gas",
+    "notes": "Reference for non-pregnant and pregnant PaO2, PaCO2, A-a gradient.",
+    "pmid": "1247088",
+    "title": "Maternal blood-gases, PAo2-Pao2, hysiological shunt and VD/VT in normal pregnancy",
+    "type": "journal-article",
+    "year": 1976
+  },
   "thaler-1990-uterine-flow": {
     "authors": [
       "Thaler I",
@@ -472,5 +661,75 @@
     "title": "Changes in uterine blood flow during human pregnancy",
     "type": "journal-article",
     "year": 1990
+  },
+  "tulchinsky-1972-steroids": {
+    "authors": [
+      "Tulchinsky D",
+      "Hobel CJ",
+      "Yeager E",
+      "Marshall JR"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "tulchinsky-1972-steroids",
+    "notes": "Foundational longitudinal steroid hormone profile across pregnancy.",
+    "pmid": "5078134",
+    "title": "Plasma estrone, estradiol, estriol, progesterone, and 17-hydroxyprogesterone in human pregnancy",
+    "type": "journal-article",
+    "year": 1972
+  },
+  "tyson-1972-prolactin": {
+    "authors": [
+      "Tyson JE",
+      "Hwang P",
+      "Guyda H",
+      "Friesen HG"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "tyson-1972-prolactin",
+    "notes": "Foundational prolactin-in-pregnancy reference.",
+    "pmid": "4621291",
+    "title": "Studies of prolactin secretion in human pregnancy",
+    "type": "journal-article",
+    "year": 1972
+  },
+  "von-steinburg-2013-fhr": {
+    "authors": [
+      "Pildner von Steinburg S",
+      "Boulesteix AL",
+      "Lederer C",
+      "Grunow S",
+      "Schiermeier S",
+      "Hatzmann W",
+      "Schneider KT",
+      "Daumer M"
+    ],
+    "doi": "10.7717/peerj.82",
+    "journal": "PeerJ",
+    "key": "von-steinburg-2013-fhr",
+    "notes": "Longitudinal FHR reference: ~170 bpm in T1 falling to ~140 bpm at term.",
+    "pmid": "23761161",
+    "title": "What is the normal fetal heart rate?",
+    "type": "journal-article",
+    "year": 2013
+  },
+  "wilson-1980-renin-aldosterone": {
+    "authors": [
+      "Wilson M",
+      "Morganti AA",
+      "Zervoudakis I",
+      "Letcher RL",
+      "Romney BM",
+      "Von Oeyon P",
+      "Papera S",
+      "Sealey JE",
+      "Laragh JH"
+    ],
+    "journal": "American Journal of Medicine",
+    "key": "wilson-1980-renin-aldosterone",
+    "notes": "Longitudinal renin/aldosterone reference across pregnancy.",
+    "pmid": "6986818",
+    "title": "Blood pressure, the renin-aldosterone system and sex steroids throughout normal pregnancy",
+    "type": "journal-article",
+    "year": 1980
   }
 }

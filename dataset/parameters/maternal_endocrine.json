@@ -1,0 +1,218 @@
+[
+  {
+    "id": "maternal_endocrine.cortisol_baseline_ug_per_dl",
+    "name": "Maternal non-pregnant total plasma cortisol",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 10.0,
+      "units": "ug/dL",
+      "low": 5.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A: non-pregnant morning plasma cortisol ~10 ug/dL (wide normal range 5-20). Carr 1981 baseline.",
+    "citations": [
+      "carr-1981-cortisol"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "carr-1981-cortisol"
+  },
+  {
+    "id": "maternal_endocrine.cortisol_term_ug_per_dl",
+    "name": "Maternal term total plasma cortisol",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 30.0,
+      "units": "ug/dL",
+      "low": 25.0,
+      "high": 40.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Carr 1981: total cortisol rises ~3x by term, largely driven by CBG rise; free cortisol also rises modestly.",
+    "citations": [
+      "carr-1981-cortisol"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "carr-1981-cortisol"
+  },
+  {
+    "id": "maternal_endocrine.free_t4_term_ng_per_dl",
+    "name": "Maternal free T4 at term",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 0.9,
+      "units": "ng/dL",
+      "low": 0.7,
+      "high": 1.1,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Glinoer 1997: free T4 falls slightly through gestation; total T4 rises (TBG-mediated).",
+    "citations": [
+      "glinoer-1997-thyroid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "glinoer-1997-thyroid"
+  },
+  {
+    "id": "maternal_endocrine.tsh_t1_miu_per_l",
+    "name": "Maternal TSH in first trimester",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 0.6,
+      "units": "mIU/L",
+      "low": 0.1,
+      "high": 2.5,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Glinoer 1997: TSH suppressed in T1 by hCG cross-reactivity at the TSH receptor; recovers by T2/T3.",
+    "citations": [
+      "glinoer-1997-thyroid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "glinoer-1997-thyroid"
+  },
+  {
+    "id": "maternal_endocrine.tsh_term_miu_per_l",
+    "name": "Maternal TSH at term",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 2.0,
+      "units": "mIU/L",
+      "low": 0.4,
+      "high": 4.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Glinoer 1997: TSH recovers to within non-pregnant range by term.",
+    "citations": [
+      "glinoer-1997-thyroid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "glinoer-1997-thyroid"
+  },
+  {
+    "id": "maternal_endocrine.prolactin_term_ng_per_ml",
+    "name": "Maternal term plasma prolactin",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 200.0,
+      "units": "ng/mL",
+      "low": 150.0,
+      "high": 300.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Tyson 1972: prolactin rises ~10x by term to prime lactogenesis; estradiol-driven lactotroph hyperplasia.",
+    "citations": [
+      "tyson-1972-prolactin"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "tyson-1972-prolactin"
+  },
+  {
+    "id": "maternal_endocrine.aldosterone_term_ng_per_dl",
+    "name": "Maternal term plasma aldosterone",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 40.0,
+      "units": "ng/dL",
+      "low": 25.0,
+      "high": 60.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Wilson 1980: aldosterone rises ~5-10x by term, matching the cumulative sodium retention.",
+    "citations": [
+      "wilson-1980-renin-aldosterone"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "wilson-1980-renin-aldosterone"
+  },
+  {
+    "id": "maternal_endocrine.homa_ir_baseline",
+    "name": "Maternal non-pregnant HOMA-IR",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 2.0,
+      "units": "dimensionless",
+      "low": 1.0,
+      "high": 3.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Catalano 1991: pre-pregnancy HOMA-IR ~2.0 in non-obese women; baseline against which the ~50% rise is measured.",
+    "citations": [
+      "catalano-1991-insulin-sensitivity"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "catalano-1991-insulin-sensitivity"
+  },
+  {
+    "id": "maternal_endocrine.homa_ir_term",
+    "name": "Maternal term HOMA-IR",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 4.0,
+      "units": "dimensionless",
+      "low": 2.5,
+      "high": 6.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Catalano 1991: insulin sensitivity falls ~50% by late T3; HOMA-IR roughly doubles. Placental hormones (hPL, progesterone, placental GH) drive insulin resistance.",
+    "citations": [
+      "catalano-1991-insulin-sensitivity"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "catalano-1991-insulin-sensitivity"
+  }
+]

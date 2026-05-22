@@ -7,13 +7,15 @@ import nidus
 
 def test_filter_by_single_subsystem(ds: nidus.Dataset) -> None:
     m = ds.filter(subsystem="maternal_cardiovascular")
-    assert len(m) == 17
+    assert len(m) >= 17
     assert all(p.subsystem == "maternal_cardiovascular" for p in m)
 
 
 def test_filter_by_multiple_subsystems(ds: nidus.Dataset) -> None:
+    mcv = ds.filter(subsystem="maternal_cardiovascular")
+    mb = ds.filter(subsystem="maternal_blood")
     m = ds.filter(subsystem=["maternal_cardiovascular", "maternal_blood"])
-    assert len(m) == 17 + 11
+    assert len(m) == len(mcv) + len(mb)
     assert {p.subsystem for p in m} == {"maternal_cardiovascular", "maternal_blood"}
 
 
@@ -58,7 +60,7 @@ def test_filter_by_review_status(ds: nidus.Dataset) -> None:
     unverified = ds.filter(review_status="unverified")
     verified = ds.filter(review_status="verified")
     contested = ds.filter(review_status="contested")
-    assert len(unverified) + len(verified) + len(contested) == len(ds) == 70
+    assert len(unverified) + len(verified) + len(contested) == len(ds)
     # Most parameters still need human re-verification against original PDFs.
     # This assertion is a guardrail against accidental mass-promotion, not
     # a fixed target — the count evolves as parameters are individually

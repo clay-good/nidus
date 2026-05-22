@@ -111,8 +111,8 @@ def test_export_csv(capsys: pytest.CaptureFixture[str]) -> None:
     code, out, _ = _run(capsys, ["export", "--format", "csv"])
     assert code == 0
     lines = out.strip().split("\n")
-    # Header + 70 parameter rows
-    assert len(lines) == 71
+    # Header + one row per parameter
+    assert len(lines) >= 1 + 138
     # Header contains expected columns
     assert "id" in lines[0]
     assert "tier" in lines[0]

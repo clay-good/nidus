@@ -169,7 +169,7 @@
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
     },
-    "notes": "20% drop in FRC reduces maternal apnoeic O2 reserve and shortens safe-apnoea time — clinically important for airway management."
+    "notes": "20% drop in FRC reduces maternal apnoeic O2 reserve and shortens safe-apnoea time \u2014 clinically important for airway management."
   },
   {
     "id": "maternal_respiratory.vo2_term_ml_per_min",
@@ -198,5 +198,127 @@
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
     }
+  },
+  {
+    "id": "maternal_respiratory.baseline_tidal_volume_ml",
+    "name": "Maternal non-pregnant tidal volume",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 450.0,
+      "units": "mL",
+      "low": 400.0,
+      "high": 500.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from LoMauro 2015 review: non-pregnant VT ~450 mL in healthy adult women; well-established.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "lomauro-aliverti-2015-respiratory"
+  },
+  {
+    "id": "maternal_respiratory.baseline_respiratory_rate_bpm",
+    "name": "Maternal non-pregnant respiratory rate",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 16.0,
+      "units": "breaths/min",
+      "low": 12.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A: non-pregnant adult RR ~12-20/min; LoMauro 2015 review confirms RR is approximately constant through pregnancy.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "lomauro-aliverti-2015-respiratory"
+  },
+  {
+    "id": "maternal_respiratory.term_respiratory_rate_bpm",
+    "name": "Maternal term respiratory rate",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 16.0,
+      "units": "breaths/min",
+      "low": 12.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from LoMauro 2015: RR is essentially unchanged in pregnancy; the minute-ventilation rise is driven almost entirely by tidal volume.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "lomauro-aliverti-2015-respiratory"
+  },
+  {
+    "id": "maternal_respiratory.baseline_pao2_mmhg",
+    "name": "Maternal non-pregnant arterial PO2",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 100.0,
+      "units": "mmHg",
+      "low": 95.0,
+      "high": 105.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A: non-pregnant PaO2 at sea level ~100 mmHg; Templeton & Kelman 1976 confirms the modest pregnancy rise.",
+    "citations": [
+      "templeton-1976-blood-gas",
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "templeton-1976-blood-gas"
+  },
+  {
+    "id": "maternal_respiratory.baseline_arterial_ph",
+    "name": "Maternal non-pregnant arterial pH",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 7.4,
+      "units": "dimensionless",
+      "low": 7.38,
+      "high": 7.42,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A: non-pregnant arterial pH 7.40 \u00b1 0.02; baseline against which the mild pregnancy alkalosis (pH ~7.44) is measured.",
+    "citations": [
+      "templeton-1976-blood-gas",
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "templeton-1976-blood-gas"
   }
 ]

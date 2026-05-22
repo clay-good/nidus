@@ -297,7 +297,7 @@
     "applicability": {
       "population": "Healthy singleton pregnancies"
     },
-    "notes": "MAHENDRU 2014 ABSTRACT TENSION: The Mahendru 2014 abstract (PMID 24406777) reports 'greatest increase in cardiac output occurred by the second trimester (Δ: 0.6 ± 1 l/min)'. The dataset's peak-excess of 2.7 L/min could be the cumulative preconception-to-peak rise rather than a per-visit increment, or could be from a different source. Needs human re-investigation against the paper's full results section."
+    "notes": "MAHENDRU 2014 ABSTRACT TENSION: The Mahendru 2014 abstract (PMID 24406777) reports 'greatest increase in cardiac output occurred by the second trimester (\u0394: 0.6 \u00b1 1 l/min)'. The dataset's peak-excess of 2.7 L/min could be the cumulative preconception-to-peak rise rather than a per-visit increment, or could be from a different source. Needs human re-investigation against the paper's full results section."
   },
   {
     "id": "maternal_cardiovascular.term_uterine_flow_ml_per_min",
@@ -400,7 +400,7 @@
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
       "review_status": "verified",
-      "method": "triangulated; Mahendru 2014 abstract reports HR rises 13 ± 11 bpm to term, implying baseline near population norm",
+      "method": "triangulated; Mahendru 2014 abstract reports HR rises 13 \u00b1 11 bpm to term, implying baseline near population norm",
       "date": "2026-05-21",
       "reviewer": "dataset-expansion-triangulation"
     },
@@ -422,7 +422,7 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Mahendru et al. 2014 (PMID 24406777): the abstract reports 'heart rate increased maximally by the third trimester (Δ: 13 ± 11 bpm)'. Combined with the pre-conception baseline of ~70 bpm, term HR is ~85 bpm with combined uncertainty ~10 bpm. Replicated qualitatively in Hunter & Robson 1992 (PMID 1467047) and Sanghavi & Rutherford 2014.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 (PMID 24406777): the abstract reports 'heart rate increased maximally by the third trimester (\u0394: 13 \u00b1 11 bpm)'. Combined with the pre-conception baseline of ~70 bpm, term HR is ~85 bpm with combined uncertainty ~10 bpm. Replicated qualitatively in Hunter & Robson 1992 (PMID 1467047) and Sanghavi & Rutherford 2014.",
     "citations": [
       "mahendru-2014-cardiac-output",
       "hunter-robson-1992-cardiac-output",
@@ -431,7 +431,7 @@
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
       "review_status": "verified",
-      "method": "triangulated from Mahendru 2014 abstract delta (+13 ± 11 bpm) applied to baseline",
+      "method": "triangulated from Mahendru 2014 abstract delta (+13 \u00b1 11 bpm) applied to baseline",
       "date": "2026-05-21",
       "reviewer": "dataset-expansion-triangulation"
     },
@@ -467,5 +467,102 @@
     "applicability": {
       "population": "Healthy nulliparous women, pre-conception"
     }
+  },
+  {
+    "id": "maternal_cardiovascular.peak_excess_heart_rate_bpm",
+    "name": "Heart rate rise from baseline to term",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 15.0,
+      "units": "bpm",
+      "low": 10.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Mahendru 2014: HR rises ~15 bpm over gestation, peaks late T3; replicated across Sanghavi 2014 review.",
+    "citations": [
+      "mahendru-2014-cardiac-output",
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "mahendru-2014-cardiac-output"
+  },
+  {
+    "id": "maternal_cardiovascular.peak_excess_stroke_volume_ml",
+    "name": "Stroke volume rise from baseline to peak",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 15.0,
+      "units": "mL",
+      "low": 10.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi 2014: SV rises ~15-20 mL during pregnancy; the increment is the dominant driver of the CO rise in early-mid pregnancy.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review"
+  },
+  {
+    "id": "maternal_cardiovascular.baseline_svr_dyn_s_cm5",
+    "name": "Maternal non-pregnant systemic vascular resistance",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 1300.0,
+      "units": "dyn*s/cm^5",
+      "low": 1100.0,
+      "high": 1500.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi 2014 review: non-pregnant SVR ~1200-1400 dyn*s/cm^5 in healthy women; computed as MAP*80/CO.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review"
+  },
+  {
+    "id": "maternal_cardiovascular.term_svr_dyn_s_cm5",
+    "name": "Maternal term systemic vascular resistance",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 980.0,
+      "units": "dyn*s/cm^5",
+      "low": 850.0,
+      "high": 1100.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi 2014: SVR falls ~25% during pregnancy (systemic vasodilation); ~950-1000 dyn*s/cm^5 at term.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review"
   }
 ]

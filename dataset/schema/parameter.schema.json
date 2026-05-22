@@ -32,12 +32,15 @@
         "maternal_blood",
         "maternal_respiratory",
         "maternal_renal",
+        "maternal_endocrine",
         "placental_structure",
         "placental_gas_exchange",
         "placental_glucose",
+        "placental_endocrine",
         "fetal_circulation",
         "fetal_growth",
-        "fetal_metabolism"
+        "fetal_metabolism",
+        "amniotic_fluid"
       ]
     },
     "category": {

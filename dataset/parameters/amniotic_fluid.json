@@ -1,0 +1,98 @@
+[
+  {
+    "id": "amniotic_fluid.afv_peak_ml",
+    "name": "Amniotic fluid volume at peak",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 800.0,
+      "units": "mL",
+      "low": 600.0,
+      "high": 1000.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Brace & Wolf 1989: AFV rises through mid-pregnancy to ~800 mL peak, falls toward term. Well-replicated reference trajectory.",
+    "citations": [
+      "brace-1989-amniotic-fluid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "brace-1989-amniotic-fluid"
+  },
+  {
+    "id": "amniotic_fluid.afv_peak_week",
+    "name": "Gestational week of peak amniotic fluid volume",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 33.0,
+      "units": "weeks",
+      "low": 32.0,
+      "high": 34.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Brace & Wolf 1989: AFV peak at 32-34 weeks; fetal-urine production and swallowing approach steady state.",
+    "citations": [
+      "brace-1989-amniotic-fluid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "brace-1989-amniotic-fluid"
+  },
+  {
+    "id": "amniotic_fluid.afv_term_ml",
+    "name": "Amniotic fluid volume at term",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 600.0,
+      "units": "mL",
+      "low": 400.0,
+      "high": 800.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Brace & Wolf 1989: AFV declines from peak to ~600 mL at term; oligohydramnios threshold conventionally AFI<5 cm or single deepest pocket<2 cm.",
+    "citations": [
+      "brace-1989-amniotic-fluid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "brace-1989-amniotic-fluid"
+  },
+  {
+    "id": "amniotic_fluid.afv_20w_ml",
+    "name": "Amniotic fluid volume at 20 weeks",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 350.0,
+      "units": "mL",
+      "low": 250.0,
+      "high": 450.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Brace & Wolf 1989: AFV at 20 weeks ~350 mL; interpolated reference point on the trajectory.",
+    "citations": [
+      "brace-1989-amniotic-fluid"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "brace-1989-amniotic-fluid"
+  }
+]

@@ -82,5 +82,249 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Term serum creatinine. Cheung 2013 Table 1 lists 0.5 mg/dL as the average during pregnancy; the dataset's 0.6 at term is plausible given mid-third-trimester recovery toward non-pregnant baseline, but the precise term-vs-average distinction needs human re-verification."
+  },
+  {
+    "id": "maternal_renal.baseline_gfr_ml_per_min",
+    "name": "Maternal non-pregnant GFR",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 100.0,
+      "units": "mL/min",
+      "low": 90.0,
+      "high": 110.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A: non-pregnant GFR in healthy adult women is ~100 mL/min; this is the textbook baseline against which the ~50% pregnancy rise is measured (Conrad 2001, Davison 1974, Cheung 2013 review).",
+    "citations": [
+      "conrad-2001-relaxin-gfr",
+      "davison-hytten-1974-gfr",
+      "cheung-lafayette-2013-renal"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "conrad-2001-relaxin-gfr"
+  },
+  {
+    "id": "maternal_renal.gfr_peak_week",
+    "name": "Gestational week of peak GFR",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 16.0,
+      "units": "weeks",
+      "low": 12.0,
+      "high": 24.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Conrad 2001 mechanistic review and Dunlop 1981 longitudinal data: GFR peaks ~T1/early T2 driven by relaxin-mediated renal vasodilation.",
+    "citations": [
+      "conrad-2001-relaxin-gfr",
+      "dunlop-1981-renal-plasma-flow"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "conrad-2001-relaxin-gfr"
+  },
+  {
+    "id": "maternal_renal.gfr_logistic_rate_per_week",
+    "name": "Logistic GFR rise rate",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 0.4,
+      "units": "1/week",
+      "low": 0.25,
+      "high": 0.6,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C: empirical logistic-fit rate to Conrad 2001 / Dunlop 1981 trajectories. Single-fit value, no independent meta-analytic confirmation.",
+    "citations": [
+      "conrad-2001-relaxin-gfr"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "conrad-2001-relaxin-gfr"
+  },
+  {
+    "id": "maternal_renal.renal_plasma_flow_baseline_ml_per_min",
+    "name": "Maternal non-pregnant renal plasma flow",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 600.0,
+      "units": "mL/min",
+      "low": 500.0,
+      "high": 700.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Dunlop 1981 longitudinal cohort: non-pregnant RPF ~600 mL/min.",
+    "citations": [
+      "dunlop-1981-renal-plasma-flow"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "dunlop-1981-renal-plasma-flow"
+  },
+  {
+    "id": "maternal_renal.renal_plasma_flow_peak_ml_per_min",
+    "name": "Maternal peak renal plasma flow",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 900.0,
+      "units": "mL/min",
+      "low": 750.0,
+      "high": 1050.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Dunlop 1981: RPF peaks ~50-70% above baseline in T2, declines somewhat by term.",
+    "citations": [
+      "dunlop-1981-renal-plasma-flow"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "dunlop-1981-renal-plasma-flow"
+  },
+  {
+    "id": "maternal_renal.rpf_peak_week",
+    "name": "Week of peak renal plasma flow",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 24.0,
+      "units": "weeks",
+      "low": 20.0,
+      "high": 28.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Dunlop 1981: RPF peak ~24 weeks; the bell-shaped trajectory falls toward term.",
+    "citations": [
+      "dunlop-1981-renal-plasma-flow"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "dunlop-1981-renal-plasma-flow"
+  },
+  {
+    "id": "maternal_renal.filtration_fraction_term",
+    "name": "Filtration fraction at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 0.18,
+      "units": "dimensionless",
+      "low": 0.16,
+      "high": 0.2,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Cheung 2013 review: FF drops in mid-pregnancy (RPF rises faster than GFR) then partly recovers; ~0.18 at term.",
+    "citations": [
+      "cheung-lafayette-2013-renal",
+      "dunlop-1981-renal-plasma-flow"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "cheung-lafayette-2013-renal"
+  },
+  {
+    "id": "maternal_renal.plasma_osmolality_drop_mosm_per_kg",
+    "name": "Plasma osmolality drop from baseline",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 10.0,
+      "units": "mOsm/kg",
+      "low": 8.0,
+      "high": 12.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Davison 1981: plasma osmolality falls ~10 mOsm/kg in early pregnancy and remains low through term. Well-replicated; the osmotic-threshold-reset is the underlying mechanism.",
+    "citations": [
+      "davison-1981-osmoregulation"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "davison-1981-osmoregulation"
+  },
+  {
+    "id": "maternal_renal.plasma_sodium_drop_meq_per_l",
+    "name": "Plasma sodium drop from baseline",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 5.0,
+      "units": "mEq/L",
+      "low": 3.0,
+      "high": 7.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Davison 1981: plasma sodium falls ~5 mEq/L in pregnancy, reflecting the osmolality reset.",
+    "citations": [
+      "davison-1981-osmoregulation"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "davison-1981-osmoregulation"
+  },
+  {
+    "id": "maternal_renal.bun_term_mg_per_dl",
+    "name": "Blood urea nitrogen at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 8.0,
+      "units": "mg/dL",
+      "low": 6.0,
+      "high": 11.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Cheung 2013 review: BUN falls from ~13 mg/dL non-pregnant to ~8 mg/dL in pregnancy due to GFR rise + plasma volume expansion.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase1-expansion-script"
+    },
+    "primary_citation": "cheung-lafayette-2013-renal"
   }
 ]
