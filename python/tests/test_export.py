@@ -59,6 +59,9 @@ def test_registry_lists_submodels() -> None:
         "hadlock_hc_growth",
         "hadlock_ac_growth",
         "hadlock_fl_growth",
+        "homa_ir_trajectory",
+        "tsh_trajectory",
+        "cortisol_trajectory",
     } == ids
 
 
@@ -397,6 +400,41 @@ def test_hadlock_biometry_cubic_monotone_in_pregnancy_range() -> None:
     assert np.all(np.diff(vals) > 0), "BPD must rise monotonically through pregnancy"
 
 
+def test_homa_ir_sigmoid_endpoints() -> None:
+    from nidus.export.reference import maternal_homa_ir
+
+    early = float(maternal_homa_ir(0.0, baseline=1.5, term=4.5))
+    late = float(maternal_homa_ir(40.0, baseline=1.5, term=4.5))
+    assert early == pytest.approx(1.5, abs=0.1)
+    assert late == pytest.approx(4.5, abs=0.1)
+
+
+def test_tsh_piecewise_holds_nadir() -> None:
+    from nidus.export.reference import maternal_tsh
+
+    early = float(maternal_tsh(6.0, t1_value=0.6, term_value=2.0))
+    t1 = float(maternal_tsh(12.0, t1_value=0.6, term_value=2.0))
+    term = float(maternal_tsh(40.0, t1_value=0.6, term_value=2.0))
+    # Before week 12, value clamped at T1 nadir.
+    assert early == pytest.approx(0.6)
+    assert t1 == pytest.approx(0.6)
+    # At term week, value equals term endpoint.
+    assert term == pytest.approx(2.0)
+
+
+def test_cortisol_rises_through_pregnancy() -> None:
+    from nidus.export.reference import maternal_cortisol
+
+    early = float(maternal_cortisol(0.0, baseline_ug_per_dl=12.0, term_ug_per_dl=32.0))
+    mid = float(maternal_cortisol(22.0, baseline_ug_per_dl=12.0, term_ug_per_dl=32.0))
+    late = float(maternal_cortisol(40.0, baseline_ug_per_dl=12.0, term_ug_per_dl=32.0))
+    # Midpoint of sigmoid is at week 22, value = (baseline+term)/2.
+    assert mid == pytest.approx(22.0, abs=0.5)
+    # Monotonic rise; late approaches term plateau within ~1 ug/dL.
+    assert early < mid < late
+    assert late == pytest.approx(32.0, abs=2.0)
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -446,6 +484,9 @@ _ALL_SUBMODEL_IDS = [
     "hadlock_hc_growth",
     "hadlock_ac_growth",
     "hadlock_fl_growth",
+    "homa_ir_trajectory",
+    "tsh_trajectory",
+    "cortisol_trajectory",
 ]
 
 
@@ -510,7 +551,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 25
+    assert len(paths) >= 28
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -550,11 +591,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 25
+    assert len(paths_2) >= 28
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 25
+    assert len(paths_1) >= 28
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

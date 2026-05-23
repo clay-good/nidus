@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **25 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **28 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -175,9 +175,13 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `hadlock_hc_growth`                    | Cubic fit to Hadlock 1982 HC weekly anchors                  | fetal_growth               |
 | `hadlock_ac_growth`                    | Cubic fit to Hadlock 1982 AC weekly anchors                  | fetal_growth               |
 | `hadlock_fl_growth`                    | Cubic fit to Hadlock 1982 FL weekly anchors                  | fetal_growth               |
+| `homa_ir_trajectory`                   | Sigmoidal insulin resistance rise (Catalano 1991)            | maternal_endocrine         |
+| `tsh_trajectory`                       | Piecewise-linear T1 nadir → term recovery (Glinoer 1997)     | maternal_endocrine         |
+| `cortisol_trajectory`                  | Sigmoidal total cortisol rise (Allolio 1990)                 | maternal_endocrine         |
 
-Phase A of the submodel-expansion catalog is now complete (12 of 12
-candidates shipped). Additional Phase B submodels are catalogued in
+Phase A of the submodel-expansion catalog is complete (12/12); Phase B
+is underway (3 of 10 shipped). The remaining Phase B items are
+catalogued in
 [`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md)
 (fetal heart rate, MCA-PI, umbilical PI, placental allometry, etc.).
 SBML/CellML builders for those land in subsequent releases.

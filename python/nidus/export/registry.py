@@ -505,6 +505,67 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="mm",
     ),
     Submodel(
+        id="homa_ir_trajectory",
+        name="Maternal insulin resistance (HOMA-IR) trajectory",
+        description=(
+            "Sigmoidal HOMA-IR rise across gestation: HOMA(t) = "
+            "baseline + (term - baseline) / (1 + exp(-0.2*(t - 22))). "
+            "Catalano 1991 (PMID 1957840) and Sonagra 2014 document "
+            "the ~2-3x rise from non-pregnant baseline driven by "
+            "placental lactogen, hPL, and cortisol antagonism of "
+            "insulin signalling. The inflection sits in late T2."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_endocrine.homa_ir_baseline",
+            "maternal_endocrine.homa_ir_term",
+        ),
+        independent_variable="t_weeks",
+        output_units="dimensionless",
+    ),
+    Submodel(
+        id="tsh_trajectory",
+        name="Maternal TSH trajectory (T1 nadir to term recovery)",
+        description=(
+            "Linear TSH interpolation across gestation: TSH(t) = "
+            "tsh_t1 + (term - t1) * ((t - 12) / 28), clamped at the "
+            "T1 nadir value before week 12. The T1 nadir is driven "
+            "by hCG cross-stimulation of the TSH receptor (Glinoer "
+            "1997, Korevaar 2014); the value rises modestly back "
+            "toward term as hCG falls. A fuller Hill-form suppression "
+            "by hCG is Phase B item 3.4 but requires an additional "
+            "coupling-coefficient parameter not yet curated."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_endocrine.tsh_t1_miu_per_l",
+            "maternal_endocrine.tsh_term_miu_per_l",
+        ),
+        independent_variable="t_weeks",
+        output_units="mIU/L",
+    ),
+    Submodel(
+        id="cortisol_trajectory",
+        name="Maternal total cortisol trajectory (sigmoidal)",
+        description=(
+            "Sigmoidal total cortisol rise across gestation: "
+            "cortisol(t) = baseline + (term - baseline) / "
+            "(1 + exp(-0.15*(t - 22))). Allolio 1990, Jung 2011: "
+            "total cortisol rises 2-3x by term, driven by "
+            "estrogen-induced CBG plus loss of HPA axis sensitivity. "
+            "The diurnal-rhythm overlay (Phase B 3.3) would add a "
+            "cosine term scaled by a separate amplitude parameter "
+            "not yet in the dataset."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "maternal_endocrine.cortisol_baseline_ug_per_dl",
+            "maternal_endocrine.cortisol_term_ug_per_dl",
+        ),
+        independent_variable="t_weeks",
+        output_units="ug/dL",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

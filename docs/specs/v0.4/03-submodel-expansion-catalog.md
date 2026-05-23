@@ -1,13 +1,11 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A **complete** — all 12 candidates shipped to the
-registry. The four Hadlock biometry growth submodels (BPD/HC/AC/FL)
-ship as cubic polynomial fits computed at export time from the seven
-weekly anchors already in the dataset (no separate polynomial-
-coefficient parameters needed; residuals <3 mm on all four).
-Registry totals 25 submodels. Phase B (10 candidates, ~3 weeks of
-work) is the next milestone. Companion to
-`02-parameter-expansion-roadmap.md`.
+**Status:** Phase A **complete** (12/12). Phase B **in progress**
+(3 of 10 shipped: HOMA-IR sigmoidal, TSH piecewise-linear, cortisol
+sigmoidal — all using existing maternal_endocrine baseline/term
+parameters; diurnal and hCG-coupling refinements deferred until the
+matching coupling-coefficient parameters land). Registry totals 28
+submodels. Companion to `02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -181,7 +179,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Inputs (new):** estradiol/progesterone trimester anchors.
 - **Cost:** ~60 LOC.
 
-### 3.3 Cortisol diurnal-rhythm trajectory
+### 3.3 Cortisol diurnal-rhythm trajectory — **SIGMOIDAL TRAJECTORY SHIPPED** (diurnal overlay deferred)
 
 - **Equation:** Cosine on a rising baseline.
 - **Citations:** Allolio 1990, Jung 2011.
@@ -189,14 +187,14 @@ ODE integration. Each is ~50–150 LOC.
 - **Note:** Tier C; diurnal data are sparse longitudinally.
 - **Cost:** ~50 LOC.
 
-### 3.4 Thyroid: TSH suppression by hCG
+### 3.4 Thyroid: TSH suppression by hCG — **PIECEWISE-LINEAR SHIPPED** (Hill coupling deferred)
 
 - **Equation:** Inverse relationship via a Hill-like saturation.
 - **Citations:** Glinoer 1997, Korevaar 2014.
 - **Inputs (new):** TSH baseline, hCG-effect coefficient.
 - **Cost:** ~40 LOC.
 
-### 3.5 Insulin resistance trajectory (HOMA-IR)
+### 3.5 Insulin resistance trajectory (HOMA-IR) — **SHIPPED**
 
 - **Equation:** Sigmoidal rise through T2/T3.
 - **Citations:** Catalano 1991, Sonagra 2014.

@@ -1000,6 +1000,117 @@ def _build_hadlock_fl_growth(ds: Dataset) -> libsbml.SBMLDocument:
     return _build_hadlock_biometry_growth(ds, "hadlock_fl_growth", "FL_t_mm", "fl")
 
 
+def _build_sigmoid_baseline_term(
+    ds: Dataset,
+    sm_id: str,
+    *,
+    baseline_pid: str,
+    term_pid: str,
+    output_name: str,
+    growth_rate: float,
+    midpoint_week: float,
+) -> libsbml.SBMLDocument:
+    """Generic baseline -> term sigmoidal trajectory builder.
+
+    Used by Phase B trajectories where the dataset stores only the
+    endpoints and the curve shape is the standard logistic.
+    """
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds[baseline_pid]
+    term = ds[term_pid]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "growth_rate_per_week", growth_rate, "dimensionless")
+    _add_parameter(model, "midpoint_week", midpoint_week, "dimensionless")
+    for p in (baseline, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, output_name, 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable(output_name)
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(baseline.id)}) / "
+            f"(1 + exp(-growth_rate_per_week * (t_weeks - midpoint_week)))"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_homa_ir(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "homa_ir_trajectory",
+        baseline_pid="maternal_endocrine.homa_ir_baseline",
+        term_pid="maternal_endocrine.homa_ir_term",
+        output_name="HOMA_t",
+        growth_rate=0.2,
+        midpoint_week=22.0,
+    )
+
+
+def _build_cortisol(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "cortisol_trajectory",
+        baseline_pid="maternal_endocrine.cortisol_baseline_ug_per_dl",
+        term_pid="maternal_endocrine.cortisol_term_ug_per_dl",
+        output_name="cortisol_t",
+        growth_rate=0.15,
+        midpoint_week=22.0,
+    )
+
+
+def _build_tsh_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Piecewise-linear TSH: constant at T1 nadir then linear to term."""
+    sm = next(s for s in SUBMODELS if s.id == "tsh_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    t1 = ds["maternal_endocrine.tsh_t1_miu_per_l"]
+    term = ds["maternal_endocrine.tsh_term_miu_per_l"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "t1_week", 12.0, "dimensionless")
+    _add_parameter(model, "term_week", 40.0, "dimensionless")
+    for p in (t1, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "TSH_t", 0.0, "dimensionless", constant=False)
+
+    t1_id = parameter_id_to_sbml(t1.id)
+    term_id = parameter_id_to_sbml(term.id)
+    formula = (
+        f"piecewise({t1_id}, t_weeks < t1_week, "
+        f"{t1_id} + ({term_id} - {t1_id}) * (t_weeks - t1_week) / (term_week - t1_week))"
+    )
+    rule = model.createAssignmentRule()
+    rule.setVariable("TSH_t")
+    rule.setMath(libsbml.parseL3Formula(formula))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 _BUILDERS = {
     "placental_villous_growth": _build_placental_villous_growth,
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
@@ -1022,6 +1133,9 @@ _BUILDERS = {
     "renal_plasma_flow_trajectory": _build_rpf_trajectory,
     "minute_ventilation_trajectory": _build_minute_ventilation,
     "arterial_ph_trajectory": _build_arterial_ph_trajectory,
+    "homa_ir_trajectory": _build_homa_ir,
+    "tsh_trajectory": _build_tsh_trajectory,
+    "cortisol_trajectory": _build_cortisol,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

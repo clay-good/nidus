@@ -9,6 +9,29 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **First three Phase B submodels** with full export support, bringing
+  the registry to **28 submodels** and opening Phase B (3 of 10 shipped):
+  - `homa_ir_trajectory` — sigmoidal insulin resistance rise across
+    gestation using existing `maternal_endocrine.homa_ir_baseline` /
+    `homa_ir_term` (Catalano 1991, PMID 1957840; Sonagra 2014).
+  - `tsh_trajectory` — piecewise-linear: constant at the T1 hCG-
+    suppressed nadir before week 12, then linear toward term recovery
+    using existing `tsh_t1_miu_per_l` / `tsh_term_miu_per_l` (Glinoer
+    1997, Korevaar 2014). The full Hill-form coupling to hCG (catalog
+    item 3.4) is deferred until a coupling-coefficient parameter
+    lands.
+  - `cortisol_trajectory` — sigmoidal total cortisol rise using
+    existing `cortisol_baseline_ug_per_dl` / `cortisol_term_ug_per_dl`
+    (Allolio 1990, Jung 2011). The diurnal-rhythm overlay (catalog
+    item 3.3) needs a separate amplitude parameter and is deferred.
+- Reference kernels `maternal_homa_ir`, `maternal_tsh`,
+  `maternal_cortisol` in `nidus.export.reference`, with endpoint +
+  midpoint sanity tests. A new `_build_sigmoid_baseline_term` helper
+  in `sbml.py` (and matching CellML form) consolidates the standard
+  baseline → term logistic emission, reused by all three.
+- Generators learned the SBML/MathML `piecewise` construct (TSH is
+  the first piecewise submodel in the registry).
+
 - **Four Hadlock biometry growth submodels** — `hadlock_bpd_growth`,
   `hadlock_hc_growth`, `hadlock_ac_growth`, `hadlock_fl_growth` —
   closing out Phase A of the submodel-expansion catalog (12/12 shipped).

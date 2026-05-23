@@ -1133,6 +1133,127 @@ def _build_arterial_ph_trajectory(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _build_sigmoid_baseline_term(
+    ds: Dataset,
+    sm_id: str,
+    *,
+    baseline_pid: str,
+    term_pid: str,
+    output_name: str,
+    growth_rate: float,
+    midpoint_week: float,
+) -> libcellml.Model:
+    """Generic baseline->term sigmoid CellML builder."""
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds[baseline_pid]
+    term = ds[term_pid]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(
+        comp, "growth_rate_per_week", units="dimensionless", initial_value=str(growth_rate)
+    )
+    _add_variable(comp, "midpoint_week", units="dimensionless", initial_value=str(midpoint_week))
+    for p in (baseline, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, output_name, units="dimensionless", initial_value="0")
+
+    rhs = _sigmoid_baseline_term(parameter_id_to_sbml(baseline.id), parameter_id_to_sbml(term.id))
+    comp.setMath(_mathml(_apply_assign(output_name, rhs)))
+    return model
+
+
+def _build_homa_ir(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "homa_ir_trajectory",
+        baseline_pid="maternal_endocrine.homa_ir_baseline",
+        term_pid="maternal_endocrine.homa_ir_term",
+        output_name="HOMA_t",
+        growth_rate=0.2,
+        midpoint_week=22.0,
+    )
+
+
+def _build_cortisol(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "cortisol_trajectory",
+        baseline_pid="maternal_endocrine.cortisol_baseline_ug_per_dl",
+        term_pid="maternal_endocrine.cortisol_term_ug_per_dl",
+        output_name="cortisol_t",
+        growth_rate=0.15,
+        midpoint_week=22.0,
+    )
+
+
+def _build_tsh_trajectory(ds: Dataset) -> libcellml.Model:
+    """Piecewise-linear TSH (constant nadir before t1_week, then linear)."""
+    sm = next(s for s in SUBMODELS if s.id == "tsh_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    t1 = ds["maternal_endocrine.tsh_t1_miu_per_l"]
+    term = ds["maternal_endocrine.tsh_term_miu_per_l"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "t1_week", units="dimensionless", initial_value="12")
+    _add_variable(comp, "term_week", units="dimensionless", initial_value="40")
+    for p in (t1, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "TSH_t", units="dimensionless", initial_value="0")
+
+    t1_id = parameter_id_to_sbml(t1.id)
+    term_id = parameter_id_to_sbml(term.id)
+    # Linear segment: t1 + (term - t1) * (t - t1_week) / (term_week - t1_week)
+    linear = _apply(
+        "plus",
+        _ci(t1_id),
+        _apply(
+            "divide",
+            _apply(
+                "times",
+                _apply("minus", _ci(term_id), _ci(t1_id)),
+                _apply("minus", _ci("t_weeks"), _ci("t1_week")),
+            ),
+            _apply("minus", _ci("term_week"), _ci("t1_week")),
+        ),
+    )
+    # MathML piecewise: <piecewise><piece>{value}{cond}</piece>
+    # <otherwise>{else}</otherwise></piecewise>
+    cond = "<apply>\n<lt/>\n<ci>t_weeks</ci>\n<ci>t1_week</ci>\n</apply>"
+    rhs = (
+        "<piecewise>\n"
+        f"<piece>\n{_ci(t1_id)}\n{cond}\n</piece>\n"
+        f"<otherwise>\n{linear}\n</otherwise>\n"
+        "</piecewise>"
+    )
+    comp.setMath(_mathml(_apply_assign("TSH_t", rhs)))
+    return model
+
+
 def _build_hadlock_biometry_growth(
     ds: Dataset, sm_id: str, output_name: str, biometry_prefix: str
 ) -> libcellml.Model:
@@ -1220,6 +1341,9 @@ _BUILDERS = {
     "renal_plasma_flow_trajectory": _build_rpf_trajectory,
     "minute_ventilation_trajectory": _build_minute_ventilation,
     "arterial_ph_trajectory": _build_arterial_ph_trajectory,
+    "homa_ir_trajectory": _build_homa_ir,
+    "tsh_trajectory": _build_tsh_trajectory,
+    "cortisol_trajectory": _build_cortisol,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

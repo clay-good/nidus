@@ -449,6 +449,66 @@ def maternal_arterial_ph(
     return baseline_ph + (term_ph - baseline_ph) * (t / term_week)
 
 
+# ---- 20a. HOMA-IR sigmoidal trajectory -----------------------------
+
+
+def maternal_homa_ir(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline: float,
+    term: float,
+    growth_rate_per_week: float = 0.2,
+    midpoint_week: float = 22.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal HOMA-IR trajectory (Catalano 1991, Sonagra 2014)."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term - baseline
+    return baseline + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+# ---- 20b. TSH piecewise-linear trajectory --------------------------
+
+
+def maternal_tsh(
+    t_weeks: FloatArrayLike,
+    *,
+    t1_value: float,
+    term_value: float,
+    t1_week: float = 12.0,
+    term_week: float = 40.0,
+) -> NDArray[np.float64]:
+    """Piecewise-linear TSH trajectory.
+
+    Constant at the T1 nadir before `t1_week`, then linear toward the
+    term value by `term_week`. Reflects hCG-mediated TSH suppression
+    in T1 (Glinoer 1997) followed by recovery as hCG falls.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    return np.where(
+        t < t1_week,
+        t1_value,
+        t1_value + (term_value - t1_value) * (t - t1_week) / (term_week - t1_week),
+    )
+
+
+# ---- 20c. Cortisol sigmoidal trajectory ----------------------------
+
+
+def maternal_cortisol(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ug_per_dl: float,
+    term_ug_per_dl: float,
+    growth_rate_per_week: float = 0.15,
+    midpoint_week: float = 22.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal total-cortisol trajectory (Allolio 1990, Jung 2011)."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    return baseline_ug_per_dl + (term_ug_per_dl - baseline_ug_per_dl) / (
+        1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week))
+    )
+
+
 # ---- 20. Hadlock biometry cubic-fit growth -------------------------
 
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)
