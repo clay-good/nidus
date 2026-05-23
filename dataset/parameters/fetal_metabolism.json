@@ -274,5 +274,61 @@
       "reviewer": "v0.4-phase-c-hypothesis-only"
     },
     "notes": "Hypothesis-only Tier D parameter. Negative sign = net reabsorption."
+  },
+  {
+    "id": "fetal_metabolism.fetal_core_temperature_c_term",
+    "name": "Fetal core temperature at term",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 37.6,
+      "low": 37.3,
+      "high": 38.0,
+      "units": "°C",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Battaglia & Meschia 1986: fetal core temperature runs approximately 0.3-0.5 °C above maternal core temperature throughout late gestation, driven by the fetus's high mass-specific metabolic rate and the limited heat-dissipation pathway (placental blood). The maternal-fetal temperature gradient is one of the more robust quantitative facts in fetal thermal physiology.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Maternal hyperthermia (fever, exercise) is transmitted to the fetus with attenuated amplitude and delay; the gradient is maintained."
+  },
+  {
+    "id": "fetal_metabolism.fetal_urine_output_ml_per_kg_h_term",
+    "name": "Fetal urine production rate at term",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 50.0,
+      "low": 30.0,
+      "high": 70.0,
+      "units": "mL/kg/h",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Battaglia & Meschia 1986 and standard obstetric texts: fetal urine production rate at term is approximately 30-70 mL/kg/h (~600-1200 mL/day for a 3.5 kg fetus), accounting for the majority of amniotic-fluid turnover. Direct in vivo measurements rely on ultrasound bladder-volume cycling; estimates vary across cohorts and techniques.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Fetal urine is the dominant source of amniotic fluid in late gestation; fetal swallowing is the dominant sink. Disorders of either side present as poly- or oligohydramnios."
   }
 ]

@@ -9,6 +9,31 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 saturation pass — fetal homeostasis + placental glucose
+  flux + maternal protein/coagulation anchors.** Six new Tier-B/C
+  dataset parameters (184 → **190 parameters**), all sourced from
+  citations already in the index.
+  - `fetal_metabolism.fetal_core_temperature_c_term` (Tier B,
+    ~37.6 °C; ~0.3-0.5 °C above maternal core)
+  - `fetal_metabolism.fetal_urine_output_ml_per_kg_h_term` (Tier C,
+    ~50 mL/kg/h; dominant source of amniotic fluid in late gestation)
+  - `placental_glucose.maternal_fetal_glucose_gradient_term_mmol_per_l`
+    (Tier B, ~1.2 mmol/L; couples maternal and fetal glucose
+    parameters)
+  - `placental_glucose.net_glucose_flux_term_mg_per_kg_per_min`
+    (Tier B, ~5 mg/kg/min; matches fetal utilisation under steady-
+    state)
+  - `maternal_blood.total_protein_term_g_per_dl` (Tier B, ~6.0;
+    couples with the albumin decrement)
+  - `maternal_blood.fibrinogen_baseline_g_per_l` (Tier B, ~3.0;
+    pre-pregnancy anchor for the term fibrinogen entry — the
+    near-doubling is one of the robust haemostatic shifts of
+    pregnancy)
+  Spec 02 §3.2 (haematology), §3.7 (placental glucose net flux), and
+  §3.10 (fetal clinical chemistry) gaps close further. The
+  ~200-parameter saturation ceiling from §2 is now within reach of
+  one more pass.
+
 - **Phase 3 saturation pass — maternal cardiac remodelling and
   iron-status gaps.** Six new Tier-B/C dataset parameters
   (178 → **184 parameters**), all sourced from citations already in

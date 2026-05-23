@@ -106,5 +106,61 @@
       "population": "Human syncytiotrophoblast across gestation"
     },
     "notes": "Maximum facilitated-diffusion flux per unit villous surface area via GLUT3. Caveats: GLUT3 expression rises through gestation; this is a term-equivalent reference value."
+  },
+  {
+    "id": "placental_glucose.maternal_fetal_glucose_gradient_term_mmol_per_l",
+    "name": "Maternal-fetal glucose concentration gradient at term",
+    "subsystem": "placental_glucose",
+    "value": {
+      "central": 1.2,
+      "low": 0.8,
+      "high": 1.6,
+      "units": "mmol/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Illsley 2000: at term, fetal plasma glucose runs approximately 70-75% of maternal, giving a maternal-fetal gradient of ~1.0-1.5 mmol/L under fasting conditions. The gradient arises from rapid fetal glucose utilisation against a finite GLUT1/GLUT3 trans-placental transport ceiling. The gradient widens transiently after maternal feeding and narrows during prolonged fasting.",
+    "citations": [
+      "illsley-2000-glut1"
+    ],
+    "primary_citation": "illsley-2000-glut1",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term, mother fasted"
+    },
+    "notes": "Couples to fetal_metabolism.fetal_glucose_term_mmol_per_l and the maternal glucose dataset entry; consistent with the canonical fetal/maternal ratio ~0.7."
+  },
+  {
+    "id": "placental_glucose.net_glucose_flux_term_mg_per_kg_per_min",
+    "name": "Net trans-placental glucose flux per kg fetal weight at term",
+    "subsystem": "placental_glucose",
+    "value": {
+      "central": 5.0,
+      "low": 4.0,
+      "high": 7.0,
+      "units": "mg/kg/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Illsley 2000: net trans-placental glucose flux at term is approximately 4-7 mg/kg/min, matching the fetal glucose utilisation rate already in the dataset and one of the more robustly characterised fetal-substrate fluxes. The flux is largely facilitated diffusion down the maternal-fetal concentration gradient via GLUT1 (basal microvillous) and GLUT3 (apical microvillous) transporters.",
+    "citations": [
+      "illsley-2000-glut1"
+    ],
+    "primary_citation": "illsley-2000-glut1",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Matches fetal_metabolism.glucose_utilisation_mg_per_kg_per_min as expected from the steady-state assumption (the fetus stores essentially no glucose)."
   }
 ]

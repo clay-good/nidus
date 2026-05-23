@@ -309,6 +309,62 @@
     }
   },
   {
+    "id": "maternal_blood.total_protein_term_g_per_dl",
+    "name": "Serum total protein at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 6.0,
+      "low": 5.6,
+      "high": 6.4,
+      "units": "g/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: serum total protein falls from a non-pregnant baseline of ~7.0 g/dL to ~6.0 g/dL by term — the fall is driven primarily by the albumin decrement (already in the dataset) with smaller contributions from the globulin fractions. The drop in oncotic pressure contributes to the physiological oedema of pregnancy.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Coupled to serum_albumin_term_g_per_dl already in the dataset; the albumin fall accounts for most of the total-protein decrement."
+  },
+  {
+    "id": "maternal_blood.fibrinogen_baseline_g_per_l",
+    "name": "Plasma fibrinogen, pre-pregnancy baseline",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 3.0,
+      "low": 2.5,
+      "high": 3.5,
+      "units": "g/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: pre-pregnancy plasma fibrinogen in healthy women of reproductive age is approximately 2.5-3.5 g/L. Acts as the anchor for the term fibrinogen value already in the dataset (~5.5 g/L) — fibrinogen approximately doubles by term as part of the hypercoagulable adaptation of pregnancy.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy non-pregnant women of reproductive age"
+    },
+    "notes": "Pairs with fibrinogen_term_g_per_l for trajectory modelling; doubling is one of the most robust haemostatic shifts in pregnancy."
+  },
+  {
     "id": "maternal_blood.wbc_count_term_x10e9_per_l",
     "name": "White blood cell count at term",
     "subsystem": "maternal_blood",
