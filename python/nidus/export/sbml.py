@@ -854,6 +854,85 @@ def _build_rpf_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
     return doc
 
 
+def _build_minute_ventilation(ds: Dataset) -> libsbml.SBMLDocument:
+    """Derived VE(t) = VT(t) * RR(t) with sigmoidal VT and RR."""
+    sm = next(s for s in SUBMODELS if s.id == "minute_ventilation_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    vt_b = ds["maternal_respiratory.baseline_tidal_volume_ml"]
+    vt_t = ds["maternal_respiratory.tidal_volume_ml_term"]
+    rr_b = ds["maternal_respiratory.baseline_respiratory_rate_bpm"]
+    rr_t = ds["maternal_respiratory.term_respiratory_rate_bpm"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "growth_rate_per_week", 0.2, "dimensionless")
+    _add_parameter(model, "midpoint_week", 20.0, "dimensionless")
+    for p in (vt_b, vt_t, rr_b, rr_t):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "VE_t", 0.0, "dimensionless", constant=False)
+
+    vt_expr = (
+        f"({parameter_id_to_sbml(vt_b.id)} + "
+        f"({parameter_id_to_sbml(vt_t.id)} - {parameter_id_to_sbml(vt_b.id)}) / "
+        f"(1 + exp(-growth_rate_per_week * (t_weeks - midpoint_week))))"
+    )
+    rr_expr = (
+        f"({parameter_id_to_sbml(rr_b.id)} + "
+        f"({parameter_id_to_sbml(rr_t.id)} - {parameter_id_to_sbml(rr_b.id)}) / "
+        f"(1 + exp(-growth_rate_per_week * (t_weeks - midpoint_week))))"
+    )
+    rule = model.createAssignmentRule()
+    rule.setVariable("VE_t")
+    rule.setMath(libsbml.parseL3Formula(f"{vt_expr} * {rr_expr}"))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_arterial_ph_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
+    """Linear arterial-pH trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "arterial_ph_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["maternal_respiratory.baseline_arterial_ph"]
+    term = ds["maternal_respiratory.term_arterial_ph"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "term_week", 40.0, "dimensionless")
+    for p in (baseline, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "pH_t", 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable("pH_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{parameter_id_to_sbml(baseline.id)} + "
+            f"({parameter_id_to_sbml(term.id)} - {parameter_id_to_sbml(baseline.id)}) * "
+            f"(t_weeks / term_week)"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 _BUILDERS = {
     "placental_villous_growth": _build_placental_villous_growth,
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
@@ -874,6 +953,8 @@ _BUILDERS = {
     "heart_rate_trajectory": _build_heart_rate_trajectory,
     "stroke_volume_trajectory": _build_stroke_volume_trajectory,
     "renal_plasma_flow_trajectory": _build_rpf_trajectory,
+    "minute_ventilation_trajectory": _build_minute_ventilation,
+    "arterial_ph_trajectory": _build_arterial_ph_trajectory,
 }
 
 

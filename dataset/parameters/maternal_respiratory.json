@@ -320,5 +320,30 @@
       "reviewer": "v0.4-phase1-expansion-script"
     },
     "primary_citation": "templeton-1976-blood-gas"
+  },
+  {
+    "id": "maternal_respiratory.term_arterial_ph",
+    "name": "Maternal arterial pH at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 7.44,
+      "units": "dimensionless",
+      "low": 7.42,
+      "high": 7.46,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B: compensated respiratory alkalosis of pregnancy. Multiple longitudinal cohorts (Templeton & Kelman 1976, Lim 1976, Hegewald 2011) converge on ~7.44 at term; ~0.04 pH unit rise above non-pregnant baseline, partially compensated by renal HCO3 excretion.",
+    "citations": [
+      "templeton-1976-blood-gas",
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-a-submodel-expansion"
+    },
+    "primary_citation": "templeton-1976-blood-gas"
   }
 ]

@@ -408,7 +408,48 @@ def renal_plasma_flow(
     return baseline_ml_per_min + amplitude * np.exp(-(z**2) / 2.0)
 
 
-# ---- 18. Hadlock IV fetal weight regression ------------------------
+# ---- 18. Minute ventilation derived trajectory ---------------------
+
+
+def maternal_minute_ventilation(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_vt_ml: float,
+    term_vt_ml: float,
+    baseline_rr_bpm: float,
+    term_rr_bpm: float,
+) -> NDArray[np.float64]:
+    """Derived minute ventilation: VE(t) = VT(t) * RR(t).
+
+    VT and RR are both sigmoidal with the standard baseline→term form
+    used by `maternal_tidal_volume` and the heart-rate trajectory.
+    """
+    vt = maternal_tidal_volume(t_weeks, baseline_ml=baseline_vt_ml, term_ml=term_vt_ml)
+    # RR shares the sigmoidal form (slow rise, ~mid-pregnancy inflection)
+    t = np.asarray(t_weeks, dtype=np.float64)
+    rr = baseline_rr_bpm + (term_rr_bpm - baseline_rr_bpm) / (1.0 + np.exp(-0.2 * (t - 20.0)))
+    return vt * rr
+
+
+# ---- 19. Maternal arterial pH linear trajectory --------------------
+
+
+def maternal_arterial_ph(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ph: float,
+    term_ph: float,
+    term_week: float = 40.0,
+) -> NDArray[np.float64]:
+    """Linear arterial-pH trajectory across gestation.
+
+    `pH(t) = baseline + (term - baseline) * (t / term_week)`
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    return baseline_ph + (term_ph - baseline_ph) * (t / term_week)
+
+
+# ---- 20. Hadlock IV fetal weight regression ------------------------
 
 
 def hadlock_fetal_weight(

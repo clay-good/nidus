@@ -53,6 +53,8 @@ def test_registry_lists_submodels() -> None:
         "heart_rate_trajectory",
         "stroke_volume_trajectory",
         "renal_plasma_flow_trajectory",
+        "minute_ventilation_trajectory",
+        "arterial_ph_trajectory",
     } == ids
 
 
@@ -340,6 +342,33 @@ def test_rpf_gaussian_peak_and_decline() -> None:
     assert term > early or term == pytest.approx(early, abs=50.0)
 
 
+def test_minute_ventilation_rises_through_pregnancy() -> None:
+    from nidus.export.reference import maternal_minute_ventilation
+
+    kwargs = dict(
+        baseline_vt_ml=450.0,
+        term_vt_ml=650.0,
+        baseline_rr_bpm=14.0,
+        term_rr_bpm=17.0,
+    )
+    early = float(maternal_minute_ventilation(0.0, **kwargs))  # type: ignore[arg-type]
+    late = float(maternal_minute_ventilation(40.0, **kwargs))  # type: ignore[arg-type]
+    # Endpoints: VT * RR at baseline and term.
+    assert early == pytest.approx(450.0 * 14.0, rel=0.02)
+    assert late == pytest.approx(650.0 * 17.0, rel=0.02)
+    # Pregnancy rise of ~30-75% over baseline.
+    assert late > early * 1.3
+
+
+def test_arterial_ph_linear_endpoints() -> None:
+    from nidus.export.reference import maternal_arterial_ph
+
+    at_zero = float(maternal_arterial_ph(0.0, baseline_ph=7.40, term_ph=7.44))
+    at_term = float(maternal_arterial_ph(40.0, baseline_ph=7.40, term_ph=7.44))
+    assert at_zero == pytest.approx(7.40)
+    assert at_term == pytest.approx(7.44)
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -383,6 +412,8 @@ _ALL_SUBMODEL_IDS = [
     "heart_rate_trajectory",
     "stroke_volume_trajectory",
     "renal_plasma_flow_trajectory",
+    "minute_ventilation_trajectory",
+    "arterial_ph_trajectory",
 ]
 
 
@@ -447,7 +478,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 19
+    assert len(paths) >= 21
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -487,11 +518,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 19
+    assert len(paths_2) >= 21
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 19
+    assert len(paths_1) >= 21
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

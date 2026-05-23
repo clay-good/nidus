@@ -9,6 +9,25 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Two more Phase A submodels** with full export support
+  (SBML L3v2 + CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the
+  registry to **21 submodels**:
+  - `minute_ventilation_trajectory` — derived VE(t) = VT(t) · RR(t)
+    using existing maternal_respiratory tidal-volume and respiratory-
+    rate baseline/term parameters. The product reproduces the ~30-50%
+    pregnancy VE rise (LoMauro 2015, PMID 25624458; Hegewald 2011).
+  - `arterial_ph_trajectory` — linear pH rise from non-pregnant
+    baseline (~7.40) to term (~7.44) reflecting compensated
+    respiratory alkalosis (Templeton & Kelman 1976, PMID 1247088).
+- **One new dataset parameter** (140 → **141 parameters**):
+  - `maternal_respiratory.term_arterial_ph` — pH at term, Tier B from
+    Templeton & Kelman 1976 / LoMauro 2015 convergence. Citation list
+    unchanged (existing entries cover the new parameter).
+- Reference kernels `maternal_minute_ventilation` and
+  `maternal_arterial_ph` with endpoint sanity tests; CellML factor-
+  out helper `_sigmoid_baseline_term` consolidates the common
+  baseline→term sigmoid MathML.
+
 - **Three more Phase A submodels** with full export support
   (SBML L3v2 + CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the
   registry to **19 submodels**:

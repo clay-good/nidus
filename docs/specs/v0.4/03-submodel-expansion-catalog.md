@@ -1,9 +1,12 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A in progress — 8 of 12 candidates shipped to the
+**Status:** Phase A in progress — 10 of 12 candidates shipped to the
 registry (GFR logistic, amniotic-fluid volume, SVR derived, PaO₂
 linear, tidal-volume sigmoidal, HR sigmoidal, SV Gaussian, RPF
-Gaussian). Companion to `02-parameter-expansion-roadmap.md`.
+Gaussian, minute ventilation, arterial pH). Only the four Hadlock
+biometry polynomials remain — they need new polynomial-coefficient
+parameters to land first. Companion to
+`02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -72,7 +75,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs:** All already in the dataset.
 - **Implementation cost:** ~20 LOC; reuses parameters.
 
-### 2.3 Tidal volume + minute ventilation trajectory — **TIDAL VOLUME SHIPPED**
+### 2.3 Tidal volume + minute ventilation trajectory — **BOTH SHIPPED**
 
 - **Equation:** `VE(t) = VT(t) * RR(t)`; VT rises ~40% by term, RR
   rises modestly.
@@ -92,7 +95,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs (new):** trimester-1, -2, -3 PaO₂ anchors.
 - **Implementation cost:** ~30 LOC.
 
-### 2.5 Acid-base: maternal arterial pH trajectory
+### 2.5 Acid-base: maternal arterial pH trajectory — **SHIPPED**
 
 - **Equation:** Linear rise from ~7.40 to ~7.44 (compensated
   respiratory alkalosis).

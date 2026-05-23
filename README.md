@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **19 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **21 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -169,10 +169,12 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `heart_rate_trajectory`                | Sigmoidal HR rise from baseline to term (Mahendru 2014)      | maternal_cardiovascular    |
 | `stroke_volume_trajectory`             | Gaussian bump co-peaking with CO (Mahendru 2014)             | maternal_cardiovascular    |
 | `renal_plasma_flow_trajectory`         | Gaussian bell-shape with mid-pregnancy peak (Dunlop 1981)    | maternal_renal             |
+| `minute_ventilation_trajectory`        | Derived VE(t) = VT(t)·RR(t) (LoMauro 2015, Hegewald 2011)    | maternal_respiratory       |
+| `arterial_ph_trajectory`               | Linear pH rise from baseline to term (Templeton 1976)        | maternal_respiratory       |
 
 Additional Phase A/B submodels are catalogued in
 [`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md)
-(minute ventilation, maternal pH, fetal heart rate, MCA-PI, Hadlock BPD/HC/AC/FL polynomials, etc.).
+(fetal heart rate, MCA-PI, Hadlock BPD/HC/AC/FL polynomials, etc.).
 SBML/CellML builders for those land in subsequent releases.
 
 Each submodel ships with a pure-NumPy reference kernel in [`python/nidus/export/reference.py`](python/nidus/export/reference.py) that the SBML/CellML exports are round-trip validated against.

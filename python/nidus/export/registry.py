@@ -373,6 +373,47 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="mL/min",
     ),
     Submodel(
+        id="minute_ventilation_trajectory",
+        name="Maternal minute ventilation trajectory (VT x RR)",
+        description=(
+            "Derived minute ventilation across gestation: VE(t) = "
+            "VT(t) * RR(t), where VT(t) is the sigmoidal tidal-volume "
+            "trajectory and RR(t) is the sigmoidal respiratory-rate "
+            "trajectory. The product reproduces the ~30-50% rise in "
+            "VE characteristic of pregnancy. LoMauro 2015 (PMID "
+            "25624458) and Hegewald 2011 cover the mechanism."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_respiratory.baseline_tidal_volume_ml",
+            "maternal_respiratory.tidal_volume_ml_term",
+            "maternal_respiratory.baseline_respiratory_rate_bpm",
+            "maternal_respiratory.term_respiratory_rate_bpm",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL/min",
+    ),
+    Submodel(
+        id="arterial_ph_trajectory",
+        name="Maternal arterial pH trajectory (linear)",
+        description=(
+            "Linear arterial-pH rise across gestation reflecting "
+            "compensated respiratory alkalosis: pH(t) = baseline + "
+            "(term - baseline) * (t / 40). Baseline ~7.40, term ~7.44 "
+            "(Templeton & Kelman 1976, PMID 1247088; Hegewald 2011). "
+            "The actual trajectory plateaus after T1 but linear "
+            "interpolation across 0-40 weeks captures the endpoints "
+            "within published scatter."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_respiratory.baseline_arterial_ph",
+            "maternal_respiratory.term_arterial_ph",
+        ),
+        independent_variable="t_weeks",
+        output_units="dimensionless",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

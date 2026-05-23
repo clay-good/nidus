@@ -1027,6 +1027,112 @@ def _build_rpf_trajectory(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _sigmoid_baseline_term(b_id: str, t_id: str) -> str:
+    """Helper: MathML for `baseline + (term-baseline)/(1+exp(-r*(t-mid)))`.
+
+    Assumes variables `growth_rate_per_week`, `midpoint_week`, and
+    `t_weeks` are present in the same component.
+    """
+    return _apply(
+        "plus",
+        _ci(b_id),
+        _apply(
+            "divide",
+            _apply("minus", _ci(t_id), _ci(b_id)),
+            _apply(
+                "plus",
+                _cn("1"),
+                _apply(
+                    "exp",
+                    _apply(
+                        "minus",
+                        _apply(
+                            "times",
+                            _ci("growth_rate_per_week"),
+                            _apply("minus", _ci("t_weeks"), _ci("midpoint_week")),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    )
+
+
+def _build_minute_ventilation(ds: Dataset) -> libcellml.Model:
+    """Derived VE(t) = VT(t) * RR(t)."""
+    sm = next(s for s in SUBMODELS if s.id == "minute_ventilation_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    vt_b = ds["maternal_respiratory.baseline_tidal_volume_ml"]
+    vt_t = ds["maternal_respiratory.tidal_volume_ml_term"]
+    rr_b = ds["maternal_respiratory.baseline_respiratory_rate_bpm"]
+    rr_t = ds["maternal_respiratory.term_respiratory_rate_bpm"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "growth_rate_per_week", units="dimensionless", initial_value="0.2")
+    _add_variable(comp, "midpoint_week", units="dimensionless", initial_value="20")
+    for p in (vt_b, vt_t, rr_b, rr_t):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "VE_t", units="dimensionless", initial_value="0")
+
+    vt_expr = _sigmoid_baseline_term(parameter_id_to_sbml(vt_b.id), parameter_id_to_sbml(vt_t.id))
+    rr_expr = _sigmoid_baseline_term(parameter_id_to_sbml(rr_b.id), parameter_id_to_sbml(rr_t.id))
+    rhs = _apply("times", vt_expr, rr_expr)
+    comp.setMath(_mathml(_apply_assign("VE_t", rhs)))
+    return model
+
+
+def _build_arterial_ph_trajectory(ds: Dataset) -> libcellml.Model:
+    """Linear arterial-pH trajectory."""
+    sm = next(s for s in SUBMODELS if s.id == "arterial_ph_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["maternal_respiratory.baseline_arterial_ph"]
+    term = ds["maternal_respiratory.term_arterial_ph"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "term_week", units="dimensionless", initial_value="40")
+    for p in (baseline, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "pH_t", units="dimensionless", initial_value="0")
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    t_id = parameter_id_to_sbml(term.id)
+    rhs = _apply(
+        "plus",
+        _ci(b_id),
+        _apply(
+            "times",
+            _apply("minus", _ci(t_id), _ci(b_id)),
+            _apply("divide", _ci("t_weeks"), _ci("term_week")),
+        ),
+    )
+    comp.setMath(_mathml(_apply_assign("pH_t", rhs)))
+    return model
+
+
 # ---- Public API ----------------------------------------------------
 
 _BUILDERS = {
@@ -1049,6 +1155,8 @@ _BUILDERS = {
     "heart_rate_trajectory": _build_heart_rate_trajectory,
     "stroke_volume_trajectory": _build_stroke_volume_trajectory,
     "renal_plasma_flow_trajectory": _build_rpf_trajectory,
+    "minute_ventilation_trajectory": _build_minute_ventilation,
+    "arterial_ph_trajectory": _build_arterial_ph_trajectory,
 }
 
 
