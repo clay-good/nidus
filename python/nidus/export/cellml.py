@@ -1199,6 +1199,37 @@ def _build_progesterone(ds: Dataset) -> libcellml.Model:
     )
 
 
+def _build_placental_fetal_allometry(ds: Dataset) -> libcellml.Model:
+    """PW = a * FW^b."""
+    sm = next(s for s in SUBMODELS if s.id == "placental_fetal_allometry")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    a = ds["placental_structure.allometric_coefficient_a"]
+    b = ds["placental_structure.allometric_exponent_b"]
+
+    _add_variable(comp, "fetal_weight_g", units="dimensionless", initial_value="3500")
+    for p in (a, b):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "placental_weight_g", units="dimensionless", initial_value="0")
+
+    a_id = parameter_id_to_sbml(a.id)
+    b_id = parameter_id_to_sbml(b.id)
+    rhs = _apply("times", _ci(a_id), _apply("power", _ci("fetal_weight_g"), _ci(b_id)))
+    comp.setMath(_mathml(_apply_assign("placental_weight_g", rhs)))
+    return model
+
+
 def _build_ua_pi(ds: Dataset) -> libcellml.Model:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1584,6 +1615,7 @@ _BUILDERS = {
     "estradiol_trajectory": _build_estradiol,
     "fetal_heart_rate_trajectory": _build_fhr,
     "hcg_trajectory": _build_hcg,
+    "placental_fetal_allometry": _build_placental_fetal_allometry,
     "umbilical_artery_pi_trajectory": _build_ua_pi,
     "mca_pi_trajectory": _build_mca_pi,
     "cerebroplacental_ratio": _build_cpr,

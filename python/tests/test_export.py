@@ -70,6 +70,7 @@ def test_registry_lists_submodels() -> None:
         "umbilical_artery_pi_trajectory",
         "mca_pi_trajectory",
         "cerebroplacental_ratio",
+        "placental_fetal_allometry",
     } == ids
 
 
@@ -533,6 +534,17 @@ def test_cpr_above_one_in_normal_pregnancy() -> None:
     assert cpr_term > 1.0
 
 
+def test_placental_fetal_allometry_term_ratio() -> None:
+    from nidus.export.reference import placental_fetal_allometry
+
+    # Term: FW ~3500 g, PW(a=0.4, b=0.85) ~ 412 g; ratio ~1:8.5.
+    pw = float(placental_fetal_allometry(3500.0, coefficient_a=0.4, exponent_b=0.85))
+    assert 350.0 < pw < 500.0
+    ratio = 3500.0 / pw
+    # Canonical term placental:fetal weight ratio is 1:6 to 1:9.
+    assert 5.0 < ratio < 10.0
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -593,6 +605,7 @@ _ALL_SUBMODEL_IDS = [
     "umbilical_artery_pi_trajectory",
     "mca_pi_trajectory",
     "cerebroplacental_ratio",
+    "placental_fetal_allometry",
 ]
 
 
@@ -657,7 +670,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 36
+    assert len(paths) >= 37
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -697,11 +710,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 36
+    assert len(paths_2) >= 37
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 36
+    assert len(paths_1) >= 37
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

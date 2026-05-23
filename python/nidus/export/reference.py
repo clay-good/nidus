@@ -641,6 +641,24 @@ def cerebroplacental_ratio(
     return mca / ua
 
 
+# ---- 20g. Placental ~ fetal weight allometry -----------------------
+
+
+def placental_fetal_allometry(
+    fetal_weight_g: FloatArrayLike,
+    *,
+    coefficient_a: float,
+    exponent_b: float,
+) -> NDArray[np.float64]:
+    """Allometric placental-weight scaling: PW = a * FW^b.
+
+    Central nidus values (a=0.4, b=0.85) reproduce the canonical
+    ~1:6 term placental:fetal weight ratio. Hutcheon 2012, Burton 2010.
+    """
+    fw = np.asarray(fetal_weight_g, dtype=np.float64)
+    return coefficient_a * fw**exponent_b
+
+
 # ---- 20. Hadlock biometry cubic-fit growth -------------------------
 
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)

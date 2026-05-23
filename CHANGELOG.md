@@ -9,6 +9,22 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase B complete (10/10):** final Phase B submodel
+  `placental_fetal_allometry` ships the allometric scaling
+  PW = a · FW^b. Central nidus values (a = 0.4, b = 0.85) reproduce
+  the canonical ~1:6-1:9 term placental:fetal weight ratio
+  (Hutcheon 2012, PMID 22845665; Burton 2010). Registry now stands
+  at **37 submodels** — both Phase A and Phase B of the catalog are
+  complete.
+- **Two new dataset parameters** (150 → **152 parameters**), both
+  Tier C in `placental_structure`:
+  - `allometric_coefficient_a`
+  - `allometric_exponent_b`
+- One new citation: `hutcheon-2012-placental-weight` (53 → 54).
+- Reference kernel `placental_fetal_allometry` with a term-ratio
+  sanity test asserting the canonical 1:6-1:9 placental:fetal weight
+  ratio at a 3500 g term fetal weight.
+
 - **Three more Phase B submodels** (fetal Doppler PI cluster),
   bringing the registry to **36 submodels** and Phase B to **9 of 10**:
   - `umbilical_artery_pi_trajectory` — sigmoidal UA-PI fall from

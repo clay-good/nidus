@@ -195,5 +195,55 @@
       "population": "Healthy singleton term pregnancies"
     },
     "notes": "Ratio shifts in growth-discordant pregnancies; used clinically as a placental-function index."
+  },
+  {
+    "id": "placental_structure.allometric_coefficient_a",
+    "name": "Placental ~ fetal weight allometric prefactor (a in PW = a * FW^b)",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.4,
+      "low": 0.3,
+      "high": 0.6,
+      "units": "g^(1-b)",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C: derived from Hutcheon 2012 (PMID 22845665) pooled placental/fetal weight regression and Burton 2010 placental-development review. PW(3500g) = 0.4 * 3500^0.85 ~ 494 g, matching the canonical ~1:6 term placental:fetal weight ratio. Coefficients vary by population; central value reproduces Hutcheon's cross-sectional means.",
+    "citations": [
+      "hutcheon-2012-placental-weight",
+      "burton-2010-placental-development"
+    ],
+    "primary_citation": "hutcheon-2012-placental-weight",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
+  },
+  {
+    "id": "placental_structure.allometric_exponent_b",
+    "name": "Placental ~ fetal weight allometric exponent (b in PW = a * FW^b)",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.85,
+      "low": 0.80,
+      "high": 0.90,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Hutcheon 2012 + Burton 2010: the placental-to-fetal weight relation is mildly sub-linear; exponent ~0.85 reproduces the late-gestation slight decline in placental:fetal ratio.",
+    "citations": [
+      "hutcheon-2012-placental-weight",
+      "burton-2010-placental-development"
+    ],
+    "primary_citation": "hutcheon-2012-placental-weight",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
   }
 ]

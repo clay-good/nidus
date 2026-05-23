@@ -725,6 +725,27 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="dimensionless",
     ),
     Submodel(
+        id="placental_fetal_allometry",
+        name="Placental weight ~ fetal weight allometry",
+        description=(
+            "Allometric scaling of placental weight on fetal weight: "
+            "PW = a * FW^b with a, b curated from Hutcheon 2012 "
+            "(PMID 22845665) pooled regression and the Burton 2010 "
+            "placental-development review. With central a = 0.4 and "
+            "b = 0.85, PW(3500 g) ~ 494 g — matching the canonical "
+            "~1:6 term placental:fetal weight ratio. The mildly "
+            "sub-linear exponent reproduces the late-gestation slight "
+            "decline in placental:fetal ratio."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "placental_structure.allometric_coefficient_a",
+            "placental_structure.allometric_exponent_b",
+        ),
+        independent_variable="fetal_weight_g",
+        output_units="g",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

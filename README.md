@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **36 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **37 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -186,10 +186,13 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `umbilical_artery_pi_trajectory`       | Sigmoidal UA-PI fall (Acharya 2005)                          | fetal_circulation          |
 | `mca_pi_trajectory`                    | Gaussian bell-shape MCA-PI (Mari 1995)                       | fetal_circulation          |
 | `cerebroplacental_ratio`               | Derived CPR = MCA-PI / UA-PI (Baschat 2003)                  | fetal_circulation          |
+| `placental_fetal_allometry`            | PW = a·FW^b allometric scaling (Hutcheon 2012, Burton 2010)  | placental_structure        |
 
-Phase A of the submodel-expansion catalog is complete (12/12); Phase B
-is **9 of 10** shipped. The last Phase B item — placental ~ fetal
-weight allometry — is catalogued in
+**Phase A and Phase B of the submodel-expansion catalog are now both
+complete** (12/12 + 10/10). The registry has reached its catalogued
+ceiling for honest Phase-B-or-better submodels. Phase C (Tier-D /
+hypothetical models, explicitly marked `hypothesis-only`) is the next
+optional milestone; see
 [`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md).
 SBML/CellML builders for those land in subsequent releases.
 

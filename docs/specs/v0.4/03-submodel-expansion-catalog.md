@@ -1,12 +1,13 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A **complete** (12/12). Phase B **9 of 10**:
+**Status:** Phase A **complete** (12/12). Phase B **complete** (10/10):
 HOMA-IR, TSH, cortisol, hPL, progesterone, estradiol, fetal heart
-rate, hCG, plus the umbilical-artery PI / MCA-PI / cerebroplacental
-ratio Doppler cluster. Only the placental ~ fetal weight allometry
-submodel remains — it needs new dataset parameters for the
-allometric `a` and `b` coefficients. Registry totals 36 submodels.
-Companion to `02-parameter-expansion-roadmap.md`.
+rate, hCG, the umbilical-artery PI / MCA-PI / cerebroplacental
+ratio Doppler cluster, and placental ~ fetal weight allometry.
+Registry totals 37 submodels. Phase C (Tier-D / hypothesis-only
+models marked with `nidus:reviewStatus = "hypothesis-only"`) is the
+next optional milestone, scoped at ~4 submodels. Companion to
+`02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -232,7 +233,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Inputs (new):** trimester anchors.
 - **Cost:** ~40 LOC.
 
-### 3.10 Placental weight ~ fetal weight allometry
+### 3.10 Placental weight ~ fetal weight allometry — **SHIPPED**
 
 - **Equation:** `placental_weight = a * (fetal_weight)^b`.
 - **Citations:** Hutcheon 2012, Burton 2010.

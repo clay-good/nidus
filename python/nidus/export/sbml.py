@@ -1074,6 +1074,37 @@ def _build_progesterone(ds: Dataset) -> libsbml.SBMLDocument:
     )
 
 
+def _build_placental_fetal_allometry(ds: Dataset) -> libsbml.SBMLDocument:
+    """PW = a * FW^b."""
+    sm = next(s for s in SUBMODELS if s.id == "placental_fetal_allometry")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    a = ds["placental_structure.allometric_coefficient_a"]
+    b = ds["placental_structure.allometric_exponent_b"]
+
+    _add_parameter(model, "fetal_weight_g", 3500.0, "dimensionless", constant=False)
+    for p in (a, b):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "placental_weight_g", 0.0, "dimensionless", constant=False)
+
+    a_id = parameter_id_to_sbml(a.id)
+    b_id = parameter_id_to_sbml(b.id)
+    rule = model.createAssignmentRule()
+    rule.setVariable("placental_weight_g")
+    rule.setMath(libsbml.parseL3Formula(f"{a_id} * fetal_weight_g^{b_id}"))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 def _build_ua_pi(ds: Dataset) -> libsbml.SBMLDocument:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1334,6 +1365,7 @@ _BUILDERS = {
     "estradiol_trajectory": _build_estradiol,
     "fetal_heart_rate_trajectory": _build_fhr,
     "hcg_trajectory": _build_hcg,
+    "placental_fetal_allometry": _build_placental_fetal_allometry,
     "umbilical_artery_pi_trajectory": _build_ua_pi,
     "mca_pi_trajectory": _build_mca_pi,
     "cerebroplacental_ratio": _build_cpr,

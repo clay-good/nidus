@@ -749,6 +749,23 @@
     "type": "journal-article",
     "year": 2005
   },
+  "hutcheon-2012-placental-weight": {
+    "authors": [
+      "Hutcheon JA",
+      "McNamara H",
+      "Platt RW",
+      "Benjamin A",
+      "Kramer MS"
+    ],
+    "doi": "10.1111/j.1471-0528.2012.03468.x",
+    "journal": "BJOG",
+    "key": "hutcheon-2012-placental-weight",
+    "notes": "Pooled regression of placental weight on fetal weight across n>30,000 singleton births; placental:fetal weight scales allometrically with exponent ~0.85.",
+    "pmid": "22845665",
+    "title": "Placental weight for gestational age and adverse perinatal outcomes",
+    "type": "journal-article",
+    "year": 2012
+  },
   "mari-1995-mca-pi": {
     "authors": [
       "Mari G",
