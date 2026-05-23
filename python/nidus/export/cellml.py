@@ -1199,6 +1199,51 @@ def _build_progesterone(ds: Dataset) -> libcellml.Model:
     )
 
 
+def _build_igg_transfer(ds: Dataset) -> libcellml.Model:
+    """HYPOTHESIS-ONLY sigmoidal IgG transfer ratio."""
+    return _build_sigmoid_baseline_term(
+        ds,
+        "maternal_fetal_igg_transfer",
+        baseline_pid="placental_structure.igg_transfer_ratio_baseline",
+        term_pid="placental_structure.igg_transfer_ratio_term",
+        output_name="igg_ratio_t",
+        growth_rate=0.25,
+        midpoint_week=28.0,
+    )
+
+
+def _build_placental_cortisol_gradient(ds: Dataset) -> libcellml.Model:
+    """HYPOTHESIS-ONLY: fetal cortisol = maternal * (1 - inactivation)."""
+    sm = next(s for s in SUBMODELS if s.id == "placental_cortisol_gradient")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    frac = ds["placental_structure.hsd2_cortisol_inactivation_fraction"]
+
+    _add_variable(comp, "maternal_cortisol_ug_per_dl", units="dimensionless", initial_value="30")
+    _add_variable(
+        comp,
+        parameter_id_to_sbml(frac.id),
+        units="dimensionless",
+        initial_value=str(frac.value.central),
+    )
+    _add_variable(comp, "fetal_cortisol_ug_per_dl", units="dimensionless", initial_value="0")
+
+    frac_id = parameter_id_to_sbml(frac.id)
+    rhs = _apply(
+        "times",
+        _ci("maternal_cortisol_ug_per_dl"),
+        _apply("minus", _cn("1"), _ci(frac_id)),
+    )
+    comp.setMath(_mathml(_apply_assign("fetal_cortisol_ug_per_dl", rhs)))
+    return model
+
+
 def _build_placental_fetal_allometry(ds: Dataset) -> libcellml.Model:
     """PW = a * FW^b."""
     sm = next(s for s in SUBMODELS if s.id == "placental_fetal_allometry")
@@ -1616,6 +1661,8 @@ _BUILDERS = {
     "fetal_heart_rate_trajectory": _build_fhr,
     "hcg_trajectory": _build_hcg,
     "placental_fetal_allometry": _build_placental_fetal_allometry,
+    "maternal_fetal_igg_transfer": _build_igg_transfer,
+    "placental_cortisol_gradient": _build_placental_cortisol_gradient,
     "umbilical_artery_pi_trajectory": _build_ua_pi,
     "mca_pi_trajectory": _build_mca_pi,
     "cerebroplacental_ratio": _build_cpr,

@@ -749,6 +749,39 @@
     "type": "journal-article",
     "year": 2005
   },
+  "palmeira-2012-igg-transfer": {
+    "authors": [
+      "Palmeira P",
+      "Quinello C",
+      "Silveira-Lessa AL",
+      "Zago CA",
+      "Carneiro-Sampaio M"
+    ],
+    "doi": "10.1155/2012/985646",
+    "journal": "Clinical and Developmental Immunology",
+    "key": "palmeira-2012-igg-transfer",
+    "notes": "Review of FcRn-mediated maternal IgG transfer across placenta; rises through T2-T3 to fetal/maternal ratio >1 at term. Exact kinetics remain open.",
+    "pmid": "22235228",
+    "title": "IgG placental transfer in healthy and pathological pregnancies",
+    "type": "journal-article",
+    "year": 2012
+  },
+  "benediktsson-1997-11bhsd2": {
+    "authors": [
+      "Benediktsson R",
+      "Calder AA",
+      "Edwards CR",
+      "Seckl JR"
+    ],
+    "doi": "10.1046/j.1365-2265.1997.1340955.x",
+    "journal": "Clinical Endocrinology",
+    "key": "benediktsson-1997-11bhsd2",
+    "notes": "Placental 11beta-HSD2 inactivates ~80-90% of maternal cortisol crossing into fetal circulation. Quantitative inactivation fraction varies and is poorly constrained.",
+    "pmid": "9326655",
+    "title": "Placental 11 beta-hydroxysteroid dehydrogenase: a key regulator of fetal glucocorticoid exposure",
+    "type": "journal-article",
+    "year": 1997
+  },
   "hutcheon-2012-placental-weight": {
     "authors": [
       "Hutcheon JA",

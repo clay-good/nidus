@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **37 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **39 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`. Two are Phase-C hypothesis-only models that ship with explicit "DO NOT USE FOR PREDICTION" annotations.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -187,13 +187,17 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `mca_pi_trajectory`                    | Gaussian bell-shape MCA-PI (Mari 1995)                       | fetal_circulation          |
 | `cerebroplacental_ratio`               | Derived CPR = MCA-PI / UA-PI (Baschat 2003)                  | fetal_circulation          |
 | `placental_fetal_allometry`            | PW = a·FW^b allometric scaling (Hutcheon 2012, Burton 2010)  | placental_structure        |
+| `maternal_fetal_igg_transfer` ⚠️       | **HYPOTHESIS-ONLY** sigmoidal FcRn IgG transfer (Palmeira 2012) | placental_structure      |
+| `placental_cortisol_gradient` ⚠️       | **HYPOTHESIS-ONLY** 11β-HSD2 inactivation (Benediktsson 1997) | placental_structure       |
 
-**Phase A and Phase B of the submodel-expansion catalog are now both
-complete** (12/12 + 10/10). The registry has reached its catalogued
-ceiling for honest Phase-B-or-better submodels. Phase C (Tier-D /
-hypothetical models, explicitly marked `hypothesis-only`) is the next
-optional milestone; see
-[`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md).
+**Phase A (12/12), Phase B (10/10), and the first two Phase C
+hypothesis-only models are shipped.** Phase-C submodels use Tier-D
+parameters reflecting qualitative published shape only; they emit a
+`nidus:reviewStatus = "hypothesis-only"` annotation and a
+"DO NOT USE FOR PREDICTION" warning in their SBML/CellML output, so
+downstream consumers cannot accidentally treat them as predictive
+models. See
+[`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md) section 4.
 SBML/CellML builders for those land in subsequent releases.
 
 Each submodel ships with a pure-NumPy reference kernel in [`python/nidus/export/reference.py`](python/nidus/export/reference.py) that the SBML/CellML exports are round-trip validated against.

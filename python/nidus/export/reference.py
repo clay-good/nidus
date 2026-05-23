@@ -659,6 +659,45 @@ def placental_fetal_allometry(
     return coefficient_a * fw**exponent_b
 
 
+# ---- 20h. Phase C: hypothesis-only models --------------------------
+# These ship with explicit "DO NOT USE FOR PREDICTION" annotations
+# in the exported SBML/CellML output. The Tier D inputs reflect
+# qualitative published shape only, not predictive accuracy.
+
+
+def maternal_fetal_igg_transfer(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline: float,
+    term: float,
+    growth_rate_per_week: float = 0.25,
+    midpoint_week: float = 28.0,
+) -> NDArray[np.float64]:
+    """HYPOTHESIS-ONLY sigmoidal fetal/maternal IgG ratio (Palmeira 2012).
+
+    DO NOT USE FOR PREDICTION.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term - baseline
+    return baseline + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+def placental_cortisol_gradient(
+    maternal_cortisol_ug_per_dl: FloatArrayLike,
+    *,
+    inactivation_fraction: float,
+) -> NDArray[np.float64]:
+    """HYPOTHESIS-ONLY algebraic cortisol gradient (Benediktsson 1997).
+
+    `fetal_cortisol = maternal_cortisol * (1 - inactivation_fraction)`
+
+    Linear pass-through; the actual 11beta-HSD2 kinetics are saturable
+    and likely concentration-dependent. DO NOT USE FOR PREDICTION.
+    """
+    m = np.asarray(maternal_cortisol_ug_per_dl, dtype=np.float64)
+    return m * (1.0 - inactivation_fraction)
+
+
 # ---- 20. Hadlock biometry cubic-fit growth -------------------------
 
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)

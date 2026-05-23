@@ -245,5 +245,80 @@
       "date": "2026-05-22",
       "reviewer": "v0.4-phase-b-submodel-expansion"
     }
+  },
+  {
+    "id": "placental_structure.igg_transfer_ratio_baseline",
+    "name": "Maternal-fetal IgG transfer ratio, mid-pregnancy baseline",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.2,
+      "low": 0.1,
+      "high": 0.4,
+      "units": "dimensionless",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): FcRn-mediated IgG transfer is qualitatively documented but quantitatively poorly constrained. Palmeira 2012 reviews the rise from low fetal/maternal IgG ratios in T1-T2 to ratios near or above 1 at term; exact kinetics depend on FcRn expression and IgG subclass. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "palmeira-2012-igg-transfer"
+    ],
+    "primary_citation": "palmeira-2012-igg-transfer",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter. Used in hypothesis-only submodel maternal_fetal_igg_transfer."
+  },
+  {
+    "id": "placental_structure.igg_transfer_ratio_term",
+    "name": "Maternal-fetal IgG transfer ratio at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 1.2,
+      "low": 1.0,
+      "high": 1.5,
+      "units": "dimensionless",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): Term fetal/maternal IgG ratios typically exceed 1.0 (active FcRn pumping), with wide cohort variation. Palmeira 2012 review; precise kinetics are unsettled. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "palmeira-2012-igg-transfer"
+    ],
+    "primary_citation": "palmeira-2012-igg-transfer",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter."
+  },
+  {
+    "id": "placental_structure.hsd2_cortisol_inactivation_fraction",
+    "name": "Placental 11beta-HSD2 cortisol inactivation fraction",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 0.85,
+      "low": 0.7,
+      "high": 0.95,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): Placental 11beta-HSD2 inactivates ~80-90% of cortisol crossing into fetal circulation; the exact saturation kinetics are textbook-qualitative (Benediktsson 1997). Quantitative inactivation fraction varies across individuals and gestational ages and is not well-constrained. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "benediktsson-1997-11bhsd2"
+    ],
+    "primary_citation": "benediktsson-1997-11bhsd2",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter used in placental_cortisol_gradient submodel."
   }
 ]

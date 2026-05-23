@@ -9,6 +9,39 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase C opens with two hypothesis-only submodels.** Registry now
+  stands at **39 submodels** total (Phase A + Phase B + 2 of 4 Phase
+  C). Phase C submodels carry `nidus:reviewStatus = "hypothesis-only"`
+  and a `nidus:warning = "DO NOT USE FOR PREDICTION"` RDF annotation
+  in their SBML/CellML output, ensuring downstream consumers cannot
+  accidentally treat them as predictive.
+  - `maternal_fetal_igg_transfer` — sigmoidal FcRn-mediated IgG ratio
+    rising from ~0.2 mid-pregnancy to >1.0 at term (Palmeira 2012,
+    PMID 22235228). Exact kinetics are FcRn-saturation-dependent and
+    open.
+  - `placental_cortisol_gradient` — algebraic
+    fetal_cortisol = maternal_cortisol * (1 - HSD2_inactivation),
+    encoding the textbook qualitative shape (Benediktsson 1997,
+    PMID 9326655). The actual saturable 11β-HSD2 kinetics are not
+    captured.
+- **New `Submodel.review_status` field** (default `"shipped"`,
+  alternative `"hypothesis-only"`). The SBML annotation helper reads
+  this and emits the warning + reviewStatus lines only for hypothesis-
+  only submodels — backwards-compatible with the 37 shipped models.
+- **Three new Tier-D dataset parameters** (152 → **155 parameters**),
+  all in `placental_structure`, each with explicit
+  "DO NOT USE FOR PREDICTION" tier rationale:
+  - `igg_transfer_ratio_baseline` (Tier D, Palmeira 2012)
+  - `igg_transfer_ratio_term` (Tier D, Palmeira 2012)
+  - `hsd2_cortisol_inactivation_fraction` (Tier D, Benediktsson 1997)
+- **Two new citations** (54 → 56): `palmeira-2012-igg-transfer`,
+  `benediktsson-1997-11bhsd2`.
+- Reference kernels `maternal_fetal_igg_transfer` and
+  `placental_cortisol_gradient` with sanity tests; two new SBML-output
+  tests assert (a) hypothesis-only submodels carry the warning, and
+  (b) `shipped` submodels do NOT carry the warning (no false
+  positives in the existing 37 models).
+
 - **Phase B complete (10/10):** final Phase B submodel
   `placental_fetal_allometry` ships the allometric scaling
   PW = a · FW^b. Central nidus values (a = 0.4, b = 0.85) reproduce

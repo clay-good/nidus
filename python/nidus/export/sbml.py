@@ -523,6 +523,16 @@ def _build_hadlock_fetal_weight(ds: Dataset) -> libsbml.SBMLDocument:
 
 
 def _model_annotation_xml(sm: Submodel, tier: str) -> str:
+    review_line = (
+        f"      <nidus:reviewStatus>{sm.review_status}</nidus:reviewStatus>\n"
+        if sm.review_status != "shipped"
+        else ""
+    )
+    warn_line = (
+        "      <nidus:warning>DO NOT USE FOR PREDICTION</nidus:warning>\n"
+        if sm.review_status == "hypothesis-only"
+        else ""
+    )
     return (
         f"<annotation>\n"
         f'  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"\n'
@@ -532,6 +542,8 @@ def _model_annotation_xml(sm: Submodel, tier: str) -> str:
         f"      <nidus:datasetVersion>0.4.0.dev0</nidus:datasetVersion>\n"
         f"      <nidus:submodelId>{sm.id}</nidus:submodelId>\n"
         + (f"      <nidus:sboTerm>{sm.sbo_term}</nidus:sboTerm>\n" if sm.sbo_term else "")
+        + review_line
+        + warn_line
         + "    </rdf:Description>\n"
         "  </rdf:RDF>\n"
         "</annotation>"
@@ -1074,6 +1086,47 @@ def _build_progesterone(ds: Dataset) -> libsbml.SBMLDocument:
     )
 
 
+def _build_igg_transfer(ds: Dataset) -> libsbml.SBMLDocument:
+    """HYPOTHESIS-ONLY sigmoidal IgG transfer ratio."""
+    return _build_sigmoid_baseline_term(
+        ds,
+        "maternal_fetal_igg_transfer",
+        baseline_pid="placental_structure.igg_transfer_ratio_baseline",
+        term_pid="placental_structure.igg_transfer_ratio_term",
+        output_name="igg_ratio_t",
+        growth_rate=0.25,
+        midpoint_week=28.0,
+    )
+
+
+def _build_placental_cortisol_gradient(ds: Dataset) -> libsbml.SBMLDocument:
+    """HYPOTHESIS-ONLY: fetal cortisol = maternal * (1 - inactivation)."""
+    sm = next(s for s in SUBMODELS if s.id == "placental_cortisol_gradient")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    frac = ds["placental_structure.hsd2_cortisol_inactivation_fraction"]
+
+    _add_parameter(model, "maternal_cortisol_ug_per_dl", 30.0, "dimensionless", constant=False)
+    sp = _add_parameter(model, frac.id, frac.value.central, "dimensionless")
+    _attach_param_annotation(sp, frac)
+    _add_parameter(model, "fetal_cortisol_ug_per_dl", 0.0, "dimensionless", constant=False)
+
+    frac_id = parameter_id_to_sbml(frac.id)
+    rule = model.createAssignmentRule()
+    rule.setVariable("fetal_cortisol_ug_per_dl")
+    rule.setMath(libsbml.parseL3Formula(f"maternal_cortisol_ug_per_dl * (1 - {frac_id})"))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes("HYPOTHESIS-ONLY. DO NOT USE FOR PREDICTION. " + sm.description))
+    return doc
+
+
 def _build_placental_fetal_allometry(ds: Dataset) -> libsbml.SBMLDocument:
     """PW = a * FW^b."""
     sm = next(s for s in SUBMODELS if s.id == "placental_fetal_allometry")
@@ -1366,6 +1419,8 @@ _BUILDERS = {
     "fetal_heart_rate_trajectory": _build_fhr,
     "hcg_trajectory": _build_hcg,
     "placental_fetal_allometry": _build_placental_fetal_allometry,
+    "maternal_fetal_igg_transfer": _build_igg_transfer,
+    "placental_cortisol_gradient": _build_placental_cortisol_gradient,
     "umbilical_artery_pi_trajectory": _build_ua_pi,
     "mca_pi_trajectory": _build_mca_pi,
     "cerebroplacental_ratio": _build_cpr,

@@ -71,6 +71,8 @@ def test_registry_lists_submodels() -> None:
         "mca_pi_trajectory",
         "cerebroplacental_ratio",
         "placental_fetal_allometry",
+        "maternal_fetal_igg_transfer",
+        "placental_cortisol_gradient",
     } == ids
 
 
@@ -545,6 +547,44 @@ def test_placental_fetal_allometry_term_ratio() -> None:
     assert 5.0 < ratio < 10.0
 
 
+def test_igg_transfer_rises_through_pregnancy() -> None:
+    from nidus.export.reference import maternal_fetal_igg_transfer
+
+    early = float(maternal_fetal_igg_transfer(16.0, baseline=0.2, term=1.2))
+    late = float(maternal_fetal_igg_transfer(40.0, baseline=0.2, term=1.2))
+    assert early < late
+    # Term ratio > 1 (active transport overshoots maternal levels).
+    assert late > 1.0
+
+
+def test_placental_cortisol_gradient_inactivates() -> None:
+    from nidus.export.reference import placental_cortisol_gradient
+
+    fetal = float(placental_cortisol_gradient(30.0, inactivation_fraction=0.85))
+    # 15% of maternal: 30 * 0.15 = 4.5
+    assert fetal == pytest.approx(4.5)
+
+
+def test_hypothesis_only_submodels_carry_warning(ds: nidus.Dataset, libsbml_module) -> None:
+    """Phase C submodels must emit DO NOT USE FOR PREDICTION annotation."""
+    from nidus.export import build_sbml
+
+    for sm_id in ["maternal_fetal_igg_transfer", "placental_cortisol_gradient"]:
+        xml = build_sbml(ds, sm_id)
+        assert "reviewStatus" in xml, f"{sm_id} missing reviewStatus annotation"
+        assert "hypothesis-only" in xml, f"{sm_id} missing hypothesis-only marker"
+        assert "DO NOT USE FOR PREDICTION" in xml, f"{sm_id} missing warning"
+
+
+def test_shipped_submodels_do_not_carry_warning(ds: nidus.Dataset, libsbml_module) -> None:
+    """Default 'shipped' status must NOT emit the hypothesis-only marker."""
+    from nidus.export import build_sbml
+
+    xml = build_sbml(ds, "placental_villous_growth")
+    assert "hypothesis-only" not in xml
+    assert "DO NOT USE FOR PREDICTION" not in xml
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -606,6 +646,8 @@ _ALL_SUBMODEL_IDS = [
     "mca_pi_trajectory",
     "cerebroplacental_ratio",
     "placental_fetal_allometry",
+    "maternal_fetal_igg_transfer",
+    "placental_cortisol_gradient",
 ]
 
 
@@ -670,7 +712,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 37
+    assert len(paths) >= 39
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -710,11 +752,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 37
+    assert len(paths_2) >= 39
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 37
+    assert len(paths_1) >= 39
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

@@ -1,13 +1,11 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A **complete** (12/12). Phase B **complete** (10/10):
-HOMA-IR, TSH, cortisol, hPL, progesterone, estradiol, fetal heart
-rate, hCG, the umbilical-artery PI / MCA-PI / cerebroplacental
-ratio Doppler cluster, and placental ~ fetal weight allometry.
-Registry totals 37 submodels. Phase C (Tier-D / hypothesis-only
-models marked with `nidus:reviewStatus = "hypothesis-only"`) is the
-next optional milestone, scoped at ~4 submodels. Companion to
-`02-parameter-expansion-roadmap.md`.
+**Status:** Phase A **complete** (12/12). Phase B **complete** (10/10).
+Phase C **opened** (2 of 4 shipped): `maternal_fetal_igg_transfer`
+and `placental_cortisol_gradient`, both marked
+`nidus:reviewStatus = "hypothesis-only"` with "DO NOT USE FOR
+PREDICTION" warnings in the SBML/CellML output. Registry totals 39
+submodels. Companion to `02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11

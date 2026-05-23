@@ -28,6 +28,10 @@ class Submodel:
     parameter_ids: tuple[str, ...]
     independent_variable: str | None = None  # e.g. "t" (weeks), "PO2" (mmHg)
     output_units: str = "dimensionless"
+    # "shipped" (default, Phase A/B) or "hypothesis-only" (Phase C: Tier D
+    # parameters, qualitative shape only — emits "DO NOT USE FOR PREDICTION"
+    # annotation in SBML/CellML/PhysioCell output).
+    review_status: str = "shipped"
 
 
 SUBMODELS: tuple[Submodel, ...] = (
@@ -744,6 +748,48 @@ SUBMODELS: tuple[Submodel, ...] = (
         ),
         independent_variable="fetal_weight_g",
         output_units="g",
+    ),
+    Submodel(
+        id="maternal_fetal_igg_transfer",
+        name="Maternal-fetal IgG transfer ratio (hypothesis-only)",
+        description=(
+            "HYPOTHESIS-ONLY (Tier D): Sigmoidal fetal/maternal IgG "
+            "ratio rising through gestation as FcRn-mediated active "
+            "transport accelerates in T3. Form: ratio(t) = baseline "
+            "+ (term - baseline) / (1 + exp(-0.25*(t - 28))). Palmeira "
+            "2012 review notes the qualitative rise but exact kinetics "
+            "remain open and FcRn-saturation-dependent. DO NOT USE "
+            "FOR PREDICTION — encoded for research-question purposes "
+            "(what would a calibrated transfer model need to predict?)."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "placental_structure.igg_transfer_ratio_baseline",
+            "placental_structure.igg_transfer_ratio_term",
+        ),
+        independent_variable="t_weeks",
+        output_units="dimensionless",
+        review_status="hypothesis-only",
+    ),
+    Submodel(
+        id="placental_cortisol_gradient",
+        name="Placental cortisol metabolism gradient (hypothesis-only)",
+        description=(
+            "HYPOTHESIS-ONLY (Tier D): Algebraic fetal cortisol = "
+            "maternal_cortisol * (1 - hsd2_inactivation_fraction). "
+            "Placental 11beta-HSD2 inactivates ~80-90% of maternal "
+            "cortisol crossing into fetal circulation (Benediktsson "
+            "1997), but the saturation kinetics are textbook-"
+            "qualitative. DO NOT USE FOR PREDICTION — encoded to "
+            "make the open question explicit (what would saturable "
+            "11beta-HSD2 kinetics need to look like to fit cohort "
+            "data?). Takes maternal cortisol as algebraic input."
+        ),
+        sbo_term=None,
+        parameter_ids=("placental_structure.hsd2_cortisol_inactivation_fraction",),
+        independent_variable="maternal_cortisol_ug_per_dl",
+        output_units="ug/dL",
+        review_status="hypothesis-only",
     ),
     Submodel(
         id="hadlock_fetal_weight",
