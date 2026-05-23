@@ -136,5 +136,33 @@
     "applicability": {
       "population": "Healthy singleton term pregnancies"
     }
+  },
+  {
+    "id": "placental_gas_exchange.maternal_fetal_pco2_gradient_term_mmhg",
+    "name": "Maternal-fetal PCO2 gradient at term",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 10.0,
+      "low": 6.0,
+      "high": 14.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Mayhew 1986 and standard fetal-physiology references: at term the umbilical-vein PCO2 (~40 mmHg) exceeds the intervillous PCO2 (~30 mmHg under maternal hyperventilation) by ~10 mmHg, while umbilical artery PCO2 runs ~50 mmHg. The CO2 gradient drives net CO2 transfer from fetus to mother, supported by the Haldane effect and the high CO2 diffusing capacity of the placental membrane. Tier C reflects substantial cohort variation.",
+    "citations": [
+      "mayhew-1986-gas-diffusion"
+    ],
+    "primary_citation": "mayhew-1986-gas-diffusion",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Maternal respiratory alkalosis (lower PaCO2) widens the gradient and facilitates fetal CO2 offloading — a teleologically attractive coupling between maternal and fetal acid-base physiology."
   }
 ]

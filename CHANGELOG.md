@@ -9,6 +9,34 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 saturation pass — final batch: vascular resistances,
+  lung volumes, gas-exchange gradient, parallel-circulation routing.**
+  Nine new Tier-B/C dataset parameters (190 → **199 parameters**),
+  all sourced from citations already in the index. The dataset is
+  now at the **~200-parameter saturation ceiling** declared in spec
+  02 §2.
+  - `maternal_blood.haemoglobin_baseline_g_per_dl` (Tier B, ~13.5;
+    pre-pregnancy anchor for the haemodilution-driven term fall)
+  - `maternal_blood.mcv_term_fl` (Tier B, ~92 fL; modest rise from
+    reticulocytosis)
+  - `maternal_respiratory.inspiratory_capacity_term_l` (Tier B,
+    ~2.7 L; rib-cage expansion compensates the FRC fall)
+  - `maternal_respiratory.tlc_term_l` (Tier B, ~5.0 L; essentially
+    unchanged)
+  - `maternal_cardiovascular.svr_nadir_dyn_s_cm5` (Tier B, ~750;
+    completes baseline → nadir → term SVR trajectory anchors)
+  - `maternal_cardiovascular.pvr_term_dyn_s_cm5` (Tier B, ~80;
+    parallel pulmonary vasodilation accommodates CO rise)
+  - `placental_gas_exchange.maternal_fetal_pco2_gradient_term_mmhg`
+    (Tier C, ~10 mmHg; coupled to maternal respiratory alkalosis)
+  - `fetal_circulation.aortic_isthmus_flow_fraction_cvo_term`
+    (Tier C, ~0.10; the narrow segment between LV and RV outputs)
+  - `fetal_circulation.coronary_flow_fraction_cvo_term` (Tier C,
+    ~0.03; brain-and-heart sparing routing of the best-oxygenated
+    stream)
+  Spec 02 §3.1, §3.2, §3.4, §3.6, and §3.8 gaps close. No new
+  citations.
+
 - **Phase 3 saturation pass — fetal homeostasis + placental glucose
   flux + maternal protein/coagulation anchors.** Six new Tier-B/C
   dataset parameters (184 → **190 parameters**), all sourced from

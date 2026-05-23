@@ -392,5 +392,62 @@
       "population": "Healthy singleton pregnancies, term"
     },
     "notes": "Post-natally the ratio inverts: the LV becomes the dominant ventricle as systemic and pulmonary circulations separate into series."
+  },
+  {
+    "id": "fetal_circulation.aortic_isthmus_flow_fraction_cvo_term",
+    "name": "Aortic isthmus flow as fraction of combined ventricular output at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.10,
+      "low": 0.05,
+      "high": 0.15,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Rudolph 1985 (lamb) confirmed in human Doppler studies: only ~5-15% of combined ventricular output crosses the aortic isthmus, the narrow segment between the brachiocephalic vessels and the ductus arteriosus. The small isthmus flow reflects parallel circulation routing — most LV output supplies the head/upper body while RV output joins the descending aorta via the ductus. Isthmus flow reversal is a sensitive marker of fetal compromise.",
+    "citations": [
+      "rudolph-1985-fetal-circulation",
+      "sutton-1991-fetal-cardiac"
+    ],
+    "primary_citation": "rudolph-1985-fetal-circulation",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "The narrow isthmus and its small flow share are unique to the fetal circulation; postnatally it carries the full descending-aorta load."
+  },
+  {
+    "id": "fetal_circulation.coronary_flow_fraction_cvo_term",
+    "name": "Coronary artery flow as fraction of combined ventricular output at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.03,
+      "low": 0.02,
+      "high": 0.05,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Rudolph 1985 (lamb): coronary flow is ~2-5% of combined ventricular output in the fetus, preferentially supplied by the relatively well-oxygenated stream entering the aortic root from the foramen ovale. The fetus directs the best-oxygenated blood available to the brain and heart; this routing breaks down under hypoxia and explains why fetal myocardial ischaemia is a late sign of compromise.",
+    "citations": [
+      "rudolph-1985-fetal-circulation"
+    ],
+    "primary_citation": "rudolph-1985-fetal-circulation",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Brain-and-heart-sparing physiology in normal fetal life; collapses under hypoxic decompensation."
   }
 ]

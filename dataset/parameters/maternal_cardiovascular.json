@@ -566,6 +566,61 @@
     "primary_citation": "sanghavi-rutherford-2014-cardio-review"
   },
   {
+    "id": "maternal_cardiovascular.svr_nadir_dyn_s_cm5",
+    "name": "Systemic vascular resistance, mid-pregnancy nadir",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 750.0,
+      "low": 650.0,
+      "high": 850.0,
+      "units": "dyn·s·cm^-5",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi & Rutherford 2014: SVR falls from a non-pregnant baseline of ~1200 dyn·s·cm^-5 to a mid-pregnancy nadir of ~700-800 (a 30-40% drop), driven by relaxin/estrogen-mediated arterial vasodilation. The nadir typically occurs at ~24-28 weeks, paralleling the MAP nadir and the cardiac-output peak. Sits between baseline_svr_dyn_s_cm5 and term_svr_dyn_s_cm5 already in the dataset.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, mid-pregnancy"
+    },
+    "notes": "Completes the SVR(t) trajectory anchor set together with the baseline + term values already in the dataset."
+  },
+  {
+    "id": "maternal_cardiovascular.pvr_term_dyn_s_cm5",
+    "name": "Pulmonary vascular resistance at term",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 80.0,
+      "low": 60.0,
+      "high": 110.0,
+      "units": "dyn·s·cm^-5",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi & Rutherford 2014: PVR drops by ~30-40% through pregnancy from a non-pregnant baseline of ~120 dyn·s·cm^-5 to ~80 at term, paralleling the systemic vasodilation. The fall accommodates the rise in cardiac output without raising pulmonary artery pressure, an adaptation that fails in primary pulmonary hypertension — explaining why pregnancy is contraindicated in that condition.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    }
+  },
+  {
     "id": "maternal_cardiovascular.lv_mass_baseline_g",
     "name": "Left ventricular mass, pre-pregnancy baseline",
     "subsystem": "maternal_cardiovascular",

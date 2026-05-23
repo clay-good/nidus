@@ -309,6 +309,61 @@
     }
   },
   {
+    "id": "maternal_blood.haemoglobin_baseline_g_per_dl",
+    "name": "Haemoglobin concentration, pre-pregnancy baseline",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 13.5,
+      "low": 12.5,
+      "high": 14.5,
+      "units": "g/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: pre-pregnancy haemoglobin in healthy women of reproductive age is approximately 12.5-14.5 g/dL. Acts as the anchor for the term Hb already in the dataset (~11.5 g/dL) — the fall reflects plasma-volume expansion outpacing red-cell-mass expansion (physiological haemodilution of pregnancy).",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy non-pregnant women of reproductive age"
+    }
+  },
+  {
+    "id": "maternal_blood.mcv_term_fl",
+    "name": "Mean corpuscular volume at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 92.0,
+      "low": 86.0,
+      "high": 98.0,
+      "units": "fL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: mean corpuscular volume rises modestly through pregnancy from a non-pregnant baseline of ~87 fL to ~92 fL at term, reflecting the higher reticulocyte fraction in the expanded red-cell mass. Microcytosis (MCV <80) in late pregnancy is a sensitive indicator of iron-deficient erythropoiesis even without overt anaemia.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Pairs with ferritin_term_ng_per_ml: MCV <80 + ferritin <12 is the classical iron-deficiency picture."
+  },
+  {
     "id": "maternal_blood.total_protein_term_g_per_dl",
     "name": "Serum total protein at term",
     "subsystem": "maternal_blood",

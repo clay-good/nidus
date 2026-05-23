@@ -347,6 +347,62 @@
     "primary_citation": "templeton-1976-blood-gas"
   },
   {
+    "id": "maternal_respiratory.inspiratory_capacity_term_l",
+    "name": "Inspiratory capacity at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 2.7,
+      "low": 2.4,
+      "high": 3.0,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Crapo 1996 and LoMauro & Aliverti 2015: inspiratory capacity (IC = TV + IRV) rises modestly through pregnancy by ~5-10% from non-pregnant ~2.5 L to ~2.7 L at term. The rise is attributed to expansion of the rib cage at the expense of the descended diaphragm; it partly compensates for the fall in FRC.",
+    "citations": [
+      "crapo-1996-pregnancy-respiratory",
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "primary_citation": "crapo-1996-pregnancy-respiratory",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "FRC + IC = TLC. Since TLC is approximately unchanged and FRC falls, IC must rise; the magnitudes match the FRC drop already in the dataset."
+  },
+  {
+    "id": "maternal_respiratory.tlc_term_l",
+    "name": "Total lung capacity at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 5.0,
+      "low": 4.5,
+      "high": 5.5,
+      "units": "L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Crapo 1996: total lung capacity is essentially unchanged through pregnancy (typically <5% reduction), reflecting that the diaphragmatic ascent is offset by rib-cage expansion. The preserved TLC against falling FRC means breathing operates from a lower baseline volume — relevant to closing-volume considerations in late pregnancy.",
+    "citations": [
+      "crapo-1996-pregnancy-respiratory"
+    ],
+    "primary_citation": "crapo-1996-pregnancy-respiratory",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    }
+  },
+  {
     "id": "maternal_respiratory.vco2_term_ml_per_min",
     "name": "Maternal CO2 production at term",
     "subsystem": "maternal_respiratory",
