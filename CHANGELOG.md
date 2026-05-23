@@ -9,9 +9,38 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
-- **Phase C opens with two hypothesis-only submodels.** Registry now
-  stands at **39 submodels** total (Phase A + Phase B + 2 of 4 Phase
-  C). Phase C submodels carry `nidus:reviewStatus = "hypothesis-only"`
+- **Phase C complete (4/4).** Registry now stands at **41 submodels**
+  total (Phase A 12 + Phase B 10 + Phase C 4 + the legacy
+  `hadlock_fetal_weight` + the 14 v0.4 core submodels). The two new
+  Phase C entries both carry `nidus:reviewStatus = "hypothesis-only"`
+  and the `nidus:warning = "DO NOT USE FOR PREDICTION"` RDF annotation:
+  - `maternal_microchimerism_trajectory` — sigmoidal accumulation of
+    fetal microchimeric cells in maternal blood from ~0 cells/mL
+    (T1 baseline) to ~1 cell/mL at term, midpoint week 24. Bianchi
+    1996 (PMID 8570620) documents trafficking and decades-long
+    postpartum persistence; an uptake/clearance ODE upgrade with
+    explicit rate constants remains an open research question.
+  - `fetal_pulmonary_fluid_trajectory` — sigmoidal decline from net
+    chloride-driven secretion (~+5 mL/kg/h mid-gestation) to active
+    sodium-driven reabsorption (~-5 mL/kg/h near term), midpoint
+    week 36. Strang 1991 (PMID 1924551) reviews the qualitative
+    switch; human in vivo rates are species-extrapolated.
+- **Four new Tier-D dataset parameters** (155 → **159 parameters**),
+  all marked "DO NOT USE FOR PREDICTION" in their tier rationale:
+  - `maternal_blood.fetal_microchimerism_baseline_cells_per_ml`
+  - `maternal_blood.fetal_microchimerism_term_cells_per_ml`
+  - `fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h`
+  - `fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h`
+- **Two new citations** (56 → 58): `bianchi-1996-microchimerism`,
+  `strang-1991-fetal-lung-liquid`.
+- Reference kernels `maternal_microchimerism_trajectory` and
+  `fetal_pulmonary_fluid_trajectory` with sanity tests; the
+  hypothesis-only-warning-carrying SBML test now covers all four
+  Phase C submodels.
+
+- **Phase C opens with two hypothesis-only submodels.** Registry
+  previously stood at **39 submodels** (Phase A + Phase B + 2 of 4
+  Phase C). Phase C submodels carry `nidus:reviewStatus = "hypothesis-only"`
   and a `nidus:warning = "DO NOT USE FOR PREDICTION"` RDF annotation
   in their SBML/CellML output, ensuring downstream consumers cannot
   accidentally treat them as predictive.

@@ -307,5 +307,55 @@
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
     }
+  },
+  {
+    "id": "maternal_blood.fetal_microchimerism_baseline_cells_per_ml",
+    "name": "Fetal microchimeric cell concentration in maternal blood, first trimester baseline",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 0.0,
+      "low": 0.0,
+      "high": 0.05,
+      "units": "cells/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): fetal cell trafficking into maternal circulation begins in early pregnancy but quantitative concentrations are highly variable and assay-dependent. Bianchi 1996 documents the phenomenon but exact uptake/clearance kinetics remain open. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "bianchi-1996-microchimerism"
+    ],
+    "primary_citation": "bianchi-1996-microchimerism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter used in maternal_microchimerism_trajectory submodel."
+  },
+  {
+    "id": "maternal_blood.fetal_microchimerism_term_cells_per_ml",
+    "name": "Fetal microchimeric cell concentration in maternal blood at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 1.0,
+      "low": 0.1,
+      "high": 10.0,
+      "units": "cells/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): term concentrations of fetal microchimeric cells in maternal blood reported across orders of magnitude (Bianchi 1996 and successors). The central value here is illustrative — true distributions span <0.1 to >10 cells/mL across cohorts and methods. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "bianchi-1996-microchimerism"
+    ],
+    "primary_citation": "bianchi-1996-microchimerism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter."
   }
 ]

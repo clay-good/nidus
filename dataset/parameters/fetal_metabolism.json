@@ -114,5 +114,55 @@
       "population": "Healthy term newborn, cord blood"
     },
     "notes": "Higher fetal Hb + leftward P50 together close most of the gap between fetal-side PO2 and adult-side PO2 in arterial O2 content."
+  },
+  {
+    "id": "fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h",
+    "name": "Fetal pulmonary fluid net secretion rate, mid-gestation baseline",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 5.0,
+      "low": 3.0,
+      "high": 6.0,
+      "units": "mL/kg/h",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): Strang 1991 reviews fetal lung liquid as chloride-driven secretion at ~4-5 mL/kg/h through most of gestation. Human in vivo rates are extrapolated from ovine and other animal data and are not directly measurable in human fetuses; the central value is illustrative. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "strang-1991-fetal-lung-liquid"
+    ],
+    "primary_citation": "strang-1991-fetal-lung-liquid",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter used in fetal_pulmonary_fluid_trajectory submodel. Positive sign = secretion (fluid into lung lumen)."
+  },
+  {
+    "id": "fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h",
+    "name": "Fetal pulmonary fluid net rate near term (transition to reabsorption)",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": -5.0,
+      "low": -10.0,
+      "high": 0.0,
+      "units": "mL/kg/h",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "D",
+    "tier_rationale": "Tier D (hypothesis-only): near term, fetal lung liquid net flux reverses from secretion to active sodium-driven reabsorption (Strang 1991); during labour reabsorption accelerates further. Quantitative human rates are species-extrapolated and the timing of the switch varies. DO NOT USE FOR PREDICTION.",
+    "citations": [
+      "strang-1991-fetal-lung-liquid"
+    ],
+    "primary_citation": "strang-1991-fetal-lung-liquid",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-c-hypothesis-only"
+    },
+    "notes": "Hypothesis-only Tier D parameter. Negative sign = net reabsorption."
   }
 ]

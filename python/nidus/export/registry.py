@@ -792,6 +792,53 @@ SUBMODELS: tuple[Submodel, ...] = (
         review_status="hypothesis-only",
     ),
     Submodel(
+        id="maternal_microchimerism_trajectory",
+        name="Maternal-fetal microchimerism accumulation (hypothesis-only)",
+        description=(
+            "HYPOTHESIS-ONLY (Tier D): Sigmoidal accumulation of fetal "
+            "microchimeric cells in maternal blood across gestation. "
+            "Form: C(t) = baseline + (term - baseline) / (1 + "
+            "exp(-0.15*(t - 24))). Bianchi 1996 documents the trafficking "
+            "and decades-long postpartum persistence, but uptake/clearance "
+            "kinetics and absolute concentrations vary across orders of "
+            "magnitude. DO NOT USE FOR PREDICTION — encoded for "
+            "research-question purposes (what would a calibrated transfer "
+            "+ clearance ODE need to predict?)."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "maternal_blood.fetal_microchimerism_baseline_cells_per_ml",
+            "maternal_blood.fetal_microchimerism_term_cells_per_ml",
+        ),
+        independent_variable="t_weeks",
+        output_units="cells/mL",
+        review_status="hypothesis-only",
+    ),
+    Submodel(
+        id="fetal_pulmonary_fluid_trajectory",
+        name="Fetal pulmonary fluid net flux through gestation (hypothesis-only)",
+        description=(
+            "HYPOTHESIS-ONLY (Tier D): Sigmoidal decline of net fetal "
+            "pulmonary fluid rate from chloride-driven secretion "
+            "(~+5 mL/kg/h mid-gestation) toward sodium-driven "
+            "reabsorption (~-5 mL/kg/h near term). Form: rate(t) = "
+            "baseline + (term - baseline) / (1 + exp(-0.4*(t - 36))). "
+            "Strang 1991 reviews the qualitative switch, but human "
+            "in vivo rates are species-extrapolated from ovine data. "
+            "DO NOT USE FOR PREDICTION — encoded to make explicit "
+            "the open question (what would calibrated secretion / "
+            "reabsorption rates and timing look like in humans?)."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h",
+            "fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h",
+        ),
+        independent_variable="t_weeks",
+        output_units="mL/kg/h",
+        review_status="hypothesis-only",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

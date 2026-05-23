@@ -1,11 +1,13 @@
 # Spec 03 — Submodel Expansion Catalog
 
 **Status:** Phase A **complete** (12/12). Phase B **complete** (10/10).
-Phase C **opened** (2 of 4 shipped): `maternal_fetal_igg_transfer`
-and `placental_cortisol_gradient`, both marked
+Phase C **complete** (4/4 shipped): `maternal_fetal_igg_transfer`,
+`placental_cortisol_gradient`, `maternal_microchimerism_trajectory`,
+and `fetal_pulmonary_fluid_trajectory`, all marked
 `nidus:reviewStatus = "hypothesis-only"` with "DO NOT USE FOR
-PREDICTION" warnings in the SBML/CellML output. Registry totals 39
-submodels. Companion to `02-parameter-expansion-roadmap.md`.
+PREDICTION" warnings in the SBML/CellML output. Registry totals 41
+submodels — the catalog's projected saturation point. Companion to
+`02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -246,17 +248,23 @@ quantitative output. The export carries
 `nidus:reviewStatus = "hypothesis-only"` so downstream consumers
 cannot accidentally treat them as Tier-A.
 
-- **Maternal microchimerism uptake/clearance ODE** (cells in maternal
-  circulation, dynamics unsettled).
-- **Placental cortisol metabolism gradient** (11β-HSD2 saturation —
-  textbook qualitative, quantitatively under-pinned).
 - **Maternal-fetal IgG transfer** (FcRn-mediated; transfer ratio rises
-  through T3, exact kinetics open).
+  through T3, exact kinetics open) — **SHIPPED** as
+  `maternal_fetal_igg_transfer`.
+- **Placental cortisol metabolism gradient** (11β-HSD2 saturation —
+  textbook qualitative, quantitatively under-pinned) — **SHIPPED** as
+  `placental_cortisol_gradient`.
+- **Maternal microchimerism uptake/clearance** (cells in maternal
+  circulation, dynamics unsettled) — **SHIPPED** as
+  `maternal_microchimerism_trajectory` (sigmoidal accumulation; an ODE
+  upgrade with explicit uptake/clearance rates remains an open
+  research question).
 - **Fetal pulmonary fluid secretion → resorption near term** (rate
-  curves are species-extrapolated).
+  curves are species-extrapolated) — **SHIPPED** as
+  `fetal_pulmonary_fluid_trajectory`.
 
-These ship with explicit "DO NOT USE FOR PREDICTION" annotations on
-the SBML/CellML models.
+All Phase C entries ship with explicit "DO NOT USE FOR PREDICTION"
+annotations on the SBML/CellML models.
 
 ## 5. Cross-cutting infrastructure additions
 

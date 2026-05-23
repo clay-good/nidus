@@ -682,6 +682,43 @@ def maternal_fetal_igg_transfer(
     return baseline + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
 
 
+def maternal_microchimerism_trajectory(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline: float,
+    term: float,
+    growth_rate_per_week: float = 0.15,
+    midpoint_week: float = 24.0,
+) -> NDArray[np.float64]:
+    """HYPOTHESIS-ONLY sigmoidal microchimeric cell accumulation (Bianchi 1996).
+
+    Returns fetal microchimeric cell concentration (cells/mL) in maternal
+    blood across gestation. DO NOT USE FOR PREDICTION.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term - baseline
+    return baseline + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+def fetal_pulmonary_fluid_trajectory(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline: float,
+    term: float,
+    growth_rate_per_week: float = 0.4,
+    midpoint_week: float = 36.0,
+) -> NDArray[np.float64]:
+    """HYPOTHESIS-ONLY sigmoidal fetal lung-liquid net rate (Strang 1991).
+
+    Positive sign = net secretion (mL/kg/h); negative = net reabsorption.
+    The switch occurs late in gestation as Na-driven reabsorption replaces
+    Cl-driven secretion. DO NOT USE FOR PREDICTION.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term - baseline
+    return baseline + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
 def placental_cortisol_gradient(
     maternal_cortisol_ug_per_dl: FloatArrayLike,
     *,

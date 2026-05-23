@@ -1212,6 +1212,32 @@ def _build_igg_transfer(ds: Dataset) -> libcellml.Model:
     )
 
 
+def _build_maternal_microchimerism(ds: Dataset) -> libcellml.Model:
+    """HYPOTHESIS-ONLY sigmoidal microchimeric-cell accumulation."""
+    return _build_sigmoid_baseline_term(
+        ds,
+        "maternal_microchimerism_trajectory",
+        baseline_pid="maternal_blood.fetal_microchimerism_baseline_cells_per_ml",
+        term_pid="maternal_blood.fetal_microchimerism_term_cells_per_ml",
+        output_name="microchimerism_cells_per_ml_t",
+        growth_rate=0.15,
+        midpoint_week=24.0,
+    )
+
+
+def _build_fetal_pulmonary_fluid(ds: Dataset) -> libcellml.Model:
+    """HYPOTHESIS-ONLY sigmoidal fetal lung-liquid net rate."""
+    return _build_sigmoid_baseline_term(
+        ds,
+        "fetal_pulmonary_fluid_trajectory",
+        baseline_pid="fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h",
+        term_pid="fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h",
+        output_name="pulmonary_fluid_rate_ml_per_kg_h_t",
+        growth_rate=0.4,
+        midpoint_week=36.0,
+    )
+
+
 def _build_placental_cortisol_gradient(ds: Dataset) -> libcellml.Model:
     """HYPOTHESIS-ONLY: fetal cortisol = maternal * (1 - inactivation)."""
     sm = next(s for s in SUBMODELS if s.id == "placental_cortisol_gradient")
@@ -1663,6 +1689,8 @@ _BUILDERS = {
     "placental_fetal_allometry": _build_placental_fetal_allometry,
     "maternal_fetal_igg_transfer": _build_igg_transfer,
     "placental_cortisol_gradient": _build_placental_cortisol_gradient,
+    "maternal_microchimerism_trajectory": _build_maternal_microchimerism,
+    "fetal_pulmonary_fluid_trajectory": _build_fetal_pulmonary_fluid,
     "umbilical_artery_pi_trajectory": _build_ua_pi,
     "mca_pi_trajectory": _build_mca_pi,
     "cerebroplacental_ratio": _build_cpr,

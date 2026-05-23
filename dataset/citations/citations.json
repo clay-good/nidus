@@ -812,5 +812,35 @@
     "title": "Middle cerebral artery flow velocity waveforms in normal and small-for-gestational-age fetuses",
     "type": "journal-article",
     "year": 1995
+  },
+  "bianchi-1996-microchimerism": {
+    "authors": [
+      "Bianchi DW",
+      "Zickwolf GK",
+      "Weil GJ",
+      "Sylvester S",
+      "DeMaria MA"
+    ],
+    "doi": "10.1073/pnas.93.2.705",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "key": "bianchi-1996-microchimerism",
+    "notes": "Foundational demonstration of fetal-cell trafficking into maternal circulation during pregnancy and decades-long postpartum persistence. Quantitative concentrations vary widely; exact uptake/clearance kinetics remain open.",
+    "pmid": "8570620",
+    "title": "Male fetal progenitor cells persist in maternal blood for as long as 27 years postpartum",
+    "type": "journal-article",
+    "year": 1996
+  },
+  "strang-1991-fetal-lung-liquid": {
+    "authors": [
+      "Strang LB"
+    ],
+    "doi": "10.1152/physrev.1991.71.4.991",
+    "journal": "Physiological Reviews",
+    "key": "strang-1991-fetal-lung-liquid",
+    "notes": "Classical review of fetal lung liquid: chloride-driven secretion (~4-5 mL/kg/h) through most of gestation, switching to active sodium-driven reabsorption near term and during labour. Net rate curves are qualitatively well-described but quantitative species-extrapolation makes exact human kinetics open.",
+    "pmid": "1924551",
+    "title": "Fetal lung liquid: secretion and reabsorption",
+    "type": "journal-article",
+    "year": 1991
   }
 }

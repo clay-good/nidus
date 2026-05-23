@@ -73,6 +73,8 @@ def test_registry_lists_submodels() -> None:
         "placental_fetal_allometry",
         "maternal_fetal_igg_transfer",
         "placental_cortisol_gradient",
+        "maternal_microchimerism_trajectory",
+        "fetal_pulmonary_fluid_trajectory",
     } == ids
 
 
@@ -565,11 +567,37 @@ def test_placental_cortisol_gradient_inactivates() -> None:
     assert fetal == pytest.approx(4.5)
 
 
+def test_microchimerism_accumulates_through_pregnancy() -> None:
+    from nidus.export.reference import maternal_microchimerism_trajectory
+
+    early = float(maternal_microchimerism_trajectory(12.0, baseline=0.0, term=1.0))
+    late = float(maternal_microchimerism_trajectory(38.0, baseline=0.0, term=1.0))
+    assert early < late
+    # Late concentration approaches the term anchor.
+    assert late > 0.5
+
+
+def test_fetal_pulmonary_fluid_reverses_near_term() -> None:
+    from nidus.export.reference import fetal_pulmonary_fluid_trajectory
+
+    mid = float(fetal_pulmonary_fluid_trajectory(24.0, baseline=5.0, term=-5.0))
+    near_term = float(fetal_pulmonary_fluid_trajectory(39.0, baseline=5.0, term=-5.0))
+    # Mid-gestation: net secretion (positive).
+    assert mid > 0.0
+    # Near term: net reabsorption (negative).
+    assert near_term < 0.0
+
+
 def test_hypothesis_only_submodels_carry_warning(ds: nidus.Dataset, libsbml_module) -> None:
     """Phase C submodels must emit DO NOT USE FOR PREDICTION annotation."""
     from nidus.export import build_sbml
 
-    for sm_id in ["maternal_fetal_igg_transfer", "placental_cortisol_gradient"]:
+    for sm_id in [
+        "maternal_fetal_igg_transfer",
+        "placental_cortisol_gradient",
+        "maternal_microchimerism_trajectory",
+        "fetal_pulmonary_fluid_trajectory",
+    ]:
         xml = build_sbml(ds, sm_id)
         assert "reviewStatus" in xml, f"{sm_id} missing reviewStatus annotation"
         assert "hypothesis-only" in xml, f"{sm_id} missing hypothesis-only marker"
@@ -648,6 +676,8 @@ _ALL_SUBMODEL_IDS = [
     "placental_fetal_allometry",
     "maternal_fetal_igg_transfer",
     "placental_cortisol_gradient",
+    "maternal_microchimerism_trajectory",
+    "fetal_pulmonary_fluid_trajectory",
 ]
 
 
