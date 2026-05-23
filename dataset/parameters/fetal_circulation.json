@@ -280,5 +280,117 @@
       "date": "2026-05-22",
       "reviewer": "v0.4-phase-b-submodel-expansion"
     }
+  },
+  {
+    "id": "fetal_circulation.umbilical_vein_flow_term_ml_per_min",
+    "name": "Umbilical vein blood flow at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 290.0,
+      "low": 240.0,
+      "high": 350.0,
+      "units": "mL/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Kiserud 2001: term umbilical-vein flow measured by quantitative Doppler is typically 240-350 mL/min in singleton pregnancies. Approximately 70-80% perfuses the hepatic circulation; the remainder is shunted through the ductus venosus directly into the inferior vena cava.",
+    "citations": [
+      "kiserud-2001-umbilical-vein"
+    ],
+    "primary_citation": "kiserud-2001-umbilical-vein",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term (~38-40 weeks)"
+    }
+  },
+  {
+    "id": "fetal_circulation.umbilical_vein_flow_per_kg_term_ml_per_min_per_kg",
+    "name": "Umbilical vein flow per kg fetal weight at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 80.0,
+      "low": 65.0,
+      "high": 100.0,
+      "units": "mL/min/kg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Kiserud 2001: weight-normalised UV flow at term is ~70-100 mL/min/kg, falling progressively from ~120 mL/min/kg in mid-pregnancy as fetal mass grows faster than placental perfusion capacity. The decline through late gestation is a clean quantitative signature of approaching utero-placental insufficiency.",
+    "citations": [
+      "kiserud-2001-umbilical-vein"
+    ],
+    "primary_citation": "kiserud-2001-umbilical-vein",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term (~38-40 weeks)"
+    }
+  },
+  {
+    "id": "fetal_circulation.combined_ventricular_output_term_ml_per_min_per_kg",
+    "name": "Combined ventricular output per kg fetal weight at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 450.0,
+      "low": 380.0,
+      "high": 520.0,
+      "units": "mL/min/kg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sutton 1991: combined ventricular output (CVO = LV + RV stroke volume × heart rate) in the term fetus is approximately 380-520 mL/min/kg, roughly twice the per-kg cardiac output of a resting adult. The high per-kg flow reflects the fetus's high mass-specific metabolic rate and the parallel-circulation architecture.",
+    "citations": [
+      "sutton-1991-fetal-cardiac",
+      "rudolph-1985-fetal-circulation"
+    ],
+    "primary_citation": "sutton-1991-fetal-cardiac",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Parallel rather than series circulation: pulmonary, placental, and systemic beds receive flow in parallel through the foramen ovale and ductus arteriosus."
+  },
+  {
+    "id": "fetal_circulation.right_ventricular_output_fraction_term",
+    "name": "Fraction of combined ventricular output from the right ventricle at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.60,
+      "low": 0.55,
+      "high": 0.65,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sutton 1991 (human Doppler) consistent with Rudolph 1985 (lamb): the fetal right ventricle contributes approximately 55-65% of combined ventricular output, opposite to the post-natal arrangement. RV dominance reflects the high cerebro-placental return through the IVC and the parallel-circulation routing through the ductus arteriosus to the descending aorta.",
+    "citations": [
+      "sutton-1991-fetal-cardiac",
+      "rudolph-1985-fetal-circulation"
+    ],
+    "primary_citation": "sutton-1991-fetal-cardiac",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Post-natally the ratio inverts: the LV becomes the dominant ventricle as systemic and pulmonary circulations separate into series."
   }
 ]

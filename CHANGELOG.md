@@ -9,6 +9,26 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 saturation pass — fetal-circulation and placental
+  morphomic gaps.** Six new Tier-B/C dataset parameters (172 →
+  **178 parameters**), all sourced from citations already in the
+  index.
+  - `fetal_circulation.umbilical_vein_flow_term_ml_per_min` (Tier B,
+    ~290 mL/min; Kiserud 2001)
+  - `fetal_circulation.umbilical_vein_flow_per_kg_term_ml_per_min_per_kg`
+    (Tier B, ~80 mL/min/kg; declines through late gestation)
+  - `fetal_circulation.combined_ventricular_output_term_ml_per_min_per_kg`
+    (Tier B, ~450 mL/min/kg; Sutton 1991, Rudolph 1985)
+  - `fetal_circulation.right_ventricular_output_fraction_term`
+    (Tier B, ~0.60; RV-dominant in the fetus, opposite to adult)
+  - `placental_structure.intervillous_space_volume_term_ml`
+    (Tier C, ~175 mL; Mayhew 2014 stereology)
+  - `placental_structure.villous_capillary_length_total_km_term`
+    (Tier C, ~300 km total — one of the striking quantitative
+    placental statistics)
+  Spec 02 §3.5 (placental structure) and §3.8 (fetal circulation)
+  gaps close. No new citations.
+
 - **Phase 3 saturation pass — maternal-renal and maternal-respiratory
   gaps.** Six new Tier-B/C dataset parameters (166 → **172
   parameters**), all sourced from citations already in the index.

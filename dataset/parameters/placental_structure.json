@@ -320,5 +320,61 @@
       "reviewer": "v0.4-phase-c-hypothesis-only"
     },
     "notes": "Hypothesis-only Tier D parameter used in placental_cortisol_gradient submodel."
+  },
+  {
+    "id": "placental_structure.intervillous_space_volume_term_ml",
+    "name": "Intervillous space volume at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 175.0,
+      "low": 130.0,
+      "high": 250.0,
+      "units": "mL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Mayhew 2014 stereological morphomics: total intervillous (maternal-blood) space in the term placenta is approximately 130-250 mL, with the bulk of intervillous flow turning over several times per minute given uterine artery flow ~500-700 mL/min. Sterological estimates vary across studies and fixation methods.",
+    "citations": [
+      "mayhew-2014-placental-morphometry"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Maternal-blood compartment that bathes the chorionic villi; the residence-time view is more useful than absolute volume."
+  },
+  {
+    "id": "placental_structure.villous_capillary_length_total_km_term",
+    "name": "Total villous capillary length at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 300.0,
+      "low": 280.0,
+      "high": 320.0,
+      "units": "km",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Mayhew 2014 stereological morphomics: the total length of fetal villous capillaries in the term placenta is approximately 280-320 km — one of the more striking quantitative statistics in placental anatomy, illustrating the enormous gas-exchange surface achieved by branching geometry. The Tier-C range reflects stereology technique variation.",
+    "citations": [
+      "mayhew-2014-placental-morphometry"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "If laid end-to-end, term villous capillaries would span the distance from London to Edinburgh."
   }
 ]
