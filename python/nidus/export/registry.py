@@ -605,6 +605,65 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="ng/mL",
     ),
     Submodel(
+        id="estradiol_trajectory",
+        name="Maternal serum estradiol trajectory (sigmoidal)",
+        description=(
+            "Sigmoidal estradiol trajectory across gestation from "
+            "the mid-luteal pre-pregnancy baseline (~0.1 ng/mL) to "
+            "term (~14 ng/mL); ~100x rise driven by placental "
+            "aromatisation. Tulchinsky 1972 / O'Leary 1991. Single "
+            "sigmoid simplifies the actual rapid early rise + slower "
+            "late rise."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "placental_endocrine.estradiol_baseline_ng_per_ml",
+            "placental_endocrine.estradiol_term_ng_per_ml",
+        ),
+        independent_variable="t_weeks",
+        output_units="ng/mL",
+    ),
+    Submodel(
+        id="fetal_heart_rate_trajectory",
+        name="Fetal heart rate trajectory (sigmoidal fall)",
+        description=(
+            "Sigmoidal FHR fall across gestation: FHR(t) = baseline "
+            "+ (term - baseline) / (1 + exp(-0.2*(t - 18))). FHR "
+            "peaks ~170 bpm at weeks 9-10, then declines toward "
+            "~140 bpm at term as parasympathetic tone develops "
+            "(Pildner von Steinburg 2013). Because (term - baseline) "
+            "is negative, the same sigmoidal form encodes the fall."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "fetal_circulation.fhr_baseline_bpm",
+            "fetal_circulation.fhr_term_bpm",
+        ),
+        independent_variable="t_weeks",
+        output_units="bpm",
+    ),
+    Submodel(
+        id="hcg_trajectory",
+        name="Maternal serum hCG trajectory (piecewise rise then exponential decline)",
+        description=(
+            "Piecewise hCG kinetics: quadratic rise from zero to "
+            "peak by `hcg_peak_week` (Cole 2010 doubling-time pattern "
+            "approximated as a quadratic), then exponential decline "
+            "from peak toward `hcg_term` over the remainder of "
+            "gestation. The decline-rate constant is fit at build "
+            "time so the model passes exactly through (peak_week, "
+            "peak) and (40w, term)."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "placental_endocrine.hcg_peak_miu_per_ml",
+            "placental_endocrine.hcg_peak_week",
+            "placental_endocrine.hcg_term_miu_per_ml",
+        ),
+        independent_variable="t_weeks",
+        output_units="mIU/mL",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

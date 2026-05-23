@@ -1,9 +1,13 @@
 # Spec 03 — Submodel Expansion Catalog
 
 **Status:** Phase A **complete** (12/12). Phase B **in progress**
-(5 of 10 shipped: HOMA-IR sigmoidal, TSH piecewise-linear, cortisol
-sigmoidal, hPL sigmoidal, progesterone sigmoidal). Registry totals 30
-submodels. Companion to `02-parameter-expansion-roadmap.md`.
+(8 of 10 shipped: HOMA-IR sigmoidal, TSH piecewise-linear, cortisol
+sigmoidal, hPL sigmoidal, progesterone sigmoidal, estradiol sigmoidal,
+fetal heart rate sigmoidal-fall, hCG piecewise rise-decline). Two
+items remaining (umbilical-artery PI / cerebroplacental ratio / MCA-PI
+cluster, and placental allometry) — all need new dataset parameters.
+Registry totals 33 submodels. Companion to
+`02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -160,7 +164,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 These have either weaker single-source citations or require modest
 ODE integration. Each is ~50–150 LOC.
 
-### 3.1 Lactogen / hCG trajectory (placental endocrinology) — **hPL SHIPPED** (hCG deferred)
+### 3.1 Lactogen / hCG trajectory (placental endocrinology) — **BOTH SHIPPED**
 
 - **Equation:** Sigmoidal for hPL (rises steadily), bell-shaped for
   hCG (peaks ~10 weeks then declines).
@@ -170,7 +174,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Note:** Tier C–B; substantial inter-individual variation.
 - **Cost:** ~80 LOC across 2 submodels.
 
-### 3.2 Estradiol / progesterone trajectories — **PROGESTERONE SHIPPED** (estradiol deferred)
+### 3.2 Estradiol / progesterone trajectories — **BOTH SHIPPED**
 
 - **Equation:** Sigmoidal rises through gestation.
 - **Citations:** O'Leary 1991, Tulchinsky 1972.
@@ -199,7 +203,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Inputs (new):** baseline + term HOMA-IR.
 - **Cost:** ~40 LOC.
 
-### 3.6 Fetal heart rate trajectory
+### 3.6 Fetal heart rate trajectory — **SHIPPED**
 
 - **Equation:** Sigmoidal fall from ~170 bpm (T1) to ~140 bpm (term).
 - **Citations:** Pildner von Steinburg 2013, von Steinburg 2013.

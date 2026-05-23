@@ -1074,6 +1074,78 @@ def _build_progesterone(ds: Dataset) -> libsbml.SBMLDocument:
     )
 
 
+def _build_estradiol(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "estradiol_trajectory",
+        baseline_pid="placental_endocrine.estradiol_baseline_ng_per_ml",
+        term_pid="placental_endocrine.estradiol_term_ng_per_ml",
+        output_name="estradiol_t",
+        growth_rate=0.15,
+        midpoint_week=24.0,
+    )
+
+
+def _build_fhr(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "fetal_heart_rate_trajectory",
+        baseline_pid="fetal_circulation.fhr_baseline_bpm",
+        term_pid="fetal_circulation.fhr_term_bpm",
+        output_name="FHR_t",
+        growth_rate=0.2,
+        midpoint_week=18.0,
+    )
+
+
+def _build_hcg(ds: Dataset) -> libsbml.SBMLDocument:
+    """Piecewise hCG: quadratic rise from 0 to peak, then exponential decline."""
+    import math
+
+    sm = next(s for s in SUBMODELS if s.id == "hcg_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    peak = ds["placental_endocrine.hcg_peak_miu_per_ml"]
+    peak_week = ds["placental_endocrine.hcg_peak_week"]
+    term = ds["placental_endocrine.hcg_term_miu_per_ml"]
+
+    # Decay rate so that peak * exp(-decay*(40 - peak_week)) == term.
+    term_week = 40.0
+    decay_rate = -math.log(term.value.central / peak.value.central) / (
+        term_week - peak_week.value.central
+    )
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "term_week", term_week, "dimensionless")
+    _add_parameter(model, "decay_rate_per_week", decay_rate, "dimensionless")
+    for p in (peak, peak_week, term):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "hCG_t", 0.0, "dimensionless", constant=False)
+
+    peak_id = parameter_id_to_sbml(peak.id)
+    pw_id = parameter_id_to_sbml(peak_week.id)
+    formula = (
+        f"piecewise("
+        f"{peak_id} * (t_weeks / {pw_id})^2, t_weeks < {pw_id}, "
+        f"{peak_id} * exp(-decay_rate_per_week * (t_weeks - {pw_id}))"
+        f")"
+    )
+    rule = model.createAssignmentRule()
+    rule.setVariable("hCG_t")
+    rule.setMath(libsbml.parseL3Formula(formula))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 def _build_homa_ir(ds: Dataset) -> libsbml.SBMLDocument:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1162,6 +1234,9 @@ _BUILDERS = {
     "cortisol_trajectory": _build_cortisol,
     "hpl_trajectory": _build_hpl,
     "progesterone_trajectory": _build_progesterone,
+    "estradiol_trajectory": _build_estradiol,
+    "fetal_heart_rate_trajectory": _build_fhr,
+    "hcg_trajectory": _build_hcg,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

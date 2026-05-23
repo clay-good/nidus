@@ -9,6 +9,31 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Three more Phase B submodels**, bringing the registry to
+  **33 submodels** and Phase B to **8 of 10**:
+  - `estradiol_trajectory` — sigmoidal estradiol rise from mid-luteal
+    baseline (~0.1 ng/mL) to term (~14 ng/mL); ~100x rise driven by
+    placental aromatisation. Tulchinsky 1972 / O'Leary 1991.
+  - `fetal_heart_rate_trajectory` — sigmoidal FHR fall from T1 peak
+    (~170 bpm) to term (~140 bpm) as parasympathetic tone develops.
+    The same baseline → term sigmoid form encodes the fall because
+    `(term - baseline)` is negative. Pildner von Steinburg 2013
+    (PMID 23740338).
+  - `hcg_trajectory` — first non-sigmoidal Phase B submodel:
+    piecewise quadratic rise from zero to peak by `hcg_peak_week`,
+    then exponential decline to `hcg_term` at week 40. The decline
+    rate is fit at build time so the curve passes exactly through
+    the curated peak and term values. Cole 2010 (PMID 20089136).
+- **Three new dataset parameters** (143 → **146 parameters**), all
+  Tier A or B:
+  - `placental_endocrine.estradiol_baseline_ng_per_ml` (Tier B)
+  - `fetal_circulation.fhr_baseline_bpm` (Tier B)
+  - `fetal_circulation.fhr_term_bpm` (Tier A — NICHD definitions)
+- Reference kernels `maternal_estradiol`, `fetal_heart_rate`,
+  `maternal_hcg` with endpoint + shape sanity tests. The hCG test
+  asserts exact pass-through of the (peak_week, peak) anchor and the
+  (40w, term) anchor, validating the build-time decay-rate fit.
+
 - **Two more Phase B submodels** (placental endocrine), bringing the
   registry to **30 submodels** and Phase B to **5 of 10**:
   - `hpl_trajectory` — sigmoidal hPL rise from undetectable

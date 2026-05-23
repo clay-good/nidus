@@ -214,5 +214,29 @@
       "reviewer": "v0.4-phase-b-submodel-expansion"
     },
     "primary_citation": "tulchinsky-1972-steroids"
+  },
+  {
+    "id": "placental_endocrine.estradiol_baseline_ng_per_ml",
+    "name": "Maternal serum estradiol, non-pregnant baseline (mid-luteal)",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 0.1,
+      "units": "ng/mL",
+      "low": 0.05,
+      "high": 0.25,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Tulchinsky 1972 / O'Leary 1991: mid-luteal estradiol ~50-250 pg/mL (0.05-0.25 ng/mL); placental output rises through gestation to ~100x baseline at term.",
+    "citations": [
+      "tulchinsky-1972-steroids"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    },
+    "primary_citation": "tulchinsky-1972-steroids"
   }
 ]

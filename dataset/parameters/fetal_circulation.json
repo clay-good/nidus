@@ -136,5 +136,53 @@
       "population": "Healthy human fetus, near term"
     },
     "notes": "The DV can re-dilate under hypoxic stress, shunting more flow back through to bypass the liver — a key autoregulatory response."
+  },
+  {
+    "id": "fetal_circulation.fhr_baseline_bpm",
+    "name": "Fetal heart rate, first-trimester baseline",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 170.0,
+      "low": 160.0,
+      "high": 180.0,
+      "units": "bpm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Pildner von Steinburg 2013 (PMID 23740338) longitudinal Doppler cohort: FHR peaks ~170 bpm around weeks 9-10, then declines as parasympathetic tone develops.",
+    "citations": [
+      "von-steinburg-2013-fhr"
+    ],
+    "primary_citation": "von-steinburg-2013-fhr",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
+  },
+  {
+    "id": "fetal_circulation.fhr_term_bpm",
+    "name": "Fetal heart rate at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 140.0,
+      "low": 130.0,
+      "high": 150.0,
+      "units": "bpm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A: normal-range FHR at term is 110-160 bpm (NICHD definitions), with the modal value ~140 bpm. Pildner von Steinburg 2013 longitudinal data show the smooth decline from the T1 peak through term.",
+    "citations": [
+      "von-steinburg-2013-fhr"
+    ],
+    "primary_citation": "von-steinburg-2013-fhr",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
   }
 ]

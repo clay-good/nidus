@@ -64,6 +64,9 @@ def test_registry_lists_submodels() -> None:
         "cortisol_trajectory",
         "hpl_trajectory",
         "progesterone_trajectory",
+        "estradiol_trajectory",
+        "fetal_heart_rate_trajectory",
+        "hcg_trajectory",
     } == ids
 
 
@@ -459,6 +462,41 @@ def test_progesterone_rises_10x_by_term() -> None:
     assert late > 10.0 * early
 
 
+def test_estradiol_sigmoid_endpoints() -> None:
+    from nidus.export.reference import maternal_estradiol
+
+    early = float(maternal_estradiol(0.0, baseline_ng_per_ml=0.1, term_ng_per_ml=14.0))
+    late = float(maternal_estradiol(40.0, baseline_ng_per_ml=0.1, term_ng_per_ml=14.0))
+    assert early == pytest.approx(0.1, abs=0.5)
+    assert late == pytest.approx(14.0, abs=2.0)
+
+
+def test_fetal_heart_rate_falls_through_pregnancy() -> None:
+    from nidus.export.reference import fetal_heart_rate
+
+    early = float(fetal_heart_rate(0.0, baseline_bpm=170.0, term_bpm=140.0))
+    late = float(fetal_heart_rate(40.0, baseline_bpm=170.0, term_bpm=140.0))
+    # FHR baseline > term; the sigmoid encodes a fall.
+    assert early == pytest.approx(170.0, abs=1.0)
+    assert late == pytest.approx(140.0, abs=1.0)
+    assert late < early
+
+
+def test_hcg_peaks_then_declines() -> None:
+    from nidus.export.reference import maternal_hcg
+
+    kwargs = dict(peak_miu_per_ml=120000.0, peak_week=10.0, term_miu_per_ml=10000.0)
+    early = float(maternal_hcg(5.0, **kwargs))  # type: ignore[arg-type]
+    peak = float(maternal_hcg(10.0, **kwargs))  # type: ignore[arg-type]
+    term = float(maternal_hcg(40.0, **kwargs))  # type: ignore[arg-type]
+    # Rise: at week 5, hcg(5) = peak * (5/10)^2 = peak/4.
+    assert early == pytest.approx(30000.0)
+    # At peak week, hcg = peak exactly.
+    assert peak == pytest.approx(120000.0)
+    # At term week 40, decline matches the curated term value.
+    assert term == pytest.approx(10000.0, rel=1e-6)
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -513,6 +551,9 @@ _ALL_SUBMODEL_IDS = [
     "cortisol_trajectory",
     "hpl_trajectory",
     "progesterone_trajectory",
+    "estradiol_trajectory",
+    "fetal_heart_rate_trajectory",
+    "hcg_trajectory",
 ]
 
 
@@ -577,7 +618,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 30
+    assert len(paths) >= 33
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -617,11 +658,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 30
+    assert len(paths_2) >= 33
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 30
+    assert len(paths_1) >= 33
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

@@ -1199,6 +1199,98 @@ def _build_progesterone(ds: Dataset) -> libcellml.Model:
     )
 
 
+def _build_estradiol(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "estradiol_trajectory",
+        baseline_pid="placental_endocrine.estradiol_baseline_ng_per_ml",
+        term_pid="placental_endocrine.estradiol_term_ng_per_ml",
+        output_name="estradiol_t",
+        growth_rate=0.15,
+        midpoint_week=24.0,
+    )
+
+
+def _build_fhr(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "fetal_heart_rate_trajectory",
+        baseline_pid="fetal_circulation.fhr_baseline_bpm",
+        term_pid="fetal_circulation.fhr_term_bpm",
+        output_name="FHR_t",
+        growth_rate=0.2,
+        midpoint_week=18.0,
+    )
+
+
+def _build_hcg(ds: Dataset) -> libcellml.Model:
+    """Piecewise hCG: quadratic rise from 0 to peak, then exponential decline."""
+    import math
+
+    sm = next(s for s in SUBMODELS if s.id == "hcg_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    peak = ds["placental_endocrine.hcg_peak_miu_per_ml"]
+    peak_week = ds["placental_endocrine.hcg_peak_week"]
+    term = ds["placental_endocrine.hcg_term_miu_per_ml"]
+    term_week = 40.0
+    decay_rate = -math.log(term.value.central / peak.value.central) / (
+        term_week - peak_week.value.central
+    )
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "term_week", units="dimensionless", initial_value=str(term_week))
+    _add_variable(comp, "decay_rate_per_week", units="dimensionless", initial_value=str(decay_rate))
+    for p in (peak, peak_week, term):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "hCG_t", units="dimensionless", initial_value="0")
+
+    peak_id = parameter_id_to_sbml(peak.id)
+    pw_id = parameter_id_to_sbml(peak_week.id)
+    # rise = peak * (t/pw)^2
+    rise = _apply(
+        "times",
+        _ci(peak_id),
+        _apply("power", _apply("divide", _ci("t_weeks"), _ci(pw_id)), _cn("2")),
+    )
+    # decline = peak * exp(-decay * (t - pw))
+    decline = _apply(
+        "times",
+        _ci(peak_id),
+        _apply(
+            "exp",
+            _apply(
+                "minus",
+                _apply(
+                    "times",
+                    _ci("decay_rate_per_week"),
+                    _apply("minus", _ci("t_weeks"), _ci(pw_id)),
+                ),
+            ),
+        ),
+    )
+    cond = f"<apply>\n<lt/>\n<ci>t_weeks</ci>\n<ci>{pw_id}</ci>\n</apply>"
+    rhs = (
+        "<piecewise>\n"
+        f"<piece>\n{rise}\n{cond}\n</piece>\n"
+        f"<otherwise>\n{decline}\n</otherwise>\n"
+        "</piecewise>"
+    )
+    comp.setMath(_mathml(_apply_assign("hCG_t", rhs)))
+    return model
+
+
 def _build_homa_ir(ds: Dataset) -> libcellml.Model:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1370,6 +1462,9 @@ _BUILDERS = {
     "cortisol_trajectory": _build_cortisol,
     "hpl_trajectory": _build_hpl,
     "progesterone_trajectory": _build_progesterone,
+    "estradiol_trajectory": _build_estradiol,
+    "fetal_heart_rate_trajectory": _build_fhr,
+    "hcg_trajectory": _build_hcg,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

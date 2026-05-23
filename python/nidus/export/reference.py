@@ -540,6 +540,60 @@ def maternal_progesterone(
     return baseline_ng_per_ml + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
 
 
+# ---- 20e. Estradiol, FHR, hCG --------------------------------------
+
+
+def maternal_estradiol(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ng_per_ml: float,
+    term_ng_per_ml: float,
+    growth_rate_per_week: float = 0.15,
+    midpoint_week: float = 24.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal estradiol trajectory (Tulchinsky 1972, O'Leary 1991)."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_ng_per_ml - baseline_ng_per_ml
+    return baseline_ng_per_ml + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+def fetal_heart_rate(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_bpm: float,
+    term_bpm: float,
+    growth_rate_per_week: float = 0.2,
+    midpoint_week: float = 18.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal FHR trajectory (Pildner von Steinburg 2013).
+
+    The standard sigmoid encodes the FHR fall because (term - baseline)
+    is negative for normal values (baseline ~170 > term ~140).
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_bpm - baseline_bpm
+    return baseline_bpm + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+def maternal_hcg(
+    t_weeks: FloatArrayLike,
+    *,
+    peak_miu_per_ml: float,
+    peak_week: float,
+    term_miu_per_ml: float,
+    term_week: float = 40.0,
+) -> NDArray[np.float64]:
+    """Piecewise hCG: quadratic rise to peak, then exponential decline.
+
+    `decay_rate` is set so that hcg(term_week) == term_miu_per_ml.
+    """
+    t = np.asarray(t_weeks, dtype=np.float64)
+    decay = -np.log(term_miu_per_ml / peak_miu_per_ml) / (term_week - peak_week)
+    rise = peak_miu_per_ml * (t / peak_week) ** 2
+    decline = peak_miu_per_ml * np.exp(-decay * (t - peak_week))
+    return np.where(t < peak_week, rise, decline)
+
+
 # ---- 20. Hadlock biometry cubic-fit growth -------------------------
 
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)
