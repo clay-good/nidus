@@ -9,6 +9,26 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Two more Phase B submodels** (placental endocrine), bringing the
+  registry to **30 submodels** and Phase B to **5 of 10**:
+  - `hpl_trajectory` — sigmoidal hPL rise from undetectable
+    non-pregnant baseline to ~7 ug/mL at term (Handwerger 2010 /
+    Handwerger 1991). hPL is a major driver of maternal insulin
+    resistance.
+  - `progesterone_trajectory` — sigmoidal progesterone rise from the
+    mid-luteal pre-pregnancy baseline (~10 ng/mL) to term
+    (~150 ng/mL); 10-20x rise. A single sigmoid simplifies the
+    actual two-source kinetics (corpus luteum then placental
+    takeover at ~8 weeks). Tulchinsky 1972.
+- **Two new dataset parameters** (141 → **143 parameters**), both
+  Tier B, in `placental_endocrine`:
+  - `hpl_baseline_ug_per_ml` — ~0 (below assay sensitivity).
+  - `progesterone_baseline_ng_per_ml` — ~10 ng/mL (mid-luteal pre-
+    pregnancy reference).
+- Reference kernels `maternal_hpl` and `maternal_progesterone` with
+  endpoint + magnitude sanity tests (the progesterone test asserts
+  the canonical >10x rise).
+
 - **First three Phase B submodels** with full export support, bringing
   the registry to **28 submodels** and opening Phase B (3 of 10 shipped):
   - `homa_ir_trajectory` — sigmoidal insulin resistance rise across

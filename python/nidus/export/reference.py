@@ -509,6 +509,37 @@ def maternal_cortisol(
     )
 
 
+# ---- 20d. Placental endocrine sigmoidal trajectories ---------------
+
+
+def maternal_hpl(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ug_per_ml: float,
+    term_ug_per_ml: float,
+    growth_rate_per_week: float = 0.2,
+    midpoint_week: float = 24.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal hPL trajectory (Handwerger 2010, Handwerger 1991)."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_ug_per_ml - baseline_ug_per_ml
+    return baseline_ug_per_ml + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+def maternal_progesterone(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline_ng_per_ml: float,
+    term_ng_per_ml: float,
+    growth_rate_per_week: float = 0.18,
+    midpoint_week: float = 24.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal progesterone trajectory (Tulchinsky 1972)."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term_ng_per_ml - baseline_ng_per_ml
+    return baseline_ng_per_ml + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
 # ---- 20. Hadlock biometry cubic-fit growth -------------------------
 
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)

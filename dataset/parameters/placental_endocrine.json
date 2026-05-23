@@ -166,5 +166,53 @@
       "reviewer": "v0.4-phase1-expansion-script"
     },
     "primary_citation": "tulchinsky-1972-steroids"
+  },
+  {
+    "id": "placental_endocrine.hpl_baseline_ug_per_ml",
+    "name": "Maternal serum placental lactogen, non-pregnant baseline",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 0.0,
+      "units": "ug/mL",
+      "low": 0.0,
+      "high": 0.1,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B: hPL is exclusively placental, so non-pregnant baseline is operationally zero (below standard assay sensitivity ~0.1 ug/mL). Handwerger 1991 documents the rise from undetectable to term value.",
+    "citations": [
+      "handwerger-2010-hpl"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    },
+    "primary_citation": "handwerger-2010-hpl"
+  },
+  {
+    "id": "placental_endocrine.progesterone_baseline_ng_per_ml",
+    "name": "Maternal serum progesterone, non-pregnant baseline (mid-luteal)",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 10.0,
+      "units": "ng/mL",
+      "low": 5.0,
+      "high": 20.0,
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Tulchinsky 1972: mid-luteal progesterone ~5-20 ng/mL pre-pregnancy; corpus luteum supplies progesterone for the first ~8 weeks before placental takeover.",
+    "citations": [
+      "tulchinsky-1972-steroids"
+    ],
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    },
+    "primary_citation": "tulchinsky-1972-steroids"
   }
 ]

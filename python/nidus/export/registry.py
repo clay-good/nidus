@@ -566,6 +566,45 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="ug/dL",
     ),
     Submodel(
+        id="hpl_trajectory",
+        name="Maternal placental lactogen trajectory (sigmoidal)",
+        description=(
+            "Sigmoidal hPL rise across gestation from non-pregnant "
+            "baseline (operationally zero; hPL is exclusively "
+            "placental) to ~5-10 ug/mL at term. Handwerger 2010 / "
+            "Handwerger 1991 document the steady rise driven by "
+            "syncytiotrophoblast mass; hPL is a major driver of "
+            "maternal insulin resistance and lipolysis."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "placental_endocrine.hpl_baseline_ug_per_ml",
+            "placental_endocrine.hpl_term_ug_per_ml",
+        ),
+        independent_variable="t_weeks",
+        output_units="ug/mL",
+    ),
+    Submodel(
+        id="progesterone_trajectory",
+        name="Maternal serum progesterone trajectory (sigmoidal)",
+        description=(
+            "Sigmoidal progesterone trajectory across gestation: "
+            "from the mid-luteal non-pregnant baseline (~10 ng/mL) "
+            "to term (~150 ng/mL). Corpus luteum supplies progesterone "
+            "for the first ~8 weeks before placental takeover; "
+            "Tulchinsky 1972 documents the 10-20x rise. The single "
+            "sigmoid is a simplification of the actual two-source "
+            "kinetics."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "placental_endocrine.progesterone_baseline_ng_per_ml",
+            "placental_endocrine.progesterone_term_ng_per_ml",
+        ),
+        independent_variable="t_weeks",
+        output_units="ng/mL",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

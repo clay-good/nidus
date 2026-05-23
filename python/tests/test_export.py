@@ -62,6 +62,8 @@ def test_registry_lists_submodels() -> None:
         "homa_ir_trajectory",
         "tsh_trajectory",
         "cortisol_trajectory",
+        "hpl_trajectory",
+        "progesterone_trajectory",
     } == ids
 
 
@@ -435,6 +437,28 @@ def test_cortisol_rises_through_pregnancy() -> None:
     assert late == pytest.approx(32.0, abs=2.0)
 
 
+def test_hpl_rises_from_zero_to_term() -> None:
+    from nidus.export.reference import maternal_hpl
+
+    early = float(maternal_hpl(0.0, baseline_ug_per_ml=0.0, term_ug_per_ml=7.0))
+    mid = float(maternal_hpl(24.0, baseline_ug_per_ml=0.0, term_ug_per_ml=7.0))
+    late = float(maternal_hpl(40.0, baseline_ug_per_ml=0.0, term_ug_per_ml=7.0))
+    # hPL is undetectable non-pregnant, rises through gestation.
+    assert early < 0.5
+    assert mid == pytest.approx(3.5, abs=0.5)
+    assert late == pytest.approx(7.0, abs=0.5)
+
+
+def test_progesterone_rises_10x_by_term() -> None:
+    from nidus.export.reference import maternal_progesterone
+
+    early = float(maternal_progesterone(0.0, baseline_ng_per_ml=10.0, term_ng_per_ml=150.0))
+    late = float(maternal_progesterone(40.0, baseline_ng_per_ml=10.0, term_ng_per_ml=150.0))
+    assert early == pytest.approx(10.0, abs=2.0)
+    assert late == pytest.approx(150.0, abs=10.0)
+    assert late > 10.0 * early
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -487,6 +511,8 @@ _ALL_SUBMODEL_IDS = [
     "homa_ir_trajectory",
     "tsh_trajectory",
     "cortisol_trajectory",
+    "hpl_trajectory",
+    "progesterone_trajectory",
 ]
 
 
@@ -551,7 +577,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 28
+    assert len(paths) >= 30
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -591,11 +617,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 28
+    assert len(paths_2) >= 30
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 28
+    assert len(paths_1) >= 30
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

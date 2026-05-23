@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **28 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **30 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -178,12 +178,14 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `homa_ir_trajectory`                   | Sigmoidal insulin resistance rise (Catalano 1991)            | maternal_endocrine         |
 | `tsh_trajectory`                       | Piecewise-linear T1 nadir → term recovery (Glinoer 1997)     | maternal_endocrine         |
 | `cortisol_trajectory`                  | Sigmoidal total cortisol rise (Allolio 1990)                 | maternal_endocrine         |
+| `hpl_trajectory`                       | Sigmoidal hPL rise from undetectable to term (Handwerger 2010) | placental_endocrine      |
+| `progesterone_trajectory`              | Sigmoidal progesterone 10x rise (Tulchinsky 1972)            | placental_endocrine        |
 
 Phase A of the submodel-expansion catalog is complete (12/12); Phase B
-is underway (3 of 10 shipped). The remaining Phase B items are
+is underway (5 of 10 shipped). The remaining Phase B items are
 catalogued in
 [`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md)
-(fetal heart rate, MCA-PI, umbilical PI, placental allometry, etc.).
+(hCG, estradiol, fetal heart rate, MCA-PI, umbilical PI, etc.).
 SBML/CellML builders for those land in subsequent releases.
 
 Each submodel ships with a pure-NumPy reference kernel in [`python/nidus/export/reference.py`](python/nidus/export/reference.py) that the SBML/CellML exports are round-trip validated against.

@@ -1175,6 +1175,30 @@ def _build_sigmoid_baseline_term(
     return model
 
 
+def _build_hpl(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "hpl_trajectory",
+        baseline_pid="placental_endocrine.hpl_baseline_ug_per_ml",
+        term_pid="placental_endocrine.hpl_term_ug_per_ml",
+        output_name="hPL_t",
+        growth_rate=0.2,
+        midpoint_week=24.0,
+    )
+
+
+def _build_progesterone(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "progesterone_trajectory",
+        baseline_pid="placental_endocrine.progesterone_baseline_ng_per_ml",
+        term_pid="placental_endocrine.progesterone_term_ng_per_ml",
+        output_name="progesterone_t",
+        growth_rate=0.18,
+        midpoint_week=24.0,
+    )
+
+
 def _build_homa_ir(ds: Dataset) -> libcellml.Model:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1344,6 +1368,8 @@ _BUILDERS = {
     "homa_ir_trajectory": _build_homa_ir,
     "tsh_trajectory": _build_tsh_trajectory,
     "cortisol_trajectory": _build_cortisol,
+    "hpl_trajectory": _build_hpl,
+    "progesterone_trajectory": _build_progesterone,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

@@ -1,10 +1,8 @@
 # Spec 03 — Submodel Expansion Catalog
 
 **Status:** Phase A **complete** (12/12). Phase B **in progress**
-(3 of 10 shipped: HOMA-IR sigmoidal, TSH piecewise-linear, cortisol
-sigmoidal — all using existing maternal_endocrine baseline/term
-parameters; diurnal and hCG-coupling refinements deferred until the
-matching coupling-coefficient parameters land). Registry totals 28
+(5 of 10 shipped: HOMA-IR sigmoidal, TSH piecewise-linear, cortisol
+sigmoidal, hPL sigmoidal, progesterone sigmoidal). Registry totals 30
 submodels. Companion to `02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
@@ -162,7 +160,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 These have either weaker single-source citations or require modest
 ODE integration. Each is ~50–150 LOC.
 
-### 3.1 Lactogen / hCG trajectory (placental endocrinology)
+### 3.1 Lactogen / hCG trajectory (placental endocrinology) — **hPL SHIPPED** (hCG deferred)
 
 - **Equation:** Sigmoidal for hPL (rises steadily), bell-shaped for
   hCG (peaks ~10 weeks then declines).
@@ -172,7 +170,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Note:** Tier C–B; substantial inter-individual variation.
 - **Cost:** ~80 LOC across 2 submodels.
 
-### 3.2 Estradiol / progesterone trajectories
+### 3.2 Estradiol / progesterone trajectories — **PROGESTERONE SHIPPED** (estradiol deferred)
 
 - **Equation:** Sigmoidal rises through gestation.
 - **Citations:** O'Leary 1991, Tulchinsky 1972.
