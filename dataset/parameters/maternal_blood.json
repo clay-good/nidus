@@ -309,6 +309,88 @@
     }
   },
   {
+    "id": "maternal_blood.wbc_count_term_x10e9_per_l",
+    "name": "White blood cell count at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 10.5,
+      "low": 8.0,
+      "high": 16.0,
+      "units": "10^9/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 and standard obstetric haematology: WBC count rises through pregnancy from non-pregnant ~6-7 x10^9/L to ~10-11 x10^9/L at term, driven primarily by neutrophilia. Counts up to ~16 x10^9/L can be physiological in late pregnancy; further elevation during labour is well-documented. Lymphocyte count is essentially unchanged.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester (not in labour)"
+    }
+  },
+  {
+    "id": "maternal_blood.serum_albumin_term_g_per_dl",
+    "name": "Serum albumin at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 3.0,
+      "low": 2.8,
+      "high": 3.4,
+      "units": "g/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: serum albumin falls from a non-pregnant baseline of ~4.0 g/dL to ~3.0 g/dL at term, primarily due to plasma-volume expansion outpacing synthesis (haemodilution). The fall lowers colloid osmotic pressure modestly and contributes to physiological oedema of pregnancy.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    }
+  },
+  {
+    "id": "maternal_blood.esr_term_mm_per_h",
+    "name": "Erythrocyte sedimentation rate at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 50.0,
+      "low": 30.0,
+      "high": 90.0,
+      "units": "mm/h",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 and standard obstetric haematology: ESR rises dramatically through pregnancy, driven by the large rise in plasma fibrinogen and other acute-phase reactants together with haemodilution. Term values typically 30-90 mm/h vs non-pregnant <20; the wide range reflects technique (Westergren) and the strong dependence on plasma protein composition. ESR is therefore non-specific as an inflammatory marker in pregnancy.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Westergren method. ESR is not useful as an inflammatory marker in pregnancy because the physiological rise overwhelms the inflammatory signal."
+  },
+  {
     "id": "maternal_blood.fetal_microchimerism_baseline_cells_per_ml",
     "name": "Fetal microchimeric cell concentration in maternal blood, first trimester baseline",
     "subsystem": "maternal_blood",

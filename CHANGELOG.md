@@ -9,6 +9,27 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 saturation pass — maternal-blood and fetal clinical
+  chemistry gaps.** Seven new Tier-B/C dataset parameters (159 →
+  **166 parameters**), all sourced from citations already in the
+  index (no new citation entries; the existing
+  `hytten-chamberlain-1980-blood-volume` and
+  `battaglia-meschia-1986-fetal-metabolism` cover both clusters).
+  - `maternal_blood.wbc_count_term_x10e9_per_l` (Tier B, neutrophilia-
+    driven rise to ~10.5 ×10^9/L at term)
+  - `maternal_blood.serum_albumin_term_g_per_dl` (Tier B,
+    haemodilution-driven fall to ~3.0 g/dL at term)
+  - `maternal_blood.esr_term_mm_per_h` (Tier B, fibrinogen- and
+    haemodilution-driven rise to ~50 mm/h at term)
+  - `fetal_metabolism.umbilical_artery_ph_term` (Tier B, ~7.27)
+  - `fetal_metabolism.umbilical_vein_ph_term` (Tier B, ~7.34)
+  - `fetal_metabolism.umbilical_artery_lactate_term_mmol_per_l`
+    (Tier C, ~3.5 mmol/L)
+  - `fetal_metabolism.fetal_glucose_term_mmol_per_l` (Tier B, ~3.5
+    mmol/L, ~70-75% of maternal)
+  Spec 02 §3.2 maternal-blood gaps and §3.10 fetal-metabolism gaps
+  each move one step closer to the saturation ceiling.
+
 - **Phase C complete (4/4).** Registry now stands at **41 submodels**
   total (Phase A 12 + Phase B 10 + Phase C 4 + the legacy
   `hadlock_fetal_weight` + the 14 v0.4 core submodels). The two new

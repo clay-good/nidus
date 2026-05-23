@@ -116,6 +116,116 @@
     "notes": "Higher fetal Hb + leftward P50 together close most of the gap between fetal-side PO2 and adult-side PO2 in arterial O2 content."
   },
   {
+    "id": "fetal_metabolism.umbilical_artery_ph_term",
+    "name": "Umbilical artery pH at term (cord blood)",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 7.27,
+      "low": 7.20,
+      "high": 7.34,
+      "units": "pH",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Battaglia & Meschia 1986 and standard neonatal practice: term umbilical-artery pH (deoxygenated fetal blood returning to the placenta) is typically 7.20-7.34 with mean ~7.27. Values <7.10 trigger clinical concern; <7.00 with elevated base deficit defines significant acidaemia. The arterial-venous pH gradient (~0.07) reflects net acid load from fetal tissue metabolism.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy term newborn, cord blood, uncomplicated vaginal delivery"
+    },
+    "notes": "Cord-blood pH is the standard clinical metric for intrapartum fetal acid-base status."
+  },
+  {
+    "id": "fetal_metabolism.umbilical_vein_ph_term",
+    "name": "Umbilical vein pH at term (cord blood)",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 7.34,
+      "low": 7.28,
+      "high": 7.40,
+      "units": "pH",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Battaglia & Meschia 1986: term umbilical-vein pH (freshly oxygenated blood returning from the placenta to the fetus) is typically 7.28-7.40 with mean ~7.34. The vein-artery pH difference (~0.07) is the principal indicator that the cord-blood sample was correctly identified — a small or absent gradient suggests the sample was drawn from the wrong vessel.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy term newborn, cord blood, uncomplicated vaginal delivery"
+    }
+  },
+  {
+    "id": "fetal_metabolism.umbilical_artery_lactate_term_mmol_per_l",
+    "name": "Umbilical artery lactate at term (cord blood)",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 3.5,
+      "low": 2.0,
+      "high": 6.0,
+      "units": "mmol/L",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Battaglia & Meschia 1986 and standard obstetric texts: cord-blood lactate at uncomplicated term delivery is typically 2-6 mmol/L (well above adult resting ~1 mmol/L). The high baseline reflects partial reliance on anaerobic metabolism in the fetal circulation and the burst of activity at delivery. Lactate >8 mmol/L is associated with intrapartum hypoxia. Distribution is heavily right-skewed; central value ~3.5 reflects the modal cohort mean.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy term newborn, cord blood, uncomplicated vaginal delivery"
+    }
+  },
+  {
+    "id": "fetal_metabolism.fetal_glucose_term_mmol_per_l",
+    "name": "Fetal plasma glucose at term (cord blood)",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 3.5,
+      "low": 2.8,
+      "high": 4.5,
+      "units": "mmol/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Battaglia & Meschia 1986: fetal plasma glucose is closely coupled to maternal glucose by trans-placental GLUT1/GLUT3 transport and runs at approximately 70-75% of maternal levels. Term cord values typically 2.8-4.5 mmol/L. Fetal glucose follows maternal glucose dynamically; the fetus does not contribute substantial endogenous glucose production until the perinatal switch.",
+    "citations": [
+      "battaglia-meschia-1986-fetal-metabolism"
+    ],
+    "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy term newborn, cord blood, mother fasted ~overnight"
+    },
+    "notes": "Fetal/maternal glucose ratio ~0.7 is one of the most robust quantitative facts in fetal metabolism."
+  },
+  {
     "id": "fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h",
     "name": "Fetal pulmonary fluid net secretion rate, mid-gestation baseline",
     "subsystem": "fetal_metabolism",
