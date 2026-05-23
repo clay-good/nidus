@@ -31,6 +31,7 @@ from __future__ import annotations
 from nidus.export.cellml import build_cellml, write_cellml
 from nidus.export.combine import write_combine_archive
 from nidus.export.composed import build_composed_sbml, write_composed_sbml
+from nidus.export.equations import equation_latex, list_equations
 from nidus.export.physiocell import build_physiocell_params, write_physiocell
 from nidus.export.registry import SUBMODELS, list_submodels
 from nidus.export.sbml import build_sbml, write_sbml
@@ -43,6 +44,8 @@ __all__ = [
     "build_composed_sbml",
     "build_physiocell_params",
     "build_sbml",
+    "equation_latex",
+    "list_equations",
     "list_submodels",
     "sweep",
     "write_cellml",

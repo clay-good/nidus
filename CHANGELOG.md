@@ -9,6 +9,16 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **`nidus.export.equation_latex` — LaTeX equations for submodels.**
+  Spec 03 §5 cross-cutting infrastructure item. Exposes one LaTeX
+  fragment per registry entry for documentation, dashboard tooltips,
+  paper appendices, or matplotlib `text(usetex=True)`. ~40 entries
+  cover the canonical kernel families (logistic, Gaussian bump,
+  linear, Michaelis-Menten, Hill, polynomial, algebraic combinator,
+  piecewise hCG); `equation_latex(unknown_id)` returns `None`. Tests
+  verify the family-representative set, that every map key resolves
+  to a real Submodel id, and that no entry is empty.
+
 - **`nidus.export.sweep` — sensitivity-analysis utility.** Spec 03 §5
   cross-cutting infrastructure item. One-parameter sweeps over any
   pure-NumPy reference kernel from `nidus.export.reference`, returning

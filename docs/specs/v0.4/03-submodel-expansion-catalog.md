@@ -283,7 +283,13 @@ generator-side improvements that pay off as the registry grows:
   well-supported.)
 - **Symbolic equation export (Mathjax / LaTeX)** — every submodel
   already carries an English equation in its `description`; emitting
-  LaTeX alongside makes the docs much better.
+  LaTeX alongside makes the docs much better. **SHIPPED** as
+  `nidus.export.equation_latex(submodel_id)` /
+  `nidus.export.list_equations()`. ~40 entries covering the
+  canonical kernel families (logistic, Gaussian-bump, linear,
+  Michaelis-Menten, Hill, polynomial, algebraic combinator,
+  piecewise hCG). Returns plain LaTeX fragments suitable for
+  MathJax, matplotlib `text(usetex=True)`, or Quarto.
 - **Sensitivity-analysis scaffold** — a top-level `nidus.export.sweep`
   utility that re-evaluates a chosen submodel across a parameter
   range and emits a CSV. Pure-Python, ~80 LOC. **SHIPPED.** Exposed

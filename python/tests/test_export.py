@@ -990,3 +990,51 @@ def test_sweep_write_csv_round_trip(tmp_path: Path) -> None:
     assert float(first[1]) == pytest.approx(0.7)
     assert float(first[2]) == pytest.approx(10.0)
     assert float(first[3]) == pytest.approx(3.0)
+
+
+# ---- LaTeX equation export (spec 03 §5) ---------------------------
+
+
+def test_equation_latex_returns_for_known_kernels() -> None:
+    from nidus.export import equation_latex
+
+    eq = equation_latex("placental_villous_growth")
+    assert eq is not None
+    # Logistic form fingerprint
+    assert r"\frac" in eq and "1 + e" in eq
+
+
+def test_equation_latex_unmapped_returns_none() -> None:
+    from nidus.export import equation_latex
+
+    assert equation_latex("not_a_real_submodel") is None
+
+
+def test_list_equations_covers_canonical_families() -> None:
+    """Each major kernel family must have at least one representative."""
+    from nidus.export import list_equations
+
+    eqs = list_equations()
+    family_reps = [
+        "placental_villous_growth",  # logistic
+        "maternal_cardiac_output_trajectory",  # Gaussian bump
+        "pao2_trajectory_linear",  # linear
+        "o2hb_dissociation_adult",  # Severinghaus
+        "placental_glucose_glut1",  # Michaelis-Menten
+        "svr_trajectory",  # algebraic derivation
+        "hadlock_fl_growth",  # polynomial
+        "hadlock_fetal_weight",  # Hadlock IV regression
+        "hcg_trajectory",  # piecewise
+    ]
+    for rep in family_reps:
+        assert rep in eqs, f"missing LaTeX for {rep}"
+        assert eqs[rep].strip(), f"empty LaTeX for {rep}"
+
+
+def test_list_equations_keys_resolve_in_registry() -> None:
+    """Every LaTeX key must be a real submodel id."""
+    from nidus.export import SUBMODELS, list_equations
+
+    registry_ids = {sm.id for sm in SUBMODELS}
+    for key in list_equations():
+        assert key in registry_ids, f"LaTeX equation references unknown submodel {key!r}"
