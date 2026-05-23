@@ -9,9 +9,27 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 saturation pass — maternal-renal and maternal-respiratory
+  gaps.** Six new Tier-B/C dataset parameters (166 → **172
+  parameters**), all sourced from citations already in the index.
+  - `maternal_renal.urinary_protein_excretion_term_mg_per_24h`
+    (Tier B, ~150 mg/24h; clinical proteinuria threshold 300)
+  - `maternal_renal.plasma_uric_acid_nadir_mg_per_dl` (Tier B,
+    ~3.0 mg/dL mid-pregnancy)
+  - `maternal_renal.plasma_uric_acid_term_mg_per_dl` (Tier B,
+    ~4.5 mg/dL; supporting biomarker for preeclampsia >6)
+  - `maternal_respiratory.vco2_term_ml_per_min` (Tier B, ~250
+    mL/min; rises ~15-20% with VO2, keeps RER ≈ 0.85)
+  - `maternal_respiratory.dlco_term_ml_per_min_per_mmhg` (Tier C,
+    ~24 mL/min/mmHg; modest fall from non-pregnant baseline)
+  - `maternal_respiratory.aa_o2_gradient_term_mmhg` (Tier C, ~13
+    mmHg; widens vs non-pregnant due to closing-volume encroachment)
+  Spec 02 §3.3 (renal) and §3.4 (respiratory) gaps each move closer
+  to the saturation ceiling. No new citations.
+
 - **Phase 3 saturation pass — maternal-blood and fetal clinical
   chemistry gaps.** Seven new Tier-B/C dataset parameters (159 →
-  **166 parameters**), all sourced from citations already in the
+  166 parameters), all sourced from citations already in the
   index (no new citation entries; the existing
   `hytten-chamberlain-1980-blood-volume` and
   `battaglia-meschia-1986-fetal-metabolism` cover both clusters).

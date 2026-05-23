@@ -326,5 +326,87 @@
       "reviewer": "v0.4-phase1-expansion-script"
     },
     "primary_citation": "cheung-lafayette-2013-renal"
+  },
+  {
+    "id": "maternal_renal.urinary_protein_excretion_term_mg_per_24h",
+    "name": "Urinary protein excretion at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 150.0,
+      "low": 80.0,
+      "high": 260.0,
+      "units": "mg/24h",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Cheung & Lafayette 2013: increased GFR and modest glomerular leakage raise 24-hour urinary protein excretion from a non-pregnant baseline of ~40-80 mg to ~150 mg by term. The clinical threshold for proteinuria in pregnancy is 300 mg/24h, chosen so that the physiological rise alone does not classify a normal pregnancy as proteinuric.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Clinical proteinuria threshold (300 mg/24h) sits above the upper end of the physiological range."
+  },
+  {
+    "id": "maternal_renal.plasma_uric_acid_nadir_mg_per_dl",
+    "name": "Plasma uric acid, mid-pregnancy nadir",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 3.0,
+      "low": 2.5,
+      "high": 3.5,
+      "units": "mg/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Cheung & Lafayette 2013: plasma uric acid falls in early-to-mid pregnancy from a non-pregnant baseline of ~4-5 mg/dL to a nadir of ~2.5-3.5 mg/dL by ~22-24 weeks, driven by increased GFR and renal uric-acid clearance. The fall is one of the more reproducible mid-pregnancy biochemical changes.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, mid-pregnancy nadir (~22-24 weeks)"
+    }
+  },
+  {
+    "id": "maternal_renal.plasma_uric_acid_term_mg_per_dl",
+    "name": "Plasma uric acid at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 4.5,
+      "low": 3.5,
+      "high": 5.5,
+      "units": "mg/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Cheung & Lafayette 2013: plasma uric acid rises back through the third trimester, reaching ~4-5 mg/dL by term as net renal clearance falls toward non-pregnant values. Term levels >6 mg/dL are clinically suggestive of preeclampsia and are used as a supporting biochemical marker, illustrating how the same number means different things in early vs late pregnancy.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    }
   }
 ]

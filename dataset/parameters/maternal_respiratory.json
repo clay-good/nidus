@@ -345,5 +345,88 @@
       "reviewer": "v0.4-phase-a-submodel-expansion"
     },
     "primary_citation": "templeton-1976-blood-gas"
+  },
+  {
+    "id": "maternal_respiratory.vco2_term_ml_per_min",
+    "name": "Maternal CO2 production at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 250.0,
+      "low": 230.0,
+      "high": 290.0,
+      "units": "mL/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from LoMauro & Aliverti 2015: maternal CO2 production (VCO2) rises ~15-20% from a non-pregnant baseline of ~210 mL/min to ~250 mL/min at term, paralleling the rise in O2 consumption (already in the dataset). The roughly matched VO2/VCO2 rises keep the resting respiratory exchange ratio near 0.85.",
+    "citations": [
+      "lomauro-aliverti-2015-respiratory"
+    ],
+    "primary_citation": "lomauro-aliverti-2015-respiratory",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at rest, third trimester"
+    },
+    "notes": "Combined with VO2 already in the dataset, VCO2/VO2 ≈ 0.85 (resting RER preserved)."
+  },
+  {
+    "id": "maternal_respiratory.dlco_term_ml_per_min_per_mmhg",
+    "name": "Single-breath DLCO at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 24.0,
+      "low": 20.0,
+      "high": 28.0,
+      "units": "mL/min/mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Crapo 1996: single-breath diffusing capacity for CO (DLCO) shows a small fall through pregnancy (typically a few percent to ~10%) relative to non-pregnant baseline (~28 mL/min/mmHg). The reduction is attributed to modest haemodilution outweighing the rise in pulmonary blood flow. Individual studies disagree on magnitude; Tier C reflects the heterogeneity.",
+    "citations": [
+      "crapo-1996-pregnancy-respiratory"
+    ],
+    "primary_citation": "crapo-1996-pregnancy-respiratory",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    }
+  },
+  {
+    "id": "maternal_respiratory.aa_o2_gradient_term_mmhg",
+    "name": "Alveolar-arterial O2 gradient at term",
+    "subsystem": "maternal_respiratory",
+    "value": {
+      "central": 13.0,
+      "low": 8.0,
+      "high": 20.0,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Crapo 1996: the A-a O2 gradient widens modestly through pregnancy and especially in the supine position, with term values centred around 10-15 mmHg compared to non-pregnant ~5-10. The widening is attributed to closing-volume encroachment on FRC and modest V/Q mismatch in dependent zones. Substantial inter-individual variation justifies Tier C.",
+    "citations": [
+      "crapo-1996-pregnancy-respiratory"
+    ],
+    "primary_citation": "crapo-1996-pregnancy-respiratory",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester, supine or sitting"
+    },
+    "notes": "Used clinically as part of the lower threshold for diagnosing pulmonary embolism in pregnant patients."
   }
 ]
