@@ -1074,6 +1074,103 @@ def _build_progesterone(ds: Dataset) -> libsbml.SBMLDocument:
     )
 
 
+def _build_ua_pi(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "umbilical_artery_pi_trajectory",
+        baseline_pid="fetal_circulation.ua_pi_baseline",
+        term_pid="fetal_circulation.ua_pi_term",
+        output_name="UA_PI_t",
+        growth_rate=0.18,
+        midpoint_week=28.0,
+    )
+
+
+def _build_mca_pi(ds: Dataset) -> libsbml.SBMLDocument:
+    """Gaussian-bump MCA-PI; peak_week and spread are hardcoded."""
+    sm = next(s for s in SUBMODELS if s.id == "mca_pi_trajectory")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    baseline = ds["fetal_circulation.mca_pi_baseline"]
+    peak = ds["fetal_circulation.mca_pi_peak"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "peak_week", 28.0, "dimensionless")
+    _add_parameter(model, "spread_weeks", 8.0, "dimensionless")
+    for p in (baseline, peak):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "MCA_PI_t", 0.0, "dimensionless", constant=False)
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    p_id = parameter_id_to_sbml(peak.id)
+    rule = model.createAssignmentRule()
+    rule.setVariable("MCA_PI_t")
+    rule.setMath(
+        libsbml.parseL3Formula(
+            f"{b_id} + ({p_id} - {b_id}) * exp(-((t_weeks - peak_week) / spread_weeks)^2 / 2)"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_cpr(ds: Dataset) -> libsbml.SBMLDocument:
+    """Derived CPR(t) = MCA-PI(t) / UA-PI(t)."""
+    sm = next(s for s in SUBMODELS if s.id == "cerebroplacental_ratio")
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    ua_b = ds["fetal_circulation.ua_pi_baseline"]
+    ua_t = ds["fetal_circulation.ua_pi_term"]
+    mca_b = ds["fetal_circulation.mca_pi_baseline"]
+    mca_p = ds["fetal_circulation.mca_pi_peak"]
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    _add_parameter(model, "ua_growth_rate", 0.18, "dimensionless")
+    _add_parameter(model, "ua_midpoint", 28.0, "dimensionless")
+    _add_parameter(model, "mca_peak_week", 28.0, "dimensionless")
+    _add_parameter(model, "mca_spread_weeks", 8.0, "dimensionless")
+    for p in (ua_b, ua_t, mca_b, mca_p):
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "CPR_t", 0.0, "dimensionless", constant=False)
+
+    ua_b_id = parameter_id_to_sbml(ua_b.id)
+    ua_t_id = parameter_id_to_sbml(ua_t.id)
+    mca_b_id = parameter_id_to_sbml(mca_b.id)
+    mca_p_id = parameter_id_to_sbml(mca_p.id)
+
+    ua_expr = (
+        f"({ua_b_id} + ({ua_t_id} - {ua_b_id}) / "
+        f"(1 + exp(-ua_growth_rate * (t_weeks - ua_midpoint))))"
+    )
+    mca_expr = (
+        f"({mca_b_id} + ({mca_p_id} - {mca_b_id}) * "
+        f"exp(-((t_weeks - mca_peak_week) / mca_spread_weeks)^2 / 2))"
+    )
+    rule = model.createAssignmentRule()
+    rule.setVariable("CPR_t")
+    rule.setMath(libsbml.parseL3Formula(f"{mca_expr} / {ua_expr}"))
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
 def _build_estradiol(ds: Dataset) -> libsbml.SBMLDocument:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1237,6 +1334,9 @@ _BUILDERS = {
     "estradiol_trajectory": _build_estradiol,
     "fetal_heart_rate_trajectory": _build_fhr,
     "hcg_trajectory": _build_hcg,
+    "umbilical_artery_pi_trajectory": _build_ua_pi,
+    "mca_pi_trajectory": _build_mca_pi,
+    "cerebroplacental_ratio": _build_cpr,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

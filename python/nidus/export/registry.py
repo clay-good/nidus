@@ -664,6 +664,67 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="mIU/mL",
     ),
     Submodel(
+        id="umbilical_artery_pi_trajectory",
+        name="Umbilical artery pulsatility index trajectory (sigmoidal fall)",
+        description=(
+            "Sigmoidal UA-PI fall across gestation from baseline "
+            "(~1.5 at 16-20 weeks) to term (~0.85) as placental "
+            "vascular resistance drops with villous-tree expansion. "
+            "Acharya 2005 (PMID 15776417) reference ranges. The same "
+            "baseline -> term sigmoid form encodes the fall because "
+            "(term - baseline) is negative."
+        ),
+        sbo_term="SBO:0000295",  # logistic
+        parameter_ids=(
+            "fetal_circulation.ua_pi_baseline",
+            "fetal_circulation.ua_pi_term",
+        ),
+        independent_variable="t_weeks",
+        output_units="dimensionless",
+    ),
+    Submodel(
+        id="mca_pi_trajectory",
+        name="Middle cerebral artery pulsatility index trajectory (Gaussian bell)",
+        description=(
+            "Gaussian bell-shape for MCA-PI across gestation: "
+            "MCA-PI(t) = baseline + (peak - baseline) * "
+            "exp(-((t - 28)/8)^2 / 2). Rises through T2, peaks "
+            "~2.0 at ~28 weeks, then falls back toward ~1.5 at term "
+            "as the fetal brain-sparing reflex drops cerebral "
+            "resistance (Mari 1995, PMID 7900181). Peak week and "
+            "spread are hardcoded; the published cohort means are "
+            "the curve anchors."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_circulation.mca_pi_baseline",
+            "fetal_circulation.mca_pi_peak",
+        ),
+        independent_variable="t_weeks",
+        output_units="dimensionless",
+    ),
+    Submodel(
+        id="cerebroplacental_ratio",
+        name="Cerebroplacental ratio (CPR), derived",
+        description=(
+            "Derived CPR(t) = MCA-PI(t) / UA-PI(t), the canonical "
+            "fetal-compromise screen: CPR > 1 is normal; CPR < 1 "
+            "flags reduced cerebral resistance relative to placental "
+            "resistance (brain-sparing under chronic hypoxia). "
+            "Baschat 2003 review; the ratio composes the MCA-PI and "
+            "UA-PI submodels with no additional parameters."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_circulation.ua_pi_baseline",
+            "fetal_circulation.ua_pi_term",
+            "fetal_circulation.mca_pi_baseline",
+            "fetal_circulation.mca_pi_peak",
+        ),
+        independent_variable="t_weeks",
+        output_units="dimensionless",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

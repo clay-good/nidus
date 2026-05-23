@@ -9,6 +9,30 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Three more Phase B submodels** (fetal Doppler PI cluster),
+  bringing the registry to **36 submodels** and Phase B to **9 of 10**:
+  - `umbilical_artery_pi_trajectory` — sigmoidal UA-PI fall from
+    ~1.5 at 16 weeks to ~0.85 at term as placental vascular
+    resistance drops (Acharya 2005, PMID 15776417).
+  - `mca_pi_trajectory` — Gaussian bell with mid-pregnancy peak
+    (~2.0 at ~28 weeks), reflecting fetal cerebral vasodilation
+    dynamics (Mari 1995, PMID 7900181). Peak week + spread are
+    hardcoded.
+  - `cerebroplacental_ratio` — derived CPR(t) = MCA-PI(t) / UA-PI(t).
+    Normal pregnancies: CPR > 1; CPR < 1 flags fetal compromise
+    (Baschat 2003). Reuses the four PI parameters above.
+- **Four new dataset parameters** (146 → **150 parameters**), all
+  in `fetal_circulation`:
+  - `ua_pi_baseline` (Tier A, Acharya 2005)
+  - `ua_pi_term` (Tier A, Acharya 2005)
+  - `mca_pi_baseline` (Tier B, Mari 1995)
+  - `mca_pi_peak` (Tier B, Mari 1995)
+- Two new citations in `citations.json`: `acharya-2005-umbilical-pi`,
+  `mari-1995-mca-pi`. Citation count 51 → 53.
+- Reference kernels `umbilical_artery_pi`, `mca_pi`,
+  `cerebroplacental_ratio` with endpoint + shape sanity tests. The
+  CPR test asserts CPR > 1 across normal-pregnancy timepoints.
+
 - **Three more Phase B submodels**, bringing the registry to
   **33 submodels** and Phase B to **8 of 10**:
   - `estradiol_trajectory` — sigmoidal estradiol rise from mid-luteal

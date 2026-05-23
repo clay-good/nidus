@@ -1199,6 +1199,125 @@ def _build_progesterone(ds: Dataset) -> libcellml.Model:
     )
 
 
+def _build_ua_pi(ds: Dataset) -> libcellml.Model:
+    return _build_sigmoid_baseline_term(
+        ds,
+        "umbilical_artery_pi_trajectory",
+        baseline_pid="fetal_circulation.ua_pi_baseline",
+        term_pid="fetal_circulation.ua_pi_term",
+        output_name="UA_PI_t",
+        growth_rate=0.18,
+        midpoint_week=28.0,
+    )
+
+
+def _build_mca_pi(ds: Dataset) -> libcellml.Model:
+    """Gaussian-bump MCA-PI."""
+    sm = next(s for s in SUBMODELS if s.id == "mca_pi_trajectory")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    baseline = ds["fetal_circulation.mca_pi_baseline"]
+    peak = ds["fetal_circulation.mca_pi_peak"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "peak_week", units="dimensionless", initial_value="28")
+    _add_variable(comp, "spread_weeks", units="dimensionless", initial_value="8")
+    for p in (baseline, peak):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "MCA_PI_t", units="dimensionless", initial_value="0")
+
+    b_id = parameter_id_to_sbml(baseline.id)
+    p_id = parameter_id_to_sbml(peak.id)
+    z = _apply(
+        "divide",
+        _apply("minus", _ci("t_weeks"), _ci("peak_week")),
+        _ci("spread_weeks"),
+    )
+    bump = _apply(
+        "times",
+        _apply("minus", _ci(p_id), _ci(b_id)),
+        _apply(
+            "exp",
+            _apply("divide", _apply("minus", _apply("power", z, _cn("2"))), _cn("2")),
+        ),
+    )
+    rhs = _apply("plus", _ci(b_id), bump)
+    comp.setMath(_mathml(_apply_assign("MCA_PI_t", rhs)))
+    return model
+
+
+def _build_cpr(ds: Dataset) -> libcellml.Model:
+    """CPR(t) = MCA-PI(t) / UA-PI(t)."""
+    sm = next(s for s in SUBMODELS if s.id == "cerebroplacental_ratio")
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    ua_b = ds["fetal_circulation.ua_pi_baseline"]
+    ua_t = ds["fetal_circulation.ua_pi_term"]
+    mca_b = ds["fetal_circulation.mca_pi_baseline"]
+    mca_p = ds["fetal_circulation.mca_pi_peak"]
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    _add_variable(comp, "ua_growth_rate", units="dimensionless", initial_value="0.18")
+    _add_variable(comp, "ua_midpoint", units="dimensionless", initial_value="28")
+    _add_variable(comp, "mca_peak_week", units="dimensionless", initial_value="28")
+    _add_variable(comp, "mca_spread_weeks", units="dimensionless", initial_value="8")
+    for p in (ua_b, ua_t, mca_b, mca_p):
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "CPR_t", units="dimensionless", initial_value="0")
+
+    ua_b_id = parameter_id_to_sbml(ua_b.id)
+    ua_t_id = parameter_id_to_sbml(ua_t.id)
+    mca_b_id = parameter_id_to_sbml(mca_b.id)
+    mca_p_id = parameter_id_to_sbml(mca_p.id)
+
+    ua_expr = _sigmoid_baseline_term(ua_b_id, ua_t_id)
+    # Replace growth_rate_per_week / midpoint_week with ua-specific names.
+    ua_expr = ua_expr.replace("growth_rate_per_week", "ua_growth_rate").replace(
+        "midpoint_week", "ua_midpoint"
+    )
+
+    z = _apply(
+        "divide",
+        _apply("minus", _ci("t_weeks"), _ci("mca_peak_week")),
+        _ci("mca_spread_weeks"),
+    )
+    bump = _apply(
+        "times",
+        _apply("minus", _ci(mca_p_id), _ci(mca_b_id)),
+        _apply(
+            "exp",
+            _apply("divide", _apply("minus", _apply("power", z, _cn("2"))), _cn("2")),
+        ),
+    )
+    mca_expr = _apply("plus", _ci(mca_b_id), bump)
+
+    rhs = _apply("divide", mca_expr, ua_expr)
+    comp.setMath(_mathml(_apply_assign("CPR_t", rhs)))
+    return model
+
+
 def _build_estradiol(ds: Dataset) -> libcellml.Model:
     return _build_sigmoid_baseline_term(
         ds,
@@ -1465,6 +1584,9 @@ _BUILDERS = {
     "estradiol_trajectory": _build_estradiol,
     "fetal_heart_rate_trajectory": _build_fhr,
     "hcg_trajectory": _build_hcg,
+    "umbilical_artery_pi_trajectory": _build_ua_pi,
+    "mca_pi_trajectory": _build_mca_pi,
+    "cerebroplacental_ratio": _build_cpr,
     "hadlock_bpd_growth": _build_hadlock_bpd_growth,
     "hadlock_hc_growth": _build_hadlock_hc_growth,
     "hadlock_ac_growth": _build_hadlock_ac_growth,

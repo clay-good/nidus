@@ -1,13 +1,12 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A **complete** (12/12). Phase B **in progress**
-(8 of 10 shipped: HOMA-IR sigmoidal, TSH piecewise-linear, cortisol
-sigmoidal, hPL sigmoidal, progesterone sigmoidal, estradiol sigmoidal,
-fetal heart rate sigmoidal-fall, hCG piecewise rise-decline). Two
-items remaining (umbilical-artery PI / cerebroplacental ratio / MCA-PI
-cluster, and placental allometry) — all need new dataset parameters.
-Registry totals 33 submodels. Companion to
-`02-parameter-expansion-roadmap.md`.
+**Status:** Phase A **complete** (12/12). Phase B **9 of 10**:
+HOMA-IR, TSH, cortisol, hPL, progesterone, estradiol, fetal heart
+rate, hCG, plus the umbilical-artery PI / MCA-PI / cerebroplacental
+ratio Doppler cluster. Only the placental ~ fetal weight allometry
+submodel remains — it needs new dataset parameters for the
+allometric `a` and `b` coefficients. Registry totals 36 submodels.
+Companion to `02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
 ship as additional `nidus.export` registry entries beyond the 11
@@ -210,7 +209,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Inputs (new):** baseline + term FHR.
 - **Cost:** ~30 LOC.
 
-### 3.7 Umbilical artery pulsatility index trajectory
+### 3.7 Umbilical artery pulsatility index trajectory — **SHIPPED**
 
 - **Equation:** Decreasing exponential — PI falls as placental
   resistance falls.
@@ -218,7 +217,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Inputs (new):** baseline + term PI.
 - **Cost:** ~40 LOC.
 
-### 3.8 Cerebroplacental ratio (CPR)
+### 3.8 Cerebroplacental ratio (CPR) — **SHIPPED**
 
 - **Equation:** `MCA-PI / UA-PI` — derived; flags fetal compromise
   when < 1.0.
@@ -226,7 +225,7 @@ ODE integration. Each is ~50–150 LOC.
 - **Inputs:** Reuses MCA-PI + UA-PI submodels.
 - **Cost:** ~20 LOC; pure algebraic combinator.
 
-### 3.9 Fetal middle cerebral artery PI trajectory
+### 3.9 Fetal middle cerebral artery PI trajectory — **SHIPPED**
 
 - **Equation:** Bell-shaped — rises then falls.
 - **Citations:** Mari 1995 (PMID 7900181).

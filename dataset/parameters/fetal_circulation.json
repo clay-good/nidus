@@ -162,6 +162,102 @@
     }
   },
   {
+    "id": "fetal_circulation.ua_pi_baseline",
+    "name": "Umbilical artery pulsatility index, mid-second-trimester baseline",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 1.5,
+      "low": 1.3,
+      "high": 1.7,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Acharya 2005 (PMID 15776417) reference ranges: UA-PI ~1.5 at 16-20 weeks, smoothly falls to ~0.8 by term as placental vascular resistance drops.",
+    "citations": [
+      "acharya-2005-umbilical-pi"
+    ],
+    "primary_citation": "acharya-2005-umbilical-pi",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
+  },
+  {
+    "id": "fetal_circulation.ua_pi_term",
+    "name": "Umbilical artery pulsatility index at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 0.85,
+      "low": 0.7,
+      "high": 1.0,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Acharya 2005: term UA-PI ~0.8-0.9. Elevated UA-PI at term flags placental insufficiency / FGR.",
+    "citations": [
+      "acharya-2005-umbilical-pi"
+    ],
+    "primary_citation": "acharya-2005-umbilical-pi",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
+  },
+  {
+    "id": "fetal_circulation.mca_pi_baseline",
+    "name": "Middle cerebral artery pulsatility index, early second trimester",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 1.5,
+      "low": 1.3,
+      "high": 1.7,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Mari 1995 (PMID 7900181) longitudinal Doppler reference: MCA-PI ~1.5 at ~20 weeks, rises through T2, peaks ~28 weeks at ~2.0, then falls as fetal cerebral vasodilation drops resistance near term.",
+    "citations": [
+      "mari-1995-mca-pi"
+    ],
+    "primary_citation": "mari-1995-mca-pi",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
+  },
+  {
+    "id": "fetal_circulation.mca_pi_peak",
+    "name": "Middle cerebral artery pulsatility index, mid-pregnancy peak",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 2.0,
+      "low": 1.8,
+      "high": 2.2,
+      "units": "dimensionless",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Mari 1995: MCA-PI peak ~2.0 at ~28 weeks. The bell-shaped trajectory falls toward ~1.5 at term as the fetal brain claims more flow under late-pregnancy hypoxic stress (brain-sparing reflex).",
+    "citations": [
+      "mari-1995-mca-pi"
+    ],
+    "primary_citation": "mari-1995-mca-pi",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-b-submodel-expansion"
+    }
+  },
+  {
     "id": "fetal_circulation.fhr_term_bpm",
     "name": "Fetal heart rate at term",
     "subsystem": "fetal_circulation",

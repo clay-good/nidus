@@ -67,6 +67,9 @@ def test_registry_lists_submodels() -> None:
         "estradiol_trajectory",
         "fetal_heart_rate_trajectory",
         "hcg_trajectory",
+        "umbilical_artery_pi_trajectory",
+        "mca_pi_trajectory",
+        "cerebroplacental_ratio",
     } == ids
 
 
@@ -497,6 +500,39 @@ def test_hcg_peaks_then_declines() -> None:
     assert term == pytest.approx(10000.0, rel=1e-6)
 
 
+def test_ua_pi_falls_through_pregnancy() -> None:
+    from nidus.export.reference import umbilical_artery_pi
+
+    early = float(umbilical_artery_pi(16.0, baseline=1.5, term=0.85))
+    late = float(umbilical_artery_pi(40.0, baseline=1.5, term=0.85))
+    assert early > late
+    assert late == pytest.approx(0.85, abs=0.1)
+
+
+def test_mca_pi_bell_shape() -> None:
+    from nidus.export.reference import mca_pi
+
+    peak = float(mca_pi(28.0, baseline=1.5, peak=2.0))
+    early = float(mca_pi(16.0, baseline=1.5, peak=2.0))
+    late = float(mca_pi(40.0, baseline=1.5, peak=2.0))
+    # At peak week, MCA-PI hits the curated peak.
+    assert peak == pytest.approx(2.0)
+    # Bell: both shoulders below peak.
+    assert early < peak
+    assert late < peak
+
+
+def test_cpr_above_one_in_normal_pregnancy() -> None:
+    from nidus.export.reference import cerebroplacental_ratio
+
+    kwargs = dict(ua_pi_baseline=1.5, ua_pi_term=0.85, mca_pi_baseline=1.5, mca_pi_peak=2.0)
+    cpr_24 = float(cerebroplacental_ratio(24.0, **kwargs))  # type: ignore[arg-type]
+    cpr_term = float(cerebroplacental_ratio(38.0, **kwargs))  # type: ignore[arg-type]
+    # Normal pregnancy: CPR > 1 (MCA resistance higher than UA resistance).
+    assert cpr_24 > 1.0
+    assert cpr_term > 1.0
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -554,6 +590,9 @@ _ALL_SUBMODEL_IDS = [
     "estradiol_trajectory",
     "fetal_heart_rate_trajectory",
     "hcg_trajectory",
+    "umbilical_artery_pi_trajectory",
+    "mca_pi_trajectory",
+    "cerebroplacental_ratio",
 ]
 
 
@@ -618,7 +657,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 33
+    assert len(paths) >= 36
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -658,11 +697,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 33
+    assert len(paths_2) >= 36
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 33
+    assert len(paths_1) >= 36
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

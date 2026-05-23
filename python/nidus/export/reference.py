@@ -594,6 +594,53 @@ def maternal_hcg(
     return np.where(t < peak_week, rise, decline)
 
 
+# ---- 20f. Fetal Doppler PI cluster ---------------------------------
+
+
+def umbilical_artery_pi(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline: float,
+    term: float,
+    growth_rate_per_week: float = 0.18,
+    midpoint_week: float = 28.0,
+) -> NDArray[np.float64]:
+    """Sigmoidal UA-PI fall (Acharya 2005). Same form as other sigmoids;
+    encodes a fall when baseline > term."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    span = term - baseline
+    return baseline + span / (1.0 + np.exp(-growth_rate_per_week * (t - midpoint_week)))
+
+
+def mca_pi(
+    t_weeks: FloatArrayLike,
+    *,
+    baseline: float,
+    peak: float,
+    peak_week: float = 28.0,
+    spread_weeks: float = 8.0,
+) -> NDArray[np.float64]:
+    """Gaussian-bump MCA-PI trajectory (Mari 1995)."""
+    t = np.asarray(t_weeks, dtype=np.float64)
+    amplitude = peak - baseline
+    z = (t - peak_week) / spread_weeks
+    return baseline + amplitude * np.exp(-(z**2) / 2.0)
+
+
+def cerebroplacental_ratio(
+    t_weeks: FloatArrayLike,
+    *,
+    ua_pi_baseline: float,
+    ua_pi_term: float,
+    mca_pi_baseline: float,
+    mca_pi_peak: float,
+) -> NDArray[np.float64]:
+    """Derived CPR(t) = MCA-PI(t) / UA-PI(t)."""
+    mca = mca_pi(t_weeks, baseline=mca_pi_baseline, peak=mca_pi_peak)
+    ua = umbilical_artery_pi(t_weeks, baseline=ua_pi_baseline, term=ua_pi_term)
+    return mca / ua
+
+
 # ---- 20. Hadlock biometry cubic-fit growth -------------------------
 
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)

@@ -53,7 +53,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **~110+ parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid).
 - **40+ citations**, each verified against Crossref or PubMed metadata.
 - **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
-- **33 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
+- **36 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
@@ -183,12 +183,14 @@ Or use the hosted Streamlit Community Cloud deployment linked from the repo desc
 | `estradiol_trajectory`                 | Sigmoidal estradiol ~100x rise (Tulchinsky 1972)             | placental_endocrine        |
 | `fetal_heart_rate_trajectory`          | Sigmoidal FHR fall from T1 peak to term (Pildner 2013)       | fetal_circulation          |
 | `hcg_trajectory`                       | Piecewise quadratic rise then exponential decline (Cole 2010) | placental_endocrine       |
+| `umbilical_artery_pi_trajectory`       | Sigmoidal UA-PI fall (Acharya 2005)                          | fetal_circulation          |
+| `mca_pi_trajectory`                    | Gaussian bell-shape MCA-PI (Mari 1995)                       | fetal_circulation          |
+| `cerebroplacental_ratio`               | Derived CPR = MCA-PI / UA-PI (Baschat 2003)                  | fetal_circulation          |
 
 Phase A of the submodel-expansion catalog is complete (12/12); Phase B
-is underway (8 of 10 shipped). The remaining Phase B items are
-catalogued in
-[`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md)
-(umbilical PI, MCA-PI / CPR, placental allometry).
+is **9 of 10** shipped. The last Phase B item — placental ~ fetal
+weight allometry — is catalogued in
+[`docs/specs/v0.4/03-submodel-expansion-catalog.md`](docs/specs/v0.4/03-submodel-expansion-catalog.md).
 SBML/CellML builders for those land in subsequent releases.
 
 Each submodel ships with a pure-NumPy reference kernel in [`python/nidus/export/reference.py`](python/nidus/export/reference.py) that the SBML/CellML exports are round-trip validated against.

@@ -731,5 +731,36 @@
     "title": "Blood pressure, the renin-aldosterone system and sex steroids throughout normal pregnancy",
     "type": "journal-article",
     "year": 1980
+  },
+  "acharya-2005-umbilical-pi": {
+    "authors": [
+      "Acharya G",
+      "Wilsgaard T",
+      "Berntsen GK",
+      "Maltau JM",
+      "Kiserud T"
+    ],
+    "doi": "10.1016/j.ajog.2005.01.049",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "acharya-2005-umbilical-pi",
+    "notes": "Reference ranges for umbilical-artery PI across gestation; PI falls smoothly from ~1.5 at 16 weeks to ~0.8 at term as placental vascular resistance drops.",
+    "pmid": "15776417",
+    "title": "Reference ranges for serial measurements of umbilical artery Doppler indices in the second half of pregnancy",
+    "type": "journal-article",
+    "year": 2005
+  },
+  "mari-1995-mca-pi": {
+    "authors": [
+      "Mari G",
+      "Deter RL"
+    ],
+    "doi": "10.1016/0002-9378(92)90029-5",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "mari-1995-mca-pi",
+    "notes": "Middle cerebral artery PI rises through the second trimester, peaks ~28 weeks, then falls as fetal cerebral vasodilation reduces resistance near term.",
+    "pmid": "7900181",
+    "title": "Middle cerebral artery flow velocity waveforms in normal and small-for-gestational-age fetuses",
+    "type": "journal-article",
+    "year": 1995
   }
 }
