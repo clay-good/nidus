@@ -905,3 +905,88 @@ def test_combine_archive_default_extension(ds: nidus.Dataset, tmp_path: Path) ->
 
     out = write_combine_archive(ds, tmp_path / "no_ext")
     assert out.suffix == ".omex"
+
+
+# ---- Sensitivity sweep utility (spec 03 §5) -----------------------
+
+
+def test_sweep_basic_shape() -> None:
+    from nidus.export import sweep
+    from nidus.export.reference import maternal_fetal_igg_transfer
+
+    t = np.linspace(12, 40, 8)
+    result = sweep(
+        maternal_fetal_igg_transfer,
+        t,
+        fixed={"term": 1.2},
+        sweep_param="baseline",
+        sweep_values=[0.1, 0.2, 0.3],
+    )
+    assert result["output"].shape == (3 * 8,)
+    assert result["sweep_value"].shape == (3 * 8,)
+    assert result["independent"].shape == (3 * 8,)
+    # First block has sweep_value = 0.1
+    assert float(result["sweep_value"][0]) == pytest.approx(0.1)
+    # Tiled independent: first block matches t exactly
+    np.testing.assert_allclose(result["independent"][:8], t)
+
+
+def test_sweep_monotone_in_baseline() -> None:
+    """Raising baseline shifts the IgG-ratio curve up at every t."""
+    from nidus.export import sweep
+    from nidus.export.reference import maternal_fetal_igg_transfer
+
+    t = np.linspace(12, 40, 5)
+    result = sweep(
+        maternal_fetal_igg_transfer,
+        t,
+        fixed={"term": 1.2},
+        sweep_param="baseline",
+        sweep_values=[0.0, 0.3, 0.6],
+    )
+    # Reshape to (n_sweep, n_t) and check column-wise monotonicity
+    grid = result["output"].reshape(3, 5)
+    assert np.all(np.diff(grid, axis=0) > 0)
+
+
+def test_sweep_rejects_conflicting_sweep_param() -> None:
+    from nidus.export import sweep
+    from nidus.export.reference import maternal_fetal_igg_transfer
+
+    with pytest.raises(ValueError, match="sweep_param"):
+        sweep(
+            maternal_fetal_igg_transfer,
+            [20.0, 30.0],
+            fixed={"baseline": 0.2, "term": 1.2},
+            sweep_param="baseline",
+            sweep_values=[0.1, 0.2],
+        )
+
+
+def test_sweep_write_csv_round_trip(tmp_path: Path) -> None:
+    from nidus.export import sweep, write_sweep_csv
+    from nidus.export.reference import placental_cortisol_gradient
+
+    result = sweep(
+        placental_cortisol_gradient,
+        independent=[10.0, 20.0, 30.0],
+        fixed={},
+        sweep_param="inactivation_fraction",
+        sweep_values=[0.7, 0.85],
+    )
+    csv_path = tmp_path / "cortisol_sweep.csv"
+    write_sweep_csv(
+        result, csv_path, independent_label="maternal_ug_per_dl", output_label="fetal_ug_per_dl"
+    )
+
+    rows = csv_path.read_text().strip().split("\n")
+    # Header + 2 sweep x 3 independent = 7 lines
+    assert len(rows) == 7
+    assert "sweep_param,sweep_value,maternal_ug_per_dl,fetal_ug_per_dl" in rows[0]
+    # At inactivation_fraction = 0.7, fetal = maternal * 0.3
+    # First data row: sweep=0.7, indep=10 -> output 3.0
+    first = rows[1].split(",")
+    assert first[0] == "inactivation_fraction"
+    assert float(first[1]) == pytest.approx(0.7)
+    assert float(first[2]) == pytest.approx(10.0)
+    assert float(first[3]) == pytest.approx(3.0)

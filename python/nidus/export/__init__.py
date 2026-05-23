@@ -34,6 +34,8 @@ from nidus.export.composed import build_composed_sbml, write_composed_sbml
 from nidus.export.physiocell import build_physiocell_params, write_physiocell
 from nidus.export.registry import SUBMODELS, list_submodels
 from nidus.export.sbml import build_sbml, write_sbml
+from nidus.export.sweep import sweep
+from nidus.export.sweep import write_csv as write_sweep_csv
 
 __all__ = [
     "SUBMODELS",
@@ -42,9 +44,11 @@ __all__ = [
     "build_physiocell_params",
     "build_sbml",
     "list_submodels",
+    "sweep",
     "write_cellml",
     "write_combine_archive",
     "write_composed_sbml",
     "write_physiocell",
     "write_sbml",
+    "write_sweep_csv",
 ]

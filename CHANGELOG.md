@@ -9,6 +9,16 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **`nidus.export.sweep` — sensitivity-analysis utility.** Spec 03 §5
+  cross-cutting infrastructure item. One-parameter sweeps over any
+  pure-NumPy reference kernel from `nidus.export.reference`, returning
+  tidy long-form NumPy arrays; companion `write_sweep_csv` emits a
+  long-format CSV (one row per (sweep_value, independent) cell). The
+  utility is kernel-agnostic — it takes the kernel callable and its
+  kwargs directly rather than a submodel id, which keeps the surface
+  small and removes a mapping liability. Four new tests (shape,
+  monotonicity, rejection of conflicting kwargs, CSV round-trip).
+
 - **Phase 3 saturation pass — final batch: vascular resistances,
   lung volumes, gas-exchange gradient, parallel-circulation routing.**
   Nine new Tier-B/C dataset parameters (190 → **199 parameters**),

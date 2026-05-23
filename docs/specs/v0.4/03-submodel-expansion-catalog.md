@@ -286,7 +286,9 @@ generator-side improvements that pay off as the registry grows:
   LaTeX alongside makes the docs much better.
 - **Sensitivity-analysis scaffold** — a top-level `nidus.export.sweep`
   utility that re-evaluates a chosen submodel across a parameter
-  range and emits a CSV. Pure-Python, ~80 LOC.
+  range and emits a CSV. Pure-Python, ~80 LOC. **SHIPPED.** Exposed
+  as `nidus.export.sweep` + `nidus.export.write_sweep_csv`; works
+  against any reference kernel from `nidus.export.reference`.
 
 ## 6. What is explicitly NOT in this catalog
 
