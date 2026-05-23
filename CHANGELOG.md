@@ -9,6 +9,28 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 saturation pass — maternal cardiac remodelling and
+  iron-status gaps.** Six new Tier-B/C dataset parameters
+  (178 → **184 parameters**), all sourced from citations already in
+  the index.
+  - `maternal_cardiovascular.lv_mass_baseline_g` (Tier B, ~130 g
+    pre-pregnancy anchor)
+  - `maternal_cardiovascular.lv_mass_term_g` (Tier B, ~180 g; ~30-50%
+    rise via eccentric volume-loaded hypertrophy)
+  - `maternal_cardiovascular.aortic_root_diameter_term_mm` (Tier C,
+    ~30 mm; small remodelling rise)
+  - `maternal_cardiovascular.pulse_wave_velocity_term_m_per_s`
+    (Tier C, ~7.5 m/s; mid-pregnancy nadir is the clinically useful
+    timepoint)
+  - `maternal_blood.serum_iron_term_ug_per_dl` (Tier B, ~60 µg/dL;
+    wide range driven by supplementation status)
+  - `maternal_blood.ferritin_term_ng_per_ml` (Tier B, ~15 ng/mL;
+    crosses WHO depleted-stores threshold in ~half of unsupplemented
+    pregnancies)
+  Spec 02 §3.1 (maternal cardiovascular structural detail) and the
+  iron-status subset of §3.2 close further toward the saturation
+  ceiling. No new citations.
+
 - **Phase 3 saturation pass — fetal-circulation and placental
   morphomic gaps.** Six new Tier-B/C dataset parameters (172 →
   **178 parameters**), all sourced from citations already in the

@@ -391,6 +391,62 @@
     "notes": "Westergren method. ESR is not useful as an inflammatory marker in pregnancy because the physiological rise overwhelms the inflammatory signal."
   },
   {
+    "id": "maternal_blood.serum_iron_term_ug_per_dl",
+    "name": "Serum iron at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 60.0,
+      "low": 30.0,
+      "high": 90.0,
+      "units": "ug/dL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: serum iron falls through pregnancy from a non-pregnant baseline of ~80-100 µg/dL to ~30-90 µg/dL at term, reflecting net iron transfer to the fetus and expansion of maternal red-cell mass. The wide range reflects the strong dependence on dietary iron and supplementation status — values below 30 µg/dL without supplementation are common but not strictly pathological.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester, dietary iron intake uncontrolled"
+    },
+    "notes": "Diurnal variation and supplementation status make a single serum-iron value unreliable in isolation; ferritin is the standard storage-iron marker."
+  },
+  {
+    "id": "maternal_blood.ferritin_term_ng_per_ml",
+    "name": "Serum ferritin at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 15.0,
+      "low": 5.0,
+      "high": 35.0,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 and modern obstetric haematology: serum ferritin falls substantially through pregnancy from a non-pregnant baseline of ~30-100 ng/mL to ~5-35 ng/mL at term as storage iron is mobilised for the maternal red-cell mass expansion and fetal iron stores. Term ferritin <12 ng/mL indicates iron-deficient erythropoiesis even without overt anaemia.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Ferritin <12 ng/mL is the WHO threshold for depleted iron stores; nearly half of un-supplemented term pregnancies cross it."
+  },
+  {
     "id": "maternal_blood.fetal_microchimerism_baseline_cells_per_ml",
     "name": "Fetal microchimeric cell concentration in maternal blood, first trimester baseline",
     "subsystem": "maternal_blood",

@@ -564,5 +564,116 @@
       "reviewer": "v0.4-phase1-expansion-script"
     },
     "primary_citation": "sanghavi-rutherford-2014-cardio-review"
+  },
+  {
+    "id": "maternal_cardiovascular.lv_mass_baseline_g",
+    "name": "Left ventricular mass, pre-pregnancy baseline",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 130.0,
+      "low": 110.0,
+      "high": 150.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi & Rutherford 2014: pre-pregnancy LV mass in healthy women of reproductive age is approximately 110-150 g by echocardiographic measurement. Acts as the anchor for the term LV-mass parameter to express the well-replicated ~30-50% pregnancy rise.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy non-pregnant women of reproductive age"
+    }
+  },
+  {
+    "id": "maternal_cardiovascular.lv_mass_term_g",
+    "name": "Left ventricular mass at term",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 180.0,
+      "low": 150.0,
+      "high": 210.0,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Sanghavi & Rutherford 2014: LV mass rises by approximately 30-50% by term as eccentric hypertrophy adapts the ventricle to the chronic volume load of pregnancy. The remodelling regresses postpartum but slowly (months). Higher rises (>50%) are associated with peripartum cardiomyopathy in retrospective cohorts.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Eccentric (volume-loading) rather than concentric (pressure-loading) hypertrophy — wall thickness rises modestly, chamber dimensions rise proportionally."
+  },
+  {
+    "id": "maternal_cardiovascular.aortic_root_diameter_term_mm",
+    "name": "Aortic root diameter at term",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 30.0,
+      "low": 27.0,
+      "high": 33.0,
+      "units": "mm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Sanghavi & Rutherford 2014: aortic root diameter shows a small rise (~5-10%) by term, attributed to vessel-wall remodelling under sustained volume load and the hormonal effects of relaxin/estrogen on elastin. Tier C reflects the relatively small effect size against measurement noise.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Background remodelling matters clinically because women with bicuspid aortic valve or Marfan syndrome may exceed surgical thresholds."
+  },
+  {
+    "id": "maternal_cardiovascular.pulse_wave_velocity_term_m_per_s",
+    "name": "Aortic pulse wave velocity at term",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 7.5,
+      "low": 6.5,
+      "high": 8.5,
+      "units": "m/s",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Sanghavi & Rutherford 2014: aortic pulse wave velocity falls in mid-pregnancy (reflecting reduced arterial stiffness driven by relaxin/estrogen-mediated vessel-wall remodelling) and rises back toward or above non-pregnant baseline by term. Term values of ~7-8 m/s are typical; the trajectory is more reliable than any single timepoint.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-22",
+      "reviewer": "v0.4-phase-3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Mid-pregnancy nadir matters more than the term value clinically — sustained high PWV at mid-pregnancy is a hypertension-risk marker."
   }
 ]
