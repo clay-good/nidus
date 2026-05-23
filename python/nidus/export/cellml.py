@@ -1133,6 +1133,69 @@ def _build_arterial_ph_trajectory(ds: Dataset) -> libcellml.Model:
     return model
 
 
+def _build_hadlock_biometry_growth(
+    ds: Dataset, sm_id: str, output_name: str, biometry_prefix: str
+) -> libcellml.Model:
+    """Cubic-fit biometry growth CellML model."""
+    from nidus.export.reference import (
+        HADLOCK_ANCHOR_WEEKS,
+        hadlock_biometry_cubic_coefficients,
+    )
+
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+    model = libcellml.Model()
+    model.setName(sm.id)
+    _ensure_units(model)
+
+    comp = libcellml.Component()
+    comp.setName(sm.id)
+    model.addComponent(comp)
+
+    anchors = [ds[f"fetal_growth.{biometry_prefix}_{w}w_mm"] for w in HADLOCK_ANCHOR_WEEKS]
+    a3, a2, a1, a0 = hadlock_biometry_cubic_coefficients([p.value.central for p in anchors])
+
+    _add_variable(comp, "t_weeks", units="dimensionless", initial_value="20")
+    for p in anchors:
+        _add_variable(
+            comp,
+            parameter_id_to_sbml(p.id),
+            units="dimensionless",
+            initial_value=str(p.value.central),
+        )
+    _add_variable(comp, "fit_a3", units="dimensionless", initial_value=str(a3))
+    _add_variable(comp, "fit_a2", units="dimensionless", initial_value=str(a2))
+    _add_variable(comp, "fit_a1", units="dimensionless", initial_value=str(a1))
+    _add_variable(comp, "fit_a0", units="dimensionless", initial_value=str(a0))
+    _add_variable(comp, output_name, units="dimensionless", initial_value="0")
+
+    # a3*t^3 + a2*t^2 + a1*t + a0
+    rhs = _apply(
+        "plus",
+        _apply("times", _ci("fit_a3"), _apply("power", _ci("t_weeks"), _cn("3"))),
+        _apply("times", _ci("fit_a2"), _apply("power", _ci("t_weeks"), _cn("2"))),
+        _apply("times", _ci("fit_a1"), _ci("t_weeks")),
+        _ci("fit_a0"),
+    )
+    comp.setMath(_mathml(_apply_assign(output_name, rhs)))
+    return model
+
+
+def _build_hadlock_bpd_growth(ds: Dataset) -> libcellml.Model:
+    return _build_hadlock_biometry_growth(ds, "hadlock_bpd_growth", "BPD_t_mm", "bpd")
+
+
+def _build_hadlock_hc_growth(ds: Dataset) -> libcellml.Model:
+    return _build_hadlock_biometry_growth(ds, "hadlock_hc_growth", "HC_t_mm", "hc")
+
+
+def _build_hadlock_ac_growth(ds: Dataset) -> libcellml.Model:
+    return _build_hadlock_biometry_growth(ds, "hadlock_ac_growth", "AC_t_mm", "ac")
+
+
+def _build_hadlock_fl_growth(ds: Dataset) -> libcellml.Model:
+    return _build_hadlock_biometry_growth(ds, "hadlock_fl_growth", "FL_t_mm", "fl")
+
+
 # ---- Public API ----------------------------------------------------
 
 _BUILDERS = {
@@ -1157,6 +1220,10 @@ _BUILDERS = {
     "renal_plasma_flow_trajectory": _build_rpf_trajectory,
     "minute_ventilation_trajectory": _build_minute_ventilation,
     "arterial_ph_trajectory": _build_arterial_ph_trajectory,
+    "hadlock_bpd_growth": _build_hadlock_bpd_growth,
+    "hadlock_hc_growth": _build_hadlock_hc_growth,
+    "hadlock_ac_growth": _build_hadlock_ac_growth,
+    "hadlock_fl_growth": _build_hadlock_fl_growth,
 }
 
 

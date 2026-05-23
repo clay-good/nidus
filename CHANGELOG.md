@@ -9,6 +9,23 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Four Hadlock biometry growth submodels** — `hadlock_bpd_growth`,
+  `hadlock_hc_growth`, `hadlock_ac_growth`, `hadlock_fl_growth` —
+  closing out Phase A of the submodel-expansion catalog (12/12 shipped).
+  Registry now stands at **25 submodels**. Each fits a cubic
+  polynomial at build time to the seven weekly Hadlock 1982
+  (PMID 7058748) anchors already in the dataset (16w-40w in 4-week
+  steps). Fit residuals: BPD <1 mm, HC ~2.4 mm, AC ~1.4 mm, FL <0.5 mm
+  — well inside published longitudinal scatter. The seven anchors
+  are carried as nidus parameters in the SBML/CellML output so the
+  Hadlock 1982 citation + Tier A annotations propagate cleanly; the
+  fit coefficients themselves are derived constants embedded in the
+  assignment rule.
+- `hadlock_biometry_cubic` and `hadlock_biometry_cubic_coefficients`
+  helpers in `nidus.export.reference`; a parametrised fit-residual
+  test asserts the cubic reproduces all four biometries within
+  per-biometry tolerance, plus a monotonicity check across 16-40w.
+
 - **Two more Phase A submodels** with full export support
   (SBML L3v2 + CellML 2.0/1.1 + PhysioCell + COMBINE), bringing the
   registry to **21 submodels**:

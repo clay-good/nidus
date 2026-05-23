@@ -933,6 +933,73 @@ def _build_arterial_ph_trajectory(ds: Dataset) -> libsbml.SBMLDocument:
     return doc
 
 
+def _build_hadlock_biometry_growth(
+    ds: Dataset, sm_id: str, output_name: str, biometry_prefix: str
+) -> libsbml.SBMLDocument:
+    """Cubic-fit biometry growth submodel (BPD/HC/AC/FL).
+
+    Fits a cubic polynomial to the seven weekly anchors at build time
+    and emits the fit coefficients as constants alongside the seven
+    anchor nidus parameters (carried for tier + provenance).
+    """
+    from nidus.export.reference import (
+        HADLOCK_ANCHOR_WEEKS,
+        hadlock_biometry_cubic_coefficients,
+    )
+
+    sm = next(s for s in SUBMODELS if s.id == sm_id)
+
+    doc = libsbml.SBMLDocument(3, 2)
+    model = doc.createModel()
+    model.setId(sm.id)
+    model.setName(sm.name)
+    _add_units(model)
+
+    anchors = [ds[f"fetal_growth.{biometry_prefix}_{w}w_mm"] for w in HADLOCK_ANCHOR_WEEKS]
+    a3, a2, a1, a0 = hadlock_biometry_cubic_coefficients([p.value.central for p in anchors])
+
+    _add_parameter(model, "t_weeks", 20.0, "dimensionless", constant=False)
+    # Anchor parameters carry MIRIAM citation + tier annotations; the
+    # cubic-fit coefficients below are derived from them.
+    for p in anchors:
+        sp = _add_parameter(model, p.id, p.value.central, "dimensionless")
+        _attach_param_annotation(sp, p)
+    _add_parameter(model, "fit_a3", a3, "dimensionless")
+    _add_parameter(model, "fit_a2", a2, "dimensionless")
+    _add_parameter(model, "fit_a1", a1, "dimensionless")
+    _add_parameter(model, "fit_a0", a0, "dimensionless")
+    _add_parameter(model, output_name, 0.0, "dimensionless", constant=False)
+
+    rule = model.createAssignmentRule()
+    rule.setVariable(output_name)
+    rule.setMath(
+        libsbml.parseL3Formula(
+            "fit_a3 * t_weeks^3 + fit_a2 * t_weeks^2 + fit_a1 * t_weeks + fit_a0"
+        )
+    )
+
+    tier = worst_tier(*(ds[pid].tier for pid in sm.parameter_ids))
+    model.setAnnotation(_model_annotation_xml(sm, tier))
+    model.setNotes(_html_notes(sm.description))
+    return doc
+
+
+def _build_hadlock_bpd_growth(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_hadlock_biometry_growth(ds, "hadlock_bpd_growth", "BPD_t_mm", "bpd")
+
+
+def _build_hadlock_hc_growth(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_hadlock_biometry_growth(ds, "hadlock_hc_growth", "HC_t_mm", "hc")
+
+
+def _build_hadlock_ac_growth(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_hadlock_biometry_growth(ds, "hadlock_ac_growth", "AC_t_mm", "ac")
+
+
+def _build_hadlock_fl_growth(ds: Dataset) -> libsbml.SBMLDocument:
+    return _build_hadlock_biometry_growth(ds, "hadlock_fl_growth", "FL_t_mm", "fl")
+
+
 _BUILDERS = {
     "placental_villous_growth": _build_placental_villous_growth,
     "o2hb_dissociation_adult": _build_o2hb_dissociation_adult,
@@ -955,6 +1022,10 @@ _BUILDERS = {
     "renal_plasma_flow_trajectory": _build_rpf_trajectory,
     "minute_ventilation_trajectory": _build_minute_ventilation,
     "arterial_ph_trajectory": _build_arterial_ph_trajectory,
+    "hadlock_bpd_growth": _build_hadlock_bpd_growth,
+    "hadlock_hc_growth": _build_hadlock_hc_growth,
+    "hadlock_ac_growth": _build_hadlock_ac_growth,
+    "hadlock_fl_growth": _build_hadlock_fl_growth,
 }
 
 

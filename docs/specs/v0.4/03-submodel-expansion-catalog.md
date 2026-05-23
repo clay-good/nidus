@@ -1,11 +1,12 @@
 # Spec 03 — Submodel Expansion Catalog
 
-**Status:** Phase A in progress — 10 of 12 candidates shipped to the
-registry (GFR logistic, amniotic-fluid volume, SVR derived, PaO₂
-linear, tidal-volume sigmoidal, HR sigmoidal, SV Gaussian, RPF
-Gaussian, minute ventilation, arterial pH). Only the four Hadlock
-biometry polynomials remain — they need new polynomial-coefficient
-parameters to land first. Companion to
+**Status:** Phase A **complete** — all 12 candidates shipped to the
+registry. The four Hadlock biometry growth submodels (BPD/HC/AC/FL)
+ship as cubic polynomial fits computed at export time from the seven
+weekly anchors already in the dataset (no separate polynomial-
+coefficient parameters needed; residuals <3 mm on all four).
+Registry totals 25 submodels. Phase B (10 candidates, ~3 weeks of
+work) is the next milestone. Companion to
 `02-parameter-expansion-roadmap.md`.
 Where `02` inventories candidate *parameters* (data), this spec
 inventories candidate *mechanistic submodels* (equations) that could
@@ -119,7 +120,7 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs (new):** baseline RPF, peak RPF, peak week, spread.
 - **Implementation cost:** ~50 LOC.
 
-### 2.8 Fetal abdominal circumference growth (Hadlock biometry)
+### 2.8 Fetal abdominal circumference growth (Hadlock biometry) — **SHIPPED**
 
 - **Equation:** Polynomial regression `AC(GA)` in cm vs gestational
   age in weeks.
@@ -127,21 +128,21 @@ expansion roadmap. Each is ~30–80 lines of generator code.
 - **Inputs (new):** Hadlock AC polynomial coefficients (a/b/c).
 - **Implementation cost:** ~30 LOC; mirrors `hadlock_fetal_weight`.
 
-### 2.9 Fetal femur length growth
+### 2.9 Fetal femur length growth — **SHIPPED**
 
 - **Equation:** Polynomial `FL(GA)`.
 - **Citations:** Hadlock 1982 (PMID 7034201).
 - **Inputs (new):** FL polynomial coefficients.
 - **Implementation cost:** ~30 LOC.
 
-### 2.10 Fetal biparietal diameter growth
+### 2.10 Fetal biparietal diameter growth — **SHIPPED**
 
 - **Equation:** Polynomial `BPD(GA)`.
 - **Citations:** Hadlock 1982.
 - **Inputs (new):** BPD polynomial coefficients.
 - **Implementation cost:** ~30 LOC.
 
-### 2.11 Fetal head circumference growth
+### 2.11 Fetal head circumference growth — **SHIPPED**
 
 - **Equation:** Polynomial `HC(GA)`.
 - **Citations:** Hadlock 1982.

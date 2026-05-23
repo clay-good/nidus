@@ -414,6 +414,97 @@ SUBMODELS: tuple[Submodel, ...] = (
         output_units="dimensionless",
     ),
     Submodel(
+        id="hadlock_bpd_growth",
+        name="Fetal biparietal diameter growth (cubic fit to Hadlock 1982 anchors)",
+        description=(
+            "Cubic polynomial fit of biparietal diameter vs gestational "
+            "age: BPD(t) = a3*t^3 + a2*t^2 + a1*t + a0, with "
+            "coefficients fit at export time to the seven weekly "
+            "anchors curated from Hadlock 1982 (PMID 7058748). Max "
+            "residual at the anchors is <1 mm; the cubic is a smooth "
+            "interpolant of the published reference."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_growth.bpd_16w_mm",
+            "fetal_growth.bpd_20w_mm",
+            "fetal_growth.bpd_24w_mm",
+            "fetal_growth.bpd_28w_mm",
+            "fetal_growth.bpd_32w_mm",
+            "fetal_growth.bpd_36w_mm",
+            "fetal_growth.bpd_40w_mm",
+        ),
+        independent_variable="t_weeks",
+        output_units="mm",
+    ),
+    Submodel(
+        id="hadlock_hc_growth",
+        name="Fetal head circumference growth (cubic fit to Hadlock 1982 anchors)",
+        description=(
+            "Cubic polynomial fit of head circumference vs gestational "
+            "age: HC(t) = a3*t^3 + a2*t^2 + a1*t + a0, fit at export "
+            "time to the seven weekly anchors from Hadlock 1982. Max "
+            "residual at the anchors is ~2.4 mm out of ~340 mm at "
+            "term (sub-1% error)."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_growth.hc_16w_mm",
+            "fetal_growth.hc_20w_mm",
+            "fetal_growth.hc_24w_mm",
+            "fetal_growth.hc_28w_mm",
+            "fetal_growth.hc_32w_mm",
+            "fetal_growth.hc_36w_mm",
+            "fetal_growth.hc_40w_mm",
+        ),
+        independent_variable="t_weeks",
+        output_units="mm",
+    ),
+    Submodel(
+        id="hadlock_ac_growth",
+        name="Fetal abdominal circumference growth (cubic fit to Hadlock 1982 anchors)",
+        description=(
+            "Cubic polynomial fit of abdominal circumference vs "
+            "gestational age: AC(t) = a3*t^3 + a2*t^2 + a1*t + a0, "
+            "fit at export time to the seven weekly anchors from "
+            "Hadlock 1982. Max residual ~1.4 mm."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_growth.ac_16w_mm",
+            "fetal_growth.ac_20w_mm",
+            "fetal_growth.ac_24w_mm",
+            "fetal_growth.ac_28w_mm",
+            "fetal_growth.ac_32w_mm",
+            "fetal_growth.ac_36w_mm",
+            "fetal_growth.ac_40w_mm",
+        ),
+        independent_variable="t_weeks",
+        output_units="mm",
+    ),
+    Submodel(
+        id="hadlock_fl_growth",
+        name="Fetal femur length growth (cubic fit to Hadlock 1982 anchors)",
+        description=(
+            "Cubic polynomial fit of femur length vs gestational age: "
+            "FL(t) = a3*t^3 + a2*t^2 + a1*t + a0, fit at export time "
+            "to the seven weekly anchors from Hadlock 1982. Max "
+            "residual <0.5 mm."
+        ),
+        sbo_term=None,
+        parameter_ids=(
+            "fetal_growth.fl_16w_mm",
+            "fetal_growth.fl_20w_mm",
+            "fetal_growth.fl_24w_mm",
+            "fetal_growth.fl_28w_mm",
+            "fetal_growth.fl_32w_mm",
+            "fetal_growth.fl_36w_mm",
+            "fetal_growth.fl_40w_mm",
+        ),
+        independent_variable="t_weeks",
+        output_units="mm",
+    ),
+    Submodel(
         id="hadlock_fetal_weight",
         name="Hadlock IV fetal weight from biometry",
         description=(

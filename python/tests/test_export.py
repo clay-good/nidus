@@ -55,6 +55,10 @@ def test_registry_lists_submodels() -> None:
         "renal_plasma_flow_trajectory",
         "minute_ventilation_trajectory",
         "arterial_ph_trajectory",
+        "hadlock_bpd_growth",
+        "hadlock_hc_growth",
+        "hadlock_ac_growth",
+        "hadlock_fl_growth",
     } == ids
 
 
@@ -369,6 +373,30 @@ def test_arterial_ph_linear_endpoints() -> None:
     assert at_term == pytest.approx(7.44)
 
 
+def test_hadlock_biometry_cubic_fit_matches_anchors(ds: nidus.Dataset) -> None:
+    """The cubic fit must reproduce the seven weekly anchors within ~3 mm."""
+    from nidus.export.reference import HADLOCK_ANCHOR_WEEKS, hadlock_biometry_cubic
+
+    for prefix, max_resid_mm in [("bpd", 1.0), ("hc", 3.0), ("ac", 2.0), ("fl", 1.0)]:
+        anchors = [ds[f"fetal_growth.{prefix}_{w}w_mm"].value.central for w in HADLOCK_ANCHOR_WEEKS]
+        fitted = hadlock_biometry_cubic(list(HADLOCK_ANCHOR_WEEKS), anchors)
+        residuals = np.abs(np.asarray(fitted) - np.asarray(anchors))
+        assert residuals.max() < max_resid_mm, (
+            f"{prefix} cubic fit residual {residuals.max():.2f} mm exceeds {max_resid_mm} mm"
+        )
+
+
+def test_hadlock_biometry_cubic_monotone_in_pregnancy_range() -> None:
+    """Each biometry should grow monotonically across 16-40 weeks."""
+    from nidus.export.reference import hadlock_biometry_cubic
+
+    # Synthetic Tier-A-style anchors (the dataset values would do too).
+    bpd = [35.0, 47.0, 61.0, 71.5, 82.0, 89.0, 93.0]
+    t = np.linspace(16, 40, 25)
+    vals = hadlock_biometry_cubic(t, bpd)
+    assert np.all(np.diff(vals) > 0), "BPD must rise monotonically through pregnancy"
+
+
 def test_glut3_higher_affinity_than_glut1() -> None:
     """GLUT3 has lower Km (higher affinity) — at low [S] it should win."""
     from nidus.export.reference import michaelis_menten_flux
@@ -414,6 +442,10 @@ _ALL_SUBMODEL_IDS = [
     "renal_plasma_flow_trajectory",
     "minute_ventilation_trajectory",
     "arterial_ph_trajectory",
+    "hadlock_bpd_growth",
+    "hadlock_hc_growth",
+    "hadlock_ac_growth",
+    "hadlock_fl_growth",
 ]
 
 
@@ -478,7 +510,7 @@ def test_write_sbml_produces_all_files(ds: nidus.Dataset, libsbml_module, tmp_pa
 
     paths = write_sbml(ds, tmp_path)
     assert len(paths) == len(SUBMODELS)
-    assert len(paths) >= 21
+    assert len(paths) >= 25
     expected_names = {f"{sm.id}.xml" for sm in SUBMODELS}
     actual_names = {p.name for p in paths}
     assert actual_names == expected_names
@@ -518,11 +550,11 @@ def test_write_cellml_both_versions(ds: nidus.Dataset, libcellml_module, tmp_pat
     from nidus.export import write_cellml
 
     paths_2 = write_cellml(ds, tmp_path / "v2", version="2.0")
-    assert len(paths_2) >= 21
+    assert len(paths_2) >= 25
     assert all(p.suffix == ".cellml" for p in paths_2)
 
     paths_1 = write_cellml(ds, tmp_path / "v1", version="1.1")
-    assert len(paths_1) >= 21
+    assert len(paths_1) >= 25
     assert all(p.name.endswith(".cellml1.cellml") for p in paths_1)
 
 

@@ -449,7 +449,44 @@ def maternal_arterial_ph(
     return baseline_ph + (term_ph - baseline_ph) * (t / term_week)
 
 
-# ---- 20. Hadlock IV fetal weight regression ------------------------
+# ---- 20. Hadlock biometry cubic-fit growth -------------------------
+
+HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)
+
+
+def hadlock_biometry_cubic(
+    t_weeks: FloatArrayLike,
+    weekly_values_mm: Sequence[float],
+    *,
+    anchor_weeks: Sequence[int] = HADLOCK_ANCHOR_WEEKS,
+) -> NDArray[np.float64]:
+    """Cubic polynomial fit of biometry vs gestational age.
+
+    Fits `weekly_values_mm` against `anchor_weeks` (default 16, 20, 24,
+    28, 32, 36, 40) with `numpy.polyfit(deg=3)` and evaluates the
+    polynomial at `t_weeks`. Used for BPD, HC, AC, FL growth submodels
+    where the dataset stores discrete weekly anchors from Hadlock 1982.
+    """
+    coeffs = np.polyfit(np.asarray(anchor_weeks, dtype=np.float64), weekly_values_mm, 3)
+    t = np.asarray(t_weeks, dtype=np.float64)
+    return np.asarray(np.polyval(coeffs, t), dtype=np.float64)
+
+
+def hadlock_biometry_cubic_coefficients(
+    weekly_values_mm: Sequence[float],
+    *,
+    anchor_weeks: Sequence[int] = HADLOCK_ANCHOR_WEEKS,
+) -> tuple[float, float, float, float]:
+    """Return (a3, a2, a1, a0) cubic coefficients for the biometry fit.
+
+    Helper for SBML/CellML builders that need to embed the fit
+    coefficients directly in the exported model.
+    """
+    a3, a2, a1, a0 = np.polyfit(np.asarray(anchor_weeks, dtype=np.float64), weekly_values_mm, 3)
+    return float(a3), float(a2), float(a1), float(a0)
+
+
+# ---- 21. Hadlock IV fetal weight regression ------------------------
 
 
 def hadlock_fetal_weight(
