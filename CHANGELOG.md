@@ -9,6 +9,14 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Dataset Phase 2/3 saturation batch (spec 04):** 11 more
+  parameters across maternal_blood, maternal_renal,
+  placental_structure, placental_gas_exchange, and fetal_circulation,
+  all backed by citations already in the dataset. Dataset now at
+  223 parameters / 60 citations. See
+  [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for per-parameter
+  detail.
+
 - **Dataset Phase 2 saturation batch (spec 04):** 8 new parameters
   (3× trimester CO anchors, baseline PVR, LV wall thickness, CBG,
   PRA, T1 relaxin), all backed by citations already in the dataset.

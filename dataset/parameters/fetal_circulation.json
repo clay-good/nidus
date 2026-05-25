@@ -449,5 +449,33 @@
       "population": "Healthy singleton pregnancies, term"
     },
     "notes": "Brain-and-heart-sparing physiology in normal fetal life; collapses under hypoxic decompensation."
+  },
+  {
+    "id": "fetal_circulation.mca_flow_term_ml_per_min",
+    "name": "Middle cerebral artery flow at term",
+    "subsystem": "fetal_circulation",
+    "value": {
+      "central": 30,
+      "low": 20,
+      "high": 45,
+      "units": "mL/min",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Mari et al. 1995 (and follow-on MCA-Doppler literature): absolute MCA flow estimates derived from MCA diameter × time-averaged velocity sit ~25–40 mL/min near term in healthy fetuses. The number is geometry-dependent (small absolute errors in MCA diameter translate to large flow uncertainty), so clinical use focuses on the MCA-PI (already shipped) and CPR rather than absolute flow.",
+    "citations": [
+      "mari-1995-mca-pi"
+    ],
+    "primary_citation": "mari-1995-mca-pi",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term, normal MCA Doppler"
+    },
+    "notes": "Absolute MCA flow is rarely the clinical reportable; brain-sparing is more reliably tracked via MCA-PI / CPR."
   }
 ]

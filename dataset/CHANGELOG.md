@@ -8,6 +8,20 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Phase 2/3 saturation batch (spec 04): 11 more parameters using
+  citations already in the dataset; brings the dataset to **223
+  parameters / 60 citations**.
+  - `maternal_blood.transferrin_saturation_term_pct`,
+    `folate_term_ng_per_ml`, `b12_term_pg_per_ml` (Hytten 1980).
+  - `maternal_renal.urinary_glucose_term_mg_per_24h` (Davison &
+    Hytten 1974), `tubular_phosphate_threshold_term` (Cheung 2013).
+  - `placental_structure.syncytiotrophoblast_thickness_term_um`
+    (Mayhew 2014).
+  - `placental_gas_exchange.co2_diffusing_capacity_term_ml_min_mmhg`
+    (Mayhew 1986), `umbilical_vein_pco2_mmhg` and
+    `umbilical_artery_pco2_mmhg` (Carter 2009),
+    `spiral_artery_po2_estimate_mmhg` (Carter & Pijnenborg 2011).
+  - `fetal_circulation.mca_flow_term_ml_per_min` (Mari 1995).
 - Phase 2 saturation batch (spec 04): 8 new parameters using
   citations already in the dataset, bringing the dataset to **212
   parameters / 60 citations**.

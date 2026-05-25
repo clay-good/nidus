@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**212 parameters / 60 citations**. All "phase 1" items have
+**223 parameters / 60 citations**. All "phase 1" items have
 shipped; phase 2 is nearly complete; phase 3 is the remaining
 residual. The "Status" column on each subsystem table is the source
 of truth.
@@ -144,10 +144,10 @@ S, antithrombin). Iron and folate stores drop. WBC count rises.
 | `serum_albumin_term_g_per_dl` | Albumin at term | 3.0 | B | shipped | Hytten 1980 |
 | `total_protein_term_g_per_dl` | Total protein term | 6.0 | B | shipped | Hytten 1980 |
 | `serum_iron_term_ug_per_dl` | Iron at term | 60 | B | shipped | Hytten 1980 |
-| `transferrin_saturation_term_pct` | Tsat at term | 20 | B | phase2 | Hytten 1980 |
+| `transferrin_saturation_term_pct` | Tsat at term | 20 | B | shipped | Hytten 1980 |
 | `ferritin_term_ng_per_ml` | Ferritin at term | 15 | B | shipped | Hytten 1980 |
-| `folate_term_ng_per_ml` | Folate at term | 5 | B | phase2 | Hytten 1980 |
-| `b12_term_pg_per_ml` | B12 at term | 250 | C | phase2 | Hytten 1980 |
+| `folate_term_ng_per_ml` | Folate at term | 5 | B | shipped | Hytten 1980 |
+| `b12_term_pg_per_ml` | B12 at term | 250 | C | shipped | Hytten 1980 |
 | `esr_term_mm_per_h` | ESR at term | 50 | B | shipped | Hytten 1980 |
 | `fetal_microchimerism_baseline_cells_per_ml` | Fetal-cell baseline (T1) | 0.0 | D | shipped (hypothesis-only) | Bianchi 1996 |
 | `fetal_microchimerism_term_cells_per_ml` | Fetal-cell term | 1.0 | D | shipped (hypothesis-only) | Bianchi 1996 |
@@ -185,8 +185,8 @@ pregnancy.
 | `plasma_uric_acid_nadir_mg_per_dl` | Mid-pregnancy uric-acid nadir | 3 | B | shipped | Cheung 2013 |
 | `plasma_uric_acid_term_mg_per_dl` | Term uric acid | 4.5 | B | shipped | Cheung 2013 |
 | `urinary_protein_excretion_term_mg_per_24h` | 24h proteinuria | 150 | B | shipped | Cheung 2013 |
-| `urinary_glucose_term_mg_per_24h` | 24h glucose | 90 | C | phase3 | Davison 1974 |
-| `tubular_phosphate_threshold_term` | TmP/GFR ratio | 0.85 | C | phase3 | Cheung 2013 |
+| `urinary_glucose_term_mg_per_24h` | 24h glucose | 90 | C | shipped | Davison 1974 |
+| `tubular_phosphate_threshold_term` | TmP/GFR ratio | 0.85 | C | shipped | Cheung 2013 |
 
 **Citations needed:** Davison 1981 (osmoregulation), Higby 1994 (24h
 urinary protein in normal pregnancy), Conrad 2001 (relaxin-driven GFR
@@ -279,7 +279,7 @@ in human biology — ~300 km in a term placenta.
 | `hsd2_cortisol_inactivation_fraction` | 11β-HSD2 inactivation | 0.85 | D | shipped (hypothesis-only) | Benediktsson 1997 |
 | `spiral_artery_count` | Spiral arteries supplying IVS | 100 | C | phase3 | Pijnenborg 2006 |
 | `spiral_artery_diameter_term_mm` | Spiral artery diameter | 2.5 | C | phase3 | Pijnenborg 2006 |
-| `syncytiotrophoblast_thickness_term_um` | Syncytium thickness | 4 | C | phase3 | Mayhew 2014 |
+| `syncytiotrophoblast_thickness_term_um` | Syncytium thickness | 4 | C | shipped | Mayhew 2014 |
 
 **Citations needed:** Hoddick 1985, Naeye 1985, Benirschke 2012,
 Pijnenborg 2006.
@@ -300,11 +300,11 @@ gradient is ~10 mmHg.
 | `umbilical_vein_po2_mmhg` | UV PO₂ | 30 | B | shipped | Carter 2009 |
 | `umbilical_artery_po2_mmhg` | UA PO₂ | 15 | B | shipped | Carter 2009 |
 | `o2_diffusing_capacity_term_ml_min_mmhg` | DO2 placenta | 6 | C | shipped | Mayhew 1986 |
-| `co2_diffusing_capacity_term_ml_min_mmhg` | DCO2 placenta | 6 | C | phase2 | Mayhew 1986 |
+| `co2_diffusing_capacity_term_ml_min_mmhg` | DCO2 placenta | 6 | C | shipped | Mayhew 1986 |
 | `maternal_fetal_pco2_gradient_term_mmhg` | mPCO₂ − fPCO₂ | 10 | C | shipped | Mayhew 1986 |
-| `umbilical_vein_pco2_mmhg` | UV PCO₂ | 40 | B | phase2 | Carter 2009 |
-| `umbilical_artery_pco2_mmhg` | UA PCO₂ | 50 | B | phase2 | Carter 2009 |
-| `spiral_artery_po2_estimate_mmhg` | Pre-IVS PO₂ | 80 | C | phase3 | Carter 2011 |
+| `umbilical_vein_pco2_mmhg` | UV PCO₂ | 40 | B | shipped | Carter 2009 |
+| `umbilical_artery_pco2_mmhg` | UA PCO₂ | 50 | B | shipped | Carter 2009 |
+| `spiral_artery_po2_estimate_mmhg` | Pre-IVS PO₂ | 80 | C | shipped | Carter 2011 |
 
 **Citations needed:** Mayhew 1986, Carter 2011.
 
@@ -373,7 +373,7 @@ the brain and heart.
 | `ductus_arteriosus_share` | DA share of CVO | 0.55 | B | shipped | Rudolph 1985 |
 | `aortic_isthmus_flow_fraction_cvo_term` | Isthmus/CVO | 0.10 | C | shipped | Rudolph 1985 |
 | `coronary_flow_fraction_cvo_term` | Coronary/CVO | 0.03 | C | shipped | Rudolph 1985 |
-| `mca_flow_term_ml_per_min` | MCA flow term | 30 | C | phase3 | Mari 1995 |
+| `mca_flow_term_ml_per_min` | MCA flow term | 30 | C | shipped | Mari 1995 |
 | `fhr_baseline_bpm` | FHR in T1 | 170 | A | shipped | von Steinburg 2013 |
 | `fhr_term_bpm` | FHR at term | 140 | A | shipped | von Steinburg 2013 |
 | `ua_pi_baseline` | UA PI baseline | 1.5 | B | shipped | Acharya 2005 |

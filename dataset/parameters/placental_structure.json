@@ -432,5 +432,33 @@
       "population": "Healthy singleton pregnancies at term"
     },
     "notes": "Cord-length extremes correlate with later neurodevelopmental and obstetric outcomes but the central distribution is what nidus exposes."
+  },
+  {
+    "id": "placental_structure.syncytiotrophoblast_thickness_term_um",
+    "name": "Syncytiotrophoblast thickness at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 4,
+      "low": 3,
+      "high": 6,
+      "units": "um",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Mayhew 2014 stereology of human placental morphometry: the syncytial layer thins from ~10–12 μm at mid-pregnancy to ~3–5 μm at term, optimising diffusion distance for the rising fetal metabolic demand. Inter-individual variability is substantial; stereological estimates depend on sampling method, motivating Tier C.",
+    "citations": [
+      "mayhew-2014-placental-morphometry"
+    ],
+    "primary_citation": "mayhew-2014-placental-morphometry",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Thinning of the materno-fetal barrier is a key mechanism by which the placenta supports late-pregnancy gas exchange."
   }
 ]

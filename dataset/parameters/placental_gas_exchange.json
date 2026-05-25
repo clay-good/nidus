@@ -164,5 +164,117 @@
       "population": "Healthy singleton pregnancies, term"
     },
     "notes": "Maternal respiratory alkalosis (lower PaCO2) widens the gradient and facilitates fetal CO2 offloading — a teleologically attractive coupling between maternal and fetal acid-base physiology."
+  },
+  {
+    "id": "placental_gas_exchange.co2_diffusing_capacity_term_ml_min_mmhg",
+    "name": "Placental CO2 diffusing capacity at term",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 6,
+      "low": 4,
+      "high": 9,
+      "units": "mL/min/mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Mayhew 1986 stereology of placental gas-diffusing capacity: CO2 diffusing capacity is broadly comparable to O2 diffusing capacity (~6 mL/min/mmHg at term) given the dominant role of villous-membrane area and thickness, both of which are shared. Direct measurement is rare; the value is back-calculated from morphometry, so Tier C.",
+    "citations": [
+      "mayhew-1986-gas-diffusion"
+    ],
+    "primary_citation": "mayhew-1986-gas-diffusion",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "CO2 transfers efficiently because of its higher water/lipid solubility — even with smaller maternal–fetal gradients than for O2, fluxes balance."
+  },
+  {
+    "id": "placental_gas_exchange.umbilical_vein_pco2_mmhg",
+    "name": "Umbilical vein PCO2 at term",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 40,
+      "low": 36,
+      "high": 44,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Carter 2009 (placental gas exchange review summarising cord-blood gas data at delivery): umbilical-vein PCO2 sits ~10 mmHg above the maternal intervillous PCO2 because the placenta runs venous-equilibration limited for CO2. Replicated across cord-blood gas series at uncomplicated term deliveries.",
+    "citations": [
+      "carter-2009-placental-development"
+    ],
+    "primary_citation": "carter-2009-placental-development",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton term deliveries, immediate cord-blood sampling"
+    },
+    "notes": "UV PCO2 is the fetal-arterial-side equivalent of maternal venous PCO2; the gradient drives placental CO2 clearance."
+  },
+  {
+    "id": "placental_gas_exchange.umbilical_artery_pco2_mmhg",
+    "name": "Umbilical artery PCO2 at term",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 50,
+      "low": 45,
+      "high": 55,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Carter 2009 (placental gas exchange review summarising cord-blood gas data at delivery): umbilical-artery PCO2 (~50 mmHg) reflects the deoxygenated, CO2-loaded blood returning from the fetus to the placenta. The ~10 mmHg gradient between UA and UV (40 mmHg) drives placental CO2 clearance. Replicated across modern obstetric cord-gas series.",
+    "citations": [
+      "carter-2009-placental-development"
+    ],
+    "primary_citation": "carter-2009-placental-development",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton term deliveries, immediate cord-blood sampling"
+    },
+    "notes": "Markedly elevated UA PCO2 with low UA pH at delivery is the classical pattern of intrapartum hypoxia."
+  },
+  {
+    "id": "placental_gas_exchange.spiral_artery_po2_estimate_mmhg",
+    "name": "Pre-intervillous (spiral-artery) PO2 at term",
+    "subsystem": "placental_gas_exchange",
+    "value": {
+      "central": 80,
+      "low": 70,
+      "high": 95,
+      "units": "mmHg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Carter & Pijnenborg 2011 placental gas-exchange review: spiral-artery PO2 entering the intervillous space is estimated indirectly (cannot be sampled in vivo) at ~70–95 mmHg, slightly below the maternal arterial PO2 because of mixing with venous-side blood at the decidual junction. The exact value is model-dependent.",
+    "citations": [
+      "carter-pijnenborg-2011-gas-exchange"
+    ],
+    "primary_citation": "carter-pijnenborg-2011-gas-exchange",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Failed spiral-artery remodelling in pre-eclampsia lowers this value substantially — but that pathology is out of scope for nidus."
   }
 ]

@@ -634,5 +634,89 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Distribution is broad and right-skewed; the non-pregnant VTE-exclusion threshold (0.5 μg/mL) is not useful in pregnancy."
+  },
+  {
+    "id": "maternal_blood.transferrin_saturation_term_pct",
+    "name": "Transferrin saturation at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 20,
+      "low": 12,
+      "high": 30,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980 'Clinical Physiology in Obstetrics': iron demands of pregnancy outstrip absorption in most women, so transferrin saturation falls from a non-pregnant ~30–35% to ~20% at term in the absence of iron supplementation. Replicated in modern obstetric haematology references.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester, no iron supplementation"
+    },
+    "notes": "Routine iron supplementation in pregnancy attenuates the fall; values below ~15% are typically classified as iron-deficient."
+  },
+  {
+    "id": "maternal_blood.folate_term_ng_per_ml",
+    "name": "Serum folate at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 5,
+      "low": 3,
+      "high": 8,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hytten & Chamberlain 1980: serum folate falls modestly through pregnancy (haemodilution + active placental transfer + rising fetal demand). Term values in unsupplemented women centre ~5 ng/mL; deficient values <3 ng/mL raise risk of macrocytic anaemia. Routine periconceptional folate supplementation now blunts the fall.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Modern values are higher in populations with mandatory folate fortification of grain products."
+  },
+  {
+    "id": "maternal_blood.b12_term_pg_per_ml",
+    "name": "Serum vitamin B12 at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 250,
+      "low": 150,
+      "high": 400,
+      "units": "pg/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Hytten & Chamberlain 1980: serum B12 falls ~30% through pregnancy, predominantly as a consequence of haemodilution rather than true tissue depletion (holotranscobalamin and methylmalonic acid often remain normal). The serum value at term is conventionally lower-bounded at ~150 pg/mL in healthy pregnancy; lower values warrant follow-up.",
+    "citations": [
+      "hytten-chamberlain-1980-blood-volume"
+    ],
+    "primary_citation": "hytten-chamberlain-1980-blood-volume",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Serum B12 alone misclassifies pregnancy as deficient; second-line metabolic markers are more specific."
   }
 ]

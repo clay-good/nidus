@@ -436,5 +436,61 @@
       "population": "Healthy singleton pregnancies, cumulative across 40 weeks"
     },
     "notes": "Despite the substantial sodium retention, plasma sodium concentration falls ~5 mEq/L because plasma-volume expansion outpaces solute retention."
+  },
+  {
+    "id": "maternal_renal.urinary_glucose_term_mg_per_24h",
+    "name": "24-hour urinary glucose excretion at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 90,
+      "low": 30,
+      "high": 250,
+      "units": "mg/24h",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Davison & Hytten 1974 J Obstet Gynaecol Br Commonw: glucosuria of pregnancy is intermittent but real — the combination of a higher filtered glucose load (rising GFR) and reduced fractional tubular reabsorption can produce 24-hour urinary glucose well above the non-pregnant ~50 mg/24h. The distribution is wide and right-skewed; values up to a few hundred mg/24h are within normal pregnancy and do not by themselves indicate glucose intolerance.",
+    "citations": [
+      "davison-hytten-1974-gfr"
+    ],
+    "primary_citation": "davison-hytten-1974-gfr",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Random-spot dipstick glucosuria in pregnancy is poorly specific for diabetes; gestational-diabetes screening uses a glucose tolerance test, not urine."
+  },
+  {
+    "id": "maternal_renal.tubular_phosphate_threshold_term",
+    "name": "Tubular phosphate threshold (TmP/GFR) at term",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 0.85,
+      "low": 0.7,
+      "high": 1.0,
+      "units": "mmol/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Cheung & Lafayette 2013 review: the renal phosphate threshold (TmP/GFR) at term is broadly preserved at ~0.85 mmol/L, similar to non-pregnant values, despite the substantial rise in GFR. Quantitative human data are sparse outside this review; mechanism (PTH/PTHrP/FGF23 balance) is well-characterised qualitatively.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Phosphate handling in pregnancy is mostly normal; clinically relevant changes are restricted to coexistent renal or parathyroid disease."
   }
 ]
