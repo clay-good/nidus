@@ -330,5 +330,61 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Fetal urine is the dominant source of amniotic fluid in late gestation; fetal swallowing is the dominant sink. Disorders of either side present as poly- or oligohydramnios."
+  },
+  {
+    "id": "fetal_metabolism.fetal_insulin_term_pmol_per_l",
+    "name": "Fetal plasma insulin at term",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 50,
+      "low": 20,
+      "high": 120,
+      "units": "pmol/L",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Economides et al. 1989 Am J Obstet Gynecol (cordocentesis series in normally-grown fetuses) and corroborating fetal-endocrine studies: term fetal plasma insulin centres ~50 pmol/L (about a quarter of typical adult fasting). Wide between-individual variability reflects both glucose-stimulated dynamics at the moment of sampling and assay sensitivity in the low-pmol range.",
+    "citations": [
+      "economides-1989-fetal-insulin"
+    ],
+    "primary_citation": "economides-1989-fetal-insulin",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester, appropriate-for-gestational-age fetuses"
+    },
+    "notes": "Fetal hyperinsulinaemia (well above this range) is the proximate cause of macrosomia in maternal diabetes; out of scope for nidus."
+  },
+  {
+    "id": "fetal_metabolism.fetal_cortisol_term_ug_per_dl",
+    "name": "Fetal plasma cortisol at term",
+    "subsystem": "fetal_metabolism",
+    "value": {
+      "central": 15,
+      "low": 7,
+      "high": 30,
+      "units": "ug/dL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Murphy 1973 Am J Obstet Gynecol (cord-blood cortisol at delivery) and later confirmatory series: term umbilical cortisol centres ~10–20 μg/dL, having risen substantially from low mid-gestation values. The late-gestation cortisol surge is thought to contribute to fetal organ maturation (lung surfactant) and the timing of parturition. Mode of delivery (labour vs elective caesarean) is a major source of variability.",
+    "citations": [
+      "murphy-1973-fetal-cortisol"
+    ],
+    "primary_citation": "murphy-1973-fetal-cortisol",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term; cord-blood sampling at delivery"
+    },
+    "notes": "Cord cortisol is higher after labour than after elective caesarean — a stress effect rather than baseline difference."
   }
 ]

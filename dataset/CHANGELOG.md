@@ -8,6 +8,15 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Phase 3 fetal/placental endocrine batch (spec 04): 3 new
+  parameters + 3 new citations, bringing the dataset to **239
+  parameters / 70 citations**.
+  - `placental_endocrine.placental_gh_term_ng_per_ml`
+    (Eriksson 1989 — new citation).
+  - `fetal_metabolism.fetal_insulin_term_pmol_per_l`
+    (Economides 1989 — new citation).
+  - `fetal_metabolism.fetal_cortisol_term_ug_per_dl`
+    (Murphy 1973 — new citation).
 - Phase 3 batch (spec 04): 3 new parameters + 3 new citations,
   bringing the dataset to **236 parameters / 67 citations**.
   - `placental_endocrine.leptin_term_ng_per_ml` (Hardie 1997 —

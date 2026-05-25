@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**236 parameters / 67 citations**. All "phase 1" items have
+**239 parameters / 70 citations**. All "phase 1" items have
 shipped; phase 2 is complete; phase 3 is the remaining residual. The "Status" column on each subsystem table is the source
 of truth.
 
@@ -244,7 +244,7 @@ falls ~50%.
 | `renin_term_ng_per_ml_per_h` | PRA at term | 12 | B | shipped | Wilson 1980 |
 | `homa_ir_term` | HOMA-IR at term | 4.0 | B | shipped | Catalano 1991 |
 | `homa_ir_baseline` | Non-pregnant HOMA-IR | 2.0 | B | shipped | Catalano 1991 |
-| `placental_gh_term_ng_per_ml` | Placental GH at term | 14 | C | phase3 | Eriksson 1989 |
+| `placental_gh_term_ng_per_ml` | Placental GH at term | 14 | C | shipped | Eriksson 1989 |
 
 **Citations needed:** Carr 1981, Glinoer 1997, Tyson 1972, Wilson
 1980, Catalano 1991, Eriksson 1989.
@@ -447,8 +447,8 @@ of parturition.
 | `umbilical_vein_ph_term` | UV pH at term | 7.34 | B | shipped | Battaglia 1986 |
 | `umbilical_artery_lactate_term_mmol_per_l` | UA lactate | 3.5 | C | shipped | Battaglia 1986 |
 | `fetal_glucose_term_mmol_per_l` | Fetal glucose | 3.5 | B | shipped | Battaglia 1986 |
-| `fetal_insulin_term_pmol_per_l` | Term fetal insulin | 50 | C | phase3 | Economides 1989 |
-| `fetal_cortisol_term_ug_per_dl` | Term fetal cortisol | 15 | C | phase3 | Murphy 1973 |
+| `fetal_insulin_term_pmol_per_l` | Term fetal insulin | 50 | C | shipped | Economides 1989 |
+| `fetal_cortisol_term_ug_per_dl` | Term fetal cortisol | 15 | C | shipped | Murphy 1973 |
 | `fetal_core_temperature_c_term` | Fetal core temp | 37.6 | B | shipped | Battaglia 1986 |
 | `fetal_urine_output_ml_per_kg_h_term` | Fetal urine output | 50 | C | shipped | Battaglia 1986 |
 | `pulmonary_fluid_net_rate_baseline_ml_per_kg_h` | Lung-liquid secretion (mid) | 5 | D | shipped (hypothesis-only) | Strang 1991 |
@@ -528,15 +528,15 @@ before merge.
 - ✓ Kruithof 1987 — PAI-1/PAI-2
 - Robson 1989 *Br Heart J* — LV mass in pregnancy *(superseded; sourced from Sanghavi 2014)*
 - ✓ Crapo 1996 — DLCO reference
-- Eriksson 1989 — placental GH
+- ✓ Eriksson 1989 — placental GH
 - ✓ Benirschke 2012 — placental anatomy textbook
 - ✓ Pijnenborg 2006 — spiral artery anatomy
 - ✓ Sutton 1991 — fetal aortic isthmus
 - ✓ Mari 1995 — MCA Doppler
 - ✓ Acharya 2005 — umbilical artery PI
 - ✓ Hardie 1997 — leptin in pregnancy
-- Economides 1989 — fetal endocrine
-- Murphy 1973 — fetal cortisol
+- ✓ Economides 1989 — fetal endocrine
+- ✓ Murphy 1973 — fetal cortisol
 - Asakura 2004 — fetal temperature *(superseded; sourced from Battaglia 1986)*
 - Magann 2007 — amniotic fluid chemistry
 - ✓ Pritchard 1966 — fetal swallowing

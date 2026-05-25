@@ -294,5 +294,33 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Leptin falls rapidly after delivery — consistent with the substantial placental contribution to circulating levels in pregnancy."
+  },
+  {
+    "id": "placental_endocrine.placental_gh_term_ng_per_ml",
+    "name": "Placental growth hormone at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 14,
+      "low": 8,
+      "high": 25,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Eriksson et al. 1989 Br J Obstet Gynaecol: placental growth hormone (GH-V, the variant produced by the syncytiotrophoblast) accumulates non-pulsatily across pregnancy, replacing maternal pituitary GH; term serum levels centre ~10–20 ng/mL. The non-pulsatile secretion pattern distinguishes the placental variant from pituitary GH on serial sampling. Assay specificity (GH-V vs GH-N cross-reactivity) is the main source of inter-study variability.",
+    "citations": [
+      "eriksson-1989-placental-gh"
+    ],
+    "primary_citation": "eriksson-1989-placental-gh",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Placental GH is the dominant maternal-circulation GH from mid-pregnancy onward; drives the late-pregnancy IGF-1 rise."
   }
 ]

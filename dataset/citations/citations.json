@@ -965,6 +965,50 @@
     "type": "book",
     "year": 2012
   },
+  "eriksson-1989-placental-gh": {
+    "authors": [
+      "Eriksson L",
+      "Frankenne F",
+      "Edén S",
+      "Hennen G",
+      "von Schoultz B"
+    ],
+    "doi": "10.1111/j.1471-0528.1989.tb03352.x",
+    "journal": "British Journal of Obstetrics and Gynaecology",
+    "key": "eriksson-1989-placental-gh",
+    "notes": "24-hour serum profile of placental growth hormone (GH-V) across pregnancy; non-pulsatile secretion distinguishes it from pituitary GH. Source for placental_endocrine.placental_gh_term_ng_per_ml.",
+    "pmid": "2775693",
+    "title": "Growth hormone 24-h serum profiles during pregnancy—lack of pulsatility for the secretion of the placental variant",
+    "type": "journal-article",
+    "year": 1989
+  },
+  "economides-1989-fetal-insulin": {
+    "authors": [
+      "Economides DL",
+      "Proudler A",
+      "Nicolaides KH"
+    ],
+    "doi": "10.1016/0002-9378(89)90168-8",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "economides-1989-fetal-insulin",
+    "notes": "Cordocentesis series of fetal plasma insulin in appropriate- and small-for-gestational-age fetuses; provides reference values for term fetal insulin. Source for fetal_metabolism.fetal_insulin_term_pmol_per_l.",
+    "pmid": "2655473",
+    "title": "Plasma insulin in appropriate- and small-for-gestational-age fetuses",
+    "type": "journal-article",
+    "year": 1989
+  },
+  "murphy-1973-fetal-cortisol": {
+    "authors": [
+      "Murphy BE"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "murphy-1973-fetal-cortisol",
+    "notes": "Cord-blood cortisol and cortisone at delivery, vaginal vs caesarean. Reference for term fetal cortisol; source for fetal_metabolism.fetal_cortisol_term_ug_per_dl.",
+    "pmid": "4691267",
+    "title": "Cortisol and cortisone levels in the cord blood at delivery of infants delivered vaginally and by caesarean section",
+    "type": "journal-article",
+    "year": 1973
+  },
   "faught-1995-protein-s-c": {
     "authors": [
       "Faught W",

@@ -9,6 +9,13 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 fetal/placental endocrine batch (spec 04):** 3 new
+  parameters (placental GH at term, fetal insulin at term, fetal
+  cortisol at term) backed by 3 new citations (Eriksson 1989,
+  Economides 1989, Murphy 1973). Dataset now at 239 parameters / 70
+  citations. See [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for
+  per-parameter detail.
+
 - **Phase 3 batch (spec 04):** 3 new parameters (term leptin,
   cotyledon count, fetal swallowing rate) backed by 3 new citations
   (Hardie 1997, Benirschke 2012, Pritchard 1966). Dataset now at
