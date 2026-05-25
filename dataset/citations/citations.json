@@ -888,6 +888,40 @@
     "type": "journal-article",
     "year": 1984
   },
+  "kruithof-1987-fibrinolysis": {
+    "authors": [
+      "Kruithof EK",
+      "Tran-Thang C",
+      "Gudinchet A",
+      "Hauert J",
+      "Nicoloso G",
+      "Genton C",
+      "Welti H",
+      "Bachmann F"
+    ],
+    "journal": "Blood",
+    "key": "kruithof-1987-fibrinolysis",
+    "notes": "Longitudinal characterisation of plasminogen-activator-inhibitor changes in pregnancy: PAI-1 rises several-fold; PAI-2 rises from near-zero (placental origin). Source for maternal_blood.pai1/pai2_term_ng_per_ml.",
+    "pmid": "3492224",
+    "title": "Fibrinolysis in pregnancy: a study of plasminogen activator inhibitors",
+    "type": "journal-article",
+    "year": 1987
+  },
+  "pijnenborg-2006-spiral-artery": {
+    "authors": [
+      "Pijnenborg R",
+      "Vercruysse L",
+      "Hanssens M"
+    ],
+    "doi": "10.1016/j.placenta.2005.12.006",
+    "journal": "Placenta",
+    "key": "pijnenborg-2006-spiral-artery",
+    "notes": "Authoritative review of uterine spiral-artery anatomy and trophoblast-driven remodelling in human pregnancy. Source for placental_structure.spiral_artery_count and spiral_artery_diameter_term_mm.",
+    "pmid": "16490251",
+    "title": "The uterine spiral arteries in human pregnancy: facts and controversies",
+    "type": "journal-article",
+    "year": 2006
+  },
   "faught-1995-protein-s-c": {
     "authors": [
       "Faught W",

@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**229 parameters / 62 citations**. All "phase 1" items have
+**233 parameters / 64 citations**. All "phase 1" items have
 shipped; phase 2 is complete; phase 3 is the remaining residual. The "Status" column on each subsystem table is the source
 of truth.
 
@@ -138,8 +138,8 @@ S, antithrombin). Iron and folate stores drop. WBC count rises.
 | `protein_s_free_term_pct` | Free protein S | 45 | B | shipped | Faught 1995 |
 | `protein_c_term_pct` | Protein C activity | 100 | B | shipped | Faught 1995 |
 | `antithrombin_term_pct` | Antithrombin activity | 95 | B | shipped | Faught 1995 |
-| `pai1_term_ng_per_ml` | PAI-1 at term | 80 | C | phase3 | Kruithof 1987 |
-| `pai2_term_ng_per_ml` | PAI-2 at term | 250 | C | phase3 | Kruithof 1987 |
+| `pai1_term_ng_per_ml` | PAI-1 at term | 80 | C | shipped | Kruithof 1987 |
+| `pai2_term_ng_per_ml` | PAI-2 at term | 250 | C | shipped | Kruithof 1987 |
 | `serum_albumin_term_g_per_dl` | Albumin at term | 3.0 | B | shipped | Hytten 1980 |
 | `total_protein_term_g_per_dl` | Total protein term | 6.0 | B | shipped | Hytten 1980 |
 | `serum_iron_term_ug_per_dl` | Iron at term | 60 | B | shipped | Hytten 1980 |
@@ -276,8 +276,8 @@ in human biology — ~300 km in a term placenta.
 | `igg_transfer_ratio_baseline` | FcRn IgG ratio (T1) | 0.2 | D | shipped (hypothesis-only) | Palmeira 2012 |
 | `igg_transfer_ratio_term` | FcRn IgG ratio (term) | 1.2 | D | shipped (hypothesis-only) | Palmeira 2012 |
 | `hsd2_cortisol_inactivation_fraction` | 11β-HSD2 inactivation | 0.85 | D | shipped (hypothesis-only) | Benediktsson 1997 |
-| `spiral_artery_count` | Spiral arteries supplying IVS | 100 | C | phase3 | Pijnenborg 2006 |
-| `spiral_artery_diameter_term_mm` | Spiral artery diameter | 2.5 | C | phase3 | Pijnenborg 2006 |
+| `spiral_artery_count` | Spiral arteries supplying IVS | 100 | C | shipped | Pijnenborg 2006 |
+| `spiral_artery_diameter_term_mm` | Spiral artery diameter | 2.5 | C | shipped | Pijnenborg 2006 |
 | `syncytiotrophoblast_thickness_term_um` | Syncytium thickness | 4 | C | shipped | Mayhew 2014 |
 
 **Citations needed:** Hoddick 1985, Naeye 1985, Benirschke 2012,
@@ -525,12 +525,12 @@ before merge.
 
 ### Phase 3 citations (~15 new)
 
-- Kruithof 1987 — PAI-1/PAI-2
+- ✓ Kruithof 1987 — PAI-1/PAI-2
 - Robson 1989 *Br Heart J* — LV mass in pregnancy *(superseded; sourced from Sanghavi 2014)*
 - ✓ Crapo 1996 — DLCO reference
 - Eriksson 1989 — placental GH
 - Benirschke 2012 — placental anatomy textbook
-- Pijnenborg 2006 — spiral artery anatomy
+- ✓ Pijnenborg 2006 — spiral artery anatomy
 - ✓ Sutton 1991 — fetal aortic isthmus
 - ✓ Mari 1995 — MCA Doppler
 - ✓ Acharya 2005 — umbilical artery PI

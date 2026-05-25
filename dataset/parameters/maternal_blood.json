@@ -886,5 +886,61 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Antithrombin is the headline non-protein-S anticoagulant; preserved AT plus depressed free protein S is the typical pregnancy fingerprint."
+  },
+  {
+    "id": "maternal_blood.pai1_term_ng_per_ml",
+    "name": "Plasminogen activator inhibitor 1 at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 80,
+      "low": 40,
+      "high": 150,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Kruithof et al. 1987 Blood longitudinal cohort: PAI-1 rises several-fold from non-pregnant baseline (~15 ng/mL) to ~80 ng/mL at term, contributing to the suppressed fibrinolytic capacity that complements the rise in procoagulant factors. Variability is large and assay-method-dependent.",
+    "citations": [
+      "kruithof-1987-fibrinolysis"
+    ],
+    "primary_citation": "kruithof-1987-fibrinolysis",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "PAI-1 is hepatic/endothelial; the late-pregnancy rise is part of the haemostatic shift that prepares for placental separation at delivery."
+  },
+  {
+    "id": "maternal_blood.pai2_term_ng_per_ml",
+    "name": "Plasminogen activator inhibitor 2 at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 250,
+      "low": 150,
+      "high": 400,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Kruithof et al. 1987 Blood: PAI-2 is essentially placenta-derived and rises from near-zero pre-pregnancy to ~250 ng/mL at term, tracking placental mass. The rise is so steep that PAI-2 has been proposed as a placental-function biomarker. Wide between-individual variability and assay sensitivity make Tier C the honest call.",
+    "citations": [
+      "kruithof-1987-fibrinolysis"
+    ],
+    "primary_citation": "kruithof-1987-fibrinolysis",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "PAI-2 falls rapidly post-delivery as the placenta is removed — direct evidence of placental origin."
   }
 ]

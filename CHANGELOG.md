@@ -9,6 +9,13 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 fibrinolysis + spiral-artery batch (spec 04):** 4 new
+  parameters (PAI-1, PAI-2, spiral-artery count, remodelled spiral-
+  artery diameter at term) backed by 2 new citations (Kruithof 1987,
+  Pijnenborg 2006). Dataset now at 233 parameters / 64 citations.
+  See [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for the
+  per-parameter detail.
+
 - **Coagulation panel completion (spec 04 Phase 2):** 6 new
   parameters (factor IX/X/XII, free protein S, protein C,
   antithrombin) backed by 2 new citations (Stirling 1984, Faught

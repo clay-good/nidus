@@ -460,5 +460,61 @@
       "population": "Healthy singleton pregnancies at term"
     },
     "notes": "Thinning of the materno-fetal barrier is a key mechanism by which the placenta supports late-pregnancy gas exchange."
+  },
+  {
+    "id": "placental_structure.spiral_artery_count",
+    "name": "Number of spiral arteries supplying the intervillous space",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 100,
+      "low": 80,
+      "high": 150,
+      "units": "count",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Pijnenborg et al. 2006 Placenta review of human spiral-artery anatomy: ~80–150 spiral arteries per placenta enter the intervillous space at term, after deep trophoblast invasion and remodelling that converts each from a thick-walled high-resistance vessel to a wide-bore low-resistance conduit. The count is anatomically variable; failed remodelling underlies pre-eclampsia (out of scope for nidus).",
+    "citations": [
+      "pijnenborg-2006-spiral-artery"
+    ],
+    "primary_citation": "pijnenborg-2006-spiral-artery",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Spiral-artery count × per-vessel flow gives the rough order-of-magnitude check on the total uterine artery flow (~600 mL/min at term)."
+  },
+  {
+    "id": "placental_structure.spiral_artery_diameter_term_mm",
+    "name": "Spiral artery diameter at term (remodelled)",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 2.5,
+      "low": 1.5,
+      "high": 4.0,
+      "units": "mm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Pijnenborg et al. 2006 Placenta review: after physiological trophoblast-driven remodelling, term spiral arteries dilate to ~2–4 mm (from ~0.5 mm non-pregnant), losing their muscular wall and becoming maternal-pressure-passive conduits. The remodelling is incomplete in pre-eclampsia. Reported diameters span a wide range; Tier C reflects the anatomical heterogeneity, not data scarcity.",
+    "citations": [
+      "pijnenborg-2006-spiral-artery"
+    ],
+    "primary_citation": "pijnenborg-2006-spiral-artery",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "The dilation factor (~5×) translates by Poiseuille to a >500× drop in single-vessel resistance — the mechanism behind the pregnancy-induced uterine vasodilation."
   }
 ]

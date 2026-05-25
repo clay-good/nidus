@@ -8,6 +8,14 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Phase 3 fibrinolysis + spiral-artery batch (spec 04): 4 new
+  parameters + 2 new citations, bringing the dataset to **233
+  parameters / 64 citations**.
+  - `maternal_blood.pai1_term_ng_per_ml`, `pai2_term_ng_per_ml`
+    (Kruithof 1987 — new citation).
+  - `placental_structure.spiral_artery_count`,
+    `spiral_artery_diameter_term_mm` (Pijnenborg 2006 — new
+    citation).
 - Coagulation panel completion (spec 04 Phase 2): 6 new parameters
   + 2 new citations (Stirling 1984, Faught 1995), bringing the
   dataset to **229 parameters / 62 citations**. Closes the spec-04
