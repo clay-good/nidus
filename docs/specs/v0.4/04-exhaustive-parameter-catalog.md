@@ -13,8 +13,8 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**204 parameters / 60 citations**. All "phase 1" items have
-shipped; phase 2 is mostly complete; phase 3 is the remaining
+**212 parameters / 60 citations**. All "phase 1" items have
+shipped; phase 2 is nearly complete; phase 3 is the remaining
 residual. The "Status" column on each subsystem table is the source
 of truth.
 
@@ -89,16 +89,16 @@ uterine flow rises from ~50 to ~600 mL/min.
 | `baseline_svr_dyn_s_cm5` | Non-pregnant SVR | 1300 | B | shipped | Sanghavi 2014 |
 | `svr_nadir_dyn_s_cm5` | Mid-pregnancy SVR nadir | 750 | B | shipped | Sanghavi 2014 |
 | `term_svr_dyn_s_cm5` | Term SVR | 980 | B | shipped | Sanghavi 2014 |
-| `baseline_pvr_dyn_s_cm5` | Non-pregnant PVR | 120 | C | phase2 | Robson 1989 |
+| `baseline_pvr_dyn_s_cm5` | Non-pregnant PVR | 120 | C | shipped | Sanghavi 2014 |
 | `pvr_term_dyn_s_cm5` | Term PVR | 80 | B | shipped | Sanghavi 2014 |
 | `lv_mass_baseline_g` | LV mass non-pregnant | 130 | B | shipped | Sanghavi 2014 |
 | `lv_mass_term_g` | LV mass at term | 180 | B | shipped | Sanghavi 2014 |
-| `lv_wall_thickness_term_mm` | LV wall at term | 11 | C | phase2 | Robson 1989 |
+| `lv_wall_thickness_term_mm` | LV wall at term | 11 | C | shipped | Sanghavi 2014 |
 | `aortic_root_diameter_term_mm` | Aortic root diameter at term | 30 | C | shipped | Sanghavi 2014 |
 | `pulse_wave_velocity_term_m_per_s` | PWV at term | 7.5 | C | shipped | Sanghavi 2014 |
-| `cardiac_output_t1_l_per_min` | CO in T1 anchor | 5.5 | B | phase2 | Mahendru 2014 |
-| `cardiac_output_t2_l_per_min` | CO in T2 anchor | 6.4 | B | phase2 | Mahendru 2014 |
-| `cardiac_output_t3_l_per_min` | CO in T3 anchor | 6.5 | B | phase2 | Mahendru 2014 |
+| `cardiac_output_t1_l_per_min` | CO in T1 anchor | 5.5 | B | shipped | Mahendru 2014 |
+| `cardiac_output_t2_l_per_min` | CO in T2 anchor | 6.4 | B | shipped | Mahendru 2014 |
+| `cardiac_output_t3_l_per_min` | CO in T3 anchor | 6.5 | B | shipped | Mahendru 2014 |
 
 **Citations needed (new):** none. Mahendru 2014, Sanghavi 2014, Robson
 1989 cover all of the above. The Robson 1989 *Br Heart J* paper is the
@@ -236,13 +236,13 @@ falls ~50%.
 | --- | --- | --- | --- | --- | --- |
 | `cortisol_term_ug_per_dl` | Term plasma cortisol | 30 | B | shipped | Allolio 1990 |
 | `cortisol_baseline_ug_per_dl` | Non-pregnant cortisol | 10 | A | shipped | Allolio 1990 |
-| `cbg_term_mg_per_l` | CBG at term | 70 | B | phase2 | Carr 1981 |
+| `cbg_term_mg_per_l` | CBG at term | 70 | B | shipped | Carr 1981 |
 | `free_t4_term_ng_per_dl` | Free T4 at term | 0.9 | B | shipped | Glinoer 1997 |
 | `tsh_t1_miu_per_l` | TSH in T1 | 0.6 | B | shipped | Glinoer 1997 |
 | `tsh_term_miu_per_l` | TSH at term | 2.0 | B | shipped | Glinoer 1997 |
 | `prolactin_term_ng_per_ml` | Prolactin at term | 200 | B | shipped | Tulchinsky 1972 |
 | `aldosterone_term_ng_per_dl` | Aldosterone term | 40 | B | shipped | Cheung 2013 |
-| `renin_term_ng_per_ml_per_h` | PRA at term | 12 | B | phase2 | Wilson 1980 |
+| `renin_term_ng_per_ml_per_h` | PRA at term | 12 | B | shipped | Wilson 1980 |
 | `homa_ir_term` | HOMA-IR at term | 4.0 | B | shipped | Catalano 1991 |
 | `homa_ir_baseline` | Non-pregnant HOMA-IR | 2.0 | B | shipped | Catalano 1991 |
 | `placental_gh_term_ng_per_ml` | Placental GH at term | 14 | C | phase3 | Eriksson 1989 |
@@ -345,8 +345,8 @@ co-production (placenta lacks 16α-hydroxylase).
 | `progesterone_term_ng_per_ml` | Progesterone term | 150 | A | shipped | Tulchinsky 1972 |
 | `estradiol_baseline_ng_per_ml` | Estradiol baseline | 1 | A | shipped | Tulchinsky 1972 |
 | `estradiol_term_ng_per_ml` | Estradiol term | 14 | A | shipped | Tulchinsky 1972 |
-| `estriol_term_ng_per_ml` | Estriol term | 10 | A | phase2 | Tulchinsky 1972 |
-| `relaxin_t1_ng_per_ml` | Relaxin in T1 | 1.0 | B | phase2 | Conrad 2001 |
+| `estriol_term_ng_per_ml` | Estriol term | 10 | A | shipped | Tulchinsky 1972 |
+| `relaxin_t1_ng_per_ml` | Relaxin in T1 | 1.0 | B | shipped | Conrad 2001 |
 | `leptin_term_ng_per_ml` | Leptin at term | 30 | B | phase3 | Hardie 1997 |
 
 **Citations needed:** Cole 2010, Handwerger 2010, Tulchinsky 1972,
@@ -502,10 +502,10 @@ before merge.
 - Faught 1995 — protein S/C/AT in pregnancy
 - ✓ Davison 1981 — osmoregulation in pregnancy
 - Higby 1994 — 24h urinary protein normal pregnancy *(superseded; sourced from Cheung 2013)*
-- Carr 1981 — cortisol/CBG in pregnancy
+- ✓ Carr 1981 — cortisol/CBG in pregnancy
 - ✓ Glinoer 1997 — thyroid axis in pregnancy
 - Tyson 1972 — prolactin in pregnancy *(superseded; sourced from Tulchinsky 1972)*
-- Wilson 1980 — renin-aldosterone in pregnancy *(superseded; sourced from Cheung 2013)*
+- ✓ Wilson 1980 — renin-aldosterone in pregnancy (PRA at term; Cheung 2013 corroborates)
 - ✓ Catalano 1991 — HOMA-IR / insulin sensitivity
 - ✓ Cole 2010 — hCG kinetics
 - ✓ Handwerger 2010 — hPL

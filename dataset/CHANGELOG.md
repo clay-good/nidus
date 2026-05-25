@@ -8,6 +8,17 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Phase 2 saturation batch (spec 04): 8 new parameters using
+  citations already in the dataset, bringing the dataset to **212
+  parameters / 60 citations**.
+  - `maternal_cardiovascular.cardiac_output_t1/t2/t3_l_per_min`
+    (Mahendru 2014 trimester anchors).
+  - `maternal_cardiovascular.baseline_pvr_dyn_s_cm5` and
+    `lv_wall_thickness_term_mm` (Sanghavi 2014 review).
+  - `maternal_endocrine.cbg_term_mg_per_l` (Carr 1981).
+  - `maternal_endocrine.renin_term_ng_per_ml_per_h` (Wilson 1980
+    + Cheung 2013).
+  - `placental_endocrine.relaxin_t1_ng_per_ml` (Conrad 2001).
 - Phase 1 saturation completion (spec 04): 5 new parameters across 4
   subsystems, 2 new citations. Brings the dataset to **204 parameters
   / 60 citations** and closes out the spec-04 Phase 1 column.

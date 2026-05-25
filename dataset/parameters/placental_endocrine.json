@@ -238,5 +238,33 @@
       "reviewer": "v0.4-phase-b-submodel-expansion"
     },
     "primary_citation": "tulchinsky-1972-steroids"
+  },
+  {
+    "id": "placental_endocrine.relaxin_t1_ng_per_ml",
+    "name": "Serum relaxin in first trimester",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 1.0,
+      "low": 0.6,
+      "high": 1.5,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Conrad 2001 (Endocrinology review of relaxin physiology): corpus luteum-derived serum relaxin peaks in the late first trimester at ~1 ng/mL, then declines through T2/T3 as luteal function wanes. Relaxin is the proximate cause of the pregnancy-induced renal vasodilation captured by the GFR/RPF trajectories.",
+    "citations": [
+      "conrad-2001-relaxin-gfr"
+    ],
+    "primary_citation": "conrad-2001-relaxin-gfr",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, first trimester (peak around weeks 10–12)"
+    },
+    "notes": "T1 peak corresponds to corpus-luteum dominance; placental contribution is small."
   }
 ]

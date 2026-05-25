@@ -214,5 +214,62 @@
       "reviewer": "v0.4-phase1-expansion-script"
     },
     "primary_citation": "catalano-1991-insulin-sensitivity"
+  },
+  {
+    "id": "maternal_endocrine.cbg_term_mg_per_l",
+    "name": "Cortisol-binding globulin at term",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 70,
+      "low": 55,
+      "high": 90,
+      "units": "mg/L",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Carr et al. 1981 J Clin Endocrinol Metab: CBG roughly doubles across normal pregnancy under oestrogen-driven hepatic synthesis (baseline ~35 mg/L → term ~70 mg/L). This is the central driver of the rise in total cortisol; free-cortisol changes are smaller. Replicated across the cortisol-in-pregnancy literature.",
+    "citations": [
+      "carr-1981-cortisol"
+    ],
+    "primary_citation": "carr-1981-cortisol",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Pairs with `cortisol_term_ug_per_dl` — most of the total-cortisol rise is bound to CBG, not biologically free."
+  },
+  {
+    "id": "maternal_endocrine.renin_term_ng_per_ml_per_h",
+    "name": "Plasma renin activity at term",
+    "subsystem": "maternal_endocrine",
+    "value": {
+      "central": 12,
+      "low": 6,
+      "high": 20,
+      "units": "ng/mL/h",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Wilson et al. 1980 and corroborated by Cheung & Lafayette 2013: PRA rises ~4–7× pre-pregnancy values (baseline ~1.5 ng/mL/h, term ~10–15 ng/mL/h) as part of the activated renin–angiotensin–aldosterone axis. Despite high circulating renin and aldosterone, pregnant women are remarkably resistant to angiotensin-II pressor effects.",
+    "citations": [
+      "wilson-1980-renin-aldosterone",
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "wilson-1980-renin-aldosterone",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Lognormal distribution reflects the wide observed spread; loss of pressor response in normal pregnancy is itself diagnostic for pre-eclampsia risk."
   }
 ]

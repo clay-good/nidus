@@ -9,6 +9,13 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Dataset Phase 2 saturation batch (spec 04):** 8 new parameters
+  (3× trimester CO anchors, baseline PVR, LV wall thickness, CBG,
+  PRA, T1 relaxin), all backed by citations already in the dataset.
+  Dataset now stands at 212 parameters / 60 citations. See
+  [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for per-parameter
+  detail.
+
 - **Dataset Phase 1 saturation (spec 04):** 5 new parameters
   (`heart_rate_peak_week`, `d_dimer_term_ug_per_ml`,
   `cumulative_sodium_retention_g`, `placental_thickness_term_cm`,

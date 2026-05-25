@@ -758,5 +758,149 @@
       "population": "Healthy singleton pregnancies"
     },
     "notes": "Used as the centre week for a Gaussian HR-trajectory submodel; mirrors the cardiac-output peak-week parameter."
+  },
+  {
+    "id": "maternal_cardiovascular.cardiac_output_t1_l_per_min",
+    "name": "Cardiac output in first trimester",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 5.5,
+      "low": 5.1,
+      "high": 5.9,
+      "units": "L/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 J Hypertension trimester-stratified means: CO rises from a pre-conception baseline ~4.6 L/min to ~5.5 L/min by the end of T1, driven mostly by an early rise in stroke volume. Single primary cohort (n=53); consistent with the Sanghavi & Rutherford 2014 review.",
+    "citations": [
+      "mahendru-2014-cardiac-output",
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, first trimester"
+    },
+    "notes": "Trimester anchor that complements the Gaussian-bump CO trajectory parameters."
+  },
+  {
+    "id": "maternal_cardiovascular.cardiac_output_t2_l_per_min",
+    "name": "Cardiac output in second trimester",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 6.4,
+      "low": 6.0,
+      "high": 6.8,
+      "units": "L/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 J Hypertension trimester-stratified means: CO reaches near-peak (~6.4 L/min) by the end of T2; further increase into T3 is modest. Consistent with Sanghavi & Rutherford 2014 review.",
+    "citations": [
+      "mahendru-2014-cardiac-output",
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, second trimester"
+    },
+    "notes": "Trimester anchor complementing the Gaussian-bump CO trajectory."
+  },
+  {
+    "id": "maternal_cardiovascular.cardiac_output_t3_l_per_min",
+    "name": "Cardiac output in third trimester",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 6.5,
+      "low": 6.0,
+      "high": 7.0,
+      "units": "L/min",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 J Hypertension trimester-stratified means: CO is sustained at ~6.5 L/min through T3, with a modest fall in the final weeks. Consistent with Hunter & Robson 1992 and Sanghavi & Rutherford 2014.",
+    "citations": [
+      "mahendru-2014-cardiac-output",
+      "hunter-robson-1992-cardiac-output",
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Trimester anchor; supine-position CO can be lower owing to aortocaval compression by the gravid uterus."
+  },
+  {
+    "id": "maternal_cardiovascular.baseline_pvr_dyn_s_cm5",
+    "name": "Pulmonary vascular resistance baseline",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 120,
+      "low": 90,
+      "high": 150,
+      "units": "dyn·s·cm⁻⁵",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from the Sanghavi & Rutherford 2014 Circulation review of pregnancy haemodynamics: non-pregnant PVR ~120 dyn·s·cm⁻⁵, falling to ~80 dyn·s·cm⁻⁵ by term as a consequence of pregnancy-induced pulmonary vasodilation. Population spread is wide and the value is reported across several smaller cohorts rather than a single landmark study, motivating Tier C.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy non-pregnant women of reproductive age"
+    },
+    "notes": "Pairs with the existing `pvr_term_dyn_s_cm5` parameter to characterise the pregnancy-induced fall."
+  },
+  {
+    "id": "maternal_cardiovascular.lv_wall_thickness_term_mm",
+    "name": "Left-ventricular wall thickness at term",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 11,
+      "low": 10,
+      "high": 12,
+      "units": "mm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from the Sanghavi & Rutherford 2014 Circulation review (echo measurements aggregated from several cohorts): LV wall thickness rises modestly from ~9 mm pre-pregnancy to ~11 mm at term, paralleling the ~30–50% rise in LV mass. No single landmark cohort dominates and inter-observer echo variability is the binding uncertainty.",
+    "citations": [
+      "sanghavi-rutherford-2014-cardio-review"
+    ],
+    "primary_citation": "sanghavi-rutherford-2014-cardio-review",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Reverses postpartum over weeks-to-months; not a pathological hypertrophy."
   }
 ]
