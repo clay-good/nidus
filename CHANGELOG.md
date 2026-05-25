@@ -9,6 +9,15 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Dataset Phase 1 saturation (spec 04):** 5 new parameters
+  (`heart_rate_peak_week`, `d_dimer_term_ug_per_ml`,
+  `cumulative_sodium_retention_g`, `placental_thickness_term_cm`,
+  `cord_length_term_cm`) and 2 new citations (Hoddick 1985, Naeye
+  1985), bringing the dataset to 204 parameters / 60 citations and
+  closing the spec-04 Phase 1 column. See
+  [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for the per-parameter
+  detail.
+
 - **`nidus.export.equation_latex` — LaTeX equations for submodels.**
   Spec 03 §5 cross-cutting infrastructure item. Exposes one LaTeX
   fragment per registry entry for documentation, dashboard tooltips,

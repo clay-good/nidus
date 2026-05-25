@@ -376,5 +376,61 @@
       "population": "Healthy singleton pregnancies, term"
     },
     "notes": "If laid end-to-end, term villous capillaries would span the distance from London to Edinburgh."
+  },
+  {
+    "id": "placental_structure.placental_thickness_term_cm",
+    "name": "Placental thickness at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 2.5,
+      "low": 2.0,
+      "high": 3.5,
+      "units": "cm",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hoddick et al. 1985 J Ultrasound Med: ultrasound series characterising normal placental thickness across gestation. Term thickness centred ~2.5 cm with a normal upper bound of ~4 cm; thicker placentas raise differential including diabetes, hydrops, and infection. Widely cited as the obstetric-ultrasound reference range.",
+    "citations": [
+      "hoddick-1985-placental-thickness"
+    ],
+    "primary_citation": "hoddick-1985-placental-thickness",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase1-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, term"
+    },
+    "notes": "Measured at the cord insertion on a transverse ultrasound view of the placenta."
+  },
+  {
+    "id": "placental_structure.cord_length_term_cm",
+    "name": "Umbilical cord length at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 55,
+      "low": 35,
+      "high": 80,
+      "units": "cm",
+      "distribution": "normal",
+      "ci": 0.95
+    },
+    "tier": "A",
+    "tier_rationale": "Tier A from Naeye 1985 J Pediatr: large clinicopathological series (>30,000 placentas examined at delivery) establishing the population distribution of cord length. Mean ~55 cm, with the conventional 'short' / 'long' cord thresholds (<35 cm, >80 cm) drawn from the same series. Has remained the canonical reference for cord-length norms.",
+    "citations": [
+      "naeye-1985-cord-length"
+    ],
+    "primary_citation": "naeye-1985-cord-length",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase1-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Cord-length extremes correlate with later neurodevelopmental and obstetric outcomes but the central distribution is what nidus exposes."
   }
 ]

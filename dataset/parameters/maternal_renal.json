@@ -408,5 +408,33 @@
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
     }
+  },
+  {
+    "id": "maternal_renal.cumulative_sodium_retention_g",
+    "name": "Cumulative sodium retention across pregnancy",
+    "subsystem": "maternal_renal",
+    "value": {
+      "central": 1.0,
+      "low": 0.8,
+      "high": 1.2,
+      "units": "g",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Cheung & Lafayette 2013 (renal physiology in pregnancy review): the mother retains roughly 900–1000 mg of total sodium across normal pregnancy, distributed across the expanded plasma volume and the gravid uterus/fetus/amniotic fluid. The number is a derived sum across the trimesters and is consistent within ~20% across the renal-in-pregnancy review literature.",
+    "citations": [
+      "cheung-lafayette-2013-renal"
+    ],
+    "primary_citation": "cheung-lafayette-2013-renal",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase1-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, cumulative across 40 weeks"
+    },
+    "notes": "Despite the substantial sodium retention, plasma sodium concentration falls ~5 mEq/L because plasma-volume expansion outpaces solute retention."
   }
 ]

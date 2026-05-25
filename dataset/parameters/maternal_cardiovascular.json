@@ -730,5 +730,33 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Mid-pregnancy nadir matters more than the term value clinically — sustained high PWV at mid-pregnancy is a hypertension-risk marker."
+  },
+  {
+    "id": "maternal_cardiovascular.heart_rate_peak_week",
+    "name": "Gestational week of maternal heart-rate peak",
+    "subsystem": "maternal_cardiovascular",
+    "value": {
+      "central": 32,
+      "low": 30,
+      "high": 34,
+      "units": "week",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 J Hypertension: heart-rate trajectory across normal pregnancy peaks in the early third trimester (~30–34 weeks), in parallel with the cardiac-output peak. The Mahendru cohort sampled at fixed intervals from pre-conception through postpartum and the HR/CO peak-week estimates are consistent within ~2 weeks across the cohort.",
+    "citations": [
+      "mahendru-2014-cardiac-output"
+    ],
+    "primary_citation": "mahendru-2014-cardiac-output",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase1-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies"
+    },
+    "notes": "Used as the centre week for a Gaussian HR-trajectory submodel; mirrors the cardiac-output peak-week parameter."
   }
 ]

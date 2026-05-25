@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**199 parameters / 58 citations**. Almost all "phase 1" items have
+**204 parameters / 60 citations**. All "phase 1" items have
 shipped; phase 2 is mostly complete; phase 3 is the remaining
 residual. The "Status" column on each subsystem table is the source
 of truth.
@@ -83,7 +83,7 @@ uterine flow rises from ~50 to ~600 mL/min.
 | `uterine_flow_growth_rate_per_week` | Logistic rate | 0.25 | B | shipped | Thaler 1990 |
 | `baseline_heart_rate_bpm` | Non-pregnant HR | 70 | A | shipped | Mahendru 2014 |
 | `peak_excess_heart_rate_bpm` | HR rise to term | 15 | A | shipped | Mahendru 2014 |
-| `heart_rate_peak_week` | Week of HR peak | 32 | B | phase1 | Mahendru 2014 |
+| `heart_rate_peak_week` | Week of HR peak | 32 | B | shipped | Mahendru 2014 |
 | `baseline_stroke_volume_ml` | Non-pregnant SV | 70 | B | shipped | Sanghavi 2014 |
 | `peak_excess_stroke_volume_ml` | SV rise | 15 | B | shipped | Sanghavi 2014 |
 | `baseline_svr_dyn_s_cm5` | Non-pregnant SVR | 1300 | B | shipped | Sanghavi 2014 |
@@ -132,7 +132,7 @@ S, antithrombin). Iron and folate stores drop. WBC count rises.
 | `mcv_term_fl` | MCV at term | 92 | B | shipped | Hytten 1980 |
 | `platelet_count_term_x10e9_per_l` | Platelets at term | 220 | B | shipped | Hytten 1980 |
 | `wbc_count_term_x10e9_per_l` | WBC at term | 10.5 | B | shipped | Hytten 1980 |
-| `d_dimer_term_ug_per_ml` | D-dimer at term | 1.5 | B | phase1 | Kline 2005 |
+| `d_dimer_term_ug_per_ml` | D-dimer at term | 1.5 | B | shipped | Kline 2005 |
 | `factor_ix_term_pct` | Factor IX activity | 130 | B | phase2 | Stirling 1984 |
 | `factor_x_term_pct` | Factor X activity | 145 | B | phase2 | Stirling 1984 |
 | `factor_xii_term_pct` | Factor XII activity | 160 | B | phase2 | Stirling 1984 |
@@ -180,7 +180,7 @@ pregnancy.
 | `filtration_fraction_term` | FF at term | 0.18 | B | shipped | Cheung 2013 |
 | `plasma_osmolality_drop_mosm_per_kg` | Osmolality drop | 10 | A | shipped | Davison 1981 |
 | `plasma_sodium_drop_meq_per_l` | Sodium drop | 5 | A | shipped | Davison 1981 |
-| `cumulative_sodium_retention_g` | Total Na retained | 1.0 | B | phase1 | Cheung 2013 |
+| `cumulative_sodium_retention_g` | Total Na retained | 1.0 | B | shipped | Cheung 2013 |
 | `bun_term_mg_per_dl` | Term BUN | 8 | A | shipped | Cheung 2013 |
 | `plasma_uric_acid_nadir_mg_per_dl` | Mid-pregnancy uric-acid nadir | 3 | B | shipped | Cheung 2013 |
 | `plasma_uric_acid_term_mg_per_dl` | Term uric acid | 4.5 | B | shipped | Cheung 2013 |
@@ -266,8 +266,8 @@ in human biology — ~300 km in a term placenta.
 | `growth_rate_per_week` | Logistic rate | 0.2 | B | shipped | Mayhew 2014 |
 | `midpoint_week` | Logistic midpoint | 24 | B | shipped | Mayhew 2014 |
 | `term_weight_g` | Placental weight at term | 470 | A | shipped | Thompson 2007 |
-| `placental_thickness_term_cm` | Placental thickness | 2.5 | B | phase1 | Hoddick 1985 |
-| `cord_length_term_cm` | Term cord length | 55 | A | phase1 | Naeye 1985 |
+| `placental_thickness_term_cm` | Placental thickness | 2.5 | B | shipped | Hoddick 1985 |
+| `cord_length_term_cm` | Term cord length | 55 | A | shipped | Naeye 1985 |
 | `cotyledon_count` | Number of cotyledons | 18 | B | phase2 | Benirschke 2012 |
 | `villous_capillary_length_total_km_term` | Total capillary length | 300 | C | shipped | Mayhew 2014 |
 | `intervillous_space_volume_term_ml` | IVS volume at term | 175 | C | shipped | Mayhew 2014 |
@@ -482,14 +482,14 @@ modestly as fetal urine dominates the source.
 
 ## 4. Citation catalog (full)
 
-The dataset already contains **58 citations**. The lists below are
+The dataset already contains **60 citations**. The lists below are
 the original catalog plan; ✓ marks citations that have since landed.
 Each remaining new citation must pass the Crossref-metadata audit
 before merge.
 
 ### Phase 1 citations (~6 new)
 
-- Kline 2005 — D-dimer in pregnancy
+- ✓ Kline 2005 — D-dimer in pregnancy
 - Larsson 2008 — serum proteins in pregnancy *(superseded; albumin/total protein parameters are sourced from Hytten 1980 instead)*
 - Pitkin 1979 — WBC in pregnancy *(superseded; WBC parameter is sourced from Hytten 1980 instead)*
 - ✓ Templeton 1976 — blood gases in pregnancy
@@ -510,8 +510,8 @@ before merge.
 - ✓ Cole 2010 — hCG kinetics
 - ✓ Handwerger 2010 — hPL
 - ✓ Tulchinsky 1972 — steroid hormones in pregnancy
-- Hoddick 1985 — placental thickness ultrasound
-- Naeye 1985 — umbilical cord length
+- ✓ Hoddick 1985 — placental thickness ultrasound
+- ✓ Naeye 1985 — umbilical cord length
 - ✓ Mayhew 1986 — placental diffusing capacity
 - Carter 2011 — pre-IVS spiral artery PO₂
 - Cleal 2008 — placental glucose flux *(superseded; sourced from Illsley 2000)*

@@ -606,5 +606,33 @@
       "reviewer": "v0.4-phase-c-hypothesis-only"
     },
     "notes": "Hypothesis-only Tier D parameter."
+  },
+  {
+    "id": "maternal_blood.d_dimer_term_ug_per_ml",
+    "name": "Plasma D-dimer at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 1.5,
+      "low": 0.7,
+      "high": 2.5,
+      "units": "ug/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Kline et al. 2005 Clin Chem: D-dimer rises monotonically across normal pregnancy, with third-trimester medians around 1.5 μg/mL (~3× the conventional non-pregnant VTE-exclusion threshold of 0.5 μg/mL). Replicated across multiple obstetric haematology series; the Kline data are widely cited as the basis for revised pregnancy-specific D-dimer thresholds.",
+    "citations": [
+      "kline-2005-d-dimer"
+    ],
+    "primary_citation": "kline-2005-d-dimer",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase1-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Distribution is broad and right-skewed; the non-pregnant VTE-exclusion threshold (0.5 μg/mL) is not useful in pregnancy."
   }
 ]

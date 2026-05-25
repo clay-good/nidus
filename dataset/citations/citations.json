@@ -393,6 +393,22 @@
     "type": "journal-article",
     "year": 1991
   },
+  "hoddick-1985-placental-thickness": {
+    "authors": [
+      "Hoddick WK",
+      "Mahony BS",
+      "Callen PW",
+      "Filly RA"
+    ],
+    "doi": "10.7863/jum.1985.4.9.479",
+    "journal": "Journal of Ultrasound in Medicine",
+    "key": "hoddick-1985-placental-thickness",
+    "notes": "Ultrasound reference series for normal placental thickness across gestation; term mean ~2.5 cm. Source for placental_structure.placental_thickness_term_cm.",
+    "pmid": "3897572",
+    "title": "Placental thickness",
+    "type": "journal-article",
+    "year": 1985
+  },
   "hunter-robson-1992-cardiac-output": {
     "authors": [
       "Hunter S",
@@ -559,6 +575,19 @@
     "title": "Morphomics: An integral part of systems biology of the human placenta",
     "type": "journal-article",
     "year": 2015
+  },
+  "naeye-1985-cord-length": {
+    "authors": [
+      "Naeye RL"
+    ],
+    "doi": "10.1016/s0022-3476(85)80149-9",
+    "journal": "The Journal of Pediatrics",
+    "key": "naeye-1985-cord-length",
+    "notes": "Large clinicopathological series establishing population distribution of umbilical cord length; mean ~55 cm, conventional short/long cord thresholds <35 cm / >80 cm drawn from the same series. Source for placental_structure.cord_length_term_cm.",
+    "pmid": "4020556",
+    "title": "Umbilical cord length: clinical significance",
+    "type": "journal-article",
+    "year": 1985
   },
   "pitkin-1979-wbc": {
     "authors": [
