@@ -9,6 +9,14 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Coagulation panel completion (spec 04 Phase 2):** 6 new
+  parameters (factor IX/X/XII, free protein S, protein C,
+  antithrombin) backed by 2 new citations (Stirling 1984, Faught
+  1995). Dataset now at 229 parameters / 62 citations; spec-04
+  Phase 2 column is fully shipped. See
+  [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for per-parameter
+  detail.
+
 - **Dataset Phase 2/3 saturation batch (spec 04):** 11 more
   parameters across maternal_blood, maternal_renal,
   placental_structure, placental_gas_exchange, and fetal_circulation,

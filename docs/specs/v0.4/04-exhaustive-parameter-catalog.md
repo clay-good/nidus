@@ -13,9 +13,8 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**223 parameters / 60 citations**. All "phase 1" items have
-shipped; phase 2 is nearly complete; phase 3 is the remaining
-residual. The "Status" column on each subsystem table is the source
+**229 parameters / 62 citations**. All "phase 1" items have
+shipped; phase 2 is complete; phase 3 is the remaining residual. The "Status" column on each subsystem table is the source
 of truth.
 
 This spec extends `02-parameter-expansion-roadmap.md` from a *planning*
@@ -133,12 +132,12 @@ S, antithrombin). Iron and folate stores drop. WBC count rises.
 | `platelet_count_term_x10e9_per_l` | Platelets at term | 220 | B | shipped | Hytten 1980 |
 | `wbc_count_term_x10e9_per_l` | WBC at term | 10.5 | B | shipped | Hytten 1980 |
 | `d_dimer_term_ug_per_ml` | D-dimer at term | 1.5 | B | shipped | Kline 2005 |
-| `factor_ix_term_pct` | Factor IX activity | 130 | B | phase2 | Stirling 1984 |
-| `factor_x_term_pct` | Factor X activity | 145 | B | phase2 | Stirling 1984 |
-| `factor_xii_term_pct` | Factor XII activity | 160 | B | phase2 | Stirling 1984 |
-| `protein_s_free_term_pct` | Free protein S | 45 | B | phase2 | Faught 1995 |
-| `protein_c_term_pct` | Protein C activity | 100 | B | phase2 | Faught 1995 |
-| `antithrombin_term_pct` | Antithrombin activity | 95 | B | phase2 | Faught 1995 |
+| `factor_ix_term_pct` | Factor IX activity | 130 | B | shipped | Stirling 1984 |
+| `factor_x_term_pct` | Factor X activity | 145 | B | shipped | Stirling 1984 |
+| `factor_xii_term_pct` | Factor XII activity | 160 | B | shipped | Stirling 1984 |
+| `protein_s_free_term_pct` | Free protein S | 45 | B | shipped | Faught 1995 |
+| `protein_c_term_pct` | Protein C activity | 100 | B | shipped | Faught 1995 |
+| `antithrombin_term_pct` | Antithrombin activity | 95 | B | shipped | Faught 1995 |
 | `pai1_term_ng_per_ml` | PAI-1 at term | 80 | C | phase3 | Kruithof 1987 |
 | `pai2_term_ng_per_ml` | PAI-2 at term | 250 | C | phase3 | Kruithof 1987 |
 | `serum_albumin_term_g_per_dl` | Albumin at term | 3.0 | B | shipped | Hytten 1980 |
@@ -498,8 +497,8 @@ before merge.
 
 ### Phase 2 citations (~25 new)
 
-- Stirling 1984 — clotting factors longitudinal
-- Faught 1995 — protein S/C/AT in pregnancy
+- ✓ Stirling 1984 — clotting factors longitudinal
+- ✓ Faught 1995 — protein S/C/AT in pregnancy
 - ✓ Davison 1981 — osmoregulation in pregnancy
 - Higby 1994 — 24h urinary protein normal pregnancy *(superseded; sourced from Cheung 2013)*
 - ✓ Carr 1981 — cortisol/CBG in pregnancy

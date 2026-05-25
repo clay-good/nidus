@@ -718,5 +718,173 @@
       "population": "Healthy singleton pregnancies, third trimester"
     },
     "notes": "Serum B12 alone misclassifies pregnancy as deficient; second-line metabolic markers are more specific."
+  },
+  {
+    "id": "maternal_blood.factor_ix_term_pct",
+    "name": "Coagulation factor IX activity at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 130,
+      "low": 110,
+      "high": 160,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Stirling et al. 1984 Thromb Haemost longitudinal haemostasis-in-pregnancy series: factor IX activity rises modestly (~30%) over baseline by term, contributing to the pregnancy hypercoagulable state alongside the larger factor VII/VIII/fibrinogen rises. Replicated across modern pregnancy-coagulation series.",
+    "citations": [
+      "stirling-1984-coagulation-factors"
+    ],
+    "primary_citation": "stirling-1984-coagulation-factors",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Expressed as % of mean normal pooled non-pregnant adult plasma activity."
+  },
+  {
+    "id": "maternal_blood.factor_x_term_pct",
+    "name": "Coagulation factor X activity at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 145,
+      "low": 120,
+      "high": 180,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Stirling et al. 1984 Thromb Haemost: factor X activity rises ~45% above non-pregnant baseline by term. Together with factor VII (~70% rise) and factor IX (~30% rise) this drives the pregnancy-induced procoagulant shift; PT is therefore shortened modestly in normal pregnancy.",
+    "citations": [
+      "stirling-1984-coagulation-factors"
+    ],
+    "primary_citation": "stirling-1984-coagulation-factors",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Expressed as % of mean normal pooled non-pregnant adult plasma activity."
+  },
+  {
+    "id": "maternal_blood.factor_xii_term_pct",
+    "name": "Coagulation factor XII activity at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 160,
+      "low": 130,
+      "high": 200,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Stirling et al. 1984 Thromb Haemost: contact-pathway factor XII rises ~60% above non-pregnant baseline by term, paralleling the broader procoagulant shift. Less clinically central than the VII/VIII/X/fibrinogen rises but consistent across pregnancy-haemostasis longitudinal series.",
+    "citations": [
+      "stirling-1984-coagulation-factors"
+    ],
+    "primary_citation": "stirling-1984-coagulation-factors",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Expressed as % of mean normal pooled non-pregnant adult plasma activity."
+  },
+  {
+    "id": "maternal_blood.protein_s_free_term_pct",
+    "name": "Free protein S activity at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 45,
+      "low": 30,
+      "high": 60,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Faught et al. 1995 Am J Obstet Gynecol longitudinal cohort: free protein S falls substantially through pregnancy (~50% by term, occasionally lower) under oestrogen-driven C4b-binding-protein increase. This is the dominant anticoagulant-system change in pregnancy and contributes meaningfully to the increased VTE risk. Replicated across modern obstetric haemostasis series.",
+    "citations": [
+      "faught-1995-protein-s-c"
+    ],
+    "primary_citation": "faught-1995-protein-s-c",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Pregnancy reference ranges for free protein S are substantially lower than the non-pregnant range; many laboratories report a pregnancy-specific lower limit."
+  },
+  {
+    "id": "maternal_blood.protein_c_term_pct",
+    "name": "Protein C activity at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 100,
+      "low": 80,
+      "high": 130,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Faught et al. 1995 Am J Obstet Gynecol: protein C activity is essentially unchanged in normal pregnancy (~100%). The pregnancy-induced anticoagulant deficit therefore arises primarily through the protein-S fall rather than a protein-C fall.",
+    "citations": [
+      "faught-1995-protein-s-c"
+    ],
+    "primary_citation": "faught-1995-protein-s-c",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Expressed as % of mean normal pooled non-pregnant adult plasma activity."
+  },
+  {
+    "id": "maternal_blood.antithrombin_term_pct",
+    "name": "Antithrombin activity at term",
+    "subsystem": "maternal_blood",
+    "value": {
+      "central": 95,
+      "low": 80,
+      "high": 110,
+      "units": "%",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Faught et al. 1995 Am J Obstet Gynecol and the broader pregnancy-haemostasis literature: antithrombin activity is essentially unchanged in normal pregnancy (~95% of non-pregnant baseline). Significant fall (<60%) suggests acquired AT consumption (DIC, severe pre-eclampsia) rather than physiology.",
+    "citations": [
+      "faught-1995-protein-s-c"
+    ],
+    "primary_citation": "faught-1995-protein-s-c",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase2-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Antithrombin is the headline non-protein-S anticoagulant; preserved AT plus depressed free protein S is the typical pregnancy fingerprint."
   }
 ]

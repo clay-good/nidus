@@ -871,5 +871,37 @@
     "title": "Fetal lung liquid: secretion and reabsorption",
     "type": "journal-article",
     "year": 1991
+  },
+  "stirling-1984-coagulation-factors": {
+    "authors": [
+      "Stirling Y",
+      "Woolf L",
+      "North WR",
+      "Seghatchian MJ",
+      "Meade TW"
+    ],
+    "journal": "Thrombosis and Haemostasis",
+    "key": "stirling-1984-coagulation-factors",
+    "notes": "Longitudinal coagulation-factor activity series across normal pregnancy: factors VII, VIII, IX, X, XII all rise; basis for the pregnancy-induced procoagulant shift. Source for maternal_blood.factor_ix/x/xii_term_pct (and corroborates the existing factor_vii/viii entries).",
+    "pmid": "6084322",
+    "title": "Haemostasis in normal pregnancy",
+    "type": "journal-article",
+    "year": 1984
+  },
+  "faught-1995-protein-s-c": {
+    "authors": [
+      "Faught W",
+      "Garner P",
+      "Jones G",
+      "Ivey B"
+    ],
+    "doi": "10.1016/0002-9378(95)90104-3",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "faught-1995-protein-s-c",
+    "notes": "Longitudinal cohort: free protein S falls substantially through pregnancy; protein C and antithrombin essentially unchanged. Source for maternal_blood.protein_s_free_term_pct, protein_c_term_pct, antithrombin_term_pct.",
+    "pmid": "7847526",
+    "title": "Changes in protein C and protein S levels in normal pregnancy",
+    "type": "journal-article",
+    "year": 1995
   }
 }

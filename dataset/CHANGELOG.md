@@ -8,6 +8,13 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Coagulation panel completion (spec 04 Phase 2): 6 new parameters
+  + 2 new citations (Stirling 1984, Faught 1995), bringing the
+  dataset to **229 parameters / 62 citations**. Closes the spec-04
+  Phase 2 column.
+  - `maternal_blood.factor_ix/x/xii_term_pct` (Stirling 1984).
+  - `maternal_blood.protein_s_free_term_pct`,
+    `protein_c_term_pct`, `antithrombin_term_pct` (Faught 1995).
 - Phase 2/3 saturation batch (spec 04): 11 more parameters using
   citations already in the dataset; brings the dataset to **223
   parameters / 60 citations**.
