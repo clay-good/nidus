@@ -144,5 +144,33 @@
     },
     "primary_citation": "brace-1989-amniotic-fluid",
     "notes": "Single-fit value, not from a meta-analysis. The downstream submodel inherits Tier C from this parameter."
+  },
+  {
+    "id": "amniotic_fluid.fetal_swallowing_term_ml_per_24h",
+    "name": "Fetal swallowing rate at term",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 700,
+      "low": 200,
+      "high": 1500,
+      "units": "mL/24h",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "C",
+    "tier_rationale": "Tier C from Pritchard 1966 (the classical paper on fetal swallowing and amniotic-fluid volume) and subsequent ultrasound estimates: term fetal swallowing volume is highly variable but centres ~500–1000 mL/24h, comparable in magnitude to fetal urine output. The wide range reflects both true variability and the difficulty of measurement — most modern estimates derive from indirect methods.",
+    "citations": [
+      "pritchard-1966-fetal-swallowing"
+    ],
+    "primary_citation": "pritchard-1966-fetal-swallowing",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Swallowing matches urine output to a first approximation; the small residual (intra-membranous + transmembranous absorption) keeps AFV roughly constant week-to-week."
   }
 ]

@@ -8,6 +8,14 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- Phase 3 batch (spec 04): 3 new parameters + 3 new citations,
+  bringing the dataset to **236 parameters / 67 citations**.
+  - `placental_endocrine.leptin_term_ng_per_ml` (Hardie 1997 —
+    new citation).
+  - `placental_structure.cotyledon_count` (Benirschke, Burton &
+    Baergen 2012 — new textbook citation).
+  - `amniotic_fluid.fetal_swallowing_term_ml_per_24h` (Pritchard
+    1966 — new citation).
 - Phase 3 fibrinolysis + spiral-artery batch (spec 04): 4 new
   parameters + 2 new citations, bringing the dataset to **233
   parameters / 64 citations**.

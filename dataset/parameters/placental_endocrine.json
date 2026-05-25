@@ -266,5 +266,33 @@
       "population": "Healthy singleton pregnancies, first trimester (peak around weeks 10–12)"
     },
     "notes": "T1 peak corresponds to corpus-luteum dominance; placental contribution is small."
+  },
+  {
+    "id": "placental_endocrine.leptin_term_ng_per_ml",
+    "name": "Serum leptin at term",
+    "subsystem": "placental_endocrine",
+    "value": {
+      "central": 30,
+      "low": 15,
+      "high": 60,
+      "units": "ng/mL",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Hardie et al. 1997 Clin Endocrinol longitudinal cohort: serum leptin rises ~2–3× pre-pregnancy values across gestation, peaking in T3 at ~30 ng/mL. Both adipocyte and placental sources contribute (placenta expresses leptin). Replicated across modern pregnancy leptin studies; the central value scales with maternal BMI.",
+    "citations": [
+      "hardie-1997-leptin"
+    ],
+    "primary_citation": "hardie-1997-leptin",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies, third trimester"
+    },
+    "notes": "Leptin falls rapidly after delivery — consistent with the substantial placental contribution to circulating levels in pregnancy."
   }
 ]

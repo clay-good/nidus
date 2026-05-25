@@ -516,5 +516,33 @@
       "population": "Healthy singleton pregnancies at term"
     },
     "notes": "The dilation factor (~5×) translates by Poiseuille to a >500× drop in single-vessel resistance — the mechanism behind the pregnancy-induced uterine vasodilation."
+  },
+  {
+    "id": "placental_structure.cotyledon_count",
+    "name": "Number of placental cotyledons at term",
+    "subsystem": "placental_structure",
+    "value": {
+      "central": 18,
+      "low": 10,
+      "high": 30,
+      "units": "count",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Benirschke, Burton & Baergen 2012 'Pathology of the Human Placenta' (6th ed.), the standard reference for human placental anatomy: term human placentas show ~10–30 cotyledons (functional fetomaternal vascular units), with a typical count near 18. Variability in counting convention (gross vs stereological) is the main source of spread.",
+    "citations": [
+      "benirschke-2012-placental-pathology"
+    ],
+    "primary_citation": "benirschke-2012-placental-pathology",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Each cotyledon is supplied by ~1–4 spiral arteries; the count relates loosely to the spiral-artery count parameter."
   }
 ]

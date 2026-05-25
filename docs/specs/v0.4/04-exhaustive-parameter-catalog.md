@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**233 parameters / 64 citations**. All "phase 1" items have
+**236 parameters / 67 citations**. All "phase 1" items have
 shipped; phase 2 is complete; phase 3 is the remaining residual. The "Status" column on each subsystem table is the source
 of truth.
 
@@ -267,7 +267,7 @@ in human biology — ~300 km in a term placenta.
 | `term_weight_g` | Placental weight at term | 470 | A | shipped | Thompson 2007 |
 | `placental_thickness_term_cm` | Placental thickness | 2.5 | B | shipped | Hoddick 1985 |
 | `cord_length_term_cm` | Term cord length | 55 | A | shipped | Naeye 1985 |
-| `cotyledon_count` | Number of cotyledons | 18 | B | phase2 | Benirschke 2012 |
+| `cotyledon_count` | Number of cotyledons | 18 | B | shipped | Benirschke 2012 |
 | `villous_capillary_length_total_km_term` | Total capillary length | 300 | C | shipped | Mayhew 2014 |
 | `intervillous_space_volume_term_ml` | IVS volume at term | 175 | C | shipped | Mayhew 2014 |
 | `placenta_to_fetus_weight_ratio_term` | PW/FW ratio at term | 0.17 | B | shipped | Hutcheon 2012 |
@@ -346,7 +346,7 @@ co-production (placenta lacks 16α-hydroxylase).
 | `estradiol_term_ng_per_ml` | Estradiol term | 14 | A | shipped | Tulchinsky 1972 |
 | `estriol_term_ng_per_ml` | Estriol term | 10 | A | shipped | Tulchinsky 1972 |
 | `relaxin_t1_ng_per_ml` | Relaxin in T1 | 1.0 | B | shipped | Conrad 2001 |
-| `leptin_term_ng_per_ml` | Leptin at term | 30 | B | phase3 | Hardie 1997 |
+| `leptin_term_ng_per_ml` | Leptin at term | 30 | B | shipped | Hardie 1997 |
 
 **Citations needed:** Cole 2010, Handwerger 2010, Tulchinsky 1972,
 Hardie 1997.
@@ -475,7 +475,7 @@ modestly as fetal urine dominates the source.
 | `af_lactate_term_mmol_per_l` | AF lactate term | 4 | B | phase3 | Magann 2007 |
 | `af_creatinine_term_mg_per_dl` | AF creatinine term | 2.0 | B | phase3 | Magann 2007 |
 | `af_osmolality_term_mosm_per_kg` | AF osmolality | 260 | B | phase3 | Magann 2007 |
-| `fetal_swallowing_term_ml_per_24h` | Fetal swallow rate | 700 | C | phase3 | Pritchard 1966 |
+| `fetal_swallowing_term_ml_per_24h` | Fetal swallow rate | 700 | C | shipped | Pritchard 1966 |
 
 **Citations needed:** Brace 1989, Magann 2007, Pritchard 1966.
 
@@ -529,17 +529,17 @@ before merge.
 - Robson 1989 *Br Heart J* — LV mass in pregnancy *(superseded; sourced from Sanghavi 2014)*
 - ✓ Crapo 1996 — DLCO reference
 - Eriksson 1989 — placental GH
-- Benirschke 2012 — placental anatomy textbook
+- ✓ Benirschke 2012 — placental anatomy textbook
 - ✓ Pijnenborg 2006 — spiral artery anatomy
 - ✓ Sutton 1991 — fetal aortic isthmus
 - ✓ Mari 1995 — MCA Doppler
 - ✓ Acharya 2005 — umbilical artery PI
-- Hardie 1997 — leptin in pregnancy
+- ✓ Hardie 1997 — leptin in pregnancy
 - Economides 1989 — fetal endocrine
 - Murphy 1973 — fetal cortisol
 - Asakura 2004 — fetal temperature *(superseded; sourced from Battaglia 1986)*
 - Magann 2007 — amniotic fluid chemistry
-- Pritchard 1966 — fetal swallowing
+- ✓ Pritchard 1966 — fetal swallowing
 
 ### Additional citations landed (outside the original phase plan)
 

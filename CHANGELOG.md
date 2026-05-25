@@ -9,6 +9,13 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Phase 3 batch (spec 04):** 3 new parameters (term leptin,
+  cotyledon count, fetal swallowing rate) backed by 3 new citations
+  (Hardie 1997, Benirschke 2012, Pritchard 1966). Dataset now at
+  236 parameters / 67 citations. See
+  [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for per-parameter
+  detail.
+
 - **Phase 3 fibrinolysis + spiral-artery batch (spec 04):** 4 new
   parameters (PAI-1, PAI-2, spiral-artery count, remodelled spiral-
   artery diameter at term) backed by 2 new citations (Kruithof 1987,

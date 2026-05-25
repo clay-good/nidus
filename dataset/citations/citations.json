@@ -922,6 +922,49 @@
     "type": "journal-article",
     "year": 2006
   },
+  "hardie-1997-leptin": {
+    "authors": [
+      "Hardie L",
+      "Trayhurn P",
+      "Abramovich D",
+      "Fowler P"
+    ],
+    "doi": "10.1046/j.1365-2265.1997.2441017.x",
+    "journal": "Clinical Endocrinology",
+    "key": "hardie-1997-leptin",
+    "notes": "Longitudinal study of circulating leptin across menstrual cycle and pregnancy; leptin rises ~2–3× through gestation, peak in T3. Source for placental_endocrine.leptin_term_ng_per_ml.",
+    "pmid": "9302378",
+    "title": "Circulating leptin in women: a longitudinal study in the menstrual cycle and during pregnancy",
+    "type": "journal-article",
+    "year": 1997
+  },
+  "pritchard-1966-fetal-swallowing": {
+    "authors": [
+      "Pritchard JA"
+    ],
+    "journal": "Obstetrics and Gynecology",
+    "key": "pritchard-1966-fetal-swallowing",
+    "notes": "Classical paper establishing the role of fetal swallowing in regulating amniotic fluid volume. Source for amniotic_fluid.fetal_swallowing_term_ml_per_24h.",
+    "pmid": "5921593",
+    "title": "Fetal swallowing and amniotic fluid volume",
+    "type": "journal-article",
+    "year": 1966
+  },
+  "benirschke-2012-placental-pathology": {
+    "authors": [
+      "Benirschke K",
+      "Burton GJ",
+      "Baergen RN"
+    ],
+    "doi": "10.1007/978-3-642-23941-0",
+    "isbn": "978-3-642-23940-3",
+    "key": "benirschke-2012-placental-pathology",
+    "notes": "Standard textbook of human placental pathology and anatomy (6th ed.). Source for placental_structure.cotyledon_count and general anatomical norms.",
+    "publisher": "Springer",
+    "title": "Pathology of the Human Placenta",
+    "type": "book",
+    "year": 2012
+  },
   "faught-1995-protein-s-c": {
     "authors": [
       "Faught W",
