@@ -13,9 +13,13 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**239 parameters / 70 citations**. All "phase 1" items have
-shipped; phase 2 is complete; phase 3 is the remaining residual. The "Status" column on each subsystem table is the source
-of truth.
+**243 parameters / 71 citations** — every row in §3 is now
+`shipped`. The structural catalog work is therefore *complete*;
+further growth means new parameters not yet listed below (open an
+issue) or improving `extraction.review_status` from `unverified` to
+`verified` on existing entries via human-with-PDF audits. The
+"Status" column on each subsystem table remains the source of
+truth.
 
 This spec extends `02-parameter-expansion-roadmap.md` from a *planning*
 document (phased, with rationale per gap) to a *catalog* document
@@ -471,13 +475,16 @@ modestly as fetal urine dominates the source.
 | `afv_20w_ml` | AFV at 20w | 350 | A | shipped | Brace 1989 |
 | `afv_early_baseline_ml` | AFV early-pregnancy baseline | 50 | B | shipped | Brace 1989 |
 | `afv_spread_weeks` | AFV piecewise spread | 4 | C | shipped | Brace 1989 |
-| `af_glucose_term_mmol_per_l` | AF glucose term | 0.5 | B | phase3 | Magann 2007 |
-| `af_lactate_term_mmol_per_l` | AF lactate term | 4 | B | phase3 | Magann 2007 |
-| `af_creatinine_term_mg_per_dl` | AF creatinine term | 2.0 | B | phase3 | Magann 2007 |
-| `af_osmolality_term_mosm_per_kg` | AF osmolality | 260 | B | phase3 | Magann 2007 |
+| `af_glucose_term_mmol_per_l` | AF glucose term | 0.5 | B | shipped | Underwood 2005 |
+| `af_lactate_term_mmol_per_l` | AF lactate term | 4 | B | shipped | Underwood 2005 |
+| `af_creatinine_term_mg_per_dl` | AF creatinine term | 2.0 | B | shipped | Underwood 2005 |
+| `af_osmolality_term_mosm_per_kg` | AF osmolality | 260 | B | shipped | Underwood 2005 |
 | `fetal_swallowing_term_ml_per_24h` | Fetal swallow rate | 700 | C | shipped | Pritchard 1966 |
 
-**Citations needed:** Brace 1989, Magann 2007, Pritchard 1966.
+**Citations needed:** none. Brace 1989, Underwood 2005, and
+Pritchard 1966 cover the subsystem (Underwood 2005 substituted for
+the originally-planned Magann 2007 AF-chemistry citation, whose
+precise identity could not be verified).
 
 ## 4. Citation catalog (full)
 
@@ -538,7 +545,7 @@ before merge.
 - ✓ Economides 1989 — fetal endocrine
 - ✓ Murphy 1973 — fetal cortisol
 - Asakura 2004 — fetal temperature *(superseded; sourced from Battaglia 1986)*
-- Magann 2007 — amniotic fluid chemistry
+- ✓ Underwood 2005 — amniotic-fluid biochemistry review (substituted for the originally-listed Magann 2007, whose precise AF-chemistry paper could not be verified)
 - ✓ Pritchard 1966 — fetal swallowing
 
 ### Additional citations landed (outside the original phase plan)

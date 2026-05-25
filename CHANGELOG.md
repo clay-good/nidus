@@ -9,6 +9,17 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Amniotic-fluid chemistry completion (spec 04):** 4 new
+  parameters (AF glucose, lactate, creatinine, osmolality at term)
+  + 1 new citation (Underwood, Gilbert & Sherman 2005 J Perinatol,
+  substituted for the originally-planned Magann 2007). This closes
+  out the spec-04 catalog with **every row now `shipped`**; dataset
+  stands at 243 parameters / 71 citations. Further growth means new
+  parameters not yet enumerated by the catalog or upgrading
+  `unverified` → `verified` on existing entries. See
+  [`dataset/CHANGELOG.md`](dataset/CHANGELOG.md) for per-parameter
+  detail.
+
 - **Phase 3 fetal/placental endocrine batch (spec 04):** 3 new
   parameters (placental GH at term, fetal insulin at term, fetal
   cortisol at term) backed by 3 new citations (Eriksson 1989,

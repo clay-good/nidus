@@ -172,5 +172,117 @@
       "population": "Healthy singleton pregnancies at term"
     },
     "notes": "Swallowing matches urine output to a first approximation; the small residual (intra-membranous + transmembranous absorption) keeps AFV roughly constant week-to-week."
+  },
+  {
+    "id": "amniotic_fluid.af_glucose_term_mmol_per_l",
+    "name": "Amniotic fluid glucose at term",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 0.5,
+      "low": 0.2,
+      "high": 1.0,
+      "units": "mmol/L",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Underwood, Gilbert & Sherman 2005 J Perinatol review of amniotic-fluid biochemistry (and the broader AF-composition literature it summarises): AF glucose falls from early-pregnancy values close to maternal serum to ~0.5 mmol/L (about 10% of maternal) at term, reflecting the increasing fraction of AF that originates as fetal urine. AF glucose <0.2 mmol/L raises concern for intra-amniotic infection.",
+    "citations": [
+      "underwood-2005-amniotic-fluid"
+    ],
+    "primary_citation": "underwood-2005-amniotic-fluid",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Low AF glucose alongside elevated AF lactate is the classical biochemical signature of chorioamnionitis."
+  },
+  {
+    "id": "amniotic_fluid.af_lactate_term_mmol_per_l",
+    "name": "Amniotic fluid lactate at term",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 4,
+      "low": 2,
+      "high": 7,
+      "units": "mmol/L",
+      "distribution": "lognormal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Underwood, Gilbert & Sherman 2005 J Perinatol review of AF biochemistry: AF lactate at term centres ~3–5 mmol/L (roughly 3× maternal arterial), reflecting fetal/placental anaerobic metabolism and limited clearance from the amniotic compartment. Elevated values (>10 mmol/L) suggest intra-amniotic infection or fetal hypoxia.",
+    "citations": [
+      "underwood-2005-amniotic-fluid"
+    ],
+    "primary_citation": "underwood-2005-amniotic-fluid",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Reference range is wide; mode of delivery (labour) and time-to-assay both shift the measurement."
+  },
+  {
+    "id": "amniotic_fluid.af_creatinine_term_mg_per_dl",
+    "name": "Amniotic fluid creatinine at term",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 2.0,
+      "low": 1.5,
+      "high": 3.0,
+      "units": "mg/dL",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Underwood, Gilbert & Sherman 2005 J Perinatol AF biochemistry review (and earlier obstetric biochemistry literature it summarises): AF creatinine rises through pregnancy as fetal renal contribution dominates, reaching ~2 mg/dL at term — historically used as a fetal-maturity marker before lecithin/sphingomyelin replaced it.",
+    "citations": [
+      "underwood-2005-amniotic-fluid"
+    ],
+    "primary_citation": "underwood-2005-amniotic-fluid",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Term AF creatinine substantially exceeds maternal serum (~0.6 mg/dL), confirming the fetal-urine dominance of AF in late gestation."
+  },
+  {
+    "id": "amniotic_fluid.af_osmolality_term_mosm_per_kg",
+    "name": "Amniotic fluid osmolality at term",
+    "subsystem": "amniotic_fluid",
+    "value": {
+      "central": 260,
+      "low": 240,
+      "high": 280,
+      "units": "mOsm/kg",
+      "distribution": "normal",
+      "ci": 0.683
+    },
+    "tier": "B",
+    "tier_rationale": "Tier B from Underwood, Gilbert & Sherman 2005 J Perinatol AF biochemistry review: AF osmolality at term centres ~260 mOsm/kg, ~25 mOsm/kg below maternal plasma, owing to the dominant contribution of dilute fetal urine. Early-pregnancy AF is approximately isotonic; the fall is gradual through T2/T3.",
+    "citations": [
+      "underwood-2005-amniotic-fluid"
+    ],
+    "primary_citation": "underwood-2005-amniotic-fluid",
+    "extraction": {
+      "review_status": "unverified",
+      "date": "2026-05-25",
+      "reviewer": "phase3-saturation"
+    },
+    "applicability": {
+      "population": "Healthy singleton pregnancies at term"
+    },
+    "notes": "Loss of the hypotonicity (osmolality rising toward maternal plasma) suggests rupture-of-membranes contamination or ascending infection."
   }
 ]

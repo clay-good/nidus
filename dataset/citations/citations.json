@@ -1009,6 +1009,21 @@
     "type": "journal-article",
     "year": 1973
   },
+  "underwood-2005-amniotic-fluid": {
+    "authors": [
+      "Underwood MA",
+      "Gilbert WM",
+      "Sherman MP"
+    ],
+    "doi": "10.1038/sj.jp.7211290",
+    "journal": "Journal of Perinatology",
+    "key": "underwood-2005-amniotic-fluid",
+    "notes": "Standard review of amniotic-fluid biochemistry, dynamics, and clinical significance across gestation. Source for amniotic_fluid.af_glucose/lactate/creatinine/osmolality_term parameters.",
+    "pmid": "15861199",
+    "title": "Amniotic fluid: not just fetal urine anymore",
+    "type": "journal-article",
+    "year": 2005
+  },
   "faught-1995-protein-s-c": {
     "authors": [
       "Faught W",
