@@ -264,8 +264,8 @@ Pages:
 1. **Home** — what nidus is, how to cite (DOI), tier system, link to dataset and blog essay.
 2. **Parameter Explorer** — searchable, filterable table; row click → detail view.
 3. **Subsystem Deep-Dive** — one page per subsystem; tier distribution, citation density.
-4. **Trajectory Viewer** — pick parameter → plot week-by-week central + uncertainty band; tier badge; citation list.
-5. **Sensitivity Sandbox** — pick parameter, vary ±X%, plot downstream effect. Pure NumPy/SciPy.
+4. **Trajectory Viewer** — pick a mechanistic submodel → plot its trajectory across 8–40 weeks; tier badge for the worst-tier input; per-parameter detail with citations. Backed by `nidus.export.evaluate_submodel`, which binds 21 time-trajectory submodels to their reference kernels. Algebraic / multivariate submodels are listed with mathematical form but not plotted.
+5. **Sensitivity Sandbox** — pick a submodel + an input parameter, sweep it ±X%, plot the trajectory family. Same kernel binding; uses `evaluate_submodel(..., overrides=...)` so the sweep is one-line.
 6. **Citation Provenance** — citation → list of supported parameters, and inverse.
 7. **Unknowns Registry** — Tier D entries as structured research questions.
 8. **Download** — full dataset (ZIP), per-subsystem subsets, BibTeX, COMBINE archive (if/when Spec 02 ships).

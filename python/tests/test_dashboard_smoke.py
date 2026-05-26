@@ -32,6 +32,8 @@ PAGES = [
     _DASHBOARD / "pages" / "03_Citation_Provenance.py",
     _DASHBOARD / "pages" / "04_Unknowns_Registry.py",
     _DASHBOARD / "pages" / "05_Download.py",
+    _DASHBOARD / "pages" / "06_Trajectory_Viewer.py",
+    _DASHBOARD / "pages" / "07_Sensitivity_Sandbox.py",
 ]
 
 

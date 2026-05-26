@@ -122,14 +122,9 @@ st.markdown(
     "- **Subsystem Deep-Dive** — tier mix and key citations per subsystem\n"
     "- **Citation Provenance** — two-way lookup between papers and parameters\n"
     "- **Unknowns Registry** — Tier-D entries as structured research questions\n"
-    "- **Download** — full dataset ZIP, per-subsystem JSON, BibTeX"
-)
-
-st.info(
-    "**Coming with future releases:** a *Trajectory Viewer* (week-by-week "
-    "value bands) and a *Sensitivity Sandbox* (vary a parameter, see the "
-    "downstream effect). Both depend on trajectory metadata that is not yet "
-    "populated for most parameters."
+    "- **Download** — full dataset ZIP, per-subsystem JSON, BibTeX, model exports\n"
+    "- **Trajectory Viewer** — plot any time-trajectory submodel across 8–40 weeks\n"
+    "- **Sensitivity Sandbox** — vary an input parameter, watch the trajectory shift"
 )
 
 st.divider()

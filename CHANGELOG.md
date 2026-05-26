@@ -9,6 +9,30 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Dashboard Trajectory Viewer + Sensitivity Sandbox pages.** Spec
+  v0.3 §8 items #4 and #5, originally deferred because no parameter
+  carried trajectory metadata. Both pages now ride on the new
+  `nidus.export.evaluate_submodel` API: pick a submodel, see its
+  trajectory across 8–40 weeks plotted from the same NumPy reference
+  kernel the SBML/CellML round-trip tests use. The Sandbox adds a
+  one-at-a-time sensitivity sweep — pick an input parameter, pick a
+  ±% range, plot the trajectory family. Plottable submodels: 21 /
+  41 (the time-trajectory ones); algebraic and multivariate submodels
+  still surface their mathematical form + input parameters + tier
+  badges + citations on the Viewer page.
+- **`nidus.export.evaluate_submodel` + `kernel_parameter_mapping` +
+  `supported_submodels` + `UNSUPPORTED_REASON`.** New public API that
+  binds 21 time-trajectory submodels (cardiac output, MAP, uterine
+  flow, placental growth, plasma volume, GFR, HR, tidal volume,
+  fetal HR, HOMA-IR, cortisol, hPL, progesterone, estradiol, hCG,
+  UA-PI, arterial pH, PaO2, IgG transfer, microchimerism, pulmonary
+  fluid) to their reference kernels with one `evaluate_submodel(ds,
+  submodel_id, t_weeks, overrides=...)` call. `UNSUPPORTED_REASON`
+  documents why each of the 20 remaining submodels is not yet bound
+  (algebraic in PO2 / substrate / fetal weight, or multi-anchor cubic
+  fits). 6 new tests parametrised across all supported submodels.
+
+### Added
 - **CLI export-format tests** (`tests/test_cli.py`). Eight new tests
   cover every `nidus export --format` flow the regenerate-exports CI
   job exercises: sbml, cellml (2.0 + 1.1 fallback), physiocell,

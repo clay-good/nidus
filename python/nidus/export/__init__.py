@@ -32,6 +32,12 @@ from nidus.export.cellml import build_cellml, write_cellml
 from nidus.export.combine import write_combine_archive
 from nidus.export.composed import build_composed_sbml, write_composed_sbml
 from nidus.export.equations import equation_latex, list_equations
+from nidus.export.evaluate import (
+    UNSUPPORTED_REASON,
+    evaluate_submodel,
+    kernel_parameter_mapping,
+    supported_submodels,
+)
 from nidus.export.physiocell import build_physiocell_params, write_physiocell
 from nidus.export.reference import polynomial_fit_coefficients, polynomial_fit_evaluate
 from nidus.export.registry import SUBMODELS, list_submodels
@@ -42,16 +48,20 @@ from nidus.export.sweep import write_csv as write_sweep_csv
 
 __all__ = [
     "SUBMODELS",
+    "UNSUPPORTED_REASON",
     "build_cellml",
     "build_composed_sbml",
     "build_physiocell_params",
     "build_sbml",
     "build_sedml",
     "equation_latex",
+    "evaluate_submodel",
+    "kernel_parameter_mapping",
     "list_equations",
     "list_submodels",
     "polynomial_fit_coefficients",
     "polynomial_fit_evaluate",
+    "supported_submodels",
     "sweep",
     "write_cellml",
     "write_combine_archive",
