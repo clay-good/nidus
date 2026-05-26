@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**243 parameters / 68 citations** — every row in §3 is now
+**243 parameters / 66 citations** — every row in §3 is now
 `shipped`. The structural catalog work is therefore *complete*;
 further growth means new parameters not yet listed below (open an
 issue) or improving `extraction.review_status` from `unverified` to
@@ -495,12 +495,15 @@ precise identity could not be verified).
 
 ## 4. Citation catalog (full)
 
-The dataset contains **68 citations** (every entry listed below
+The dataset contains **66 citations** (every entry listed below
 that is checked off has a corresponding `citations.json` record).
 Three originally-planned-but-superseded entries were never added
-(Larsson 2008, Pitkin 1979, Higby 1994); two more were added then
-later removed as orphans once the underlying parameter sourced from
-another paper (Cleal 2008, Tyson 1972). The lists are the original
+(Larsson 2008, Pitkin 1979, Higby 1994); one more was added then
+later removed as an orphan once the underlying parameter sourced
+from another paper (Cleal 2008). Two further early-curation entries
+(Avery & Mead 1959 surfactant, Burri 2006 lung development) sat
+unused in `citations.json` from the v0.2-era prototype and were
+removed in the same orphan cleanup. The lists are the original
 catalog plan; ✓ marks citations that are in `citations.json` today.
 
 ### Phase 1 citations

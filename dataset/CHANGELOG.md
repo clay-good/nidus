@@ -8,6 +8,12 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Removed
+- Two additional orphan citations removed:
+  `avery-mead-1959-surfactant`, `burri-2006-lung-development`. Both
+  were carried over from the v0.2-era prototype, neither was
+  referenced by any parameter, and neither matches a parameter in
+  the current spec-04 catalog. Dataset now at **243 parameters /
+  66 citations** with zero orphan citations.
 - Three orphan citation entries deleted from `citations.json`:
   `cleal-lewis-2008-amino-acid`, `larsson-2008-serum-proteins`,
   `pitkin-1979-wbc`. None were referenced by any parameter; the

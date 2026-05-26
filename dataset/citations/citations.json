@@ -1,18 +1,4 @@
 {
-  "avery-mead-1959-surfactant": {
-    "authors": [
-      "Avery ME",
-      "Mead J"
-    ],
-    "doi": "10.1001/archpedi.1959.02070010519001",
-    "journal": "Archives of Pediatrics &amp; Adolescent Medicine",
-    "key": "avery-mead-1959-surfactant",
-    "notes": "Foundational description of pulmonary surfactant deficiency in preterm lungs.",
-    "pmid": "13649082",
-    "title": "Surface Properties in Relation to Atelectasis and Hyaline Membrane Disease",
-    "type": "journal-article",
-    "year": 1959
-  },
   "battaglia-meschia-1986-fetal-metabolism": {
     "authors": [
       "Battaglia FC",
@@ -114,19 +100,6 @@
     "title": "Racial/ethnic standards for fetal growth: the NICHD Fetal Growth Studies",
     "type": "journal-article",
     "year": 2015
-  },
-  "burri-2006-lung-development": {
-    "authors": [
-      "Burri PH"
-    ],
-    "doi": "10.1159/000092868",
-    "journal": "Neonatology",
-    "key": "burri-2006-lung-development",
-    "notes": "Lung structural development through saccular and alveolar phases.",
-    "pmid": "16770071",
-    "title": "Structural Aspects of Postnatal Lung Development \u2013 Alveolar Formation and Growth",
-    "type": "journal-article",
-    "year": 2006
   },
   "burton-2010-placental-development": {
     "authors": [

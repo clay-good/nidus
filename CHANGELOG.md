@@ -8,6 +8,16 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- **Two further orphan citations removed.** A re-run of the
+  param-references-vs-citations.json consistency check (corrected to
+  follow the dataset's `Citation` object structure rather than raw
+  strings) confirmed `avery-mead-1959-surfactant` and
+  `burri-2006-lung-development` were also unreferenced — carryovers
+  from the v0.2-era prototype that never sourced any parameter in
+  the spec-04 catalog. Dataset now sits at 243 / 66 with **zero
+  orphan citations**. README + spec-04 counts updated.
+
 ### Changed
 - **Regression-guard floors raised to the post-saturation state.**
   Both the unit-test gate (`test_dataset_has_expected_size`) and the
