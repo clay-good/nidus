@@ -9,6 +9,26 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **Docs site "Exports" section live.** Spec 01 §12 called for an
+  `Exports` tab on the mkdocs site (`docs/exports/{index,sbml,cellml,
+  physicell,annotations}.md`); it had never landed. Now wired into
+  the top-level mkdocs nav and passing the project's `--strict`
+  build. Covers the CLI, per-format design conventions, validation,
+  submission workflow, and the three-layer annotation strategy
+  (MIRIAM `bqbiol:isDescribedBy`, SBO terms, custom `nidus:`
+  predicates). Closes one of the remaining checklist items for the
+  v0.4.0 cut.
+- **PhysioCell tutorial notebook.** Spec 01 §15 success criterion
+  "PhysioCell tutorial notebook walks through the simulation,
+  including an IUGR parameter-modification example" — previously
+  deferred — now shipped as
+  `docs/examples/physicell_placental_villous/tutorial.ipynb`.
+  Regenerates `nidus-parameters.xml`, surfaces the four
+  glucose-transport parameters the example consumes (with citation +
+  tier), plots GLUT1/GLUT3 Michaelis–Menten kinetics from the
+  reference kernel, and runs a −20% placental-surface-area IUGR
+  scenario. Runs in ~1 s via nbmake.
+
 - **Dashboard "Download as model" section.** Spec 00 v0.4 said
   the Streamlit dashboard "gains a 'Download as model' section but
   the existing pages stay" — that section had never landed. Now

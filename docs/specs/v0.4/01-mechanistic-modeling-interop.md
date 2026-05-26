@@ -454,7 +454,7 @@ Total external (curator review): variable, can run in parallel.
 - [x] **Top-level composed pregnancy model** shipped (SBML L3v2; CellML composition deferred — flat SBML compose covers the same researcher use case via `nidus export --format composed`).
 - [x] PhysioCell `nidus-parameters.xml` produced; XSD-validates.
 - [x] **Multicellular tissue example** scaffolded: 2D placental-villous slice with BioFVM diffusion, GLUT1/GLUT3 Michaelis–Menten transport reading nidus params (`docs/examples/physicell_placental_villous/`). End-to-end simulation tutorial deferred to a follow-up PR.
-- [ ] PhysioCell tutorial notebook walks through the simulation, including an IUGR parameter-modification example. *(README + C++ skeleton shipped; notebook deferred)*
+- [x] PhysioCell tutorial notebook walks through the simulation, including an IUGR parameter-modification example. *(`docs/examples/physicell_placental_villous/tutorial.ipynb` — regenerates `nidus-parameters.xml`, plots GLUT1/GLUT3 Michaelis–Menten kinetics from the reference kernels, runs a −20% surface-area IUGR sensitivity scenario.)*
 - [x] COMBINE archive bundled and validated (`write_combine_archive` + CLI `--format omex`).
 - [x] Round-trip simulation: reference NumPy kernels exist for every submodel; SBML round-trip tested when tellurium is available.
 - [x] Every exported parameter carries MIRIAM citation + nidus tier annotation.
@@ -463,7 +463,7 @@ Total external (curator review): variable, can run in parallel.
 - [ ] BioModels Database submission **submitted** (accession not required at release — curator review is on their timeline).
 - [ ] Physiome Model Repository workspace **created and exposed**, including both CellML versions.
 - [ ] PhysioCell tutorial PR **opened** to `MathCancer/PhysiCell-tutorials`.
-- [ ] Docs site has the Exports section live.
+- [x] Docs site has the Exports section live (`docs/exports/{index,sbml,cellml,physicell,annotations}.md`, wired into the mkdocs nav as a top-level "Exports" tab).
 - [x] Outreach essay updated to mention the three integrations.
 - [ ] First Zenodo deposit at v0.4.0 includes the exports as supplementary files.
 - [ ] BioPortal ontology submission and JOSS paper — deferred to post-v0.4.

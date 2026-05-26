@@ -108,6 +108,12 @@ nav:
     - 02 — Tier Walkthrough: notebooks/02_tier_walkthrough.ipynb
     - 03 — Uncertainty Propagation: notebooks/03_uncertainty_propagation.ipynb
     - 04 — Citation Provenance: notebooks/04_citation_provenance.ipynb
+  - Exports:
+    - Overview: exports/index.md
+    - SBML: exports/sbml.md
+    - CellML: exports/cellml.md
+    - PhysioCell: exports/physicell.md
+    - Annotations: exports/annotations.md
   - API reference: api.md
   - Contributing:
     - Overview: contributing/overview.md
