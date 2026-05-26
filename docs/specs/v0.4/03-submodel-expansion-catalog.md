@@ -289,8 +289,20 @@ generator-side improvements that pay off as the registry grows:
   test using tellurium for every algebraic submodel.
 - **SED-ML simulation descriptor generation** — write a SED-ML XML
   alongside each SBML so the COMBINE archive contains both the model
-  AND a canonical simulation experiment. (~80 LOC; standard format,
-  well-supported.)
+  AND a canonical simulation experiment. **SHIPPED** as
+  `nidus.export.build_sedml(ds, submodel_id)` /
+  `nidus.export.write_sedml(ds, dir)`. Emits a SED-ML L1V4
+  `<uniformTimeCourse>` over 0–40 weeks with 400 sample points,
+  CVODE algorithm (KISAO:0000019), one data generator for time and
+  one for the submodel's primary observable (extracted from the
+  matching SBML's assignmentRule target). Algebraic submodels
+  (independent variable ≠ `t_weeks`, e.g. Severinghaus O2-Hb,
+  Michaelis-Menten glucose) are silently skipped — a
+  UniformTimeCourse is the wrong shape for them. The COMBINE archive
+  now bundles `sedml/<submodel>.sedml` for every time-trajectory
+  submodel alongside the existing SBML / CellML / PhysioCell
+  outputs. Five new tests cover positive case, skip behaviour,
+  unknown-id error, directory write, and COMBINE inclusion.
 - **Symbolic equation export (Mathjax / LaTeX)** — every submodel
   already carries an English equation in its `description`; emitting
   LaTeX alongside makes the docs much better. **SHIPPED** as

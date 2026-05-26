@@ -930,6 +930,71 @@ def test_combine_archive_default_extension(ds: nidus.Dataset, tmp_path: Path) ->
     assert out.suffix == ".omex"
 
 
+# ---- SED-ML simulation-descriptor generation (spec 03 §5) ---------
+
+
+def test_build_sedml_time_trajectory(ds: nidus.Dataset) -> None:
+    """A t_weeks submodel emits a UniformTimeCourse SED-ML descriptor."""
+    from nidus.export import build_sedml
+
+    xml = build_sedml(ds, "maternal_cardiac_output_trajectory")
+    assert xml is not None
+    assert xml.startswith('<?xml version="1.0"')
+    assert "<sedML " in xml and 'level="1" version="4"' in xml
+    assert "<uniformTimeCourse" in xml
+    assert 'outputStartTime="0.0"' in xml
+    assert 'outputEndTime="40.0"' in xml
+    assert "model_maternal_cardiac_output_trajectory" in xml
+    # Primary observable for CO trajectory is CO_t
+    assert "@id='CO_t'" in xml
+    assert "var_time" in xml
+
+
+def test_build_sedml_skips_non_time_submodels(ds: nidus.Dataset) -> None:
+    """Algebraic submodels (e.g. PO2-parametrised) are skipped."""
+    from nidus.export import build_sedml
+
+    # Severinghaus is parametrised by po2_mmhg, not t_weeks.
+    assert build_sedml(ds, "o2hb_dissociation_adult") is None
+    assert build_sedml(ds, "placental_glucose_glut1") is None
+
+
+def test_build_sedml_unknown_id_raises(ds: nidus.Dataset) -> None:
+    from nidus.export import build_sedml
+
+    with pytest.raises(KeyError):
+        build_sedml(ds, "not_a_real_submodel")
+
+
+def test_write_sedml_directory(ds: nidus.Dataset, tmp_path: Path) -> None:
+    from nidus.export import SUBMODELS, write_sedml
+
+    paths = write_sedml(ds, tmp_path / "sedml")
+    assert len(paths) > 0
+    # One file per time-trajectory submodel (independent_variable == "t_weeks").
+    expected_count = sum(1 for s in SUBMODELS if s.independent_variable == "t_weeks")
+    assert len(paths) == expected_count
+    for p in paths:
+        assert p.suffix == ".sedml"
+        assert p.read_text().startswith('<?xml version="1.0"')
+
+
+def test_combine_archive_includes_sedml(ds: nidus.Dataset, tmp_path: Path) -> None:
+    """COMBINE archive now bundles SED-ML descriptors alongside SBML."""
+    import zipfile
+
+    from nidus.export import write_combine_archive
+
+    out = write_combine_archive(ds, tmp_path / "nidus.omex")
+    with zipfile.ZipFile(out) as zf:
+        names = zf.namelist()
+        sedml_names = [n for n in names if n.startswith("sedml/") and n.endswith(".sedml")]
+        assert len(sedml_names) > 0, "expected sedml/*.sedml entries"
+        # Manifest must declare the SED-ML media type for each.
+        manifest = zf.read("manifest.xml").decode()
+        assert "sed-ml" in manifest
+
+
 # ---- Sensitivity sweep utility (spec 03 §5) -----------------------
 
 

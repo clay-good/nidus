@@ -36,6 +36,7 @@ from nidus.export.physiocell import build_physiocell_params, write_physiocell
 from nidus.export.reference import polynomial_fit_coefficients, polynomial_fit_evaluate
 from nidus.export.registry import SUBMODELS, list_submodels
 from nidus.export.sbml import build_sbml, write_sbml
+from nidus.export.sedml import build_sedml, write_sedml
 from nidus.export.sweep import sweep
 from nidus.export.sweep import write_csv as write_sweep_csv
 
@@ -45,6 +46,7 @@ __all__ = [
     "build_composed_sbml",
     "build_physiocell_params",
     "build_sbml",
+    "build_sedml",
     "equation_latex",
     "list_equations",
     "list_submodels",
@@ -56,5 +58,6 @@ __all__ = [
     "write_composed_sbml",
     "write_physiocell",
     "write_sbml",
+    "write_sedml",
     "write_sweep_csv",
 ]

@@ -9,6 +9,18 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **`nidus.export.build_sedml` / `write_sedml` — SED-ML simulation
+  descriptors.** Spec 03 §5 cross-cutting infrastructure item. Emits
+  a SED-ML L1V4 UniformTimeCourse descriptor (0–40 weeks, 400
+  points, CVODE) per time-trajectory submodel, pointing at the
+  matching SBML and reporting time + the SBML's primary
+  assignmentRule observable. The COMBINE archive now bundles
+  `sedml/<submodel>.sedml` alongside each SBML so downstream tools
+  (tellurium, COPASI, etc.) can run a canonical simulation
+  experiment without authoring one. Algebraic submodels parametrised
+  by PO2 / substrate / etc. are silently skipped (a UniformTimeCourse
+  is the wrong shape for them). Five new tests; test count 211 → 216.
+
 - **`nidus.export.polynomial_fit_coefficients` /
   `polynomial_fit_evaluate` — generalised polynomial helper.** Spec
   03 §5 cross-cutting infrastructure item. Generalises the existing

@@ -10,6 +10,9 @@ Spec: https://identifiers.org/combine.specifications/omex
 The archive contains:
 - `sbml/<submodel>.xml` for each registry submodel
 - `sbml/nidus_pregnancy_composed.xml` (top-level composed model)
+- `sedml/<submodel>.sedml` for each time-trajectory submodel - a
+  canonical UniformTimeCourse simulation experiment (0-40 weeks,
+  400 points) pointing at the matching SBML
 - `cellml/<submodel>.cellml` for each registry submodel
 - `physicell/nidus-parameters.xml`
 - `manifest.xml`
@@ -28,6 +31,7 @@ from nidus.export.composed import write_composed_sbml
 from nidus.export.physiocell import write_physiocell
 from nidus.export.registry import SUBMODELS
 from nidus.export.sbml import write_sbml
+from nidus.export.sedml import write_sedml
 from nidus.load import Dataset
 
 MANIFEST_NS = "http://identifiers.org/combine.specifications/omex-manifest"
@@ -87,6 +91,7 @@ def write_combine_archive(
         staging = Path(tmp)
         sbml_paths = write_sbml(ds, staging / "sbml")
         composed_path = write_composed_sbml(ds, staging / "sbml")
+        sedml_paths = write_sedml(ds, staging / "sedml")
         cellml_paths = write_cellml(ds, staging / "cellml", version="2.0")
         cellml_1_1_paths: list[Path] = []
         if include_cellml_1_1:
@@ -94,6 +99,7 @@ def write_combine_archive(
         physicell_path = write_physiocell(ds, staging / "physicell")
 
         sbml_fmt = "http://identifiers.org/combine.specifications/sbml"
+        sedml_fmt = "http://identifiers.org/combine.specifications/sed-ml"
         cellml2_fmt = "http://identifiers.org/combine.specifications/cellml.2.0"
         cellml1_fmt = "http://identifiers.org/combine.specifications/cellml.1.1"
         physicell_fmt = "http://purl.org/NET/mediatypes/application/xml"
@@ -103,6 +109,8 @@ def write_combine_archive(
         for p in sbml_paths:
             entries.append((f"sbml/{p.name}", sbml_fmt, False))
         entries.append((f"sbml/{composed_path.name}", sbml_fmt, True))
+        for p in sedml_paths:
+            entries.append((f"sedml/{p.name}", sedml_fmt, False))
         for p in cellml_paths:
             entries.append((f"cellml/{p.name}", cellml2_fmt, False))
         for p in cellml_1_1_paths:
@@ -119,6 +127,8 @@ def write_combine_archive(
             for p in sbml_paths:
                 zf.write(p, f"sbml/{p.name}")
             zf.write(composed_path, f"sbml/{composed_path.name}")
+            for p in sedml_paths:
+                zf.write(p, f"sedml/{p.name}")
             for p in cellml_paths:
                 zf.write(p, f"cellml/{p.name}")
             for p in cellml_1_1_paths:
