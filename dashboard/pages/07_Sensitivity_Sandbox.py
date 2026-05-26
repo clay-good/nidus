@@ -1,9 +1,8 @@
 """Sensitivity Sandbox — vary a submodel parameter, see the trajectory shift.
 
-Spec v0.3 §8 item #5. Scoped to the ~21 time-trajectory submodels
-with a kernel binding in ``nidus.export.evaluate``. The user picks a
-submodel, picks an input parameter, picks a relative range, and the
-page plots the trajectory family.
+Spec v0.3 §8 item #5. Works against the 36 bound submodels in
+``nidus.export.evaluate``; the independent variable's natural domain
+is read off ``submodel_domain``.
 """
 
 from __future__ import annotations
@@ -15,6 +14,7 @@ from nidus.export import (
     SUBMODELS,
     evaluate_submodel,
     kernel_parameter_mapping,
+    submodel_domain,
     supported_submodels,
 )
 from utils import REPO_URL, get_dataset, tier_badge
@@ -38,6 +38,14 @@ chosen_label = st.selectbox("Submodel", options=sorted(sm_options.keys()))
 chosen_id = sm_options[chosen_label]
 
 kw_to_pid = kernel_parameter_mapping(chosen_id)
+
+if not kw_to_pid:
+    st.info(
+        "This submodel has no swept parameters — its kernel uses hard-coded "
+        "constants (e.g. Severinghaus O2-Hb). Use the **Trajectory Viewer** "
+        "to see its baseline curve instead."
+    )
+    st.stop()
 
 chosen_kw = st.selectbox(
     "Parameter to sweep",
@@ -75,13 +83,14 @@ sweep_values = np.linspace(central - half, central + half, n_lines)
 
 # ---- Plot ----------------------------------------------------------
 
-t = np.linspace(8.0, 40.0, 200)
-chart_rows: dict[str, np.ndarray] = {"gestational age (weeks)": t}
+domain = submodel_domain(chosen_id)
+x = np.linspace(domain.default_range[0], domain.default_range[1], 200)
+chart_rows: dict[str, np.ndarray] = {domain.label: x}
 for v in sweep_values:
-    y = evaluate_submodel(ds, chosen_id, t, overrides={chosen_kw: float(v)})
+    y = evaluate_submodel(ds, chosen_id, x, overrides={chosen_kw: float(v)})
     chart_rows[f"{chosen_kw} = {v:.3g}"] = y
 
-st.line_chart(chart_rows, x="gestational age (weeks)")
+st.line_chart(chart_rows, x=domain.label)
 
 # ---- Parameter detail ----------------------------------------------
 

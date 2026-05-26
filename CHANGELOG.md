@@ -9,6 +9,22 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **`evaluate_submodel` coverage 21 → 36 / 41 submodels.** Wired the
+  8 remaining time-trajectory submodels (stroke volume, renal plasma
+  flow, minute ventilation, amniotic fluid volume, SVR, TSH, MCA-PI,
+  cerebroplacental ratio) plus the 7 algebraic submodels (adult/
+  fetal O2-Hb dissociation, GLUT1 / GLUT3 Michaelis–Menten, placental
+  O2 equilibrator, placental cortisol gradient, placental–fetal
+  allometry). Algebraic submodels evaluate over their natural domain
+  (PO2 in mmHg, substrate in mmol/L, fetal weight in g …) instead of
+  gestational time; the new `nidus.export.submodel_domain` /
+  `Domain` API surfaces the right plotting grid automatically. Only
+  the five Hadlock biometry / EFW fits remain unbound (their kernels
+  take a list of 7 weekly anchors, not scalar kwargs). Dashboard
+  Trajectory Viewer and Sensitivity Sandbox now plot 36/41 submodels.
+  15 new bindings + 5 new tests; total test count 253 → 332.
+
+### Added
 - **Dashboard Trajectory Viewer + Sensitivity Sandbox pages.** Spec
   v0.3 §8 items #4 and #5, originally deferred because no parameter
   carried trajectory metadata. Both pages now ride on the new

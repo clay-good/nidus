@@ -34,8 +34,10 @@ from nidus.export.composed import build_composed_sbml, write_composed_sbml
 from nidus.export.equations import equation_latex, list_equations
 from nidus.export.evaluate import (
     UNSUPPORTED_REASON,
+    Domain,
     evaluate_submodel,
     kernel_parameter_mapping,
+    submodel_domain,
     supported_submodels,
 )
 from nidus.export.physiocell import build_physiocell_params, write_physiocell
@@ -49,6 +51,7 @@ from nidus.export.sweep import write_csv as write_sweep_csv
 __all__ = [
     "SUBMODELS",
     "UNSUPPORTED_REASON",
+    "Domain",
     "build_cellml",
     "build_composed_sbml",
     "build_physiocell_params",
@@ -61,6 +64,7 @@ __all__ = [
     "list_submodels",
     "polynomial_fit_coefficients",
     "polynomial_fit_evaluate",
+    "submodel_domain",
     "supported_submodels",
     "sweep",
     "write_cellml",
