@@ -215,20 +215,6 @@
     "type": "journal-article",
     "year": 2013
   },
-  "cleal-lewis-2008-amino-acid": {
-    "authors": [
-      "Cleal JK",
-      "Lewis RM"
-    ],
-    "doi": "10.1111/j.1365-2826.2008.01662.x",
-    "journal": "Journal of Neuroendocrinology",
-    "key": "cleal-lewis-2008-amino-acid",
-    "notes": "Placental amino acid system A and L kinetics.",
-    "pmid": "18266945",
-    "title": "The Mechanisms and Regulation of Placental Amino Acid Transport to the Human Foetus",
-    "type": "journal-article",
-    "year": 2008
-  },
   "cole-2010-hcg": {
     "authors": [
       "Cole LA"
@@ -502,21 +488,6 @@
     "type": "journal-article",
     "year": 2005
   },
-  "larsson-2008-serum-proteins": {
-    "authors": [
-      "Larsson A",
-      "Palm M",
-      "Hansson LO",
-      "Axelsson O"
-    ],
-    "doi": "10.1111/j.1471-0528.2008.01709.x",
-    "journal": "BJOG",
-    "key": "larsson-2008-serum-proteins",
-    "notes": "Reference intervals for serum proteins across pregnancy.",
-    "title": "Reference values for clinical chemistry tests during normal pregnancy",
-    "type": "journal-article",
-    "year": 2008
-  },
   "lomauro-aliverti-2015-respiratory": {
     "authors": [
       "LoMauro A",
@@ -588,19 +559,6 @@
     "title": "Umbilical cord length: clinical significance",
     "type": "journal-article",
     "year": 1985
-  },
-  "pitkin-1979-wbc": {
-    "authors": [
-      "Pitkin RM",
-      "Witte DL"
-    ],
-    "journal": "JAMA",
-    "key": "pitkin-1979-wbc",
-    "notes": "Reference values for WBC and platelets in pregnancy.",
-    "pmid": "430872",
-    "title": "Platelet and leukocyte counts in pregnancy",
-    "type": "journal-article",
-    "year": 1979
   },
   "rudolph-1985-fetal-circulation": {
     "authors": [

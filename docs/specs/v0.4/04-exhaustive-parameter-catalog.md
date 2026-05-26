@@ -13,7 +13,7 @@ If the project filled every entry below it would carry **~210
 parameters across 13 subsystems**, backed by **~70 citations**.
 
 **Current state (as of dataset v0.3.0-dev):** the catalog stands at
-**243 parameters / 71 citations** — every row in §3 is now
+**243 parameters / 68 citations** — every row in §3 is now
 `shipped`. The structural catalog work is therefore *complete*;
 further growth means new parameters not yet listed below (open an
 issue) or improving `extraction.review_status` from `unverified` to
@@ -155,9 +155,12 @@ S, antithrombin). Iron and folate stores drop. WBC count rises.
 | `fetal_microchimerism_baseline_cells_per_ml` | Fetal-cell baseline (T1) | 0.0 | D | shipped (hypothesis-only) | Bianchi 1996 |
 | `fetal_microchimerism_term_cells_per_ml` | Fetal-cell term | 1.0 | D | shipped (hypothesis-only) | Bianchi 1996 |
 
-**Citations needed (new):** Stirling 1984 (Thromb Haemost), Faught
-1995 (Thromb Haemost), Kruithof 1987 (Blood), Pitkin 1979, Kline 2005,
-Larsson 2008.
+**Citations needed (new):** none — all landed. Stirling 1984
+(Thromb Haemost), Faught 1995 (Thromb Haemost), Kruithof 1987
+(Blood), and Kline 2005 cover the subsystem. The originally-planned
+Pitkin 1979 (WBC) and Larsson 2008 (serum proteins) turned out to be
+redundant: those parameters source from Hytten 1980 instead, and
+the unused entries have been removed from `citations.json`.
 
 **Out of scope:** disorders of haemostasis in pregnancy
 (antiphospholipid, factor V Leiden); transfusion thresholds.
@@ -326,7 +329,11 @@ glucose gradient is the driver; fetal glucose is ~70% of maternal.
 | `maternal_fetal_glucose_gradient_term_mmol_per_l` | M-F glucose gradient | 1.2 | B | shipped | Illsley 2000 |
 | `net_glucose_flux_term_mg_per_kg_per_min` | Net glucose flux | 5 | B | shipped | Illsley 2000 |
 
-**Citations needed:** Cleal 2008, Hay 2006, Battaglia 1986.
+**Citations needed:** none. Illsley 2000 (already cited) covers
+every parameter in this subsystem. The originally-planned Cleal 2008
+and Hay 2006 turned out to be redundant and were not added; Cleal
+2008 was removed from `citations.json` once it became clear nothing
+referenced it.
 
 **Out of scope:** gestational diabetes glucose kinetics; fetal hyperinsulinaemia.
 
@@ -488,16 +495,17 @@ precise identity could not be verified).
 
 ## 4. Citation catalog (full)
 
-The dataset already contains **60 citations**. The lists below are
-the original catalog plan; ✓ marks citations that have since landed.
-Each remaining new citation must pass the Crossref-metadata audit
-before merge.
+The dataset contains **68 citations** (every entry listed below
+that is checked off has a corresponding `citations.json` record).
+Three originally-planned-but-superseded entries were never added
+(Larsson 2008, Pitkin 1979, Higby 1994); two more were added then
+later removed as orphans once the underlying parameter sourced from
+another paper (Cleal 2008, Tyson 1972). The lists are the original
+catalog plan; ✓ marks citations that are in `citations.json` today.
 
-### Phase 1 citations (~6 new)
+### Phase 1 citations
 
 - ✓ Kline 2005 — D-dimer in pregnancy
-- Larsson 2008 — serum proteins in pregnancy *(superseded; albumin/total protein parameters are sourced from Hytten 1980 instead)*
-- Pitkin 1979 — WBC in pregnancy *(superseded; WBC parameter is sourced from Hytten 1980 instead)*
 - ✓ Templeton 1976 — blood gases in pregnancy
 - ✓ Lim 1976 — acid-base in pregnancy
 - ✓ Conrad 2001 — relaxin-driven GFR rise
@@ -507,10 +515,9 @@ before merge.
 - ✓ Stirling 1984 — clotting factors longitudinal
 - ✓ Faught 1995 — protein S/C/AT in pregnancy
 - ✓ Davison 1981 — osmoregulation in pregnancy
-- Higby 1994 — 24h urinary protein normal pregnancy *(superseded; sourced from Cheung 2013)*
 - ✓ Carr 1981 — cortisol/CBG in pregnancy
 - ✓ Glinoer 1997 — thyroid axis in pregnancy
-- Tyson 1972 — prolactin in pregnancy *(superseded; sourced from Tulchinsky 1972)*
+- ✓ Tyson 1972 — prolactin in pregnancy
 - ✓ Wilson 1980 — renin-aldosterone in pregnancy (PRA at term; Cheung 2013 corroborates)
 - ✓ Catalano 1991 — HOMA-IR / insulin sensitivity
 - ✓ Cole 2010 — hCG kinetics
@@ -518,22 +525,20 @@ before merge.
 - ✓ Tulchinsky 1972 — steroid hormones in pregnancy
 - ✓ Hoddick 1985 — placental thickness ultrasound
 - ✓ Naeye 1985 — umbilical cord length
-- ✓ Mayhew 1986 — placental diffusing capacity
-- Carter 2011 — pre-IVS spiral artery PO₂
-- Cleal 2008 — placental glucose flux *(superseded; sourced from Illsley 2000)*
-- Hay 2006 — transplacental glucose *(superseded; sourced from Illsley 2000)*
-- ✓ Battaglia 1986 — fetal substrate metabolism (textbook)
+- ✓ Mayhew 1986 — placental diffusing capacity (also supplies the
+  pre-IVS spiral-artery PO₂ via Carter & Pijnenborg 2011)
+- ✓ Battaglia 1986 — fetal substrate metabolism (textbook; also
+  supplies fetal scalp blood gases, fetal urine output, and fetal
+  temperature — the originally-planned Westgren 1995 / Rabinowitz
+  1989 / Asakura 2004 entries were redundant and never added)
 - ✓ Kiserud 2001 — umbilical vein flow Doppler
 - ✓ Rudolph 1985 — fetal circulation distribution
-- Westgren 1995 — fetal scalp blood gases *(superseded; sourced from Battaglia 1986)*
 - ✓ von Steinburg 2013 — fetal heart rate longitudinal
 - ✓ Brace 1989 — AFV regulation
-- Rabinowitz 1989 — fetal urine output *(superseded; sourced from Battaglia 1986)*
 
-### Phase 3 citations (~15 new)
+### Phase 3 citations
 
 - ✓ Kruithof 1987 — PAI-1/PAI-2
-- Robson 1989 *Br Heart J* — LV mass in pregnancy *(superseded; sourced from Sanghavi 2014)*
 - ✓ Crapo 1996 — DLCO reference
 - ✓ Eriksson 1989 — placental GH
 - ✓ Benirschke 2012 — placental anatomy textbook
@@ -544,9 +549,13 @@ before merge.
 - ✓ Hardie 1997 — leptin in pregnancy
 - ✓ Economides 1989 — fetal endocrine
 - ✓ Murphy 1973 — fetal cortisol
-- Asakura 2004 — fetal temperature *(superseded; sourced from Battaglia 1986)*
-- ✓ Underwood 2005 — amniotic-fluid biochemistry review (substituted for the originally-listed Magann 2007, whose precise AF-chemistry paper could not be verified)
+- ✓ Underwood 2005 — amniotic-fluid biochemistry review (substituted
+  for the originally-listed Magann 2007, whose precise AF-chemistry
+  paper could not be verified)
 - ✓ Pritchard 1966 — fetal swallowing
+- *(Robson 1989 was originally planned as the LV-mass-in-pregnancy
+  source; Sanghavi & Rutherford 2014 already covers it and was used
+  instead.)*
 
 ### Additional citations landed (outside the original phase plan)
 

@@ -8,6 +8,16 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- **Three orphan citations deleted from the dataset.** A consistency
+  audit found three `citations.json` entries with no parameter
+  referencing them: Cleal & Lewis 2008, Larsson 2008, Pitkin 1979.
+  Each was a candidate citation in the original spec-04 plan whose
+  parameter ended up sourced from a different paper (Illsley 2000
+  or Hytten 1980); the unused entries are now removed. Spec 04
+  cleaned up correspondingly; README + spec-04 counts updated to
+  68 citations.
+
 ### Changed
 - **README + spec-02 refreshed for the post-saturation state.**
   README "at a glance" numbers updated from the long-stale

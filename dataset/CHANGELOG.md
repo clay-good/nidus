@@ -7,6 +7,15 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Removed
+- Three orphan citation entries deleted from `citations.json`:
+  `cleal-lewis-2008-amino-acid`, `larsson-2008-serum-proteins`,
+  `pitkin-1979-wbc`. None were referenced by any parameter; the
+  corresponding subsystem entries source from Illsley 2000 and
+  Hytten 1980 instead. Spec-04 §3.2 / §3.8 / §4 cleaned up
+  correspondingly. Dataset now stands at **243 parameters / 68
+  citations** (catalog: every row still `shipped`).
+
 ### Added
 - Amniotic-fluid chemistry completion (spec 04): 4 new parameters
   + 1 new citation; this closes out the spec-04 catalog with

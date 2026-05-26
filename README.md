@@ -51,7 +51,7 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 ## At a glance
 
 - **243 parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid). Every row in the spec-04 exhaustive parameter catalog is now `shipped`.
-- **71 citations**, each verified against Crossref or PubMed metadata.
+- **68 citations**, each verified against Crossref or PubMed metadata.
 - **28 parameters human-verified** against the source PDF; 1 `contested`; the remainder are `unverified` (central value from the literature, but a human has not yet eyeballed the source against the dataset entry).
 - **41 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`. Four are Phase-C hypothesis-only models that ship with explicit "DO NOT USE FOR PREDICTION" annotations.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
