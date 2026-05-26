@@ -9,6 +9,19 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **CI regenerates every exchange-format export on each push.** Spec
+  01 §9 / §15 success criterion. New `regenerate-exports` job in
+  `.github/workflows/ci.yml` runs after `validate-dataset` passes,
+  installs the `[export]` extra, and regenerates SBML, CellML 2.0,
+  CellML 1.1, PhysioCell, the composed top-level model, and the
+  COMBINE archive via the `nidus export` CLI. A sanity check asserts
+  41 SBML / 41 CellML / 41 CellML-1.1 files plus the PhysioCell and
+  OMEX outputs are present; the result is uploaded as a
+  `nidus-exports` workflow artifact with 30-day retention so anyone
+  can grab the regenerated models off any green CI run. Auto-commit
+  back to `exports/` deliberately deferred — too risky for a
+  solo-maintainer setup.
+
 - **Docs site "Exports" section live.** Spec 01 §12 called for an
   `Exports` tab on the mkdocs site (`docs/exports/{index,sbml,cellml,
   physicell,annotations}.md`); it had never landed. Now wired into

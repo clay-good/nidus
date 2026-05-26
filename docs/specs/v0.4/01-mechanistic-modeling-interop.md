@@ -459,7 +459,7 @@ Total external (curator review): variable, can run in parallel.
 - [x] Round-trip simulation: reference NumPy kernels exist for every submodel; SBML round-trip tested when tellurium is available.
 - [x] Every exported parameter carries MIRIAM citation + nidus tier annotation.
 - [x] `nidus export` CLI shipped with `--format sbml|cellml|physiocell|composed|omex` and `--cellml-version {2.0,1.1}`.
-- [ ] CI regenerates exports automatically on dataset changes. *(deferred — manual regeneration via CLI ships for v0.4)*
+- [x] CI regenerates exports automatically on dataset changes (`regenerate-exports` job in `.github/workflows/ci.yml`: runs after `validate-dataset` passes, regenerates SBML / CellML 2.0 / CellML 1.1 / PhysioCell / composed / OMEX, sanity-checks the file counts, and uploads the result as a `nidus-exports` artifact with 30-day retention). Auto-commit back to `exports/` deliberately deferred — too risky for a solo-maintainer setup; the artifact is the source of truth per-CI-run.
 - [ ] BioModels Database submission **submitted** (accession not required at release — curator review is on their timeline).
 - [ ] Physiome Model Repository workspace **created and exposed**, including both CellML versions.
 - [ ] PhysioCell tutorial PR **opened** to `MathCancer/PhysiCell-tutorials`.

@@ -89,6 +89,44 @@ jobs:
       - name: nidus.validate()
         run: python -c "import nidus; nidus.validate(); print('Dataset OK')"
 
+  regenerate-exports:
+    name: Regenerate SBML / CellML / PhysioCell / OMEX exports
+    needs: validate-dataset
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install package with [export] extra
+        working-directory: python
+        run: pip install -e ".[export]"
+      - name: Regenerate every exchange format
+        run: |
+          set -euo pipefail
+          mkdir -p exports/cellml-1.1
+          nidus export --format sbml       --output exports/sbml/
+          nidus export --format cellml     --output exports/cellml/
+          nidus export --format cellml     --output exports/cellml-1.1/ --cellml-version 1.1
+          nidus export --format physiocell --output exports/physiocell/
+          nidus export --format composed   --output exports/composed/
+          nidus export --format omex       --output exports/nidus_pregnancy.omex
+      - name: Sanity-check the output shape
+        run: |
+          set -euo pipefail
+          test "$(ls exports/sbml/*.xml | wc -l)" -ge 41
+          test "$(ls exports/cellml/*.cellml | wc -l)" -ge 41
+          test "$(ls exports/cellml-1.1/*.cellml | wc -l)" -ge 41
+          test -f exports/physiocell/nidus-parameters.xml
+          test -f exports/nidus_pregnancy.omex
+          ls -la exports/composed/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nidus-exports
+          path: exports/
+          retention-days: 30
+
   build:
     name: Build wheel
     runs-on: ubuntu-latest
