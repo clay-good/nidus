@@ -271,9 +271,19 @@ annotations on the SBML/CellML models.
 Beyond per-submodel work, the catalog suggests a small set of
 generator-side improvements that pay off as the registry grows:
 
-- **`registry.expand_polynomial_fit()` helper** — many candidate
+- **Polynomial-fit helper for submodel generators** — many candidate
   submodels are polynomial regressions in GA. A shared generator that
-  takes (coefficients tuple, parameter id) saves ~30 LOC per submodel.
+  takes anchor xs/ys (or coefficients) saves ~30 LOC per new
+  polynomial submodel. **SHIPPED** as
+  `nidus.export.polynomial_fit_coefficients(anchor_xs, anchor_ys,
+  degree=N)` returning coefficients in descending order, and
+  `nidus.export.polynomial_fit_evaluate(x, coefficients)` for
+  evaluation. The existing `hadlock_biometry_cubic` /
+  `hadlock_biometry_cubic_coefficients` are now thin wrappers, and
+  any future polynomial submodel (e.g. an additional growth chart)
+  can call the generic API directly instead of re-implementing the
+  polyfit boilerplate. Two new tests cover round-trip and linear-fit
+  behaviour.
 - **Per-submodel reference-kernel parametrization in tests** — already
   applied to `_ALL_SUBMODEL_IDS`; extend to a round-trip parametrized
   test using tellurium for every algebraic submodel.

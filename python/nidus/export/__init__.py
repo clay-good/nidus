@@ -33,6 +33,7 @@ from nidus.export.combine import write_combine_archive
 from nidus.export.composed import build_composed_sbml, write_composed_sbml
 from nidus.export.equations import equation_latex, list_equations
 from nidus.export.physiocell import build_physiocell_params, write_physiocell
+from nidus.export.reference import polynomial_fit_coefficients, polynomial_fit_evaluate
 from nidus.export.registry import SUBMODELS, list_submodels
 from nidus.export.sbml import build_sbml, write_sbml
 from nidus.export.sweep import sweep
@@ -47,6 +48,8 @@ __all__ = [
     "equation_latex",
     "list_equations",
     "list_submodels",
+    "polynomial_fit_coefficients",
+    "polynomial_fit_evaluate",
     "sweep",
     "write_cellml",
     "write_combine_archive",

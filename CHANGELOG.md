@@ -8,6 +8,18 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **`nidus.export.polynomial_fit_coefficients` /
+  `polynomial_fit_evaluate` — generalised polynomial helper.** Spec
+  03 §5 cross-cutting infrastructure item. Generalises the existing
+  cubic-only `hadlock_biometry_cubic_coefficients` to arbitrary
+  degree, returning coefficients in descending order (compatible
+  with `numpy.polyval`). The existing biometry helpers now delegate
+  to the new generic API; future polynomial submodels can skip the
+  polyfit boilerplate by calling the public helpers directly. Two
+  new tests cover round-trip on a known cubic and a degree-1 slope/
+  intercept fit.
+
 ### Removed
 - **Three orphan citations deleted from the dataset.** A consistency
   audit found three `citations.json` entries with no parameter

@@ -389,6 +389,29 @@ def test_arterial_ph_linear_endpoints() -> None:
     assert at_term == pytest.approx(7.44)
 
 
+def test_polynomial_fit_helpers_round_trip() -> None:
+    """Generic polyfit + polyval helpers reproduce a degree-3 fit exactly."""
+    from nidus.export import polynomial_fit_coefficients, polynomial_fit_evaluate
+
+    xs = [16, 20, 24, 28, 32, 36, 40]
+    coeffs_known = (0.001, -0.05, 3.0, -10.0)  # arbitrary cubic
+    ys = polynomial_fit_evaluate(xs, coeffs_known)
+    refit = polynomial_fit_coefficients(xs, ys, degree=3)
+    assert len(refit) == 4
+    for a, b in zip(refit, coeffs_known, strict=True):
+        assert a == pytest.approx(b, abs=1e-6)
+
+
+def test_polynomial_fit_helpers_degree_linear() -> None:
+    """Degree-1 fit through two points returns slope/intercept."""
+    from nidus.export import polynomial_fit_coefficients, polynomial_fit_evaluate
+
+    coeffs = polynomial_fit_coefficients([0.0, 10.0], [1.0, 6.0], degree=1)
+    assert coeffs[0] == pytest.approx(0.5)  # slope
+    assert coeffs[1] == pytest.approx(1.0)  # intercept
+    assert float(polynomial_fit_evaluate(4.0, coeffs)) == pytest.approx(3.0)
+
+
 def test_hadlock_biometry_cubic_fit_matches_anchors(ds: nidus.Dataset) -> None:
     """The cubic fit must reproduce the seven weekly anchors within ~3 mm."""
     from nidus.export.reference import HADLOCK_ANCHOR_WEEKS, hadlock_biometry_cubic

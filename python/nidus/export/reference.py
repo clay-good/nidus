@@ -740,6 +740,47 @@ def placental_cortisol_gradient(
 HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)
 
 
+def polynomial_fit_coefficients(
+    anchor_xs: Sequence[float],
+    anchor_ys: Sequence[float],
+    *,
+    degree: int,
+) -> tuple[float, ...]:
+    """Generic polynomial-regression helper for submodel generators.
+
+    Fits a `degree`-order polynomial to `(anchor_xs, anchor_ys)` via
+    `numpy.polyfit` and returns the coefficients in descending order
+    (so `(c_n, c_{n-1}, ..., c_1, c_0)` for a degree-`n` fit). Useful
+    for any future submodel that needs to embed a polynomial fit of
+    weekly anchors in the exported SBML / CellML.
+
+    Spec 03 §5 ("`registry.expand_polynomial_fit()` helper") motivates
+    this shared entry point so each new polynomial submodel does not
+    re-implement the polyfit boilerplate.
+    """
+    coeffs = np.polyfit(
+        np.asarray(anchor_xs, dtype=np.float64),
+        np.asarray(anchor_ys, dtype=np.float64),
+        degree,
+    )
+    return tuple(float(c) for c in coeffs)
+
+
+def polynomial_fit_evaluate(
+    x: FloatArrayLike,
+    coefficients: Sequence[float],
+) -> NDArray[np.float64]:
+    """Evaluate a polynomial at `x` given coefficients in descending order.
+
+    Companion to :func:`polynomial_fit_coefficients`; thin wrapper around
+    `numpy.polyval` that fixes the float64 dtype for round-trip stability.
+    """
+    return np.asarray(
+        np.polyval(np.asarray(coefficients, dtype=np.float64), np.asarray(x, dtype=np.float64)),
+        dtype=np.float64,
+    )
+
+
 def hadlock_biometry_cubic(
     t_weeks: FloatArrayLike,
     weekly_values_mm: Sequence[float],
@@ -752,10 +793,11 @@ def hadlock_biometry_cubic(
     28, 32, 36, 40) with `numpy.polyfit(deg=3)` and evaluates the
     polynomial at `t_weeks`. Used for BPD, HC, AC, FL growth submodels
     where the dataset stores discrete weekly anchors from Hadlock 1982.
+    Thin wrapper around the generic :func:`polynomial_fit_coefficients`
+    + :func:`polynomial_fit_evaluate` pair.
     """
-    coeffs = np.polyfit(np.asarray(anchor_weeks, dtype=np.float64), weekly_values_mm, 3)
-    t = np.asarray(t_weeks, dtype=np.float64)
-    return np.asarray(np.polyval(coeffs, t), dtype=np.float64)
+    coeffs = polynomial_fit_coefficients(anchor_weeks, weekly_values_mm, degree=3)
+    return polynomial_fit_evaluate(t_weeks, coeffs)
 
 
 def hadlock_biometry_cubic_coefficients(
@@ -766,10 +808,11 @@ def hadlock_biometry_cubic_coefficients(
     """Return (a3, a2, a1, a0) cubic coefficients for the biometry fit.
 
     Helper for SBML/CellML builders that need to embed the fit
-    coefficients directly in the exported model.
+    coefficients directly in the exported model. Delegates to
+    :func:`polynomial_fit_coefficients`.
     """
-    a3, a2, a1, a0 = np.polyfit(np.asarray(anchor_weeks, dtype=np.float64), weekly_values_mm, 3)
-    return float(a3), float(a2), float(a1), float(a0)
+    a3, a2, a1, a0 = polynomial_fit_coefficients(anchor_weeks, weekly_values_mm, degree=3)
+    return a3, a2, a1, a0
 
 
 # ---- 21. Hadlock IV fetal weight regression ------------------------
