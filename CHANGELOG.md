@@ -8,6 +8,14 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- **README + spec-02 refreshed for the post-saturation state.**
+  README "at a glance" numbers updated from the long-stale
+  `~200 / 40+ / ~35` to the current `243 / 71 / 28 verified, 1
+  contested`; "not exhaustive (yet)" softened to reflect catalog
+  completion. Spec 02 marked historical/superseded so future
+  readers go to spec 04 first.
+
 ### Added
 - **Amniotic-fluid chemistry completion (spec 04):** 4 new
   parameters (AF glucose, lactate, creatinine, osmolality at term)

@@ -50,9 +50,9 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 
 ## At a glance
 
-- **~200 parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid). This is the §3 saturation ceiling declared in the parameter-expansion roadmap.
-- **40+ citations**, each verified against Crossref or PubMed metadata.
-- **~35 parameters human-verified** against the source PDF (others are `unverified`: the central value is from the literature but a human has not yet eyeballed the source against the dataset entry).
+- **243 parameters** across **13 subsystems** (maternal cardiovascular / blood / renal / respiratory / endocrine; placental structure / gas exchange / glucose / endocrine; fetal circulation / growth / metabolism; amniotic fluid). Every row in the spec-04 exhaustive parameter catalog is now `shipped`.
+- **71 citations**, each verified against Crossref or PubMed metadata.
+- **28 parameters human-verified** against the source PDF; 1 `contested`; the remainder are `unverified` (central value from the literature, but a human has not yet eyeballed the source against the dataset entry).
 - **41 mechanistic submodels** exportable to SBML L3v2, CellML 2.0 (with 1.1 fallback), and PhysioCell `<user_parameters>`. Four are Phase-C hypothesis-only models that ship with explicit "DO NOT USE FOR PREDICTION" annotations.
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
@@ -72,7 +72,7 @@ See [docs/specs/v0.4/00-overview.md](docs/specs/v0.4/00-overview.md) for the v0.
 - **Not a clinical decision-support tool.** Not validated for any decision affecting a real patient.
 - **Not a mechanistic simulator.** Nidus exports parameters *into* the simulators ([CellML](https://www.cellml.org/), [COPASI](http://copasi.org/), [PhysioCell](http://physicell.org/), [tellurium](https://tellurium.analogmachine.org/)). It does not integrate ODEs itself.
 - **Not an automated medical researcher.** Humans verify every parameter and every citation. LLMs help but do not promote `unverified` to `verified` on their own authority.
-- **Not exhaustive (yet).** The realistic ceiling for the declared scope is ~200 parameters. See the [exhaustive parameter catalog](docs/specs/v0.4/04-exhaustive-parameter-catalog.md) for what is planned, included, or explicitly out of scope.
+- **Not exhaustive.** The declared-scope ceiling enumerated in the [exhaustive parameter catalog](docs/specs/v0.4/04-exhaustive-parameter-catalog.md) has been reached (every catalog row is now `shipped`). Further growth means parameters not yet enumerated — open an issue if you find one that fits the envelope (normal physiology, human, 8–40w singleton).
 
 ## Quick start
 
