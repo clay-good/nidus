@@ -9,6 +9,24 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **CLI export-format tests** (`tests/test_cli.py`). Eight new tests
+  cover every `nidus export --format` flow the regenerate-exports CI
+  job exercises: sbml, cellml (2.0 + 1.1 fallback), physiocell,
+  composed, omex; plus the FileNotFoundError branches in `cmd_info`
+  and `cmd_export`. Coverage of `nidus.cli` jumps 78% → 96%; total
+  package coverage 97.5% → 98.7%. Catches CLI breakage locally instead
+  of waiting for the workflow to fail.
+
+### Fixed
+- **PhysioCell docs + tutorial element-name format.** The old
+  `docs/exports/physicell.md` showed parameters as `<param name="...">`
+  but the actual `nidus.export.build_physiocell_params` output uses
+  flattened `<subsystem>__<name>` element names per PhysioCell
+  `<user_parameters>` convention. Docs corrected; the tutorial
+  notebook's parameter-count line updated to match. Caught by the new
+  CLI tests.
+
+### Added
 - **CI regenerates every exchange-format export on each push.** Spec
   01 §9 / §15 success criterion. New `regenerate-exports` job in
   `.github/workflows/ci.yml` runs after `validate-dataset` passes,

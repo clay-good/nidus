@@ -124,3 +124,95 @@ def test_export_csv(capsys: pytest.CaptureFixture[str]) -> None:
 def test_export_requires_format(capsys: pytest.CaptureFixture[str]) -> None:
     with pytest.raises(SystemExit):
         _run(capsys, ["export"])  # argparse: --format is required
+
+
+def test_info_missing_dataset(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    code, _, err = _run(capsys, ["info", "--path", str(tmp_path / "nope")])
+    assert code == 1
+    assert "dataset not found" in err
+
+
+def test_export_missing_dataset(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    code, _, err = _run(
+        capsys,
+        ["export", "--path", str(tmp_path / "nope"), "--format", "csv"],
+    )
+    assert code == 1
+    assert "dataset not found" in err
+
+
+def test_export_sbml(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    pytest.importorskip("libsbml")
+    out_dir = tmp_path / "sbml"
+    code, _, _ = _run(capsys, ["export", "--format", "sbml", "--output", str(out_dir)])
+    assert code == 0
+    # One file per registered submodel
+    files = sorted(out_dir.glob("*.xml"))
+    assert len(files) >= 40
+    head = files[0].read_text()[:200]
+    assert "<sbml" in head and "level=" in head
+
+
+def test_export_cellml_default_version(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    pytest.importorskip("libcellml")
+    out_dir = tmp_path / "cellml"
+    code, _, _ = _run(capsys, ["export", "--format", "cellml", "--output", str(out_dir)])
+    assert code == 0
+    files = sorted(out_dir.glob("*.cellml"))
+    assert len(files) >= 40
+    head = files[0].read_text()[:400]
+    # CellML 2.0 namespace
+    assert "cellml/2.0" in head
+
+
+def test_export_cellml_v11_fallback(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    pytest.importorskip("libcellml")
+    out_dir = tmp_path / "cellml11"
+    code, _, _ = _run(
+        capsys,
+        ["export", "--format", "cellml", "--output", str(out_dir), "--cellml-version", "1.1"],
+    )
+    assert code == 0
+    files = sorted(out_dir.glob("*.cellml"))
+    assert len(files) >= 40
+    head = files[0].read_text()[:400]
+    assert "cellml/1.1" in head
+
+
+def test_export_physiocell(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    out_dir = tmp_path / "physiocell"
+    code, _, _ = _run(capsys, ["export", "--format", "physiocell", "--output", str(out_dir)])
+    assert code == 0
+    target = out_dir / "nidus-parameters.xml"
+    assert target.is_file()
+    body = target.read_text()
+    assert "<user_parameters>" in body
+    assert 'type="double"' in body
+    # Citation key + tier appear on every parameter's description attribute
+    assert "citation_key=" in body
+    assert "tier=" in body
+
+
+def test_export_composed(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    pytest.importorskip("libsbml")
+    out_dir = tmp_path / "composed"
+    code, _, _ = _run(capsys, ["export", "--format", "composed", "--output", str(out_dir)])
+    assert code == 0
+    files = list(out_dir.glob("*.xml"))
+    assert len(files) == 1
+
+
+def test_export_omex(tmp_path: Path, capsys: pytest.CaptureFixture[str]) -> None:
+    pytest.importorskip("libsbml")
+    pytest.importorskip("libcellml")
+    out_path = tmp_path / "nidus.omex"
+    code, _, _ = _run(capsys, ["export", "--format", "omex", "--output", str(out_path)])
+    assert code == 0
+    assert out_path.is_file()
+    # COMBINE archives are zip files
+    import zipfile
+
+    with zipfile.ZipFile(out_path) as zf:
+        names = zf.namelist()
+    assert any(n.endswith(".xml") for n in names)
+    assert any("manifest.xml" in n for n in names)

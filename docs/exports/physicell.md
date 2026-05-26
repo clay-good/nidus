@@ -18,18 +18,26 @@ exports/physiocell/
 └── nidus-parameters.xml
 ```
 
-Every nidus parameter appears as:
+Every nidus parameter appears inside a `<user_parameters>` block, one
+element per parameter, with the dotted dataset id flattened to a
+PhysiCell-friendly `<subsystem>__<name>` element name:
 
 ```xml
-<param name="placental_glucose.glucose_glut1_km_mmol_per_l"
-       type="double"
-       units="mmol/L"
-       description="GLUT1 Michaelis constant (tier=B; cite=illsley2000; verified)"
->17.0</param>
+<user_parameters>
+    <!-- placental_glucose -->
+    <placental_glucose__glucose_glut1_km_mmol_per_l
+        type="double"
+        units="mmol/L"
+        description="GLUT1 Michaelis constant; tier=B; review_status=verified; doi=10.1016/...; citation_key=illsley-2000-placental-glucose-transporters"
+    >17.0</placental_glucose__glucose_glut1_km_mmol_per_l>
+    <!-- ... -->
+</user_parameters>
 ```
 
-Comments retain the **citation key + tier**, so PhysiCell reviewers
-(and future-you) can trace any value straight back to the dataset.
+The `description` attribute carries the **confidence tier, review
+status, primary DOI, and citation key** for every parameter — so
+PhysiCell reviewers (and future-you) can trace any value straight back
+to the dataset and the cited paper.
 
 ## How to wire it into a project
 
