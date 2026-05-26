@@ -8,6 +8,19 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **Dashboard "Download as model" section.** Spec 00 v0.4 said
+  the Streamlit dashboard "gains a 'Download as model' section but
+  the existing pages stay" — that section had never landed. Now
+  added to `dashboard/pages/05_Download.py`: a submodel picker (41
+  options) plus three download buttons emitting the chosen submodel
+  as SBML L3v2, CellML 2.0, and SED-ML (the SED-ML button is hidden
+  for algebraic submodels), and a fourth button that emits the full
+  COMBINE archive (`.omex`) with every submodel + the composed
+  pregnancy model + PhysioCell parameters + provenance metadata.
+  Streamlit `@st.cache_data` keeps repeat downloads cheap. The
+  existing dashboard smoke test covers the new page.
+
 ### Removed
 - **Two further orphan citations removed.** A re-run of the
   param-references-vs-citations.json consistency check (corrected to

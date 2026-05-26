@@ -1,9 +1,11 @@
-"""Download — dataset ZIP, per-subsystem JSON, BibTeX export."""
+"""Download — dataset ZIP, per-subsystem JSON, BibTeX, mechanistic-model exports."""
 
 from __future__ import annotations
 
 import io
+import tempfile
 import zipfile
+from pathlib import Path
 from typing import Any
 
 import streamlit as st
@@ -161,3 +163,106 @@ for i, name in enumerate(["parameter", "citation", "tier"]):
                 mime="application/json",
                 key=f"schema_{name}",
             )
+
+# ---- Mechanistic-modeling exports ----------------------------------
+# Spec 00 v0.4: "the Streamlit dashboard gains a 'Download as model'
+# section but the existing pages stay."
+
+st.subheader("Download as model")
+st.markdown(
+    "Nidus parameters are wired into **mechanistic submodels** that "
+    "export to the three formats the systems-biology and "
+    "physiological-modelling communities already use: **SBML L3v2**, "
+    "**CellML 2.0**, and **PhysioCell** `<user_parameters>`. Each "
+    "submodel below carries the worst-tier of its inputs as a MIRIAM "
+    "annotation so downstream consumers can see the confidence chain."
+)
+
+from nidus.export import (  # noqa: E402
+    SUBMODELS,
+    build_cellml,
+    build_sbml,
+    build_sedml,
+    write_combine_archive,
+)
+
+
+@st.cache_data
+def _build_sbml_str(submodel_id: str) -> str:
+    return build_sbml(ds, submodel_id)
+
+
+@st.cache_data
+def _build_cellml_str(submodel_id: str) -> str:
+    return build_cellml(ds, submodel_id)
+
+
+@st.cache_data
+def _build_sedml_str(submodel_id: str) -> str | None:
+    return build_sedml(ds, submodel_id)
+
+
+@st.cache_data
+def _build_combine_archive_bytes() -> bytes:
+    with tempfile.TemporaryDirectory() as tmp:
+        out = write_combine_archive(ds, Path(tmp) / "nidus.omex")
+        return out.read_bytes()
+
+
+submodel_options = {f"{sm.name} ({sm.id})": sm.id for sm in SUBMODELS}
+chosen_label = st.selectbox(
+    "Submodel",
+    options=list(submodel_options.keys()),
+    help="41 mechanistic submodels covering CO trajectory, growth curves, "
+    "endocrine kinetics, gas exchange, glucose transport, and more.",
+)
+chosen_id = submodel_options[chosen_label]
+chosen_sm = next(sm for sm in SUBMODELS if sm.id == chosen_id)
+st.caption(
+    f"Inputs: {len(chosen_sm.parameter_ids)} parameters; "
+    f"independent variable: `{chosen_sm.independent_variable or 'algebraic'}`; "
+    f"output units: `{chosen_sm.output_units or 'unspecified'}`."
+)
+
+c1, c2, c3 = st.columns(3)
+with c1:
+    st.download_button(
+        label="SBML L3v2 (.xml)",
+        data=_build_sbml_str(chosen_id).encode(),
+        file_name=f"{chosen_id}.xml",
+        mime="application/xml",
+        key=f"dl_sbml_{chosen_id}",
+    )
+with c2:
+    st.download_button(
+        label="CellML 2.0 (.cellml)",
+        data=_build_cellml_str(chosen_id).encode(),
+        file_name=f"{chosen_id}.cellml",
+        mime="application/xml",
+        key=f"dl_cellml_{chosen_id}",
+    )
+with c3:
+    sedml_str = _build_sedml_str(chosen_id)
+    if sedml_str is not None:
+        st.download_button(
+            label="SED-ML (.sedml)",
+            data=sedml_str.encode(),
+            file_name=f"{chosen_id}.sedml",
+            mime="application/xml",
+            key=f"dl_sedml_{chosen_id}",
+        )
+    else:
+        st.caption(
+            "SED-ML: not applicable (algebraic submodel — independent variable is not time)"
+        )
+
+st.markdown(
+    "**Full bundle.** A single COMBINE archive (`.omex`) packs every submodel as SBML + CellML + SED-ML, the composed pregnancy SBML, the PhysioCell parameters XML, and a provenance metadata RDF."
+)
+st.download_button(
+    label="nidus-models.omex (full COMBINE archive)",
+    data=_build_combine_archive_bytes(),
+    file_name="nidus-models.omex",
+    mime="application/zip",
+    key="dl_combine_omex",
+)
