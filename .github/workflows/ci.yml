@@ -127,8 +127,8 @@ jobs:
           /tmp/smoke/bin/python -c "
           import nidus
           ds = nidus.load()
-          assert len(ds) >= 54, f'expected >=54 parameters, got {len(ds)}'
-          assert len(ds.citations) >= 32
+          assert len(ds) >= 230, f'expected >=230 parameters, got {len(ds)}'
+          assert len(ds.citations) >= 65, f'expected >=65 citations, got {len(ds.citations)}'
           nidus.validate()
           print(f'Installed wheel works: {ds}')
           "

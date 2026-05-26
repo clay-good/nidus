@@ -11,8 +11,13 @@ def test_load_returns_dataset(ds: nidus.Dataset) -> None:
     assert isinstance(ds, nidus.Dataset)
 
 
-MIN_PARAMETERS = 138
-MIN_CITATIONS = 51
+# Lower bounds, kept ~5% below the current shipped totals
+# (243 / 68 as of this writing) so the test fires on a substantive
+# regression (e.g. accidentally dropping a whole subsystem or wholesale
+# citation removal) but doesn't break on a single-row revert. Bump as the
+# dataset grows further.
+MIN_PARAMETERS = 230
+MIN_CITATIONS = 65
 
 
 def test_dataset_has_expected_size(ds: nidus.Dataset) -> None:
@@ -20,6 +25,36 @@ def test_dataset_has_expected_size(ds: nidus.Dataset) -> None:
     # (see docs/specs/v0.4/02-parameter-expansion-roadmap.md).
     assert len(ds) >= MIN_PARAMETERS
     assert len(ds.citations) >= MIN_CITATIONS
+
+
+def test_dataset_growth_monotone(ds: nidus.Dataset) -> None:
+    """Spec 02 §9 regression guard: subsystem coverage cannot silently shrink.
+
+    Per-subsystem minima are pinned just below the current shipped counts.
+    Bump as each subsystem grows; never bump down without an explicit
+    deprecation in `dataset/CHANGELOG.md`.
+    """
+    min_by_subsystem = {
+        "amniotic_fluid": 10,
+        "fetal_circulation": 17,
+        "fetal_growth": 36,
+        "fetal_metabolism": 14,
+        "maternal_blood": 30,
+        "maternal_cardiovascular": 32,
+        "maternal_endocrine": 11,
+        "maternal_renal": 18,
+        "maternal_respiratory": 18,
+        "placental_endocrine": 12,
+        "placental_gas_exchange": 10,
+        "placental_glucose": 6,
+        "placental_structure": 17,
+    }
+    actual: dict[str, int] = {}
+    for p in ds:
+        actual[p.subsystem] = actual.get(p.subsystem, 0) + 1
+    for sub, floor in min_by_subsystem.items():
+        got = actual.get(sub, 0)
+        assert got >= floor, f"{sub}: {got} parameters; expected >= {floor} (regression)"
 
 
 def test_repr_mentions_counts(ds: nidus.Dataset) -> None:

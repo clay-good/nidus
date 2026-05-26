@@ -8,7 +8,22 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- **Regression-guard floors raised to the post-saturation state.**
+  Both the unit-test gate (`test_dataset_has_expected_size`) and the
+  wheel-install CI smoke gate previously asserted `>=138 / >=51`
+  and `>=54 / >=32` respectively — pinned long ago, far below the
+  current 243 / 68. Bumped to `>=230 / >=65` (~5% below current) so
+  a real coverage regression actually fires the gate without
+  breaking on single-row reverts. Bump again as the dataset grows.
+
 ### Added
+- **`test_dataset_growth_monotone` regression guard.** Spec 02 §9
+  asked for a test that asserts the dataset only *grows* across
+  releases (no silent regression in coverage). Now implemented as
+  per-subsystem minima just below the current shipped counts; bump
+  as each subsystem grows.
+
 - **`nidus.export.build_sedml` / `write_sedml` — SED-ML simulation
   descriptors.** Spec 03 §5 cross-cutting infrastructure item. Emits
   a SED-ML L1V4 UniformTimeCourse descriptor (0–40 weeks, 400
