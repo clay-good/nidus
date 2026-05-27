@@ -63,9 +63,47 @@ def test_evaluate_unknown_submodel_raises(ds: nidus.Dataset) -> None:
 
 
 def test_evaluate_unsupported_submodel_raises(ds: nidus.Dataset) -> None:
-    # Hadlock biometry: list-of-anchors kernel, not bound
+    # hadlock_fetal_weight: multivariate (BPD, HC, AC, FL), not a 1-D trajectory
     with pytest.raises(ValueError, match="not supported"):
-        evaluate_submodel(ds, "hadlock_bpd_growth", [10, 20])
+        evaluate_submodel(ds, "hadlock_fetal_weight", [10, 20])
+
+
+def test_hadlock_biometry_cubic_fit_tracks_anchors_within_tolerance(
+    ds: nidus.Dataset,
+) -> None:
+    """The cubic fit through 7 anchors stays close to each anchor value."""
+    for sm_id, prefix in [
+        ("hadlock_bpd_growth", "bpd"),
+        ("hadlock_hc_growth", "hc"),
+        ("hadlock_ac_growth", "ac"),
+        ("hadlock_fl_growth", "fl"),
+    ]:
+        weeks = np.array([16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0])
+        fitted = evaluate_submodel(ds, sm_id, weeks)
+        anchors = np.array(
+            [
+                ds[f"fetal_growth.{prefix}_{w}w_mm"].value.central
+                for w in (16, 20, 24, 28, 32, 36, 40)
+            ]
+        )
+        # Cubic least-squares fit through 7 points — within ~3% of each anchor
+        rel_err = np.abs(fitted - anchors) / anchors
+        assert np.all(rel_err < 0.05), (
+            f"{sm_id}: max rel err {rel_err.max():.3%} exceeds 5% tolerance"
+        )
+
+
+def test_hadlock_biometry_overrides_a_single_anchor(ds: nidus.Dataset) -> None:
+    """Sensitivity sweep on a single anchor lifts the fit near that week."""
+    weeks = np.array([28.0])
+    baseline = evaluate_submodel(ds, "hadlock_bpd_growth", weeks)[0]
+    bumped = evaluate_submodel(
+        ds,
+        "hadlock_bpd_growth",
+        weeks,
+        overrides={"a28": baseline + 20.0},
+    )[0]
+    assert bumped > baseline
 
 
 def test_evaluate_overrides_replace_a_single_kwarg(ds: nidus.Dataset) -> None:

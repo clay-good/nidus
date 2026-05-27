@@ -264,7 +264,7 @@ Pages:
 1. **Home** — what nidus is, how to cite (DOI), tier system, link to dataset and blog essay.
 2. **Parameter Explorer** — searchable, filterable table; row click → detail view.
 3. **Subsystem Deep-Dive** — one page per subsystem; tier distribution, citation density.
-4. **Trajectory Viewer** — pick a mechanistic submodel → plot its trajectory over its natural domain (gestational age 8–40 weeks for time trajectories; PO2 mmHg / substrate mmol/L / cortisol μg/dL / fetal weight g for algebraic submodels). Tier badge for the worst-tier input; per-parameter detail with citations. Backed by `nidus.export.evaluate_submodel` + `submodel_domain`, which bind 36 of the 41 registered submodels (the five Hadlock biometry / EFW fits use a list-of-anchors kernel signature and are listed without a plot).
+4. **Trajectory Viewer** — pick a mechanistic submodel → plot its trajectory over its natural domain (gestational age 8–40 weeks for time trajectories; PO2 mmHg / substrate mmol/L / cortisol μg/dL / fetal weight g for algebraic submodels). Tier badge for the worst-tier input; per-parameter detail with citations. Backed by `nidus.export.evaluate_submodel` + `submodel_domain`, which bind 40 of the 41 registered submodels (only `hadlock_fetal_weight` — multivariate in BPD/HC/AC/FL — is not a 1-D trajectory and is listed without a plot).
 5. **Sensitivity Sandbox** — pick a submodel + an input parameter, sweep it ±X%, plot the trajectory family. Same kernel binding; uses `evaluate_submodel(..., overrides=...)` so the sweep is one-line.
 6. **Citation Provenance** — citation → list of supported parameters, and inverse.
 7. **Unknowns Registry** — Tier D entries as structured research questions.

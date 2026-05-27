@@ -12,10 +12,10 @@ gestational time in weeks, partial pressure in mmHg, substrate
 concentration in mmol/L, etc. — so dashboards and tutorials can pick
 a sensible plotting grid automatically.
 
-Coverage as of this iteration: **36 of the 41 registered submodels.**
-Unsupported entries (the five Hadlock biometry submodels) need a
-list-of-anchors kernel signature that doesn't fit the standard
-``kwarg=scalar`` shape; see ``UNSUPPORTED_REASON``.
+Coverage as of this iteration: **40 of the 41 registered submodels.**
+The only remaining unsupported entry is ``hadlock_fetal_weight``,
+which takes four biometry inputs (BPD, HC, AC, FL) simultaneously
+and is therefore not a 1-D trajectory — see ``UNSUPPORTED_REASON``.
 """
 
 from __future__ import annotations
@@ -67,6 +67,33 @@ class _Binding:
 
 def _b(kernel: _Kernel, domain: Domain, **mapping: str) -> _Binding:
     return _Binding(kernel=kernel, params=mapping, domain=domain)
+
+
+_HADLOCK_ANCHOR_WEEKS: tuple[int, ...] = (16, 20, 24, 28, 32, 36, 40)
+
+
+def _hadlock_biometry_kernel(
+    t_weeks: NDArray[np.floating],
+    *,
+    a16: float,
+    a20: float,
+    a24: float,
+    a32: float,
+    a36: float,
+    a40: float,
+    a28: float,
+) -> NDArray[np.float64]:
+    """Scalar-kwarg adapter over ``hadlock_biometry_cubic``.
+
+    The underlying kernel takes a list of 7 weekly anchors. This
+    adapter exposes them as named keyword arguments so the standard
+    ``_BINDINGS`` shape (and sensitivity-sweep overrides) work.
+    """
+    return _ref.hadlock_biometry_cubic(
+        t_weeks,
+        [a16, a20, a24, a28, a32, a36, a40],
+        anchor_weeks=_HADLOCK_ANCHOR_WEEKS,
+    )
 
 
 _BINDINGS: dict[str, _Binding] = {
@@ -311,15 +338,56 @@ _BINDINGS: dict[str, _Binding] = {
         coefficient_a="placental_structure.allometric_coefficient_a",
         exponent_b="placental_structure.allometric_exponent_b",
     ),
+    # ---- Hadlock biometry (cubic fit through 7 weekly anchors) ------
+    "hadlock_bpd_growth": _b(
+        _hadlock_biometry_kernel,
+        TIME_WEEKS,
+        a16="fetal_growth.bpd_16w_mm",
+        a20="fetal_growth.bpd_20w_mm",
+        a24="fetal_growth.bpd_24w_mm",
+        a28="fetal_growth.bpd_28w_mm",
+        a32="fetal_growth.bpd_32w_mm",
+        a36="fetal_growth.bpd_36w_mm",
+        a40="fetal_growth.bpd_40w_mm",
+    ),
+    "hadlock_hc_growth": _b(
+        _hadlock_biometry_kernel,
+        TIME_WEEKS,
+        a16="fetal_growth.hc_16w_mm",
+        a20="fetal_growth.hc_20w_mm",
+        a24="fetal_growth.hc_24w_mm",
+        a28="fetal_growth.hc_28w_mm",
+        a32="fetal_growth.hc_32w_mm",
+        a36="fetal_growth.hc_36w_mm",
+        a40="fetal_growth.hc_40w_mm",
+    ),
+    "hadlock_ac_growth": _b(
+        _hadlock_biometry_kernel,
+        TIME_WEEKS,
+        a16="fetal_growth.ac_16w_mm",
+        a20="fetal_growth.ac_20w_mm",
+        a24="fetal_growth.ac_24w_mm",
+        a28="fetal_growth.ac_28w_mm",
+        a32="fetal_growth.ac_32w_mm",
+        a36="fetal_growth.ac_36w_mm",
+        a40="fetal_growth.ac_40w_mm",
+    ),
+    "hadlock_fl_growth": _b(
+        _hadlock_biometry_kernel,
+        TIME_WEEKS,
+        a16="fetal_growth.fl_16w_mm",
+        a20="fetal_growth.fl_20w_mm",
+        a24="fetal_growth.fl_24w_mm",
+        a28="fetal_growth.fl_28w_mm",
+        a32="fetal_growth.fl_32w_mm",
+        a36="fetal_growth.fl_36w_mm",
+        a40="fetal_growth.fl_40w_mm",
+    ),
 }
 
 
 UNSUPPORTED_REASON: dict[str, str] = {
     "hadlock_fetal_weight": "Multivariate (BPD, HC, AC, FL) — not a 1-D trajectory",
-    "hadlock_bpd_growth": "Cubic-fit kernel needs 7 weekly anchors (list arg, not scalar kwargs)",
-    "hadlock_hc_growth": "Cubic-fit kernel needs 7 weekly anchors (list arg, not scalar kwargs)",
-    "hadlock_ac_growth": "Cubic-fit kernel needs 7 weekly anchors (list arg, not scalar kwargs)",
-    "hadlock_fl_growth": "Cubic-fit kernel needs 7 weekly anchors (list arg, not scalar kwargs)",
 }
 
 

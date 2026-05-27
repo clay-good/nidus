@@ -9,6 +9,17 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
+- **`evaluate_submodel` coverage 36 → 40 / 41 submodels.** Wired the
+  four Hadlock biometry growth submodels (`hadlock_{bpd,hc,ac,fl}_
+  growth`) via a small scalar-kwarg adapter over
+  `hadlock_biometry_cubic`. The seven weekly anchors map to keyword
+  arguments `a16…a40`, so the Sensitivity Sandbox can sweep any one
+  anchor against the cubic fit. Only `hadlock_fetal_weight` remains
+  unbound — genuinely multivariate (BPD + HC + AC + FL all required)
+  and therefore not a 1-D trajectory. 2 new tests: anchor-tracking
+  tolerance check across all four biometry submodels + a
+  single-anchor override sanity check.
+
 - **`evaluate_submodel` coverage 21 → 36 / 41 submodels.** Wired the
   8 remaining time-trajectory submodels (stroke volume, renal plasma
   flow, minute ventilation, amniotic fluid volume, SVR, TSH, MCA-PI,

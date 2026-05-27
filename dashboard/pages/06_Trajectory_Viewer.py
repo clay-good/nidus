@@ -118,7 +118,8 @@ for pid in chosen_sm.parameter_ids:
 st.divider()
 st.caption(
     f"Plottable submodels: {len(_SUPPORTED)} / {len(SUBMODELS)}. The remaining "
-    f"5 are Hadlock biometry / EFW fits whose kernels take a list of weekly "
-    f"anchors. Source kernels live in `nidus.export.reference`; see the "
+    f"submodel (`hadlock_fetal_weight`) is multivariate in BPD/HC/AC/FL "
+    f"and not a 1-D trajectory. Source kernels live in "
+    f"`nidus.export.reference`; see the "
     f"[interop spec]({REPO_URL}/blob/main/docs/specs/v0.4/01-mechanistic-modeling-interop.md)."
 )
