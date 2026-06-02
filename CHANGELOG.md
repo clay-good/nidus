@@ -8,6 +8,24 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Documentation
+- **README: architecture + export-pipeline diagrams, design-decision
+  table, and a copy-paste cheat sheet.** Added two Mermaid diagrams
+  (dataset-as-source-of-truth system design; the `nidus.export`
+  registry → reference-kernel → format-builder → COMBINE pipeline), a
+  rationale table for the locked-in design decisions, an API + CLI
+  cheat sheet (every line verified to run against the live package),
+  and embedded the current tier-distribution figure. Regenerated the
+  three essay figures from live data (fig1/fig3 were stale relative to
+  the post-saturation 243-parameter / 66-citation state).
+- **Spec consistency fixes.** Corrected the citation count in
+  `02-parameter-expansion-roadmap.md` (71 → 66), refreshed the badly
+  stale status header on `01-mechanistic-modeling-interop.md` (it
+  still claimed "first four submodels shipped, ~6 remaining" — all 41
+  ship now; only submission/social steps remain), and reconciled the
+  submodel-count drift in `03-submodel-expansion-catalog.md` (the
+  projected 33 over-delivered to the realized 41).
+
 ### Added
 - **`evaluate_submodel` coverage 36 → 40 / 41 submodels.** Wired the
   four Hadlock biometry growth submodels (`hadlock_{bpd,hc,ac,fl}_

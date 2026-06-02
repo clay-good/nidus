@@ -43,8 +43,12 @@ Submodels are grouped by subsystem; each entry lists the equation
 form, the parameter ids it would consume, the citation it would be
 annotated with (`bqbiol:isDescribedBy`), and the implementation cost.
 
-If the full catalog ships, nidus exports cover **~33 submodels** — a
-realistic saturation point for the declared scope.
+The original projection here was **~33 submodels** (11 base + the 22
+candidates below). The realized registry over-delivered: it now
+totals **41 submodels** — the catalog's actual saturation point —
+because several candidates split into multiple isoform / derived
+variants (e.g. GLUT1 *and* GLUT3, MCA-PI *and* cerebroplacental
+ratio, the four Hadlock biometry fits) once they were implemented.
 
 ## 2. Phase A — high confidence (recommended)
 
@@ -347,9 +351,11 @@ different focused project.
 | B     | 10        | ~900              | ~3 weeks               |
 | C     | 4         | ~250              | ~1 week                |
 
-Total ceiling: **33 submodels** (current 11 + 22 here). The dataset
-side ceiling (`02-parameter-expansion-roadmap.md`) is **~200
-parameters**. Both ceilings are honest stopping points for the project
+Projected ceiling at authoring time: **33 submodels** (11 base + 22
+candidates). Realized ceiling: **41 submodels** (the candidates
+split into more isoform / derived variants than the table
+anticipated — see §1). The dataset side ceiling
+(`02-parameter-expansion-roadmap.md`) is **~200 parameters**. Both ceilings are honest stopping points for the project
 as scoped; exceeding either implies a scope change that should be
 re-litigated against the v0.3 / v0.4 overview specs.
 

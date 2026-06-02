@@ -3,7 +3,7 @@
 **Status:** Historical / superseded. This spec was the original
 planning document for the v0.4 expansion (v0.3 baseline = 70
 parameters, 33 citations). The expansion has since shipped and then
-some: the dataset now stands at 243 parameters / 71 citations and
+some: the dataset now stands at 243 parameters / 66 citations and
 **every row in [`04-exhaustive-parameter-catalog.md`](04-exhaustive-parameter-catalog.md)
 is `shipped`**. Spec 04 is the source of truth; this spec is kept
 for historical reference (it explains *why* the roadmap was phased

@@ -57,6 +57,10 @@ That is the whole project. The dataset is the centerpiece. The Python package, t
 - **One composed pregnancy SBML model** wiring all submodels via a shared gestational-time axis.
 - **COMBINE archive** (`.omex`) bundling SBML + CellML + PhysioCell + provenance metadata.
 
+![Tier distribution by subsystem — the honest shape of the dataset's evidence base](docs/assets/essay/fig1_tier_distribution.png)
+
+*Every parameter carries an explicit confidence tier. The chart above is generated deterministically from the live dataset ([`notebooks/essay_figures.ipynb`](notebooks/essay_figures.ipynb)) — it is the dataset being honest about itself: Tier A (green) where the literature is strong, Tier D (red) where a channel is hypothesised but unquantified.*
+
 See [docs/specs/v0.4/00-overview.md](docs/specs/v0.4/00-overview.md) for the v0.4 design and [docs/specs/v0.4/04-exhaustive-parameter-catalog.md](docs/specs/v0.4/04-exhaustive-parameter-catalog.md) for the full ceiling — every parameter the project could honestly include given the available literature.
 
 ## What nidus is
@@ -73,6 +77,101 @@ See [docs/specs/v0.4/00-overview.md](docs/specs/v0.4/00-overview.md) for the v0.
 - **Not a mechanistic simulator.** Nidus exports parameters *into* the simulators ([CellML](https://www.cellml.org/), [COPASI](http://copasi.org/), [PhysioCell](http://physicell.org/), [tellurium](https://tellurium.analogmachine.org/)). It does not integrate ODEs itself.
 - **Not an automated medical researcher.** Humans verify every parameter and every citation. LLMs help but do not promote `unverified` to `verified` on their own authority.
 - **Not exhaustive.** The declared-scope ceiling enumerated in the [exhaustive parameter catalog](docs/specs/v0.4/04-exhaustive-parameter-catalog.md) has been reached (every catalog row is now `shipped`). Further growth means parameters not yet enumerated — open an issue if you find one that fits the envelope (normal physiology, human, 8–40w singleton).
+
+## Architecture
+
+The **dataset is the single source of truth.** Everything else is generated from it: the Python package bundles a synced copy, and every export format is a deterministic projection of the same JSON. There is no second store of numbers to drift out of sync.
+
+```mermaid
+flowchart TD
+    DS["<b>dataset/</b> — source of truth<br/>JSON parameters + JSON Schema + JSON-LD context<br/>243 params · 66 citations · 13 subsystems · 4 tiers"]
+    DS -->|"sync_dataset_into_package.py"| PKG["<b>nidus</b> Python package<br/>load · filter · validate · models"]
+    PKG --> CLI["<b>nidus</b> CLI<br/>version · validate · info · export"]
+    PKG --> DASH["Streamlit dashboard<br/>7 browsable pages"]
+    PKG --> NB["Reference notebooks<br/>executed in CI (nbmake)"]
+    PKG --> EXP["<b>nidus.export</b><br/>41 mechanistic submodels"]
+    EXP --> SBML["SBML L3v2<br/>→ BioModels Database"]
+    EXP --> CELLML["CellML 2.0 / 1.1<br/>→ Physiome Repository"]
+    EXP --> PC["PhysioCell<br/>user_parameters.xml"]
+    EXP --> OMEX["COMBINE .omex<br/>+ SED-ML descriptors"]
+```
+
+Inside `nidus.export`, the submodel **registry** is the spine. Each submodel binds dataset parameter ids to a pure-NumPy **reference kernel**; the format builders (SBML / CellML / PhysioCell) read the same registry, and every exported model is round-trip validated against its kernel so an export bug cannot ship silently.
+
+```mermaid
+flowchart LR
+    P["dataset/parameters/*.json"] --> REG["registry.py<br/>Submodel definitions<br/>(params + tier propagation)"]
+    REG --> REF["reference.py<br/>pure-NumPy kernels"]
+    REG --> SBMLB["sbml.py"]
+    REG --> CMLB["cellml.py"]
+    REG --> PCB["physiocell.py"]
+    ANN["annotate.py<br/>MIRIAM · SBO · nidus: RDF"] --> SBMLB
+    ANN --> CMLB
+    REF -. "round-trip validates (1e-6 algebraic / 1e-4 ODE)" .-> SBMLB
+    SBMLB --> COMBINE["combine.py → .omex"]
+    CMLB --> COMBINE
+    PCB --> COMBINE
+    SEDML["sedml.py<br/>uniformTimeCourse"] --> COMBINE
+```
+
+**Design decisions, and why:**
+
+| Decision | Rationale |
+| --- | --- |
+| **Pure Python** (NumPy/SciPy, no Rust/PyO3) | Nothing in the dashboard or exports is compute-bound. A second language is friction, not value. The v0.2 Rust prototype is archived at the `v0.2-archive` tag. |
+| **Dataset is the centerpiece; everything else is a presentation layer** | The durable contribution is the curated, tier-annotated numbers — not any one viewer. The Python API, dashboard, and SBML/CellML exports are all swappable projections. |
+| **Confidence tier on every parameter** | A pregnancy model is only as honest as its weakest input. Making uncertainty a first-class, machine-readable field is the load-bearing idea. The worst input tier propagates into every derived submodel. |
+| **Humans verify; LLMs do not promote** | `unverified → verified` requires a human reading the source PDF. This keeps the dataset's authority human-grounded. 28 / 243 are verified today; that number is honest, not aspirational. |
+| **Exports are generated artifacts, never hand-edited** | CI regenerates every format on each push. Consumers can pin to a `nidus:datasetVersion` annotation for reproducibility. |
+| **MIRIAM citation chain survives tier-stripping** | If a downstream tool drops the custom `nidus:` RDF predicates, the `bqbiol:isDescribedBy` DOI/PMID links remain — the citation chain is the durable layer. |
+
+## Cheat sheet
+
+```python
+import nidus
+ds = nidus.load()                       # bundled dataset (or load(path=...) for a checkout)
+
+len(ds)                                 # 243 parameters
+ds["maternal_renal.gfr_ml_per_min"]     # dotted id → Parameter
+p = ds["placental_glucose.glucose_glut1_km_mmol_per_l"]
+p.value.central, p.value.low, p.value.high, p.value.units
+p.tier                                  # "A" | "B" | "C" | "D"
+p.extraction.review_status              # "verified" | "unverified" | "contested"
+p.extraction.tier_rationale             # prose: why this tier
+p.primary_citation.doi                  # canonical source DOI
+
+[x for x in ds if x.tier in ("A", "B")]            # filter by tier
+[x for x in ds if x.subsystem == "fetal_growth"]   # filter by subsystem
+ds.citations["mahendru-2014-cardiac-output"].doi   # citation lookup
+
+from nidus.export import (
+    SUBMODELS,                          # 41 mechanistic submodels
+    evaluate_submodel,                  # dataset → numeric trajectory
+    submodel_domain,                    # the independent variable + plotting range
+    supported_submodels,                # 40 are 1-D evaluable
+)
+import numpy as np
+t = np.linspace(8, 40, 100)             # gestational weeks
+co = evaluate_submodel(ds, "maternal_cardiac_output_trajectory", t)
+# one-at-a-time sensitivity sweep:
+hi = evaluate_submodel(ds, "maternal_cardiac_output_trajectory", t,
+                       overrides={"peak_excess_l_per_min": 3.0})
+```
+
+```bash
+nidus version                                   # package + dataset version
+nidus validate                                  # JSON-Schema-validate the dataset
+nidus info                                       # counts by subsystem / tier / review status
+nidus export --format bibtex   --output refs.bib
+nidus export --format csv      --output params.csv
+nidus export --format sbml      --output exports/sbml/        # one .xml per submodel
+nidus export --format cellml    --output exports/cellml/      # CellML 2.0
+nidus export --format cellml    --cellml-version 1.1 --output exports/cellml_1_1/
+nidus export --format physiocell --output exports/physicell/  # user_parameters.xml
+nidus export --format composed  --output exports/composed/    # top-level coupled model
+nidus export --format omex      --output exports/nidus.omex   # COMBINE archive
+streamlit run dashboard/app.py                  # browse locally
+```
 
 ## Quick start
 
