@@ -35,6 +35,10 @@ plot = ["matplotlib>=3.7"]
 export = [
     # Mechanistic-modeling exports (v0.4): SBML / CellML / PhysioCell.
     # See docs/specs/v0.4/01-mechanistic-modeling-interop.md.
+    # numpy is required: the reference kernels (nidus.export.reference)
+    # that the SBML/CellML builders round-trip against are pure-NumPy,
+    # so a bare `pip install nidus[export]` must pull it in.
+    "numpy>=1.21",
     "python-libsbml>=5.20",
     "libcellml>=0.5",
 ]

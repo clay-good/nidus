@@ -8,6 +8,19 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- **`pip install nidus[export]` was missing `numpy`.** The export
+  reference kernels (`nidus.export.reference`) are pure-NumPy, but the
+  `[export]` optional-dependency group only listed `python-libsbml`
+  and `libcellml`. A clean `pip install nidus[export]` therefore
+  produced a broken install where `nidus export --format sbml` died
+  with `No module named 'numpy'`. This had been failing the CI
+  `regenerate-exports` job on `main` for several commits (dev / test
+  installs masked it because `[dev]` pulls numpy transitively). Added
+  `numpy>=1.21` to the `[export]` group; verified end-to-end in a
+  clean export-only venv (41 SBML / 41 CellML / 41 CellML-1.1 +
+  PhysioCell + OMEX all regenerate).
+
 ### Documentation
 - **README: architecture + export-pipeline diagrams, design-decision
   table, and a copy-paste cheat sheet.** Added two Mermaid diagrams
