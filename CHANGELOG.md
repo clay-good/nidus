@@ -38,6 +38,15 @@ and versions follow [Semantic Versioning](https://semver.org/).
   ship now; only submission/social steps remain), and reconciled the
   submodel-count drift in `03-submodel-expansion-catalog.md` (the
   projected 33 over-delivered to the realized 41).
+- **Exhaustive-catalog typical-value reconciliation.** Eleven `Typical`
+  anchors in `04-exhaustive-parameter-catalog.md` had drifted from the
+  curated dataset central values (e.g. GLUT1 Km listed 17 vs the
+  dataset's 2.5 mmol/L; `initial_area_m2` listed 3.0 vs 0.5 m² and
+  mislabelled "Mid-pregnancy area" when it is the early-gestation
+  logistic asymptote). Per the catalog's own §8 living-document policy
+  ("the JSON wins and this doc gets corrected"), every drifted anchor
+  was reset to the dataset value. These are non-authoritative
+  sniff-test numbers; the dataset JSON remains the source of truth.
 
 ### Added
 - **`evaluate_submodel` coverage 36 → 40 / 41 submodels.** Wired the

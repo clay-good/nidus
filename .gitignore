@@ -13,7 +13,9 @@ Thumbs.db
 *.swo
 *~
 #*#
-.claude
+.mcp.json
+.claude/settings.json
+.claude/skills/
 
 # --------------------
 # Python
@@ -95,3 +97,8 @@ site/
 python/nidus/_dataset/
 notebooks/figures/
 docs/notebooks/
+
+# openlore analysis artifacts
+.openlore/
+.openlore/decisions/
+ARCHITECTURE.md

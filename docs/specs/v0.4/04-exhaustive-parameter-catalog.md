@@ -267,7 +267,7 @@ in human biology — ~300 km in a term placenta.
 
 | Parameter id | What | Typical | Tier | Status | Primary citation |
 | --- | --- | --- | --- | --- | --- |
-| `initial_area_m2` | Mid-pregnancy area | 3.0 | B | shipped | Mayhew 2014 |
+| `initial_area_m2` | Initial (early-pregnancy) area | 0.5 | B | shipped | Mayhew 2014 |
 | `term_area_m2` | Term area | 12.0 | B | shipped | Mayhew 2014 |
 | `growth_rate_per_week` | Logistic rate | 0.2 | B | shipped | Mayhew 2014 |
 | `midpoint_week` | Logistic midpoint | 24 | B | shipped | Mayhew 2014 |
@@ -322,10 +322,10 @@ glucose gradient is the driver; fetal glucose is ~70% of maternal.
 
 | Parameter id | What | Typical | Tier | Status | Primary citation |
 | --- | --- | --- | --- | --- | --- |
-| `glucose_glut1_km_mmol_per_l` | GLUT1 Km | 17 | B | shipped | Illsley 2000 |
-| `glucose_glut1_vmax_per_area_mmol_per_min_per_m2` | GLUT1 Vmax | 0.5 | B | shipped | Illsley 2000 |
-| `glucose_glut3_km_mmol_per_l` | GLUT3 Km | 3 | B | shipped | Illsley 2000 |
-| `glucose_glut3_vmax_per_area_mmol_per_min_per_m2` | GLUT3 Vmax | 0.1 | B | shipped | Illsley 2000 |
+| `glucose_glut1_km_mmol_per_l` | GLUT1 Km | 2.5 | B | shipped | Illsley 2000 |
+| `glucose_glut1_vmax_per_area_mmol_per_min_per_m2` | GLUT1 Vmax | 0.075 | B | shipped | Illsley 2000 |
+| `glucose_glut3_km_mmol_per_l` | GLUT3 Km | 1.5 | B | shipped | Illsley 2000 |
+| `glucose_glut3_vmax_per_area_mmol_per_min_per_m2` | GLUT3 Vmax | 0.02 | B | shipped | Illsley 2000 |
 | `maternal_fetal_glucose_gradient_term_mmol_per_l` | M-F glucose gradient | 1.2 | B | shipped | Illsley 2000 |
 | `net_glucose_flux_term_mg_per_kg_per_min` | Net glucose flux | 5 | B | shipped | Illsley 2000 |
 
@@ -351,9 +351,9 @@ co-production (placenta lacks 16α-hydroxylase).
 | `hcg_term_miu_per_ml` | hCG at term | 10000 | A | shipped | Cole 2010 |
 | `hpl_baseline_ug_per_ml` | hPL baseline (T1) | 0.5 | B | shipped | Handwerger 2010 |
 | `hpl_term_ug_per_ml` | hPL at term | 7 | B | shipped | Handwerger 2010 |
-| `progesterone_baseline_ng_per_ml` | Progesterone baseline | 25 | A | shipped | Tulchinsky 1972 |
+| `progesterone_baseline_ng_per_ml` | Progesterone baseline | 10 | A | shipped | Tulchinsky 1972 |
 | `progesterone_term_ng_per_ml` | Progesterone term | 150 | A | shipped | Tulchinsky 1972 |
-| `estradiol_baseline_ng_per_ml` | Estradiol baseline | 1 | A | shipped | Tulchinsky 1972 |
+| `estradiol_baseline_ng_per_ml` | Estradiol baseline | 0.1 | A | shipped | Tulchinsky 1972 |
 | `estradiol_term_ng_per_ml` | Estradiol term | 14 | A | shipped | Tulchinsky 1972 |
 | `estriol_term_ng_per_ml` | Estriol term | 10 | A | shipped | Tulchinsky 1972 |
 | `relaxin_t1_ng_per_ml` | Relaxin in T1 | 1.0 | B | shipped | Conrad 2001 |
@@ -379,8 +379,8 @@ the brain and heart.
 | `right_ventricular_output_fraction_term` | RV fraction of CVO | 0.60 | B | shipped | Sutton 1991 |
 | `ductus_venosus_shunt_fraction_mid_pregnancy` | DV shunt fraction (mid) | 0.30 | B | shipped | Kiserud 2000 |
 | `ductus_venosus_shunt_fraction_late_pregnancy` | DV shunt fraction (late) | 0.20 | B | shipped | Kiserud 2000 |
-| `foramen_ovale_streamline_preference` | FO streamline preference | 0.55 | B | shipped | Rudolph 1985 |
-| `ductus_arteriosus_share` | DA share of CVO | 0.55 | B | shipped | Rudolph 1985 |
+| `foramen_ovale_streamline_preference` | FO streamline preference | 0.8 | B | shipped | Rudolph 1985 |
+| `ductus_arteriosus_share` | DA share of CVO | 0.85 | B | shipped | Rudolph 1985 |
 | `aortic_isthmus_flow_fraction_cvo_term` | Isthmus/CVO | 0.10 | C | shipped | Rudolph 1985 |
 | `coronary_flow_fraction_cvo_term` | Coronary/CVO | 0.03 | C | shipped | Rudolph 1985 |
 | `mca_flow_term_ml_per_min` | MCA flow term | 30 | C | shipped | Mari 1995 |
@@ -480,8 +480,8 @@ modestly as fetal urine dominates the source.
 | `afv_peak_week` | Week of AFV peak | 33 | A | shipped | Brace 1989 |
 | `afv_term_ml` | AFV at term | 600 | A | shipped | Brace 1989 |
 | `afv_20w_ml` | AFV at 20w | 350 | A | shipped | Brace 1989 |
-| `afv_early_baseline_ml` | AFV early-pregnancy baseline | 50 | B | shipped | Brace 1989 |
-| `afv_spread_weeks` | AFV piecewise spread | 4 | C | shipped | Brace 1989 |
+| `afv_early_baseline_ml` | AFV early-pregnancy baseline | 100 | B | shipped | Brace 1989 |
+| `afv_spread_weeks` | AFV piecewise spread | 9 | C | shipped | Brace 1989 |
 | `af_glucose_term_mmol_per_l` | AF glucose term | 0.5 | B | shipped | Underwood 2005 |
 | `af_lactate_term_mmol_per_l` | AF lactate term | 4 | B | shipped | Underwood 2005 |
 | `af_creatinine_term_mg_per_dl` | AF creatinine term | 2.0 | B | shipped | Underwood 2005 |
