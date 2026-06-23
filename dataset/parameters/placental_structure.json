@@ -73,9 +73,19 @@
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Feneley & Burton 1991, Placenta (PMID 1871071), villous membrane stereology",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/1871071/",
+        "quote": "The villous membrane, defined as the outer surface of the syncytiotrophoblast (excluding the microvilli) to the inner surface of the capillary endothelium, was estimated to have an arithmetic mean thickness of 4.53 microns and a harmonic mean thickness of 3.65 microns.",
+        "extracted_value": "Arithmetic mean villous membrane thickness at term 4.53 microns (harmonic mean 3.65)."
+      }
     },
     "applicability": {
       "population": "Term human placentae"
@@ -128,9 +138,19 @@
     ],
     "primary_citation": "mayhew-2014-placental-morphometry",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Cell Types of the Placenta — Vascular Biology of the Placenta (NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK53245/",
+        "quote": "The surface area of syncytiotrophoblasts is about 5 square meters at 28 weeks' gestation and reaches up to 11–12 square meters at term",
+        "extracted_value": "Syncytiotrophoblast exchange surface area reaches 11-12 m^2 at term."
+      }
     },
     "applicability": {
       "population": "Term human placentae"
@@ -442,9 +462,19 @@
     ],
     "primary_citation": "naeye-1985-cord-length",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase1-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Anatomy, Abdomen and Pelvis: Umbilical Cord — StatPearls (NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK557389/",
+        "quote": "Average length ranges from 50 to 60 cm, with a diameter of approximately 1 cm.",
+        "extracted_value": "Average umbilical cord length 50 to 60 cm."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies at term"
@@ -498,9 +528,19 @@
     ],
     "primary_citation": "pijnenborg-2006-spiral-artery",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Placental Blood Circulation — Vascular Biology of the Placenta (NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK53254/",
+        "quote": "It has been estimated that there are about 120 spiral arterial entries into the intervillous space at term.",
+        "extracted_value": "About 120 spiral arterial entries into the intervillous space at term."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies at term"
@@ -554,9 +594,19 @@
     ],
     "primary_citation": "benirschke-2012-placental-pathology",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Structure of the Placenta — Vascular Biology of the Placenta (NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK53256/",
+        "quote": "A mature placenta weighs about 500–600 grams and consists of 15–28 “cotyledons.”",
+        "extracted_value": "Mature placenta consists of 15-28 cotyledons."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies at term"

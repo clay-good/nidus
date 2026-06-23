@@ -17,9 +17,19 @@
       "cole-2010-hcg"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Endotext, Endocrinology of Pregnancy (NCBI Bookshelf NBK278962)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK278962/",
+        "quote": "The average peak hCG level is approximately 110,000 mIU/mL and occurs at 10 weeks' gestation",
+        "extracted_value": "Average peak hCG ~110,000 mIU/mL at 10 weeks; StatPearls notes many normal pregnancies reach >100,000 mIU/mL at the 8-11 week peak. Stored central 100,000 (range 50,000-200,000) is consistent."
+      }
     },
     "primary_citation": "cole-2010-hcg"
   },
@@ -74,9 +84,19 @@
       "cole-2010-hcg"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Cleveland Clinic, Human Chorionic Gonadotropin (hCG)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://my.clevelandclinic.org/health/body/22489-human-chorionic-gonadotropin",
+        "quote": "25 to 40 [weeks]: 3,640-117,000 [mIU/mL]",
+        "extracted_value": "Cleveland Clinic reference table gives a third-trimester (25-40 weeks) hCG range of 3,640-117,000 mIU/mL, which brackets the stored term value of 10,000 (5,000-20,000) mIU/mL."
+      }
     },
     "primary_citation": "cole-2010-hcg"
   },
@@ -98,9 +118,19 @@
       "handwerger-2010-hpl"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Cleveland Clinic, Human Placental Lactogen",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://my.clevelandclinic.org/health/body/24806-human-placental-lactogen",
+        "quote": "In the third trimester, the level reaches 4.50-12.80 mcg/mL.",
+        "extracted_value": "Cleveland Clinic gives a third-trimester hPL reference range of 4.50-12.80 mcg/mL; Endotext review gives a term rise to ~3.5-25 ug/mL. Stored central 7 (5-10) ug/mL sits within both."
+      }
     },
     "primary_citation": "handwerger-2010-hpl"
   },
@@ -122,9 +152,19 @@
       "tulchinsky-1972-steroids"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Endotext, Endocrinology of Pregnancy (NCBI Bookshelf NBK278962)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK278962/",
+        "quote": "At term, progesterone concentrations can range from 100-300 ng/mL",
+        "extracted_value": "Endotext states term progesterone ranges 100-300 ng/mL; stored central 150 (100-200) ng/mL is consistent and sits within this band."
+      }
     },
     "primary_citation": "tulchinsky-1972-steroids"
   },
@@ -146,9 +186,19 @@
       "tulchinsky-1972-steroids"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Endotext, Endocrinology of Pregnancy (NCBI Bookshelf NBK278962)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK278962/",
+        "quote": "Following fertilization, 17β-estradiol increases gradually to a range of 6-30 ng/mL at term",
+        "extracted_value": "Endotext states 17beta-estradiol rises to 6-30 ng/mL at term; stored central 14 (8-25) ng/mL sits within this range."
+      }
     },
     "primary_citation": "tulchinsky-1972-steroids"
   },
@@ -170,9 +220,19 @@
       "tulchinsky-1972-steroids"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Endotext, Endocrinology of Pregnancy (NCBI Bookshelf NBK278962)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK278962/",
+        "quote": "estriol increases gradually to a range of approximately 10-30 ng/ml at term",
+        "extracted_value": "Endotext states estriol rises to approximately 10-30 ng/ml at term; stored central 10 (6-20) ng/mL brackets the lower end of this range."
+      }
     },
     "primary_citation": "tulchinsky-1972-steroids"
   },
@@ -194,9 +254,19 @@
       "handwerger-2010-hpl"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Cleveland Clinic, Human Placental Lactogen",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://my.clevelandclinic.org/health/body/24806-human-placental-lactogen",
+        "quote": "If you're not pregnant, the level is 0.00-0.10 mcg/mL (micrograms per milliliter).",
+        "extracted_value": "Cleveland Clinic states the non-pregnant hPL level is 0.00-0.10 mcg/mL, matching the stored operational baseline of 0 (0-0.1) ug/mL."
+      }
     },
     "primary_citation": "handwerger-2010-hpl"
   },
@@ -218,9 +288,19 @@
       "tulchinsky-1972-steroids"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Endotext, Endocrinology of Pregnancy (NCBI Bookshelf NBK278962)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK278962/",
+        "quote": "progesterone concentrations rise from about 1-2 ng/mL on the day of the LH surge to a plateau of approximately 10-35 ng/mL over the subsequent 7 days.",
+        "extracted_value": "Endotext states luteal-phase progesterone reaches a plateau of approximately 10-35 ng/mL; stored mid-luteal baseline 10 (5-20) ng/mL sits at the lower end of this range."
+      }
     },
     "primary_citation": "tulchinsky-1972-steroids"
   },
@@ -242,9 +322,19 @@
       "tulchinsky-1972-steroids"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Endotext, Endocrinology of Pregnancy (NCBI Bookshelf NBK278962)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK278962/",
+        "quote": "Concentrations of 17β-estradiol are less than 0.1 ng/mL during the follicular phase of the cycle and reach about 0.4 ng/mL during the luteal phase of normal menstrual cycles",
+        "extracted_value": "Endotext states non-pregnant 17beta-estradiol is <0.1 ng/mL (follicular) and ~0.4 ng/mL (luteal). Stored mid-luteal baseline 0.1 (0.05-0.25) ng/mL is consistent in magnitude; the source's luteal point (0.4) is above the stored high."
+      }
     },
     "primary_citation": "tulchinsky-1972-steroids"
   },
@@ -267,9 +357,19 @@
     ],
     "primary_citation": "conrad-2001-relaxin-gfr",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase2-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Conrad & Baker, Maternal vasodilation in pregnancy: the emerging role of relaxin (Am J Physiol, PMC3154715)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3154715/",
+        "quote": "Relaxin is detectable in the circulation of women during the luteal phase, and, if conception occurs, serum concentrations rapidly rise, reaching a peak of ∼1 ng/ml at the end of the first trimester.",
+        "extracted_value": "Peer-reviewed OA review states serum relaxin peaks at ~1 ng/ml at the end of the first trimester; stored central 1.0 (0.6-1.5) ng/mL matches."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, first trimester (peak around weeks 10–12)"

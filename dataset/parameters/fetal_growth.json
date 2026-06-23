@@ -19,9 +19,19 @@
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "28  67.9 68.6 69.7  73.5  77.3 78.3 79.0",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 28 completed weeks = 73.5 mm (stored 71.5; 2.7% diff)."
+      }
     },
     "applicability": {
       "population": "NICHD Fetal Growth Studies singleton cohort"
@@ -55,7 +65,7 @@
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 331.0 g is similar but not identical \u2014 provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 331.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
   },
   {
     "id": "fetal_growth.efw_28w_g",
@@ -77,14 +87,24 @@
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st EFW standard (Stirnemann, UOG 2016)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.gynultrazvuk.cz/uploads/importantdocument/8/doc/intergrowth-21st-efw-standards-table.pdf",
+        "quote": "28  892 915 951  1097  1277 1335 1376",
+        "extracted_value": "INTERGROWTH-21st 50th-centile EFW at 28 completed weeks = 1097 g (stored 1141.0; 4.0% diff)."
+      }
     },
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 1141.0 g is similar but not identical \u2014 provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 1141.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
   },
   {
     "id": "fetal_growth.efw_36w_g",
@@ -106,14 +126,24 @@
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st EFW standard (Stirnemann, UOG 2016)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.gynultrazvuk.cz/uploads/importantdocument/8/doc/intergrowth-21st-efw-standards-table.pdf",
+        "quote": "36  1951 2024 2146  2594  3086 3237 3331",
+        "extracted_value": "INTERGROWTH-21st 50th-centile EFW at 36 completed weeks = 2594 g (stored 2779.0; 7.1% diff)."
+      }
     },
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 2779.0 g is similar but not identical \u2014 provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
+    "notes": "Cohort: 2334 low-risk singleton pregnancies across 4 racial/ethnic groups (non-Hispanic white, non-Hispanic black, Hispanic, Asian), 12 US sites, 2009-2013. Buck Louis 2015 Table 2 reports white-women 50th percentile EFW as 332/1205/2862/3702 g at 20/28/36/40 weeks; the dataset's value of 2779.0 g is similar but not identical — provenance (white-only vs pooled, percentile vs mean) needs human re-verification against the published table."
   },
   {
     "id": "fetal_growth.efw_40w_g",
@@ -135,14 +165,24 @@
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st EFW standard (Stirnemann, UOG 2016)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.gynultrazvuk.cz/uploads/importantdocument/8/doc/intergrowth-21st-efw-standards-table.pdf",
+        "quote": "40  2554 2670 2805  3338  3871 4006 4121",
+        "extracted_value": "INTERGROWTH-21st 50th-centile EFW at 40 completed weeks = 3338 g (stored 3567.0; 6.9% diff)."
+      }
     },
     "applicability": {
       "population": "NICHD Fetal Growth Studies multi-ethnic singleton cohort"
     },
-    "notes": "PROVENANCE NEEDS RESOLUTION: Hadlock 1991 abstract (PMID 1887021) reports term fetal weight 3619 g at 40 weeks with uniform CV \u00b112.7%. The dataset's 3567 \u00b1 410 g (CV ~11.5%) is much closer to Hadlock's regression than to Buck Louis 2015's race-stratified 50th percentiles (white 3505, hispanic 3336, asian 3270, black 3260 at 39 weeks). The original v0.2 author may have used Hadlock 1991 values but cited Buck Louis 2015. Both citations are now listed; primary needs human re-check."
+    "notes": "PROVENANCE NEEDS RESOLUTION: Hadlock 1991 abstract (PMID 1887021) reports term fetal weight 3619 g at 40 weeks with uniform CV ±12.7%. The dataset's 3567 ± 410 g (CV ~11.5%) is much closer to Hadlock's regression than to Buck Louis 2015's race-stratified 50th percentiles (white 3505, hispanic 3336, asian 3270, black 3260 at 39 weeks). The original v0.2 author may have used Hadlock 1991 values but cited Buck Louis 2015. Both citations are now listed; primary needs human re-check."
   },
   {
     "id": "fetal_growth.fl_28w_mm",
@@ -164,9 +204,19 @@
     ],
     "primary_citation": "buck-louis-2015-nichd-growth",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st FL standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+        "quote": "28  47.3 47.8 48.6  51.3  54.0 54.8 55.3",
+        "extracted_value": "INTERGROWTH-21st 50th-centile FL at 28 completed weeks = 51.3 mm (stored 53.0; 3.3% diff)."
+      }
     },
     "applicability": {
       "population": "NICHD Fetal Growth Studies singleton cohort"
@@ -217,9 +267,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "16  32.0 32.5 33.2  35.7  38.1 38.8 39.3",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 16 completed weeks = 35.7 mm (stored 35.0; 2.0% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -246,9 +306,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "20  44.1 44.7 45.5  48.4  51.4 52.2 52.8",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 20 completed weeks = 48.4 mm (stored 47.0; 2.9% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -275,9 +345,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "24  56.4 57.0 58.0  61.4  64.8 65.7 66.4",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 24 completed weeks = 61.4 mm (stored 61.0; 0.7% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -304,9 +384,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "32  77.8 78.5 79.7  83.8  87.8 89.0 89.8",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 32 completed weeks = 83.8 mm (stored 82.0; 2.1% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -333,9 +423,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "36  84.7 85.5 86.8  91.2  95.7 96.9 97.7",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 36 completed weeks = 91.2 mm (stored 89.0; 2.4% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -362,9 +462,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st BPD standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_bpd_table.pdf",
+        "quote": "40  87.5 88.4 89.9  94.9  99.9 101.3 102.3",
+        "extracted_value": "INTERGROWTH-21st 50th-centile BPD at 40 completed weeks = 94.9 mm (stored 93.0; 2.0% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -391,9 +501,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st HC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+        "quote": "16  111.1 112.6 114.9  122.9  130.9 133.2 134.7",
+        "extracted_value": "INTERGROWTH-21st 50th-centile HC at 16 completed weeks = 122.9 mm (stored 124.0; 0.9% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -420,9 +540,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st HC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+        "quote": "20  158.5 160.2 163.0  172.5  182.0 184.7 186.5",
+        "extracted_value": "INTERGROWTH-21st 50th-centile HC at 20 completed weeks = 172.5 mm (stored 175.0; 1.4% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -449,9 +579,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st HC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+        "quote": "24  203.5 205.4 208.5  219.1  229.7 232.7 234.7",
+        "extracted_value": "INTERGROWTH-21st 50th-centile HC at 24 completed weeks = 219.1 mm (stored 225.0; 2.7% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -478,9 +618,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st HC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+        "quote": "28  243.6 245.7 248.9  260.4  271.8 275.1 277.2",
+        "extracted_value": "INTERGROWTH-21st 50th-centile HC at 28 completed weeks = 260.4 mm (stored 267.0; 2.5% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -507,9 +657,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "NICHD Fetal Growth Studies 50th centile, reproduced in Grantz et al. PMC5807181 (AJOG 2018)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5807181/",
+        "quote": "NICHD White: 299, NICHD Hispanic: 295, NICHD Asian: 295, NICHD Black: 294",
+        "extracted_value": "NICHD White 50th-centile HC at 32w = 299 mm vs stored 297 mm (<1%)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -536,9 +696,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st HC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+        "quote": "36  299.2 301.7 305.6  319.4  333.2 337.1 339.6",
+        "extracted_value": "INTERGROWTH-21st 50th-centile HC at 36 completed weeks = 319.4 mm (stored 322.0; 0.8% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -565,9 +735,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st HC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_hc_table.pdf",
+        "quote": "40  309.6 312.7 317.4  333.9  350.5 355.2 358.3",
+        "extracted_value": "INTERGROWTH-21st 50th-centile HC at 40 completed weeks = 333.9 mm (stored 343.0; 2.7% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -594,9 +774,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st AC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+        "quote": "16  93.0 94.3 96.3  103.2  110.1 112.1 113.4",
+        "extracted_value": "INTERGROWTH-21st 50th-centile AC at 16 completed weeks = 103.2 mm (stored 105.0; 1.7% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -623,9 +813,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st AC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+        "quote": "20  133.4 135.2 138.0  147.7  157.5 160.3 162.1",
+        "extracted_value": "INTERGROWTH-21st 50th-centile AC at 20 completed weeks = 147.7 mm (stored 152.0; 2.9% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -652,9 +852,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st AC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+        "quote": "24  173.3 175.6 179.0  191.2  203.3 206.8 209.0",
+        "extracted_value": "INTERGROWTH-21st 50th-centile AC at 24 completed weeks = 191.2 mm (stored 198.0; 3.6% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -681,9 +891,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st AC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+        "quote": "28  212.1 214.7 218.8  233.3  247.8 251.9 254.5",
+        "extracted_value": "INTERGROWTH-21st 50th-centile AC at 28 completed weeks = 233.3 mm (stored 240.0; 2.9% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -710,9 +930,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "NICHD Fetal Growth Studies 50th centile, reproduced in Grantz et al. PMC5807181 (AJOG 2018)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5807181/",
+        "quote": "NICHD White: 287, NICHD Hispanic: 282, NICHD Asian: 279, NICHD Black: 275",
+        "extracted_value": "NICHD Hispanic 50th-centile AC at 32w = 282 mm = stored 282 mm exactly (White 287)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -739,9 +969,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st AC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+        "quote": "36  280.8 284.8 291.0  312.8  334.6 340.9 344.9",
+        "extracted_value": "INTERGROWTH-21st 50th-centile AC at 36 completed weeks = 312.8 mm (stored 322.0; 2.9% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -768,9 +1008,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st AC standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_ac_table.pdf",
+        "quote": "40  307.7 312.9 321.1  349.8  378.5 386.7 392.0",
+        "extracted_value": "INTERGROWTH-21st 50th-centile AC at 40 completed weeks = 349.8 mm (stored 354.0; 1.2% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -797,9 +1047,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st FL standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+        "quote": "16  16.4 16.8 17.4  19.5  21.5 22.1 22.5",
+        "extracted_value": "INTERGROWTH-21st 50th-centile FL at 16 completed weeks = 19.5 mm (stored 21.0; 7.7% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -826,9 +1086,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st FL standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+        "quote": "20  28.0 28.4 29.0  31.3  33.6 34.2 34.6",
+        "extracted_value": "INTERGROWTH-21st 50th-centile FL at 20 completed weeks = 31.3 mm (stored 33.0; 5.4% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -855,9 +1125,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st FL standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+        "quote": "24  38.3 38.7 39.4  41.9  44.4 45.1 45.5",
+        "extracted_value": "INTERGROWTH-21st 50th-centile FL at 24 completed weeks = 41.9 mm (stored 44.0; 5.0% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -884,9 +1164,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "NICHD Fetal Growth Studies 50th centile, reproduced in Grantz et al. PMC5807181 (AJOG 2018)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5807181/",
+        "quote": "NICHD White: 60, NICHD Hispanic: 60, NICHD Asian: 60, NICHD Black: 61",
+        "extracted_value": "NICHD 50th-centile FL at 32w = 60-61 mm vs stored 62 mm (~3%)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -913,9 +1203,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st FL standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+        "quote": "36  61.3 61.9 62.9  66.4  69.9 70.9 71.5",
+        "extracted_value": "INTERGROWTH-21st 50th-centile FL at 36 completed weeks = 66.4 mm (stored 70.0; 5.4% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -942,9 +1242,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st FL standard (Papageorghiou, Lancet 2014)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://intergrowth21.com/sites/default/files/2023-01/grow_fetal-ct_fl_table.pdf",
+        "quote": "40  66.1 66.8 68.0  72.1  76.2 77.4 78.2",
+        "extracted_value": "INTERGROWTH-21st 50th-centile FL at 40 completed weeks = 72.1 mm (stored 76.0; 5.4% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -1000,9 +1310,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "INTERGROWTH-21st EFW standard (Stirnemann, UOG 2016)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.gynultrazvuk.cz/uploads/importantdocument/8/doc/intergrowth-21st-efw-standards-table.pdf",
+        "quote": "24  575 585 602  668  751 778 796",
+        "extracted_value": "INTERGROWTH-21st 50th-centile EFW at 24 completed weeks = 668 g (stored 650.0; 2.7% diff)."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {
@@ -1029,9 +1349,19 @@
       "hadlock-1991-fetal-weight"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "NICHD Fetal Growth Studies 50th centile, reproduced in Grantz et al. PMC5807181 (AJOG 2018)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5807181/",
+        "quote": "NICHD White: 1960, NICHD Hispanic: 1879, NICHD Asian: 1830, NICHD Black: 1837",
+        "extracted_value": "NICHD 50th-centile EFW at 32w = 1837-1960 g by group (Asian 1830) vs stored 1800 g; stored just below NICHD band."
+      }
     },
     "primary_citation": "buck-louis-2015-nichd-growth",
     "applicability": {

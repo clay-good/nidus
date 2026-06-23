@@ -88,12 +88,13 @@ is the durable record of its output.
 
 ## Coverage (at generation time)
 
-Verdicts across 243 parameters (primary + secondary sources): 23 `match`,
-46 `close`, 4 `mismatch`, 130 `not_found`, 40 `source_unavailable`.
+Verdicts across 243 parameters (primary open-access + authoritative secondary
+sources): 51 `match`, 117 `close`, 11 `mismatch`, 46 `not_found`,
+18 `source_unavailable`.
 
-On the back of that evidence, **38 parameters were promoted to
+On the back of that evidence, **127 parameters were promoted to
 `pending_human_review`** (28 others were already human-`verified`; 1 is
-`contested`; the remaining 176 stay `unverified`). The 4 `mismatch` records are
+`contested`; the remaining 87 stay `unverified`). The 11 `mismatch` records are
 the priority worklist — a stored value that disagrees with its source. The
 `not_found` / `source_unavailable` records need full-text, a table, or a library
 copy. This is exactly the map a human reviewer needs to spend their time well.

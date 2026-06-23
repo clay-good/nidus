@@ -6,16 +6,23 @@
 
 | Verdict | Count |
 | ------- | ----- |
-| ❌ mismatch — source appears to report a different value | 4 |
-| 🟡 close — same ballpark, confirm exact figure / statistic | 46 |
-| ✅ match — source value agrees with stored value | 23 |
-| 🔍 not found — value not in fetched text (check table/figure in full PDF) | 130 |
-| ⬜ no source — book / paywalled / no abstract retrieved | 40 |
+| ❌ mismatch — source appears to report a different value | 11 |
+| 🟡 close — same ballpark, confirm exact figure / statistic | 117 |
+| ✅ match — source value agrees with stored value | 51 |
+| 🔍 not found — value not in fetched text (check table/figure in full PDF) | 46 |
+| ⬜ no source — book / paywalled / no abstract retrieved | 18 |
 | **Total parameters** | **243** |
 
 Work top-down: mismatches first (a wrong value is worse than an unverified one), then Tier A/B, then the rest.
 
-## ❌ mismatch — source appears to report a different value  (4)
+## ❌ mismatch — source appears to report a different value  (11)
+
+### `fetal_circulation.umbilical_vein_flow_per_kg_term_ml_per_min_per_kg`  ·  Tier B  ·  stored: 80.0 mL/min/kg
+
+- **Primary citation:** `kiserud-2001-umbilical-vein`  (_evidence: secondary_)
+- **Source reports:** Human term PC-MRI reports weight-normalised umbilical-vein flow of 134 mL/min/kg (2 SD 62-206), well above the stored 80 mL/min/kg. PC-MRI systematically yields higher umbilical flows than Doppler velocimetry (the basis of the Kiserud-derived stored value).
+- **Quote:** > Umbilical vein: 134 (62, 206)
+- **Reviewer note:** SECONDARY: PC-MRI UV flow 134 mL/min/kg exceeds stored 80 (65-100); discrepancy attributable to MRI-vs-Doppler modality difference, not necessarily an error in the Doppler-based stored value.
 
 ### `maternal_blood.plasma_volume_early_l`  ·  Tier B  ·  stored: 3.05 L
 
@@ -38,6 +45,13 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > a steady increase in volume flow rate in the left ascending uterine artery from a mean of 94.5 ml/min before pregnancy
 - **Reviewer note:** Stored 50 ml/min combined vs Thaler's 94.5 ml/min single-artery pre-pregnancy (~189 bilateral). Already flagged in dataset notes; ~3.8x discrepancy.
 
+### `maternal_cardiovascular.lv_mass_term_g`  ·  Tier B  ·  stored: 180.0 g
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** Authoritative pregnancy-specific position statement: LV mass increases only 5-10% in pregnancy. Applied to a ~130 g baseline that is ~137-143 g, far below the stored 180 g (a ~38% rise). Larger percentages in the literature generally refer to wall thickness, not chamber LV mass.
+- **Quote:** > There is a 5-10% overall increase in left ventricular mass and wall thickness of 25-30% above pre-pregnancy levels, all staying within normal values.
+- **Reviewer note:** SECONDARY: pregnancy LV-mass rise is 5-10% per BSE position statement; stored 180 g implies ~38% and looks too high.
+
 ### `maternal_cardiovascular.peak_excess_cardiac_output_l_per_min`  ·  Tier B  ·  stored: 2.7 L/min
 
 - **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
@@ -45,7 +59,49 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > The greatest increase in cardiac output occurred by the second trimester (Δ: 0.6 ± 1 l/min, P < 0.001)
 - **Reviewer note:** Stored 2.7 L/min peak excess vs abstract's Δ0.6±1 l/min for the same CO-rise quantity. Flagged in dataset notes for re-investigation against full results.
 
-## 🟡 close — same ballpark, confirm exact figure / statistic  (46)
+### `maternal_endocrine.cbg_term_mg_per_l`  ·  Tier B  ·  stored: 70 mg/L
+
+- **Primary citation:** `carr-1981-cortisol`  (_evidence: secondary_)
+- **Source reports:** Total CBG in pregnant women (third trimester) 877 +/- 27 nmol/L vs 466 +/- 13 in non-pregnant controls (~1.9x rise). Converting at CBG MW ~52 kDa: 877 nmol/L ~ 45.6 mg/L, below the stored range 55-90 (central 70). Direction and ~2x fold-rise agree, but the converted absolute value is lower than stored.
+- **Quote:** > Total CBG concentrations were greater in pregnant women than control subjects (877 +/- 27 vs 466 +/- 13 nmol/L; P < 0.0001)
+- **Reviewer note:** SECONDARY: term total CBG 877 nmol/L ~ 45.6 mg/L (MW ~52 kDa) is below stored 55-90 (central 70); ~1.9x rise vs non-pregnant agrees in direction but absolute converted value is lower.
+
+### `placental_structure.placenta_to_fetus_weight_ratio_term`  ·  Tier B  ·  stored: 0.14 fraction
+
+- **Primary citation:** `burton-2010-placental-development`  (_evidence: secondary_)
+- **Source reports:** Mean fetoplacental (fetus:placenta) weight ratio in the normal group was 5.52, i.e. placenta:fetus = 1/5.52 = 0.181.
+- **Quote:** > The mean of the fetoplacental ratio in the normal group was 5.52 ± 0.07
+- **Reviewer note:** SECONDARY: reported fetoplacental ratio 5.52 inverts to placenta:fetus 0.181, above stored 0.14 (range 0.11-0.17).
+
+### `maternal_cardiovascular.lv_wall_thickness_term_mm`  ·  Tier C  ·  stored: 11 mm
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** Pregnancy-specific position statement reports septal/posterior wall thickness of 7-8 mm during pregnancy (IVSd 0.7 cm, PWTd 0.8 cm), rising 25-30% but staying within normal values (<~9 mm). Stored 11 mm exceeds these reference values.
+- **Quote:** > wall thickness of 25-30% above pre-pregnancy levels, all staying within normal values
+- **Reviewer note:** SECONDARY: pregnant LV wall thickness ~7-9 mm per BSE; stored 11 mm appears too high.
+
+### `maternal_cardiovascular.pulse_wave_velocity_term_m_per_s`  ·  Tier C  ·  stored: 7.5 m/s
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** In normotensive third-trimester women, pulse wave velocity was 5.0 m/s (IQR 1.2). Stored 7.5 m/s is well above this measured value, though absolute PWV is strongly method/device dependent.
+- **Quote:** > Pulse wave velocity was significantly higher in preeclamptic than normotensive women (6.6 IQR 1.8 versus 5.0 IQR 1.2; p = 0.000).
+- **Reviewer note:** SECONDARY: measured normotensive third-trimester PWV ~5.0 m/s; stored 7.5 m/s higher (method-dependent caveat).
+
+### `placental_structure.villous_capillary_length_total_km_term`  ·  Tier C  ·  stored: 300.0 km
+
+- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: secondary_)
+- **Source reports:** Normal human placental capillary network estimated at 550 km length and 15 m^2 surface area.
+- **Quote:** > the capillary network in a normal human placenta is estimated to be 550 km in length and 15 square meters in surface area
+- **Reviewer note:** SECONDARY: review cites ~550 km, well above stored 300 km (range 280-320).
+
+## 🟡 close — same ballpark, confirm exact figure / statistic  (117)
+
+### `amniotic_fluid.afv_20w_ml`  ·  Tier A  ·  stored: 350.0 mL
+
+- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** Secondary textbook chapter's 50th-percentile AFV table gives 425.8 mL at 20 weeks. This brackets the stored central 350 mL (which sits below the median but within the normal spread for this gestational age).
+- **Quote:** > Amniotic fluid volumes are in milliliters ... 425.8 mL at 20 weeks' gestation at the 50th percentile
+- **Reviewer note:** SECONDARY: median 425.8 mL at 20 wk brackets stored 350 mL (below median, plausible).
 
 ### `amniotic_fluid.afv_peak_ml`  ·  Tier A  ·  stored: 800.0 mL
 
@@ -54,6 +110,13 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > mean amniotic fluid volume did not change significantly between 22 and 39 weeks and averaged 777 ml, with the 95% confidence interval ranging from 302 to 1997 ml.
 - **Reviewer note:** Abstract mean 777 ml falls within stored range 600-1000; but abstract describes a flat plateau, not a peak of 800. Per-week nomogram peak not in abstract.
 
+### `amniotic_fluid.afv_term_ml`  ·  Tier A  ·  stored: 600.0 mL
+
+- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** Secondary textbook chapter's 50th-percentile AFV table gives 543.5 mL at 40 weeks. This brackets the stored term central 600 mL. (Other reviews quote ~800 mL at 40 wk; nomograms differ, so the stored 600 mL sits within the cross-source spread.)
+- **Quote:** > the same table shows 543.5 mL at 40 weeks' gestation at the 50th percentile
+- **Reviewer note:** SECONDARY: median 543.5 mL at 40 wk brackets stored 600 mL; reviews span ~540-800 mL.
+
 ### `fetal_circulation.fhr_term_bpm`  ·  Tier A  ·  stored: 140.0 bpm
 
 - **Primary citation:** `von-steinburg-2013-fhr`  (_evidence: fulltext_)
@@ -61,12 +124,250 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Gestational age n 95% confidence interval A &lt;28 1230 140.7538 – 141.9422 … &gt;=37 8478 136.0104 – 136.4295
 - **Reviewer note:** Source term mean is ~136 bpm, just below stored 140 central but inside stored 130-150 range and the 120-160 normal range; magnitude/direction agree.
 
+### `fetal_circulation.ua_pi_baseline`  ·  Tier A  ·  stored: 1.5 dimensionless
+
+- **Primary citation:** `acharya-2005-umbilical-pi`  (_evidence: secondary_)
+- **Source reports:** Large international cohort reports a 50th-centile UA-PI of 1.10 at 24 weeks, falling to 0.79 at 40 weeks. The stored 1.5 at 16-20 weeks lies earlier on the same monotonically declining curve, but modern large cohorts give a somewhat lower mid-second-trimester median than the stored central value.
+- **Quote:** > Gestational age 24+0, Centile 50th: 1.10 ... Gestational age 40+0, Centile 50th: 0.79
+- **Reviewer note:** SECONDARY: median UA-PI 1.10 at 24 wk on a declining curve; stored 1.5 at 16-20 wk plausibly higher earlier but exceeds modern-cohort medians, so consistency is approximate.
+
+### `fetal_growth.ac_16w_mm`  ·  Tier A  ·  stored: 105.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile AC at 16 completed weeks = 103.2 mm (stored 105.0; 1.7% diff).
+- **Quote:** > 16  93.0 94.3 96.3  103.2  110.1 112.1 113.4
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 103.2 mm brackets stored 105.0 mm (1.7% diff).
+
+### `fetal_growth.ac_20w_mm`  ·  Tier A  ·  stored: 152.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile AC at 20 completed weeks = 147.7 mm (stored 152.0; 2.9% diff).
+- **Quote:** > 20  133.4 135.2 138.0  147.7  157.5 160.3 162.1
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 147.7 mm brackets stored 152.0 mm (2.9% diff).
+
+### `fetal_growth.ac_24w_mm`  ·  Tier A  ·  stored: 198.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile AC at 24 completed weeks = 191.2 mm (stored 198.0; 3.6% diff).
+- **Quote:** > 24  173.3 175.6 179.0  191.2  203.3 206.8 209.0
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 191.2 mm brackets stored 198.0 mm (3.6% diff).
+
+### `fetal_growth.ac_28w_mm`  ·  Tier A  ·  stored: 240.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile AC at 28 completed weeks = 233.3 mm (stored 240.0; 2.9% diff).
+- **Quote:** > 28  212.1 214.7 218.8  233.3  247.8 251.9 254.5
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 233.3 mm brackets stored 240.0 mm (2.9% diff).
+
+### `fetal_growth.ac_36w_mm`  ·  Tier A  ·  stored: 322.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile AC at 36 completed weeks = 312.8 mm (stored 322.0; 2.9% diff).
+- **Quote:** > 36  280.8 284.8 291.0  312.8  334.6 340.9 344.9
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 312.8 mm brackets stored 322.0 mm (2.9% diff).
+
+### `fetal_growth.ac_40w_mm`  ·  Tier A  ·  stored: 354.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile AC at 40 completed weeks = 349.8 mm (stored 354.0; 1.2% diff).
+- **Quote:** > 40  307.7 312.9 321.1  349.8  378.5 386.7 392.0
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 349.8 mm brackets stored 354.0 mm (1.2% diff).
+
+### `fetal_growth.bpd_16w_mm`  ·  Tier A  ·  stored: 35.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 16 completed weeks = 35.7 mm (stored 35.0; 2.0% diff).
+- **Quote:** > 16  32.0 32.5 33.2  35.7  38.1 38.8 39.3
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 35.7 mm brackets stored 35.0 mm (2.0% diff).
+
+### `fetal_growth.bpd_20w_mm`  ·  Tier A  ·  stored: 47.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 20 completed weeks = 48.4 mm (stored 47.0; 2.9% diff).
+- **Quote:** > 20  44.1 44.7 45.5  48.4  51.4 52.2 52.8
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 48.4 mm brackets stored 47.0 mm (2.9% diff).
+
+### `fetal_growth.bpd_24w_mm`  ·  Tier A  ·  stored: 61.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 24 completed weeks = 61.4 mm (stored 61.0; 0.7% diff).
+- **Quote:** > 24  56.4 57.0 58.0  61.4  64.8 65.7 66.4
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 61.4 mm brackets stored 61.0 mm (0.7% diff).
+
+### `fetal_growth.bpd_28w_mm`  ·  Tier A  ·  stored: 71.5 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 28 completed weeks = 73.5 mm (stored 71.5; 2.7% diff).
+- **Quote:** > 28  67.9 68.6 69.7  73.5  77.3 78.3 79.0
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 73.5 mm brackets stored 71.5 mm (2.7% diff).
+
+### `fetal_growth.bpd_32w_mm`  ·  Tier A  ·  stored: 82.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 32 completed weeks = 83.8 mm (stored 82.0; 2.1% diff).
+- **Quote:** > 32  77.8 78.5 79.7  83.8  87.8 89.0 89.8
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 83.8 mm brackets stored 82.0 mm (2.1% diff).
+
+### `fetal_growth.bpd_36w_mm`  ·  Tier A  ·  stored: 89.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 36 completed weeks = 91.2 mm (stored 89.0; 2.4% diff).
+- **Quote:** > 36  84.7 85.5 86.8  91.2  95.7 96.9 97.7
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 91.2 mm brackets stored 89.0 mm (2.4% diff).
+
+### `fetal_growth.bpd_40w_mm`  ·  Tier A  ·  stored: 93.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile BPD at 40 completed weeks = 94.9 mm (stored 93.0; 2.0% diff).
+- **Quote:** > 40  87.5 88.4 89.9  94.9  99.9 101.3 102.3
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 94.9 mm brackets stored 93.0 mm (2.0% diff).
+
+### `fetal_growth.efw_24w_g`  ·  Tier A  ·  stored: 650.0 g
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile EFW at 24 completed weeks = 668 g (stored 650.0; 2.7% diff).
+- **Quote:** > 24  575 585 602  668  751 778 796
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 668 g brackets stored 650.0 g (2.7% diff).
+
+### `fetal_growth.efw_28w_g`  ·  Tier A  ·  stored: 1141.0 g
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile EFW at 28 completed weeks = 1097 g (stored 1141.0; 4.0% diff).
+- **Quote:** > 28  892 915 951  1097  1277 1335 1376
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 1097 g brackets stored 1141.0 g (4.0% diff).
+
+### `fetal_growth.efw_32w_g`  ·  Tier A  ·  stored: 1800.0 g
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** NICHD 50th-centile EFW at 32w = 1837-1960 g by group (Asian 1830) vs stored 1800 g; stored just below NICHD band.
+- **Quote:** > NICHD White: 1960, NICHD Hispanic: 1879, NICHD Asian: 1830, NICHD Black: 1837
+- **Reviewer note:** SECONDARY: NICHD Fetal Growth Studies 50th-centile reproduced in Grantz (AJOG 2018, PMC5807181); same NICHD standard family as the cited Buck Louis 2015 source.
+
+### `fetal_growth.efw_36w_g`  ·  Tier A  ·  stored: 2779.0 g
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile EFW at 36 completed weeks = 2594 g (stored 2779.0; 7.1% diff).
+- **Quote:** > 36  1951 2024 2146  2594  3086 3237 3331
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 2594 g brackets stored 2779.0 g (7.1% diff).
+
+### `fetal_growth.efw_40w_g`  ·  Tier A  ·  stored: 3567.0 g
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile EFW at 40 completed weeks = 3338 g (stored 3567.0; 6.9% diff).
+- **Quote:** > 40  2554 2670 2805  3338  3871 4006 4121
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 3338 g brackets stored 3567.0 g (6.9% diff).
+
+### `fetal_growth.fl_16w_mm`  ·  Tier A  ·  stored: 21.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile FL at 16 completed weeks = 19.5 mm (stored 21.0; 7.7% diff).
+- **Quote:** > 16  16.4 16.8 17.4  19.5  21.5 22.1 22.5
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 19.5 mm brackets stored 21.0 mm (7.7% diff).
+
+### `fetal_growth.fl_20w_mm`  ·  Tier A  ·  stored: 33.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile FL at 20 completed weeks = 31.3 mm (stored 33.0; 5.4% diff).
+- **Quote:** > 20  28.0 28.4 29.0  31.3  33.6 34.2 34.6
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 31.3 mm brackets stored 33.0 mm (5.4% diff).
+
+### `fetal_growth.fl_24w_mm`  ·  Tier A  ·  stored: 44.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile FL at 24 completed weeks = 41.9 mm (stored 44.0; 5.0% diff).
+- **Quote:** > 24  38.3 38.7 39.4  41.9  44.4 45.1 45.5
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 41.9 mm brackets stored 44.0 mm (5.0% diff).
+
+### `fetal_growth.fl_28w_mm`  ·  Tier A  ·  stored: 53.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile FL at 28 completed weeks = 51.3 mm (stored 53.0; 3.3% diff).
+- **Quote:** > 28  47.3 47.8 48.6  51.3  54.0 54.8 55.3
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 51.3 mm brackets stored 53.0 mm (3.3% diff).
+
+### `fetal_growth.fl_32w_mm`  ·  Tier A  ·  stored: 62.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** NICHD 50th-centile FL at 32w = 60-61 mm vs stored 62 mm (~3%).
+- **Quote:** > NICHD White: 60, NICHD Hispanic: 60, NICHD Asian: 60, NICHD Black: 61
+- **Reviewer note:** SECONDARY: NICHD Fetal Growth Studies 50th-centile reproduced in Grantz (AJOG 2018, PMC5807181); same NICHD standard family as the cited Buck Louis 2015 source.
+
+### `fetal_growth.fl_36w_mm`  ·  Tier A  ·  stored: 70.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile FL at 36 completed weeks = 66.4 mm (stored 70.0; 5.4% diff).
+- **Quote:** > 36  61.3 61.9 62.9  66.4  69.9 70.9 71.5
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 66.4 mm brackets stored 70.0 mm (5.4% diff).
+
+### `fetal_growth.fl_40w_mm`  ·  Tier A  ·  stored: 76.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile FL at 40 completed weeks = 72.1 mm (stored 76.0; 5.4% diff).
+- **Quote:** > 40  66.1 66.8 68.0  72.1  76.2 77.4 78.2
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 72.1 mm brackets stored 76.0 mm (5.4% diff).
+
+### `fetal_growth.hc_16w_mm`  ·  Tier A  ·  stored: 124.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile HC at 16 completed weeks = 122.9 mm (stored 124.0; 0.9% diff).
+- **Quote:** > 16  111.1 112.6 114.9  122.9  130.9 133.2 134.7
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 122.9 mm brackets stored 124.0 mm (0.9% diff).
+
+### `fetal_growth.hc_20w_mm`  ·  Tier A  ·  stored: 175.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile HC at 20 completed weeks = 172.5 mm (stored 175.0; 1.4% diff).
+- **Quote:** > 20  158.5 160.2 163.0  172.5  182.0 184.7 186.5
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 172.5 mm brackets stored 175.0 mm (1.4% diff).
+
+### `fetal_growth.hc_24w_mm`  ·  Tier A  ·  stored: 225.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile HC at 24 completed weeks = 219.1 mm (stored 225.0; 2.7% diff).
+- **Quote:** > 24  203.5 205.4 208.5  219.1  229.7 232.7 234.7
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 219.1 mm brackets stored 225.0 mm (2.7% diff).
+
+### `fetal_growth.hc_28w_mm`  ·  Tier A  ·  stored: 267.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile HC at 28 completed weeks = 260.4 mm (stored 267.0; 2.5% diff).
+- **Quote:** > 28  243.6 245.7 248.9  260.4  271.8 275.1 277.2
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 260.4 mm brackets stored 267.0 mm (2.5% diff).
+
+### `fetal_growth.hc_36w_mm`  ·  Tier A  ·  stored: 322.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile HC at 36 completed weeks = 319.4 mm (stored 322.0; 0.8% diff).
+- **Quote:** > 36  299.2 301.7 305.6  319.4  333.2 337.1 339.6
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 319.4 mm brackets stored 322.0 mm (0.8% diff).
+
+### `fetal_growth.hc_40w_mm`  ·  Tier A  ·  stored: 343.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** INTERGROWTH-21st 50th-centile HC at 40 completed weeks = 333.9 mm (stored 343.0; 2.7% diff).
+- **Quote:** > 40  309.6 312.7 317.4  333.9  350.5 355.2 358.3
+- **Reviewer note:** SECONDARY and DIFFERENT standard: INTERGROWTH-21st (Papageorghiou Lancet 2014 / Stirnemann UOG 2016), not the cited NICHD/Buck Louis. 50th-centile 333.9 mm brackets stored 343.0 mm (2.7% diff).
+
 ### `maternal_cardiovascular.peak_excess_heart_rate_bpm`  ·  Tier A  ·  stored: 15.0 bpm
 
 - **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
 - **Source reports:** Abstract reports HR increased maximally by the third trimester by Δ13±11 bpm; 13 falls within the stored 10–20 bpm range.
 - **Quote:** > the heart rate increased maximally by the third trimester (Δ: 13 ± 11  bpm; P = 0.001)
 - **Reviewer note:** Reported Δ13±11 bpm vs stored 15 (range 10–20); same quantity and magnitude, central figure differs slightly.
+
+### `maternal_endocrine.cortisol_baseline_ug_per_dl`  ·  Tier A  ·  stored: 10.0 ug/dL
+
+- **Primary citation:** `carr-1981-cortisol`  (_evidence: secondary_)
+- **Source reports:** StatPearls states a morning cortisol >18 mcg/dL is a normal finding (excludes Addison disease). This anchors the upper part of the non-pregnant normal morning range; the stored non-pregnant central 10 with range 5-20 ug/dL is consistent in magnitude (single-digit to low-twenties ug/dL), with the >18 threshold sitting just below the stored high of 20.
+- **Quote:** > A morning cortisol level >18 mcg/dL is a normal finding and may exclude an Addison disease diagnosis
+- **Reviewer note:** SECONDARY: StatPearls gives a normal morning cortisol threshold (>18 mcg/dL), confirming the order of magnitude and upper bound of the stored 5-20 ug/dL range but not pinning the central value.
+
+### `maternal_renal.gfr_first_trimester_ml_per_min`  ·  Tier A  ·  stored: 135.0 mL/min
+
+- **Primary citation:** `davison-hytten-1974-gfr`  (_evidence: secondary_)
+- **Source reports:** Review reports creatinine clearance (a GFR proxy) rising ~25% by gestational week 4 and ~45% by week 9; applied to a non-pregnant baseline of ~90-100 mL/min this yields a first-trimester GFR of roughly 120-135 mL/min, bracketing the stored central of 135 at its upper edge.
+- **Quote:** > creatinine clearance increased 20% at 4 weeks post-menses, 25% as early as gestational week 4, and 45% by gestational week 9
+- **Reviewer note:** SECONDARY: source gives first-trimester GFR as a ~25-45% rise over baseline, not an absolute mL/min; stored 135 sits at the upper edge of the implied range.
 
 ### `maternal_renal.plasma_sodium_drop_meq_per_l`  ·  Tier A  ·  stored: 5.0 mEq/L
 
@@ -88,6 +389,48 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Normal adult resting tidal volume is ~500 mL (male) and ~400 mL (female); stored 450 mL sits between.
 - **Quote:** > It measures around 500 mL in an average healthy adult male and approximately 400 mL in a healthy female.
 - **Reviewer note:** SECONDARY evidence; female ~400 mL / male ~500 mL bracket stored central 450 mL (range 400-500).
+
+### `placental_endocrine.estriol_term_ng_per_ml`  ·  Tier A  ·  stored: 10.0 ng/mL
+
+- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: secondary_)
+- **Source reports:** Endotext states estriol rises to approximately 10-30 ng/ml at term; stored central 10 (6-20) ng/mL brackets the lower end of this range.
+- **Quote:** > estriol increases gradually to a range of approximately 10-30 ng/ml at term
+- **Reviewer note:** SECONDARY: Endotext term estriol 10-30 ng/mL; stored central 10 (6-20) ng/mL overlaps but sits at/below the source's lower bound.
+
+### `amniotic_fluid.af_creatinine_term_mg_per_dl`  ·  Tier B  ·  stored: 2.0 mg/dL
+
+- **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** Term (36-42 wk) AF creatinine was 1.83 +/- 0.42 mg/dL; the article also states the maturity range is 1.5 to 2.0 mg/dl. Stored 2.0 mg/dL sits at the top of both the +/-1SD span (1.41-2.25) and the cited maturity range.
+- **Quote:** > Creatinine (mg/dl) ... (36-42 weeks) 1.83 +/- 0.42 ... Creatinine values in the amniotic fluid that best represent fetal maturity are 1.5 to 2.0 mg/dl
+- **Reviewer note:** SECONDARY: term AF creatinine 1.83 mg/dL; stored 2.0 within range 1.5-2.0 and +/-1SD.
+
+### `amniotic_fluid.af_glucose_term_mmol_per_l`  ·  Tier B  ·  stored: 0.5 mmol/L
+
+- **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** Term (36-42 wk) AF glucose was 17.94 +/- 13.53 mg/dL (methods state glucose reported as mg/dl; table header 'mg/ml' is a typo). That mean equals ~1.0 mmol/L, and the +/-1SD span (~0.24-1.75 mmol/L) brackets the stored 0.5 mmol/L.
+- **Quote:** > Glucose (mg/ml) ... (36-42 weeks) 17.94 +/- 13.53
+- **Reviewer note:** SECONDARY: term AF glucose 17.94 mg/dL (~1.0 mmol/L); stored 0.5 mmol/L within wide +/-1SD.
+
+### `amniotic_fluid.af_osmolality_term_mosm_per_kg`  ·  Tier B  ·  stored: 260 mOsm/kg
+
+- **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** AF osmolality was 264.81 +/- 9.54 mOsm/l at 13-20 wk, 259.62 +/- 15.34 at 27-34 wk, and 237.54 +/- 31.42 at 36-42 wk. The stored 260 mOsm/kg falls within the term +/-1SD span (206-269) and matches the late-second/third-trimester means.
+- **Quote:** > Osmolality (mOsm/l) (13-20 weeks) 264.81 +/- 9.54 ... (27-34 weeks) 259.62 +/- 15.34 ... (36-42 weeks) 237.54 +/- 31.42
+- **Reviewer note:** SECONDARY: AF osmolality declines ~265->238 mOsm/l to term; stored 260 within term +/-1SD.
+
+### `amniotic_fluid.afv_early_baseline_ml`  ·  Tier B  ·  stored: 100.0 mL
+
+- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** GLOWM review reports AF volume of 60 ml at 12 weeks and 175 ml at 16 weeks. These early-pregnancy figures bracket the stored early-baseline central of 100 mL (range 50-200).
+- **Quote:** > At 12 weeks' gestation, the average volume is 60 ml. By 16 weeks, when genetic amniocentesis is often performed, the mean volume is 175 ml.
+- **Reviewer note:** SECONDARY: 60 ml (12 wk) and 175 ml (16 wk) bracket stored 100 mL early baseline.
+
+### `fetal_circulation.mca_pi_baseline`  ·  Tier B  ·  stored: 1.5 dimensionless
+
+- **Primary citation:** `mari-1995-mca-pi`  (_evidence: secondary_)
+- **Source reports:** Normal MCA-PI nomogram gives a 50th-centile value of 1.71 at 20 weeks, rising to a peak of 2.05 at 28 weeks then declining (parabolic pattern). The stored early-second-trimester value of 1.5 sits just below the 1.71 median at 20 weeks.
+- **Quote:** > median MCA-PI was 1.71 (50th percentile column for gestational week 20); peak PI value 2.05 at 28 weeks of gestation
+- **Reviewer note:** SECONDARY: 20-wk median MCA-PI 1.71 (parabolic, peak 2.05 at 28 wk); brackets stored 1.5 (1.3-1.7) at the upper edge.
 
 ### `fetal_circulation.mca_pi_peak`  ·  Tier B  ·  stored: 2.0 dimensionless
 
@@ -236,6 +579,27 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > White blood cells (WBC) (×10⁹/L) … 6–16
 - **Reviewer note:** SECONDARY (GLOWM), not the cited Hytten & Chamberlain 1980 primary; third-trimester WBC 6-16 x10^9/L contains stored 10.5.
 
+### `maternal_cardiovascular.baseline_cardiac_output_l_per_min`  ·  Tier B  ·  stored: 4.6 L/min
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: post-partum (non-pregnant surrogate) cardiac output 4.3 +/- 0.9 L/min. StatPearls: resting CO ~5-6 L/min in a healthy adult. Stored 4.6 lies between these and within Clark's SD.
+- **Quote:** > Cardiac output (L/min)                4.3 ± 0.9        6.2 ± 1.0    44           0.0003
+- **Reviewer note:** SECONDARY: stored 4.6 within 1 SD of Clark post-partum CO 4.3 +/- 0.9; below textbook ~5 L/min but in range.
+
+### `maternal_cardiovascular.baseline_svr_dyn_s_cm5`  ·  Tier B  ·  stored: 1300.0 dyn*s/cm^5
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: post-partum (non-pregnant surrogate) SVR 1530 +/- 520 dyn*s/cm^5. Stored 1300 lies below the point estimate but well within +/-1 SD and within commonly cited non-pregnant ranges (~1200-1530).
+- **Quote:** > Systemic vascular resistance         1530 ± 520       1210 ± 266    -21          0.100
+- **Reviewer note:** SECONDARY: stored 1300 within 1 SD of Clark post-partum SVR 1530 +/- 520; sources vary 1200-1530.
+
+### `maternal_cardiovascular.cardiac_output_t3_l_per_min`  ·  Tier B  ·  stored: 6.5 L/min
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: at-term cardiac output 6.2 +/- 1.0 L/min (a 44% rise from post-partum). Stored 6.5 lies within Clark's SD of the at-term value.
+- **Quote:** > Cardiac output (L/min)                4.3 ± 0.9        6.2 ± 1.0    44           0.0003
+- **Reviewer note:** SECONDARY: stored 6.5 within 1 SD of Clark at-term CO 6.2 +/- 1.0 (+44%).
+
 ### `maternal_cardiovascular.heart_rate_peak_week`  ·  Tier B  ·  stored: 32 week
 
 - **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
@@ -243,12 +607,54 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > the heart rate increased maximally by the third trimester (Δ: 13 ± 11  bpm; P = 0.001)
 - **Reviewer note:** Abstract supports T3 timing of HR peak (week 32 is in T3); exact week not stated.
 
+### `maternal_cardiovascular.lv_mass_baseline_g`  ·  Tier B  ·  stored: 130.0 g
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** BSE reference guideline: normal LV mass for women 51-173 g. Stored 130 g falls within this range (upper-middle).
+- **Quote:** > Left ventricular mass (grams): 51-173
+- **Reviewer note:** SECONDARY: stored 130 g within BSE normal female LV-mass range 51-173 g; no central pregnancy-specific value found.
+
+### `maternal_cardiovascular.map_nadir_drop_mmhg`  ·  Tier B  ·  stored: 8.0 mmHg
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** Review states the mid-pregnancy MAP reduction is typically 8-10 mmHg (just under a 10% decline from pre-pregnancy). Stored 8 mmHg is the lower bound of that stated range.
+- **Quote:** > The reduction is typically 8-10 mm Hg or just less than a 10% decline from pre-pregnancy levels.
+- **Reviewer note:** SECONDARY: stored 8 mmHg is the lower bound of the stated 8-10 mmHg MAP nadir drop.
+
+### `maternal_cardiovascular.map_nadir_week`  ·  Tier B  ·  stored: 22.0 weeks
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** StatPearls: blood pressure reaches its lowest point at about 20-24 weeks of gestation. Stored 22 weeks lies in the middle of this range.
+- **Quote:** > blood pressure reaching its lowest point at about 20-24 weeks gestation
+- **Reviewer note:** SECONDARY: stored 22 weeks within the stated 20-24 week BP-nadir window.
+
+### `maternal_cardiovascular.term_heart_rate_bpm`  ·  Tier B  ·  stored: 85.0 bpm
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: at-term heart rate 83 +/- 1.0 bpm (a 17% rise from post-partum 71). Stored 85 is within ~2 bpm of the at-term value.
+- **Quote:** > Heart rate (beats/min)                 71 ± 10          83 ± 1.0    17           0.015
+- **Reviewer note:** SECONDARY: stored 85 close to Clark at-term HR 83 bpm (+17%).
+
+### `maternal_cardiovascular.term_svr_dyn_s_cm5`  ·  Tier B  ·  stored: 980.0 dyn*s/cm^5
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: at-term SVR 1210 +/- 266 dyn*s/cm^5 (a 21% fall). Soma-Pillay 2016 states a 25-30% fall. Stored 980 sits just within 1 SD of Clark's at-term value (944-1476) and is consistent with a 25-30% fall from a ~1300 baseline.
+- **Quote:** > Systemic vascular resistance         1530 ± 520       1210 ± 266    -21          0.100
+- **Reviewer note:** SECONDARY: stored 980 within 1 SD of Clark at-term SVR 1210 +/- 266; consistent with 25-30% fall.
+
 ### `maternal_cardiovascular.term_uterine_flow_ml_per_min`  ·  Tier B  ·  stored: 750.0 mL/min
 
 - **Primary citation:** `thaler-1990-uterine-flow`  (_evidence: abstract_)
 - **Source reports:** Abstract reports 342 ml/min in the left ascending uterine artery in late gestation (~684 ml/min bilateral), near the stored combined 750 ml/min.
 - **Quote:** > from a mean of 94.5 ml/min before pregnancy to a mean of 342 ml/min in late gestation (reflecting a 3.5-fold increase)
 - **Reviewer note:** Stored 750 ml/min combined vs ~684 ml/min from doubling Thaler's 342 ml/min single-artery term value; same magnitude.
+
+### `maternal_endocrine.aldosterone_term_ng_per_dl`  ·  Tier B  ·  stored: 40.0 ng/dL
+
+- **Primary citation:** `wilson-1980-renin-aldosterone`  (_evidence: secondary_)
+- **Source reports:** Normotensive third-trimester aldosterone median 970.5 pmol/L (IQR 468.3-1586.0). Converting (1 ng/dL = 27.74 pmol/L): median 35.0 ng/dL, IQR 16.9-57.2 ng/dL. Stored central 40 ng/dL and range 25-60 fall within / overlap the converted interval.
+- **Quote:** > Aldosterone, pmol/L First trimester 386.1 (226.2-626.2) Third trimester 970.5 (468.3-1586.0)
+- **Reviewer note:** SECONDARY: normotensive third-trimester aldosterone median 970.5 pmol/L = 35.0 ng/dL (factor 27.74); stored central 40 within the converted IQR 16.9-57.2 ng/dL.
 
 ### `maternal_endocrine.cortisol_term_ug_per_dl`  ·  Tier B  ·  stored: 30.0 ug/dL
 
@@ -264,12 +670,47 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > There was a significant (p = 0.0003) 56% decrease in insulin sensitivity through 36 weeks' gestation.
 - **Reviewer note:** 56% fall in insulin sensitivity supports ~2x rise in resistance (HOMA-IR 2->4) in direction/magnitude, but no HOMA-IR value reported.
 
+### `maternal_endocrine.prolactin_term_ng_per_ml`  ·  Tier B  ·  stored: 200.0 ng/mL
+
+- **Primary citation:** `tyson-1972-prolactin`  (_evidence: secondary_)
+- **Source reports:** Third-trimester prolactin reference interval 4087.33-9733.65 uIU/mL. Using the WHO 3rd IS conversion (1 ng/mL ~ 21.2 uIU/mL, supported by the study's non-pregnant 178.89-757.52 uIU/mL = ~8.4-35.7 ng/mL matching standard prolactin ranges), this is ~193-459 ng/mL. Stored central 200 sits at the low end and the stored range 150-300 overlaps the lower part of the reported interval.
+- **Quote:** > first trimester, 621.20-3584.00 microIU/mL; second trimester, 1432.00-5349.68 microIU/mL; third trimester, 4087.33-9733.65 microIU/mL
+- **Reviewer note:** SECONDARY: third-trimester interval 4087-9734 uIU/mL ~ 193-459 ng/mL (factor 21.2); stored central 200 brackets the lower bound, consistent magnitude after unit conversion.
+
+### `maternal_endocrine.tsh_t1_miu_per_l`  ·  Tier B  ·  stored: 0.6 mIU/L
+
+- **Primary citation:** `glinoer-1997-thyroid`  (_evidence: secondary_)
+- **Source reports:** Secondary reference-interval study (n=540): first-trimester TSH 5th-95th centile 0.04-3.77 uIU/mL with mean 1.51. Stored T1 central 0.6 sits low within this interval; the stored range 0.1-2.5 is well bracketed by the reported interval.
+- **Quote:** > Trimester specific normal ranges of TSH in microIU/mL were 0.04-3.77, 0.30-3.21 and 0.6-4.5 microIU/mL, respectively, for first, second and third trimesters.
+- **Reviewer note:** SECONDARY: stored T1 central 0.6 and range 0.1-2.5 fall within the reported first-trimester interval 0.04-3.77 (mean 1.51); consistent magnitude, not an exact central match.
+
+### `maternal_endocrine.tsh_term_miu_per_l`  ·  Tier B  ·  stored: 2.0 mIU/L
+
+- **Primary citation:** `glinoer-1997-thyroid`  (_evidence: secondary_)
+- **Source reports:** Third-trimester TSH 5th-95th centile 0.6-4.5 uIU/mL with mean 1.87. Stored term central 2.0 and range 0.4-4.0 fall within this reported third-trimester interval.
+- **Quote:** > Trimester specific normal ranges of TSH in microIU/mL were 0.04-3.77, 0.30-3.21 and 0.6-4.5 microIU/mL, respectively, for first, second and third trimesters.
+- **Reviewer note:** SECONDARY: stored term central 2.0 lies within the reported third-trimester interval 0.6-4.5 (mean 1.87); consistent magnitude.
+
+### `maternal_renal.filtration_fraction_term`  ·  Tier B  ·  stored: 0.18 dimensionless
+
+- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: secondary_)
+- **Source reports:** StatPearls defines filtration fraction as GFR/RPF and gives the normal (non-pregnant) value as about 20% (~0.20). Filtration fraction dips early in pregnancy (RPF rises faster than GFR) then returns toward this ~0.20 baseline by the third trimester, consistent with the stored term value of 0.18 just below 0.20.
+- **Quote:** > Filtration fraction (FF) is the fraction of renal plasma flow (RPF) filtered across the glomerulus. The equation is GFR divided by RPF. FF is about 20%
+- **Reviewer note:** SECONDARY: source gives non-pregnant FF ~0.20; stored term 0.18 (0.16-0.20) sits just below as FF recovers toward baseline by term.
+
 ### `maternal_renal.gfr_ml_per_min`  ·  Tier B  ·  stored: 150.0 mL/min
 
 - **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
 - **Source reports:** Abstract states GFR increases 50% in pregnancy but gives no absolute term value in mL/min. A 50% rise on a ~100 mL/min baseline implies ~150 mL/min, consistent with stored, but the abstract supplies only the percentage, not the absolute figure.
 - **Quote:** > The glomerular filtration rate increases 50% with subsequent decrease in serum creatinine, urea, and uric acid values.
 - **Reviewer note:** Abstract gives +50% rise only; stored 150 mL/min is consistent with 50% over ~100 baseline but the absolute number is inferred, not stated.
+
+### `maternal_renal.plasma_uric_acid_term_mg_per_dl`  ·  Tier B  ·  stored: 4.5 mg/dL
+
+- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: secondary_)
+- **Source reports:** The normotensive control group (mean gestational age 37.98 +/- 3.83 weeks, i.e. third trimester/term) had a mean serum uric acid of 4.43 +/- 1.38 mg/dL, consistent with the stored term central 4.5 mg/dL and within the stored range 3.5-5.5.
+- **Quote:** > Serum Uric Acid: 4.43 ± 1.38 mg/dL
+- **Reviewer note:** SECONDARY: term normotensive control mean 4.43 mg/dL approximates stored 4.5; value is a case-control control-group mean, not a formal reference interval.
 
 ### `maternal_renal.renal_plasma_flow_peak_ml_per_min`  ·  Tier B  ·  stored: 900.0 mL/min
 
@@ -313,12 +754,89 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Oxygen consumption and basal metabolic rate increase (by up to 21% and 14%, respectively), but to a lesser extent than ventilatory augmentation
 - **Reviewer note:** Source gives ~21% O2-consumption rise, not absolute 300 mL/min; percent-only claim.
 
+### `placental_endocrine.estradiol_baseline_ng_per_ml`  ·  Tier B  ·  stored: 0.1 ng/mL
+
+- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: secondary_)
+- **Source reports:** Endotext states non-pregnant 17beta-estradiol is <0.1 ng/mL (follicular) and ~0.4 ng/mL (luteal). Stored mid-luteal baseline 0.1 (0.05-0.25) ng/mL is consistent in magnitude; the source's luteal point (0.4) is above the stored high.
+- **Quote:** > Concentrations of 17β-estradiol are less than 0.1 ng/mL during the follicular phase of the cycle and reach about 0.4 ng/mL during the luteal phase of normal menstrual cycles
+- **Reviewer note:** SECONDARY: Endotext non-pregnant estradiol <0.1 ng/mL (follicular) to ~0.4 ng/mL (luteal); stored 0.1 (0.05-0.25) ng/mL same order, source luteal value slightly above stored high.
+
+### `placental_endocrine.hcg_term_miu_per_ml`  ·  Tier B  ·  stored: 10000.0 mIU/mL
+
+- **Primary citation:** `cole-2010-hcg`  (_evidence: secondary_)
+- **Source reports:** Cleveland Clinic reference table gives a third-trimester (25-40 weeks) hCG range of 3,640-117,000 mIU/mL, which brackets the stored term value of 10,000 (5,000-20,000) mIU/mL.
+- **Quote:** > 25 to 40 [weeks]: 3,640-117,000 [mIU/mL]
+- **Reviewer note:** SECONDARY: stored 10,000 (5,000-20,000) falls within the Cleveland Clinic 25-40 wk range 3,640-117,000 mIU/mL; reference interval is much wider than stored band.
+
+### `placental_endocrine.leptin_term_ng_per_ml`  ·  Tier B  ·  stored: 30 ng/mL
+
+- **Primary citation:** `hardie-1997-leptin`  (_evidence: secondary_)
+- **Source reports:** Peer-reviewed study reports mean third-trimester maternal serum leptin in the normal control group of 56.66+/-34.18 ng/mL. Stored term central 30 (15-60) ng/mL overlaps this; inter-study leptin values vary widely (other cohorts report much lower means).
+- **Quote:** > The mean serum leptin in the control group (56.66±34.18) was significantly higher than the preterm (33.65±16.70) group.
+- **Reviewer note:** SECONDARY: control-group term leptin 56.66+/-34.18 ng/mL (PMC5147755) is within stored 15-60 range but near upper end; reported normal leptin varies widely between cohorts (BMI-dependent).
+
+### `placental_endocrine.progesterone_baseline_ng_per_ml`  ·  Tier B  ·  stored: 10.0 ng/mL
+
+- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: secondary_)
+- **Source reports:** Endotext states luteal-phase progesterone reaches a plateau of approximately 10-35 ng/mL; stored mid-luteal baseline 10 (5-20) ng/mL sits at the lower end of this range.
+- **Quote:** > progesterone concentrations rise from about 1-2 ng/mL on the day of the LH surge to a plateau of approximately 10-35 ng/mL over the subsequent 7 days.
+- **Reviewer note:** SECONDARY: Endotext luteal progesterone plateau 10-35 ng/mL; stored 10 (5-20) ng/mL consistent at lower end.
+
+### `placental_gas_exchange.maternal_intervillous_po2_mmhg`  ·  Tier B  ·  stored: 50.0 mmHg
+
+- **Primary citation:** `carter-2009-placental-development`  (_evidence: secondary_)
+- **Source reports:** Intervillous (maternal plasma bathing villi) PO2 is 40-80 mmHg through the 2nd and 3rd trimesters.
+- **Quote:** > The oxygen tension in the maternal plasma bathing placental villi is <20 mm Hg until 10-12 weeks' gestation, rising to 40-80 mmHg and remaining in this range throughout the second and third trimesters.
+- **Reviewer note:** SECONDARY: stored 50 falls within the 40-80 mmHg intervillous range; stored low-high 40-60 brackets the lower half.
+
+### `placental_glucose.glucose_glut3_km_mmol_per_l`  ·  Tier B  ·  stored: 1.5 mmol/L
+
+- **Primary citation:** `baumann-2002-glut3`  (_evidence: secondary_)
+- **Source reports:** Review of the human GLUT transporters states GLUT3 is the high-affinity isoform with Km = 1.4 mM for glucose.
+- **Quote:** > GLUT3 exhibits a high affinity for glucose (KM = 1.4 mM)
+- **Reviewer note:** SECONDARY: GLUT3 Km 1.4 mM brackets stored 1.5 mmol/L; intrinsic transporter affinity (not placenta-specific).
+
+### `placental_glucose.net_glucose_flux_term_mg_per_kg_per_min`  ·  Tier B  ·  stored: 5.0 mg/kg/min
+
+- **Primary citation:** `illsley-2000-glut1`  (_evidence: secondary_)
+- **Source reports:** Clinical review of in utero fuel homeostasis states fetal glucose utilization rates are 5-7 mg/kg/min, higher than adult rates of 2-3 mg/kg/min.
+- **Quote:** > Fetal glucose utilization rates (5-7 mg/kg/min) are higher than in adults (2-3 mg/kg/min).
+- **Reviewer note:** SECONDARY: fetal glucose utilization 5-7 mg/kg/min (= net flux at steady state) brackets stored 5.0 mg/kg/min.
+
+### `placental_structure.cotyledon_count`  ·  Tier B  ·  stored: 18 count
+
+- **Primary citation:** `benirschke-2012-placental-pathology`  (_evidence: secondary_)
+- **Source reports:** Mature placenta consists of 15-28 cotyledons.
+- **Quote:** > A mature placenta weighs about 500–600 grams and consists of 15–28 “cotyledons.”
+- **Reviewer note:** SECONDARY: NCBI Bookshelf 15-28 cotyledons brackets stored central 18 (range 10-30).
+
 ### `placental_structure.placental_thickness_term_cm`  ·  Tier B  ·  stored: 2.5 cm
 
 - **Primary citation:** `hoddick-1985-placental-thickness`  (_evidence: abstract_)
 - **Source reports:** Hoddick abstract states placental thickness increases with menstrual age and the normal placenta never exceeded 4 cm; supports the upper bound but does not state a term central value of 2.5 cm.
 - **Quote:** > At no stage of pregnancy was the normal placenta greater than 4 cm in thickness.
 - **Reviewer note:** Abstract supports the normal upper bound (<4 cm, stored high 3.5) and the increasing trend; the central 2.5 cm itself is not stated.
+
+### `placental_structure.term_weight_g`  ·  Tier B  ·  stored: 470.0 g
+
+- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: secondary_)
+- **Source reports:** Normal term placenta weighs about a pound (~454 g).
+- **Quote:** > A normal placenta is round or oval-shaped and about 22 cm in diameter. It is 2 cm to 2.5 cm thick and weighs about a pound.
+- **Reviewer note:** SECONDARY: StatPearls 'about a pound' (~454 g) is close to stored 470 g; figure is qualitative.
+
+### `amniotic_fluid.fetal_swallowing_term_ml_per_24h`  ·  Tier C  ·  stored: 700 mL/24h
+
+- **Primary citation:** `pritchard-1966-fetal-swallowing`  (_evidence: secondary_)
+- **Source reports:** Secondary textbook chapter states the near-term fetus swallows an estimated 210 to 760 mL/day. The stored 700 mL/24h falls within this range.
+- **Quote:** > An estimated 210 to 760 mL/day is swallowed by the near term fetus.
+- **Reviewer note:** SECONDARY: stored 700 mL/24h within near-term swallowing range 210-760 mL/day.
+
+### `fetal_circulation.ductus_arteriosus_share`  ·  Tier C  ·  stored: 0.85 fraction
+
+- **Primary citation:** `rudolph-1985-fetal-circulation`  (_evidence: secondary_)
+- **Source reports:** Secondary human-physiology text states only ~8% of combined ventricular output reaches the lungs and the remainder of right-ventricular output passes via the ductus arteriosus to the descending aorta, supporting a high (~0.85) ductal share of RV output. Human PC-MRI (Prsa 2014: ductus 41% vs main PA 56% of CVO) gives a somewhat lower ductal share (~0.73 of RV output) as pulmonary flow rises near term.
+- **Quote:** > Only 8 per cent of the combined ventricular output passes to the pulmonary circulation; the remainder passes directly via the ductus arteriosus to the descending aorta
+- **Reviewer note:** SECONDARY: human text supports the bulk of RV output via ductus (~0.85-0.9); PC-MRI suggests ~0.73 near term. Stored 0.85 brackets the upper end.
 
 ### `fetal_metabolism.fetal_cortisol_term_ug_per_dl`  ·  Tier C  ·  stored: 15 ug/dL
 
@@ -348,6 +866,34 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > its antigen level, measured by a radioimmunoassay, increased from 54 +/- 17 ng/mL to 144 +/- 25 ng/mL.
 - **Reviewer note:** Source term PAI-1 antigen ~144 ng/mL vs stored central 80; same magnitude and 144 lies within stored range 40-150, but stored central is notably lower.
 
+### `maternal_cardiovascular.baseline_stroke_volume_ml`  ·  Tier C  ·  stored: 65.0 mL
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** StatPearls: average resting stroke volume ~70 mL for a 70-kg adult; normal range 55-100 mL. Stored 65 is within the normal range, slightly below the 70 mL average.
+- **Quote:** > The average stroke volume of a 70 kg male is 70 mL.
+- **Reviewer note:** SECONDARY: stored 65 within StatPearls normal SV range 55-100 mL (general adult, not pregnancy-specific).
+
+### `placental_endocrine.placental_gh_term_ng_per_ml`  ·  Tier C  ·  stored: 14 ng/mL
+
+- **Primary citation:** `eriksson-1989-placental-gh`  (_evidence: secondary_)
+- **Source reports:** Review states placental variant GH rises from ~20 weeks until term, reaching levels of 20-40 ng/ml. Stored central 14 (8-25) ng/mL overlaps the lower bound (20-25) but the source centres higher than stored.
+- **Quote:** > There is a tonical secretion of the variant GH, which increases from the twentieth week of gestation until term, reaching levels of 20–40 ng/ml
+- **Reviewer note:** SECONDARY: review gives term placental GH 20-40 ng/ml (PMC5526045); stored 14 (8-25) ng/mL same order but source-centred higher, overlapping only at 20-25.
+
+### `placental_gas_exchange.maternal_fetal_pco2_gradient_term_mmhg`  ·  Tier C  ·  stored: 10.0 mmHg
+
+- **Primary citation:** `mayhew-1986-gas-diffusion`  (_evidence: secondary_)
+- **Source reports:** Fetal umbilical artery PCO2 ~52 mmHg vs maternal uterine artery PCO2 ~40 mmHg, a difference of ~12 mmHg.
+- **Quote:** > fetal blood has higher levels of [H+] and PCO2 than maternal blood; fetal umbilical artery PCO2 52 mmHg and maternal uterine artery PCO2 40 mmHg
+- **Reviewer note:** SECONDARY: stored 10 vs source-implied ~12 mmHg maternal-fetal PCO2 gradient; stored range 6-14 brackets 12. Gradient is reconstructed from the chapter's component PCO2 values, not a single reported figure.
+
+### `placental_structure.spiral_artery_count`  ·  Tier C  ·  stored: 100 count
+
+- **Primary citation:** `pijnenborg-2006-spiral-artery`  (_evidence: secondary_)
+- **Source reports:** About 120 spiral arterial entries into the intervillous space at term.
+- **Quote:** > It has been estimated that there are about 120 spiral arterial entries into the intervillous space at term.
+- **Reviewer note:** SECONDARY: NCBI Bookshelf ~120 entries at term within stored range 80-150 (central 100).
+
 ### `fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h`  ·  Tier D  ·  stored: -5.0 mL/kg/h
 
 - **Primary citation:** `strang-1991-fetal-lung-liquid`  (_evidence: secondary_)
@@ -369,7 +915,42 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Fetal IgG concentrations were only 5%–10% of the maternal levels at weeks 17–22 but reached 50% of the maternal concentrations at weeks 28–32.
 - **Reviewer note:** Source brackets mid-pregnancy ratio (0.05-0.10 at wk17-22; 0.50 at wk28-32); stored 0.2 (0.1-0.4) sits within the rising trajectory but is not a stated figure.
 
-## ✅ match — source value agrees with stored value  (23)
+## ✅ match — source value agrees with stored value  (51)
+
+### `amniotic_fluid.afv_peak_week`  ·  Tier A  ·  stored: 33.0 weeks
+
+- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: secondary_)
+- **Source reports:** Secondary textbook chapter summarizing the Brace & Wolf (1989) nomogram reports the peak AFV occurring at 33.8 weeks, matching the stored peak week of 33.
+- **Quote:** > They reported a peak AFV of 931 mL at 33.8 weeks with a decrease in the AFV thereafter
+- **Reviewer note:** SECONDARY: 33.8 wk peak (Brace & Wolf via textbook) matches stored 33 wk.
+
+### `fetal_circulation.ua_pi_term`  ·  Tier A  ·  stored: 0.85 dimensionless
+
+- **Primary citation:** `acharya-2005-umbilical-pi`  (_evidence: secondary_)
+- **Source reports:** Median UA-PI in normal-growth singletons is 0.83 at 39 weeks and 0.77 at 40 weeks, bracketing the stored term value of 0.85. INTERGROWTH-21st gives a median of 0.79 at 40 weeks.
+- **Quote:** > At 39 weeks gestation Median UA-PI: 0.83; At 40 weeks gestation Median UA-PI: 0.77
+- **Reviewer note:** SECONDARY: median term UA-PI 0.77-0.83 brackets stored 0.85 (0.7-1.0).
+
+### `fetal_growth.ac_32w_mm`  ·  Tier A  ·  stored: 282.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** NICHD Hispanic 50th-centile AC at 32w = 282 mm = stored 282 mm exactly (White 287).
+- **Quote:** > NICHD White: 287, NICHD Hispanic: 282, NICHD Asian: 279, NICHD Black: 275
+- **Reviewer note:** SECONDARY: NICHD Fetal Growth Studies 50th-centile reproduced in Grantz (AJOG 2018, PMC5807181); same NICHD standard family as the cited Buck Louis 2015 source.
+
+### `fetal_growth.hadlock_coefficient`  ·  Tier A  ·  stored: 1.3596 log10(g)
+
+- **Primary citation:** `hadlock-1991-fetal-weight`  (_evidence: secondary_)
+- **Source reports:** Published Hadlock-4 sonographic weight equation; the intercept constant is 1.3596.
+- **Quote:** > Hadlock 4: Log10(weight) = 1.3596 - 0.00386·AC·FL + 0.0064·HC + 0.00061·BPD·AC + 0.0424·AC + 0.174·FL
+- **Reviewer note:** SECONDARY: Perinatology.com reproduces canonical Hadlock-4 (BPD+HC+AC+FL) equation citing Hadlock 1991 Radiology 181:129-133; intercept 1.3596 matches stored exactly.
+
+### `fetal_growth.hc_32w_mm`  ·  Tier A  ·  stored: 297.0 mm
+
+- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: secondary_)
+- **Source reports:** NICHD White 50th-centile HC at 32w = 299 mm vs stored 297 mm (<1%).
+- **Quote:** > NICHD White: 299, NICHD Hispanic: 295, NICHD Asian: 295, NICHD Black: 294
+- **Reviewer note:** SECONDARY: NICHD Fetal Growth Studies 50th-centile reproduced in Grantz (AJOG 2018, PMC5807181); same NICHD standard family as the cited Buck Louis 2015 source.
 
 ### `fetal_metabolism.fetal_p50_mmhg`  ·  Tier A  ·  stored: 19.5 mmHg
 
@@ -384,6 +965,27 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** The standard P50 constant 26.6 appears verbatim in Severinghaus eq 4 (the Bohr-coefficient equation), where it is the reference Po2 at half-saturation.
 - **Quote:** > delta In Po2/delta pH = (Po2/26.6)(0.184) - 2.2 (4)
 - **Reviewer note:** 26.6 appears verbatim as the standard P50 constant embedded in eq 4; consistent with stored 26.6 mmHg.
+
+### `maternal_renal.baseline_gfr_ml_per_min`  ·  Tier A  ·  stored: 100.0 mL/min
+
+- **Primary citation:** `conrad-2001-relaxin-gfr`  (_evidence: secondary_)
+- **Source reports:** StatPearls gives normal creatinine clearance (a GFR proxy) for younger healthy adult females as 90 to 110 mL/min, matching the stored non-pregnant baseline central 100 and range 90-110.
+- **Quote:** > The normal range for CrCl is age-dependent, but for younger, healthy adults, it is about 100 to 120 mL/min in males and 90 to 110 mL/min in females.
+- **Reviewer note:** SECONDARY: StatPearls female CrCl 90-110 mL/min matches stored central 100 (90-110) exactly.
+
+### `maternal_renal.bun_term_mg_per_dl`  ·  Tier A  ·  stored: 8.0 mg/dL
+
+- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: secondary_)
+- **Source reports:** Review Table 1 of typical laboratory values during pregnancy lists blood urea nitrogen as 9.0 mg/dL, which falls within the stored range 6-11 and near the stored central of 8.
+- **Quote:** > Blood urea nitrogen 9.0 mg/dL
+- **Reviewer note:** SECONDARY: review Table 1 BUN 9.0 mg/dL sits within stored 6-11, near central 8.
+
+### `maternal_renal.plasma_creatinine_mg_per_dl_term`  ·  Tier A  ·  stored: 0.6 mg/dL
+
+- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: secondary_)
+- **Source reports:** Systematic review of normal-pregnancy serum creatinine gives the third-trimester upper limit of normal as 77 umol/l = 0.87 mg/dL; the stored central 0.6 mg/dL (0.5-0.7) lies comfortably within the normal third-trimester range implied by this upper limit.
+- **Quote:** > serum creatinine values greater than 76 μmol/l (0.86 mg/dl) in the first trimester, 72 μmol/l (0.81 mg/dl) in the second trimester, and 77 μmol/l (0.87 mg/dl) in the third trimester should be considered to be outside the upper limit of normal
+- **Reviewer note:** SECONDARY: systematic-review third-trimester upper limit 0.87 mg/dL; stored term central 0.6 (0.5-0.7) is well within the normal range.
 
 ### `maternal_renal.plasma_osmolality_drop_mosm_per_kg`  ·  Tier A  ·  stored: 10.0 mOsm/kg
 
@@ -427,12 +1029,47 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > The respiratory rate remains unchanged from the nonpregnant state.
 - **Reviewer note:** SECONDARY evidence; source states RR is unchanged in pregnancy, so stored term 16/min equals the non-pregnant 12-20/min range.
 
+### `placental_endocrine.estradiol_term_ng_per_ml`  ·  Tier A  ·  stored: 14.0 ng/mL
+
+- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: secondary_)
+- **Source reports:** Endotext states 17beta-estradiol rises to 6-30 ng/mL at term; stored central 14 (8-25) ng/mL sits within this range.
+- **Quote:** > Following fertilization, 17β-estradiol increases gradually to a range of 6-30 ng/mL at term
+- **Reviewer note:** SECONDARY: Endotext term estradiol 6-30 ng/mL; stored 14 (8-25) ng/mL consistent.
+
+### `placental_endocrine.hcg_peak_miu_per_ml`  ·  Tier A  ·  stored: 100000.0 mIU/mL
+
+- **Primary citation:** `cole-2010-hcg`  (_evidence: secondary_)
+- **Source reports:** Average peak hCG ~110,000 mIU/mL at 10 weeks; StatPearls notes many normal pregnancies reach >100,000 mIU/mL at the 8-11 week peak. Stored central 100,000 (range 50,000-200,000) is consistent.
+- **Quote:** > The average peak hCG level is approximately 110,000 mIU/mL and occurs at 10 weeks' gestation
+- **Reviewer note:** SECONDARY: Endotext review states average peak ~110,000 mIU/mL at 10 wk; consistent with stored 100,000 (50,000-200,000).
+
 ### `placental_endocrine.hcg_peak_week`  ·  Tier A  ·  stored: 10.0 weeks
 
 - **Primary citation:** `cole-2010-hcg`  (_evidence: fulltext_)
 - **Source reports:** Fulltext explicitly states hCG reaches a peak at 10 weeks of gestation, matching the stored central value of 10 weeks (range 8-12).
 - **Quote:** > As shown in Tables 2 and 3 hCG reaches a peak at 10 weeks of gestation, or almost one month after progesterone promotion is complete, then continues to be produced through the length of pregnancy.
 - **Reviewer note:** Confirm the verbatim quote 'hCG reaches a peak at 10 weeks of gestation' supports the stored central value of 10 weeks.
+
+### `placental_endocrine.progesterone_term_ng_per_ml`  ·  Tier A  ·  stored: 150.0 ng/mL
+
+- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: secondary_)
+- **Source reports:** Endotext states term progesterone ranges 100-300 ng/mL; stored central 150 (100-200) ng/mL is consistent and sits within this band.
+- **Quote:** > At term, progesterone concentrations can range from 100-300 ng/mL
+- **Reviewer note:** SECONDARY: Endotext term progesterone 100-300 ng/mL; stored 150 (100-200) ng/mL consistent.
+
+### `placental_structure.cord_length_term_cm`  ·  Tier A  ·  stored: 55 cm
+
+- **Primary citation:** `naeye-1985-cord-length`  (_evidence: secondary_)
+- **Source reports:** Average umbilical cord length 50 to 60 cm.
+- **Quote:** > Average length ranges from 50 to 60 cm, with a diameter of approximately 1 cm.
+- **Reviewer note:** SECONDARY: StatPearls 50-60 cm brackets stored 55 cm central.
+
+### `fetal_circulation.combined_ventricular_output_term_ml_per_min_per_kg`  ·  Tier B  ·  stored: 450.0 mL/min/kg
+
+- **Primary citation:** `sutton-1991-fetal-cardiac`  (_evidence: secondary_)
+- **Source reports:** Human PC-MRI reference-range study at term reports combined ventricular output of 465 mL/min/kg (2 SD 351-579), bracketing the stored 450 mL/min/kg.
+- **Quote:** > Combined ventricular output: 465 (351, 579)
+- **Reviewer note:** SECONDARY: human term PC-MRI CVO 465 mL/min/kg matches stored 450 (within 380-520 range).
 
 ### `fetal_circulation.ductus_venosus_shunt_fraction_late_pregnancy`  ·  Tier B  ·  stored: 0.2 fraction
 
@@ -447,6 +1084,20 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Mean fraction of umbilical blood shunted through the ductus reduced from 30% to 20% during the second half of pregnancy; the 30% is the earlier (mid-pregnancy) value.
 - **Quote:** > The mean fraction of umbilical blood shunted through the ductus is reduced from 30% to 20% during the second half of the human pregnancy
 - **Reviewer note:** Stored 0.30 matches the 30% mid-pregnancy starting fraction stated in the abstract.
+
+### `fetal_circulation.fhr_baseline_bpm`  ·  Tier B  ·  stored: 170.0 bpm
+
+- **Primary citation:** `von-steinburg-2013-fhr`  (_evidence: secondary_)
+- **Source reports:** Open review states the fetal heart rate rises to 170 bpm at the 9th week of gestation, then declines, matching the stored first-trimester baseline peak of 170 bpm.
+- **Quote:** > in healthy fetuses, the heart rate (HR) increases from 110 bpm at the 5th week of gestation to 170 bpm at the 9th week of gestation
+- **Reviewer note:** SECONDARY: first-trimester FHR peak of 170 bpm at week 9 matches stored 170 bpm baseline.
+
+### `fetal_circulation.right_ventricular_output_fraction_term`  ·  Tier B  ·  stored: 0.6 dimensionless
+
+- **Primary citation:** `sutton-1991-fetal-cardiac`  (_evidence: secondary_)
+- **Source reports:** Main pulmonary artery flow equals right ventricular output; the study reports it as 56% (2 SD 44-68) of combined ventricular output, consistent with the stored RV fraction of 0.60.
+- **Quote:** > Main pulmonary artery: 56 (44, 68)
+- **Reviewer note:** SECONDARY: human term PC-MRI gives RV (main PA) = 56% of CVO; matches stored 0.60 (0.55-0.65). thoracickey corroborates 'right ventricle contributes approximately two-thirds'.
 
 ### `fetal_metabolism.glucose_utilisation_mg_per_kg_per_min`  ·  Tier B  ·  stored: 5.0 mg/kg/min
 
@@ -490,6 +1141,34 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Research has indicated that in healthy pregnancies, serum albumin concentrations decline from a mean of 42 g/L in nonpregnant women to 31 g/L near the end of pregnancy due to an increase in plasma volume
 - **Reviewer note:** SECONDARY (Wang 2025 review, citing Elliott & O'Kell 1971), not the cited Hytten & Chamberlain 1980 primary; 31 g/L = 3.1 g/dL matches stored 3.0 g/dL.
 
+### `maternal_cardiovascular.baseline_heart_rate_bpm`  ·  Tier B  ·  stored: 70.0 bpm
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: post-partum (non-pregnant surrogate) heart rate 71 +/- 10 bpm. Stored 70 essentially identical.
+- **Quote:** > Heart rate (beats/min)                 71 ± 10          83 ± 1.0    17           0.015
+- **Reviewer note:** SECONDARY: post-partum HR 71 bpm matches stored 70.
+
+### `maternal_cardiovascular.baseline_map_mmhg`  ·  Tier B  ·  stored: 85.0 mmHg
+
+- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: secondary_)
+- **Source reports:** Clark 1989: post-partum (non-pregnant surrogate) mean arterial pressure 86.4 +/- 7.5 mmHg. Stored 85 essentially identical.
+- **Quote:** > Mean arterial pressure (mmHg)        86.4 ± 7.5       90.3 ± 5.8    4.5          0.210
+- **Reviewer note:** SECONDARY: post-partum MAP 86.4 mmHg matches stored 85.
+
+### `maternal_cardiovascular.pvr_term_dyn_s_cm5`  ·  Tier B  ·  stored: 80.0 dyn·s·cm^-5
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** Clark 1989 invasive study: at-term PVR 78 +/- 22 dyn*s/cm^5 (a 34% fall); stored 80 essentially identical.
+- **Quote:** > Pulmonary vascular resistance         119 ± 47          78 ± 22     -34          0.022
+- **Reviewer note:** SECONDARY: at-term PVR 78 dyn*s/cm^5 (-34%) matches stored 80.
+
+### `maternal_endocrine.free_t4_term_ng_per_dl`  ·  Tier B  ·  stored: 0.9 ng/dL
+
+- **Primary citation:** `glinoer-1997-thyroid`  (_evidence: secondary_)
+- **Source reports:** Third-trimester free T4 5th-95th centile 0.7-1.20 ng/dL with mean 0.90 ng/dL. The reported mean (0.90) equals the stored central (0.9); the stored range 0.7-1.1 closely matches the reported 0.7-1.20.
+- **Quote:** > For Free T4, the trimester specific reference ranges were 0.8-1.53, 0.7-1.20 and 0.7-1.20 ng/dL for first, second and third trimesters, respectively.
+- **Reviewer note:** SECONDARY: reported third-trimester free T4 mean 0.90 ng/dL equals stored central 0.9; ranges agree closely.
+
 ### `maternal_renal.cumulative_sodium_retention_g`  ·  Tier B  ·  stored: 1.0 g
 
 - **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
@@ -497,12 +1176,68 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > A rise in serum aldosterone results in a net gain of approximately 1000 mg of sodium.
 - **Reviewer note:** Direct match: 1000 mg = 1.0 g stated explicitly in the Cheung 2013 abstract.
 
+### `maternal_renal.plasma_uric_acid_nadir_mg_per_dl`  ·  Tier B  ·  stored: 3.0 mg/dL
+
+- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: secondary_)
+- **Source reports:** Review states serum uric acid falls in early pregnancy to a nadir of 2 to 3.0 mg/dL by 22 to 24 weeks; the stored central 3.0 mg/dL (2.5-3.5) sits at the top of this quoted nadir band.
+- **Quote:** > Serum uric acid levels fall in early pregnancy, reaching a nadir of 2 to 3.0 mg/dL by 22 to 24 weeks, followed by gradual rise to normal by term.
+- **Reviewer note:** SECONDARY: quoted nadir 2-3.0 mg/dL at 22-24 wk; stored central 3.0 is the upper bound of that band.
+
+### `maternal_renal.urinary_protein_excretion_term_mg_per_24h`  ·  Tier B  ·  stored: 150.0 mg/24h
+
+- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: secondary_)
+- **Source reports:** Review reports that Higby et al studied 270 healthy pregnant women and found the 95th percentile for 24-hour urinary protein excretion to be 259.4 mg; this upper bound matches the stored upper range value of 260 mg/24h, with the stored central 150 falling within the normal-pregnancy distribution.
+- **Quote:** > Higby et al subsequently evaluated 270 healthy pregnant women and reported the 95th percentile for 24-hour urinary protein excretion to be 259.4 mg.
+- **Reviewer note:** SECONDARY: Higby 95th-percentile 259.4 mg/24h matches stored upper bound 260; stored central 150 lies within the normal range.
+
 ### `maternal_respiratory.term_arterial_ph`  ·  Tier B  ·  stored: 7.44 dimensionless
 
 - **Primary citation:** `templeton-1976-blood-gas`  (_evidence: secondary_)
 - **Source reports:** Composite mean third-trimester arterial pH 7.46 (with PaCO2 26.6, HCO3 18.2) — a compensated respiratory alkalosis on the alkaline side.
 - **Quote:** > The composite mean values were pH 7.46, arterial carbon dioxide pressure (PaCO2) 26.6 mmHg, arterial oxygen pressure 88.3 mmHg, and bicarbonate 18.2 mEq/L.
 - **Reviewer note:** SECONDARY evidence; third-trimester mean pH 7.46 falls within stored range 7.42-7.46. Cohort studied at moderate altitude (lower PaCO2 than sea level), but pH is comparable.
+
+### `placental_endocrine.hpl_baseline_ug_per_ml`  ·  Tier B  ·  stored: 0.0 ug/mL
+
+- **Primary citation:** `handwerger-2010-hpl`  (_evidence: secondary_)
+- **Source reports:** Cleveland Clinic states the non-pregnant hPL level is 0.00-0.10 mcg/mL, matching the stored operational baseline of 0 (0-0.1) ug/mL.
+- **Quote:** > If you're not pregnant, the level is 0.00-0.10 mcg/mL (micrograms per milliliter).
+- **Reviewer note:** SECONDARY: non-pregnant hPL 0.00-0.10 mcg/mL per Cleveland Clinic matches stored baseline 0 (0-0.1) ug/mL.
+
+### `placental_endocrine.hpl_term_ug_per_ml`  ·  Tier B  ·  stored: 7.0 ug/mL
+
+- **Primary citation:** `handwerger-2010-hpl`  (_evidence: secondary_)
+- **Source reports:** Cleveland Clinic gives a third-trimester hPL reference range of 4.50-12.80 mcg/mL; Endotext review gives a term rise to ~3.5-25 ug/mL. Stored central 7 (5-10) ug/mL sits within both.
+- **Quote:** > In the third trimester, the level reaches 4.50-12.80 mcg/mL.
+- **Reviewer note:** SECONDARY: stored 7 (5-10) ug/mL falls within Cleveland Clinic third-trimester range 4.50-12.80 mcg/mL.
+
+### `placental_endocrine.relaxin_t1_ng_per_ml`  ·  Tier B  ·  stored: 1.0 ng/mL
+
+- **Primary citation:** `conrad-2001-relaxin-gfr`  (_evidence: secondary_)
+- **Source reports:** Peer-reviewed OA review states serum relaxin peaks at ~1 ng/ml at the end of the first trimester; stored central 1.0 (0.6-1.5) ng/mL matches.
+- **Quote:** > Relaxin is detectable in the circulation of women during the luteal phase, and, if conception occurs, serum concentrations rapidly rise, reaching a peak of ∼1 ng/ml at the end of the first trimester.
+- **Reviewer note:** SECONDARY: PMC3154715 review states relaxin peaks ~1 ng/ml end of first trimester; matches stored 1.0 (0.6-1.5) ng/mL.
+
+### `placental_glucose.maternal_fetal_glucose_gradient_term_mmol_per_l`  ·  Tier B  ·  stored: 1.2 mmol/L
+
+- **Primary citation:** `illsley-2000-glut1`  (_evidence: secondary_)
+- **Source reports:** Human in vivo study of healthy term pregnancies measured the transplacental maternal-fetal glucose gradient as 1.22 (SD 0.42) mmol/L.
+- **Quote:** > The transplacental maternal-fetal glucose gradient was 1.22 (0.42) mmol/L.
+- **Reviewer note:** SECONDARY: measured term maternal-fetal gradient 1.22 mmol/L matches stored 1.2 mmol/L.
+
+### `placental_structure.membrane_thickness_um`  ·  Tier B  ·  stored: 4.5 micrometres
+
+- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: secondary_)
+- **Source reports:** Arithmetic mean villous membrane thickness at term 4.53 microns (harmonic mean 3.65).
+- **Quote:** > The villous membrane, defined as the outer surface of the syncytiotrophoblast (excluding the microvilli) to the inner surface of the capillary endothelium, was estimated to have an arithmetic mean thickness of 4.53 microns and a harmonic mean thickness of 3.65 microns.
+- **Reviewer note:** SECONDARY: arithmetic mean 4.53 um matches stored 4.5 um (arithmetic mean villous membrane thickness).
+
+### `placental_structure.term_area_m2`  ·  Tier B  ·  stored: 11.5 m^2
+
+- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: secondary_)
+- **Source reports:** Syncytiotrophoblast exchange surface area reaches 11-12 m^2 at term.
+- **Quote:** > The surface area of syncytiotrophoblasts is about 5 square meters at 28 weeks' gestation and reaches up to 11–12 square meters at term
+- **Reviewer note:** SECONDARY: NCBI Bookshelf chapter states 11-12 m^2 at term; brackets stored 11.5 m^2.
 
 ### `fetal_metabolism.umbilical_artery_lactate_term_mmol_per_l`  ·  Tier C  ·  stored: 3.5 mmol/L
 
@@ -518,6 +1253,13 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Its level, quantified with a radioimmunoassay, increased from below the detection limit (approximately 10 ng/mL) in normal plasma to 260 ng/mL at term.
 - **Reviewer note:** Source term PAI-2 of 260 ng/mL closely matches stored 250 ng/mL.
 
+### `maternal_cardiovascular.baseline_pvr_dyn_s_cm5`  ·  Tier C  ·  stored: 120 dyn·s·cm⁻⁵
+
+- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: secondary_)
+- **Source reports:** Clark 1989 invasive (PA-catheter) study: post-partum (non-pregnant surrogate) PVR 119 +/- 47 dyn*s/cm^5; stored 120 essentially identical.
+- **Quote:** > Pulmonary vascular resistance         119 ± 47          78 ± 22     -34          0.022
+- **Reviewer note:** SECONDARY: post-partum (non-pregnant) PVR 119 dyn*s/cm^5 matches stored 120.
+
 ### `fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h`  ·  Tier D  ·  stored: 5.0 mL/kg/h
 
 - **Primary citation:** `strang-1991-fetal-lung-liquid`  (_evidence: secondary_)
@@ -532,107 +1274,7 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > fetal IgG concentrations usually exceed maternal ones by 20%–30% at full term
 - **Reviewer note:** 20-30% excess => ratio 1.2-1.3; stored central 1.2 matches the lower bound of the source statement.
 
-## 🔍 not found — value not in fetched text (check table/figure in full PDF)  (130)
-
-### `amniotic_fluid.afv_20w_ml`  ·  Tier A  ·  stored: 350.0 mL
-
-- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract does not report a 20-week AFV. Its only quantitative summary covers the 22-39 week window (mean 777 ml). The 20-week point would come from the nomogram, which is not in the abstract.
-- **Reviewer note:** No 20-week value in abstract (covers 22-39 wk only). Requires fulltext nomogram.
-
-### `amniotic_fluid.afv_peak_week`  ·  Tier A  ·  stored: 33.0 weeks
-
-- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract gives no gestational week of peak AFV. It states volume did not change significantly between 22 and 39 weeks, which does not support a distinct peak at week 33. The week-by-week nomogram is not in the abstract.
-- **Reviewer note:** No peak-week figure in abstract; abstract states no significant change 22-39 wk. Need fulltext/nomogram to verify week 33.
-
-### `amniotic_fluid.afv_term_ml`  ·  Tier A  ·  stored: 600.0 mL
-
-- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract reports no term-specific value; it averages 22-39 weeks as 777 ml with no significant change. A distinct decline to ~600 ml at term is not in the abstract (would require the nomogram).
-- **Reviewer note:** No term-specific AFV in abstract; abstract reports flat 777 ml mean 22-39 wk. Term value requires fulltext nomogram.
-
-### `fetal_circulation.ua_pi_baseline`  ·  Tier A  ·  stored: 1.5 dimensionless
-
-- **Primary citation:** `acharya-2005-umbilical-pi`  (_evidence: abstract_)
-- **Source reports:** Abstract describes constructing reference ranges/percentiles for UA-PI showing continuous reduction through the second half of pregnancy, but gives no numeric PI value for 16-20 weeks.
-- **Reviewer note:** No numeric UA-PI figure (~1.5 at mid-T2) in the abstract; reference-range numbers are in tables/full text not available here.
-
-### `fetal_circulation.ua_pi_term`  ·  Tier A  ·  stored: 0.85 dimensionless
-
-- **Primary citation:** `acharya-2005-umbilical-pi`  (_evidence: abstract_)
-- **Source reports:** Abstract reports a continuous reduction in UA-PI through the second half of pregnancy without plateau near term, but no numeric term PI value.
-- **Reviewer note:** No numeric term UA-PI (~0.85) in the abstract; only qualitative description of the declining trend.
-
-### `fetal_growth.ac_16w_mm`  ·  Tier A  ·  stored: 105.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.ac_20w_mm`  ·  Tier A  ·  stored: 152.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.ac_24w_mm`  ·  Tier A  ·  stored: 198.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.ac_28w_mm`  ·  Tier A  ·  stored: 240.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.ac_32w_mm`  ·  Tier A  ·  stored: 282.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.ac_36w_mm`  ·  Tier A  ·  stored: 322.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.ac_40w_mm`  ·  Tier A  ·  stored: 354.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_16w_mm`  ·  Tier A  ·  stored: 35.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_20w_mm`  ·  Tier A  ·  stored: 47.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_24w_mm`  ·  Tier A  ·  stored: 61.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_28w_mm`  ·  Tier A  ·  stored: 71.5 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_32w_mm`  ·  Tier A  ·  stored: 82.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_36w_mm`  ·  Tier A  ·  stored: 89.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.bpd_40w_mm`  ·  Tier A  ·  stored: 93.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
+## 🔍 not found — value not in fetched text (check table/figure in full PDF)  (46)
 
 ### `fetal_growth.efw_16w_g`  ·  Tier A  ·  stored: 145.0 g
 
@@ -643,108 +1285,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 
 - **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
 - **Reviewer note:** Abstract reports EFW percentiles only at 39 weeks (race-stratified), not at this gestational week; the week-specific value is in an uncaptured growth table.
-
-### `fetal_growth.efw_24w_g`  ·  Tier A  ·  stored: 650.0 g
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports EFW percentiles only at 39 weeks (race-stratified), not at this gestational week; the week-specific value is in an uncaptured growth table.
-
-### `fetal_growth.efw_28w_g`  ·  Tier A  ·  stored: 1141.0 g
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports EFW percentiles only at 39 weeks (race-stratified), not at this gestational week; the week-specific value is in an uncaptured growth table.
-
-### `fetal_growth.efw_32w_g`  ·  Tier A  ·  stored: 1800.0 g
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports EFW percentiles only at 39 weeks (race-stratified), not at this gestational week; the week-specific value is in an uncaptured growth table.
-
-### `fetal_growth.efw_36w_g`  ·  Tier A  ·  stored: 2779.0 g
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports EFW percentiles only at 39 weeks (race-stratified), not at this gestational week; the week-specific value is in an uncaptured growth table.
-
-### `fetal_growth.efw_40w_g`  ·  Tier A  ·  stored: 3567.0 g
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract gives 39w (not 40w) race-stratified 50th-percentile EFW; closest figure white 3505 g, vs stored 3567 g. Different gestational week and uncertain provenance (notes flag Hadlock 3619 g at 40w). Exact 40w pooled value not stated -> not_found.
-
-### `fetal_growth.fl_16w_mm`  ·  Tier A  ·  stored: 21.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.fl_20w_mm`  ·  Tier A  ·  stored: 33.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.fl_24w_mm`  ·  Tier A  ·  stored: 44.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.fl_28w_mm`  ·  Tier A  ·  stored: 53.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.fl_32w_mm`  ·  Tier A  ·  stored: 62.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.fl_36w_mm`  ·  Tier A  ·  stored: 70.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.fl_40w_mm`  ·  Tier A  ·  stored: 76.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hadlock_coefficient`  ·  Tier A  ·  stored: 1.3596 log10(g)
-
-- **Primary citation:** `hadlock-1991-fetal-weight`  (_evidence: abstract_)
-- **Source reports:** Abstract describes a regression-based in utero weight model but does not print the equation or its intercept; it states the resulting weight range (35 g at 10w to 3,619 g at 40w, SD +/-12.7%).
-- **Quote:** > Regression analysis was used to develop an in utero fetal weight model from a population of 392 predominantly middle-class white patients … There was a gradual increase in fetal weight from 35 g at 10 weeks to 3,619 g at 40 weeks, with uniform variance of +/- 12.7% (1 standard deviation) throughout gestation.
-- **Reviewer note:** The intercept 1.3596 is the published Hadlock-III formula constant but does not appear in the abstract; abstract confirms the model exists and its weight range but not the coefficient itself.
-
-### `fetal_growth.hc_16w_mm`  ·  Tier A  ·  stored: 124.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hc_20w_mm`  ·  Tier A  ·  stored: 175.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hc_24w_mm`  ·  Tier A  ·  stored: 225.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hc_28w_mm`  ·  Tier A  ·  stored: 267.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hc_32w_mm`  ·  Tier A  ·  stored: 297.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hc_36w_mm`  ·  Tier A  ·  stored: 322.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
-
-### `fetal_growth.hc_40w_mm`  ·  Tier A  ·  stored: 343.0 mm
-
-- **Primary citation:** `buck-louis-2015-nichd-growth`  (_evidence: abstract_)
-- **Reviewer note:** Abstract reports only EFW percentiles at 39w and the gestational week at which racial differences become detectable per biometric; no mm-by-week biometry value is in the abstract. Value lives in an uncaptured growth table.
 
 ### `maternal_blood.o2_hb_hill_coefficient_maternal`  ·  Tier A  ·  stored: 2.7 dimensionless
 
@@ -758,104 +1298,11 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Dash & Bassingthwaighte 2010 abstract describes invertible Hill-type equations for HbO2/HbCO2 but does not print a Bohr coefficient value of -0.48.
 - **Reviewer note:** No numeric Bohr coefficient (-0.48) appears in the available abstract; the rationale itself concedes Dash 2010 does not print the coefficient.
 
-### `maternal_endocrine.cortisol_baseline_ug_per_dl`  ·  Tier A  ·  stored: 10.0 ug/dL
-
-- **Primary citation:** `carr-1981-cortisol`  (_evidence: abstract_)
-- **Source reports:** The abstract reports cortisol levels during pregnancy only (149 ng/mL = 14.9 ug/dL at 12 weeks, rising to 352 ng/mL at 26 weeks). No non-pregnant (baseline) cortisol value is given.
-- **Reviewer note:** Carr 1981 abstract gives no non-pregnant baseline cortisol; earliest figure is 12-week pregnant (149 ng/mL = 14.9 ug/dL).
-
-### `maternal_renal.baseline_gfr_ml_per_min`  ·  Tier A  ·  stored: 100.0 mL/min
-
-- **Primary citation:** `conrad-2001-relaxin-gfr`  (_evidence: abstract_)
-- **Source reports:** Abstract reports the percentage rise of GFR and RPF in pregnancy but gives no absolute non-pregnant GFR baseline value.
-- **Quote:** > Glomerular filtration rate (GFR) and renal plasma flow (RPF) increase by 40-65% and 50-85%, respectively, during normal pregnancy in women.
-- **Reviewer note:** Conrad 2001 abstract gives only percentage increases; the absolute non-pregnant baseline of 100 mL/min is not stated in the cached source.
-
-### `maternal_renal.bun_term_mg_per_dl`  ·  Tier A  ·  stored: 8.0 mg/dL
-
-- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
-- **Source reports:** Abstract notes a decrease in serum urea with the GFR rise but reports no numeric BUN value.
-- **Quote:** > The glomerular filtration rate increases 50% with subsequent decrease in serum creatinine, urea, and uric acid values.
-- **Reviewer note:** Abstract confirms urea falls in pregnancy but gives no numeric term BUN; stored 8 mg/dL not verifiable from abstract.
-
-### `maternal_renal.plasma_creatinine_mg_per_dl_term`  ·  Tier A  ·  stored: 0.6 mg/dL
-
-- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
-- **Source reports:** Abstract notes a decrease in serum creatinine with the GFR rise but reports no numeric creatinine value. The 0.5 mg/dL Table 1 figure cited in the rationale is from the fulltext, which is not cached.
-- **Quote:** > The glomerular filtration rate increases 50% with subsequent decrease in serum creatinine, urea, and uric acid values.
-- **Reviewer note:** Abstract confirms direction (creatinine falls) but no numeric term creatinine; specific 0.6 mg/dL not verifiable from abstract.
-
-### `placental_endocrine.hcg_peak_miu_per_ml`  ·  Tier A  ·  stored: 100000.0 mIU/mL
-
-- **Primary citation:** `cole-2010-hcg`  (_evidence: fulltext_)
-- **Source reports:** Fulltext confirms hCG peaks at 10 weeks of gestation, but does not state the peak maternal serum concentration in mIU/mL. The only mIU/mL figures in the text concern pituitary hCG during the menstrual cycle (mean 1.54 mIU/mL); Tables 2/3 give term-pregnancy total-hCG ranges in ng/ml (0.21-173 ng/ml; 1.86-1308 ng/ml), not the ~50,000-200,000 mIU/mL peak.
-- **Reviewer note:** Confirm the peak hCG concentration (50,000-200,000 mIU/mL) is not in the captured fulltext (lives in figures/tables not extracted as text); peak value appears sourced from general reproductive endocrinology, not an explicit number in this paper.
-
-### `placental_structure.cord_length_term_cm`  ·  Tier A  ·  stored: 55 cm
-
-- **Primary citation:** `naeye-1985-cord-length`  (_evidence: abstract_)
-- **Source reports:** Naeye abstract reports analysis of cord length in 35,779 neonates and that the normal range is large, but states no mean (~55 cm) or short/long thresholds (35/80 cm).
-- **Reviewer note:** Abstract confirms the cohort but gives no numeric mean or range; central 55 cm and 35-80 cm bounds not in available text.
-
-### `amniotic_fluid.af_creatinine_term_mg_per_dl`  ·  Tier B  ·  stored: 2.0 mg/dL
-
-- **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract is a generic review summary with no numeric values; it does not report an AF creatinine concentration at term.
-- **Reviewer note:** Underwood 2005 abstract gives no numbers. Term AF creatinine 2 mg/dL would require the review fulltext.
-
-### `amniotic_fluid.af_glucose_term_mmol_per_l`  ·  Tier B  ·  stored: 0.5 mmol/L
-
-- **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract is a generic review summary with no numeric values; it does not report an AF glucose concentration at term.
-- **Reviewer note:** Underwood 2005 abstract gives no numbers. Term AF glucose 0.5 mmol/L would require the review fulltext.
-
 ### `amniotic_fluid.af_lactate_term_mmol_per_l`  ·  Tier B  ·  stored: 4 mmol/L
 
 - **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: abstract_)
 - **Source reports:** Abstract is a generic review summary with no numeric values; it does not report an AF lactate concentration at term.
 - **Reviewer note:** Underwood 2005 abstract gives no numbers. Term AF lactate 4 mmol/L would require the review fulltext.
-
-### `amniotic_fluid.af_osmolality_term_mosm_per_kg`  ·  Tier B  ·  stored: 260 mOsm/kg
-
-- **Primary citation:** `underwood-2005-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract is a generic review summary with no numeric values; it does not report an AF osmolality at term.
-- **Reviewer note:** Underwood 2005 abstract gives no numbers. Term AF osmolality 260 mOsm/kg would require the review fulltext.
-
-### `amniotic_fluid.afv_early_baseline_ml`  ·  Tier B  ·  stored: 100.0 mL
-
-- **Primary citation:** `brace-1989-amniotic-fluid`  (_evidence: abstract_)
-- **Source reports:** Abstract states the data span 8 to 43 weeks but provides no early-pregnancy (~12-14 wk) volume figure. The 50-200 ml early baseline is not quantified in the abstract.
-- **Reviewer note:** No early-pregnancy AFV figure in abstract. Requires fulltext nomogram to verify ~100 ml baseline.
-
-### `fetal_circulation.combined_ventricular_output_term_ml_per_min_per_kg`  ·  Tier B  ·  stored: 450.0 mL/min/kg
-
-- **Primary citation:** `sutton-1991-fetal-cardiac`  (_evidence: abstract_)
-- **Source reports:** Sutton 1991 abstract computes CVO as the sum of aortic and pulmonary artery flows and expresses lung/foramen flows as fractions of CVO, but reports no absolute per-kg CVO value (mL/min/kg).
-- **Reviewer note:** Abstract gives CVO only as a denominator for fraction calculations; no ~450 mL/min/kg numeric value present.
-
-### `fetal_circulation.fhr_baseline_bpm`  ·  Tier B  ·  stored: 170.0 bpm
-
-- **Primary citation:** `von-steinburg-2013-fhr`  (_evidence: fulltext_)
-- **Source reports:** This study analyzed CTG tracings collected between 20 and 42 weeks; it reports the highest mean FHR baseline at <28 weeks (140.8-141.9 bpm) and a normal range of 120-160 bpm. It does not cover the first-trimester (~weeks 9-10) peak that the stored 170 bpm represents.
-- **Reviewer note:** Source data start at 20 weeks; the first-trimester ~170 bpm peak is outside this study and not present in the text.
-
-### `fetal_circulation.mca_pi_baseline`  ·  Tier B  ·  stored: 1.5 dimensionless
-
-- **Primary citation:** `mari-1995-mca-pi`  (_evidence: abstract_)
-- **Source reports:** Abstract reports a parabolic (bell-shaped) MCA-PI pattern with higher values at 25-30 weeks, but provides no numeric PI value for ~20 weeks.
-- **Reviewer note:** No numeric early-T2 MCA-PI (~1.5) in the abstract; only the parabolic-pattern description.
-
-### `fetal_circulation.right_ventricular_output_fraction_term`  ·  Tier B  ·  stored: 0.6 dimensionless
-
-- **Primary citation:** `sutton-1991-fetal-cardiac`  (_evidence: abstract_)
-- **Source reports:** Sutton 1991 abstract reports lung flow (22% of CVO) and foramen ovale flow (17-31% of CVO) but does not report the RV share of CVO; no ~60% RV-output fraction is stated.
-- **Reviewer note:** Abstract does not state RV vs LV output split; stored 0.60 RV fraction not verifiable from available text.
-
-### `fetal_circulation.umbilical_vein_flow_per_kg_term_ml_per_min_per_kg`  ·  Tier B  ·  stored: 80.0 mL/min/kg
-
-- **Primary citation:** `kiserud-2001-umbilical-vein`  (_evidence: abstract_)
-- **Source reports:** Abstract reports shunt fractions and growth associations only; no weight-normalised UV flow (mL/min/kg) value is given.
-- **Reviewer note:** No mL/min/kg figure in the abstract; the ~80 mL/min/kg term value is not in available text.
 
 ### `fetal_circulation.umbilical_vein_flow_term_ml_per_min`  ·  Tier B  ·  stored: 290.0 mL/min
 
@@ -881,24 +1328,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Stirling 1984 abstract does not mention factor XII; only VII, VIII, X, fibrinogen, II, V and several inhibitors are named.
 - **Reviewer note:** Factor XII is not named in the abstract; the ~160% term value cannot be verified.
 
-### `maternal_cardiovascular.baseline_cardiac_output_l_per_min`  ·  Tier B  ·  stored: 4.6 L/min
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract reports only the change in cardiac output (Δ0.6 l/min by T2), not an absolute pre-conception baseline.
-- **Reviewer note:** Abstract gives deltas, not the absolute pre-conception CO; baseline 4.6 not stated in available text.
-
-### `maternal_cardiovascular.baseline_heart_rate_bpm`  ·  Tier B  ·  stored: 70.0 bpm
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract reports HR change (Δ13±11 bpm) only; no absolute pre-conception baseline HR value.
-- **Reviewer note:** Only HR delta in abstract; absolute baseline 70 bpm not stated.
-
-### `maternal_cardiovascular.baseline_map_mmhg`  ·  Tier B  ·  stored: 85.0 mmHg
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract reports systolic BP changes (deltas) only; no absolute pre-conception MAP value given.
-- **Reviewer note:** No absolute MAP in abstract; only delta brachial/central systolic. Baseline 85 unverifiable from text.
-
 ### `maternal_cardiovascular.cardiac_output_peak_week`  ·  Tier B  ·  stored: 30.0 weeks
 
 - **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
@@ -917,67 +1346,17 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Abstract gives only the CO change (Δ0.6 l/min greatest by T2); no absolute T2 CO mean.
 - **Reviewer note:** Absolute T2 CO (6.4) not in abstract; only the delta is reported.
 
-### `maternal_cardiovascular.cardiac_output_t3_l_per_min`  ·  Tier B  ·  stored: 6.5 L/min
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract gives only the CO change; no absolute T3 CO mean.
-- **Reviewer note:** Absolute T3 CO (6.5) not in abstract.
-
-### `maternal_cardiovascular.map_nadir_drop_mmhg`  ·  Tier B  ·  stored: 8.0 mmHg
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract reports systolic BP drops (brachial 4±7, central 7±7 mmHg) in early pregnancy, not a MAP nadir drop.
-- **Reviewer note:** Stored quantity is MAP drop (8 mmHg); abstract reports systolic-BP deltas, a different quantity. MAP drop not stated.
-
-### `maternal_cardiovascular.map_nadir_week`  ·  Tier B  ·  stored: 22.0 weeks
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract says greatest BP reduction occurred in early pregnancy and PVR nadir by T2; no explicit MAP-nadir week of 22.
-- **Reviewer note:** No explicit week-22 MAP nadir in abstract; timing described qualitatively only.
-
-### `maternal_cardiovascular.term_heart_rate_bpm`  ·  Tier B  ·  stored: 85.0 bpm
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract reports HR increased maximally by T3 by Δ13±11 bpm; no absolute term HR (~85 bpm) is stated.
-- **Reviewer note:** Term 85 bpm is baseline+delta inference; abstract gives only the delta, not absolute term HR.
-
-### `maternal_endocrine.cbg_term_mg_per_l`  ·  Tier B  ·  stored: 70 mg/L
-
-- **Primary citation:** `carr-1981-cortisol`  (_evidence: abstract_)
-- **Source reports:** The Carr 1981 abstract discusses ACTH and total cortisol only; it never mentions cortisol-binding globulin (CBG) or transcortin and gives no CBG concentration.
-- **Reviewer note:** CBG not mentioned anywhere in the Carr 1981 abstract; no value to compare against stored 70 mg/L.
-
 ### `maternal_endocrine.homa_ir_baseline`  ·  Tier B  ·  stored: 2.0 dimensionless
 
 - **Primary citation:** `catalano-1991-insulin-sensitivity`  (_evidence: abstract_)
 - **Source reports:** Catalano 1991 abstract measures insulin sensitivity via hyperinsulinemic-euglycemic clamp (glucose infusion rate) and insulin release via IVGTT. It reports no HOMA-IR value and no pre-pregnancy baseline HOMA-IR figure.
 - **Reviewer note:** Abstract reports clamp-based insulin sensitivity, not HOMA-IR; no baseline HOMA-IR value stated.
 
-### `maternal_renal.filtration_fraction_term`  ·  Tier B  ·  stored: 0.18 dimensionless
-
-- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
-- **Source reports:** Cheung 2013 abstract does not mention filtration fraction or give any numeric FF value.
-- **Reviewer note:** No filtration-fraction data in the Cheung 2013 abstract; stored 0.18 not verifiable from cached source.
-
 ### `maternal_renal.gfr_peak_week`  ·  Tier B  ·  stored: 16.0 weeks
 
 - **Primary citation:** `conrad-2001-relaxin-gfr`  (_evidence: abstract_)
 - **Source reports:** Abstract describes mechanisms of hyperfiltration but gives no gestational timing for the GFR peak.
 - **Reviewer note:** No week-of-peak GFR information in the Conrad 2001 abstract; Dunlop 1981 (also cited in rationale) is not the primary citation here.
-
-### `maternal_renal.plasma_uric_acid_nadir_mg_per_dl`  ·  Tier B  ·  stored: 3.0 mg/dL
-
-- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
-- **Source reports:** Abstract notes uric acid decreases with the GFR rise but gives no numeric nadir value or timing.
-- **Quote:** > The glomerular filtration rate increases 50% with subsequent decrease in serum creatinine, urea, and uric acid values.
-- **Reviewer note:** Abstract confirms uric acid falls but no numeric mid-pregnancy nadir; stored 3.0 mg/dL not verifiable from abstract.
-
-### `maternal_renal.plasma_uric_acid_term_mg_per_dl`  ·  Tier B  ·  stored: 4.5 mg/dL
-
-- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
-- **Source reports:** Abstract notes a pregnancy decrease in uric acid but provides no numeric term value nor any third-trimester rebound figure.
-- **Quote:** > The glomerular filtration rate increases 50% with subsequent decrease in serum creatinine, urea, and uric acid values.
-- **Reviewer note:** No numeric term uric acid in the Cheung 2013 abstract; stored 4.5 mg/dL not verifiable from cached source.
 
 ### `maternal_renal.renal_plasma_flow_baseline_ml_per_min`  ·  Tier B  ·  stored: 600.0 mL/min
 
@@ -986,53 +1365,11 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Compared with non-pregnant values, ERPF increased by 80 percent during early pregnancy but fell significantly from this new level during the third trimester.
 - **Reviewer note:** Abstract gives percentage change only; absolute baseline RPF of 600 mL/min not stated in cached source.
 
-### `maternal_renal.urinary_protein_excretion_term_mg_per_24h`  ·  Tier B  ·  stored: 150.0 mg/24h
-
-- **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
-- **Source reports:** Cheung 2013 abstract does not mention urinary protein excretion or proteinuria thresholds.
-- **Reviewer note:** No urinary protein data in the Cheung 2013 abstract; stored 150 mg/24h not verifiable from cached source.
-
 ### `maternal_respiratory.vco2_term_ml_per_min`  ·  Tier B  ·  stored: 250.0 mL/min
 
 - **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: fulltext_)
 - **Source reports:** Fulltext reports basal metabolic rate (and O2 consumption) rises by up to 14%/21% but gives no CO2-production (VCO2) value, absolute or percent, so the stored 250 mL/min term VCO2 is not present.
 - **Reviewer note:** No CO2-production (VCO2) figure in available fulltext; only O2 consumption/metabolic-rate percentages are given.
-
-### `placental_endocrine.hcg_term_miu_per_ml`  ·  Tier B  ·  stored: 10000.0 mIU/mL
-
-- **Primary citation:** `cole-2010-hcg`  (_evidence: fulltext_)
-- **Source reports:** Fulltext does not state a term maternal serum hCG concentration of ~10,000 mIU/mL. Term-pregnancy hCG data in Tables 2/3 are described as ng/ml ranges (0.21-173 ng/ml across women) and the underlying per-week table values are not present in the captured text.
-- **Reviewer note:** Confirm the term hCG figure (~5,000-20,000 mIU/mL) is absent from the captured fulltext; it appears inferred from the general decline-from-peak narrative rather than an explicit number.
-
-### `placental_endocrine.hpl_baseline_ug_per_ml`  ·  Tier B  ·  stored: 0.0 ug/mL
-
-- **Primary citation:** `handwerger-2010-hpl`  (_evidence: abstract_)
-- **Source reports:** The abstract is qualitative and states no numeric non-pregnant baseline concentration. The operationally-zero baseline rests on hPL being exclusively placental, which the abstract supports descriptively but without a number or assay sensitivity figure.
-- **Reviewer note:** Confirm the abstract gives no numeric baseline; the 0 (below ~0.1 ug/mL assay sensitivity) value is an operational inference, not an explicit figure in this source.
-
-### `placental_endocrine.hpl_term_ug_per_ml`  ·  Tier B  ·  stored: 7.0 ug/mL
-
-- **Primary citation:** `handwerger-2010-hpl`  (_evidence: abstract_)
-- **Source reports:** The abstract is qualitative and describes hPL's physiologic roles (growth/metabolism in mother and fetus). It states no numeric term concentration in ug/mL.
-- **Reviewer note:** Confirm the abstract carries no numeric hPL concentration; the ~5-10 ug/mL term value would need the full review text or another source.
-
-### `placental_endocrine.leptin_term_ng_per_ml`  ·  Tier B  ·  stored: 30 ng/mL
-
-- **Primary citation:** `hardie-1997-leptin`  (_evidence: abstract_)
-- **Source reports:** The abstract reports leptin was elevated throughout gestation (P<0.05), especially in the second trimester, and fell sharply post-partum, but it gives no numeric leptin concentration (ng/mL) at term.
-- **Reviewer note:** Confirm the abstract carries only directional/statistical findings and no numeric term leptin value; the ~30 ng/mL central value would require the paper's tables/figures.
-
-### `placental_endocrine.relaxin_t1_ng_per_ml`  ·  Tier B  ·  stored: 1.0 ng/mL
-
-- **Primary citation:** `conrad-2001-relaxin-gfr`  (_evidence: abstract_)
-- **Source reports:** The abstract (a renal-vasodilation/hyperfiltration review) identifies relaxin as the major pregnancy hormone driving renal changes and describes its downstream mediators (ET, NO), but reports no serum relaxin concentration. It gives GFR/RPF increases (40-65% and 50-85%), not a relaxin level.
-- **Reviewer note:** Confirm the abstract states no relaxin concentration; the ~1 ng/mL first-trimester value is not supported by this mechanistic-review abstract and may need a dedicated relaxin assay source.
-
-### `placental_gas_exchange.maternal_intervillous_po2_mmhg`  ·  Tier B  ·  stored: 50.0 mmHg
-
-- **Primary citation:** `carter-2009-placental-development`  (_evidence: abstract_)
-- **Source reports:** Abstract reviews factors affecting placental oxygen transfer in general/evolutionary terms; it does not state a maternal intervillous-space PO2 value.
-- **Reviewer note:** No PO2 figure in abstract; ~50 mmHg claim not verifiable from available text. Fulltext unavailable.
 
 ### `placental_gas_exchange.umbilical_artery_pco2_mmhg`  ·  Tier B  ·  stored: 50 mmHg
 
@@ -1064,55 +1401,11 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** The abstract is a qualitative review of placental GLUT isoform localization, regulation, and functional significance. It does not report any numeric Michaelis constant (Km) for GLUT1.
 - **Reviewer note:** Abstract-only; no numeric Km in available text. The '2-5 mmol/L' claim lives in the dataset rationale, not the cited abstract.
 
-### `placental_glucose.glucose_glut3_km_mmol_per_l`  ·  Tier B  ·  stored: 1.5 mmol/L
-
-- **Primary citation:** `baumann-2002-glut3`  (_evidence: abstract_)
-- **Source reports:** The Baumann 2002 abstract reviews placental glucose transfer; it states only GLUT1 protein has been identified in the syncytium and gives no numeric Km for GLUT3.
-- **Quote:** > only GLUT1 protein has been identified in the syncytium, where its distribution is asymmetric.
-- **Reviewer note:** Abstract reports no GLUT3 Km figure; it actually emphasizes GLUT1. Stored '~1-2 mmol/L' Km is not present in the available text.
-
-### `placental_glucose.maternal_fetal_glucose_gradient_term_mmol_per_l`  ·  Tier B  ·  stored: 1.2 mmol/L
-
-- **Primary citation:** `illsley-2000-glut1`  (_evidence: abstract_)
-- **Source reports:** The Illsley 2000 abstract does not state a maternal-fetal glucose concentration gradient or a fetal/maternal glucose ratio; it discusses transporter biology qualitatively.
-- **Reviewer note:** Abstract-only; no numeric gradient (~1.0-1.5 mmol/L) or 70-75% ratio appears in the available text.
-
-### `placental_glucose.net_glucose_flux_term_mg_per_kg_per_min`  ·  Tier B  ·  stored: 5.0 mg/kg/min
-
-- **Primary citation:** `illsley-2000-glut1`  (_evidence: abstract_)
-- **Source reports:** The abstract mentions 'maternal-fetal flux of glucose' only qualitatively; it reports no numeric net trans-placental glucose flux (e.g. 4-7 mg/kg/min).
-- **Quote:** > in diabetic pregnancies increases in basal GLUT1 expression and activity have been observed, with significant consequences for the maternal-fetal flux of glucose.
-- **Reviewer note:** Abstract references maternal-fetal glucose flux qualitatively but gives no mg/kg/min value. Stored 4-7 mg/kg/min not in available text.
-
 ### `placental_structure.initial_area_m2`  ·  Tier B  ·  stored: 0.5 m^2
 
 - **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: abstract_)
 - **Source reports:** Morphomics review abstract describes methodology and 3D quantification but reports no early-gestation villous surface-area figure.
 - **Reviewer note:** Abstract is a methodological 'omics' review; no numeric villous surface area present.
-
-### `placental_structure.membrane_thickness_um`  ·  Tier B  ·  stored: 4.5 micrometres
-
-- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: abstract_)
-- **Source reports:** Morphomics review abstract; reports no villous-membrane thickness value.
-- **Reviewer note:** No numeric membrane-thickness figure in the abstract; underlying value attributed to Mayhew 1986, not this cached source.
-
-### `placental_structure.placenta_to_fetus_weight_ratio_term`  ·  Tier B  ·  stored: 0.14 fraction
-
-- **Primary citation:** `burton-2010-placental-development`  (_evidence: abstract_)
-- **Source reports:** Burton 'What is the placenta?' abstract; qualitative organ description, reports no placental-to-fetal weight ratio.
-- **Reviewer note:** No fetoplacental ratio value in the abstract; stored value is a derived/computed quantity.
-
-### `placental_structure.term_area_m2`  ·  Tier B  ·  stored: 11.5 m^2
-
-- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: abstract_)
-- **Source reports:** Morphomics review abstract; no term villous surface-area figure present.
-- **Reviewer note:** Abstract does not state the ~11-13 m^2 term surface area; value would require fulltext or the cited primary sources.
-
-### `placental_structure.term_weight_g`  ·  Tier B  ·  stored: 470.0 g
-
-- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: abstract_)
-- **Source reports:** Morphomics review abstract; reports no placental mass value.
-- **Reviewer note:** Rationale itself calls ~470 g a 'canonical clinical-pathology figure'; not present in this abstract.
 
 ### `amniotic_fluid.afv_spread_weeks`  ·  Tier C  ·  stored: 9.0 weeks
 
@@ -1131,12 +1424,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `kiserud-2000-fetal-circulation`  (_evidence: abstract_)
 - **Source reports:** Kiserud DV review abstract discusses shunt fractions (30%->20%) and DV regulation but reports no PO2 figure for systemic venous return.
 - **Reviewer note:** Abstract contains no PO2/oxygen-tension value; the 15 mmHg systemic-venous-return PO2 is not in the available text.
-
-### `maternal_cardiovascular.baseline_stroke_volume_ml`  ·  Tier C  ·  stored: 65.0 mL
-
-- **Primary citation:** `mahendru-2014-cardiac-output`  (_evidence: abstract_)
-- **Source reports:** Abstract does not report an absolute stroke-volume value; baseline SV is a CO/HR-derived estimate.
-- **Reviewer note:** No SV figure in abstract; stored 65 mL is a derivation per rationale.
 
 ### `maternal_cardiovascular.cardiac_output_individual_sigma`  ·  Tier C  ·  stored: 0.13 fraction
 
@@ -1174,12 +1461,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Cheung 2013 abstract does not mention phosphate handling or any TmP/GFR value.
 - **Reviewer note:** No phosphate-threshold data in the Cheung 2013 abstract; stored 0.85 mmol/L not verifiable from cached source.
 
-### `placental_endocrine.placental_gh_term_ng_per_ml`  ·  Tier C  ·  stored: 14 ng/mL
-
-- **Primary citation:** `eriksson-1989-placental-gh`  (_evidence: abstract_)
-- **Source reports:** The abstract describes the qualitative shift from episodic pituitary GH to continuous non-pulsatile placental GH-variant secretion in late pregnancy (first seen at 17 weeks), but reports no numeric term placental-GH concentration in ng/mL.
-- **Reviewer note:** Confirm the abstract gives only the secretion-pattern finding and no numeric concentration; the ~10-20 ng/mL term value needs the full text or another source.
-
 ### `placental_gas_exchange.co2_diffusing_capacity_term_ml_min_mmhg`  ·  Tier C  ·  stored: 6 mL/min/mmHg
 
 - **Primary citation:** `mayhew-1986-gas-diffusion`  (_evidence: abstract_)
@@ -1197,12 +1478,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `carter-pijnenborg-2011-gas-exchange`  (_evidence: abstract_)
 - **Source reports:** Abstract is an evolutionary review of invasive placentation in primates; it contains no fraction or equilibration figure. Rationale states the value is a model abstraction derived to reproduce the textbook UV PO2 window.
 - **Reviewer note:** Model abstraction; cited abstract is qualitative evolutionary review with no numeric value. Fulltext unavailable.
-
-### `placental_gas_exchange.maternal_fetal_pco2_gradient_term_mmhg`  ·  Tier C  ·  stored: 10.0 mmHg
-
-- **Primary citation:** `mayhew-1986-gas-diffusion`  (_evidence: abstract_)
-- **Source reports:** Abstract is a morphometric oxygen-diffusion model; it does not discuss CO2 or report any maternal-fetal PCO2 gradient. Rationale itself attributes the value to 'standard fetal-physiology references.'
-- **Reviewer note:** Cited abstract is O2-only; no PCO2 gradient stated. Fulltext unavailable.
 
 ### `placental_gas_exchange.spiral_artery_po2_estimate_mmhg`  ·  Tier C  ·  stored: 80 mmHg
 
@@ -1253,12 +1528,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Carter evolutionary review abstract; reports no gestational week for a villous-area logistic midpoint.
 - **Reviewer note:** Logistic-curve inflection week; notes state 'not reported directly in source.'
 
-### `placental_structure.spiral_artery_count`  ·  Tier C  ·  stored: 100 count
-
-- **Primary citation:** `pijnenborg-2006-spiral-artery`  (_evidence: abstract_)
-- **Source reports:** Pijnenborg 'facts and controversies' abstract discusses spiral-artery remodelling qualitatively; reports no count of spiral arteries.
-- **Reviewer note:** No numeric spiral-artery count in the abstract.
-
 ### `placental_structure.spiral_artery_diameter_term_mm`  ·  Tier C  ·  stored: 2.5 mm
 
 - **Primary citation:** `pijnenborg-2006-spiral-artery`  (_evidence: abstract_)
@@ -1270,12 +1539,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: abstract_)
 - **Source reports:** Morphomics review abstract; reports no syncytiotrophoblast thickness figure.
 - **Reviewer note:** No numeric syncytial-layer thickness in the abstract.
-
-### `placental_structure.villous_capillary_length_total_km_term`  ·  Tier C  ·  stored: 300.0 km
-
-- **Primary citation:** `mayhew-2014-placental-morphometry`  (_evidence: abstract_)
-- **Source reports:** Morphomics review abstract; reports no total villous-capillary length figure.
-- **Reviewer note:** No numeric capillary-length figure in the abstract.
 
 ### `maternal_blood.fetal_microchimerism_baseline_cells_per_ml`  ·  Tier D  ·  stored: 0.0 cells/mL
 
@@ -1289,27 +1552,7 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Bianchi 1996 abstract is qualitative ('rare nucleated fetal cells circulate within maternal blood') and reports detection rates by PCR; it gives no cells/mL concentration.
 - **Reviewer note:** No cells/mL concentration in the abstract; Tier D hypothesis-only value cannot be verified against the source text.
 
-## ⬜ no source — book / paywalled / no abstract retrieved  (40)
-
-### `maternal_renal.gfr_first_trimester_ml_per_min`  ·  Tier A  ·  stored: 135.0 mL/min
-
-- **Primary citation:** `davison-hytten-1974-gfr`  (_evidence: none_)
-- **Reviewer note:** Davison & Hytten 1974 cached with evidence=none (no abstract/fulltext); first-trimester GFR figure not verifiable from cached source.
-
-### `placental_endocrine.estradiol_term_ng_per_ml`  ·  Tier A  ·  stored: 14.0 ng/mL
-
-- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: none_)
-- **Reviewer note:** Tulchinsky 1972 has no cached text (evidence=none). Reviewer should verify the ~8-25 ng/mL term estradiol value against the primary paper.
-
-### `placental_endocrine.estriol_term_ng_per_ml`  ·  Tier A  ·  stored: 10.0 ng/mL
-
-- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: none_)
-- **Reviewer note:** Tulchinsky 1972 has no cached text (evidence=none). Reviewer should verify the ~6-20 ng/mL term estriol value against the primary paper.
-
-### `placental_endocrine.progesterone_term_ng_per_ml`  ·  Tier A  ·  stored: 150.0 ng/mL
-
-- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: none_)
-- **Reviewer note:** Tulchinsky 1972 has no cached abstract/fulltext (evidence=none). Human reviewer should retrieve the primary paper to verify the ~150 ng/mL term progesterone value.
+## ⬜ no source — book / paywalled / no abstract retrieved  (18)
 
 ### `maternal_blood.folate_term_ng_per_ml`  ·  Tier B  ·  stored: 5 ng/mL
 
@@ -1321,27 +1564,7 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
 - **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
 
-### `maternal_cardiovascular.baseline_svr_dyn_s_cm5`  ·  Tier B  ·  stored: 1300.0 dyn*s/cm^5
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
-### `maternal_cardiovascular.lv_mass_baseline_g`  ·  Tier B  ·  stored: 130.0 g
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
-### `maternal_cardiovascular.lv_mass_term_g`  ·  Tier B  ·  stored: 180.0 g
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
 ### `maternal_cardiovascular.peak_excess_stroke_volume_ml`  ·  Tier B  ·  stored: 15.0 mL
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
-### `maternal_cardiovascular.pvr_term_dyn_s_cm5`  ·  Tier B  ·  stored: 80.0 dyn·s·cm^-5
 
 - **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
 - **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
@@ -1351,40 +1574,10 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
 - **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
 
-### `maternal_cardiovascular.term_svr_dyn_s_cm5`  ·  Tier B  ·  stored: 980.0 dyn*s/cm^5
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
-### `maternal_endocrine.aldosterone_term_ng_per_dl`  ·  Tier B  ·  stored: 40.0 ng/dL
-
-- **Primary citation:** `wilson-1980-renin-aldosterone`  (_evidence: none_)
-- **Reviewer note:** Wilson 1980 has no cached abstract or fulltext (evidence=none).
-
-### `maternal_endocrine.free_t4_term_ng_per_dl`  ·  Tier B  ·  stored: 0.9 ng/dL
-
-- **Primary citation:** `glinoer-1997-thyroid`  (_evidence: none_)
-- **Reviewer note:** Glinoer 1997 has no cached abstract or fulltext (book/review, evidence=none).
-
-### `maternal_endocrine.prolactin_term_ng_per_ml`  ·  Tier B  ·  stored: 200.0 ng/mL
-
-- **Primary citation:** `tyson-1972-prolactin`  (_evidence: none_)
-- **Reviewer note:** Tyson 1972 has no cached abstract or fulltext (evidence=none).
-
 ### `maternal_endocrine.renin_term_ng_per_ml_per_h`  ·  Tier B  ·  stored: 12 ng/mL/h
 
 - **Primary citation:** `wilson-1980-renin-aldosterone`  (_evidence: none_)
 - **Reviewer note:** Wilson 1980 has no cached abstract or fulltext (evidence=none).
-
-### `maternal_endocrine.tsh_t1_miu_per_l`  ·  Tier B  ·  stored: 0.6 mIU/L
-
-- **Primary citation:** `glinoer-1997-thyroid`  (_evidence: none_)
-- **Reviewer note:** Glinoer 1997 has no cached abstract or fulltext (evidence=none).
-
-### `maternal_endocrine.tsh_term_miu_per_l`  ·  Tier B  ·  stored: 2.0 mIU/L
-
-- **Primary citation:** `glinoer-1997-thyroid`  (_evidence: none_)
-- **Reviewer note:** Glinoer 1997 has no cached abstract or fulltext (evidence=none).
 
 ### `maternal_respiratory.inspiratory_capacity_term_l`  ·  Tier B  ·  stored: 2.7 L
 
@@ -1401,26 +1594,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `crapo-1996-pregnancy-respiratory`  (_evidence: none_)
 - **Reviewer note:** Primary citation Crapo 1996 is a book chapter with no abstract/fulltext cached (evidence none); cannot verify the 5.0 L term TLC. (LoMauro review fulltext states TLC stays stable/constant but gives no absolute liters.)
 
-### `placental_endocrine.estradiol_baseline_ng_per_ml`  ·  Tier B  ·  stored: 0.1 ng/mL
-
-- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: none_)
-- **Reviewer note:** Tulchinsky 1972 has no cached text (evidence=none); rationale also cites O'Leary 1991. Reviewer should verify the mid-luteal ~0.05-0.25 ng/mL baseline against an appropriate non-pregnant source.
-
-### `placental_endocrine.progesterone_baseline_ng_per_ml`  ·  Tier B  ·  stored: 10.0 ng/mL
-
-- **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: none_)
-- **Reviewer note:** Tulchinsky 1972 has no cached text (evidence=none). Reviewer should verify the mid-luteal baseline ~5-20 ng/mL against the primary paper (or a more appropriate non-pregnant reference).
-
-### `placental_structure.cotyledon_count`  ·  Tier B  ·  stored: 18 count
-
-- **Primary citation:** `benirschke-2012-placental-pathology`  (_evidence: none_)
-- **Reviewer note:** Primary citation is a textbook with no cached abstract/fulltext (evidence=none).
-
-### `amniotic_fluid.fetal_swallowing_term_ml_per_24h`  ·  Tier C  ·  stored: 700 mL/24h
-
-- **Primary citation:** `pritchard-1966-fetal-swallowing`  (_evidence: none_)
-- **Reviewer note:** Evidence level none (book/pre-index, no abstract or fulltext cached). Cannot verify 700 mL/24h swallowing rate.
-
 ### `fetal_circulation.aortic_isthmus_flow_fraction_cvo_term`  ·  Tier C  ·  stored: 0.1 dimensionless
 
 - **Primary citation:** `rudolph-1985-fetal-circulation`  (_evidence: none_)
@@ -1430,11 +1603,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 
 - **Primary citation:** `rudolph-1985-fetal-circulation`  (_evidence: none_)
 - **Reviewer note:** Rudolph 1985 lamb book chapter; evidence=none, cannot verify the ~3% coronary CVO fraction.
-
-### `fetal_circulation.ductus_arteriosus_share`  ·  Tier C  ·  stored: 0.85 fraction
-
-- **Primary citation:** `rudolph-1985-fetal-circulation`  (_evidence: none_)
-- **Reviewer note:** Rudolph 1985 lamb book chapter; evidence=none, no abstract/fulltext cached to verify the 0.85 RV-to-ductus share.
 
 ### `fetal_circulation.foramen_ovale_streamline_preference`  ·  Tier C  ·  stored: 0.8 fraction
 
@@ -1451,27 +1619,12 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
 - **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
 
-### `maternal_cardiovascular.baseline_pvr_dyn_s_cm5`  ·  Tier C  ·  stored: 120 dyn·s·cm⁻⁵
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
-### `maternal_cardiovascular.lv_wall_thickness_term_mm`  ·  Tier C  ·  stored: 11 mm
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
 ### `maternal_cardiovascular.map_individual_sigma_mmhg`  ·  Tier C  ·  stored: 5.0 mmHg
 
 - **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
 - **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
 
 ### `maternal_cardiovascular.map_spread_weeks`  ·  Tier C  ·  stored: 8.0 weeks
-
-- **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
-- **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.
-
-### `maternal_cardiovascular.pulse_wave_velocity_term_m_per_s`  ·  Tier C  ·  stored: 7.5 m/s
 
 - **Primary citation:** `sanghavi-rutherford-2014-cardio-review`  (_evidence: none_)
 - **Reviewer note:** Primary source (Sanghavi & Rutherford 2014) has no cached abstract/fulltext (evidence=none); value cannot be checked against text.

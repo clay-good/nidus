@@ -18,9 +18,19 @@
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2; Physiology, Cardiac Output (StatPearls, NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf ; https://www.ncbi.nlm.nih.gov/books/NBK470455/",
+        "quote": "Cardiac output (L/min)                4.3 ± 0.9        6.2 ± 1.0    44           0.0003",
+        "extracted_value": "Clark 1989: post-partum (non-pregnant surrogate) cardiac output 4.3 +/- 0.9 L/min. StatPearls: resting CO ~5-6 L/min in a healthy adult. Stored 4.6 lies between these and within Clark's SD."
+      }
     },
     "applicability": {
       "population": "Healthy nulliparous women, pre-conception measurement"
@@ -46,9 +56,19 @@
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf",
+        "quote": "Mean arterial pressure (mmHg)        86.4 ± 7.5       90.3 ± 5.8    4.5          0.210",
+        "extracted_value": "Clark 1989: post-partum (non-pregnant surrogate) mean arterial pressure 86.4 +/- 7.5 mmHg. Stored 85 essentially identical."
+      }
     },
     "applicability": {
       "population": "Healthy nulliparous women, pre-conception"
@@ -208,9 +228,19 @@
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Mammaro et al. 2009, 'Hypertensive disorders in pregnancy' review (PMC3279097/J Prenat Med)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3366228/",
+        "quote": "The reduction is typically 8-10 mm Hg or just less than a 10% decline from pre-pregnancy levels.",
+        "extracted_value": "Review states the mid-pregnancy MAP reduction is typically 8-10 mmHg (just under a 10% decline from pre-pregnancy). Stored 8 mmHg is the lower bound of that stated range."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -236,9 +266,19 @@
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Physiology, Maternal Changes During Pregnancy (StatPearls, NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK539766/",
+        "quote": "blood pressure reaching its lowest point at about 20-24 weeks gestation",
+        "extracted_value": "StatPearls: blood pressure reaches its lowest point at about 20-24 weeks of gestation. Stored 22 weeks lies in the middle of this range."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies"
@@ -468,10 +508,20 @@
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "method": "derived from baseline CO / HR; consistent with Hunter 1992 review",
       "date": "2026-05-21",
-      "reviewer": "dataset-expansion-triangulation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Physiology, Stroke Volume (StatPearls, NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK547686/",
+        "quote": "The average stroke volume of a 70 kg male is 70 mL.",
+        "extracted_value": "StatPearls: average resting stroke volume ~70 mL for a 70-kg adult; normal range 55-100 mL. Stored 65 is within the normal range, slightly below the 70 mL average."
+      }
     },
     "applicability": {
       "population": "Healthy nulliparous women, pre-conception"
@@ -553,9 +603,19 @@
       "sanghavi-rutherford-2014-cardio-review"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf",
+        "quote": "Systemic vascular resistance         1530 ± 520       1210 ± 266    -21          0.100",
+        "extracted_value": "Clark 1989: post-partum (non-pregnant surrogate) SVR 1530 +/- 520 dyn*s/cm^5. Stored 1300 lies below the point estimate but well within +/-1 SD and within commonly cited non-pregnant ranges (~1200-1530)."
+      }
     },
     "primary_citation": "sanghavi-rutherford-2014-cardio-review"
   },
@@ -577,9 +637,19 @@
       "sanghavi-rutherford-2014-cardio-review"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2; Soma-Pillay et al. 2016 (Cardiovasc J Afr)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf ; https://pmc.ncbi.nlm.nih.gov/articles/PMC4928162/",
+        "quote": "Systemic vascular resistance         1530 ± 520       1210 ± 266    -21          0.100",
+        "extracted_value": "Clark 1989: at-term SVR 1210 +/- 266 dyn*s/cm^5 (a 21% fall). Soma-Pillay 2016 states a 25-30% fall. Stored 980 sits just within 1 SD of Clark's at-term value (944-1476) and is consistent with a 25-30% fall from a ~1300 baseline."
+      }
     },
     "primary_citation": "sanghavi-rutherford-2014-cardio-review"
   },
@@ -630,9 +700,19 @@
     ],
     "primary_citation": "sanghavi-rutherford-2014-cardio-review",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf",
+        "quote": "Pulmonary vascular resistance         119 ± 47          78 ± 22     -34          0.022",
+        "extracted_value": "Clark 1989 invasive study: at-term PVR 78 +/- 22 dyn*s/cm^5 (a 34% fall); stored 80 essentially identical."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -657,9 +737,19 @@
     ],
     "primary_citation": "sanghavi-rutherford-2014-cardio-review",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Harkness/Ring et al. 2020, British Society of Echocardiography normal reference intervals guideline (PMC)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7040881/",
+        "quote": "Left ventricular mass (grams): 51-173",
+        "extracted_value": "BSE reference guideline: normal LV mass for women 51-173 g. Stored 130 g falls within this range (upper-middle)."
+      }
     },
     "applicability": {
       "population": "Healthy non-pregnant women of reproductive age"
@@ -856,9 +946,19 @@
     ],
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase2-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf",
+        "quote": "Cardiac output (L/min)                4.3 ± 0.9        6.2 ± 1.0    44           0.0003",
+        "extracted_value": "Clark 1989: at-term cardiac output 6.2 +/- 1.0 L/min (a 44% rise from post-partum). Stored 6.5 lies within Clark's SD of the at-term value."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -884,9 +984,19 @@
     ],
     "primary_citation": "sanghavi-rutherford-2014-cardio-review",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase2-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Clark SL et al. 1989 (Am J Obstet Gynecol), Table 2.3 reproduced in 'Heart Disease in Pregnancy' (Blackwell), Ch.2",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.blackwellpublishing.com/content/bpl_images/content_store/sample_chapter/9781405134880/9781405134880.pdf",
+        "quote": "Pulmonary vascular resistance         119 ± 47          78 ± 22     -34          0.022",
+        "extracted_value": "Clark 1989 invasive (PA-catheter) study: post-partum (non-pregnant surrogate) PVR 119 +/- 47 dyn*s/cm^5; stored 120 essentially identical."
+      }
     },
     "applicability": {
       "population": "Healthy non-pregnant women of reproductive age"

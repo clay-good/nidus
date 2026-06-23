@@ -8,14 +8,20 @@ and versions follow [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Changed
-- **38 parameters promoted to `pending_human_review`.** A new review state
+- **127 parameters promoted to `pending_human_review`.** A new review state
   between `unverified` and `verified`: the stored value was located in a real
   source by automated review and a verbatim quote + source citation were
   written onto the record at `extraction.source_check`. No human sign-off — that
-  still gates `verified`. 11 were confirmed from the primary citation's
-  open-access full text/abstract; 27 from authoritative secondary sources
-  (StatPearls, Merck Manual, GLOWM, open-access reviews). Review status is now
-  28 verified / 38 pending_human_review / 1 contested / 176 unverified.
+  still gates `verified`. Confirmed from each parameter's open-access primary
+  citation where possible, otherwise from authoritative secondary sources
+  (INTERGROWTH-21st & NICHD fetal-growth standards, Clark 1989 hemodynamics,
+  Endotext endocrinology, StatPearls, Merck Manual, GLOWM, cord-blood-gas
+  references). Review status is now 28 verified / 127 pending_human_review /
+  1 contested / 87 unverified. The machine pre-verification pass also surfaced
+  11 `mismatch` flags where a stored value disagrees with its source (e.g. LV
+  mass/wall thickness, villous capillary length, placenta:fetus weight ratio,
+  umbilical-vein flow per kg) — these stay `unverified` and top the review
+  queue for human investigation.
 
 ### Fixed
 - **Citation identifiers repaired.** 23 citations carried DOI/PMID

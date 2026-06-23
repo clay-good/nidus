@@ -14,14 +14,16 @@ and versions follow [Semantic Versioning](https://semver.org/).
   `verified`: the stored value was located in a real source by automated
   review (with a verbatim quote and source citation recorded in the new
   `extraction.source_check` object), but no human has signed off. Automated
-  review never sets `verified`. **38 parameters** were promoted to
-  `pending_human_review` this pass — 11 from their own primary citation's
-  open-access full text/abstract, 27 from authoritative secondary sources
-  (StatPearls, Merck Manual, GLOWM, open-access reviews) for parameters whose
-  primary paper was paywalled. Schema, model, loader, `filter()`, `nidus info`,
-  and the dashboard filter all understand the new state. New script:
-  `scripts/promote_pending_review.py`. Dataset now: 28 verified,
-  38 pending_human_review, 1 contested, 176 unverified.
+  review never sets `verified`. **127 parameters** were promoted to
+  `pending_human_review` across two passes — from their own primary citation's
+  open-access full text/abstract, and from authoritative secondary sources
+  (INTERGROWTH-21st & NICHD growth standards, Clark 1989 hemodynamics, Endotext,
+  StatPearls, Merck Manual, GLOWM, cord-gas references, open-access reviews) for
+  parameters whose primary paper was paywalled. Each promotion carries a
+  verbatim quote in `extraction.source_check`. Schema, model, loader,
+  `filter()`, `nidus info`, and the dashboard filter all understand the new
+  state. New script: `scripts/promote_pending_review.py`. Dataset now:
+  28 verified, 127 pending_human_review, 1 contested, 87 unverified.
 - **Machine pre-verification layer (`data/validation/`).** A worklist that
   pays down the verification backlog without faking it. For every parameter,
   the primary citation's source text (open-access full text where available,

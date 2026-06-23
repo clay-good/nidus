@@ -7,10 +7,10 @@ caveats remain. These are the exemplars researchers should compare
 their own contributions against.
 
 At the time of writing, the dataset has **28 verified parameters** out
-of 243. A further **38** are `pending_human_review` (automated review
+of 243. A further **127** are `pending_human_review` (automated review
 located the value in a real source, with a verbatim quote on the
 record, but no human has signed off), **1** is `contested`, and the
-remaining **176** are `unverified` pending human-with-PDF re-review. The
+remaining **87** are `unverified` pending human-with-PDF re-review. The
 verified ones are exactly the parameters where the cited primary
 source's value claim has been confirmed directly (PMC full-text read)
 or by triangulation against at least three independent secondary

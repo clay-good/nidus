@@ -72,9 +72,19 @@
     ],
     "primary_citation": "baumann-2002-glut3",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Schmidl et al. 2020, Front. Mol. Biosci.",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.3389/fmolb.2020.598419",
+        "quote": "GLUT3 exhibits a high affinity for glucose (KM = 1.4 mM)",
+        "extracted_value": "Review of the human GLUT transporters states GLUT3 is the high-affinity isoform with Km = 1.4 mM for glucose."
+      }
     },
     "applicability": {
       "population": "Human syncytiotrophoblast basal membrane"
@@ -126,9 +136,19 @@
     ],
     "primary_citation": "illsley-2000-glut1",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Holme et al. 2015, PLOS ONE (human in vivo)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1371/journal.pone.0117084",
+        "quote": "The transplacental maternal-fetal glucose gradient was 1.22 (0.42) mmol/L.",
+        "extracted_value": "Human in vivo study of healthy term pregnancies measured the transplacental maternal-fetal glucose gradient as 1.22 (SD 0.42) mmol/L."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term, mother fasted"
@@ -154,9 +174,19 @@
     ],
     "primary_citation": "illsley-2000-glut1",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Rao et al. 2013, Indian J. Endocrinol. Metab.",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3659908/",
+        "quote": "Fetal glucose utilization rates (5-7 mg/kg/min) are higher than in adults (2-3 mg/kg/min).",
+        "extracted_value": "Clinical review of in utero fuel homeostasis states fetal glucose utilization rates are 5-7 mg/kg/min, higher than adult rates of 2-3 mg/kg/min."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"

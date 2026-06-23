@@ -74,9 +74,19 @@
       "glinoer-1997-thyroid"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Hussein et al. 2017, Int J Gen Med (PMC5456279), trimester-specific thyroid reference intervals, Basrah",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5456279/",
+        "quote": "For Free T4, the trimester specific reference ranges were 0.8-1.53, 0.7-1.20 and 0.7-1.20 ng/dL for first, second and third trimesters, respectively.",
+        "extracted_value": "Third-trimester free T4 5th-95th centile 0.7-1.20 ng/dL with mean 0.90 ng/dL. The reported mean (0.90) equals the stored central (0.9); the stored range 0.7-1.1 closely matches the reported 0.7-1.20."
+      }
     },
     "primary_citation": "glinoer-1997-thyroid"
   },
@@ -98,9 +108,19 @@
       "glinoer-1997-thyroid"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Hussein et al. 2017, Int J Gen Med (PMC5456279), trimester-specific thyroid reference intervals, Basrah",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5456279/",
+        "quote": "Trimester specific normal ranges of TSH in microIU/mL were 0.04-3.77, 0.30-3.21 and 0.6-4.5 microIU/mL, respectively, for first, second and third trimesters.",
+        "extracted_value": "Secondary reference-interval study (n=540): first-trimester TSH 5th-95th centile 0.04-3.77 uIU/mL with mean 1.51. Stored T1 central 0.6 sits low within this interval; the stored range 0.1-2.5 is well bracketed by the reported interval."
+      }
     },
     "primary_citation": "glinoer-1997-thyroid"
   },
@@ -122,9 +142,19 @@
       "glinoer-1997-thyroid"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Hussein et al. 2017, Int J Gen Med (PMC5456279), trimester-specific thyroid reference intervals, Basrah",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5456279/",
+        "quote": "Trimester specific normal ranges of TSH in microIU/mL were 0.04-3.77, 0.30-3.21 and 0.6-4.5 microIU/mL, respectively, for first, second and third trimesters.",
+        "extracted_value": "Third-trimester TSH 5th-95th centile 0.6-4.5 uIU/mL with mean 1.87. Stored term central 2.0 and range 0.4-4.0 fall within this reported third-trimester interval."
+      }
     },
     "primary_citation": "glinoer-1997-thyroid"
   },
@@ -146,9 +176,19 @@
       "tyson-1972-prolactin"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Xu et al. 2017, reference intervals for serum prolactin across pregnancy (PMID 29194037)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/29194037/",
+        "quote": "first trimester, 621.20-3584.00 microIU/mL; second trimester, 1432.00-5349.68 microIU/mL; third trimester, 4087.33-9733.65 microIU/mL",
+        "extracted_value": "Third-trimester prolactin reference interval 4087.33-9733.65 uIU/mL. Using the WHO 3rd IS conversion (1 ng/mL ~ 21.2 uIU/mL, supported by the study's non-pregnant 178.89-757.52 uIU/mL = ~8.4-35.7 ng/mL matching standard prolactin ranges), this is ~193-459 ng/mL. Stored central 200 sits at the low end and the stored range 150-300 overlaps the lower part of the reported interval."
+      }
     },
     "primary_citation": "tyson-1972-prolactin"
   },
@@ -170,9 +210,19 @@
       "wilson-1980-renin-aldosterone"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "RAAS in normotensive vs hypertensive pregnancy (PMC10454898), Table 2, normotensive group",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10454898/",
+        "quote": "Aldosterone, pmol/L First trimester 386.1 (226.2-626.2) Third trimester 970.5 (468.3-1586.0)",
+        "extracted_value": "Normotensive third-trimester aldosterone median 970.5 pmol/L (IQR 468.3-1586.0). Converting (1 ng/dL = 27.74 pmol/L): median 35.0 ng/dL, IQR 16.9-57.2 ng/dL. Stored central 40 ng/dL and range 25-60 fall within / overlap the converted interval."
+      }
     },
     "primary_citation": "wilson-1980-renin-aldosterone"
   },

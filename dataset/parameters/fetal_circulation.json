@@ -17,9 +17,19 @@
     ],
     "primary_citation": "rudolph-1985-fetal-circulation",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "'The Fetal Circulation and Patent Ductus Arteriosus' (textbook chapter, human fetus, Thoracic Key)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://thoracickey.com/chapter-1-the-fetal-circulation-and-patent-ductus-arteriosus/",
+        "quote": "Only 8 per cent of the combined ventricular output passes to the pulmonary circulation; the remainder passes directly via the ductus arteriosus to the descending aorta",
+        "extracted_value": "Secondary human-physiology text states only ~8% of combined ventricular output reaches the lungs and the remainder of right-ventricular output passes via the ductus arteriosus to the descending aorta, supporting a high (~0.85) ductal share of RV output. Human PC-MRI (Prsa 2014: ductus 41% vs main PA 56% of CVO) gives a somewhat lower ductal share (~0.73 of RV output) as pulmonary flow rises near term."
+      }
     },
     "applicability": {
       "population": "Late-gestation fetal lamb (extrapolated to human fetus)"
@@ -156,9 +166,19 @@
     ],
     "primary_citation": "von-steinburg-2013-fhr",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Turan et al. 2012, 'Fetal cardiac function during the first trimester' (review, PMC3279166)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3279166/",
+        "quote": "in healthy fetuses, the heart rate (HR) increases from 110 bpm at the 5th week of gestation to 170 bpm at the 9th week of gestation",
+        "extracted_value": "Open review states the fetal heart rate rises to 170 bpm at the 9th week of gestation, then declines, matching the stored first-trimester baseline peak of 170 bpm."
+      }
     }
   },
   {
@@ -204,9 +224,19 @@
     ],
     "primary_citation": "acharya-2005-umbilical-pi",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Third-trimester Doppler reference ranges, normal-growth singletons, Israeli population (PMC6824833)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6824833/",
+        "quote": "At 39 weeks gestation Median UA-PI: 0.83; At 40 weeks gestation Median UA-PI: 0.77",
+        "extracted_value": "Median UA-PI in normal-growth singletons is 0.83 at 39 weeks and 0.77 at 40 weeks, bracketing the stored term value of 0.85. INTERGROWTH-21st gives a median of 0.79 at 40 weeks."
+      }
     }
   },
   {
@@ -228,9 +258,19 @@
     ],
     "primary_citation": "mari-1995-mca-pi",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Iranian fetal MCA Doppler nomogram, normal pregnancies (PMC2615738)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2615738/",
+        "quote": "median MCA-PI was 1.71 (50th percentile column for gestational week 20); peak PI value 2.05 at 28 weeks of gestation",
+        "extracted_value": "Normal MCA-PI nomogram gives a 50th-centile value of 1.71 at 20 weeks, rising to a peak of 2.05 at 28 weeks then declining (parabolic pattern). The stored early-second-trimester value of 1.5 sits just below the 1.71 median at 20 weeks."
+      }
     }
   },
   {
@@ -364,9 +404,19 @@
     ],
     "primary_citation": "sutton-1991-fetal-cardiac",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Prsa et al. 2014, Circ Cardiovasc Imaging (phase-contrast MRI, n=40 normal human fetuses, mean 37 wk)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/24874055/",
+        "quote": "Combined ventricular output: 465 (351, 579)",
+        "extracted_value": "Human PC-MRI reference-range study at term reports combined ventricular output of 465 mL/min/kg (2 SD 351-579), bracketing the stored 450 mL/min/kg."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -393,9 +443,19 @@
     ],
     "primary_citation": "sutton-1991-fetal-cardiac",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Prsa et al. 2014, Circ Cardiovasc Imaging (PC-MRI, n=40 normal human fetuses at term)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/24874055/",
+        "quote": "Main pulmonary artery: 56 (44, 68)",
+        "extracted_value": "Main pulmonary artery flow equals right ventricular output; the study reports it as 56% (2 SD 44-68) of combined ventricular output, consistent with the stored RV fraction of 0.60."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"

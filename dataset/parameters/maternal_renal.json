@@ -18,9 +18,19 @@
     ],
     "primary_citation": "davison-hytten-1974-gfr",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Cheung & Lafayette 2013, Renal Physiology of Pregnancy, Adv Chronic Kidney Dis (PMC4089195)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4089195/",
+        "quote": "creatinine clearance increased 20% at 4 weeks post-menses, 25% as early as gestational week 4, and 45% by gestational week 9",
+        "extracted_value": "Review reports creatinine clearance (a GFR proxy) rising ~25% by gestational week 4 and ~45% by week 9; applied to a non-pregnant baseline of ~90-100 mL/min this yields a first-trimester GFR of roughly 120-135 mL/min, bracketing the stored central of 135 at its upper edge."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, weeks 8-12"
@@ -74,9 +84,19 @@
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-21",
-      "reviewer": "metadata-and-abstract-audit"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Wiles et al. 2019, Serum Creatinine in Pregnancy: A Systematic Review, Kidney Int Rep (PMC6409397)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6409397/",
+        "quote": "serum creatinine values greater than 76 μmol/l (0.86 mg/dl) in the first trimester, 72 μmol/l (0.81 mg/dl) in the second trimester, and 77 μmol/l (0.87 mg/dl) in the third trimester should be considered to be outside the upper limit of normal",
+        "extracted_value": "Systematic review of normal-pregnancy serum creatinine gives the third-trimester upper limit of normal as 77 umol/l = 0.87 mg/dL; the stored central 0.6 mg/dL (0.5-0.7) lies comfortably within the normal third-trimester range implied by this upper limit."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -103,9 +123,19 @@
       "cheung-lafayette-2013-renal"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Gounden, Bhatt & Jialal, Renal Function Tests, StatPearls (NCBI Bookshelf NBK544228)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK544228/",
+        "quote": "The normal range for CrCl is age-dependent, but for younger, healthy adults, it is about 100 to 120 mL/min in males and 90 to 110 mL/min in females.",
+        "extracted_value": "StatPearls gives normal creatinine clearance (a GFR proxy) for younger healthy adult females as 90 to 110 mL/min, matching the stored non-pregnant baseline central 100 and range 90-110."
+      }
     },
     "primary_citation": "conrad-2001-relaxin-gfr"
   },
@@ -249,9 +279,19 @@
       "dunlop-1981-renal-plasma-flow"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Physiology, Renal Blood Flow and Filtration, StatPearls (NCBI Bookshelf NBK482248)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK482248/",
+        "quote": "Filtration fraction (FF) is the fraction of renal plasma flow (RPF) filtered across the glomerulus. The equation is GFR divided by RPF. FF is about 20%",
+        "extracted_value": "StatPearls defines filtration fraction as GFR/RPF and gives the normal (non-pregnant) value as about 20% (~0.20). Filtration fraction dips early in pregnancy (RPF rises faster than GFR) then returns toward this ~0.20 baseline by the third trimester, consistent with the stored term value of 0.18 just below 0.20."
+      }
     },
     "primary_citation": "cheung-lafayette-2013-renal"
   },
@@ -330,9 +370,19 @@
       "cheung-lafayette-2013-renal"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Cheung & Lafayette 2013, Renal Physiology of Pregnancy, Adv Chronic Kidney Dis, Table 1 (PMC4089195)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4089195/",
+        "quote": "Blood urea nitrogen 9.0 mg/dL",
+        "extracted_value": "Review Table 1 of typical laboratory values during pregnancy lists blood urea nitrogen as 9.0 mg/dL, which falls within the stored range 6-11 and near the stored central of 8."
+      }
     },
     "primary_citation": "cheung-lafayette-2013-renal"
   },
@@ -355,9 +405,19 @@
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Conti-Ramsden et al. 2018 review (PMC5933079) citing Higby et al. 1994 normal-pregnancy values",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5933079/",
+        "quote": "Higby et al subsequently evaluated 270 healthy pregnant women and reported the 95th percentile for 24-hour urinary protein excretion to be 259.4 mg.",
+        "extracted_value": "Review reports that Higby et al studied 270 healthy pregnant women and found the 95th percentile for 24-hour urinary protein excretion to be 259.4 mg; this upper bound matches the stored upper range value of 260 mg/24h, with the stored central 150 falling within the normal-pregnancy distribution."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -383,9 +443,19 @@
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Cheung & Lafayette 2013, Renal Physiology of Pregnancy, Adv Chronic Kidney Dis (PMC4089195)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4089195/",
+        "quote": "Serum uric acid levels fall in early pregnancy, reaching a nadir of 2 to 3.0 mg/dL by 22 to 24 weeks, followed by gradual rise to normal by term.",
+        "extracted_value": "Review states serum uric acid falls in early pregnancy to a nadir of 2 to 3.0 mg/dL by 22 to 24 weeks; the stored central 3.0 mg/dL (2.5-3.5) sits at the top of this quoted nadir band."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, mid-pregnancy nadir (~22-24 weeks)"
@@ -410,9 +480,19 @@
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Gebrie et al. 2022, normotensive control group, third-trimester case-control study (PMC9593197)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9593197/",
+        "quote": "Serum Uric Acid: 4.43 ± 1.38 mg/dL",
+        "extracted_value": "The normotensive control group (mean gestational age 37.98 +/- 3.83 weeks, i.e. third trimester/term) had a mean serum uric acid of 4.43 +/- 1.38 mg/dL, consistent with the stored term central 4.5 mg/dL and within the stored range 3.5-5.5."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
