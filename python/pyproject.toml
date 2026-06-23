@@ -109,7 +109,11 @@ select = ["E", "F", "W", "I", "B", "UP", "N", "RUF"]
 
 [tool.mypy]
 strict = true
-python_version = "3.10"
+# Target 3.12: the mypy CI job runs on Python 3.12, and numpy >= 2.3 (which is
+# what installs there) ships PEP 695 `type` statements in its stubs that mypy
+# refuses to parse under an older target. Runtime 3.10 compatibility is enforced
+# separately by ruff (target-version py310) and the 3.10/3.11/3.12 test matrix.
+python_version = "3.12"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
