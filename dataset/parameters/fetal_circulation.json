@@ -276,9 +276,18 @@
     ],
     "primary_citation": "von-steinburg-2013-fhr",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-b-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "fulltext",
+        "source_citation": "von-steinburg-2013-fhr",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "Gestational age n 95% confidence interval A &lt;28 1230 140.7538 – 141.9422 … &gt;=37 8478 136.0104 – 136.4295",
+        "extracted_value": "Table 4: mean FHR baseline at >=37 weeks is 136.0-136.4 bpm (95% CI); weeks 37-42 range ~133-138 bpm. Normal range stated as 120-160 bpm."
+      }
     }
   },
   {
@@ -369,7 +378,7 @@
     "name": "Fraction of combined ventricular output from the right ventricle at term",
     "subsystem": "fetal_circulation",
     "value": {
-      "central": 0.60,
+      "central": 0.6,
       "low": 0.55,
       "high": 0.65,
       "units": "dimensionless",
@@ -398,7 +407,7 @@
     "name": "Aortic isthmus flow as fraction of combined ventricular output at term",
     "subsystem": "fetal_circulation",
     "value": {
-      "central": 0.10,
+      "central": 0.1,
       "low": 0.05,
       "high": 0.15,
       "units": "dimensionless",

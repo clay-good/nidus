@@ -101,6 +101,7 @@ def _build_extraction(e: dict[str, Any]) -> Extraction:
         by=e.get("by"),
         date=e.get("date"),
         reviewer=e.get("reviewer"),
+        source_check=e.get("source_check"),
     )
 
 
@@ -222,8 +223,8 @@ class Dataset:
                 applies no constraint on this axis.
             tier: Tier letter (``"A"`` / ``"B"`` / ``"C"`` / ``"D"``), or
                 list of letters, to keep.
-            review_status: ``"unverified"``, ``"verified"``, or
-                ``"contested"``, or a list thereof.
+            review_status: ``"unverified"``, ``"pending_human_review"``,
+                ``"verified"``, or ``"contested"``, or a list thereof.
 
         Returns:
             A new ``Dataset`` whose parameters are the intersection of the

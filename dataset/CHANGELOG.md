@@ -7,6 +7,16 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- **38 parameters promoted to `pending_human_review`.** A new review state
+  between `unverified` and `verified`: the stored value was located in a real
+  source by automated review and a verbatim quote + source citation were
+  written onto the record at `extraction.source_check`. No human sign-off — that
+  still gates `verified`. 11 were confirmed from the primary citation's
+  open-access full text/abstract; 27 from authoritative secondary sources
+  (StatPearls, Merck Manual, GLOWM, open-access reviews). Review status is now
+  28 verified / 38 pending_human_review / 1 contested / 176 unverified.
+
 ### Fixed
 - **Citation identifiers repaired.** 23 citations carried DOI/PMID
   identifiers that resolved to unrelated papers (placeholder/garbage

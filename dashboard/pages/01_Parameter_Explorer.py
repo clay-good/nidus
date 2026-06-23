@@ -20,7 +20,8 @@ with st.sidebar:
     selected_subs = st.multiselect("Subsystem", subsystems)
     selected_tiers = st.multiselect("Tier", ["A", "B", "C", "D"])
     selected_review = st.multiselect(
-        "Review status", ["unverified", "verified", "contested"]
+        "Review status",
+        ["unverified", "pending_human_review", "verified", "contested"],
     )
     search = st.text_input("Search id or name", "")
     st.caption(

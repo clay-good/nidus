@@ -297,7 +297,7 @@
     "applicability": {
       "population": "Healthy singleton pregnancies"
     },
-    "notes": "MAHENDRU 2014 ABSTRACT TENSION: The Mahendru 2014 abstract (PMID 24406777) reports 'greatest increase in cardiac output occurred by the second trimester (\u0394: 0.6 \u00b1 1 l/min)'. The dataset's peak-excess of 2.7 L/min could be the cumulative preconception-to-peak rise rather than a per-visit increment, or could be from a different source. Needs human re-investigation against the paper's full results section."
+    "notes": "MAHENDRU 2014 ABSTRACT TENSION: The Mahendru 2014 abstract (PMID 24406777) reports 'greatest increase in cardiac output occurred by the second trimester (Δ: 0.6 ± 1 l/min)'. The dataset's peak-excess of 2.7 L/min could be the cumulative preconception-to-peak rise rather than a per-visit increment, or could be from a different source. Needs human re-investigation against the paper's full results section."
   },
   {
     "id": "maternal_cardiovascular.term_uterine_flow_ml_per_min",
@@ -318,9 +318,18 @@
     ],
     "primary_citation": "thaler-1990-uterine-flow",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "abstract",
+        "source_citation": "thaler-1990-uterine-flow",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "from a mean of 94.5 ml/min before pregnancy to a mean of 342 ml/min in late gestation (reflecting a 3.5-fold increase)",
+        "extracted_value": "Abstract reports 342 ml/min in the left ascending uterine artery in late gestation (~684 ml/min bilateral), near the stored combined 750 ml/min."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
@@ -400,7 +409,7 @@
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
       "review_status": "verified",
-      "method": "triangulated; Mahendru 2014 abstract reports HR rises 13 \u00b1 11 bpm to term, implying baseline near population norm",
+      "method": "triangulated; Mahendru 2014 abstract reports HR rises 13 ± 11 bpm to term, implying baseline near population norm",
       "date": "2026-05-21",
       "reviewer": "dataset-expansion-triangulation"
     },
@@ -422,7 +431,7 @@
       "ci": 0.683
     },
     "tier": "B",
-    "tier_rationale": "Tier B from Mahendru et al. 2014 (PMID 24406777): the abstract reports 'heart rate increased maximally by the third trimester (\u0394: 13 \u00b1 11 bpm)'. Combined with the pre-conception baseline of ~70 bpm, term HR is ~85 bpm with combined uncertainty ~10 bpm. Replicated qualitatively in Hunter & Robson 1992 (PMID 1467047) and Sanghavi & Rutherford 2014.",
+    "tier_rationale": "Tier B from Mahendru et al. 2014 (PMID 24406777): the abstract reports 'heart rate increased maximally by the third trimester (Δ: 13 ± 11 bpm)'. Combined with the pre-conception baseline of ~70 bpm, term HR is ~85 bpm with combined uncertainty ~10 bpm. Replicated qualitatively in Hunter & Robson 1992 (PMID 1467047) and Sanghavi & Rutherford 2014.",
     "citations": [
       "mahendru-2014-cardiac-output",
       "hunter-robson-1992-cardiac-output",
@@ -431,7 +440,7 @@
     "primary_citation": "mahendru-2014-cardiac-output",
     "extraction": {
       "review_status": "verified",
-      "method": "triangulated from Mahendru 2014 abstract delta (+13 \u00b1 11 bpm) applied to baseline",
+      "method": "triangulated from Mahendru 2014 abstract delta (+13 ± 11 bpm) applied to baseline",
       "date": "2026-05-21",
       "reviewer": "dataset-expansion-triangulation"
     },
@@ -487,9 +496,18 @@
       "sanghavi-rutherford-2014-cardio-review"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "abstract",
+        "source_citation": "mahendru-2014-cardiac-output",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "the heart rate increased maximally by the third trimester (Δ: 13 ± 11  bpm; P = 0.001)",
+        "extracted_value": "Abstract reports HR increased maximally by the third trimester by Δ13±11 bpm; 13 falls within the stored 10–20 bpm range."
+      }
     },
     "primary_citation": "mahendru-2014-cardiac-output"
   },

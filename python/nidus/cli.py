@@ -78,9 +78,9 @@ def cmd_info(args: argparse.Namespace) -> int:
         print(f"  {t}: {tier_counts.get(t, 0):>3}  {bar}")
     print()
     print("Review status:")
-    for status in ("verified", "unverified", "contested"):
+    for status in ("verified", "pending_human_review", "unverified", "contested"):
         if review_counts.get(status):
-            print(f"  {status:<12s}: {review_counts[status]}")
+            print(f"  {status:<20s}: {review_counts[status]}")
     print()
     if args.subsystem:
         return 0

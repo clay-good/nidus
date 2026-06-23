@@ -47,9 +47,19 @@
     ],
     "primary_citation": "kelman-1966-o2-saturation",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Kambam et al. 1986, Am J Obstet Gynecol (effect of normal and preeclamptic pregnancies on oxyhemoglobin dissociation curve)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/3767042/",
+        "quote": "The mean P-50 values for normal nonpregnant women, normal pregnant women in first trimester, second trimester, and at or near term were 26.7 +/- 0.11 mmHg, 27.8 +/- 0.08 mmHg, 28.8 +/- 0.17 mmHg, and 30.4 +/- 0.20 mmHg, respectively.",
+        "extracted_value": "Mean P-50 rises from 26.7 mmHg (nonpregnant) to 30.4 mmHg at/near term, a rightward shift of about 3.7 mmHg."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -169,7 +179,7 @@
     "applicability": {
       "population": "Healthy singleton pregnancies, term"
     },
-    "notes": "20% drop in FRC reduces maternal apnoeic O2 reserve and shortens safe-apnoea time \u2014 clinically important for airway management."
+    "notes": "20% drop in FRC reduces maternal apnoeic O2 reserve and shortens safe-apnoea time — clinically important for airway management."
   },
   {
     "id": "maternal_respiratory.vo2_term_ml_per_min",
@@ -217,9 +227,19 @@
       "lomauro-aliverti-2015-respiratory"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls, Physiology, Tidal Volume (NCBI Bookshelf NBK482502)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK482502/",
+        "quote": "It measures around 500 mL in an average healthy adult male and approximately 400 mL in a healthy female.",
+        "extracted_value": "Normal adult resting tidal volume is ~500 mL (male) and ~400 mL (female); stored 450 mL sits between."
+      }
     },
     "primary_citation": "lomauro-aliverti-2015-respiratory"
   },
@@ -241,9 +261,19 @@
       "lomauro-aliverti-2015-respiratory"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls, Physiology, Respiratory Rate (NCBI Bookshelf NBK537306)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK537306/",
+        "quote": "the regular respiratory rate changes with age, with 12 to 20 respirations per minute for a resting adult.",
+        "extracted_value": "Normal resting adult respiratory rate is 12 to 20 breaths per minute."
+      }
     },
     "primary_citation": "lomauro-aliverti-2015-respiratory"
   },
@@ -265,9 +295,19 @@
       "lomauro-aliverti-2015-respiratory"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls, Physiology, Maternal Changes (NCBI Bookshelf NBK539766)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK539766/",
+        "quote": "The respiratory rate remains unchanged from the nonpregnant state.",
+        "extracted_value": "Respiratory rate is unchanged in pregnancy from the nonpregnant state (normal adult 12-20/min), so the term rate equals baseline."
+      }
     },
     "primary_citation": "lomauro-aliverti-2015-respiratory"
   },
@@ -309,15 +349,25 @@
       "ci": 0.683
     },
     "tier": "A",
-    "tier_rationale": "Tier A: non-pregnant arterial pH 7.40 \u00b1 0.02; baseline against which the mild pregnancy alkalosis (pH ~7.44) is measured.",
+    "tier_rationale": "Tier A: non-pregnant arterial pH 7.40 ± 0.02; baseline against which the mild pregnancy alkalosis (pH ~7.44) is measured.",
     "citations": [
       "templeton-1976-blood-gas",
       "lomauro-aliverti-2015-respiratory"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls, Arterial Blood Gas (NCBI Bookshelf NBK536919)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK536919/",
+        "quote": "pH (7.35-7.45)",
+        "extracted_value": "Normal arterial pH reference range is 7.35-7.45, with 7.40 used as the reference value."
+      }
     },
     "primary_citation": "templeton-1976-blood-gas"
   },
@@ -340,9 +390,19 @@
       "lomauro-aliverti-2015-respiratory"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-a-submodel-expansion"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Templeton (Andersen et al.) 1996, third-trimester arterial blood gas in normal pregnancy at moderate altitude (PMID 8752237)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/8752237/",
+        "quote": "The composite mean values were pH 7.46, arterial carbon dioxide pressure (PaCO2) 26.6 mmHg, arterial oxygen pressure 88.3 mmHg, and bicarbonate 18.2 mEq/L.",
+        "extracted_value": "Composite mean third-trimester arterial pH 7.46 (with PaCO2 26.6, HCO3 18.2) — a compensated respiratory alkalosis on the alkaline side."
+      }
     },
     "primary_citation": "templeton-1976-blood-gas"
   },

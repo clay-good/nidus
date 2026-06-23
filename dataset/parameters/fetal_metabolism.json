@@ -18,9 +18,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Simultaneous umbilical uptake / fetal glucose utilization in sheep (PMID 7246734)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/7246734/",
+        "quote": "5.58 mg.min-1.kg-1 +/- 0.54 SE",
+        "extracted_value": "Fetal glucose utilization 5.58 mg/min/kg ([14C]) in fed normoglycemic sheep; umbilical uptake 4.77 mg/min/kg."
+      }
     },
     "applicability": {
       "population": "Late-gestation human fetus"
@@ -46,9 +56,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
-      "reviewer": "metadata-and-abstract-audit",
-      "date": "2026-05-21"
+      "review_status": "pending_human_review",
+      "reviewer": null,
+      "date": "2026-05-21",
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Acute maternal hypoxia / fetal oxygenation in sheep (PMID 6767635)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pubmed.ncbi.nlm.nih.gov/6767635/",
+        "quote": "The mean oxygen consumption was 8.4 +/- 1.9 ml/min/kg in the near-term fetal sheep.",
+        "extracted_value": "Mean near-term fetal sheep oxygen consumption is 8.4 +/- 1.9 mL/min/kg."
+      }
     },
     "applicability": {
       "population": "Late-gestation human fetus (compiled)"
@@ -121,7 +141,7 @@
     "subsystem": "fetal_metabolism",
     "value": {
       "central": 7.27,
-      "low": 7.20,
+      "low": 7.2,
       "high": 7.34,
       "units": "pH",
       "distribution": "normal",
@@ -134,9 +154,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls: Cord Blood Gas (NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK545290/",
+        "quote": "Studies showed that in term infants with uncomplicated delivery, the mean cord arterial pH is 7.24 to 7.27, and the mean cord venous pH 7.32 to 7.34.",
+        "extracted_value": "Mean umbilical arterial pH in uncomplicated term deliveries is 7.24 to 7.27."
+      }
     },
     "applicability": {
       "population": "Healthy term newborn, cord blood, uncomplicated vaginal delivery"
@@ -150,7 +180,7 @@
     "value": {
       "central": 7.34,
       "low": 7.28,
-      "high": 7.40,
+      "high": 7.4,
       "units": "pH",
       "distribution": "normal",
       "ci": 0.683
@@ -162,9 +192,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls: Cord Blood Gas (NCBI Bookshelf)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK545290/",
+        "quote": "Studies showed that in term infants with uncomplicated delivery, the mean cord arterial pH is 7.24 to 7.27, and the mean cord venous pH 7.32 to 7.34.",
+        "extracted_value": "Mean umbilical venous pH in uncomplicated term deliveries is 7.32 to 7.34."
+      }
     },
     "applicability": {
       "population": "Healthy term newborn, cord blood, uncomplicated vaginal delivery"
@@ -189,9 +229,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Neonatology (Karger): Reference Values for Umbilical Artery Lactate",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://karger.com/neo/article/118/5/609/828769/Reference-Values-for-Umbilical-Artery-Lactate-by",
+        "quote": "Lactate values at the 50th, 90th, and 97th percentile were 3.4, 7.0, and 9.0 mmol/L.",
+        "extracted_value": "Population umbilical artery lactate median (50th percentile) is 3.4 mmol/L."
+      }
     },
     "applicability": {
       "population": "Healthy term newborn, cord blood, uncomplicated vaginal delivery"
@@ -216,9 +266,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Holme et al., Placental Glucose Transfer: A Human In Vivo Study, PLOS ONE 2015",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1371/journal.pone.0117084",
+        "quote": "The transplacental maternal-fetal glucose gradient was 1.22 (0.42) mmol/L.",
+        "extracted_value": "At term: umbilical vein glucose 4.09, umbilical artery 3.71, maternal radial artery 4.71 mmol/L; gradient 1.22 mmol/L."
+      }
     },
     "applicability": {
       "population": "Healthy term newborn, cord blood, mother fasted ~overnight"
@@ -244,9 +304,19 @@
     ],
     "primary_citation": "strang-1991-fetal-lung-liquid",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-c-hypothesis-only"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Pfister et al., Lung liquid volume and secretion rate in fetal sheep, J Physiol 2001 (PMC2278829)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2278829/",
+        "quote": "In the first phase of its decline, mean secretion rate fell from 5.3 to 3.1 ml kg−1 h−1, before decreasing in the second phase to 1.8 ml kg−1 h−1.",
+        "extracted_value": "Pre-labour fetal sheep lung liquid secretion rate begins ~5.3 mL/kg/h, declining toward labour."
+      }
     },
     "notes": "Hypothesis-only Tier D parameter used in fetal_pulmonary_fluid_trajectory submodel. Positive sign = secretion (fluid into lung lumen)."
   },
@@ -294,9 +364,19 @@
     ],
     "primary_citation": "battaglia-meschia-1986-fetal-metabolism",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Asakura, Fetal and Neonatal Thermoregulation, J Nippon Med Sch 2004;71(6):360",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1272/jnms.71.360",
+        "quote": "heat is transferred to the fetus via the placenta and the uterus, resulting in a 0.3C° to 0.5C° higher temperature than that of the mother",
+        "extracted_value": "The fetus runs 0.3-0.5 °C warmer than the mother via placental/uterine heat transfer."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -350,9 +430,19 @@
     ],
     "primary_citation": "economides-1989-fetal-insulin",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Cetin et al., Cord Plasma Insulin in Healthy Term Neonates, Int J Endocrinol 2013 (PMC3614788)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3614788/",
+        "quote": "68.4 ± 54.6",
+        "extracted_value": "Cord plasma insulin in healthy term AGA neonates 68.4 +/- 54.6 pmol/L (LGA 82.1 +/- 56.2)."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester, appropriate-for-gestational-age fetuses"
@@ -378,9 +468,19 @@
     ],
     "primary_citation": "murphy-1973-fetal-cortisol",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Umbilical cord cortisol in breech vs vertex delivery (PMID 3973861, via Europe PMC)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://europepmc.org/abstract/MED/3973861",
+        "quote": "The mean umbilical cord total cortisol concentration was 790 +/- 363 nmol/liter in breech delivery as compared with 493 +/- 125 nmol/liter in vertex delivery.",
+        "extracted_value": "Mean umbilical cord total cortisol in vertex delivery 493 +/- 125 nmol/L (~17.9 ug/dL); breech 790 +/- 363 nmol/L."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies at term; cord-blood sampling at delivery"

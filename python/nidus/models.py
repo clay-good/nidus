@@ -97,12 +97,20 @@ class Extraction:
     workflow documented in ``docs/contributing/verification.md``.
 
     Attributes:
-        review_status: ``"unverified"``, ``"verified"``, or ``"contested"``.
+        review_status: ``"unverified"`` (illustrative central value, no source
+            confirmation yet), ``"pending_human_review"`` (the stored value was
+            located in a real source by automated review — see ``source_check``
+            — but no human has signed off), ``"verified"`` (a human confirmed it
+            against the source), or ``"contested"`` (flagged for investigation).
         method: How the value was extracted — e.g. ``"table_2_column_3"``
             or ``"figure_4_digitised"``.
         by: Identifier (handle or name) of the extractor.
         date: ISO-format date of extraction.
         reviewer: Identifier of the human who verified against the paper.
+        source_check: Provenance for an automated pre-verification (present when
+            ``review_status`` is ``"pending_human_review"``): the verdict,
+            evidence level, source citation, and verbatim supporting quote.
+            Never implies human verification.
     """
 
     review_status: str
@@ -110,6 +118,7 @@ class Extraction:
     by: str | None = None
     date: str | None = None
     reviewer: str | None = None
+    source_check: dict[str, str] | None = None
 
 
 @dataclass(frozen=True, slots=True)

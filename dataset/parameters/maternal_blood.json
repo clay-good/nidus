@@ -354,9 +354,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Chandra et al. 2012, Indian J Hematol Blood Transfus (PMC3422383)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3422383/",
+        "quote": "there is a small increase in mean corpuscular volume (MCV), of an average of 4 fl in an iron-replete woman",
+        "extracted_value": "Chandra 2012 states MCV rises by an average of ~4 fL in iron-replete pregnancy. From a non-pregnant baseline of ~87-88 fL this gives a term MCV around 91-92 fL, consistent with the stored 92 fL term value; the absolute term figure is not stated."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -382,9 +392,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Perinatology.com Pregnancy Reference Values, Total Protein (citing Abbassi-Ghanavati 2009 / Williams Obstetrics)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.perinatology.com/Reference/Reference%20Ranges/Protein.htm",
+        "quote": "Total Protein … 3rd Trimester … 5.6 – 6.7 g/dL",
+        "extracted_value": "The perinatology.com reference table (citing Abbassi-Ghanavati 2009 Obstet Gynecol and Williams Obstetrics) gives a third-trimester total-protein range of 5.6-6.7 g/dL. The stored term central of 6.0 g/dL falls inside this range."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -410,9 +430,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "StatPearls, Fibrinogen (NBK537184)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.ncbi.nlm.nih.gov/books/NBK537184/",
+        "quote": "Plasma concentrations typically range between 200 and 400 mg/dL.",
+        "extracted_value": "StatPearls gives the normal (non-pregnant) adult plasma fibrinogen range as 200-400 mg/dL, i.e. 2.0-4.0 g/L. The stored pre-pregnancy baseline of 3.0 g/L sits at the centre of this range."
+      }
     },
     "applicability": {
       "population": "Healthy non-pregnant women of reproductive age"
@@ -438,9 +468,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "GLOWM, Hematological Normal Ranges in Pregnancy (Table 1)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.glowm.com/article/heading/vol-8--maternal-medical-health-and-disorders-in-pregnancy--hematological-normal-ranges-in-pregnancy/id/413403",
+        "quote": "White blood cells (WBC) (×10⁹/L) … 6–16",
+        "extracted_value": "GLOWM's sample third-trimester WBC reference interval is 6-16 x10^9/L. The stored term central of 10.5 x10^9/L falls inside this interval."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester (not in labour)"
@@ -465,9 +505,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "secondary",
+        "source_citation": "Wang et al. 2025, Front Med (PMC12171446)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.3389/fmed.2025.1574686",
+        "quote": "Research has indicated that in healthy pregnancies, serum albumin concentrations decline from a mean of 42 g/L in nonpregnant women to 31 g/L near the end of pregnancy due to an increase in plasma volume",
+        "extracted_value": "The review states serum albumin declines from a mean of 42 g/L in non-pregnant women to 31 g/L near the end of pregnancy. 31 g/L = 3.1 g/dL, essentially matching the stored term central of 3.0 g/dL (stored range 2.8-3.4)."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -492,9 +542,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "GLOWM, Hematological Normal Ranges in Pregnancy (Table 1)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.glowm.com/article/heading/vol-8--maternal-medical-health-and-disorders-in-pregnancy--hematological-normal-ranges-in-pregnancy/id/413403",
+        "quote": "Erythrocyte sedimentation rate (ESR) (mm/h) … 13–70 (32)",
+        "extracted_value": "GLOWM's sample third-trimester reference interval for ESR is 13-70 mm/h (median 32). The stored term central of 50 mm/h falls inside this interval; the source's median is lower than 50."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -520,9 +580,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Yang et al. 2019, Ann Clin Biochem",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1177/0004563219835853",
+        "quote": "In the third trimester, the reference intervals for serum ferritin, serum iron, total iron-binding capacity and transferrin saturation are 7.2–122.2 mg/L, 5.83–21.52 µmol/L, 49.40–122.76 µmol/L and 8.22–52.75%, respectively.",
+        "extracted_value": "Yang 2019 reports a third-trimester serum-iron reference interval of 5.83-21.52 umol/L in pregnant women, which converts to ~32.6-120.2 ug/dL (x5.585). The stored term central of 60 ug/dL falls inside this interval."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester, dietary iron intake uncontrolled"
@@ -548,9 +618,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase-3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Yang et al. 2019, Ann Clin Biochem",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1177/0004563219835853",
+        "quote": "In the third trimester, the reference intervals for serum ferritin, serum iron, total iron-binding capacity and transferrin saturation are 7.2–122.2 mg/L, 5.83–21.52 µmol/L, 49.40–122.76 µmol/L and 8.22–52.75%, respectively.",
+        "extracted_value": "Yang 2019 reports a third-trimester serum-ferritin reference interval of 7.2-122.2 mg/L (ug/L, equivalent to ng/mL) in pregnant women. The stored term central of 15 ng/mL falls inside this interval. GLOWM's pregnancy table gives a similar 5-110 ng/ml third-trimester range."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -626,9 +706,19 @@
     ],
     "primary_citation": "kline-2005-d-dimer",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase1-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Siennicka et al. 2020, BioMed Res Int (PMC7273490)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1155/2020/3192350",
+        "quote": "Reference value ranges for D-D without adjustment for the entire group for successive trimesters were 167-721, 298-1653, and 483-2256 ng/mL.",
+        "extracted_value": "Siennicka 2020 reports an unadjusted third-trimester D-dimer reference interval of 483-2256 ng/mL (= 0.483-2.256 ug/mL) in physiological pregnancy. The stored term central of 1.5 ug/mL falls inside this interval."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -654,9 +744,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase2-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "Yang et al. 2019, Ann Clin Biochem",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://doi.org/10.1177/0004563219835853",
+        "quote": "In the third trimester, the reference intervals for serum ferritin, serum iron, total iron-binding capacity and transferrin saturation are 7.2–122.2 mg/L, 5.83–21.52 µmol/L, 49.40–122.76 µmol/L and 8.22–52.75%, respectively.",
+        "extracted_value": "Yang 2019 reports a third-trimester transferrin-saturation reference interval of 8.22-52.75% in pregnant women. The stored term central of 20% falls inside this interval."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester, no iron supplementation"
@@ -710,9 +810,19 @@
     ],
     "primary_citation": "hytten-chamberlain-1980-blood-volume",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase2-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "secondary",
+        "source_citation": "GLOWM, Hematological Normal Ranges in Pregnancy (Table 1)",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "source_url": "https://www.glowm.com/article/heading/vol-8--maternal-medical-health-and-disorders-in-pregnancy--hematological-normal-ranges-in-pregnancy/id/413403",
+        "quote": "Total vitamin B12 (pmol/L) … 60–390 (170)",
+        "extracted_value": "GLOWM's sample third-trimester total vitamin B12 reference interval is 60-390 pmol/L (median 170), which converts to ~81-529 pg/mL (1 pg/mL = 0.738 pmol/L). The stored term central of 250 pg/mL falls inside this interval."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -850,9 +960,18 @@
     ],
     "primary_citation": "faught-1995-protein-s-c",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase2-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "abstract",
+        "source_citation": "faught-1995-protein-s-c",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "There was no statistically significant change in antigenic or functional protein C levels during normal pregnancy.",
+        "extracted_value": "Faught 1995 found no statistically significant change in protein C during normal pregnancy, consistent with the stored ~100% (unchanged) term value."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"
@@ -934,9 +1053,18 @@
     ],
     "primary_citation": "kruithof-1987-fibrinolysis",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase3-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "abstract",
+        "source_citation": "kruithof-1987-fibrinolysis",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "Its level, quantified with a radioimmunoassay, increased from below the detection limit (approximately 10 ng/mL) in normal plasma to 260 ng/mL at term.",
+        "extracted_value": "Kruithof 1987 reports PAI-2 rose from below the detection limit (~10 ng/mL) to 260 ng/mL at term, consistent with the stored central 250 ng/mL (within rounding and the stored range 150-400)."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, third trimester"

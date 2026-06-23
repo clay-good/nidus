@@ -7,10 +7,10 @@
 | Verdict | Count |
 | ------- | ----- |
 | ❌ mismatch — source appears to report a different value | 4 |
-| 🟡 close — same ballpark, confirm exact figure / statistic | 22 |
-| ✅ match — source value agrees with stored value | 11 |
-| 🔍 not found — value not in fetched text (check table/figure in full PDF) | 137 |
-| ⬜ no source — book / paywalled / no abstract retrieved | 69 |
+| 🟡 close — same ballpark, confirm exact figure / statistic | 46 |
+| ✅ match — source value agrees with stored value | 23 |
+| 🔍 not found — value not in fetched text (check table/figure in full PDF) | 130 |
+| ⬜ no source — book / paywalled / no abstract retrieved | 40 |
 | **Total parameters** | **243** |
 
 Work top-down: mismatches first (a wrong value is worse than an unverified one), then Tier A/B, then the rest.
@@ -45,7 +45,7 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > The greatest increase in cardiac output occurred by the second trimester (Δ: 0.6 ± 1 l/min, P < 0.001)
 - **Reviewer note:** Stored 2.7 L/min peak excess vs abstract's Δ0.6±1 l/min for the same CO-rise quantity. Flagged in dataset notes for re-investigation against full results.
 
-## 🟡 close — same ballpark, confirm exact figure / statistic  (22)
+## 🟡 close — same ballpark, confirm exact figure / statistic  (46)
 
 ### `amniotic_fluid.afv_peak_ml`  ·  Tier A  ·  stored: 800.0 mL
 
@@ -82,12 +82,61 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Mean arterial PO2 was consistently greater than 100 mm Hg throughout pregnancy, although the value decreased from 106.4 mm Hg at 12 weeks of gestation to 101.8 mm Hg at the 38th week.
 - **Reviewer note:** Abstract gives pregnant PaO2 values >100 mmHg; supports ~100 mmHg baseline magnitude but no explicit non-pregnant figure.
 
+### `maternal_respiratory.baseline_tidal_volume_ml`  ·  Tier A  ·  stored: 450.0 mL
+
+- **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: secondary_)
+- **Source reports:** Normal adult resting tidal volume is ~500 mL (male) and ~400 mL (female); stored 450 mL sits between.
+- **Quote:** > It measures around 500 mL in an average healthy adult male and approximately 400 mL in a healthy female.
+- **Reviewer note:** SECONDARY evidence; female ~400 mL / male ~500 mL bracket stored central 450 mL (range 400-500).
+
 ### `fetal_circulation.mca_pi_peak`  ·  Tier B  ·  stored: 2.0 dimensionless
 
 - **Primary citation:** `mari-1995-mca-pi`  (_evidence: abstract_)
 - **Source reports:** Abstract states MCA-PI was higher at 25-30 weeks (parabolic pattern peaking mid-gestation) but gives no numeric peak PI value.
 - **Quote:** > The pulsatility index values of the middle cerebral artery were higher at 25 to 30 weeks' gestation
 - **Reviewer note:** Abstract confirms a mid-gestation peak at 25-30 wk consistent with stored ~28 wk peak, but the numeric value 2.0 is not stated.
+
+### `fetal_metabolism.fetal_core_temperature_c_term`  ·  Tier B  ·  stored: 37.6 °C
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** The fetus runs 0.3-0.5 °C warmer than the mother via placental/uterine heat transfer.
+- **Quote:** > heat is transferred to the fetus via the placenta and the uterus, resulting in a 0.3C° to 0.5C° higher temperature than that of the mother
+- **Reviewer note:** SECONDARY evidence: source confirms maternal-fetal gradient (+0.3-0.5 C); 37.6 C implied from maternal ~37.0-37.1 + gradient. No absolute fetal core temperature quoted.
+
+### `fetal_metabolism.fetal_glucose_term_mmol_per_l`  ·  Tier B  ·  stored: 3.5 mmol/L
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** At term: umbilical vein glucose 4.09, umbilical artery 3.71, maternal radial artery 4.71 mmol/L; gradient 1.22 mmol/L.
+- **Quote:** > The transplacental maternal-fetal glucose gradient was 1.22 (0.42) mmol/L.
+- **Reviewer note:** SECONDARY evidence: measured fetal glucose (UA 3.71, UV 4.09 mmol/L) sits above stored central 3.5 but within stored range 2.8-4.5; fetal/maternal ratio ~0.7 confirmed.
+
+### `fetal_metabolism.fetal_hb_concentration_g_per_dl_term`  ·  Tier B  ·  stored: 17.0 g/dL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** Cord blood haemoglobin median 15.8 g/dL, 95% reference interval 12.4-19.7 g/dL.
+- **Quote:** > HGB = 15.8 [12.4–19.7] g/dL
+- **Reviewer note:** SECONDARY evidence: cited 95% RI 12.4-19.7 brackets stored 17.0; cohort median (15.8) below stored central.
+
+### `fetal_metabolism.oxygen_consumption_ml_per_kg_per_min`  ·  Tier B  ·  stored: 6.5 mL O2/kg/min
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** Mean near-term fetal sheep oxygen consumption is 8.4 +/- 1.9 mL/min/kg.
+- **Quote:** > The mean oxygen consumption was 8.4 +/- 1.9 ml/min/kg in the near-term fetal sheep.
+- **Reviewer note:** SECONDARY evidence (ovine, human-extrapolated): same magnitude; cited 8.4 mL/kg/min runs above stored central 6.5.
+
+### `maternal_blood.d_dimer_term_ug_per_ml`  ·  Tier B  ·  stored: 1.5 ug/mL
+
+- **Primary citation:** `kline-2005-d-dimer`  (_evidence: secondary_)
+- **Source reports:** Siennicka 2020 reports an unadjusted third-trimester D-dimer reference interval of 483-2256 ng/mL (= 0.483-2.256 ug/mL) in physiological pregnancy. The stored term central of 1.5 ug/mL falls inside this interval.
+- **Quote:** > Reference value ranges for D-D without adjustment for the entire group for successive trimesters were 167-721, 298-1653, and 483-2256 ng/mL.
+- **Reviewer note:** SECONDARY (Siennicka 2020), not the cited Kline 2005 primary; third-trimester interval 0.483-2.256 ug/mL contains stored 1.5 ug/mL.
+
+### `maternal_blood.esr_term_mm_per_h`  ·  Tier B  ·  stored: 50.0 mm/h
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** GLOWM's sample third-trimester reference interval for ESR is 13-70 mm/h (median 32). The stored term central of 50 mm/h falls inside this interval; the source's median is lower than 50.
+- **Quote:** > Erythrocyte sedimentation rate (ESR) (mm/h) … 13–70 (32)
+- **Reviewer note:** SECONDARY (GLOWM), not the cited Hytten & Chamberlain 1980 primary; third-trimester ESR 13-70 mm/h contains stored 50 mm/h.
 
 ### `maternal_blood.factor_x_term_pct`  ·  Tier B  ·  stored: 145 %
 
@@ -96,12 +145,96 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Factors VII, VIII:C, VIIIR:Ag, X, fibrinogen and alpha 1-antitrypsin, rose markedly throughout pregnancy.
 - **Reviewer note:** Factor X confirmed to rise markedly; stored 145% is plausible but the exact figure is not stated in the abstract.
 
+### `maternal_blood.ferritin_term_ng_per_ml`  ·  Tier B  ·  stored: 15.0 ng/mL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** Yang 2019 reports a third-trimester serum-ferritin reference interval of 7.2-122.2 mg/L (ug/L, equivalent to ng/mL) in pregnant women. The stored term central of 15 ng/mL falls inside this interval. GLOWM's pregnancy table gives a similar 5-110 ng/ml third-trimester range.
+- **Quote:** > In the third trimester, the reference intervals for serum ferritin, serum iron, total iron-binding capacity and transferrin saturation are 7.2–122.2 mg/L, 5.83–21.52 µmol/L, 49.40–122.76 µmol/L and 8.22–52.75%, respectively.
+- **Reviewer note:** SECONDARY (Yang 2019), not the cited Hytten & Chamberlain 1980 primary; ferritin 7.2-122.2 ug/L (=ng/mL) contains stored 15 ng/mL.
+
+### `maternal_blood.fibrinogen_baseline_g_per_l`  ·  Tier B  ·  stored: 3.0 g/L
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** StatPearls gives the normal (non-pregnant) adult plasma fibrinogen range as 200-400 mg/dL, i.e. 2.0-4.0 g/L. The stored pre-pregnancy baseline of 3.0 g/L sits at the centre of this range.
+- **Quote:** > Plasma concentrations typically range between 200 and 400 mg/dL.
+- **Reviewer note:** SECONDARY (StatPearls), not the cited Hytten & Chamberlain 1980 primary; 200-400 mg/dL = 2-4 g/L brackets the stored 3.0 g/L baseline.
+
+### `maternal_blood.fibrinogen_term_g_per_l`  ·  Tier B  ·  stored: 5.5 g/L
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** StatPearls gives the normal third-trimester fibrinogen as nearly 500 mg/dL (~5.0 g/L), the same magnitude and direction as the stored 5.5 g/L term value (stored range 4.5-6.5 g/L).
+- **Quote:** > The normal fibrinogen concentration in the third trimester is nearly 500 mg/dL.
+- **Reviewer note:** SECONDARY (StatPearls), not the cited Hytten & Chamberlain 1980 primary; ~500 mg/dL = ~5.0 g/L, close to stored 5.5 g/L.
+
+### `maternal_blood.haemoglobin_g_per_dl_term`  ·  Tier B  ·  stored: 11.5 g/dL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** GLOWM's sample third-trimester haemoglobin reference interval is 9.5-15 g/dL. The stored term central of 11.5 g/dL falls inside this interval, though the interval is wide and does not pin the central value.
+- **Quote:** > Hemoglobin (Hb) (g/dL) … 9.5–15
+- **Reviewer note:** SECONDARY (GLOWM), not the cited Hytten & Chamberlain 1980 primary; third-trimester Hb 9.5-15 g/dL is wide but contains stored 11.5 g/dL.
+
+### `maternal_blood.mcv_term_fl`  ·  Tier B  ·  stored: 92.0 fL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** Chandra 2012 states MCV rises by an average of ~4 fL in iron-replete pregnancy. From a non-pregnant baseline of ~87-88 fL this gives a term MCV around 91-92 fL, consistent with the stored 92 fL term value; the absolute term figure is not stated.
+- **Quote:** > there is a small increase in mean corpuscular volume (MCV), of an average of 4 fl in an iron-replete woman
+- **Reviewer note:** SECONDARY (Chandra 2012), not the cited Hytten & Chamberlain 1980 primary; source gives the ~4 fL rise, consistent with stored 92 fL term value above an ~88 fL baseline.
+
 ### `maternal_blood.plasma_volume_l`  ·  Tier B  ·  stored: 3.85 L
 
 - **Primary citation:** `de-haas-2017-plasma-volume-meta`  (_evidence: abstract_)
 - **Source reports:** de Haas 2017 meta-analysis reports a pooled maximum third-trimester increase of 1.13 L (45.6%) over the non-pregnant reference, not an absolute term plasma volume. 1.13 L on a ~2.7 L baseline is consistent with ~3.85 L absolute, but the absolute figure is not stated.
 - **Quote:** > Plasma volume continued to increase in the third trimester with a pooled maximum increase of 1.13 L (95% CI, 1.07-1.19 L), an increase of 45.6% (95% CI, 43.0-48.1%) in physiological pregnancies compared with the reference value.
 - **Reviewer note:** Source gives the term INCREASE (1.13 L), consistent in magnitude with stored 3.85 L absolute, but does not state the absolute term volume.
+
+### `maternal_blood.platelet_count_term_x10e9_per_l`  ·  Tier B  ·  stored: 220.0 10^9/L
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** GLOWM's sample third-trimester platelet reference interval is 145-400 x10^9/L. The stored term central of 220 x10^9/L falls inside this interval.
+- **Quote:** > Platelets (×10⁹/L) … 145–400
+- **Reviewer note:** SECONDARY (GLOWM), not the cited Hytten & Chamberlain 1980 primary; third-trimester platelets 145-400 x10^9/L contains stored 220.
+
+### `maternal_blood.red_cell_mass_l`  ·  Tier B  ·  stored: 1.65 L
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** Merck gives the red-cell-mass increase as 15 to 25% in a singleton pregnancy, not an absolute litre value. On a ~1.4 L non-pregnant baseline that is ~1.61-1.75 L, consistent with the stored 1.65 L term value, but the absolute figure is not stated.
+- **Quote:** > red blood cell (RBC) mass increases by 15 to 25% in a singleton pregnancy
+- **Reviewer note:** SECONDARY (Merck Manual), not the cited Hytten & Chamberlain 1980 primary; source gives the percentage increase, not the absolute term mass.
+
+### `maternal_blood.serum_iron_term_ug_per_dl`  ·  Tier B  ·  stored: 60.0 ug/dL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** Yang 2019 reports a third-trimester serum-iron reference interval of 5.83-21.52 umol/L in pregnant women, which converts to ~32.6-120.2 ug/dL (x5.585). The stored term central of 60 ug/dL falls inside this interval.
+- **Quote:** > In the third trimester, the reference intervals for serum ferritin, serum iron, total iron-binding capacity and transferrin saturation are 7.2–122.2 mg/L, 5.83–21.52 µmol/L, 49.40–122.76 µmol/L and 8.22–52.75%, respectively.
+- **Reviewer note:** SECONDARY (Yang 2019), not the cited Hytten & Chamberlain 1980 primary; serum iron 5.83-21.52 umol/L = ~32.6-120.2 ug/dL contains stored 60 ug/dL.
+
+### `maternal_blood.total_protein_term_g_per_dl`  ·  Tier B  ·  stored: 6.0 g/dL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** The perinatology.com reference table (citing Abbassi-Ghanavati 2009 Obstet Gynecol and Williams Obstetrics) gives a third-trimester total-protein range of 5.6-6.7 g/dL. The stored term central of 6.0 g/dL falls inside this range.
+- **Quote:** > Total Protein … 3rd Trimester … 5.6 – 6.7 g/dL
+- **Reviewer note:** SECONDARY (perinatology.com table citing Abbassi-Ghanavati 2009), not the cited Hytten & Chamberlain 1980 primary; third-trimester 5.6-6.7 g/dL contains stored 6.0 g/dL.
+
+### `maternal_blood.transferrin_saturation_term_pct`  ·  Tier B  ·  stored: 20 %
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** Yang 2019 reports a third-trimester transferrin-saturation reference interval of 8.22-52.75% in pregnant women. The stored term central of 20% falls inside this interval.
+- **Quote:** > In the third trimester, the reference intervals for serum ferritin, serum iron, total iron-binding capacity and transferrin saturation are 7.2–122.2 mg/L, 5.83–21.52 µmol/L, 49.40–122.76 µmol/L and 8.22–52.75%, respectively.
+- **Reviewer note:** SECONDARY (Yang 2019), not the cited Hytten & Chamberlain 1980 primary; transferrin saturation 8.22-52.75% contains stored 20%.
+
+### `maternal_blood.volume_l`  ·  Tier B  ·  stored: 5.6 L
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** StatPearls states total blood volume rises by about 1.5 L during pregnancy and reaches about 30% above baseline near term. On a non-pregnant baseline of ~4.0-4.5 L this gives a term total around 5.5-6.0 L, consistent with the stored 5.6 L, though the absolute term value is not printed.
+- **Quote:** > During pregnancy, the total blood volume increases by about 1.5 liters … A little before reaching full term, the volume of maternal blood is about 30% above baseline.
+- **Reviewer note:** SECONDARY (StatPearls), not the cited Hytten & Chamberlain 1980 primary; source gives the increase (+1.5 L / +30%), consistent with stored 5.6 L absolute.
+
+### `maternal_blood.wbc_count_term_x10e9_per_l`  ·  Tier B  ·  stored: 10.5 10^9/L
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** GLOWM's sample third-trimester WBC reference interval is 6-16 x10^9/L. The stored term central of 10.5 x10^9/L falls inside this interval.
+- **Quote:** > White blood cells (WBC) (×10⁹/L) … 6–16
+- **Reviewer note:** SECONDARY (GLOWM), not the cited Hytten & Chamberlain 1980 primary; third-trimester WBC 6-16 x10^9/L contains stored 10.5.
 
 ### `maternal_cardiovascular.heart_rate_peak_week`  ·  Tier B  ·  stored: 32 week
 
@@ -166,6 +299,13 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Minute ventilation ( V ′ E ) starts to increase significantly (by up to 48%) during the first trimester of gestation, due to higher tidal volume ( V T ) with unchanged respiratory rate. This ventilatory pattern is then maintained throughout the course of pregnancy
 - **Reviewer note:** Source gives a percent increase (up to 48%) not the absolute 10.5 L/min; direction/magnitude consistent. Confirm percent-only claim.
 
+### `maternal_respiratory.p50_shift_mmhg`  ·  Tier B  ·  stored: 3.0 mmHg
+
+- **Primary citation:** `kelman-1966-o2-saturation`  (_evidence: secondary_)
+- **Source reports:** Mean P-50 rises from 26.7 mmHg (nonpregnant) to 30.4 mmHg at/near term, a rightward shift of about 3.7 mmHg.
+- **Quote:** > The mean P-50 values for normal nonpregnant women, normal pregnant women in first trimester, second trimester, and at or near term were 26.7 +/- 0.11 mmHg, 27.8 +/- 0.08 mmHg, 28.8 +/- 0.17 mmHg, and 30.4 +/- 0.20 mmHg, respectively.
+- **Reviewer note:** SECONDARY evidence; source reports ~3.7 mmHg term shift vs stored central 3.0 (range 2-4) — same direction, within bracketing range.
+
 ### `maternal_respiratory.vo2_term_ml_per_min`  ·  Tier B  ·  stored: 300.0 mL O2/min
 
 - **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: fulltext_)
@@ -180,12 +320,40 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > At no stage of pregnancy was the normal placenta greater than 4 cm in thickness.
 - **Reviewer note:** Abstract supports the normal upper bound (<4 cm, stored high 3.5) and the increasing trend; the central 2.5 cm itself is not stated.
 
+### `fetal_metabolism.fetal_cortisol_term_ug_per_dl`  ·  Tier C  ·  stored: 15 ug/dL
+
+- **Primary citation:** `murphy-1973-fetal-cortisol`  (_evidence: secondary_)
+- **Source reports:** Mean umbilical cord total cortisol in vertex delivery 493 +/- 125 nmol/L (~17.9 ug/dL); breech 790 +/- 363 nmol/L.
+- **Quote:** > The mean umbilical cord total cortisol concentration was 790 +/- 363 nmol/liter in breech delivery as compared with 493 +/- 125 nmol/liter in vertex delivery.
+- **Reviewer note:** SECONDARY evidence: vertex cord cortisol 493 nmol/L ~ 17.9 ug/dL, within stored range 7-30, near central 15 (labour elevates vs caesarean).
+
+### `fetal_metabolism.fetal_insulin_term_pmol_per_l`  ·  Tier C  ·  stored: 50 pmol/L
+
+- **Primary citation:** `economides-1989-fetal-insulin`  (_evidence: secondary_)
+- **Source reports:** Cord plasma insulin in healthy term AGA neonates 68.4 +/- 54.6 pmol/L (LGA 82.1 +/- 56.2).
+- **Quote:** > 68.4 ± 54.6
+- **Reviewer note:** SECONDARY evidence: cited AGA cord insulin 68.4 pmol/L same magnitude as stored 50; wide SD brackets stored 20-120 range.
+
+### `maternal_blood.b12_term_pg_per_ml`  ·  Tier C  ·  stored: 250 pg/mL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** GLOWM's sample third-trimester total vitamin B12 reference interval is 60-390 pmol/L (median 170), which converts to ~81-529 pg/mL (1 pg/mL = 0.738 pmol/L). The stored term central of 250 pg/mL falls inside this interval.
+- **Quote:** > Total vitamin B12 (pmol/L) … 60–390 (170)
+- **Reviewer note:** SECONDARY (GLOWM), not the cited Hytten & Chamberlain 1980 primary; B12 60-390 pmol/L = ~81-529 pg/mL contains stored 250 pg/mL.
+
 ### `maternal_blood.pai1_term_ng_per_ml`  ·  Tier C  ·  stored: 80 ng/mL
 
 - **Primary citation:** `kruithof-1987-fibrinolysis`  (_evidence: abstract_)
 - **Source reports:** Kruithof 1987 reports PAI-1 antigen rose from 54 +/- 17 ng/mL (non-pregnant) to 144 +/- 25 ng/mL at term. The source term value (144) is higher than the stored central (80) but falls within the stored range (40-150).
 - **Quote:** > its antigen level, measured by a radioimmunoassay, increased from 54 +/- 17 ng/mL to 144 +/- 25 ng/mL.
 - **Reviewer note:** Source term PAI-1 antigen ~144 ng/mL vs stored central 80; same magnitude and 144 lies within stored range 40-150, but stored central is notably lower.
+
+### `fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h`  ·  Tier D  ·  stored: -5.0 mL/kg/h
+
+- **Primary citation:** `strang-1991-fetal-lung-liquid`  (_evidence: secondary_)
+- **Source reports:** Near term/labour net flux falls toward zero and reverses to reabsorption (-0.4 to -0.8 mL/kg/h observed).
+- **Quote:** > this animal reabsorbed liquid both in early (-0.4 ml kg−1 h−1) and advanced labour (-0.8 ml kg−1 h−1).
+- **Reviewer note:** SECONDARY evidence (ovine, hypothesis-tier): confirms sign reversal to reabsorption near term; observed magnitudes (-0.4 to -0.8) smaller than stored -5.0, within stored range -10 to 0.
 
 ### `placental_structure.hsd2_cortisol_inactivation_fraction`  ·  Tier D  ·  stored: 0.85 dimensionless
 
@@ -201,7 +369,14 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > Fetal IgG concentrations were only 5%–10% of the maternal levels at weeks 17–22 but reached 50% of the maternal concentrations at weeks 28–32.
 - **Reviewer note:** Source brackets mid-pregnancy ratio (0.05-0.10 at wk17-22; 0.50 at wk28-32); stored 0.2 (0.1-0.4) sits within the rising trajectory but is not a stated figure.
 
-## ✅ match — source value agrees with stored value  (11)
+## ✅ match — source value agrees with stored value  (23)
+
+### `fetal_metabolism.fetal_p50_mmhg`  ·  Tier A  ·  stored: 19.5 mmHg
+
+- **Primary citation:** `bauer-1969-fetal-hb-affinity`  (_evidence: secondary_)
+- **Source reports:** Fetal hemoglobin P50 is 19 mmHg versus 27 mmHg for adult HbA.
+- **Quote:** > The partial pressure at which HbF is half saturated with oxygen (P50) is 19 mm Hg, compared to 27 mm Hg for HbA.
+- **Reviewer note:** SECONDARY evidence: cited HbF P50 19 mmHg within stored range 18.5-20.5; adult ~27 consistent.
 
 ### `maternal_blood.o2_hb_p50_maternal`  ·  Tier A  ·  stored: 26.6 mmHg
 
@@ -217,6 +392,20 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > plasma osmolality (Posm) … was 10 mosmol/kg lower than preconception values by the tenth week, changing little thereafter.
 - **Reviewer note:** Direct verbatim match: 10 mOsm/kg drop stated explicitly in the Davison 1981 abstract.
 
+### `maternal_respiratory.baseline_arterial_ph`  ·  Tier A  ·  stored: 7.4 dimensionless
+
+- **Primary citation:** `templeton-1976-blood-gas`  (_evidence: secondary_)
+- **Source reports:** Normal arterial pH reference range is 7.35-7.45, with 7.40 used as the reference value.
+- **Quote:** > pH (7.35-7.45)
+- **Reviewer note:** SECONDARY evidence; stored non-pregnant baseline pH 7.40 (range 7.38-7.42) matches the standard 7.35-7.45 arterial reference centred on 7.40.
+
+### `maternal_respiratory.baseline_respiratory_rate_bpm`  ·  Tier A  ·  stored: 16.0 breaths/min
+
+- **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: secondary_)
+- **Source reports:** Normal resting adult respiratory rate is 12 to 20 breaths per minute.
+- **Quote:** > the regular respiratory rate changes with age, with 12 to 20 respirations per minute for a resting adult.
+- **Reviewer note:** SECONDARY evidence; stored central 16 sits within the quoted 12-20/min adult range.
+
 ### `maternal_respiratory.paco2_mmhg_term`  ·  Tier A  ·  stored: 32.0 mmHg
 
 - **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: fulltext_)
@@ -230,6 +419,13 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Fulltext states arterial oxygen tension reaches 101-104 mmHg in the third trimester; stored central 103 mmHg (range 101-105) falls inside this window.
 - **Quote:** > arterial oxygen tension increases, reaching 106–108 mmHg and 101–104 mmHg in the first and third trimesters, respectively
 - **Reviewer note:** Third-trimester 101-104 mmHg quoted verbatim; stored 103 sits within it.
+
+### `maternal_respiratory.term_respiratory_rate_bpm`  ·  Tier A  ·  stored: 16.0 breaths/min
+
+- **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: secondary_)
+- **Source reports:** Respiratory rate is unchanged in pregnancy from the nonpregnant state (normal adult 12-20/min), so the term rate equals baseline.
+- **Quote:** > The respiratory rate remains unchanged from the nonpregnant state.
+- **Reviewer note:** SECONDARY evidence; source states RR is unchanged in pregnancy, so stored term 16/min equals the non-pregnant 12-20/min range.
 
 ### `placental_endocrine.hcg_peak_week`  ·  Tier A  ·  stored: 10.0 weeks
 
@@ -252,12 +448,47 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > The mean fraction of umbilical blood shunted through the ductus is reduced from 30% to 20% during the second half of the human pregnancy
 - **Reviewer note:** Stored 0.30 matches the 30% mid-pregnancy starting fraction stated in the abstract.
 
+### `fetal_metabolism.glucose_utilisation_mg_per_kg_per_min`  ·  Tier B  ·  stored: 5.0 mg/kg/min
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** Fetal glucose utilization 5.58 mg/min/kg ([14C]) in fed normoglycemic sheep; umbilical uptake 4.77 mg/min/kg.
+- **Quote:** > 5.58 mg.min-1.kg-1 +/- 0.54 SE
+- **Reviewer note:** SECONDARY evidence (ovine, human-extrapolated): cited 5.58 mg/kg/min within stored range 4.0-6.0, near central 5.0.
+
+### `fetal_metabolism.umbilical_artery_ph_term`  ·  Tier B  ·  stored: 7.27 pH
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** Mean umbilical arterial pH in uncomplicated term deliveries is 7.24 to 7.27.
+- **Quote:** > Studies showed that in term infants with uncomplicated delivery, the mean cord arterial pH is 7.24 to 7.27, and the mean cord venous pH 7.32 to 7.34.
+- **Reviewer note:** SECONDARY evidence: stored 7.27 equals top of cited mean arterial range 7.24-7.27.
+
+### `fetal_metabolism.umbilical_vein_ph_term`  ·  Tier B  ·  stored: 7.34 pH
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** Mean umbilical venous pH in uncomplicated term deliveries is 7.32 to 7.34.
+- **Quote:** > Studies showed that in term infants with uncomplicated delivery, the mean cord arterial pH is 7.24 to 7.27, and the mean cord venous pH 7.32 to 7.34.
+- **Reviewer note:** SECONDARY evidence: stored 7.34 equals top of cited mean venous range 7.32-7.34.
+
+### `maternal_blood.haematocrit_term`  ·  Tier B  ·  stored: 0.335 fraction
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** The Merck Manual states the average haematocrit falls to about 34% late in a singleton pregnancy, i.e. 0.34, essentially matching the stored term central of 0.335 and sitting inside the stored 0.31-0.36 range.
+- **Quote:** > thus an increased hematocrit (Hct) decrease from 38 to 45% in healthy nonpregnant women to about 34% late in a singleton pregnancy
+- **Reviewer note:** SECONDARY (Merck Manual), not the cited Hytten & Chamberlain 1980 primary; 34% = 0.34 matches stored 0.335.
+
 ### `maternal_blood.protein_c_term_pct`  ·  Tier B  ·  stored: 100 %
 
 - **Primary citation:** `faught-1995-protein-s-c`  (_evidence: abstract_)
 - **Source reports:** Faught 1995 found no statistically significant change in protein C during normal pregnancy, consistent with the stored ~100% (unchanged) term value.
 - **Quote:** > There was no statistically significant change in antigenic or functional protein C levels during normal pregnancy.
 - **Reviewer note:** Source explicitly reports protein C unchanged in pregnancy, supporting stored 100%.
+
+### `maternal_blood.serum_albumin_term_g_per_dl`  ·  Tier B  ·  stored: 3.0 g/dL
+
+- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: secondary_)
+- **Source reports:** The review states serum albumin declines from a mean of 42 g/L in non-pregnant women to 31 g/L near the end of pregnancy. 31 g/L = 3.1 g/dL, essentially matching the stored term central of 3.0 g/dL (stored range 2.8-3.4).
+- **Quote:** > Research has indicated that in healthy pregnancies, serum albumin concentrations decline from a mean of 42 g/L in nonpregnant women to 31 g/L near the end of pregnancy due to an increase in plasma volume
+- **Reviewer note:** SECONDARY (Wang 2025 review, citing Elliott & O'Kell 1971), not the cited Hytten & Chamberlain 1980 primary; 31 g/L = 3.1 g/dL matches stored 3.0 g/dL.
 
 ### `maternal_renal.cumulative_sodium_retention_g`  ·  Tier B  ·  stored: 1.0 g
 
@@ -266,12 +497,33 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > A rise in serum aldosterone results in a net gain of approximately 1000 mg of sodium.
 - **Reviewer note:** Direct match: 1000 mg = 1.0 g stated explicitly in the Cheung 2013 abstract.
 
+### `maternal_respiratory.term_arterial_ph`  ·  Tier B  ·  stored: 7.44 dimensionless
+
+- **Primary citation:** `templeton-1976-blood-gas`  (_evidence: secondary_)
+- **Source reports:** Composite mean third-trimester arterial pH 7.46 (with PaCO2 26.6, HCO3 18.2) — a compensated respiratory alkalosis on the alkaline side.
+- **Quote:** > The composite mean values were pH 7.46, arterial carbon dioxide pressure (PaCO2) 26.6 mmHg, arterial oxygen pressure 88.3 mmHg, and bicarbonate 18.2 mEq/L.
+- **Reviewer note:** SECONDARY evidence; third-trimester mean pH 7.46 falls within stored range 7.42-7.46. Cohort studied at moderate altitude (lower PaCO2 than sea level), but pH is comparable.
+
+### `fetal_metabolism.umbilical_artery_lactate_term_mmol_per_l`  ·  Tier C  ·  stored: 3.5 mmol/L
+
+- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: secondary_)
+- **Source reports:** Population umbilical artery lactate median (50th percentile) is 3.4 mmol/L.
+- **Quote:** > Lactate values at the 50th, 90th, and 97th percentile were 3.4, 7.0, and 9.0 mmol/L.
+- **Reviewer note:** SECONDARY evidence: stored central 3.5 ~ cited median 3.4 mmol/L; cohort all gestations/modes.
+
 ### `maternal_blood.pai2_term_ng_per_ml`  ·  Tier C  ·  stored: 250 ng/mL
 
 - **Primary citation:** `kruithof-1987-fibrinolysis`  (_evidence: abstract_)
 - **Source reports:** Kruithof 1987 reports PAI-2 rose from below the detection limit (~10 ng/mL) to 260 ng/mL at term, consistent with the stored central 250 ng/mL (within rounding and the stored range 150-400).
 - **Quote:** > Its level, quantified with a radioimmunoassay, increased from below the detection limit (approximately 10 ng/mL) in normal plasma to 260 ng/mL at term.
 - **Reviewer note:** Source term PAI-2 of 260 ng/mL closely matches stored 250 ng/mL.
+
+### `fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h`  ·  Tier D  ·  stored: 5.0 mL/kg/h
+
+- **Primary citation:** `strang-1991-fetal-lung-liquid`  (_evidence: secondary_)
+- **Source reports:** Pre-labour fetal sheep lung liquid secretion rate begins ~5.3 mL/kg/h, declining toward labour.
+- **Quote:** > In the first phase of its decline, mean secretion rate fell from 5.3 to 3.1 ml kg−1 h−1, before decreasing in the second phase to 1.8 ml kg−1 h−1.
+- **Reviewer note:** SECONDARY evidence (ovine, hypothesis-tier): baseline secretion ~5.3 mL/kg/h equals stored central 5.0 within range 3.0-6.0.
 
 ### `placental_structure.igg_transfer_ratio_term`  ·  Tier D  ·  stored: 1.2 dimensionless
 
@@ -280,7 +532,7 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > fetal IgG concentrations usually exceed maternal ones by 20%–30% at full term
 - **Reviewer note:** 20-30% excess => ratio 1.2-1.3; stored central 1.2 matches the lower bound of the source statement.
 
-## 🔍 not found — value not in fetched text (check table/figure in full PDF)  (137)
+## 🔍 not found — value not in fetched text (check table/figure in full PDF)  (130)
 
 ### `amniotic_fluid.afv_20w_ml`  ·  Tier A  ·  stored: 350.0 mL
 
@@ -533,32 +785,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Quote:** > The glomerular filtration rate increases 50% with subsequent decrease in serum creatinine, urea, and uric acid values.
 - **Reviewer note:** Abstract confirms direction (creatinine falls) but no numeric term creatinine; specific 0.6 mg/dL not verifiable from abstract.
 
-### `maternal_respiratory.baseline_arterial_ph`  ·  Tier A  ·  stored: 7.4 dimensionless
-
-- **Primary citation:** `templeton-1976-blood-gas`  (_evidence: abstract_)
-- **Source reports:** Abstract covers blood-gases, A-a gradient, shunt and VD/VT but does not report an arterial pH value; the non-pregnant pH 7.40 baseline is not in the available abstract text.
-- **Reviewer note:** Templeton 1976 abstract reports no pH value; baseline pH 7.40 not verifiable from available text.
-
-### `maternal_respiratory.baseline_respiratory_rate_bpm`  ·  Tier A  ·  stored: 16.0 breaths/min
-
-- **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: fulltext_)
-- **Source reports:** Fulltext states respiratory rate is unchanged through pregnancy (the ventilation rise is tidal-volume driven) but gives no absolute breaths/min figure, so the stored 16 breaths/min central is not numerically confirmed.
-- **Quote:** > higher tidal volume ( V T ) with unchanged respiratory rate
-- **Reviewer note:** Source confirms RR unchanged but states no absolute ~16 breaths/min baseline value.
-
-### `maternal_respiratory.baseline_tidal_volume_ml`  ·  Tier A  ·  stored: 450.0 mL
-
-- **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: fulltext_)
-- **Source reports:** Fulltext discusses tidal-volume rise as the driver of increased minute ventilation but gives no absolute non-pregnant tidal-volume value (~450 mL). The specific baseline figure is not present.
-- **Reviewer note:** No absolute non-pregnant tidal volume (~450 mL) stated in the available fulltext.
-
-### `maternal_respiratory.term_respiratory_rate_bpm`  ·  Tier A  ·  stored: 16.0 breaths/min
-
-- **Primary citation:** `lomauro-aliverti-2015-respiratory`  (_evidence: fulltext_)
-- **Source reports:** Fulltext states respiratory rate is unchanged through pregnancy (ventilatory pattern maintained), supporting that term RR equals baseline, but gives no absolute breaths/min figure for the stored 16.
-- **Quote:** > higher tidal volume ( V T ) with unchanged respiratory rate. This ventilatory pattern is then maintained throughout the course of pregnancy
-- **Reviewer note:** Source confirms RR unchanged at term but states no absolute ~16 breaths/min value.
-
 ### `placental_endocrine.hcg_peak_miu_per_ml`  ·  Tier A  ·  stored: 100000.0 mIU/mL
 
 - **Primary citation:** `cole-2010-hcg`  (_evidence: fulltext_)
@@ -642,12 +868,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `faught-1995-protein-s-c`  (_evidence: abstract_)
 - **Source reports:** Faught 1995 measured only protein C and protein S; antithrombin is not mentioned in the abstract.
 - **Reviewer note:** Primary citation (Faught 1995) does not report antithrombin; the ~95% term value cannot be verified against this source.
-
-### `maternal_blood.d_dimer_term_ug_per_ml`  ·  Tier B  ·  stored: 1.5 ug/mL
-
-- **Primary citation:** `kline-2005-d-dimer`  (_evidence: abstract_)
-- **Source reports:** Kline 2005 abstract reports preconception mean D-dimer 0.43 mg/L and that none of 23 third-trimester women had D-dimer <0.50 mg/L, but gives no third-trimester median value (the stored 1.5 ug/mL).
-- **Reviewer note:** Direction (monotonic rise, third-trimester all >0.50) is confirmed, but no quantitative term median ~1.5 ug/mL is stated in the abstract.
 
 ### `maternal_blood.factor_ix_term_pct`  ·  Tier B  ·  stored: 130 %
 
@@ -771,12 +991,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `cheung-lafayette-2013-renal`  (_evidence: abstract_)
 - **Source reports:** Cheung 2013 abstract does not mention urinary protein excretion or proteinuria thresholds.
 - **Reviewer note:** No urinary protein data in the Cheung 2013 abstract; stored 150 mg/24h not verifiable from cached source.
-
-### `maternal_respiratory.term_arterial_ph`  ·  Tier B  ·  stored: 7.44 dimensionless
-
-- **Primary citation:** `templeton-1976-blood-gas`  (_evidence: abstract_)
-- **Source reports:** Templeton 1976 abstract reports no pH value. (The LoMauro review fulltext states blood pH stays at slightly alkalotic values 7.40-7.47, which would bracket 7.44, but that is not the primary citation for this parameter.)
-- **Reviewer note:** Primary citation Templeton 1976 abstract reports no pH; term pH 7.44 not verifiable from that source's available text.
 
 ### `maternal_respiratory.vco2_term_ml_per_min`  ·  Tier B  ·  stored: 250.0 mL/min
 
@@ -917,12 +1131,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `kiserud-2000-fetal-circulation`  (_evidence: abstract_)
 - **Source reports:** Kiserud DV review abstract discusses shunt fractions (30%->20%) and DV regulation but reports no PO2 figure for systemic venous return.
 - **Reviewer note:** Abstract contains no PO2/oxygen-tension value; the 15 mmHg systemic-venous-return PO2 is not in the available text.
-
-### `fetal_metabolism.fetal_insulin_term_pmol_per_l`  ·  Tier C  ·  stored: 50 pmol/L
-
-- **Primary citation:** `economides-1989-fetal-insulin`  (_evidence: abstract_)
-- **Source reports:** Abstract reports that in appropriate-for-gestational-age fetuses plasma insulin increased exponentially with gestation, but gives no numeric central plasma insulin value (no pmol/L figure) for term.
-- **Reviewer note:** Abstract available but contains no specific numeric insulin value to compare against stored 50 pmol/L; qualitative trends only.
 
 ### `maternal_cardiovascular.baseline_stroke_volume_ml`  ·  Tier C  ·  stored: 65.0 mL
 
@@ -1081,12 +1289,7 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Source reports:** Bianchi 1996 abstract is qualitative ('rare nucleated fetal cells circulate within maternal blood') and reports detection rates by PCR; it gives no cells/mL concentration.
 - **Reviewer note:** No cells/mL concentration in the abstract; Tier D hypothesis-only value cannot be verified against the source text.
 
-## ⬜ no source — book / paywalled / no abstract retrieved  (69)
-
-### `fetal_metabolism.fetal_p50_mmhg`  ·  Tier A  ·  stored: 19.5 mmHg
-
-- **Primary citation:** `bauer-1969-fetal-hb-affinity`  (_evidence: none_)
-- **Reviewer note:** Bauer 1969 found in EPMC but no abstract or fulltext cached (evidence=none); cannot quote the P50 figure.
+## ⬜ no source — book / paywalled / no abstract retrieved  (40)
 
 ### `maternal_renal.gfr_first_trimester_ml_per_min`  ·  Tier A  ·  stored: 135.0 mL/min
 
@@ -1108,122 +1311,12 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `tulchinsky-1972-steroids`  (_evidence: none_)
 - **Reviewer note:** Tulchinsky 1972 has no cached abstract/fulltext (evidence=none). Human reviewer should retrieve the primary paper to verify the ~150 ng/mL term progesterone value.
 
-### `fetal_metabolism.fetal_core_temperature_c_term`  ·  Tier B  ·  stored: 37.6 °C
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.fetal_glucose_term_mmol_per_l`  ·  Tier B  ·  stored: 3.5 mmol/L
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.fetal_hb_concentration_g_per_dl_term`  ·  Tier B  ·  stored: 17.0 g/dL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.glucose_utilisation_mg_per_kg_per_min`  ·  Tier B  ·  stored: 5.0 mg/kg/min
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Source is a 1986 textbook; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.oxygen_consumption_ml_per_kg_per_min`  ·  Tier B  ·  stored: 6.5 mL O2/kg/min
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.umbilical_artery_ph_term`  ·  Tier B  ·  stored: 7.27 pH
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.umbilical_vein_ph_term`  ·  Tier B  ·  stored: 7.34 pH
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `maternal_blood.esr_term_mm_per_h`  ·  Tier B  ·  stored: 50.0 mm/h
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.ferritin_term_ng_per_ml`  ·  Tier B  ·  stored: 15.0 ng/mL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.fibrinogen_baseline_g_per_l`  ·  Tier B  ·  stored: 3.0 g/L
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.fibrinogen_term_g_per_l`  ·  Tier B  ·  stored: 5.5 g/L
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
 ### `maternal_blood.folate_term_ng_per_ml`  ·  Tier B  ·  stored: 5 ng/mL
 
 - **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
 - **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
 
-### `maternal_blood.haematocrit_term`  ·  Tier B  ·  stored: 0.335 fraction
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
 ### `maternal_blood.haemoglobin_baseline_g_per_dl`  ·  Tier B  ·  stored: 13.5 g/dL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.haemoglobin_g_per_dl_term`  ·  Tier B  ·  stored: 11.5 g/dL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.mcv_term_fl`  ·  Tier B  ·  stored: 92.0 fL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.platelet_count_term_x10e9_per_l`  ·  Tier B  ·  stored: 220.0 10^9/L
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.red_cell_mass_l`  ·  Tier B  ·  stored: 1.65 L
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.serum_albumin_term_g_per_dl`  ·  Tier B  ·  stored: 3.0 g/dL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.serum_iron_term_ug_per_dl`  ·  Tier B  ·  stored: 60.0 ug/dL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.total_protein_term_g_per_dl`  ·  Tier B  ·  stored: 6.0 g/dL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.transferrin_saturation_term_pct`  ·  Tier B  ·  stored: 20 %
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.volume_l`  ·  Tier B  ·  stored: 5.6 L
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
-
-### `maternal_blood.wbc_count_term_x10e9_per_l`  ·  Tier B  ·  stored: 10.5 10^9/L
 
 - **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
 - **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
@@ -1298,11 +1391,6 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `crapo-1996-pregnancy-respiratory`  (_evidence: none_)
 - **Reviewer note:** Primary citation Crapo 1996 is a book chapter with no abstract/fulltext cached (evidence none); cannot verify the 2.7 L term inspiratory capacity.
 
-### `maternal_respiratory.p50_shift_mmhg`  ·  Tier B  ·  stored: 3.0 mmHg
-
-- **Primary citation:** `kelman-1966-o2-saturation`  (_evidence: none_)
-- **Reviewer note:** Kelman 1966 is a computer-subroutine paper with no abstract/fulltext cached (evidence none); cannot verify the pregnancy P50 shift.
-
 ### `maternal_respiratory.tidal_volume_ml_term`  ·  Tier B  ·  stored: 680.0 mL
 
 - **Primary citation:** `crapo-1996-pregnancy-respiratory`  (_evidence: none_)
@@ -1353,25 +1441,10 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 - **Primary citation:** `rudolph-1985-fetal-circulation`  (_evidence: none_)
 - **Reviewer note:** Rudolph 1985 lamb book chapter; evidence=none, cannot verify the 0.80 streamline-preference weight.
 
-### `fetal_metabolism.fetal_cortisol_term_ug_per_dl`  ·  Tier C  ·  stored: 15 ug/dL
-
-- **Primary citation:** `murphy-1973-fetal-cortisol`  (_evidence: none_)
-- **Reviewer note:** Murphy 1973 not found in EPMC; no abstract or fulltext cached (evidence=none).
-
 ### `fetal_metabolism.fetal_urine_output_ml_per_kg_h_term`  ·  Tier C  ·  stored: 50.0 mL/kg/h
 
 - **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
 - **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `fetal_metabolism.umbilical_artery_lactate_term_mmol_per_l`  ·  Tier C  ·  stored: 3.5 mmol/L
-
-- **Primary citation:** `battaglia-meschia-1986-fetal-metabolism`  (_evidence: none_)
-- **Reviewer note:** Textbook source; no abstract or fulltext cached (evidence=none).
-
-### `maternal_blood.b12_term_pg_per_ml`  ·  Tier C  ·  stored: 250 pg/mL
-
-- **Primary citation:** `hytten-chamberlain-1980-blood-volume`  (_evidence: none_)
-- **Reviewer note:** Hytten & Chamberlain 1980 is a textbook; no abstract or fulltext cached, cannot verify the figure.
 
 ### `maternal_cardiovascular.aortic_root_diameter_term_mm`  ·  Tier C  ·  stored: 30.0 mm
 
@@ -1417,14 +1490,4 @@ Work top-down: mismatches first (a wrong value is worse than an unverified one),
 
 - **Primary citation:** `crapo-1996-pregnancy-respiratory`  (_evidence: none_)
 - **Reviewer note:** Primary citation Crapo 1996 is a book chapter with no abstract/fulltext cached (evidence none); cannot verify the 24 mL/min/mmHg term DLCO.
-
-### `fetal_metabolism.pulmonary_fluid_net_rate_baseline_ml_per_kg_h`  ·  Tier D  ·  stored: 5.0 mL/kg/h
-
-- **Primary citation:** `strang-1991-fetal-lung-liquid`  (_evidence: none_)
-- **Reviewer note:** Strang 1991 review found in EPMC but no abstract or fulltext cached (evidence=none). Tier D hypothesis-only.
-
-### `fetal_metabolism.pulmonary_fluid_net_rate_term_ml_per_kg_h`  ·  Tier D  ·  stored: -5.0 mL/kg/h
-
-- **Primary citation:** `strang-1991-fetal-lung-liquid`  (_evidence: none_)
-- **Reviewer note:** Strang 1991 review; no abstract or fulltext cached (evidence=none). Tier D hypothesis-only.
 

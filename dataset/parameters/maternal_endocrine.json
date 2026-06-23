@@ -41,9 +41,18 @@
       "carr-1981-cortisol"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "close",
+        "evidence_level": "abstract",
+        "source_citation": "carr-1981-cortisol",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "As pregnancy advanced, the concentration of cortisol in plasma increased progressively from 149 +/- 34 ng/ml (mean and SEM) at 12 weeks to 352 +/- 90 ng/ml at 26 weeks' gestation but changed minimally thereafter until labor commenced, during which values of 706 +/- 148 ng/ml were achieved.",
+        "extracted_value": "Cortisol reached 352 +/- 90 ng/mL (= 35.2 ug/dL) at 26 weeks and 'changed minimally thereafter until labor.' During labor it reached 706 ng/mL (= 70.6 ug/dL). The plateau value 35.2 ug/dL falls within the stored range 25-40."
+      }
     },
     "primary_citation": "carr-1981-cortisol"
   },

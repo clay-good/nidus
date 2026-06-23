@@ -46,6 +46,22 @@ A `match`/`close`/`mismatch` verdict **must** carry a verbatim quote; if there
 is no quote, the verdict is `not_found`. The machine is deliberately
 conservative — when unsure it reports `not_found`, never `match`.
 
+## Promotion to `pending_human_review`
+
+When automated review locates the stored value in a real source (verdict
+`match`, or `close` where the quote brackets the value), the parameter is
+promoted from `unverified` to **`pending_human_review`** and the evidence is
+written onto the record at `extraction.source_check` (verdict, evidence level,
+source citation, verbatim quote). This is done by
+[`scripts/promote_pending_review.py`](../../scripts/promote_pending_review.py).
+
+`pending_human_review` means *sourced but not human-signed-off*. It is strictly
+weaker than `verified`: `extraction.reviewer` stays `null` and no human has read
+the source. It exists so users and the dashboard can tell a sourced value from a
+purely illustrative one. Evidence can be `fulltext` / `abstract` (the parameter's
+own primary citation) or `secondary` (an authoritative reference that states the
+value when the primary was paywalled — recorded with a `source_url`).
+
 ## How a reviewer uses it
 
 1. Open `REVIEW_QUEUE.md`. Work top-down: mismatches, then Tier A/B.
@@ -55,7 +71,8 @@ conservative — when unsure it reports `not_found`, never `match`.
 3. Confirm or correct the value in `dataset/parameters/<subsystem>.json`, set
    `extraction.review_status` to `verified` (or `contested`), fill
    `extraction.reviewer` and `extraction.date`, and improve `tier_rationale`
-   if needed.
+   if needed. A `pending_human_review` record already has the quote to check
+   against — promoting it to `verified` is the fast path.
 
 ## Regenerating
 
@@ -71,9 +88,12 @@ is the durable record of its output.
 
 ## Coverage (at generation time)
 
-243 parameters: 11 `match`, 22 `close`, 4 `mismatch`, 137 `not_found`,
-69 `source_unavailable`. So ~72% of parameters have *some* fetchable source
-evidence; the specific stored number is quote-confirmable for ~33 of them
-today, and 4 stored values look wrong against their source and should be
-checked first. The rest need full-text/table access or a library copy — which
-is exactly the map a human reviewer needs to spend their time well.
+Verdicts across 243 parameters (primary + secondary sources): 23 `match`,
+46 `close`, 4 `mismatch`, 130 `not_found`, 40 `source_unavailable`.
+
+On the back of that evidence, **38 parameters were promoted to
+`pending_human_review`** (28 others were already human-`verified`; 1 is
+`contested`; the remaining 176 stay `unverified`). The 4 `mismatch` records are
+the priority worklist — a stored value that disagrees with its source. The
+`not_found` / `source_unavailable` records need full-text, a table, or a library
+copy. This is exactly the map a human reviewer needs to spend their time well.

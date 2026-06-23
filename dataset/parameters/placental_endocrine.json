@@ -41,9 +41,18 @@
       "cole-2010-hcg"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "fulltext",
+        "source_citation": "cole-2010-hcg",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "As shown in Tables 2 and 3 hCG reaches a peak at 10 weeks of gestation, or almost one month after progesterone promotion is complete, then continues to be produced through the length of pregnancy.",
+        "extracted_value": "Fulltext explicitly states hCG reaches a peak at 10 weeks of gestation, matching the stored central value of 10 weeks (range 8-12)."
+      }
     },
     "primary_citation": "cole-2010-hcg"
   },

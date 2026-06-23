@@ -54,20 +54,27 @@ def test_filter_empty_when_unknown_tier(ds: nidus.Dataset) -> None:
 
 
 def test_filter_by_review_status(ds: nidus.Dataset) -> None:
-    """Most parameters are unverified; the citation+abstract audit promoted
-    a small number to verified. The split should sum to the full dataset
-    size, with most remaining unverified."""
+    """The four review states partition the dataset. Most parameters remain
+    unverified; a citation+source audit promoted some to verified, and the
+    machine pre-verification pass promoted source-confirmed values to
+    pending_human_review (sourced but not yet human-signed-off)."""
     unverified = ds.filter(review_status="unverified")
+    pending = ds.filter(review_status="pending_human_review")
     verified = ds.filter(review_status="verified")
     contested = ds.filter(review_status="contested")
-    assert len(unverified) + len(verified) + len(contested) == len(ds)
+    assert len(unverified) + len(pending) + len(verified) + len(contested) == len(ds)
     # Most parameters still need human re-verification against original PDFs.
     # This assertion is a guardrail against accidental mass-promotion, not
     # a fixed target — the count evolves as parameters are individually
     # verified or contested. The lower bound is loose enough that ongoing
     # verification work doesn't break it but tight enough to catch a bug
-    # that flips all 54 parameters to verified by accident.
+    # that flips every parameter to verified by accident.
     assert len(unverified) >= 30
+    # pending_human_review must never be confused with verified: a parameter
+    # in that state has machine provenance but no human sign-off.
+    for p in pending:
+        assert p.extraction.source_check is not None
+        assert p.extraction.reviewer is None
 
 
 def test_filter_no_constraints_returns_all(ds: nidus.Dataset) -> None:

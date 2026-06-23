@@ -273,9 +273,18 @@
       "davison-1981-osmoregulation"
     ],
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-22",
-      "reviewer": "v0.4-phase1-expansion-script"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "abstract",
+        "source_citation": "davison-1981-osmoregulation",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "plasma osmolality (Posm) … was 10 mosmol/kg lower than preconception values by the tenth week, changing little thereafter.",
+        "extracted_value": "Abstract explicitly reports plasma osmolality fell to 10 mOsm/kg below preconception by the tenth week (and 9 mOsm/kg lower in the last trimester vs postpartum), matching the stored 10 mOsm/kg drop."
+      }
     },
     "primary_citation": "davison-1981-osmoregulation"
   },
@@ -428,9 +437,18 @@
     ],
     "primary_citation": "cheung-lafayette-2013-renal",
     "extraction": {
-      "review_status": "unverified",
+      "review_status": "pending_human_review",
       "date": "2026-05-25",
-      "reviewer": "phase1-saturation"
+      "reviewer": null,
+      "source_check": {
+        "verdict": "match",
+        "evidence_level": "abstract",
+        "source_citation": "cheung-lafayette-2013-renal",
+        "checked_by": "machine-preverify",
+        "checked_date": "2026-06-23",
+        "quote": "A rise in serum aldosterone results in a net gain of approximately 1000 mg of sodium.",
+        "extracted_value": "Abstract states a rise in aldosterone produces a net gain of approximately 1000 mg of sodium, equal to the stored 1.0 g cumulative sodium retention."
+      }
     },
     "applicability": {
       "population": "Healthy singleton pregnancies, cumulative across 40 weeks"

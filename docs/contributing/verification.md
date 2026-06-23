@@ -11,7 +11,23 @@ This is the single most important rule in the project.
 - The extraction method is documented (`extraction.method`): which table, which figure, which column, which row.
 - A human has read the relevant section of the paper.
 
-If any of these are not true, the record stays `unverified` until they are.
+If any of these are not true, the record stays `unverified` (or
+`pending_human_review`) until they are.
+
+## The four review states
+
+| `review_status` | Meaning |
+| --------------- | ------- |
+| `unverified` | Illustrative central value from the literature; the source has not been confirmed against the entry. |
+| `pending_human_review` | Automated review located the stored value in a real source and attached a verbatim quote (`extraction.source_check`), but **no human has signed off**. Sourced, not verified. |
+| `verified` | A human read the source and confirmed the value. Only a human sets this. |
+| `contested` | Flagged for investigation — e.g. the source appears to disagree with the stored value. |
+
+`pending_human_review` exists so a machine can fill records from real sources
+without ever claiming human verification. Promoting one to `verified` is the
+fast path: the quote is already on the record (and ranked in the
+[review queue](https://github.com/clay-good/nidus/blob/main/data/validation/REVIEW_QUEUE.md))
+— you just confirm it against the source.
 
 ## Where to start: the machine pre-verification queue
 

@@ -147,10 +147,51 @@
         },
         "review_status": {
           "type": "string",
-          "enum": ["unverified", "verified", "contested"]
+          "enum": ["unverified", "pending_human_review", "verified", "contested"],
+          "description": "unverified = illustrative central value, no source confirmation yet; pending_human_review = the stored value was located in a real source by automated review (see source_check) but no human has signed off; verified = a human confirmed it against the source; contested = flagged for investigation."
         },
         "reviewer": {
           "type": ["string", "null"]
+        },
+        "source_check": {
+          "type": "object",
+          "description": "Provenance for an automated pre-verification. Present when review_status is pending_human_review. Records what automated review found in the cited source; never implies human verification.",
+          "additionalProperties": false,
+          "required": ["verdict", "evidence_level", "source_citation", "checked_by"],
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": ["match", "close"]
+            },
+            "evidence_level": {
+              "type": "string",
+              "enum": ["fulltext", "abstract", "secondary", "regulatory", "preprint", "biomodels"]
+            },
+            "source_citation": {
+              "type": "string",
+              "description": "Citation key the evidence was drawn from (the parameter's own primary citation for fulltext/abstract verdicts; a short source label for secondary/regulatory/preprint evidence)."
+            },
+            "source_url": {
+              "type": "string",
+              "description": "Optional DOI/URL of the evidence source, used when the evidence is a secondary/regulatory/preprint source not in citations.json."
+            },
+            "quote": {
+              "type": "string",
+              "description": "Verbatim supporting quote from the source."
+            },
+            "extracted_value": {
+              "type": "string",
+              "description": "What the source reports for this quantity."
+            },
+            "checked_by": {
+              "type": "string",
+              "description": "The automated reviewer, e.g. 'machine-preverify'."
+            },
+            "checked_date": {
+              "type": "string",
+              "format": "date"
+            }
+          }
         }
       }
     },
