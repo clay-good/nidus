@@ -1,0 +1,4301 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curated dataset of human gestational physiology parameters, annotated with explicit confidence tiers.">
+      
+      
+      
+        <link rel="canonical" href="https://claygood.github.io/nidus/specs/v0.4/04-exhaustive-parameter-catalog/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Spec 04 — Exhaustive Parameter Catalog - Nidus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spec-04-exhaustive-parameter-catalog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nidus" class="md-header__button md-logo" aria-label="Nidus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nidus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spec 04 — Exhaustive Parameter Catalog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/clay-good/nidus" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    clay-good/nidus
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/install/" class="md-tabs__link">
+          
+  
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../dataset/overview/" class="md-tabs__link">
+          
+  
+  
+  Dataset
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../exports/" class="md-tabs__link">
+          
+  
+  
+  Exports
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../api/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contributing/overview/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about/design/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nidus" class="md-nav__button md-logo" aria-label="Nidus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nidus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/clay-good/nidus" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    clay-good/nidus
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dataset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/tiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/subsystems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subsystems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/verified-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verified examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/01_parameter_explorer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 — Parameter Explorer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/02_tier_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 — Tier Walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/03_uncertainty_propagation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 — Uncertainty Propagation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/04_citation_provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 — Citation Provenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/sbml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SBML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/cellml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CellML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/physicell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PhysioCell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annotations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification standard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/tier-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier assignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.3 design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/essay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Essay — confidence tiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. TL;DR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-to-read-this-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. How to read this catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-subsystem-catalogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Subsystem catalogs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Subsystem catalogs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-maternal_cardiovascular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 maternal_cardiovascular
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-maternal_blood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 maternal_blood
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-maternal_renal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 maternal_renal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-maternal_respiratory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 maternal_respiratory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-maternal_endocrine-new-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 maternal_endocrine (NEW subsystem)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-placental_structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 placental_structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-placental_gas_exchange" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 placental_gas_exchange
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-placental_glucose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 placental_glucose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-placental_endocrine-new-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9 placental_endocrine (NEW subsystem)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-fetal_circulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10 fetal_circulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-fetal_growth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.11 fetal_growth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-fetal_metabolism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.12 fetal_metabolism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-amniotic_fluid-new-subsystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.13 amniotic_fluid (NEW subsystem)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-citation-catalog-full" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Citation catalog (full)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Citation catalog (full)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-citations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 citations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-citations-25-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 citations (~25 new)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-citations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3 citations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-citations-landed-outside-the-original-phase-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Additional citations landed (outside the original phase plan)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-schema-level-changes-implied-by-this-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Schema-level changes implied by this catalog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-verification-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verification budget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-explicit-non-goals-final-locked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Explicit non-goals (final, locked)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-living-document-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Living-document policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/clay-good/nidus/edit/main/docs/specs/v0.4/04-exhaustive-parameter-catalog.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="spec-04-exhaustive-parameter-catalog">Spec 04 — Exhaustive Parameter Catalog<a class="headerlink" href="#spec-04-exhaustive-parameter-catalog" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> Reference. Names every parameter and citation that nidus
+could honestly include given the scope (8–40 week human singleton
+pregnancy, <em>normal</em> physiology). This spec is the project's <em>ceiling</em>.
+<strong>Depends on:</strong> Specs 01, 02, 03.</p>
+<hr />
+<h2 id="1-tldr">1. TL;DR<a class="headerlink" href="#1-tldr" title="Permanent link">&para;</a></h2>
+<p>If the project filled every entry below it would carry <strong>~210
+parameters across 13 subsystems</strong>, backed by <strong>~70 citations</strong>.</p>
+<p><strong>Current state (as of dataset v0.3.0-dev):</strong> the catalog stands at
+<strong>243 parameters / 66 citations</strong> — every row in §3 is now
+<code>shipped</code>. The structural catalog work is therefore <em>complete</em>;
+further growth means new parameters not yet listed below (open an
+issue) or improving <code>extraction.review_status</code> from <code>unverified</code> to
+<code>verified</code> on existing entries via human-with-PDF audits. The
+"Status" column on each subsystem table remains the source of
+truth.</p>
+<p>This spec extends <code>02-parameter-expansion-roadmap.md</code> from a <em>planning</em>
+document (phased, with rationale per gap) to a <em>catalog</em> document
+(every parameter, indexed, with the citation that would back it).
+After this catalog, growth is filling-in only; the structural design
+question is settled.</p>
+<p>Three explicit principles govern what <em>does not</em> appear here:</p>
+<ol>
+<li><strong>Normal physiology only.</strong> Pre-eclampsia, gestational diabetes,
+   IUGR, infection, stillbirth, drug exposures, pharmacokinetics —
+   all out of scope. They are derived datasets, not this one.</li>
+<li><strong>Human only.</strong> Even where rodent / primate / sheep data are
+   excellent, this is a human dataset.</li>
+<li><strong>8–40 weeks, singleton.</strong> Embryology (&lt;8w), multiples, labour,
+   postpartum — out of scope.</li>
+</ol>
+<p>Inside that envelope, the catalog below is intended to be <em>complete</em>.
+If you find a parameter that fits the envelope, is published, and is
+not listed, open an issue: that is the contribution loop.</p>
+<h2 id="2-how-to-read-this-catalog">2. How to read this catalog<a class="headerlink" href="#2-how-to-read-this-catalog" title="Permanent link">&para;</a></h2>
+<p>Each subsystem section has:</p>
+<ul>
+<li>A short summary of what the subsystem covers.</li>
+<li>A table of parameters. Columns:<ul>
+<li><strong>Parameter id</strong> — the dotted id used in the dataset JSON.</li>
+<li><strong>What</strong> — one-line description.</li>
+<li><strong>Typical value</strong> — central estimate; not authoritative, just a
+  sniff-test number to anchor the reader.</li>
+<li><strong>Tier</strong> — anticipated tier based on the strength of the
+  candidate citation. May change on review.</li>
+<li><strong>Status</strong> — <code>shipped</code>, <code>phase1</code>, <code>phase2</code>, <code>phase3</code>, or
+  <code>deferred</code>.</li>
+<li><strong>Primary citation</strong> — the single load-bearing source.</li>
+</ul>
+</li>
+<li>Citations needed (if any are new to the project).</li>
+<li>Notes on what is <em>out of scope</em> within the subsystem.</li>
+</ul>
+<p>The "Status" column is the source of truth for what is in the current
+dataset vs what is planned.</p>
+<h2 id="3-subsystem-catalogs">3. Subsystem catalogs<a class="headerlink" href="#3-subsystem-catalogs" title="Permanent link">&para;</a></h2>
+<h3 id="31-maternal_cardiovascular">3.1 <code>maternal_cardiovascular</code><a class="headerlink" href="#31-maternal_cardiovascular" title="Permanent link">&para;</a></h3>
+<p>The mother's haemodynamic adaptation: cardiac output rises ~50%,
+systemic vascular resistance falls, mean arterial pressure dips
+mid-pregnancy and recovers, the heart hypertrophies modestly, and
+uterine flow rises from ~50 to ~600 mL/min.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baseline_cardiac_output_l_per_min</code></td>
+<td>Non-pregnant CO</td>
+<td>4.5 L/min</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>peak_excess_cardiac_output_l_per_min</code></td>
+<td>Gaussian-fit peak excess</td>
+<td>2.0 L/min</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>cardiac_output_peak_week</code></td>
+<td>Week of CO peak</td>
+<td>32</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>cardiac_output_spread_weeks</code></td>
+<td>Gaussian σ</td>
+<td>9</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>baseline_map_mmhg</code></td>
+<td>Non-pregnant MAP</td>
+<td>87</td>
+<td>A</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>map_nadir_drop_mmhg</code></td>
+<td>MAP nadir below baseline</td>
+<td>8</td>
+<td>A</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>map_nadir_week</code></td>
+<td>Week of MAP nadir</td>
+<td>22</td>
+<td>A</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>map_spread_weeks</code></td>
+<td>Gaussian σ for MAP curve</td>
+<td>8</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>baseline_uterine_flow_ml_per_min</code></td>
+<td>Non-pregnant UA flow</td>
+<td>50</td>
+<td>B</td>
+<td>shipped</td>
+<td>Thaler 1990</td>
+</tr>
+<tr>
+<td><code>term_uterine_flow_ml_per_min</code></td>
+<td>Term UA flow</td>
+<td>600</td>
+<td>B</td>
+<td>shipped</td>
+<td>Thaler 1990</td>
+</tr>
+<tr>
+<td><code>uterine_flow_growth_rate_per_week</code></td>
+<td>Logistic rate</td>
+<td>0.25</td>
+<td>B</td>
+<td>shipped</td>
+<td>Thaler 1990</td>
+</tr>
+<tr>
+<td><code>baseline_heart_rate_bpm</code></td>
+<td>Non-pregnant HR</td>
+<td>70</td>
+<td>A</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>peak_excess_heart_rate_bpm</code></td>
+<td>HR rise to term</td>
+<td>15</td>
+<td>A</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>heart_rate_peak_week</code></td>
+<td>Week of HR peak</td>
+<td>32</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>baseline_stroke_volume_ml</code></td>
+<td>Non-pregnant SV</td>
+<td>70</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>peak_excess_stroke_volume_ml</code></td>
+<td>SV rise</td>
+<td>15</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>baseline_svr_dyn_s_cm5</code></td>
+<td>Non-pregnant SVR</td>
+<td>1300</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>svr_nadir_dyn_s_cm5</code></td>
+<td>Mid-pregnancy SVR nadir</td>
+<td>750</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>term_svr_dyn_s_cm5</code></td>
+<td>Term SVR</td>
+<td>980</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>baseline_pvr_dyn_s_cm5</code></td>
+<td>Non-pregnant PVR</td>
+<td>120</td>
+<td>C</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>pvr_term_dyn_s_cm5</code></td>
+<td>Term PVR</td>
+<td>80</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>lv_mass_baseline_g</code></td>
+<td>LV mass non-pregnant</td>
+<td>130</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>lv_mass_term_g</code></td>
+<td>LV mass at term</td>
+<td>180</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>lv_wall_thickness_term_mm</code></td>
+<td>LV wall at term</td>
+<td>11</td>
+<td>C</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>aortic_root_diameter_term_mm</code></td>
+<td>Aortic root diameter at term</td>
+<td>30</td>
+<td>C</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>pulse_wave_velocity_term_m_per_s</code></td>
+<td>PWV at term</td>
+<td>7.5</td>
+<td>C</td>
+<td>shipped</td>
+<td>Sanghavi 2014</td>
+</tr>
+<tr>
+<td><code>cardiac_output_t1_l_per_min</code></td>
+<td>CO in T1 anchor</td>
+<td>5.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>cardiac_output_t2_l_per_min</code></td>
+<td>CO in T2 anchor</td>
+<td>6.4</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+<tr>
+<td><code>cardiac_output_t3_l_per_min</code></td>
+<td>CO in T3 anchor</td>
+<td>6.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mahendru 2014</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed (new):</strong> none. Mahendru 2014, Sanghavi 2014, Robson
+1989 cover all of the above. The Robson 1989 <em>Br Heart J</em> paper is the
+single canonical LV-mass-in-pregnancy citation.</p>
+<p><strong>Out of scope:</strong> preeclampsia haemodynamics (a derived dataset),
+exercise haemodynamics, postpartum return to baseline.</p>
+<h3 id="32-maternal_blood">3.2 <code>maternal_blood</code><a class="headerlink" href="#32-maternal_blood" title="Permanent link">&para;</a></h3>
+<p>Plasma volume up ~45%, RBC mass up ~25% (physiologic anaemia of
+pregnancy follows from the mismatch), coagulation factors up sharply
+(II, VII, VIII, IX, X, XII, fibrinogen, D-dimer), some down (protein
+S, antithrombin). Iron and folate stores drop. WBC count rises.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plasma_volume_early_l</code></td>
+<td>Early-pregnancy PV anchor</td>
+<td>2.6</td>
+<td>B</td>
+<td>shipped</td>
+<td>Bernstein 2001</td>
+</tr>
+<tr>
+<td><code>plasma_volume_l</code></td>
+<td>Term PV</td>
+<td>3.8</td>
+<td>B</td>
+<td>shipped</td>
+<td>de Haas 2017</td>
+</tr>
+<tr>
+<td><code>rbc_mass_term_l</code></td>
+<td>Term RBC mass</td>
+<td>1.8</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>haematocrit_term_pct</code></td>
+<td>Term Hct</td>
+<td>33</td>
+<td>A</td>
+<td>shipped</td>
+<td>Bothwell 1979</td>
+</tr>
+<tr>
+<td><code>haemoglobin_term_g_per_dl</code></td>
+<td>Term Hb</td>
+<td>11.5</td>
+<td>A</td>
+<td>shipped</td>
+<td>Bothwell 1979</td>
+</tr>
+<tr>
+<td><code>o2_hb_p50_maternal</code></td>
+<td>Adult P50</td>
+<td>26.6</td>
+<td>A</td>
+<td>shipped</td>
+<td>Severinghaus 1979</td>
+</tr>
+<tr>
+<td><code>o2_hb_hill_coefficient_maternal</code></td>
+<td>Hill n adult</td>
+<td>2.7</td>
+<td>A</td>
+<td>shipped</td>
+<td>Severinghaus 1979</td>
+</tr>
+<tr>
+<td><code>dpg_term_umol_per_g_hb</code></td>
+<td>2,3-DPG term</td>
+<td>14</td>
+<td>B</td>
+<td>shipped</td>
+<td>Bauer 1969</td>
+</tr>
+<tr>
+<td><code>fibrinogen_baseline_g_per_l</code></td>
+<td>Fibrinogen pre-pregnancy</td>
+<td>3.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>fibrinogen_term_g_per_l</code></td>
+<td>Fibrinogen at term</td>
+<td>5.5</td>
+<td>A</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>factor_vii_term_pct</code></td>
+<td>Factor VII activity</td>
+<td>170</td>
+<td>B</td>
+<td>shipped</td>
+<td>Stirling 1984</td>
+</tr>
+<tr>
+<td><code>factor_viii_term_pct</code></td>
+<td>Factor VIII activity</td>
+<td>220</td>
+<td>B</td>
+<td>shipped</td>
+<td>Stirling 1984</td>
+</tr>
+<tr>
+<td><code>haemoglobin_baseline_g_per_dl</code></td>
+<td>Hb pre-pregnancy</td>
+<td>13.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>mcv_term_fl</code></td>
+<td>MCV at term</td>
+<td>92</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>platelet_count_term_x10e9_per_l</code></td>
+<td>Platelets at term</td>
+<td>220</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>wbc_count_term_x10e9_per_l</code></td>
+<td>WBC at term</td>
+<td>10.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>d_dimer_term_ug_per_ml</code></td>
+<td>D-dimer at term</td>
+<td>1.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Kline 2005</td>
+</tr>
+<tr>
+<td><code>factor_ix_term_pct</code></td>
+<td>Factor IX activity</td>
+<td>130</td>
+<td>B</td>
+<td>shipped</td>
+<td>Stirling 1984</td>
+</tr>
+<tr>
+<td><code>factor_x_term_pct</code></td>
+<td>Factor X activity</td>
+<td>145</td>
+<td>B</td>
+<td>shipped</td>
+<td>Stirling 1984</td>
+</tr>
+<tr>
+<td><code>factor_xii_term_pct</code></td>
+<td>Factor XII activity</td>
+<td>160</td>
+<td>B</td>
+<td>shipped</td>
+<td>Stirling 1984</td>
+</tr>
+<tr>
+<td><code>protein_s_free_term_pct</code></td>
+<td>Free protein S</td>
+<td>45</td>
+<td>B</td>
+<td>shipped</td>
+<td>Faught 1995</td>
+</tr>
+<tr>
+<td><code>protein_c_term_pct</code></td>
+<td>Protein C activity</td>
+<td>100</td>
+<td>B</td>
+<td>shipped</td>
+<td>Faught 1995</td>
+</tr>
+<tr>
+<td><code>antithrombin_term_pct</code></td>
+<td>Antithrombin activity</td>
+<td>95</td>
+<td>B</td>
+<td>shipped</td>
+<td>Faught 1995</td>
+</tr>
+<tr>
+<td><code>pai1_term_ng_per_ml</code></td>
+<td>PAI-1 at term</td>
+<td>80</td>
+<td>C</td>
+<td>shipped</td>
+<td>Kruithof 1987</td>
+</tr>
+<tr>
+<td><code>pai2_term_ng_per_ml</code></td>
+<td>PAI-2 at term</td>
+<td>250</td>
+<td>C</td>
+<td>shipped</td>
+<td>Kruithof 1987</td>
+</tr>
+<tr>
+<td><code>serum_albumin_term_g_per_dl</code></td>
+<td>Albumin at term</td>
+<td>3.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>total_protein_term_g_per_dl</code></td>
+<td>Total protein term</td>
+<td>6.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>serum_iron_term_ug_per_dl</code></td>
+<td>Iron at term</td>
+<td>60</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>transferrin_saturation_term_pct</code></td>
+<td>Tsat at term</td>
+<td>20</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>ferritin_term_ng_per_ml</code></td>
+<td>Ferritin at term</td>
+<td>15</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>folate_term_ng_per_ml</code></td>
+<td>Folate at term</td>
+<td>5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>b12_term_pg_per_ml</code></td>
+<td>B12 at term</td>
+<td>250</td>
+<td>C</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>esr_term_mm_per_h</code></td>
+<td>ESR at term</td>
+<td>50</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hytten 1980</td>
+</tr>
+<tr>
+<td><code>fetal_microchimerism_baseline_cells_per_ml</code></td>
+<td>Fetal-cell baseline (T1)</td>
+<td>0.0</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Bianchi 1996</td>
+</tr>
+<tr>
+<td><code>fetal_microchimerism_term_cells_per_ml</code></td>
+<td>Fetal-cell term</td>
+<td>1.0</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Bianchi 1996</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed (new):</strong> none — all landed. Stirling 1984
+(Thromb Haemost), Faught 1995 (Thromb Haemost), Kruithof 1987
+(Blood), and Kline 2005 cover the subsystem. The originally-planned
+Pitkin 1979 (WBC) and Larsson 2008 (serum proteins) turned out to be
+redundant: those parameters source from Hytten 1980 instead, and
+the unused entries have been removed from <code>citations.json</code>.</p>
+<p><strong>Out of scope:</strong> disorders of haemostasis in pregnancy
+(antiphospholipid, factor V Leiden); transfusion thresholds.</p>
+<h3 id="33-maternal_renal">3.3 <code>maternal_renal</code><a class="headerlink" href="#33-maternal_renal" title="Permanent link">&para;</a></h3>
+<p>GFR rises ~50% (one of the largest non-pathological changes in adult
+physiology). Plasma osmolality drops 10 mOsm/kg, sodium 5 mEq/L,
+creatinine ~30%. The mother retains ~1000 mg total sodium over
+pregnancy.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gfr_ml_per_min</code></td>
+<td>Term GFR</td>
+<td>150</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>gfr_first_trimester_ml_per_min</code></td>
+<td>T1 GFR</td>
+<td>135</td>
+<td>A</td>
+<td>shipped</td>
+<td>Davison 1974</td>
+</tr>
+<tr>
+<td><code>plasma_creatinine_mg_per_dl_term</code></td>
+<td>Term creatinine</td>
+<td>0.6</td>
+<td>A</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>baseline_gfr_ml_per_min</code></td>
+<td>Non-pregnant GFR</td>
+<td>100</td>
+<td>A</td>
+<td>shipped</td>
+<td>Conrad 2001</td>
+</tr>
+<tr>
+<td><code>gfr_peak_week</code></td>
+<td>Week of GFR peak</td>
+<td>16</td>
+<td>B</td>
+<td>shipped</td>
+<td>Conrad 2001</td>
+</tr>
+<tr>
+<td><code>gfr_logistic_rate_per_week</code></td>
+<td>Logistic rate</td>
+<td>0.4</td>
+<td>B</td>
+<td>shipped</td>
+<td>Conrad 2001</td>
+</tr>
+<tr>
+<td><code>renal_plasma_flow_baseline_ml_per_min</code></td>
+<td>Non-pregnant RPF</td>
+<td>600</td>
+<td>B</td>
+<td>shipped</td>
+<td>Dunlop 1981</td>
+</tr>
+<tr>
+<td><code>renal_plasma_flow_peak_ml_per_min</code></td>
+<td>Peak RPF</td>
+<td>900</td>
+<td>B</td>
+<td>shipped</td>
+<td>Dunlop 1981</td>
+</tr>
+<tr>
+<td><code>rpf_peak_week</code></td>
+<td>Week of RPF peak</td>
+<td>24</td>
+<td>B</td>
+<td>shipped</td>
+<td>Dunlop 1981</td>
+</tr>
+<tr>
+<td><code>filtration_fraction_term</code></td>
+<td>FF at term</td>
+<td>0.18</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>plasma_osmolality_drop_mosm_per_kg</code></td>
+<td>Osmolality drop</td>
+<td>10</td>
+<td>A</td>
+<td>shipped</td>
+<td>Davison 1981</td>
+</tr>
+<tr>
+<td><code>plasma_sodium_drop_meq_per_l</code></td>
+<td>Sodium drop</td>
+<td>5</td>
+<td>A</td>
+<td>shipped</td>
+<td>Davison 1981</td>
+</tr>
+<tr>
+<td><code>cumulative_sodium_retention_g</code></td>
+<td>Total Na retained</td>
+<td>1.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>bun_term_mg_per_dl</code></td>
+<td>Term BUN</td>
+<td>8</td>
+<td>A</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>plasma_uric_acid_nadir_mg_per_dl</code></td>
+<td>Mid-pregnancy uric-acid nadir</td>
+<td>3</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>plasma_uric_acid_term_mg_per_dl</code></td>
+<td>Term uric acid</td>
+<td>4.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>urinary_protein_excretion_term_mg_per_24h</code></td>
+<td>24h proteinuria</td>
+<td>150</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>urinary_glucose_term_mg_per_24h</code></td>
+<td>24h glucose</td>
+<td>90</td>
+<td>C</td>
+<td>shipped</td>
+<td>Davison 1974</td>
+</tr>
+<tr>
+<td><code>tubular_phosphate_threshold_term</code></td>
+<td>TmP/GFR ratio</td>
+<td>0.85</td>
+<td>C</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Davison 1981 (osmoregulation), Higby 1994 (24h
+urinary protein in normal pregnancy), Conrad 2001 (relaxin-driven GFR
+rise).</p>
+<p><strong>Out of scope:</strong> pre-eclampsia proteinuria, diabetic nephropathy,
+gestational AKI.</p>
+<h3 id="34-maternal_respiratory">3.4 <code>maternal_respiratory</code><a class="headerlink" href="#34-maternal_respiratory" title="Permanent link">&para;</a></h3>
+<p>Minute ventilation rises ~40% (chemoreceptor reset by progesterone),
+predominantly via tidal volume. Maternal PaCO₂ drops to ~30 mmHg;
+respiratory alkalosis compensated by renal bicarbonate loss.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minute_ventilation_term_l_per_min</code></td>
+<td>Term VE</td>
+<td>9.5</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>tidal_volume_term_ml</code></td>
+<td>Term VT</td>
+<td>600</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>paco2_term_mmhg</code></td>
+<td>Term PaCO₂</td>
+<td>30</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>pao2_term_mmhg</code></td>
+<td>Term PaO₂</td>
+<td>105</td>
+<td>B</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>frc_term_l</code></td>
+<td>FRC at term</td>
+<td>2.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>bicarbonate_term_meq_per_l</code></td>
+<td>Bicarb at term</td>
+<td>20</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>arterial_ph_term</code></td>
+<td>Term arterial pH</td>
+<td>7.44</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>baseline_tidal_volume_ml</code></td>
+<td>Non-pregnant VT</td>
+<td>450</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>baseline_respiratory_rate_bpm</code></td>
+<td>Non-pregnant RR</td>
+<td>16</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>term_respiratory_rate_bpm</code></td>
+<td>Term RR</td>
+<td>16</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>baseline_pao2_mmhg</code></td>
+<td>Non-pregnant PaO₂</td>
+<td>100</td>
+<td>A</td>
+<td>shipped</td>
+<td>Templeton 1976</td>
+</tr>
+<tr>
+<td><code>baseline_arterial_ph</code></td>
+<td>Non-pregnant pH</td>
+<td>7.40</td>
+<td>A</td>
+<td>shipped</td>
+<td>Lim 1976</td>
+</tr>
+<tr>
+<td><code>term_arterial_ph</code></td>
+<td>Term pH</td>
+<td>7.44</td>
+<td>A</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+<tr>
+<td><code>inspiratory_capacity_term_l</code></td>
+<td>IC at term</td>
+<td>2.7</td>
+<td>B</td>
+<td>shipped</td>
+<td>Crapo 1996</td>
+</tr>
+<tr>
+<td><code>tlc_term_l</code></td>
+<td>TLC at term</td>
+<td>5.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Crapo 1996</td>
+</tr>
+<tr>
+<td><code>dlco_term_ml_per_min_per_mmhg</code></td>
+<td>DLCO at term</td>
+<td>24</td>
+<td>C</td>
+<td>shipped</td>
+<td>Crapo 1996</td>
+</tr>
+<tr>
+<td><code>aa_o2_gradient_term_mmhg</code></td>
+<td>A-a gradient term</td>
+<td>13</td>
+<td>C</td>
+<td>shipped</td>
+<td>Crapo 1996</td>
+</tr>
+<tr>
+<td><code>vco2_term_ml_per_min</code></td>
+<td>Maternal VCO₂</td>
+<td>250</td>
+<td>B</td>
+<td>shipped</td>
+<td>LoMauro 2015</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Templeton 1976 (blood-gas during pregnancy), Lim
+1976 (acid-base), Crapo 1996 (DLCO reference).</p>
+<h3 id="35-maternal_endocrine-new-subsystem">3.5 <code>maternal_endocrine</code> (NEW subsystem)<a class="headerlink" href="#35-maternal_endocrine-new-subsystem" title="Permanent link">&para;</a></h3>
+<p>Cortisol triples; prolactin rises ~10x; aldosterone rises ~5–10x;
+thyroid axis adapts (hCG cross-reactivity suppresses TSH in T1; thyroid
+binding globulin rises; free T4 dips slightly); insulin sensitivity
+falls ~50%.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cortisol_term_ug_per_dl</code></td>
+<td>Term plasma cortisol</td>
+<td>30</td>
+<td>B</td>
+<td>shipped</td>
+<td>Allolio 1990</td>
+</tr>
+<tr>
+<td><code>cortisol_baseline_ug_per_dl</code></td>
+<td>Non-pregnant cortisol</td>
+<td>10</td>
+<td>A</td>
+<td>shipped</td>
+<td>Allolio 1990</td>
+</tr>
+<tr>
+<td><code>cbg_term_mg_per_l</code></td>
+<td>CBG at term</td>
+<td>70</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carr 1981</td>
+</tr>
+<tr>
+<td><code>free_t4_term_ng_per_dl</code></td>
+<td>Free T4 at term</td>
+<td>0.9</td>
+<td>B</td>
+<td>shipped</td>
+<td>Glinoer 1997</td>
+</tr>
+<tr>
+<td><code>tsh_t1_miu_per_l</code></td>
+<td>TSH in T1</td>
+<td>0.6</td>
+<td>B</td>
+<td>shipped</td>
+<td>Glinoer 1997</td>
+</tr>
+<tr>
+<td><code>tsh_term_miu_per_l</code></td>
+<td>TSH at term</td>
+<td>2.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Glinoer 1997</td>
+</tr>
+<tr>
+<td><code>prolactin_term_ng_per_ml</code></td>
+<td>Prolactin at term</td>
+<td>200</td>
+<td>B</td>
+<td>shipped</td>
+<td>Tulchinsky 1972</td>
+</tr>
+<tr>
+<td><code>aldosterone_term_ng_per_dl</code></td>
+<td>Aldosterone term</td>
+<td>40</td>
+<td>B</td>
+<td>shipped</td>
+<td>Cheung 2013</td>
+</tr>
+<tr>
+<td><code>renin_term_ng_per_ml_per_h</code></td>
+<td>PRA at term</td>
+<td>12</td>
+<td>B</td>
+<td>shipped</td>
+<td>Wilson 1980</td>
+</tr>
+<tr>
+<td><code>homa_ir_term</code></td>
+<td>HOMA-IR at term</td>
+<td>4.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Catalano 1991</td>
+</tr>
+<tr>
+<td><code>homa_ir_baseline</code></td>
+<td>Non-pregnant HOMA-IR</td>
+<td>2.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Catalano 1991</td>
+</tr>
+<tr>
+<td><code>placental_gh_term_ng_per_ml</code></td>
+<td>Placental GH at term</td>
+<td>14</td>
+<td>C</td>
+<td>shipped</td>
+<td>Eriksson 1989</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Carr 1981, Glinoer 1997, Tyson 1972, Wilson
+1980, Catalano 1991, Eriksson 1989.</p>
+<p><strong>Out of scope:</strong> thyroid disease in pregnancy; hyperemesis-related
+endocrinology; Cushing's; PCOS effects.</p>
+<h3 id="36-placental_structure">3.6 <code>placental_structure</code><a class="headerlink" href="#36-placental_structure" title="Permanent link">&para;</a></h3>
+<p>Surface area rises from ~3 m² mid-pregnancy to ~12 m² at term. Cord
+length ~55 cm. Capillary length is one of the most striking statistics
+in human biology — ~300 km in a term placenta.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>initial_area_m2</code></td>
+<td>Initial (early-pregnancy) area</td>
+<td>0.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+<tr>
+<td><code>term_area_m2</code></td>
+<td>Term area</td>
+<td>12.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+<tr>
+<td><code>growth_rate_per_week</code></td>
+<td>Logistic rate</td>
+<td>0.2</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+<tr>
+<td><code>midpoint_week</code></td>
+<td>Logistic midpoint</td>
+<td>24</td>
+<td>B</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+<tr>
+<td><code>term_weight_g</code></td>
+<td>Placental weight at term</td>
+<td>470</td>
+<td>A</td>
+<td>shipped</td>
+<td>Thompson 2007</td>
+</tr>
+<tr>
+<td><code>placental_thickness_term_cm</code></td>
+<td>Placental thickness</td>
+<td>2.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hoddick 1985</td>
+</tr>
+<tr>
+<td><code>cord_length_term_cm</code></td>
+<td>Term cord length</td>
+<td>55</td>
+<td>A</td>
+<td>shipped</td>
+<td>Naeye 1985</td>
+</tr>
+<tr>
+<td><code>cotyledon_count</code></td>
+<td>Number of cotyledons</td>
+<td>18</td>
+<td>B</td>
+<td>shipped</td>
+<td>Benirschke 2012</td>
+</tr>
+<tr>
+<td><code>villous_capillary_length_total_km_term</code></td>
+<td>Total capillary length</td>
+<td>300</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+<tr>
+<td><code>intervillous_space_volume_term_ml</code></td>
+<td>IVS volume at term</td>
+<td>175</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+<tr>
+<td><code>placenta_to_fetus_weight_ratio_term</code></td>
+<td>PW/FW ratio at term</td>
+<td>0.17</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hutcheon 2012</td>
+</tr>
+<tr>
+<td><code>allometric_coefficient_a</code></td>
+<td>PW = a·FW^b coefficient</td>
+<td>0.4</td>
+<td>C</td>
+<td>shipped</td>
+<td>Hutcheon 2012</td>
+</tr>
+<tr>
+<td><code>allometric_exponent_b</code></td>
+<td>PW = a·FW^b exponent</td>
+<td>0.85</td>
+<td>C</td>
+<td>shipped</td>
+<td>Hutcheon 2012</td>
+</tr>
+<tr>
+<td><code>igg_transfer_ratio_baseline</code></td>
+<td>FcRn IgG ratio (T1)</td>
+<td>0.2</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Palmeira 2012</td>
+</tr>
+<tr>
+<td><code>igg_transfer_ratio_term</code></td>
+<td>FcRn IgG ratio (term)</td>
+<td>1.2</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Palmeira 2012</td>
+</tr>
+<tr>
+<td><code>hsd2_cortisol_inactivation_fraction</code></td>
+<td>11β-HSD2 inactivation</td>
+<td>0.85</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Benediktsson 1997</td>
+</tr>
+<tr>
+<td><code>spiral_artery_count</code></td>
+<td>Spiral arteries supplying IVS</td>
+<td>100</td>
+<td>C</td>
+<td>shipped</td>
+<td>Pijnenborg 2006</td>
+</tr>
+<tr>
+<td><code>spiral_artery_diameter_term_mm</code></td>
+<td>Spiral artery diameter</td>
+<td>2.5</td>
+<td>C</td>
+<td>shipped</td>
+<td>Pijnenborg 2006</td>
+</tr>
+<tr>
+<td><code>syncytiotrophoblast_thickness_term_um</code></td>
+<td>Syncytium thickness</td>
+<td>4</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mayhew 2014</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Hoddick 1985, Naeye 1985, Benirschke 2012,
+Pijnenborg 2006.</p>
+<p><strong>Out of scope:</strong> preeclampsia spiral-artery remodelling failure
+(belongs in a derived dataset); placenta accreta/increta anatomy.</p>
+<h3 id="37-placental_gas_exchange">3.7 <code>placental_gas_exchange</code><a class="headerlink" href="#37-placental_gas_exchange" title="Permanent link">&para;</a></h3>
+<p>Intervillous PO₂ ~50 mmHg, umbilical vein PO₂ ~30 mmHg, umbilical
+artery PO₂ ~15 mmHg. CO₂ moves the other way; the maternal–fetal CO₂
+gradient is ~10 mmHg.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maternal_intervillous_po2_mmhg</code></td>
+<td>Intervillous PO₂</td>
+<td>50</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carter 2009</td>
+</tr>
+<tr>
+<td><code>gas_max_equilibration</code></td>
+<td>UV PO₂ / IVS PO₂</td>
+<td>0.6</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carter 2009</td>
+</tr>
+<tr>
+<td><code>umbilical_vein_po2_mmhg</code></td>
+<td>UV PO₂</td>
+<td>30</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carter 2009</td>
+</tr>
+<tr>
+<td><code>umbilical_artery_po2_mmhg</code></td>
+<td>UA PO₂</td>
+<td>15</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carter 2009</td>
+</tr>
+<tr>
+<td><code>o2_diffusing_capacity_term_ml_min_mmhg</code></td>
+<td>DO2 placenta</td>
+<td>6</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mayhew 1986</td>
+</tr>
+<tr>
+<td><code>co2_diffusing_capacity_term_ml_min_mmhg</code></td>
+<td>DCO2 placenta</td>
+<td>6</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mayhew 1986</td>
+</tr>
+<tr>
+<td><code>maternal_fetal_pco2_gradient_term_mmhg</code></td>
+<td>mPCO₂ − fPCO₂</td>
+<td>10</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mayhew 1986</td>
+</tr>
+<tr>
+<td><code>umbilical_vein_pco2_mmhg</code></td>
+<td>UV PCO₂</td>
+<td>40</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carter 2009</td>
+</tr>
+<tr>
+<td><code>umbilical_artery_pco2_mmhg</code></td>
+<td>UA PCO₂</td>
+<td>50</td>
+<td>B</td>
+<td>shipped</td>
+<td>Carter 2009</td>
+</tr>
+<tr>
+<td><code>spiral_artery_po2_estimate_mmhg</code></td>
+<td>Pre-IVS PO₂</td>
+<td>80</td>
+<td>C</td>
+<td>shipped</td>
+<td>Carter 2011</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Mayhew 1986, Carter 2011.</p>
+<h3 id="38-placental_glucose">3.8 <code>placental_glucose</code><a class="headerlink" href="#38-placental_glucose" title="Permanent link">&para;</a></h3>
+<p>GLUT1 (lower affinity, higher Vmax) on the syncytial basal membrane;
+GLUT3 (higher affinity) on the microvillous membrane. Maternal–fetal
+glucose gradient is the driver; fetal glucose is ~70% of maternal.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>glucose_glut1_km_mmol_per_l</code></td>
+<td>GLUT1 Km</td>
+<td>2.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Illsley 2000</td>
+</tr>
+<tr>
+<td><code>glucose_glut1_vmax_per_area_mmol_per_min_per_m2</code></td>
+<td>GLUT1 Vmax</td>
+<td>0.075</td>
+<td>B</td>
+<td>shipped</td>
+<td>Illsley 2000</td>
+</tr>
+<tr>
+<td><code>glucose_glut3_km_mmol_per_l</code></td>
+<td>GLUT3 Km</td>
+<td>1.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Illsley 2000</td>
+</tr>
+<tr>
+<td><code>glucose_glut3_vmax_per_area_mmol_per_min_per_m2</code></td>
+<td>GLUT3 Vmax</td>
+<td>0.02</td>
+<td>B</td>
+<td>shipped</td>
+<td>Illsley 2000</td>
+</tr>
+<tr>
+<td><code>maternal_fetal_glucose_gradient_term_mmol_per_l</code></td>
+<td>M-F glucose gradient</td>
+<td>1.2</td>
+<td>B</td>
+<td>shipped</td>
+<td>Illsley 2000</td>
+</tr>
+<tr>
+<td><code>net_glucose_flux_term_mg_per_kg_per_min</code></td>
+<td>Net glucose flux</td>
+<td>5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Illsley 2000</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> none. Illsley 2000 (already cited) covers
+every parameter in this subsystem. The originally-planned Cleal 2008
+and Hay 2006 turned out to be redundant and were not added; Cleal
+2008 was removed from <code>citations.json</code> once it became clear nothing
+referenced it.</p>
+<p><strong>Out of scope:</strong> gestational diabetes glucose kinetics; fetal hyperinsulinaemia.</p>
+<h3 id="39-placental_endocrine-new-subsystem">3.9 <code>placental_endocrine</code> (NEW subsystem)<a class="headerlink" href="#39-placental_endocrine-new-subsystem" title="Permanent link">&para;</a></h3>
+<p>The placenta is the largest endocrine organ a body ever hosts. hCG
+rescues the corpus luteum in T1, then yields to placental progesterone
+production. hPL accumulates linearly. Estriol is a fetal-placental
+co-production (placenta lacks 16α-hydroxylase).</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hcg_peak_miu_per_ml</code></td>
+<td>hCG peak</td>
+<td>100000</td>
+<td>A</td>
+<td>shipped</td>
+<td>Cole 2010</td>
+</tr>
+<tr>
+<td><code>hcg_peak_week</code></td>
+<td>Week of hCG peak</td>
+<td>10</td>
+<td>A</td>
+<td>shipped</td>
+<td>Cole 2010</td>
+</tr>
+<tr>
+<td><code>hcg_term_miu_per_ml</code></td>
+<td>hCG at term</td>
+<td>10000</td>
+<td>A</td>
+<td>shipped</td>
+<td>Cole 2010</td>
+</tr>
+<tr>
+<td><code>hpl_baseline_ug_per_ml</code></td>
+<td>hPL baseline (T1)</td>
+<td>0.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Handwerger 2010</td>
+</tr>
+<tr>
+<td><code>hpl_term_ug_per_ml</code></td>
+<td>hPL at term</td>
+<td>7</td>
+<td>B</td>
+<td>shipped</td>
+<td>Handwerger 2010</td>
+</tr>
+<tr>
+<td><code>progesterone_baseline_ng_per_ml</code></td>
+<td>Progesterone baseline</td>
+<td>10</td>
+<td>A</td>
+<td>shipped</td>
+<td>Tulchinsky 1972</td>
+</tr>
+<tr>
+<td><code>progesterone_term_ng_per_ml</code></td>
+<td>Progesterone term</td>
+<td>150</td>
+<td>A</td>
+<td>shipped</td>
+<td>Tulchinsky 1972</td>
+</tr>
+<tr>
+<td><code>estradiol_baseline_ng_per_ml</code></td>
+<td>Estradiol baseline</td>
+<td>0.1</td>
+<td>A</td>
+<td>shipped</td>
+<td>Tulchinsky 1972</td>
+</tr>
+<tr>
+<td><code>estradiol_term_ng_per_ml</code></td>
+<td>Estradiol term</td>
+<td>14</td>
+<td>A</td>
+<td>shipped</td>
+<td>Tulchinsky 1972</td>
+</tr>
+<tr>
+<td><code>estriol_term_ng_per_ml</code></td>
+<td>Estriol term</td>
+<td>10</td>
+<td>A</td>
+<td>shipped</td>
+<td>Tulchinsky 1972</td>
+</tr>
+<tr>
+<td><code>relaxin_t1_ng_per_ml</code></td>
+<td>Relaxin in T1</td>
+<td>1.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Conrad 2001</td>
+</tr>
+<tr>
+<td><code>leptin_term_ng_per_ml</code></td>
+<td>Leptin at term</td>
+<td>30</td>
+<td>B</td>
+<td>shipped</td>
+<td>Hardie 1997</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Cole 2010, Handwerger 2010, Tulchinsky 1972,
+Hardie 1997.</p>
+<h3 id="310-fetal_circulation">3.10 <code>fetal_circulation</code><a class="headerlink" href="#310-fetal_circulation" title="Permanent link">&para;</a></h3>
+<p>Fetal circulation is in parallel (not series): right and left ventricles
+both pump to the body, the combined ventricular output is ~450
+mL/min/kg, the RV does ~65% of it, and three shunts (ductus venosus,
+foramen ovale, ductus arteriosus) direct the best-oxygenated blood to
+the brain and heart.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fetal_p50_mmhg</code></td>
+<td>(cross-link to fetal_metabolism)</td>
+<td>19.5</td>
+<td>A</td>
+<td>shipped</td>
+<td>Bauer 1969</td>
+</tr>
+<tr>
+<td><code>umbilical_vein_flow_term_ml_per_min</code></td>
+<td>UV flow at term</td>
+<td>290</td>
+<td>B</td>
+<td>shipped</td>
+<td>Kiserud 2001</td>
+</tr>
+<tr>
+<td><code>umbilical_vein_flow_per_kg_term_ml_per_min_per_kg</code></td>
+<td>UV flow per kg</td>
+<td>80</td>
+<td>B</td>
+<td>shipped</td>
+<td>Kiserud 2001</td>
+</tr>
+<tr>
+<td><code>combined_ventricular_output_term_ml_per_min_per_kg</code></td>
+<td>CVO/kg</td>
+<td>450</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sutton 1991</td>
+</tr>
+<tr>
+<td><code>right_ventricular_output_fraction_term</code></td>
+<td>RV fraction of CVO</td>
+<td>0.60</td>
+<td>B</td>
+<td>shipped</td>
+<td>Sutton 1991</td>
+</tr>
+<tr>
+<td><code>ductus_venosus_shunt_fraction_mid_pregnancy</code></td>
+<td>DV shunt fraction (mid)</td>
+<td>0.30</td>
+<td>B</td>
+<td>shipped</td>
+<td>Kiserud 2000</td>
+</tr>
+<tr>
+<td><code>ductus_venosus_shunt_fraction_late_pregnancy</code></td>
+<td>DV shunt fraction (late)</td>
+<td>0.20</td>
+<td>B</td>
+<td>shipped</td>
+<td>Kiserud 2000</td>
+</tr>
+<tr>
+<td><code>foramen_ovale_streamline_preference</code></td>
+<td>FO streamline preference</td>
+<td>0.8</td>
+<td>B</td>
+<td>shipped</td>
+<td>Rudolph 1985</td>
+</tr>
+<tr>
+<td><code>ductus_arteriosus_share</code></td>
+<td>DA share of CVO</td>
+<td>0.85</td>
+<td>B</td>
+<td>shipped</td>
+<td>Rudolph 1985</td>
+</tr>
+<tr>
+<td><code>aortic_isthmus_flow_fraction_cvo_term</code></td>
+<td>Isthmus/CVO</td>
+<td>0.10</td>
+<td>C</td>
+<td>shipped</td>
+<td>Rudolph 1985</td>
+</tr>
+<tr>
+<td><code>coronary_flow_fraction_cvo_term</code></td>
+<td>Coronary/CVO</td>
+<td>0.03</td>
+<td>C</td>
+<td>shipped</td>
+<td>Rudolph 1985</td>
+</tr>
+<tr>
+<td><code>mca_flow_term_ml_per_min</code></td>
+<td>MCA flow term</td>
+<td>30</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mari 1995</td>
+</tr>
+<tr>
+<td><code>fhr_baseline_bpm</code></td>
+<td>FHR in T1</td>
+<td>170</td>
+<td>A</td>
+<td>shipped</td>
+<td>von Steinburg 2013</td>
+</tr>
+<tr>
+<td><code>fhr_term_bpm</code></td>
+<td>FHR at term</td>
+<td>140</td>
+<td>A</td>
+<td>shipped</td>
+<td>von Steinburg 2013</td>
+</tr>
+<tr>
+<td><code>ua_pi_baseline</code></td>
+<td>UA PI baseline</td>
+<td>1.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Acharya 2005</td>
+</tr>
+<tr>
+<td><code>ua_pi_term</code></td>
+<td>UA PI at term</td>
+<td>0.85</td>
+<td>B</td>
+<td>shipped</td>
+<td>Acharya 2005</td>
+</tr>
+<tr>
+<td><code>mca_pi_baseline</code></td>
+<td>MCA PI baseline</td>
+<td>1.4</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mari 1995</td>
+</tr>
+<tr>
+<td><code>mca_pi_peak</code></td>
+<td>MCA PI peak</td>
+<td>1.9</td>
+<td>C</td>
+<td>shipped</td>
+<td>Mari 1995</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Kiserud 2001, Rudolph 1985, Sutton 1991, Mari
+1995, von Steinburg 2013, Acharya 2005.</p>
+<h3 id="311-fetal_growth">3.11 <code>fetal_growth</code><a class="headerlink" href="#311-fetal_growth" title="Permanent link">&para;</a></h3>
+<p>Hadlock biometry (BPD, HC, AC, FL → EFW) is the standard worldwide.
+The NICHD Buck Louis 2015 cohort provides race-stratified longitudinal
+curves; we use the all-cohort means at 4-week resolution.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>efw_20w_g</code></td>
+<td>EFW at 20w</td>
+<td>330</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>efw_28w_g</code></td>
+<td>EFW at 28w</td>
+<td>1100</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>efw_36w_g</code></td>
+<td>EFW at 36w</td>
+<td>2800</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>efw_40w_g</code></td>
+<td>EFW at term</td>
+<td>3500</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_28w_mm</code></td>
+<td>BPD at 28w</td>
+<td>71</td>
+<td>A</td>
+<td>shipped</td>
+<td>Hadlock 1982</td>
+</tr>
+<tr>
+<td><code>fl_28w_mm</code></td>
+<td>FL at 28w</td>
+<td>53</td>
+<td>A</td>
+<td>shipped</td>
+<td>Hadlock 1982</td>
+</tr>
+<tr>
+<td><code>hadlock_coefficient</code></td>
+<td>Pseudo-parameter</td>
+<td>—</td>
+<td>A</td>
+<td>shipped</td>
+<td>Hadlock 1991</td>
+</tr>
+<tr>
+<td><code>efw_16w_g</code></td>
+<td>EFW at 16w</td>
+<td>145</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>efw_24w_g</code></td>
+<td>EFW at 24w</td>
+<td>650</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>efw_32w_g</code></td>
+<td>EFW at 32w</td>
+<td>1800</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_16w_mm</code></td>
+<td>BPD at 16w</td>
+<td>35</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_20w_mm</code></td>
+<td>BPD at 20w</td>
+<td>47</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_24w_mm</code></td>
+<td>BPD at 24w</td>
+<td>61</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_32w_mm</code></td>
+<td>BPD at 32w</td>
+<td>82</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_36w_mm</code></td>
+<td>BPD at 36w</td>
+<td>89</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>bpd_40w_mm</code></td>
+<td>BPD at 40w</td>
+<td>93</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_16w_mm</code></td>
+<td>HC at 16w</td>
+<td>124</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_20w_mm</code></td>
+<td>HC at 20w</td>
+<td>175</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_24w_mm</code></td>
+<td>HC at 24w</td>
+<td>225</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_28w_mm</code></td>
+<td>HC at 28w</td>
+<td>267</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_32w_mm</code></td>
+<td>HC at 32w</td>
+<td>297</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_36w_mm</code></td>
+<td>HC at 36w</td>
+<td>322</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>hc_40w_mm</code></td>
+<td>HC at 40w</td>
+<td>343</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_16w_mm</code></td>
+<td>AC at 16w</td>
+<td>105</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_20w_mm</code></td>
+<td>AC at 20w</td>
+<td>152</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_24w_mm</code></td>
+<td>AC at 24w</td>
+<td>198</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_28w_mm</code></td>
+<td>AC at 28w</td>
+<td>240</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_32w_mm</code></td>
+<td>AC at 32w</td>
+<td>282</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_36w_mm</code></td>
+<td>AC at 36w</td>
+<td>322</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>ac_40w_mm</code></td>
+<td>AC at 40w</td>
+<td>354</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>fl_16w_mm</code></td>
+<td>FL at 16w</td>
+<td>21</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>fl_20w_mm</code></td>
+<td>FL at 20w</td>
+<td>33</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>fl_24w_mm</code></td>
+<td>FL at 24w</td>
+<td>44</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>fl_32w_mm</code></td>
+<td>FL at 32w</td>
+<td>62</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>fl_36w_mm</code></td>
+<td>FL at 36w</td>
+<td>70</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+<tr>
+<td><code>fl_40w_mm</code></td>
+<td>FL at 40w</td>
+<td>76</td>
+<td>A</td>
+<td>shipped</td>
+<td>Buck Louis 2015</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> none (Buck Louis 2015 + Hadlock 1991 cover it).</p>
+<h3 id="312-fetal_metabolism">3.12 <code>fetal_metabolism</code><a class="headerlink" href="#312-fetal_metabolism" title="Permanent link">&para;</a></h3>
+<p>Fetal blood is intrinsically more acidic and more lactate-rich than
+maternal (it accepts CO₂; it has limited gluconeogenic capacity).
+Fetal cortisol rises late and is thought to be one of the initiators
+of parturition.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fetal_p50_mmhg</code></td>
+<td>HbF P50</td>
+<td>19.5</td>
+<td>A</td>
+<td>shipped</td>
+<td>Bauer 1969</td>
+</tr>
+<tr>
+<td><code>fetal_haematocrit_term_pct</code></td>
+<td>Fetal Hct term</td>
+<td>50</td>
+<td>A</td>
+<td>shipped</td>
+<td>Saling 1968</td>
+</tr>
+<tr>
+<td><code>fetal_haemoglobin_term_g_per_dl</code></td>
+<td>Fetal Hb term</td>
+<td>17</td>
+<td>A</td>
+<td>shipped</td>
+<td>Saling 1968</td>
+</tr>
+<tr>
+<td><code>fetal_oxygen_consumption_ml_per_kg_per_min</code></td>
+<td>VO₂/kg fetal</td>
+<td>8</td>
+<td>B</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>umbilical_artery_ph_term</code></td>
+<td>UA pH at term</td>
+<td>7.27</td>
+<td>B</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>umbilical_vein_ph_term</code></td>
+<td>UV pH at term</td>
+<td>7.34</td>
+<td>B</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>umbilical_artery_lactate_term_mmol_per_l</code></td>
+<td>UA lactate</td>
+<td>3.5</td>
+<td>C</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>fetal_glucose_term_mmol_per_l</code></td>
+<td>Fetal glucose</td>
+<td>3.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>fetal_insulin_term_pmol_per_l</code></td>
+<td>Term fetal insulin</td>
+<td>50</td>
+<td>C</td>
+<td>shipped</td>
+<td>Economides 1989</td>
+</tr>
+<tr>
+<td><code>fetal_cortisol_term_ug_per_dl</code></td>
+<td>Term fetal cortisol</td>
+<td>15</td>
+<td>C</td>
+<td>shipped</td>
+<td>Murphy 1973</td>
+</tr>
+<tr>
+<td><code>fetal_core_temperature_c_term</code></td>
+<td>Fetal core temp</td>
+<td>37.6</td>
+<td>B</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>fetal_urine_output_ml_per_kg_h_term</code></td>
+<td>Fetal urine output</td>
+<td>50</td>
+<td>C</td>
+<td>shipped</td>
+<td>Battaglia 1986</td>
+</tr>
+<tr>
+<td><code>pulmonary_fluid_net_rate_baseline_ml_per_kg_h</code></td>
+<td>Lung-liquid secretion (mid)</td>
+<td>5</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Strang 1991</td>
+</tr>
+<tr>
+<td><code>pulmonary_fluid_net_rate_term_ml_per_kg_h</code></td>
+<td>Lung-liquid net rate (term)</td>
+<td>-5</td>
+<td>D</td>
+<td>shipped (hypothesis-only)</td>
+<td>Strang 1991</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> Westgren 1995, Economides 1989, Murphy 1973,
+Asakura 2004, Rabinowitz 1989.</p>
+<h3 id="313-amniotic_fluid-new-subsystem">3.13 <code>amniotic_fluid</code> (NEW subsystem)<a class="headerlink" href="#313-amniotic_fluid-new-subsystem" title="Permanent link">&para;</a></h3>
+<p>AFV rises through 32–34 weeks (~800 mL peak) and declines toward term.
+Composition shifts: glucose falls, creatinine rises, osmolality falls
+modestly as fetal urine dominates the source.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter id</th>
+<th>What</th>
+<th>Typical</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Primary citation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>afv_peak_ml</code></td>
+<td>AFV peak volume</td>
+<td>800</td>
+<td>A</td>
+<td>shipped</td>
+<td>Brace 1989</td>
+</tr>
+<tr>
+<td><code>afv_peak_week</code></td>
+<td>Week of AFV peak</td>
+<td>33</td>
+<td>A</td>
+<td>shipped</td>
+<td>Brace 1989</td>
+</tr>
+<tr>
+<td><code>afv_term_ml</code></td>
+<td>AFV at term</td>
+<td>600</td>
+<td>A</td>
+<td>shipped</td>
+<td>Brace 1989</td>
+</tr>
+<tr>
+<td><code>afv_20w_ml</code></td>
+<td>AFV at 20w</td>
+<td>350</td>
+<td>A</td>
+<td>shipped</td>
+<td>Brace 1989</td>
+</tr>
+<tr>
+<td><code>afv_early_baseline_ml</code></td>
+<td>AFV early-pregnancy baseline</td>
+<td>100</td>
+<td>B</td>
+<td>shipped</td>
+<td>Brace 1989</td>
+</tr>
+<tr>
+<td><code>afv_spread_weeks</code></td>
+<td>AFV piecewise spread</td>
+<td>9</td>
+<td>C</td>
+<td>shipped</td>
+<td>Brace 1989</td>
+</tr>
+<tr>
+<td><code>af_glucose_term_mmol_per_l</code></td>
+<td>AF glucose term</td>
+<td>0.5</td>
+<td>B</td>
+<td>shipped</td>
+<td>Underwood 2005</td>
+</tr>
+<tr>
+<td><code>af_lactate_term_mmol_per_l</code></td>
+<td>AF lactate term</td>
+<td>4</td>
+<td>B</td>
+<td>shipped</td>
+<td>Underwood 2005</td>
+</tr>
+<tr>
+<td><code>af_creatinine_term_mg_per_dl</code></td>
+<td>AF creatinine term</td>
+<td>2.0</td>
+<td>B</td>
+<td>shipped</td>
+<td>Underwood 2005</td>
+</tr>
+<tr>
+<td><code>af_osmolality_term_mosm_per_kg</code></td>
+<td>AF osmolality</td>
+<td>260</td>
+<td>B</td>
+<td>shipped</td>
+<td>Underwood 2005</td>
+</tr>
+<tr>
+<td><code>fetal_swallowing_term_ml_per_24h</code></td>
+<td>Fetal swallow rate</td>
+<td>700</td>
+<td>C</td>
+<td>shipped</td>
+<td>Pritchard 1966</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Citations needed:</strong> none. Brace 1989, Underwood 2005, and
+Pritchard 1966 cover the subsystem (Underwood 2005 substituted for
+the originally-planned Magann 2007 AF-chemistry citation, whose
+precise identity could not be verified).</p>
+<h2 id="4-citation-catalog-full">4. Citation catalog (full)<a class="headerlink" href="#4-citation-catalog-full" title="Permanent link">&para;</a></h2>
+<p>The dataset contains <strong>66 citations</strong> (every entry listed below
+that is checked off has a corresponding <code>citations.json</code> record).
+Three originally-planned-but-superseded entries were never added
+(Larsson 2008, Pitkin 1979, Higby 1994); one more was added then
+later removed as an orphan once the underlying parameter sourced
+from another paper (Cleal 2008). Two further early-curation entries
+(Avery &amp; Mead 1959 surfactant, Burri 2006 lung development) sat
+unused in <code>citations.json</code> from the v0.2-era prototype and were
+removed in the same orphan cleanup. The lists are the original
+catalog plan; ✓ marks citations that are in <code>citations.json</code> today.</p>
+<h3 id="phase-1-citations">Phase 1 citations<a class="headerlink" href="#phase-1-citations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✓ Kline 2005 — D-dimer in pregnancy</li>
+<li>✓ Templeton 1976 — blood gases in pregnancy</li>
+<li>✓ Lim 1976 — acid-base in pregnancy</li>
+<li>✓ Conrad 2001 — relaxin-driven GFR rise</li>
+</ul>
+<h3 id="phase-2-citations-25-new">Phase 2 citations (~25 new)<a class="headerlink" href="#phase-2-citations-25-new" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✓ Stirling 1984 — clotting factors longitudinal</li>
+<li>✓ Faught 1995 — protein S/C/AT in pregnancy</li>
+<li>✓ Davison 1981 — osmoregulation in pregnancy</li>
+<li>✓ Carr 1981 — cortisol/CBG in pregnancy</li>
+<li>✓ Glinoer 1997 — thyroid axis in pregnancy</li>
+<li>✓ Tyson 1972 — prolactin in pregnancy</li>
+<li>✓ Wilson 1980 — renin-aldosterone in pregnancy (PRA at term; Cheung 2013 corroborates)</li>
+<li>✓ Catalano 1991 — HOMA-IR / insulin sensitivity</li>
+<li>✓ Cole 2010 — hCG kinetics</li>
+<li>✓ Handwerger 2010 — hPL</li>
+<li>✓ Tulchinsky 1972 — steroid hormones in pregnancy</li>
+<li>✓ Hoddick 1985 — placental thickness ultrasound</li>
+<li>✓ Naeye 1985 — umbilical cord length</li>
+<li>✓ Mayhew 1986 — placental diffusing capacity (also supplies the
+  pre-IVS spiral-artery PO₂ via Carter &amp; Pijnenborg 2011)</li>
+<li>✓ Battaglia 1986 — fetal substrate metabolism (textbook; also
+  supplies fetal scalp blood gases, fetal urine output, and fetal
+  temperature — the originally-planned Westgren 1995 / Rabinowitz
+  1989 / Asakura 2004 entries were redundant and never added)</li>
+<li>✓ Kiserud 2001 — umbilical vein flow Doppler</li>
+<li>✓ Rudolph 1985 — fetal circulation distribution</li>
+<li>✓ von Steinburg 2013 — fetal heart rate longitudinal</li>
+<li>✓ Brace 1989 — AFV regulation</li>
+</ul>
+<h3 id="phase-3-citations">Phase 3 citations<a class="headerlink" href="#phase-3-citations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✓ Kruithof 1987 — PAI-1/PAI-2</li>
+<li>✓ Crapo 1996 — DLCO reference</li>
+<li>✓ Eriksson 1989 — placental GH</li>
+<li>✓ Benirschke 2012 — placental anatomy textbook</li>
+<li>✓ Pijnenborg 2006 — spiral artery anatomy</li>
+<li>✓ Sutton 1991 — fetal aortic isthmus</li>
+<li>✓ Mari 1995 — MCA Doppler</li>
+<li>✓ Acharya 2005 — umbilical artery PI</li>
+<li>✓ Hardie 1997 — leptin in pregnancy</li>
+<li>✓ Economides 1989 — fetal endocrine</li>
+<li>✓ Murphy 1973 — fetal cortisol</li>
+<li>✓ Underwood 2005 — amniotic-fluid biochemistry review (substituted
+  for the originally-listed Magann 2007, whose precise AF-chemistry
+  paper could not be verified)</li>
+<li>✓ Pritchard 1966 — fetal swallowing</li>
+<li><em>(Robson 1989 was originally planned as the LV-mass-in-pregnancy
+  source; Sanghavi &amp; Rutherford 2014 already covers it and was used
+  instead.)</em></li>
+</ul>
+<h3 id="additional-citations-landed-outside-the-original-phase-plan">Additional citations landed (outside the original phase plan)<a class="headerlink" href="#additional-citations-landed-outside-the-original-phase-plan" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✓ Bianchi 1996 — fetal microchimerism (hypothesis-only)</li>
+<li>✓ Strang 1991 — fetal lung liquid secretion/reabsorption (hypothesis-only)</li>
+<li>✓ Palmeira 2012 — placental IgG transfer (hypothesis-only)</li>
+<li>✓ Benediktsson 1997 — placental 11β-HSD2 (hypothesis-only)</li>
+<li>✓ Hutcheon 2012 — placental weight allometry</li>
+<li>✓ Burton 2010 — placental development</li>
+</ul>
+<h2 id="5-schema-level-changes-implied-by-this-catalog">5. Schema-level changes implied by this catalog<a class="headerlink" href="#5-schema-level-changes-implied-by-this-catalog" title="Permanent link">&para;</a></h2>
+<p>Three new subsystems are introduced (<code>maternal_endocrine</code>,
+<code>placental_endocrine</code>, <code>amniotic_fluid</code>). The <code>subsystem</code> enum in
+<code>dataset/schema/parameter.schema.json</code> is extended additively — no
+breaking change for existing consumers.</p>
+<p>No other schema fields are added. Value units, trajectory shapes,
+extraction blocks, and applicability blocks already cover everything
+in the catalog.</p>
+<h2 id="6-verification-budget">6. Verification budget<a class="headerlink" href="#6-verification-budget" title="Permanent link">&para;</a></h2>
+<p>If every catalogued parameter ships at its anticipated tier and review
+status, the total dataset would contain:</p>
+<ul>
+<li>Tier A: ~80 parameters</li>
+<li>Tier B: ~100 parameters</li>
+<li>Tier C: ~30 parameters</li>
+<li>Tier D: 0 (the catalog deliberately does not include hypothetical
+  channels — those live in spec 03's Phase C)</li>
+</ul>
+<p>Reaching <code>review_status: verified</code> for all Tier A/B entries requires
+~80–100 hours of careful, paywall-tolerant curation. That is the honest
+solo-maintainer cost of completing the project to its declared ceiling.</p>
+<h2 id="7-explicit-non-goals-final-locked">7. Explicit non-goals (final, locked)<a class="headerlink" href="#7-explicit-non-goals-final-locked" title="Permanent link">&para;</a></h2>
+<p>Listed once more so this doc can stand alone:</p>
+<ul>
+<li><strong>Pre-eclampsia, FGR, gestational diabetes, infection, stillbirth,
+  PPH, drug exposure, PK</strong> — derived datasets, not this one.</li>
+<li><strong>Twin / higher-order pregnancy</strong> — its own dataset.</li>
+<li><strong>Embryology &lt; 8w, labour, postpartum</strong> — out of scope.</li>
+<li><strong>Animal data</strong> — even where excellent.</li>
+<li><strong>Pathophysiology and clinical decision support</strong> — forever out of
+  scope. Researchers build those on top of nidus, not inside it.</li>
+</ul>
+<p>The boundary is not capability. It is honest scope.</p>
+<h2 id="8-living-document-policy">8. Living-document policy<a class="headerlink" href="#8-living-document-policy" title="Permanent link">&para;</a></h2>
+<p>This catalog is updated when:</p>
+<ul>
+<li>A new parameter ships → status moves from <code>phaseN</code> to <code>shipped</code>.</li>
+<li>A new citation lands → moves from "needed" to "in dataset".</li>
+<li>A new gap is identified → added with <code>phaseN</code> status and a draft
+  citation.</li>
+</ul>
+<p>The catalog is the <em>index</em>; the dataset JSON is the <em>truth</em>. If they
+disagree, the JSON wins and this doc gets corrected.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/clay-good/nidus" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/nidus/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.action.edit", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2755 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Curated dataset of human gestational physiology parameters, annotated with explicit confidence tiers.">
+      
+      
+      
+        <link rel="canonical" href="https://claygood.github.io/nidus/specs/v0.4/01-mechanistic-modeling-interop/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Spec 01 — Mechanistic-Modeling Interop: SBML, CellML, PhysioCell - Nidus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spec-01-mechanistic-modeling-interop-sbml-cellml-physiocell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Nidus" class="md-header__button md-logo" aria-label="Nidus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nidus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spec 01 — Mechanistic-Modeling Interop: SBML, CellML, PhysioCell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/clay-good/nidus" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    clay-good/nidus
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/install/" class="md-tabs__link">
+          
+  
+  
+  Getting started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../dataset/overview/" class="md-tabs__link">
+          
+  
+  
+  Dataset
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tutorials/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../exports/" class="md-tabs__link">
+          
+  
+  
+  Exports
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../api/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  API reference
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contributing/overview/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about/design/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Nidus" class="md-nav__button md-logo" aria-label="Nidus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nidus
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/clay-good/nidus" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    clay-good/nidus
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dataset
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dataset
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/tiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/subsystems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subsystems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dataset/verified-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verified examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/01_parameter_explorer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 — Parameter Explorer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/02_tier_walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 — Tier Walkthrough
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/03_uncertainty_propagation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 — Uncertainty Propagation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notebooks/04_citation_provenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 — Citation Provenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/sbml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SBML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/cellml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CellML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/physicell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PhysioCell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../exports/annotations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annotations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/verification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verification standard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/tier-assignment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier assignment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v0.3 design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    History
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/essay/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Essay — confidence tiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Goal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-this-is-the-right-move-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Why this is the right move now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-scope-what-gets-exported" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Scope: what gets exported
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Scope: what gets exported">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-the-submodels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 The submodels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-what-does-not-get-exported" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 What does NOT get exported
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-per-platform-deliverables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Per-platform deliverables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Per-platform deliverables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sbml-l3v2-comp-package-biomodels-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 SBML L3v2 + comp package → BioModels Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cellml-20-physiome-model-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 CellML 2.0 → Physiome Model Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-physiocell-parameters-worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 PhysioCell parameters + worked example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-annotation-strategy-cross-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Annotation strategy (cross-format)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Annotation strategy (cross-format)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-miriam-bqbiolisdescribedby" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 MIRIAM bqbiol:isDescribedBy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-sbo-systems-biology-ontology-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 SBO (Systems Biology Ontology) terms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-custom-nidus-predicates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Custom nidus: predicates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Validation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-static-schema-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Static schema validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-round-trip-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Round-trip simulation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-miriam-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 MIRIAM compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-generation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Generation pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-submission-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Submission workflow
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Submission workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-biomodels-database-sbml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 BioModels Database (SBML)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-physiome-model-repository-cellml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Physiome Model Repository (CellML)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-physiocell-community-channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 PhysioCell community channels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-maintenance-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Maintenance pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-tooling-and-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Tooling and dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-risks-and-honest-mitigations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Risks and honest mitigations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Timeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-success-criteria-for-v040" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Success criteria for v0.4.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-open-questions-resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Open questions — resolved
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-additional-scope-from-the-resolved-open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Additional scope from the resolved open questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. Additional scope from the resolved open questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#171-top-level-composed-pregnancy-model-added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.1 Top-level composed pregnancy model (added)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#172-real-physiocell-tissue-example-added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.2 Real PhysioCell tissue example (added)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#173-cellml-11-fallback-added" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.3 CellML 1.1 fallback (added)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#174-deferred-to-post-v04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17.4 Deferred to post-v0.4
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/clay-good/nidus/edit/main/docs/specs/v0.4/01-mechanistic-modeling-interop.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="spec-01-mechanistic-modeling-interop-sbml-cellml-physiocell">Spec 01 — Mechanistic-Modeling Interop: SBML, CellML, PhysioCell<a class="headerlink" href="#spec-01-mechanistic-modeling-interop-sbml-cellml-physiocell" title="Permanent link">&para;</a></h1>
+<p><strong>Status:</strong> Engineering <strong>code-complete.</strong> All <strong>41</strong> registered submodels (the original 10 of §3.1 plus the 31 added per <a href="../03-submodel-expansion-catalog/"><code>03-submodel-expansion-catalog.md</code></a>) export to all three formats: SBML L3v2 (libSBML consistency-check clean), CellML 2.0 with 1.1 fallback (<code>libcellml.Validator</code> clean), and PhysioCell <code>&lt;user_parameters&gt;</code>. The top-level composed pregnancy model (flat SBML compose over a shared gestational-time axis), the COMBINE <code>.omex</code> archive, the SED-ML simulation descriptors, and a real PhysioCell placental-villous tissue example all ship. <code>nidus export --format {sbml,cellml,physiocell,composed,omex} [--cellml-version {2.0,1.1}] --output &lt;dir&gt;</code> works end-to-end and is covered by 300+ tests at 98%+ coverage. Open questions all resolved (see §16). Remaining work is <strong>submission/social only</strong> (see §15): BioModels Database submission, Physiome Model Repository workspace, the <code>MathCancer/PhysiCell-tutorials</code> PR, and the v0.4.0 Zenodo deposit — none of which is engineering. The §3.1 table below describes the <em>original</em> 10-submodel scope and is kept as design history; the live registry is the source of truth (<code>nidus.export.SUBMODELS</code>).
+<strong>Target release:</strong> <code>v0.4.0</code>.
+<strong>Supersedes:</strong> the earlier <code>v0.3/02-sbml-cellml-export.md</code> (now deleted; preserved in git history).
+<strong>Depends on:</strong> v0.3.0 shipped (dataset stable, schemas frozen).</p>
+<hr />
+<h2 id="1-goal">1. Goal<a class="headerlink" href="#1-goal" title="Permanent link">&para;</a></h2>
+<p>Make the nidus dataset directly consumable in the three platforms the
+computational-physiology community already uses to build mechanistic
+models of gestational physiology:</p>
+<ol>
+<li><strong>SBML</strong> (Systems Biology Markup Language) — submitted to the
+   <strong>BioModels Database</strong> at EMBL-EBI.</li>
+<li><strong>CellML 2.0</strong> — submitted to the <strong>Physiome Model Repository</strong> at
+   the Auckland Bioengineering Institute.</li>
+<li><strong>PhysioCell</strong> — distributed as a drop-in <code>parameters.xml</code> plus a
+   worked example, with announcement on the PhysioCell community
+   channels.</li>
+</ol>
+<p>Each platform's audience is small. Each is the right place to reach
+the researchers who actually do mechanistic gestational modelling.</p>
+<h2 id="2-why-this-is-the-right-move-now">2. Why this is the right move now<a class="headerlink" href="#2-why-this-is-the-right-move-now" title="Permanent link">&para;</a></h2>
+<p>The earlier conditional-spec for SBML/CellML was conservative about
+maintenance load. The project owner has clarified that <strong>maintenance
+is not the binding constraint; community adoption is</strong>. Under that
+constraint, integrating with the platforms researchers already use is
+strictly better than waiting for them to discover the Python API.</p>
+<p>The dataset stays the centerpiece. The exported models are presentation
+layers — the same dataset, projected into the formats each community
+consumes natively.</p>
+<h2 id="3-scope-what-gets-exported">3. Scope: what gets exported<a class="headerlink" href="#3-scope-what-gets-exported" title="Permanent link">&para;</a></h2>
+<p>For each exportable submodel, we ship one SBML file, one CellML file,
+one PhysioCell-parameters entry, and one combined COMBINE archive
+(for SBML/CellML). Each exported model is annotated with MIRIAM
+references back to the cited primary literature plus custom RDF
+predicates for the nidus confidence tier.</p>
+<h3 id="31-the-submodels">3.1 The submodels<a class="headerlink" href="#31-the-submodels" title="Permanent link">&para;</a></h3>
+<p>Ten submodels derived directly from current dataset records:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Submodel</th>
+<th>Mathematical form</th>
+<th>Tier</th>
+<th>Source parameters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Placental villous surface-area growth</td>
+<td>Logistic ODE: <code>dA/dt = r·A·(1 − A/K)</code></td>
+<td>B</td>
+<td><code>placental_structure.{initial_area_m2, term_area_m2, growth_rate_per_week, midpoint_week}</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Maternal cardiac output trajectory</td>
+<td>Algebraic Gaussian: <code>CO(t) = base + A·exp(−((t−μ)/σ)²)</code></td>
+<td>B</td>
+<td><code>maternal_cardiovascular.{baseline_cardiac_output_l_per_min, peak_excess_cardiac_output_l_per_min, cardiac_output_peak_week, cardiac_output_spread_weeks}</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Maternal MAP trajectory</td>
+<td>Algebraic Gaussian (nadir form)</td>
+<td>B</td>
+<td><code>maternal_cardiovascular.{baseline_map_mmhg, map_nadir_drop_mmhg, map_nadir_week, map_spread_weeks}</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Uterine artery flow growth</td>
+<td>Logistic: <code>Q(t) = baseline + (term − baseline)·logistic(k(t−t₀))</code></td>
+<td>C</td>
+<td><code>maternal_cardiovascular.{baseline_uterine_flow_ml_per_min, term_uterine_flow_ml_per_min, uterine_flow_growth_rate_per_week}</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Placental glucose transport (GLUT1)</td>
+<td>Michaelis-Menten: <code>V = V_max·[S] / (K_m + [S])</code></td>
+<td>B</td>
+<td><code>placental_glucose.{glucose_glut1_km_mmol_per_l, glucose_glut1_vmax_per_area_mmol_per_min_per_m2}</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Placental glucose transport (GLUT3)</td>
+<td>Michaelis-Menten (high-affinity isoform)</td>
+<td>B/C</td>
+<td><code>placental_glucose.{glucose_glut3_km_mmol_per_l, glucose_glut3_vmax_per_area_mmol_per_min_per_m2}</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Venous-equilibrator O₂ exchange</td>
+<td>Algebraic equilibrium between umbilical-vein and intervillous-space PO₂</td>
+<td>C</td>
+<td><code>placental_gas_exchange.{gas_half_saturation_area_m2, gas_max_equilibration}</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>O₂-Hb dissociation (Severinghaus form)</td>
+<td>Algebraic: <code>S = ((PO₂³ + 150·PO₂)⁻¹·23400 + 1)⁻¹</code></td>
+<td>A</td>
+<td><code>maternal_blood.{o2_hb_p50_maternal, o2_hb_hill_coefficient_maternal, oxyhb_bohr_coefficient}</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Maternal plasma-volume expansion</td>
+<td>Algebraic over gestational age (per de Haas 2017 meta)</td>
+<td>B</td>
+<td><code>maternal_blood.{plasma_volume_l, plasma_volume_early_l}</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Hadlock fetal-weight standard</td>
+<td>Log-regression algebraic: <code>log₁₀(W) = a + b·BPD + c·AC + d·FL</code></td>
+<td>A</td>
+<td><code>fetal_growth.{hadlock_coefficient, efw_*_g}</code></td>
+</tr>
+</tbody>
+</table>
+<p>The selection criterion: each submodel is <strong>mechanistic enough</strong> to
+express as either a true ODE or a published algebraic relationship.
+Pure tabular records (e.g. specific EFW at a specific week) appear as
+parameter values inside the relevant model, not as standalone models.</p>
+<h3 id="32-what-does-not-get-exported">3.2 What does NOT get exported<a class="headerlink" href="#32-what-does-not-get-exported" title="Permanent link">&para;</a></h3>
+<p>Stated explicitly to anchor the scope:</p>
+<ul>
+<li><strong>The dataset itself.</strong> SBML/CellML are not data interchange
+  formats; downstream users still pull the JSON dataset for raw
+  parameter values + uncertainty bounds.</li>
+<li><strong>Tier D entries.</strong> By definition there is no quantitative model
+  to export.</li>
+<li><strong>Discrete decision logic</strong> (e.g. fetal shunt routing as a
+  decision tree). SBML and CellML cannot express discrete state
+  machines without overstatement.</li>
+<li><strong>Multi-cohort or multi-population stratifications.</strong> Each
+  exported model uses the dataset's central + sigma; race/ethnicity
+  stratifications stay in the JSON dataset.</li>
+</ul>
+<h2 id="4-per-platform-deliverables">4. Per-platform deliverables<a class="headerlink" href="#4-per-platform-deliverables" title="Permanent link">&para;</a></h2>
+<h3 id="41-sbml-l3v2-comp-package-biomodels-database">4.1 SBML L3v2 + <code>comp</code> package → BioModels Database<a class="headerlink" href="#41-sbml-l3v2-comp-package-biomodels-database" title="Permanent link">&para;</a></h3>
+<p><strong>Format</strong>: SBML Level 3 Version 2 (current standard). The <code>comp</code>
+(hierarchical model composition) package allows assembling
+submodels into a top-level model when downstream users want to
+compose them.</p>
+<p><strong>Files produced</strong> (under <code>exports/sbml/</code>):</p>
+<ul>
+<li><code>placental_villous_growth.xml</code> — submodel 1</li>
+<li><code>maternal_cardiac_output.xml</code> — submodel 2</li>
+<li><code>maternal_map.xml</code> — submodel 3</li>
+<li><code>uterine_flow.xml</code> — submodel 4</li>
+<li><code>placental_glucose_glut1.xml</code> — submodel 5</li>
+<li><code>placental_glucose_glut3.xml</code> — submodel 6</li>
+<li><code>placental_o2_exchange.xml</code> — submodel 7</li>
+<li><code>o2hb_dissociation.xml</code> — submodel 8</li>
+<li><code>plasma_volume_expansion.xml</code> — submodel 9</li>
+<li><code>hadlock_fetal_weight.xml</code> — submodel 10</li>
+<li><code>nidus_pregnancy_v04.combine.omex</code> — bundled COMBINE archive
+  containing all of the above plus per-model SED-ML descriptions for
+  the canonical simulation experiments.</li>
+</ul>
+<p><strong>Submission</strong>: BioModels Database submission portal
+(<a href="https://www.ebi.ac.uk/biomodels/submit">https://www.ebi.ac.uk/biomodels/submit</a>). Each model gets a
+<code>BIOMD0000000XXX</code> accession after curator review (4–8 weeks). The
+COMBINE archive is the recommended submission unit.</p>
+<p><strong>Annotations</strong>: see §5.</p>
+<h3 id="42-cellml-20-physiome-model-repository">4.2 CellML 2.0 → Physiome Model Repository<a class="headerlink" href="#42-cellml-20-physiome-model-repository" title="Permanent link">&para;</a></h3>
+<p><strong>Format</strong>: CellML 2.0 (current standard, libcellml-compatible).
+CellML's component model is a closer match for nidus's submodel
+structure than SBML's reaction-network bias.</p>
+<p><strong>Files produced</strong> (under <code>exports/cellml/</code>):</p>
+<ul>
+<li>One <code>.cellml</code> file per submodel (same ten).</li>
+<li><code>nidus_pregnancy.cellml</code> — top-level composition importing the
+  per-submodel components.</li>
+<li><code>nidus_pregnancy.sed-ml</code> — SED-ML simulation experiments.</li>
+<li><code>nidus_pregnancy_cellml.omex</code> — COMBINE archive.</li>
+</ul>
+<p><strong>Submission</strong>: Physiome Model Repository workspace at
+<a href="https://models.physiomeproject.org/">https://models.physiomeproject.org/</a>. Workflow:</p>
+<ol>
+<li>Create a <code>nidus-pregnancy-physiology</code> workspace via Mercurial
+   push.</li>
+<li>Add files; commit; push.</li>
+<li>Create an "exposure" (publishable view) with metadata.</li>
+<li>Request curator review for upgrade to "official" status.</li>
+</ol>
+<p>Self-publishing the workspace gives an immediately-citable URL; the
+official-curation upgrade is optional polish.</p>
+<p><strong>Annotations</strong>: see §5.</p>
+<h3 id="43-physiocell-parameters-worked-example">4.3 PhysioCell parameters + worked example<a class="headerlink" href="#43-physiocell-parameters-worked-example" title="Permanent link">&para;</a></h3>
+<p><strong>Format</strong>: PhysioCell consumes parameters via two XML files in its
+config tree:</p>
+<ul>
+<li><code>PhysiCell_settings.xml</code> for simulation-level constants (custom
+  <code>user_parameters</code>).</li>
+<li><code>cell_definitions.xml</code> for per-cell-type parameters (rates, sizes,
+  motility).</li>
+</ul>
+<p>For nidus, the natural surface is <code>user_parameters</code>: scalar values a
+PhysioCell-based pregnancy-tissue model would consume.</p>
+<p><strong>Files produced</strong> (under <code>exports/physiocell/</code>):</p>
+<ul>
+<li><code>nidus-parameters.xml</code> — a <code>&lt;user_parameters&gt;</code> block containing
+  every nidus parameter as <code>&lt;param name="..." type="double"
+  units="..." description="..."&gt;central&lt;/param&gt;</code>. Comments contain
+  citation key + tier.</li>
+<li><code>example_placental_tissue.xml</code> — a complete PhysioCell config
+  demonstrating consumption: a minimal tissue domain importing
+  glucose Km/Vmax, surface area, etc.</li>
+<li><code>notebooks/physiocell_integration.ipynb</code> — a tutorial notebook
+  showing how to load <code>nidus-parameters.xml</code> into a PhysioCell run
+  and how to update parameters when the dataset is re-released.</li>
+</ul>
+<p><strong>Distribution</strong>: PhysioCell does not have a central model repository.
+Announcement via:</p>
+<ul>
+<li>PhysioCell GitHub Discussions (<a href="https://github.com/MathCancer/PhysiCell/discussions">https://github.com/MathCancer/PhysiCell/discussions</a>).</li>
+<li>PhysioCell community Slack (the <code>#physicell-help</code> channel).</li>
+<li>PhysioCell-tutorials repository (PR to add a <code>pregnancy</code> example).</li>
+<li>Mention in the v0.4 outreach essay.</li>
+</ul>
+<h2 id="5-annotation-strategy-cross-format">5. Annotation strategy (cross-format)<a class="headerlink" href="#5-annotation-strategy-cross-format" title="Permanent link">&para;</a></h2>
+<p>Every exported model carries three layers of annotation that preserve
+the citation chain and the nidus tier system into the exchange format.</p>
+<h3 id="51-miriam-bqbiolisdescribedby">5.1 MIRIAM <code>bqbiol:isDescribedBy</code><a class="headerlink" href="#51-miriam-bqbiolisdescribedby" title="Permanent link">&para;</a></h3>
+<p>For every parameter that originates in a literature citation, add a
+MIRIAM RDF triple linking that parameter (or species, or reaction) to
+its citation's DOI and PMID via <code>identifiers.org</code> URIs.</p>
+<p>Example (SBML annotation block):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;parameter</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;cardiac_output_peak&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;1.55&quot;</span><span class="w"> </span><span class="na">units=</span><span class="s">&quot;L_per_min&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;annotation&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;rdf:RDF</span><span class="w"> </span><span class="na">xmlns:rdf=</span><span class="s">&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">             </span><span class="na">xmlns:bqbiol=</span><span class="s">&quot;http://biomodels.net/biology-qualifiers/&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">             </span><span class="na">xmlns:nidus=</span><span class="s">&quot;https://github.com/clay-good/nidus/ontology#&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">&lt;rdf:Description</span><span class="w"> </span><span class="na">rdf:about=</span><span class="s">&quot;#cardiac_output_peak&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nt">&lt;bqbiol:isDescribedBy</span><span class="w"> </span><span class="na">rdf:resource=</span><span class="s">&quot;https://identifiers.org/doi/10.1097/hjh.0000000000000090&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nt">&lt;bqbiol:isDescribedBy</span><span class="w"> </span><span class="na">rdf:resource=</span><span class="s">&quot;https://identifiers.org/pubmed/24406777&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">&lt;nidus:confidenceTier&gt;</span>B<span class="nt">&lt;/nidus:confidenceTier&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="nt">&lt;nidus:tierRationale&gt;</span>Tier<span class="w"> </span>B<span class="w"> </span>from<span class="w"> </span>Mahendru<span class="w"> </span>et<span class="w"> </span>al.<span class="w"> </span>2014:<span class="w"> </span>prospective<span class="w"> </span>longitudinal<span class="w"> </span>cohort<span class="w"> </span>of<span class="w"> </span>54<span class="w"> </span>healthy<span class="w"> </span>nulliparous<span class="w"> </span>women...<span class="nt">&lt;/nidus:tierRationale&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="nt">&lt;nidus:datasetParameterId&gt;</span>maternal_cardiovascular.peak_excess_cardiac_output_l_per_min<span class="nt">&lt;/nidus:datasetParameterId&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="nt">&lt;nidus:datasetVersion&gt;</span>0.4.0<span class="nt">&lt;/nidus:datasetVersion&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="nt">&lt;nidus:reviewStatus&gt;</span>verified<span class="nt">&lt;/nidus:reviewStatus&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">      </span><span class="nt">&lt;/rdf:Description&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">&lt;/rdf:RDF&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="nt">&lt;/annotation&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nt">&lt;/parameter&gt;</span>
+</code></pre></div>
+<p>CellML uses the same RDF syntax, embedded differently (in a <code>cmeta:id</code>
+target).</p>
+<h3 id="52-sbo-systems-biology-ontology-terms">5.2 SBO (Systems Biology Ontology) terms<a class="headerlink" href="#52-sbo-systems-biology-ontology-terms" title="Permanent link">&para;</a></h3>
+<p>Where the modelled relationship has a canonical SBO term, add it:</p>
+<ul>
+<li>Logistic growth → SBO:0000295 (logistic equation)</li>
+<li>Michaelis-Menten kinetics → SBO:0000028 (irreversible
+  Michaelis-Menten) or SBO:0000326 (reversible)</li>
+<li>Hill equation → SBO:0000192 (Hill function)</li>
+<li>Algebraic rule (no kinetic interpretation) → SBO:0000412 (boundary
+  condition) where applicable</li>
+</ul>
+<h3 id="53-custom-nidus-predicates">5.3 Custom <code>nidus:</code> predicates<a class="headerlink" href="#53-custom-nidus-predicates" title="Permanent link">&para;</a></h3>
+<p>Predicates under namespace
+<code>https://github.com/clay-good/nidus/ontology#</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Predicate</th>
+<th>Object type</th>
+<th>Used on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nidus:confidenceTier</code></td>
+<td>Literal: <code>"A"</code> / <code>"B"</code> / <code>"C"</code> / <code>"D"</code></td>
+<td>Every annotated parameter</td>
+</tr>
+<tr>
+<td><code>nidus:tierRationale</code></td>
+<td>Literal string</td>
+<td>Every annotated parameter</td>
+</tr>
+<tr>
+<td><code>nidus:datasetParameterId</code></td>
+<td>Literal string (dotted id)</td>
+<td>Round-trip identifier</td>
+</tr>
+<tr>
+<td><code>nidus:datasetVersion</code></td>
+<td>Literal string (semver)</td>
+<td>Top-level model annotation</td>
+</tr>
+<tr>
+<td><code>nidus:reviewStatus</code></td>
+<td>Literal: <code>"unverified"</code> / <code>"verified"</code> / <code>"contested"</code></td>
+<td>Per parameter</td>
+</tr>
+<tr>
+<td><code>nidus:applicabilityPopulation</code></td>
+<td>Literal string</td>
+<td>Where applicable</td>
+</tr>
+<tr>
+<td><code>nidus:trajectoryValidRangeWeeks</code></td>
+<td>List of two numbers</td>
+<td>On parameters with bounded gestational windows</td>
+</tr>
+</tbody>
+</table>
+<p>The full ontology lives at <code>dataset/jsonld/ontology.ttl</code> and is
+already loosely defined there. v0.4 hardens it into a versioned OWL
+2 ontology submitted to BioPortal as a supporting artefact (a
+secondary follow-up; not blocking the model exports).</p>
+<h2 id="6-validation">6. Validation<a class="headerlink" href="#6-validation" title="Permanent link">&para;</a></h2>
+<p>Every exported model passes three layers of validation before
+submission to a repository.</p>
+<h3 id="61-static-schema-validation">6.1 Static schema validation<a class="headerlink" href="#61-static-schema-validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>SBML</strong>: <code>libSBML.SBMLDocument.checkConsistency()</code> returns zero
+  errors (warnings logged but not blocking).</li>
+<li><strong>CellML</strong>: <code>libcellml.Validator.validateModel()</code> returns zero
+  issues.</li>
+<li><strong>PhysioCell</strong>: XSD validation against the PhysioCell config
+  schema where available; otherwise structural lint.</li>
+</ul>
+<h3 id="62-round-trip-simulation">6.2 Round-trip simulation<a class="headerlink" href="#62-round-trip-simulation" title="Permanent link">&para;</a></h3>
+<p>For each algebraic or kinetic submodel:</p>
+<ol>
+<li>Load the SBML/CellML export with the standard tooling
+   (<code>tellurium</code> for SBML; <code>OpenCOR</code>/<code>libcellml</code> for CellML).</li>
+<li>Simulate the canonical experiment defined in the bundled SED-ML.</li>
+<li>Compare output against a pure-NumPy reference implementation
+   shipped under <code>python/nidus/_reference_kernels.py</code>.</li>
+<li>Assert agreement: 1e-6 relative error for algebraic submodels,
+   1e-4 for ODE submodels (loose tolerance on time-integration
+   methods).</li>
+</ol>
+<p>The reference kernels are <em>not</em> a new mechanistic engine — they are
+unit-testable Python evaluations of the same algebraic relationships
+the exported models encode, used solely to detect export errors.</p>
+<h3 id="63-miriam-compliance">6.3 MIRIAM compliance<a class="headerlink" href="#63-miriam-compliance" title="Permanent link">&para;</a></h3>
+<p>Every <code>bqbiol:isDescribedBy</code> URI resolves to identifiers.org. Every
+SBO term resolves to a real SBO accession. Custom <code>nidus:</code> predicates
+match the published ontology.</p>
+<h2 id="7-generation-pipeline">7. Generation pipeline<a class="headerlink" href="#7-generation-pipeline" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>dataset/parameters/*.json
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        ▼
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>python/nidus/export/
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>├── sbml.py          (libSBML)        — one module per submodel
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── cellml.py        (libcellml)
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── physiocell.py    (plain XML)
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>├── annotate.py      (MIRIAM, SBO, nidus predicates — shared)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>├── sedml.py         (SED-ML simulation descriptions)
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>├── combine.py       (.omex archive packaging)
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>└── reference.py     (the NumPy kernels for round-trip validation)
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        │
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        ▼
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>exports/{sbml,cellml,physiocell}/*.*
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>exports/combine/*.omex
+</code></pre></div>
+<p>CLI entry points extend the existing <code>nidus</code> console script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nidus<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--format<span class="w"> </span>sbml<span class="w"> </span>--output<span class="w"> </span>exports/sbml/
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>nidus<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--format<span class="w"> </span>cellml<span class="w"> </span>--output<span class="w"> </span>exports/cellml/
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>nidus<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--format<span class="w"> </span>physiocell<span class="w"> </span>--output<span class="w"> </span>exports/physiocell/
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>nidus<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--format<span class="w"> </span>combine<span class="w"> </span>--output<span class="w"> </span>exports/combine/
+</code></pre></div>
+<p>CI regenerates all exports on every change to <code>dataset/</code>. The generated
+files are committed to the repo (under <code>exports/</code>) so consumers can
+fetch them directly without rebuilding.</p>
+<h2 id="8-submission-workflow">8. Submission workflow<a class="headerlink" href="#8-submission-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="81-biomodels-database-sbml">8.1 BioModels Database (SBML)<a class="headerlink" href="#81-biomodels-database-sbml" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Build the COMBINE archive locally with <code>nidus export --format combine</code>.</li>
+<li>Submit via the BioModels submission portal.</li>
+<li>Pair with a citation: either the Zenodo dataset DOI or, ideally,
+   the v0.4 outreach blog post once published.</li>
+<li>Iterate with the BioModels curator on annotation completeness and
+   biological plausibility (typical 4–8 weeks).</li>
+<li>Receive <code>BIOMD0000000XXX</code> accession; cite back in nidus's docs.</li>
+</ol>
+<h3 id="82-physiome-model-repository-cellml">8.2 Physiome Model Repository (CellML)<a class="headerlink" href="#82-physiome-model-repository-cellml" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Create a workspace via Mercurial: <code>hg clone https://models.physiomeproject.org/workspace/...</code></li>
+<li>Add CellML + SED-ML + metadata.</li>
+<li>Push; the workspace becomes immediately citable via its
+   persistent URL.</li>
+<li>(Optional) Create an "exposure" — a curated, versioned view of
+   the workspace — and submit for "official" curation status.</li>
+</ol>
+<h3 id="83-physiocell-community-channels">8.3 PhysioCell community channels<a class="headerlink" href="#83-physiocell-community-channels" title="Permanent link">&para;</a></h3>
+<ol>
+<li>PR to <code>MathCancer/PhysiCell-tutorials</code> adding a <code>pregnancy/</code>
+   example built on <code>nidus-parameters.xml</code>.</li>
+<li>Announcement in PhysioCell GitHub Discussions and the community
+   Slack.</li>
+<li>Mention in the v0.4 outreach essay (which gets a new section).</li>
+</ol>
+<h2 id="9-maintenance-pattern">9. Maintenance pattern<a class="headerlink" href="#9-maintenance-pattern" title="Permanent link">&para;</a></h2>
+<p>The exports are <strong>generated artefacts</strong>. The source of truth is
+always the JSON dataset. When the dataset changes (a new parameter,
+a corrected value, a promotion to verified status), the exports
+regenerate automatically:</p>
+<ol>
+<li>GitHub Actions <code>ci.yml</code> adds a <code>regenerate-exports</code> job that runs
+   <code>nidus export --format sbml/cellml/physiocell/combine</code> on every
+   push to <code>main</code> after dataset validation passes.</li>
+<li>The regenerated exports are committed back (via a bot account
+   or a manual maintainer PR; bot is cleaner).</li>
+<li>The Zenodo deposit on each tagged release includes the regenerated
+   exports alongside the dataset.</li>
+</ol>
+<p>Versioning: each exported model carries the nidus dataset version in
+its <code>nidus:datasetVersion</code> annotation. Consumers of the SBML/CellML
+models can pin to a specific dataset version if they need
+reproducibility against a particular submodel.</p>
+<h2 id="10-tooling-and-dependencies">10. Tooling and dependencies<a class="headerlink" href="#10-tooling-and-dependencies" title="Permanent link">&para;</a></h2>
+<p>Added to <code>python/pyproject.toml</code> under a new <code>[export]</code> optional
+extra:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[project.optional-dependencies]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">export</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="s2">&quot;python-libsbml &gt;= 5.20&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="s2">&quot;libcellml &gt;= 0.5&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="s2">&quot;pyomexmeta &gt;= 1.2&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1"># for the MIRIAM RDF construction</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="s2">&quot;tellurium &gt;= 2.2&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1"># for round-trip simulation validation</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="s2">&quot;lxml &gt;= 5.0&quot;</span><span class="p">,</span><span class="w">             </span><span class="c1"># for PhysioCell XML generation</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="p">]</span>
+</code></pre></div>
+<p>All Python. No new languages introduced. The <code>[export]</code> extra is
+opt-in; the core <code>pip install nidus</code> install stays minimal.</p>
+<h2 id="11-testing">11. Testing<a class="headerlink" href="#11-testing" title="Permanent link">&para;</a></h2>
+<p>New test files under <code>python/tests/</code>:</p>
+<ul>
+<li><code>test_export_sbml.py</code> — every submodel exports, validates, round-trips</li>
+<li><code>test_export_cellml.py</code> — same</li>
+<li><code>test_export_physiocell.py</code> — XML schema validation, parameter
+  coverage check (every nidus parameter appears in the export)</li>
+<li><code>test_export_annotations.py</code> — every parameter in every export has
+  the expected MIRIAM and nidus predicates</li>
+<li><code>test_export_combine.py</code> — <code>.omex</code> archives validate against the
+  COMBINE archive spec</li>
+</ul>
+<p>CI's existing test job runs these alongside the unit tests. CI
+coverage stays above the 85% floor.</p>
+<h2 id="12-documentation">12. Documentation<a class="headerlink" href="#12-documentation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>docs/exports/index.md</code> — landing page describing the four export
+  formats and their target communities.</li>
+<li><code>docs/exports/sbml.md</code> — SBML detail, BioModels submission status.</li>
+<li><code>docs/exports/cellml.md</code> — CellML detail, Physiome submission
+  status.</li>
+<li><code>docs/exports/physiocell.md</code> — PhysioCell detail, tutorial link.</li>
+<li><code>docs/exports/annotations.md</code> — the MIRIAM + nidus annotation
+  reference.</li>
+</ul>
+<p>These get added to the mkdocs nav under a new "Exports" tab.</p>
+<p>The outreach essay (<code>docs/about/essay.md</code>) gains a section
+"Reaching the modelling communities" pointing to the three exports.</p>
+<h2 id="13-risks-and-honest-mitigations">13. Risks and honest mitigations<a class="headerlink" href="#13-risks-and-honest-mitigations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BioModels curator rejects the submission for being "too small" (10 disconnected submodels rather than one integrated pregnancy model).</td>
+<td>Submit as a "Curated submodels of human gestational physiology" entry, not as "A model of pregnancy". Be modest in the framing. Reference the v0.3 dataset DOI as the integrated artefact.</td>
+</tr>
+<tr>
+<td>Physiome curator requests an integrated top-level model that composes the submodels.</td>
+<td>The CellML <code>comp</code>-style top-level model is included from the start (<code>nidus_pregnancy.cellml</code>); curator demand is anticipated.</td>
+</tr>
+<tr>
+<td>PhysioCell community doesn't engage.</td>
+<td>This is the lowest-investment integration (a single XML file + tutorial). Cost of failure is small.</td>
+</tr>
+<tr>
+<td>Tier annotations get stripped by downstream tools that don't recognise custom RDF predicates.</td>
+<td>The MIRIAM <code>bqbiol:isDescribedBy</code> links remain valid even if <code>nidus:confidenceTier</code> is dropped — the citation chain is the durable layer. Tier survives in the JSON-LD <code>ontology.ttl</code>.</td>
+</tr>
+<tr>
+<td>The tier-degradation rules ("inherit lowest tier in derived quantities") don't translate cleanly into SBML/CellML semantics.</td>
+<td>Document the rule in the per-export documentation. The annotations carry source-parameter tier; downstream simulators can re-derive degradation manually. (Future work: a formal annotation predicate that <em>encodes</em> the propagation rule.)</td>
+</tr>
+<tr>
+<td>Adoption stays at the realistic lower bound (single-digit users).</td>
+<td>This is still a real outcome — the dataset is now accessible through three distinct community channels. The work is bounded; the exports regenerate automatically; the maintenance cost is real but small.</td>
+</tr>
+<tr>
+<td>Tooling rot (libSBML/libcellml major version changes) breaks the generators.</td>
+<td>CI pins versions and re-runs nightly; breakage is detected on the day it happens.</td>
+</tr>
+<tr>
+<td>BioModels submission requires a peer-reviewed paper.</td>
+<td>The v0.4 outreach essay (in the repo + on bioRxiv if desired) plays this role. Alternative: submit the dataset paper to JOSS for a citable software-paper alongside.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="14-timeline">14. Timeline<a class="headerlink" href="#14-timeline" title="Permanent link">&para;</a></h2>
+<p>Estimates assume single-maintainer work with the new "maintenance not
+a constraint" guidance. Calendar elapsed time, not hours.</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Work</th>
+<th>Calendar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>python/nidus/export/sbml.py</code> — all 10 SBML submodels, libSBML, MIRIAM + nidus annotations, round-trip validation against NumPy reference.</td>
+<td>1–2 weeks</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>python/nidus/export/cellml.py</code> — CellML 2.0 equivalents + 1.1 fallback.</td>
+<td>1.5 weeks</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Top-level composed pregnancy model (SBML <code>comp</code> + CellML import) with coupling annotations.</td>
+<td>1 week</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>python/nidus/export/physiocell.py</code> — parameters.xml + real multicellular tissue example + tutorial notebook with parameter-modification walkthrough.</td>
+<td>1–2 weeks</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>nidus export</code> CLI extensions + CI integration + docs site exports pages.</td>
+<td>3 days</td>
+</tr>
+<tr>
+<td>6</td>
+<td>BioModels Database submission + curator iteration.</td>
+<td>6–10 weeks (mostly waiting)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Physiome Model Repository workspace + exposure.</td>
+<td>1–3 weeks</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PhysioCell community announcement + tutorial PR.</td>
+<td>1 week</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Outreach essay update + bioRxiv companion (optional).</td>
+<td>1 week</td>
+</tr>
+</tbody>
+</table>
+<p>Total local development: ~4 weeks of evenings/weekends.
+Total external (curator review): variable, can run in parallel.</p>
+<h2 id="15-success-criteria-for-v040">15. Success criteria for <code>v0.4.0</code><a class="headerlink" href="#15-success-criteria-for-v040" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[x] All 11 SBML files produced; pass <code>libSBML.checkConsistency()</code>.</li>
+<li>[x] All 11 CellML 2.0 files produced; pass <code>libcellml.Validator</code>.</li>
+<li>[x] CellML 1.1 fallback emitted for each model (<code>build_cellml(..., version="1.1")</code>).</li>
+<li>[x] <strong>Top-level composed pregnancy model</strong> shipped (SBML L3v2; CellML composition deferred — flat SBML compose covers the same researcher use case via <code>nidus export --format composed</code>).</li>
+<li>[x] PhysioCell <code>nidus-parameters.xml</code> produced; XSD-validates.</li>
+<li>[x] <strong>Multicellular tissue example</strong> scaffolded: 2D placental-villous slice with BioFVM diffusion, GLUT1/GLUT3 Michaelis–Menten transport reading nidus params (<code>docs/examples/physicell_placental_villous/</code>). End-to-end simulation tutorial deferred to a follow-up PR.</li>
+<li>[x] PhysioCell tutorial notebook walks through the simulation, including an IUGR parameter-modification example. <em>(<code>docs/examples/physicell_placental_villous/tutorial.ipynb</code> — regenerates <code>nidus-parameters.xml</code>, plots GLUT1/GLUT3 Michaelis–Menten kinetics from the reference kernels, runs a −20% surface-area IUGR sensitivity scenario.)</em></li>
+<li>[x] COMBINE archive bundled and validated (<code>write_combine_archive</code> + CLI <code>--format omex</code>).</li>
+<li>[x] Round-trip simulation: reference NumPy kernels exist for every submodel; SBML round-trip tested when tellurium is available.</li>
+<li>[x] Every exported parameter carries MIRIAM citation + nidus tier annotation.</li>
+<li>[x] <code>nidus export</code> CLI shipped with <code>--format sbml|cellml|physiocell|composed|omex</code> and <code>--cellml-version {2.0,1.1}</code>.</li>
+<li>[x] CI regenerates exports automatically on dataset changes (<code>regenerate-exports</code> job in <code>.github/workflows/ci.yml</code>: runs after <code>validate-dataset</code> passes, regenerates SBML / CellML 2.0 / CellML 1.1 / PhysioCell / composed / OMEX, sanity-checks the file counts, and uploads the result as a <code>nidus-exports</code> artifact with 30-day retention). Auto-commit back to <code>exports/</code> deliberately deferred — too risky for a solo-maintainer setup; the artifact is the source of truth per-CI-run.</li>
+<li>[x] Docs site has the Exports section live (<code>docs/exports/{index,sbml,cellml,physicell,annotations}.md</code>, wired into the mkdocs nav as a top-level "Exports" tab).</li>
+<li>[x] Outreach essay updated to mention the three integrations.</li>
+</ul>
+<p><strong>Maintainer-gated external submissions</strong> — these require third-party accounts,
+PRs to other projects, or a tagged release, so an agent cannot perform them. The
+artifacts they submit are all already built and validated above
+(<code>nidus export --format ...</code>), making each a one-step maintainer action. Tracked
+in <a href="https://github.com/clay-good/nidus/blob/main/RELEASE.md"><code>RELEASE.md</code></a>:</p>
+<ul>
+<li>BioModels Database submission — submit the generated SBML / OMEX.</li>
+<li>Physiome Model Repository workspace — push the generated CellML 2.0 + 1.1.</li>
+<li>PhysioCell tutorial PR to <code>MathCancer/PhysiCell-tutorials</code> — external-repo PR using <code>docs/examples/physicell_placental_villous/</code>.</li>
+<li>First Zenodo deposit at v0.4.0 includes the exports as supplementary files — pending the v0.4.0 tag.</li>
+<li>BioPortal ontology submission and JOSS paper — deferred to post-v0.4.</li>
+</ul>
+<h2 id="16-open-questions-resolved">16. Open questions — resolved<a class="headerlink" href="#16-open-questions-resolved" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Top-level "pregnancy model" assembly.</strong> <strong>DECIDED: yes, ship it.</strong>
+   The maintainer's framing: researchers can always update the
+   composition on their end; shipping a complete coupled top-level
+   gives them a much richer starting point than ten disconnected
+   submodels. Implementation note: the coupling has to be honest
+   about what's mechanistic vs. what's just empirical co-evolution
+   (e.g. maternal CO and placental surface area are not directly
+   causally linked — they both rise across gestation). Where the
+   coupling is empirical, document it explicitly in the
+   top-level model's <code>nidus:couplingNotes</code> annotation so consumers
+   can override.</p>
+</li>
+<li>
+<p><strong>PhysioCell sample tissue model.</strong> <strong>DECIDED: real example,
+   not placeholder.</strong> The worked example will be a multicellular
+   placental-villous tissue simulation built on real PhysioCell
+   primitives (BioFVM diffusion solver, real cell types, real
+   parameter values from the nidus dataset). Targets: villous
+   surface, intervillous space, fetal capillary network, with
+   glucose and O2 diffusion through the tissue. Cost: noticeably
+   more work than a placeholder; value: gives a PhysioCell user a
+   real starting point they can fork rather than re-implement.</p>
+</li>
+<li>
+<p><strong>Ontology submission to BioPortal.</strong> <strong>DECIDED: yes, but later.</strong>
+   Not blocking v0.4 release. Schedule for the post-v0.4 window
+   alongside any cleanup that emerges from BioModels curator review.</p>
+</li>
+<li>
+<p><strong>JOSS software paper.</strong> <strong>DECIDED: yes, but later.</strong> Same
+   timing as BioPortal — post-v0.4 once the citable artefacts
+   (BioModels accession, Physiome workspace URL, Zenodo DOI) are in
+   hand. JOSS reviewer turnaround is fast enough that we can defer
+   without losing momentum.</p>
+</li>
+<li>
+<p><strong>CellML 2.0 vs. 1.1.</strong> <strong>DECIDED: ship both, with 2.0 primary.</strong>
+   The generator emits CellML 2.0 as the canonical format and also
+   produces a CellML 1.1 fallback for each model (the libcellml API
+   supports both versions). This makes life easier for researchers
+   whose toolchains haven't moved to 2.0 yet (OpenCOR still supports
+   1.1 in legacy mode; some Physiome catalogue entries are still
+   1.1). The fallback is automated from the same source, so the
+   maintenance cost is bounded.</p>
+</li>
+</ol>
+<h2 id="17-additional-scope-from-the-resolved-open-questions">17. Additional scope from the resolved open questions<a class="headerlink" href="#17-additional-scope-from-the-resolved-open-questions" title="Permanent link">&para;</a></h2>
+<h3 id="171-top-level-composed-pregnancy-model-added">17.1 Top-level composed pregnancy model (added)<a class="headerlink" href="#171-top-level-composed-pregnancy-model-added" title="Permanent link">&para;</a></h3>
+<p>Beyond the 10 submodels, v0.4 ships a top-level composition:</p>
+<ul>
+<li><strong>SBML</strong>: a <code>comp</code>-based assembly that imports all 10 submodels
+  and connects them through shared species (gestational age <code>t</code>,
+  maternal CO, placental surface area, etc.) at the level the
+  literature actually establishes.</li>
+<li><strong>CellML</strong>: a top-level component that imports the per-submodel
+  components and wires them together via algebraic relationships.</li>
+<li>The composition is annotated with <code>nidus:couplingType</code> per edge:
+  <code>"mechanistic"</code> (causally established), <code>"empirical"</code> (co-varies
+  in the literature but no direct mechanism), or <code>"sequential"</code>
+  (downstream consumer of an upstream variable, no feedback).</li>
+<li>A <code>nidus:couplingNotes</code> predicate carries the prose justification
+  for non-trivial couplings.</li>
+</ul>
+<p>The top-level model is itself Tier C, by tier-propagation rules: its
+tier is the minimum of its inputs (mostly B) further degraded for
+the empirical coupling step. This is documented openly; users who
+disagree with a coupling can fork the model and adjust.</p>
+<h3 id="172-real-physiocell-tissue-example-added">17.2 Real PhysioCell tissue example (added)<a class="headerlink" href="#172-real-physiocell-tissue-example-added" title="Permanent link">&para;</a></h3>
+<p>The PhysioCell worked example is now a real simulation, not a
+placeholder. Specifically:</p>
+<ul>
+<li><strong>Geometry</strong>: a 2D placental-villous slice with intervillous
+  space (maternal blood) on one side, fetal capillary network on
+  the other, syncytiotrophoblast barrier in between.</li>
+<li><strong>Cell types</strong>: maternal RBCs (BioFVM density for O2/glucose
+  delivery), syncytiotrophoblast cells (with GLUT1/GLUT3
+  transporters), fetal endothelial cells.</li>
+<li><strong>Diffusion</strong>: BioFVM solver for O2 and glucose with the nidus
+  dataset's gas exchange parameters and glucose Km/Vmax kinetics.</li>
+<li><strong>Outputs</strong>: O2 and glucose flux per unit villous surface area,
+  comparable to the dataset's <code>placental_gas_exchange</code> and
+  <code>placental_glucose</code> values.</li>
+<li><strong>Notebook</strong>: walks through running the simulation, modifying a
+  parameter (e.g. dropping <code>placental_structure.term_area_m2</code> by
+  20% to simulate IUGR), and observing the downstream effect on
+  fetal-side glucose delivery.</li>
+</ul>
+<p>All parameter values are pulled from <code>nidus.load()</code> — the example is
+data-driven, not hand-tuned, so it stays in sync with the dataset.</p>
+<h3 id="173-cellml-11-fallback-added">17.3 CellML 1.1 fallback (added)<a class="headerlink" href="#173-cellml-11-fallback-added" title="Permanent link">&para;</a></h3>
+<p>Each CellML 2.0 export has a companion 1.1 export under
+<code>exports/cellml/v1.1/</code>. The generator switches output mode based on
+a <code>--cellml-version</code> flag in <code>nidus export</code>. Submission to Physiome
+includes both versions in the workspace.</p>
+<h3 id="174-deferred-to-post-v04">17.4 Deferred to post-v0.4<a class="headerlink" href="#174-deferred-to-post-v04" title="Permanent link">&para;</a></h3>
+<ul>
+<li>BioPortal OWL submission (after Section 5.3 ontology hardens).</li>
+<li>JOSS software paper.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/clay-good/nidus" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/nidus/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 444.7a20.4 20.4 0 1 1 0-40.7 20.4 20.4 0 1 1 0 40.7M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.6-183.4a20.4 20.4 0 1 1 0 40.8 20.4 20.4 0 1 1 0-40.8"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "content.code.copy", "content.action.edit", "search.highlight", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
