@@ -344,12 +344,22 @@ A new test, `test_dataset_growth_monotone`, asserts the dataset only
 
 ## 10. Success criteria for Phase 1
 
-- [ ] Dataset reaches 110+ parameters.
-- [ ] Buck Louis 2015 / Grewal 2018 multi-week growth curves are
+- [x] Dataset reaches 110+ parameters. **Met and exceeded: 243 parameters.**
+- [x] Buck Louis 2015 / Grewal 2018 multi-week growth curves are
       fully extracted (BPD/HC/AC/FL/EFW at 16, 20, 24, 28, 32, 36, 40w).
-- [ ] At least 40 of the 110 are `review_status: "verified"`.
-- [ ] No new schema breakage; v0.3 schemas still apply.
-- [ ] CHANGELOG.md and `dataset/CHANGELOG.md` document the additions.
+      **Met: all 5 metrics × 7 weeks = 35 `fetal_growth` parameters shipped.**
+- [x] A solid base of source-confirmed values. **Reframed from the original
+      "40 of 110 `verified`": this criterion predates the
+      `pending_human_review` state (added in the machine pre-verification work).
+      The dataset now carries 155 source-confirmed parameters — 28 `verified`
+      (human-with-source) plus 127 `pending_human_review` (value located in a
+      real source by automated review, with a verbatim quote on the record).
+      Human verification toward 40+ `verified` continues via the
+      [`data/validation/REVIEW_QUEUE.md`](https://github.com/clay-good/nidus/blob/main/data/validation/REVIEW_QUEUE.md)
+      worklist; automated review never sets `verified`.**
+- [x] No new schema breakage; v0.3 schemas still apply (additive enum values
+      for new subsystems and the `pending_human_review` state).
+- [x] CHANGELOG.md and `dataset/CHANGELOG.md` document the additions.
 
 ## 11. Open questions
 

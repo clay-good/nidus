@@ -460,13 +460,19 @@ Total external (curator review): variable, can run in parallel.
 - [x] Every exported parameter carries MIRIAM citation + nidus tier annotation.
 - [x] `nidus export` CLI shipped with `--format sbml|cellml|physiocell|composed|omex` and `--cellml-version {2.0,1.1}`.
 - [x] CI regenerates exports automatically on dataset changes (`regenerate-exports` job in `.github/workflows/ci.yml`: runs after `validate-dataset` passes, regenerates SBML / CellML 2.0 / CellML 1.1 / PhysioCell / composed / OMEX, sanity-checks the file counts, and uploads the result as a `nidus-exports` artifact with 30-day retention). Auto-commit back to `exports/` deliberately deferred — too risky for a solo-maintainer setup; the artifact is the source of truth per-CI-run.
-- [ ] BioModels Database submission **submitted** (accession not required at release — curator review is on their timeline).
-- [ ] Physiome Model Repository workspace **created and exposed**, including both CellML versions.
-- [ ] PhysioCell tutorial PR **opened** to `MathCancer/PhysiCell-tutorials`.
 - [x] Docs site has the Exports section live (`docs/exports/{index,sbml,cellml,physicell,annotations}.md`, wired into the mkdocs nav as a top-level "Exports" tab).
 - [x] Outreach essay updated to mention the three integrations.
-- [ ] First Zenodo deposit at v0.4.0 includes the exports as supplementary files.
-- [ ] BioPortal ontology submission and JOSS paper — deferred to post-v0.4.
+
+The remaining items are **external submissions / deposits an agent cannot
+perform** — they require third-party accounts, PRs to other projects, or a
+tagged release. The artifacts they submit are all already built and validated
+above (`nidus export --format ...`), so each is a one-step maintainer action:
+
+- [ ] BioModels Database submission **submitted** — *maintainer-side; submit the generated SBML.*
+- [ ] Physiome Model Repository workspace **created and exposed**, including both CellML versions — *maintainer-side; push the generated CellML.*
+- [ ] PhysioCell tutorial PR **opened** to `MathCancer/PhysiCell-tutorials` — *maintainer-side; external-repo PR.*
+- [ ] First Zenodo deposit at v0.4.0 includes the exports as supplementary files — *maintainer-side; pending the v0.4.0 tag release.*
+- [ ] BioPortal ontology submission and JOSS paper — *deferred to post-v0.4.*
 
 ## 16. Open questions — resolved
 

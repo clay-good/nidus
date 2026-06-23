@@ -115,11 +115,14 @@ becomes friction.
 
 ## 8. Success criteria
 
-- [ ] Essay live at `<docs-site>/about/essay/`.
-- [ ] Essay links to: repository, dashboard URL, Zenodo DOI, PyPI page.
-- [ ] Repository `About` and pinned status point to the essay.
-- [ ] Outreach checklist (Section 6) completed.
-- [ ] At least one of: a GitHub star from someone unknown, an issue, an external installer, an inbound email about the dataset.
+The repo-buildable items are done; the rest are maintainer-side release/outreach
+actions that an agent cannot perform (deploy, social posting, inbound interest).
+
+- [x] Essay built into the docs site at `about/essay/` (renders under `mkdocs build`); **live-serving pending the maintainer-side GitHub Pages flip.**
+- [x] Essay links to: repository, dashboard URL, Zenodo DOI (concept-DOI placeholder until minted), and PyPI page.
+- [ ] Repository `About` and pinned status point to the essay — *maintainer-side GitHub setting; not buildable by the repo.*
+- [ ] Outreach checklist (Section 6) completed — *maintainer-side; deferred until v0.3.0 ships.*
+- [ ] At least one of: a GitHub star from someone unknown, an issue, an external installer, an inbound email about the dataset — *outcome metric; depends on the world, not on code.*
 
 ## 9. Realistic expectations
 

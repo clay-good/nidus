@@ -335,3 +335,10 @@ repository. MIT on the code, CC-BY-4.0 on the dataset. Open an
 [issue](https://github.com/clay-good/nidus/issues) or a
 [discussion](https://github.com/clay-good/nidus/discussions) if you'd
 like to contribute.*
+
+**Where to find it:**
+[repository](https://github.com/clay-good/nidus) ·
+[`pip install nidus`](https://pypi.org/project/nidus/) ·
+[interactive dashboard](https://nidus.streamlit.app) ·
+[Zenodo deposit](https://doi.org/10.5281/zenodo.0000000) (concept DOI, minted on first release) ·
+[CITATION.cff](https://github.com/clay-good/nidus/blob/main/CITATION.cff)
