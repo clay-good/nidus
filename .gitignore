@@ -102,3 +102,12 @@ docs/notebooks/
 .openlore/
 .openlore/decisions/
 ARCHITECTURE.md
+
+# Machine pre-verification: cached publisher abstracts/full text (copyright; not committed)
+data/validation/sources/
+
+# Machine pre-verification: per-parameter staging records (aggregate is machine_checks.json)
+data/validation/checks/
+
+# Stray agent scratch (use the session scratchpad dir, not the repo)
+scratchpad/

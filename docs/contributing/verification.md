@@ -13,9 +13,28 @@ This is the single most important rule in the project.
 
 If any of these are not true, the record stays `unverified` until they are.
 
+## Where to start: the machine pre-verification queue
+
+You do not have to start from a blank page. The repository ships a
+**machine pre-verification** layer at [`data/validation/`](https://github.com/clay-good/nidus/tree/main/data/validation)
+that has already fetched each parameter's source (open-access full text where
+available, otherwise the abstract) and compared it to the stored value, with a
+verbatim supporting quote.
+
+Open [`data/validation/REVIEW_QUEUE.md`](https://github.com/clay-good/nidus/blob/main/data/validation/REVIEW_QUEUE.md)
+and work top-down: parameters the machine flagged as a likely **mismatch**
+(a wrong value is worse than an unverified one), then the `close` and `match`
+candidates where a quote already supports the value, then the `not_found` /
+`source_unavailable` ones that need the full PDF or a library copy.
+
+This is a worklist, not a verdict — the machine never sets `review_status`.
+You still read the source and make the call. See
+[`data/validation/README.md`](https://github.com/clay-good/nidus/blob/main/data/validation/README.md)
+for how the layer is built and what each verdict means.
+
 ## The verification workflow
 
-1. Pick a parameter currently marked `extraction.review_status: "unverified"`.
+1. Pick a parameter currently marked `extraction.review_status: "unverified"` (the [review queue](https://github.com/clay-good/nidus/blob/main/data/validation/REVIEW_QUEUE.md) ranks these for you).
 2. Open the cited paper. Try the DOI first; fall back to the PMID; fall back to the author–title–year lookup if neither resolves.
 3. Find the value in the paper.
 4. Cross-check:

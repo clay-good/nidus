@@ -8,6 +8,21 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- **Machine pre-verification layer (`data/validation/`).** A worklist that
+  pays down the verification backlog without faking it. For every parameter,
+  the primary citation's source text (open-access full text where available,
+  otherwise the abstract, via Europe PMC) is compared to the stored value and
+  recorded with a verbatim supporting quote and a verdict
+  (`match`/`close`/`mismatch`/`not_found`/`source_unavailable`). It never sets
+  `extraction.review_status` — promoting a parameter to `verified` stays a
+  human action. New scripts: `fetch_sources.py`, `preverify_context.py`,
+  `build_review_queue.py`. Outputs: `data/validation/REVIEW_QUEUE.md` (ranked
+  human worklist) and `machine_checks.json`. First pass over all 243 params:
+  11 match, 22 close, **4 mismatch** (flagged for priority review), 137
+  not_found (value in a table/figure or full PDF), 69 source_unavailable
+  (book/paywalled). Wired into the verification contributor docs.
+
 ### Fixed
 - **`pip install nidus[export]` was missing `numpy`.** The export
   reference kernels (`nidus.export.reference`) are pure-NumPy, but the
