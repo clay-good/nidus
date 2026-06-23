@@ -7,6 +7,24 @@ and versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- **Citation identifiers repaired.** 23 citations carried DOI/PMID
+  identifiers that resolved to unrelated papers (placeholder/garbage
+  identifiers inherited from the v0.2 corpus); the human-curated
+  title/author/year were correct throughout. Each was re-matched to
+  the correct paper against Crossref and PubMed by title + first
+  author + year, and the verified DOI/PMID written back. 22 now carry
+  a confirmed-resolving identifier (e.g. `hutcheon-2012-placental-weight`,
+  whose old DOI pointed to an unrelated incontinence paper, now
+  resolves to the correct Hutcheon placental-weight study). One
+  (`murphy-1973-fetal-cortisol`, cited only by a Tier C parameter) had
+  its wrong PMID cleared and is flagged in its `notes` as pending
+  manual verification. Also fixed a title typo in
+  `templeton-1976-blood-gas` ("hysiological" → "physiological"). After
+  this pass the offline metadata audit reports 58/63 citations matching
+  their record exactly with zero unresolved identifiers; the remaining
+  flags are cosmetic (unicode, capitalization, journal abbreviation).
+
 ### Removed
 - Two additional orphan citations removed:
   `avery-mead-1959-surfactant`, `burri-2006-lung-development`. Both

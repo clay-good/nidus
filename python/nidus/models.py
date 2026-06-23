@@ -24,14 +24,17 @@ Subsystem = Literal[
     "maternal_blood",
     "maternal_respiratory",
     "maternal_renal",
+    "maternal_endocrine",
     "placental_structure",
     "placental_gas_exchange",
     "placental_glucose",
+    "placental_endocrine",
     "fetal_circulation",
     "fetal_growth",
     "fetal_metabolism",
+    "amniotic_fluid",
 ]
-"""Type alias enumerating the ten subsystems."""
+"""Type alias enumerating the thirteen subsystems."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -186,7 +189,7 @@ class Parameter:
         id: Dotted, snake_case identifier, e.g.
             ``"maternal_cardiovascular.baseline_cardiac_output_l_per_min"``.
         name: Human-readable name.
-        subsystem: One of the ten :data:`Subsystem` enum values.
+        subsystem: One of the thirteen :data:`Subsystem` enum values.
         value: The :class:`Value` with central and optional bounds.
         tier: Confidence tier — ``"A"``, ``"B"``, ``"C"``, or ``"D"``.
         tier_rationale: Free-text rationale referencing the evidence base.

@@ -121,9 +121,9 @@ inherit the worst-input tier.*
 
 ## What the tier distribution looks like in practice
 
-The dataset currently records 54 parameters across ten subsystems
-spanning maternal cardiovascular adaptation, placental transport, and
-fetal development from 8 to 40 weeks gestation.
+The dataset currently records 243 parameters across thirteen
+subsystems spanning maternal cardiovascular adaptation, placental
+transport, and fetal development from 8 to 40 weeks gestation.
 
 ![Figure: tier distribution by subsystem](../assets/essay/fig1_tier_distribution.png)
 *Tier distribution by subsystem. The mix tells you something honest
@@ -175,8 +175,9 @@ retracted, a substantial fraction of the dataset would need re-tiering.*
 
 ## What this is and isn't
 
-The dataset is small. Fifty-four parameters across ten subsystems is
-not a complete model of pregnancy. It is a deliberately bounded
+The dataset is small. A few hundred parameters across thirteen
+subsystems is not a complete model of pregnancy. It is a deliberately
+bounded
 snapshot of where the published quantitative evidence is strongest,
 plus a tier-tagged honest account of where it isn't.
 
@@ -221,7 +222,7 @@ pip install nidus
 import nidus
 
 ds = nidus.load()
-ds                       # <nidus.Dataset: 54 parameters, 32 citations>
+ds                       # <nidus.Dataset: 243 parameters, 66 citations>
 
 co = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
 co.value.central         # 4.6

@@ -1,4 +1,20 @@
 {
+  "acharya-2005-umbilical-pi": {
+    "authors": [
+      "Acharya G",
+      "Wilsgaard T",
+      "Berntsen GK",
+      "Maltau JM",
+      "Kiserud T"
+    ],
+    "doi": "10.1016/j.ajog.2004.09.019",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "acharya-2005-umbilical-pi",
+    "notes": "Reference ranges for umbilical-artery PI across gestation; PI falls smoothly from ~1.5 at 16 weeks to ~0.8 at term as placental vascular resistance drops.",
+    "title": "Reference ranges for serial measurements of umbilical artery Doppler indices in the second half of pregnancy",
+    "type": "journal-article",
+    "year": 2005
+  },
   "battaglia-meschia-1986-fetal-metabolism": {
     "authors": [
       "Battaglia FC",
@@ -41,6 +57,36 @@
     "type": "journal-article",
     "year": 2002
   },
+  "benediktsson-1997-11bhsd2": {
+    "authors": [
+      "Benediktsson R",
+      "Calder AA",
+      "Edwards CR",
+      "Seckl JR"
+    ],
+    "doi": "10.1046/j.1365-2265.1997.1230939.x",
+    "journal": "Clinical Endocrinology",
+    "key": "benediktsson-1997-11bhsd2",
+    "notes": "Placental 11beta-HSD2 inactivates ~80-90% of maternal cortisol crossing into fetal circulation. Quantitative inactivation fraction varies and is poorly constrained.",
+    "title": "Placental 11β‐hydroxysteroid dehydrogenase: a key regulator of fetal glucocorticoid exposure",
+    "type": "journal-article",
+    "year": 1997
+  },
+  "benirschke-2012-placental-pathology": {
+    "authors": [
+      "Benirschke K",
+      "Burton GJ",
+      "Baergen RN"
+    ],
+    "doi": "10.1007/978-3-642-23941-0",
+    "isbn": "978-3-642-23940-3",
+    "key": "benirschke-2012-placental-pathology",
+    "notes": "Standard textbook of human placental pathology and anatomy (6th ed.). Source for placental_structure.cotyledon_count and general anatomical norms.",
+    "publisher": "Springer",
+    "title": "Pathology of the Human Placenta",
+    "type": "book",
+    "year": 2012
+  },
   "bernstein-ziegler-2001-plasma-volume": {
     "authors": [
       "Bernstein IM",
@@ -56,15 +102,32 @@
     "type": "journal-article",
     "year": 2001
   },
+  "bianchi-1996-microchimerism": {
+    "authors": [
+      "Bianchi DW",
+      "Zickwolf GK",
+      "Weil GJ",
+      "Sylvester S",
+      "DeMaria MA"
+    ],
+    "doi": "10.1073/pnas.93.2.705",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "key": "bianchi-1996-microchimerism",
+    "notes": "Foundational demonstration of fetal-cell trafficking into maternal circulation during pregnancy and decades-long postpartum persistence. Quantitative concentrations vary widely; exact uptake/clearance kinetics remain open.",
+    "pmid": "8570620",
+    "title": "Male fetal progenitor cells persist in maternal blood for as long as 27 years postpartum",
+    "type": "journal-article",
+    "year": 1996
+  },
   "brace-1989-amniotic-fluid": {
     "authors": [
       "Brace RA",
       "Wolf EJ"
     ],
+    "doi": "10.1016/0002-9378(89)90527-9",
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "brace-1989-amniotic-fluid",
     "notes": "Reference AFV trajectory: rises through 32-34 weeks, peaks ~800 mL, declines toward term.",
-    "pmid": "2782359",
     "title": "Normal amniotic fluid volume changes throughout pregnancy",
     "type": "journal-article",
     "year": 1989
@@ -123,10 +186,10 @@
       "MacDonald PC",
       "Porter JC"
     ],
+    "doi": "10.1016/0002-9378(81)90318-5",
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "carr-1981-cortisol",
     "notes": "Longitudinal ACTH/cortisol/CBG across pregnancy.",
-    "pmid": "6258437",
     "title": "Maternal plasma adrenocorticotropin and cortisol relationships throughout human pregnancy",
     "type": "journal-article",
     "year": 1981
@@ -166,10 +229,10 @@
       "Amini SB",
       "Sims EA"
     ],
+    "doi": "10.1016/0002-9378(91)90012-g",
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "catalano-1991-insulin-sensitivity",
     "notes": "Insulin sensitivity (HOMA-IR-equivalent) falls ~50% in late pregnancy.",
-    "pmid": "1951519",
     "title": "Longitudinal changes in insulin release and insulin resistance in nonobese pregnant women",
     "type": "journal-article",
     "year": 1991
@@ -205,13 +268,14 @@
     "authors": [
       "Conrad KP"
     ],
+    "doi": "10.1016/j.jsgi.2004.05.002",
     "journal": "Journal of the Society for Gynecologic Investigation",
     "key": "conrad-2001-relaxin-gfr",
     "notes": "Mechanistic review: relaxin-mediated systemic and renal vasodilation; ~50% GFR rise.",
-    "pmid": "11489744",
+    "pmid": 15458740,
     "title": "Mechanisms of renal vasodilation and hyperfiltration during pregnancy",
     "type": "journal-article",
-    "year": 2001
+    "year": 2004
   },
   "crapo-1996-pregnancy-respiratory": {
     "authors": [
@@ -246,10 +310,10 @@
       "Vallotton MB",
       "Lindheimer MD"
     ],
-    "journal": "British Journal of Obstetrics and Gynaecology",
+    "doi": "10.1097/00006254-198204000-00005",
+    "journal": "Obstetrical & Gynecological Survey",
     "key": "davison-1981-osmoregulation",
     "notes": "Foundational reference for the ~10 mOsm/kg osmolality drop and the ~5 mEq/L plasma sodium drop.",
-    "pmid": "7195807",
     "title": "Plasma osmolality and urinary concentration and dilution during and after pregnancy",
     "type": "journal-article",
     "year": 1981
@@ -289,22 +353,69 @@
     "authors": [
       "Dunlop W"
     ],
-    "journal": "British Journal of Obstetrics and Gynaecology",
+    "doi": "10.1111/j.1471-0528.1981.tb00929.x",
+    "journal": "BJOG: An International Journal of Obstetrics & Gynaecology",
     "key": "dunlop-1981-renal-plasma-flow",
     "notes": "Foundational longitudinal RPF/GFR study; basis for the bell-shaped RPF trajectory.",
-    "pmid": "7259294",
     "title": "Serial changes in renal haemodynamics during normal human pregnancy",
     "type": "journal-article",
     "year": 1981
+  },
+  "economides-1989-fetal-insulin": {
+    "authors": [
+      "Economides DL",
+      "Proudler A",
+      "Nicolaides KH"
+    ],
+    "doi": "10.1016/0002-9378(89)90167-1",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "economides-1989-fetal-insulin",
+    "notes": "Cordocentesis series of fetal plasma insulin in appropriate- and small-for-gestational-age fetuses; provides reference values for term fetal insulin. Source for fetal_metabolism.fetal_insulin_term_pmol_per_l.",
+    "title": "Plasma insulin in appropriate- and small-for-gestational-age fetuses",
+    "type": "journal-article",
+    "year": 1989
+  },
+  "eriksson-1989-placental-gh": {
+    "authors": [
+      "Eriksson L",
+      "Frankenne F",
+      "Edén S",
+      "Hennen G",
+      "von Schoultz B"
+    ],
+    "doi": "10.1111/j.1471-0528.1989.tb03352.x",
+    "journal": "British Journal of Obstetrics and Gynaecology",
+    "key": "eriksson-1989-placental-gh",
+    "notes": "24-hour serum profile of placental growth hormone (GH-V) across pregnancy; non-pulsatile secretion distinguishes it from pituitary GH. Source for placental_endocrine.placental_gh_term_ng_per_ml.",
+    "pmid": "2775693",
+    "title": "Growth hormone 24-h serum profiles during pregnancy—lack of pulsatility for the secretion of the placental variant",
+    "type": "journal-article",
+    "year": 1989
+  },
+  "faught-1995-protein-s-c": {
+    "authors": [
+      "Faught W",
+      "Garner P",
+      "Jones G",
+      "Ivey B"
+    ],
+    "doi": "10.1016/0002-9378(95)90104-3",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "faught-1995-protein-s-c",
+    "notes": "Longitudinal cohort: free protein S falls substantially through pregnancy; protein C and antithrombin essentially unchanged. Source for maternal_blood.protein_s_free_term_pct, protein_c_term_pct, antithrombin_term_pct.",
+    "pmid": "7847526",
+    "title": "Changes in protein C and protein S levels in normal pregnancy",
+    "type": "journal-article",
+    "year": 1995
   },
   "glinoer-1997-thyroid": {
     "authors": [
       "Glinoer D"
     ],
+    "doi": "10.1210/edrv.18.3.0300",
     "journal": "Endocrine Reviews",
     "key": "glinoer-1997-thyroid",
     "notes": "Canonical review of thyroid axis adaptation; TSH suppression in T1 by hCG.",
-    "pmid": "9183568",
     "title": "The regulation of thyroid function in pregnancy: pathways of endocrine adaptation from physiology to pathology",
     "type": "journal-article",
     "year": 1997
@@ -321,7 +432,7 @@
     "key": "grewal-2018-nichd-growth",
     "notes": "Cohort design and biometric measurements for the NICHD studies. Dependents: data/parameters/fetal/growth.toml (biparietal-diameter-mm, femur-length-mm).",
     "pmid": "29025016",
-    "title": "Cohort Profile: NICHD Fetal Growth Studies\u2013Singletons and Twins",
+    "title": "Cohort Profile: NICHD Fetal Growth Studies–Singletons and Twins",
     "type": "journal-article",
     "year": 2018
   },
@@ -344,13 +455,29 @@
     "authors": [
       "Handwerger S"
     ],
+    "doi": "10.1210/edrv-12-4-329",
     "journal": "Endocrine Reviews",
     "key": "handwerger-2010-hpl",
     "notes": "hPL physiology review; rises linearly through gestation, ~5-10 ug/mL at term.",
-    "pmid": "1935823",
     "title": "The physiology of placental lactogen in human pregnancy",
     "type": "journal-article",
     "year": 1991
+  },
+  "hardie-1997-leptin": {
+    "authors": [
+      "Hardie L",
+      "Trayhurn P",
+      "Abramovich D",
+      "Fowler P"
+    ],
+    "doi": "10.1046/j.1365-2265.1997.2441017.x",
+    "journal": "Clinical Endocrinology",
+    "key": "hardie-1997-leptin",
+    "notes": "Longitudinal study of circulating leptin across menstrual cycle and pregnancy; leptin rises ~2–3× through gestation, peak in T3. Source for placental_endocrine.leptin_term_ng_per_ml.",
+    "pmid": "9302378",
+    "title": "Circulating leptin in women: a longitudinal study in the menstrual cycle and during pregnancy",
+    "type": "journal-article",
+    "year": 1997
   },
   "hoddick-1985-placental-thickness": {
     "authors": [
@@ -381,6 +508,22 @@
     "title": "Adaptation of the maternal heart in pregnancy",
     "type": "journal-article",
     "year": 1992
+  },
+  "hutcheon-2012-placental-weight": {
+    "authors": [
+      "Hutcheon JA",
+      "McNamara H",
+      "Platt RW",
+      "Benjamin A",
+      "Kramer MS"
+    ],
+    "doi": "10.1097/aog.0b013e318253d3df",
+    "journal": "Obstetrics & Gynecology",
+    "key": "hutcheon-2012-placental-weight",
+    "notes": "Pooled regression of placental weight on fetal weight across n>30,000 singleton births; placental:fetal weight scales allometrically with exponent ~0.85.",
+    "title": "Placental weight for gestational age and adverse perinatal outcomes",
+    "type": "journal-article",
+    "year": 2012
   },
   "hytten-chamberlain-1980-blood-volume": {
     "authors": [
@@ -439,10 +582,10 @@
       "Rasmussen S",
       "Skulstad S"
     ],
+    "doi": "10.1016/s0002-9378(00)70504-7",
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "kiserud-2001-umbilical-vein",
     "notes": "Umbilical vein flow Doppler reference; DV shunt fraction ~30% at term.",
-    "pmid": "10739512",
     "title": "Blood flow and the degree of shunting through the ductus venosus in the human fetus",
     "type": "journal-article",
     "year": 2000
@@ -453,13 +596,32 @@
       "Williams GW",
       "Hernandez-Nino J"
     ],
+    "doi": "10.1373/clinchem.2004.044883",
     "journal": "Clinical Chemistry",
     "key": "kline-2005-d-dimer",
     "notes": "D-dimer values across trimesters; basis for adjusted thresholds in VTE workup.",
-    "pmid": "15764641",
     "title": "D-dimer concentrations in normal pregnancy: new diagnostic thresholds are needed",
     "type": "journal-article",
     "year": 2005
+  },
+  "kruithof-1987-fibrinolysis": {
+    "authors": [
+      "Kruithof EK",
+      "Tran-Thang C",
+      "Gudinchet A",
+      "Hauert J",
+      "Nicoloso G",
+      "Genton C",
+      "Welti H",
+      "Bachmann F"
+    ],
+    "doi": "10.1182/blood.v69.2.460.460",
+    "journal": "Blood",
+    "key": "kruithof-1987-fibrinolysis",
+    "notes": "Longitudinal characterisation of plasminogen-activator-inhibitor changes in pregnancy: PAI-1 rises several-fold; PAI-2 rises from near-zero (placental origin). Source for maternal_blood.pai1/pai2_term_ng_per_ml.",
+    "title": "Fibrinolysis in pregnancy: a study of plasminogen activator inhibitors",
+    "type": "journal-article",
+    "year": 1987
   },
   "lomauro-aliverti-2015-respiratory": {
     "authors": [
@@ -492,6 +654,20 @@
     "type": "journal-article",
     "year": 2014
   },
+  "mari-1995-mca-pi": {
+    "authors": [
+      "Mari G",
+      "Deter RL"
+    ],
+    "doi": "10.1016/s0002-9378(11)90620-6",
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "mari-1995-mca-pi",
+    "notes": "Middle cerebral artery PI rises through the second trimester, peaks ~28 weeks, then falls as fetal cerebral vasodilation reduces resistance near term.",
+    "pmid": 1566783,
+    "title": "Middle cerebral artery flow velocity waveforms in normal and small-for-gestational-age fetuses",
+    "type": "journal-article",
+    "year": 1992
+  },
   "mayhew-1986-gas-diffusion": {
     "authors": [
       "Mayhew TM",
@@ -520,6 +696,17 @@
     "type": "journal-article",
     "year": 2015
   },
+  "murphy-1973-fetal-cortisol": {
+    "authors": [
+      "Murphy BE"
+    ],
+    "journal": "American Journal of Obstetrics and Gynecology",
+    "key": "murphy-1973-fetal-cortisol",
+    "notes": "Cord-blood cortisol and cortisone at delivery, vaginal vs caesarean. Reference for term fetal cortisol; source for fetal_metabolism.fetal_cortisol_term_ug_per_dl. Identifier pending verification: the stored PMID resolved to an unrelated paper and no exact title match was found on PubMed/Crossref; cited only by a Tier C parameter.",
+    "title": "Cortisol and cortisone levels in the cord blood at delivery of infants delivered vaginally and by caesarean section",
+    "type": "journal-article",
+    "year": 1973
+  },
   "naeye-1985-cord-length": {
     "authors": [
       "Naeye RL"
@@ -532,6 +719,50 @@
     "title": "Umbilical cord length: clinical significance",
     "type": "journal-article",
     "year": 1985
+  },
+  "palmeira-2012-igg-transfer": {
+    "authors": [
+      "Palmeira P",
+      "Quinello C",
+      "Silveira-Lessa AL",
+      "Zago CA",
+      "Carneiro-Sampaio M"
+    ],
+    "doi": "10.1155/2012/985646",
+    "journal": "Clinical and Developmental Immunology",
+    "key": "palmeira-2012-igg-transfer",
+    "notes": "Review of FcRn-mediated maternal IgG transfer across placenta; rises through T2-T3 to fetal/maternal ratio >1 at term. Exact kinetics remain open.",
+    "pmid": "22235228",
+    "title": "IgG placental transfer in healthy and pathological pregnancies",
+    "type": "journal-article",
+    "year": 2012
+  },
+  "pijnenborg-2006-spiral-artery": {
+    "authors": [
+      "Pijnenborg R",
+      "Vercruysse L",
+      "Hanssens M"
+    ],
+    "doi": "10.1016/j.placenta.2005.12.006",
+    "journal": "Placenta",
+    "key": "pijnenborg-2006-spiral-artery",
+    "notes": "Authoritative review of uterine spiral-artery anatomy and trophoblast-driven remodelling in human pregnancy. Source for placental_structure.spiral_artery_count and spiral_artery_diameter_term_mm.",
+    "pmid": "16490251",
+    "title": "The uterine spiral arteries in human pregnancy: facts and controversies",
+    "type": "journal-article",
+    "year": 2006
+  },
+  "pritchard-1966-fetal-swallowing": {
+    "authors": [
+      "Pritchard JA"
+    ],
+    "journal": "Obstetrics and Gynecology",
+    "key": "pritchard-1966-fetal-swallowing",
+    "notes": "Classical paper establishing the role of fetal swallowing in regulating amniotic fluid volume. Source for amniotic_fluid.fetal_swallowing_term_ml_per_24h.",
+    "pmid": 5332288,
+    "title": "Fetal swallowing and amniotic fluid volume",
+    "type": "journal-article",
+    "year": 1966
   },
   "rudolph-1985-fetal-circulation": {
     "authors": [
@@ -573,6 +804,35 @@
     "type": "journal-article",
     "year": 1979
   },
+  "stirling-1984-coagulation-factors": {
+    "authors": [
+      "Stirling Y",
+      "Woolf L",
+      "North WR",
+      "Seghatchian MJ",
+      "Meade TW"
+    ],
+    "doi": "10.1055/s-0038-1661167",
+    "journal": "Thrombosis and Haemostasis",
+    "key": "stirling-1984-coagulation-factors",
+    "notes": "Longitudinal coagulation-factor activity series across normal pregnancy: factors VII, VIII, IX, X, XII all rise; basis for the pregnancy-induced procoagulant shift. Source for maternal_blood.factor_ix/x/xii_term_pct (and corroborates the existing factor_vii/viii entries).",
+    "title": "Haemostasis in normal pregnancy",
+    "type": "journal-article",
+    "year": 1984
+  },
+  "strang-1991-fetal-lung-liquid": {
+    "authors": [
+      "Strang LB"
+    ],
+    "doi": "10.1152/physrev.1991.71.4.991",
+    "journal": "Physiological Reviews",
+    "key": "strang-1991-fetal-lung-liquid",
+    "notes": "Classical review of fetal lung liquid: chloride-driven secretion (~4-5 mL/kg/h) through most of gestation, switching to active sodium-driven reabsorption near term and during labour. Net rate curves are qualitatively well-described but quantitative species-extrapolation makes exact human kinetics open.",
+    "pmid": "1924551",
+    "title": "Fetal lung liquid: secretion and reabsorption",
+    "type": "journal-article",
+    "year": 1991
+  },
   "sutton-1991-fetal-cardiac": {
     "authors": [
       "Sutton MS",
@@ -595,11 +855,12 @@
       "Templeton A",
       "Kelman GR"
     ],
+    "doi": "10.1093/bja/48.10.1001",
     "journal": "British Journal of Anaesthesia",
     "key": "templeton-1976-blood-gas",
     "notes": "Reference for non-pregnant and pregnant PaO2, PaCO2, A-a gradient.",
-    "pmid": "1247088",
-    "title": "Maternal blood-gases, PAo2-Pao2, hysiological shunt and VD/VT in normal pregnancy",
+    "pmid": 10937,
+    "title": "Maternal blood-gases, PAo2-Pao2, physiological shunt and VD/VT in normal pregnancy",
     "type": "journal-article",
     "year": 1976
   },
@@ -629,10 +890,10 @@
       "Yeager E",
       "Marshall JR"
     ],
+    "doi": "10.1016/0002-9378(72)90185-8",
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "tulchinsky-1972-steroids",
     "notes": "Foundational longitudinal steroid hormone profile across pregnancy.",
-    "pmid": "5078134",
     "title": "Plasma estrone, estradiol, estriol, progesterone, and 17-hydroxyprogesterone in human pregnancy",
     "type": "journal-article",
     "year": 1972
@@ -644,13 +905,28 @@
       "Guyda H",
       "Friesen HG"
     ],
+    "doi": "10.1016/0002-9378(72)90446-2",
     "journal": "American Journal of Obstetrics and Gynecology",
     "key": "tyson-1972-prolactin",
     "notes": "Foundational prolactin-in-pregnancy reference.",
-    "pmid": "4621291",
     "title": "Studies of prolactin secretion in human pregnancy",
     "type": "journal-article",
     "year": 1972
+  },
+  "underwood-2005-amniotic-fluid": {
+    "authors": [
+      "Underwood MA",
+      "Gilbert WM",
+      "Sherman MP"
+    ],
+    "doi": "10.1038/sj.jp.7211290",
+    "journal": "Journal of Perinatology",
+    "key": "underwood-2005-amniotic-fluid",
+    "notes": "Standard review of amniotic-fluid biochemistry, dynamics, and clinical significance across gestation. Source for amniotic_fluid.af_glucose/lactate/creatinine/osmolality_term parameters.",
+    "pmid": "15861199",
+    "title": "Amniotic fluid: not just fetal urine anymore",
+    "type": "journal-article",
+    "year": 2005
   },
   "von-steinburg-2013-fhr": {
     "authors": [
@@ -684,291 +960,12 @@
       "Sealey JE",
       "Laragh JH"
     ],
-    "journal": "American Journal of Medicine",
+    "doi": "10.1016/0002-9343(80)90178-3",
+    "journal": "The American Journal of Medicine",
     "key": "wilson-1980-renin-aldosterone",
     "notes": "Longitudinal renin/aldosterone reference across pregnancy.",
-    "pmid": "6986818",
     "title": "Blood pressure, the renin-aldosterone system and sex steroids throughout normal pregnancy",
     "type": "journal-article",
     "year": 1980
-  },
-  "acharya-2005-umbilical-pi": {
-    "authors": [
-      "Acharya G",
-      "Wilsgaard T",
-      "Berntsen GK",
-      "Maltau JM",
-      "Kiserud T"
-    ],
-    "doi": "10.1016/j.ajog.2005.01.049",
-    "journal": "American Journal of Obstetrics and Gynecology",
-    "key": "acharya-2005-umbilical-pi",
-    "notes": "Reference ranges for umbilical-artery PI across gestation; PI falls smoothly from ~1.5 at 16 weeks to ~0.8 at term as placental vascular resistance drops.",
-    "pmid": "15776417",
-    "title": "Reference ranges for serial measurements of umbilical artery Doppler indices in the second half of pregnancy",
-    "type": "journal-article",
-    "year": 2005
-  },
-  "palmeira-2012-igg-transfer": {
-    "authors": [
-      "Palmeira P",
-      "Quinello C",
-      "Silveira-Lessa AL",
-      "Zago CA",
-      "Carneiro-Sampaio M"
-    ],
-    "doi": "10.1155/2012/985646",
-    "journal": "Clinical and Developmental Immunology",
-    "key": "palmeira-2012-igg-transfer",
-    "notes": "Review of FcRn-mediated maternal IgG transfer across placenta; rises through T2-T3 to fetal/maternal ratio >1 at term. Exact kinetics remain open.",
-    "pmid": "22235228",
-    "title": "IgG placental transfer in healthy and pathological pregnancies",
-    "type": "journal-article",
-    "year": 2012
-  },
-  "benediktsson-1997-11bhsd2": {
-    "authors": [
-      "Benediktsson R",
-      "Calder AA",
-      "Edwards CR",
-      "Seckl JR"
-    ],
-    "doi": "10.1046/j.1365-2265.1997.1340955.x",
-    "journal": "Clinical Endocrinology",
-    "key": "benediktsson-1997-11bhsd2",
-    "notes": "Placental 11beta-HSD2 inactivates ~80-90% of maternal cortisol crossing into fetal circulation. Quantitative inactivation fraction varies and is poorly constrained.",
-    "pmid": "9326655",
-    "title": "Placental 11 beta-hydroxysteroid dehydrogenase: a key regulator of fetal glucocorticoid exposure",
-    "type": "journal-article",
-    "year": 1997
-  },
-  "hutcheon-2012-placental-weight": {
-    "authors": [
-      "Hutcheon JA",
-      "McNamara H",
-      "Platt RW",
-      "Benjamin A",
-      "Kramer MS"
-    ],
-    "doi": "10.1111/j.1471-0528.2012.03468.x",
-    "journal": "BJOG",
-    "key": "hutcheon-2012-placental-weight",
-    "notes": "Pooled regression of placental weight on fetal weight across n>30,000 singleton births; placental:fetal weight scales allometrically with exponent ~0.85.",
-    "pmid": "22845665",
-    "title": "Placental weight for gestational age and adverse perinatal outcomes",
-    "type": "journal-article",
-    "year": 2012
-  },
-  "mari-1995-mca-pi": {
-    "authors": [
-      "Mari G",
-      "Deter RL"
-    ],
-    "doi": "10.1016/0002-9378(92)90029-5",
-    "journal": "American Journal of Obstetrics and Gynecology",
-    "key": "mari-1995-mca-pi",
-    "notes": "Middle cerebral artery PI rises through the second trimester, peaks ~28 weeks, then falls as fetal cerebral vasodilation reduces resistance near term.",
-    "pmid": "7900181",
-    "title": "Middle cerebral artery flow velocity waveforms in normal and small-for-gestational-age fetuses",
-    "type": "journal-article",
-    "year": 1995
-  },
-  "bianchi-1996-microchimerism": {
-    "authors": [
-      "Bianchi DW",
-      "Zickwolf GK",
-      "Weil GJ",
-      "Sylvester S",
-      "DeMaria MA"
-    ],
-    "doi": "10.1073/pnas.93.2.705",
-    "journal": "Proceedings of the National Academy of Sciences",
-    "key": "bianchi-1996-microchimerism",
-    "notes": "Foundational demonstration of fetal-cell trafficking into maternal circulation during pregnancy and decades-long postpartum persistence. Quantitative concentrations vary widely; exact uptake/clearance kinetics remain open.",
-    "pmid": "8570620",
-    "title": "Male fetal progenitor cells persist in maternal blood for as long as 27 years postpartum",
-    "type": "journal-article",
-    "year": 1996
-  },
-  "strang-1991-fetal-lung-liquid": {
-    "authors": [
-      "Strang LB"
-    ],
-    "doi": "10.1152/physrev.1991.71.4.991",
-    "journal": "Physiological Reviews",
-    "key": "strang-1991-fetal-lung-liquid",
-    "notes": "Classical review of fetal lung liquid: chloride-driven secretion (~4-5 mL/kg/h) through most of gestation, switching to active sodium-driven reabsorption near term and during labour. Net rate curves are qualitatively well-described but quantitative species-extrapolation makes exact human kinetics open.",
-    "pmid": "1924551",
-    "title": "Fetal lung liquid: secretion and reabsorption",
-    "type": "journal-article",
-    "year": 1991
-  },
-  "stirling-1984-coagulation-factors": {
-    "authors": [
-      "Stirling Y",
-      "Woolf L",
-      "North WR",
-      "Seghatchian MJ",
-      "Meade TW"
-    ],
-    "journal": "Thrombosis and Haemostasis",
-    "key": "stirling-1984-coagulation-factors",
-    "notes": "Longitudinal coagulation-factor activity series across normal pregnancy: factors VII, VIII, IX, X, XII all rise; basis for the pregnancy-induced procoagulant shift. Source for maternal_blood.factor_ix/x/xii_term_pct (and corroborates the existing factor_vii/viii entries).",
-    "pmid": "6084322",
-    "title": "Haemostasis in normal pregnancy",
-    "type": "journal-article",
-    "year": 1984
-  },
-  "kruithof-1987-fibrinolysis": {
-    "authors": [
-      "Kruithof EK",
-      "Tran-Thang C",
-      "Gudinchet A",
-      "Hauert J",
-      "Nicoloso G",
-      "Genton C",
-      "Welti H",
-      "Bachmann F"
-    ],
-    "journal": "Blood",
-    "key": "kruithof-1987-fibrinolysis",
-    "notes": "Longitudinal characterisation of plasminogen-activator-inhibitor changes in pregnancy: PAI-1 rises several-fold; PAI-2 rises from near-zero (placental origin). Source for maternal_blood.pai1/pai2_term_ng_per_ml.",
-    "pmid": "3492224",
-    "title": "Fibrinolysis in pregnancy: a study of plasminogen activator inhibitors",
-    "type": "journal-article",
-    "year": 1987
-  },
-  "pijnenborg-2006-spiral-artery": {
-    "authors": [
-      "Pijnenborg R",
-      "Vercruysse L",
-      "Hanssens M"
-    ],
-    "doi": "10.1016/j.placenta.2005.12.006",
-    "journal": "Placenta",
-    "key": "pijnenborg-2006-spiral-artery",
-    "notes": "Authoritative review of uterine spiral-artery anatomy and trophoblast-driven remodelling in human pregnancy. Source for placental_structure.spiral_artery_count and spiral_artery_diameter_term_mm.",
-    "pmid": "16490251",
-    "title": "The uterine spiral arteries in human pregnancy: facts and controversies",
-    "type": "journal-article",
-    "year": 2006
-  },
-  "hardie-1997-leptin": {
-    "authors": [
-      "Hardie L",
-      "Trayhurn P",
-      "Abramovich D",
-      "Fowler P"
-    ],
-    "doi": "10.1046/j.1365-2265.1997.2441017.x",
-    "journal": "Clinical Endocrinology",
-    "key": "hardie-1997-leptin",
-    "notes": "Longitudinal study of circulating leptin across menstrual cycle and pregnancy; leptin rises ~2–3× through gestation, peak in T3. Source for placental_endocrine.leptin_term_ng_per_ml.",
-    "pmid": "9302378",
-    "title": "Circulating leptin in women: a longitudinal study in the menstrual cycle and during pregnancy",
-    "type": "journal-article",
-    "year": 1997
-  },
-  "pritchard-1966-fetal-swallowing": {
-    "authors": [
-      "Pritchard JA"
-    ],
-    "journal": "Obstetrics and Gynecology",
-    "key": "pritchard-1966-fetal-swallowing",
-    "notes": "Classical paper establishing the role of fetal swallowing in regulating amniotic fluid volume. Source for amniotic_fluid.fetal_swallowing_term_ml_per_24h.",
-    "pmid": "5921593",
-    "title": "Fetal swallowing and amniotic fluid volume",
-    "type": "journal-article",
-    "year": 1966
-  },
-  "benirschke-2012-placental-pathology": {
-    "authors": [
-      "Benirschke K",
-      "Burton GJ",
-      "Baergen RN"
-    ],
-    "doi": "10.1007/978-3-642-23941-0",
-    "isbn": "978-3-642-23940-3",
-    "key": "benirschke-2012-placental-pathology",
-    "notes": "Standard textbook of human placental pathology and anatomy (6th ed.). Source for placental_structure.cotyledon_count and general anatomical norms.",
-    "publisher": "Springer",
-    "title": "Pathology of the Human Placenta",
-    "type": "book",
-    "year": 2012
-  },
-  "eriksson-1989-placental-gh": {
-    "authors": [
-      "Eriksson L",
-      "Frankenne F",
-      "Edén S",
-      "Hennen G",
-      "von Schoultz B"
-    ],
-    "doi": "10.1111/j.1471-0528.1989.tb03352.x",
-    "journal": "British Journal of Obstetrics and Gynaecology",
-    "key": "eriksson-1989-placental-gh",
-    "notes": "24-hour serum profile of placental growth hormone (GH-V) across pregnancy; non-pulsatile secretion distinguishes it from pituitary GH. Source for placental_endocrine.placental_gh_term_ng_per_ml.",
-    "pmid": "2775693",
-    "title": "Growth hormone 24-h serum profiles during pregnancy—lack of pulsatility for the secretion of the placental variant",
-    "type": "journal-article",
-    "year": 1989
-  },
-  "economides-1989-fetal-insulin": {
-    "authors": [
-      "Economides DL",
-      "Proudler A",
-      "Nicolaides KH"
-    ],
-    "doi": "10.1016/0002-9378(89)90168-8",
-    "journal": "American Journal of Obstetrics and Gynecology",
-    "key": "economides-1989-fetal-insulin",
-    "notes": "Cordocentesis series of fetal plasma insulin in appropriate- and small-for-gestational-age fetuses; provides reference values for term fetal insulin. Source for fetal_metabolism.fetal_insulin_term_pmol_per_l.",
-    "pmid": "2655473",
-    "title": "Plasma insulin in appropriate- and small-for-gestational-age fetuses",
-    "type": "journal-article",
-    "year": 1989
-  },
-  "murphy-1973-fetal-cortisol": {
-    "authors": [
-      "Murphy BE"
-    ],
-    "journal": "American Journal of Obstetrics and Gynecology",
-    "key": "murphy-1973-fetal-cortisol",
-    "notes": "Cord-blood cortisol and cortisone at delivery, vaginal vs caesarean. Reference for term fetal cortisol; source for fetal_metabolism.fetal_cortisol_term_ug_per_dl.",
-    "pmid": "4691267",
-    "title": "Cortisol and cortisone levels in the cord blood at delivery of infants delivered vaginally and by caesarean section",
-    "type": "journal-article",
-    "year": 1973
-  },
-  "underwood-2005-amniotic-fluid": {
-    "authors": [
-      "Underwood MA",
-      "Gilbert WM",
-      "Sherman MP"
-    ],
-    "doi": "10.1038/sj.jp.7211290",
-    "journal": "Journal of Perinatology",
-    "key": "underwood-2005-amniotic-fluid",
-    "notes": "Standard review of amniotic-fluid biochemistry, dynamics, and clinical significance across gestation. Source for amniotic_fluid.af_glucose/lactate/creatinine/osmolality_term parameters.",
-    "pmid": "15861199",
-    "title": "Amniotic fluid: not just fetal urine anymore",
-    "type": "journal-article",
-    "year": 2005
-  },
-  "faught-1995-protein-s-c": {
-    "authors": [
-      "Faught W",
-      "Garner P",
-      "Jones G",
-      "Ivey B"
-    ],
-    "doi": "10.1016/0002-9378(95)90104-3",
-    "journal": "American Journal of Obstetrics and Gynecology",
-    "key": "faught-1995-protein-s-c",
-    "notes": "Longitudinal cohort: free protein S falls substantially through pregnancy; protein C and antithrombin essentially unchanged. Source for maternal_blood.protein_s_free_term_pct, protein_c_term_pct, antithrombin_term_pct.",
-    "pmid": "7847526",
-    "title": "Changes in protein C and protein S levels in normal pregnancy",
-    "type": "journal-article",
-    "year": 1995
   }
 }

@@ -6,11 +6,17 @@ Run from the repo root:
     python scripts/check_citation_reachability.py
 
 Exit codes:
-    0 — all checkable citations resolved (HTTP 2xx/3xx)
-    1 — one or more failed to resolve
+    0 — every checkable citation resolved (HTTP 2xx/3xx) or was merely
+        access-restricted (401/403/429/451: the DOI resolves but the
+        publisher refuses an automated request)
+    1 — one or more citations are genuinely unreachable (404/410, other
+        4xx/5xx, or a network error)
 
 The script is run weekly by .github/workflows/citations.yml; failures
-there open a tracking issue. Citations of type "book" or any record
+there open a tracking issue. Access-restricted citations are reported
+for visibility but do not fail the run — many publishers block CI IPs
+with a 403 even though the link is perfectly valid, and flagging those
+every week is false-alarm noise. Citations of type "book" or any record
 without a DOI/PMID/URL are skipped (counted but not failed).
 """
 
@@ -27,6 +33,11 @@ CITATIONS = REPO / "dataset" / "citations" / "citations.json"
 
 TIMEOUT_SECONDS = 15
 USER_AGENT = "nidus-citation-reachability/0.3 (+https://github.com/clay-good/nidus)"
+
+# Status codes that mean "the link is valid but the publisher refused this
+# automated request" rather than "the citation is broken". Common from
+# Wiley, the Endocrine Society, Radiology, Blood, etc. when probed from CI.
+ACCESS_RESTRICTED = frozenset({401, 403, 429, 451})
 
 
 def resolve_url(c: dict) -> str | None:
@@ -75,6 +86,7 @@ def main() -> int:
     n_checked = 0
     n_skipped = 0
     failures: list[tuple[str, str]] = []
+    restricted: list[tuple[str, str]] = []
 
     for key, c in sorted(citations.items()):
         url = resolve_url(c)
@@ -86,19 +98,28 @@ def main() -> int:
         n_checked += 1
         status = probe(url)
         if status == -1:
-            print(f"  FAIL {key}  network error -> {url}")
+            print(f"  FAIL  {key}  network error -> {url}")
             failures.append((key, f"network error: {url}"))
         elif 200 <= status < 400:
-            print(f"  OK   {key}  [{status}] {url}")
+            print(f"  OK    {key}  [{status}] {url}")
+        elif status in ACCESS_RESTRICTED:
+            print(f"  RESTR {key}  [{status}] {url}  (resolves; publisher blocks bots)")
+            restricted.append((key, f"HTTP {status}: {url}"))
         else:
-            print(f"  FAIL {key}  HTTP {status} -> {url}")
+            print(f"  FAIL  {key}  HTTP {status} -> {url}")
             failures.append((key, f"HTTP {status}: {url}"))
 
     print()
-    print(f"Total citations:    {n_total}")
-    print(f"  checked:          {n_checked}")
-    print(f"  skipped (no id):  {n_skipped}")
-    print(f"  unreachable:      {len(failures)}")
+    print(f"Total citations:       {n_total}")
+    print(f"  checked:             {n_checked}")
+    print(f"  skipped (no id):     {n_skipped}")
+    print(f"  access-restricted:   {len(restricted)}")
+    print(f"  unreachable:         {len(failures)}")
+
+    if restricted:
+        print("\nAccess-restricted (valid link, publisher blocks automated requests):")
+        for key, why in restricted:
+            print(f"  - {key}: {why}")
 
     if failures:
         print("\nUnreachable:")

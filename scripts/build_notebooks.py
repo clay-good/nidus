@@ -248,9 +248,11 @@ def build_02() -> None:
         evidence base — number of studies, cohort size, measurement
         technique, known caveats.
 
-        Most rationales in v0.3 are placeholders synthesised from the
-        v0.2 TOML curation. Reviewers re-write them when promoting
-        parameters from ``unverified`` to ``verified``.
+        Every parameter now carries a substantive, citation-anchored
+        rationale (they reference the specific source and its evidence
+        base). What most still lack is a human having checked that
+        rationale against the source PDF — that final confirmation is
+        what promotes a parameter from ``unverified`` to ``verified``.
         """),
         code("""
         example_b = next(p for p in ds if p.tier == "B")
@@ -604,7 +606,7 @@ def build_essay_figures() -> None:
         ## Figure 1 — Tier distribution by subsystem
 
         Stacked bar showing how the four tiers are distributed across
-        the ten subsystems. The visual point: data density is uneven,
+        the subsystems. The visual point: data density is uneven,
         and the tier system surfaces where the dataset is well-grounded
         versus where it is provisional.
         """),

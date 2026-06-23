@@ -31,7 +31,7 @@ dataset/
 └── CHANGELOG.md
 ```
 
-**Total at v0.3.0:** 54 parameters across 10 subsystems, 32 citations.
+**Total:** 243 parameters across 13 subsystems, 66 citations.
 
 ## Versioning
 
@@ -48,6 +48,6 @@ See the [schema reference](schema.md) for the field-level details.
 
 ## How the dataset was assembled
 
-The current 54 parameters were migrated from a curated TOML corpus in the project's earlier (Rust prototype) phase. The migration is captured in [`scripts/migrate_data.py`](https://github.com/clay-good/nidus/blob/main/scripts/migrate_data.py).
+The dataset's first parameters were migrated from a curated TOML corpus in the project's earlier (Rust prototype) phase — the migration is captured in [`scripts/migrate_data.py`](https://github.com/clay-good/nidus/blob/main/scripts/migrate_data.py) — and it has since grown to 243 parameters.
 
-All entries are currently marked `extraction.review_status: "unverified"`. The v0.2 curation was careful but no formal re-verification against the original papers happened at migration time. Walking every Tier A/B record and promoting them to `verified` is the highest-leverage contribution available between now and a future v0.3.x release.
+28 entries are marked `extraction.review_status: "verified"` (a human has read the source PDF and confirmed the dataset entry); 1 is `contested`; the rest are `unverified` — the central value is drawn from the literature, but no formal re-verification against the original paper has happened yet. Walking every Tier A/B record and promoting it to `verified` is the highest-leverage contribution available between now and a future release.

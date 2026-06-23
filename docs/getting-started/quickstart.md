@@ -8,7 +8,7 @@ Five minutes from `pip install` to a chart of the dataset.
 import nidus
 
 ds = nidus.load()
-ds                  # <nidus.Dataset: 54 parameters, 32 citations>
+ds                  # <nidus.Dataset: 243 parameters, 66 citations>
 len(ds)             # 54
 len(ds.citations)   # 32
 list(ds.subsystems())

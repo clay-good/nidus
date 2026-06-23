@@ -6,8 +6,8 @@ how the value was confirmed, what triangulation backs it, and what
 caveats remain. These are the exemplars researchers should compare
 their own contributions against.
 
-At the time of writing, the dataset has **14 verified parameters** out
-of 54 (the remaining 39 are `unverified` pending human-with-PDF
+At the time of writing, the dataset has **28 verified parameters** out
+of 243 (the remaining 214 are `unverified` pending human-with-PDF
 re-review, plus 1 `contested` entry flagged for investigation). The
 verified ones are exactly the parameters where the cited primary
 source's value claim has been confirmed directly (PMC full-text read)

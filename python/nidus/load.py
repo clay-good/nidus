@@ -149,7 +149,7 @@ class Dataset:
         >>> import nidus
         >>> ds = nidus.load()
         >>> ds
-        <nidus.Dataset: 54 parameters, 32 citations>
+        <nidus.Dataset: 243 parameters, 66 citations>
         >>> p = ds["maternal_cardiovascular.baseline_cardiac_output_l_per_min"]
         >>> p.value.central, p.value.units
         (4.6, 'L/min')

@@ -9,8 +9,8 @@ weeks gestation.
 
 ```
 dataset/
-├── parameters/        # one JSON file per subsystem group (TBD)
-├── citations/         # citation index (TBD)
+├── parameters/        # one JSON file per subsystem (13 subsystems, 243 parameters)
+├── citations/         # citation index (citations.json, 66 records)
 ├── tiers/             # tier definitions
 │   └── tiers.json
 ├── schema/            # JSON Schema (draft 2020-12)
