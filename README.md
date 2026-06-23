@@ -338,4 +338,11 @@ Cite the dataset by its Zenodo concept DOI (added on first formal release). See 
 
 The most valuable contributions are verified parameters drawn from published empirical work. See [CONTRIBUTING.md](CONTRIBUTING.md) for the tier system, the review checklist, the citation-verification workflow, and the parameter-addition issue template.
 
-The single highest-leverage contribution today is promoting `unverified` parameters to `verified` by reading the source PDF and confirming (or correcting) the dataset entry.
+The single highest-leverage contribution today is promoting `unverified` and `pending_human_review` parameters to `verified` by reading the source PDF and confirming (or correcting) the dataset entry — start from [`data/validation/REVIEW_QUEUE.md`](data/validation/REVIEW_QUEUE.md).
+
+## Releasing
+
+The repository is build-complete and release-ready. The steps to actually launch
+(PyPI publish, Streamlit Cloud deploy, Zenodo DOI, docs Pages) are one-step
+maintainer actions — pushing a `v*.*.*` tag publishes to PyPI and cuts a GitHub
+release automatically. See [RELEASE.md](RELEASE.md) for the full runbook.

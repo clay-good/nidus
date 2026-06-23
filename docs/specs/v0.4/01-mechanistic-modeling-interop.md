@@ -463,16 +463,17 @@ Total external (curator review): variable, can run in parallel.
 - [x] Docs site has the Exports section live (`docs/exports/{index,sbml,cellml,physicell,annotations}.md`, wired into the mkdocs nav as a top-level "Exports" tab).
 - [x] Outreach essay updated to mention the three integrations.
 
-The remaining items are **external submissions / deposits an agent cannot
-perform** — they require third-party accounts, PRs to other projects, or a
-tagged release. The artifacts they submit are all already built and validated
-above (`nidus export --format ...`), so each is a one-step maintainer action:
+**Maintainer-gated external submissions** — these require third-party accounts,
+PRs to other projects, or a tagged release, so an agent cannot perform them. The
+artifacts they submit are all already built and validated above
+(`nidus export --format ...`), making each a one-step maintainer action. Tracked
+in [`RELEASE.md`](https://github.com/clay-good/nidus/blob/main/RELEASE.md):
 
-- [ ] BioModels Database submission **submitted** — *maintainer-side; submit the generated SBML.*
-- [ ] Physiome Model Repository workspace **created and exposed**, including both CellML versions — *maintainer-side; push the generated CellML.*
-- [ ] PhysioCell tutorial PR **opened** to `MathCancer/PhysiCell-tutorials` — *maintainer-side; external-repo PR.*
-- [ ] First Zenodo deposit at v0.4.0 includes the exports as supplementary files — *maintainer-side; pending the v0.4.0 tag release.*
-- [ ] BioPortal ontology submission and JOSS paper — *deferred to post-v0.4.*
+- BioModels Database submission — submit the generated SBML / OMEX.
+- Physiome Model Repository workspace — push the generated CellML 2.0 + 1.1.
+- PhysioCell tutorial PR to `MathCancer/PhysiCell-tutorials` — external-repo PR using `docs/examples/physicell_placental_villous/`.
+- First Zenodo deposit at v0.4.0 includes the exports as supplementary files — pending the v0.4.0 tag.
+- BioPortal ontology submission and JOSS paper — deferred to post-v0.4.
 
 ## 16. Open questions — resolved
 

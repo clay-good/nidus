@@ -312,23 +312,26 @@ Deployed via GitHub Pages on tag.
 
 ## 12. Success criteria for `v0.3.0`
 
-Status as of the current commit on `main`:
+**Implementation criteria — complete** (status as of the current commit on `main`):
 
 - [x] All Rust code removed from working tree.
 - [x] All parameters in JSON, schema-valid. **Now 243 parameters** (grew past the original 54 via the v0.4 expansion).
 - [x] All citations in JSON with DOI or PMID where available. **66 citations, 64 with a DOI/PMID** (the 2 without are pre-DOI books); the v0.2 identifier errors were repaired against Crossref + PubMed.
 - [x] `pip install nidus` works (CI builds + smoke-tests the wheel in a clean venv on every push).
-- [ ] Dashboard live at a public Streamlit Cloud URL — *not buildable by the repo: pending the maintainer-side Streamlit Cloud connection step.*
 - [x] All 5 reference notebooks execute end-to-end in CI.
-- [ ] First Zenodo DOI minted; `CITATION.cff` references it — *not buildable by the repo: pending the v0.3.0 tag release + Zenodo deposit (maintainer-side).*
 - [x] README rewritten; simulator-era framing removed.
 - [x] Old specs deleted (deprecation stubs removed once nothing referenced them; original content preserved in git history and at the `v0.2-archive` tag).
 - [x] Essay (Spec 03) drafted and shipped in the repository at `docs/about/essay.md` with three committed figures.
 
+**Release actions — maintainer-gated** (not buildable by the repo; one-step each, see [`RELEASE.md`](https://github.com/clay-good/nidus/blob/main/RELEASE.md)):
+
+- Dashboard live at a public Streamlit Cloud URL — the dashboard is deploy-ready (`dashboard/app.py`, 7 pages); needs the maintainer to create the Streamlit Cloud app.
+- First Zenodo DOI minted; `CITATION.cff` references it — pending the `v0.3.0` tag (which `release.yml` turns into a PyPI publish + GitHub release) and the Zenodo↔GitHub connection.
+
 Bonus (beyond the original v0.3 spec):
 
 - [x] **Citation metadata audit + repair tooling**: 22 wrong DOI/PMID identifiers in the v0.2 corpus traced back to the correct papers via Crossref title-search; 23 additional PMIDs resolved via NCBI IdConverter and added.
-- [x] **28 parameters `verified`** (human-with-source) and **127 `pending_human_review`** (value located in a real source by automated review, with a verbatim quote on the record) out of 243; 1 `contested`. A machine pre-verification layer ([`data/validation/`](../../../data/validation/)) fetches each parameter's source and records a quote-grounded verdict, never setting `verified` (that stays human). See [`docs/dataset/verified-examples.md`](../../dataset/verified-examples.md) for gold-standard exemplars.
+- [x] **28 parameters `verified`** (human-with-source) and **127 `pending_human_review`** (value located in a real source by automated review, with a verbatim quote on the record) out of 243; 1 `contested`. A machine pre-verification layer ([`data/validation/`](https://github.com/clay-good/nidus/tree/main/data/validation)) fetches each parameter's source and records a quote-grounded verdict, never setting `verified` (that stays human). See [`docs/dataset/verified-examples.md`](../../dataset/verified-examples.md) for gold-standard exemplars.
 - [x] **All `tier_rationale` fields are substantive** (citation-anchored, no placeholders).
 - [x] **`nidus` CLI shipped** with `version`, `validate`, `info`, and `export --format {bibtex,csv,sbml,cellml,physiocell,...}` subcommands.
 - [x] **Coverage ~99%** across the package; `nidus.validate` at 100%.

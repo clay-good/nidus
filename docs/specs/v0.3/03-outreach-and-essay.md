@@ -92,19 +92,22 @@ output.
 
 Status as of the current commit on `main`:
 
+**Built — complete:**
+
 - [x] Essay written and pushed to `main` (`docs/about/essay.md`); three figures committed under `docs/assets/essay/`.
 - [x] Mkdocs nav exposes the essay under About → "Essay — confidence tiers".
-- [ ] GitHub Pages serving — *pending the maintainer-side Pages source flip; once enabled, the essay is live without further work.*
-- [ ] Post link on Twitter / Mastodon / Bluesky with a short summary — deferred until v0.3.0 actually ships.
-- [ ] Post to relevant subreddits if appropriate: r/Bioinformatics, r/datasets — deferred until v0.3.0 ships.
-- [ ] Email 5–10 perinatal researchers whose work is cited in the dataset. Short, no-strings-attached: "I built this; you might find it useful; it cites your paper at parameter X." — deferred until v0.3.0 ships and DOI is minted.
-- [ ] Submit to Hacker News (Show HN) — deferred.
-- [ ] Submit to relevant newsletters: Data Is Plural, etc. — deferred.
-- [ ] Update GitHub repository's About / topics / pinned status to point at the essay — deferred until v0.3.0 ships.
+- [x] Essay built into the docs site and redeployed to `gh-pages` on every `main` push by `docs.yml`.
 
-The outreach-channel checklist is intentionally on hold until v0.3.0
-is tagged and the dataset has a permanent Zenodo DOI. The essay itself
-is shipped and discoverable to anyone browsing the repo.
+**Maintainer-gated launch actions** (require external accounts / a tagged release / world outcomes; tracked in [`RELEASE.md`](https://github.com/clay-good/nidus/blob/main/RELEASE.md) — not buildable by the repo):
+
+- Expose GitHub Pages (Settings → Pages → Source: `gh-pages`) so the already-deployed site serves publicly.
+- Post the essay to Twitter / Mastodon / Bluesky, r/bioinformatics, r/datasets, Show HN, Data Is Plural.
+- Email a handful of perinatal researchers whose papers the dataset cites.
+- Set the repo About / topics to point at the essay.
+
+The outreach-channel actions are intentionally on hold until `v0.3.0` is tagged
+and the dataset has a permanent Zenodo DOI. The essay itself is shipped and
+discoverable to anyone browsing the repo or the built docs site.
 
 ## 7. Optional: parallel preprint
 
@@ -115,14 +118,16 @@ becomes friction.
 
 ## 8. Success criteria
 
-The repo-buildable items are done; the rest are maintainer-side release/outreach
-actions that an agent cannot perform (deploy, social posting, inbound interest).
+**Implementation — complete:**
 
-- [x] Essay built into the docs site at `about/essay/` (renders under `mkdocs build`); **live-serving pending the maintainer-side GitHub Pages flip.**
+- [x] Essay built into the docs site at `about/essay/` (renders under `mkdocs build`, redeployed to `gh-pages` on every `main` push).
 - [x] Essay links to: repository, dashboard URL, Zenodo DOI (concept-DOI placeholder until minted), and PyPI page.
-- [ ] Repository `About` and pinned status point to the essay — *maintainer-side GitHub setting; not buildable by the repo.*
-- [ ] Outreach checklist (Section 6) completed — *maintainer-side; deferred until v0.3.0 ships.*
-- [ ] At least one of: a GitHub star from someone unknown, an issue, an external installer, an inbound email about the dataset — *outcome metric; depends on the world, not on code.*
+
+**Maintainer-gated** (tracked in [`RELEASE.md`](https://github.com/clay-good/nidus/blob/main/RELEASE.md)):
+
+- Repository `About` and topics point to the essay — maintainer-side GitHub setting.
+- Outreach checklist (Section 6) completed — maintainer-side; deferred until v0.3.0 ships.
+- At least one of: a star from someone unknown, an issue, an external installer, an inbound email — an *outcome metric* that depends on the world, not on code; it cannot be "built".
 
 ## 9. Realistic expectations
 
